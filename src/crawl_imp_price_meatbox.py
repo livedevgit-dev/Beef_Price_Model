@@ -1,0 +1,218 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
+import pandas as pd
+import time
+import os
+import re
+import random
+import shutil
+from datetime import datetime
+from io import StringIO
+
+# [파일 정의서]
+# - 파일명: crawl_imp_price_meatbox.py
+# - 역할: 수집 및 데이터 경량화 (불필요 컬럼 제거)
+# - 대상: 수입육 (미트박스)
+# - 저장 컬럼: date, part_name, country, wholesale_price, brand (5개)
+
+URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
+
+def get_price_data():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    driver_path = os.path.join(current_dir, "chromedriver.exe")
+    
+    # 경로 설정
+    base_dir = os.path.dirname(current_dir)
+    processed_dir = os.path.join(base_dir, "data", "1_processed")
+    raw_dir = os.path.join(base_dir, "data", "0_raw")
+    
+    master_file = os.path.join(processed_dir, "master_price_data.csv")
+    backup_file = os.path.join(processed_dir, "master_price_data_backup_full.csv")
+    
+    today_date = datetime.now().strftime("%Y-%m-%d")
+
+    # [핵심] 우리가 남길 최종 컬럼 정의 (F~I 제거)
+    target_cols = ['date', 'part_name', 'country', 'wholesale_price', 'brand']
+
+    print("="*60)
+    print(f"[시스템] 미트박스 시세 수집 (경량화 버전)")
+    print(f"[설정] 저장 컬럼: {target_cols}")
+    print("="*60)
+
+    # 1. [사전 최적화] 기존 파일 로드 및 불필요 컬럼 제거
+    if os.path.exists(master_file):
+        try:
+            # 혹시 모르니 전체 백업 한 번 생성
+            shutil.copy(master_file, backup_file)
+            
+            # 로드
+            df_master = pd.read_csv(master_file)
+            
+            # (1) 기존에 있던 불필요한 컬럼(item_name 등) 제거하고 필요한 것만 남김
+            # 만약 기존 파일에 brand 컬럼이 없다면 만들어줌
+            for col in target_cols:
+                if col not in df_master.columns:
+                    df_master[col] = '-' if col == 'brand' else ""
+            
+            df_master = df_master[target_cols] # 컬럼 필터링 (F~I 삭제 효과)
+
+            # (2) 오늘 날짜 중복 및 빈 데이터 제거
+            cond_empty = df_master['part_name'].isna() | (df_master['part_name'] == '')
+            cond_today = df_master['date'] == today_date
+            
+            original_len = len(df_master)
+            df_master = df_master[~(cond_empty | cond_today)]
+            
+            print(f"[파일 정리] 기존 파일 최적화 완료 (잔여 {len(df_master)}행)")
+                
+        except Exception as e:
+            print(f"[경고] 파일 정리 중 오류 (진행함): {e}")
+            df_master = pd.DataFrame(columns=target_cols) # 실패 시 빈 틀 생성
+    else:
+        df_master = pd.DataFrame(columns=target_cols)
+
+    # 2. [크롤링] 데이터 수집
+    chrome_options = Options()
+    # chrome_options.add_argument("--headless") 
+    
+    if os.path.exists(driver_path):
+        service = Service(executable_path=driver_path)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+    else:
+        driver = webdriver.Chrome(options=chrome_options)
+
+    driver.maximize_window()
+    driver.implicitly_wait(10)
+    
+    print(f"\n[수집] 사이트 접속 중...")
+    driver.get(URL)
+    
+    raw_dfs = []
+    current_page = 1 
+    
+    try:
+        wait = WebDriverWait(driver, 20)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "tbody tr")))
+
+        while True:
+            print(f"[수집] {current_page}페이지... ", end="")
+            html = driver.page_source
+            
+            try:
+                dfs = pd.read_html(StringIO(html))
+                candidates = []
+                for df in dfs:
+                    cols_str = " ".join([str(c) for c in df.columns])
+                    if "품목" in cols_str or "보관" in cols_str:
+                        if len(df) > 1: candidates.append(df)
+                
+                if candidates:
+                    target_df = max(candidates, key=len)
+                    raw_dfs.append(target_df)
+                    print(f"OK ({len(target_df)}건)")
+                else:
+                    print("Skip")
+
+            except Exception as e:
+                print(f"Err")
+
+            time.sleep(1.5)
+
+            next_page = current_page + 1
+            moved = False
+            
+            for attempt in range(3):
+                try:
+                    target_btn = None
+                    try:
+                        target_btn = driver.find_element(By.XPATH, f"//a[normalize-space()='{next_page}']")
+                    except NoSuchElementException:
+                        target_btn = driver.find_element(By.XPATH, "//a[contains(@class, 'next')]")
+                    
+                    if target_btn:
+                        driver.execute_script("arguments[0].click();", target_btn)
+                        moved = True
+                        break
+                except:
+                    time.sleep(1)
+            
+            if moved:
+                current_page += 1
+                time.sleep(1)
+            else:
+                print("[수집] 완료. 저장 작업을 시작합니다.")
+                break
+            
+    except Exception as e:
+        print(f"\n[에러] 크롤링 중단: {e}")
+    finally:
+        driver.quit()
+        
+# 3. [데이터 병합] 필요한 5개 컬럼만 생성
+    if raw_dfs:
+        full_df = pd.concat(raw_dfs, ignore_index=True)
+        
+        try:
+            # 전처리
+            clean_df = full_df.iloc[:, [1, 3, 4]].copy()
+            clean_df.columns = ['품목명', '보관', '도매시세_raw']
+            
+            # ==============================================================================
+            # ★ [수정] "관심상품 등록하기" 텍스트 제거 로직 추가
+            # ==============================================================================
+            # 1. 문자로 변환 -> 2. 해당 문구 삭제 -> 3. 앞뒤 공백 제거
+            clean_df['품목명'] = clean_df['품목명'].astype(str).str.replace('관심상품 등록하기', '', regex=False).str.strip()
+            # ==============================================================================
+            
+            clean_df = clean_df[clean_df['보관'].astype(str).str.contains("냉동")]
+            clean_df['원산지'] = clean_df['품목명'].apply(lambda x: '미국' if '미국' in str(x) else ('호주' if '호주' in str(x) else '기타'))
+            clean_df = clean_df[clean_df['원산지'] != '기타']
+            
+            def extract_price(text):
+                text = str(text)
+                digits = re.sub(r'[^0-9]', '', text.split('원')[0])
+                return int(digits) if digits else 0
+            
+            clean_df['도매시세'] = clean_df['도매시세_raw'].apply(extract_price)
+            clean_df = clean_df[clean_df['도매시세'] > 0]
+            
+            # 인덱스 리셋
+            clean_df = clean_df.reset_index(drop=True)
+
+            # ★ [경량화] 딱 필요한 컬럼만 Dictionary로 생성
+            data_dict = {
+                'date': [today_date] * len(clean_df),
+                'part_name': clean_df['품목명'].tolist(),
+                'country': clean_df['원산지'].tolist(),
+                'wholesale_price': clean_df['도매시세'].tolist(),
+                'brand': ['-'] * len(clean_df)
+            }
+            
+            final_df = pd.DataFrame(data_dict)
+            
+            # 최종 병합
+            new_master_df = pd.concat([df_master, final_df], ignore_index=True)
+            
+            # 정렬
+            new_master_df = new_master_df.sort_values(by=['date', 'country', 'part_name'])
+            
+            # 저장
+            new_master_df.to_csv(master_file, index=False, encoding='utf-8-sig')
+            
+            print("\n" + "="*60)
+            print(f"✅ 최적화 저장 완료!")
+            print(f"📊 최종 데이터: {len(new_master_df)}행")
+            print(f"✨ 컬럼 구조: {list(new_master_df.columns)} (불필요 컬럼 삭제됨)")
+            print("="*60)
+
+        except Exception as e:
+            print(f"[오류] 데이터 저장 실패: {e}")
+            import traceback
+            traceback.print_exc()
+    else:
+        print("\n[경고] 수집된 데이터가 없습니다.")
