@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 # - 파일명: 01_Price_Dashboard.py
 # - 역할: 시각화 (사용자 인터페이스)
 # - 대상: 공통
-# - 데이터 소스: 1_processed/dashboard_ready_data.csv
+# - 데이터 소스: 2_dashboard/dashboard_ready_data.csv
 # - 주요 기능: 필터링, KPI 카드, 반응형 차트 그리기
 
 # --------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ def load_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     src_dir = os.path.dirname(current_dir)
     project_root = os.path.dirname(src_dir)
-    file_path = os.path.join(project_root, "data", "1_processed", "dashboard_ready_data.csv")
+    file_path = os.path.join(project_root, "data", "2_dashboard", "dashboard_ready_data.csv")
     
     if not os.path.exists(file_path):
         return None
@@ -82,6 +82,11 @@ if target_product is not None and df is not None:
 # 4. 사이드바 (필터 영역)
 # --------------------------------------------------------------------------------
 st.sidebar.header("[FILTER] 검색 필터")
+
+# 변수 초기화 (안전을 위해 기본값 설정)
+selected_brands_multi = []
+selected_country = '전체'
+selected_part = None
 
 if df is not None:
     # (1) 국가 선택
