@@ -7,11 +7,9 @@ from datetime import datetime
 
 # [파일 정의서]
 # - 파일명: src/crawl_imp_volume_monthly.py
-# - 역할: 수집
-# - 대상: 수입육
-# - 데이터 소스: 한국육류유통수출협회 (KMTA)
-# - 수집/가공 주기: 월단위
-# - 주요 기능: 2019년부터 현재까지 '냉동' 섹션의 '미국', '호주' 데이터만 추출하여 저장(합계 제외)
+# - 역할: 수집 (KMTA 한국육류유통수출협회)
+# - 대상: 수입 소고기 (미국/호주 냉동)
+# - 기능: 2019년부터 현재까지 월별 데이터 수집 -> 정제 -> 정렬 -> 저장 (Full Refresh)
 
 # =========================================================
 # 1. 설정 (URL 및 저장 경로)
@@ -25,7 +23,6 @@ project_root = os.path.dirname(current_dir)
 SAVE_DIR = os.path.join(project_root, "data", "0_raw")
 os.makedirs(SAVE_DIR, exist_ok=True)
 
-# 파일명은 기존 시스템 연동을 위해 원래대로 유지합니다.
 SAVE_FILENAME = "master_import_volume.csv"
 SAVE_PATH = os.path.join(SAVE_DIR, SAVE_FILENAME)
 
@@ -43,7 +40,8 @@ end_date = datetime.now().strftime("%Y-%m-%d")
 
 date_range = pd.date_range(start=start_date, end=end_date, freq='MS')
 
-print(f"--- [시작] 미국/호주 냉동 데이터 수집 (파일명: {SAVE_FILENAME}) ---")
+print(f"--- [시작] 미국/호주 냉동 데이터 수집 (Target: {SAVE_FILENAME}) ---")
+print(f"--- 기간: {start_date} ~ {end_date} ---")
 
 all_data = []
 
@@ -54,7 +52,7 @@ for target_date in date_range:
     year = str(target_date.year)
     month = f"{target_date.month:02d}"
     
-    print(f"▶ {year}년 {month}월 처리 중...", end=" ")
+    print(f"▶ {year}-{month} 처리 중...", end=" ")
     
     form_data = {
         "ymw_y": year,
@@ -70,62 +68,101 @@ for target_date in date_range:
         
         if response.status_code == 200:
             tables = pd.read_html(response.text)
+            target_df = None
             
-            # 실제 데이터가 있는 테이블 찾기
-            target_table = None
+            # '미국'이 포함된 테이블 찾기
             for t in tables:
-                if '미국' in t.to_string():
-                    target_table = t
+                if t.shape[0] > 5 and t.apply(lambda x: x.astype(str).str.contains('미국').any(), axis=1).any():
+                    target_df = t
                     break
             
-            if target_table is not None:
-                df = target_table.copy()
+            if target_df is not None:
+                # -------------------------------------------------------------
+                # [핵심] 냉동 섹션 정밀 슬라이싱 (합계/냉장 제외)
+                # -------------------------------------------------------------
+                df_str = target_df.astype(str)
+                frozen_start = df_str[df_str.apply(lambda x: x.str.contains('냉동').any(), axis=1)].index.tolist()
+                chilled_start = df_str[df_str.apply(lambda x: x.str.contains('냉장').any(), axis=1)].index.tolist()
                 
-                # 헤더 평탄화
-                new_columns = []
-                for col in df.columns:
-                    col_name = "_".join([str(c).replace(" ", "") for c in col if "Unnamed" not in str(c)])
-                    new_columns.append(col_name)
-                df.columns = new_columns
+                start_idx = 0
+                end_idx = len(target_df)
                 
-                # [필터링 1] '냉동' 섹션만 유지 (이미지상 상단 부위)
-                # '냉장' 행이 나오기 전까지만 자릅니다.
-                first_col = df.columns[0]
-                refrigerated_idx = df[df[first_col].str.contains('냉장', na=False)].index
-                if not refrigerated_idx.empty:
-                    df = df.iloc[:refrigerated_idx[0]]
+                if frozen_start: start_idx = frozen_start[0]
+                if chilled_start:
+                    valid_ends = [i for i in chilled_start if i > start_idx]
+                    if valid_ends: end_idx = valid_ends[0]
                 
-                # [필터링 2] '미국'과 '호주'만 추출 (이 과정에서 '소계', '합계', '기타' 자동 제거됨)
-                df = df[df[first_col].isin(['미국', '호주'])].copy()
+                section_df = target_df.iloc[start_idx:end_idx].copy()
                 
-                # 기준 정보 추가
-                df.insert(0, 'std_date', f"{year}-{month}")
+                # 미국/호주 행만 추출
+                mask = section_df.apply(lambda x: x.astype(str).isin(['미국', '호주']).any(), axis=1)
+                filtered_df = section_df[mask].copy()
                 
-                all_data.append(df)
-                print(f"성공 ({len(df)}건)")
+                # 컬럼 정의
+                expected_cols = [
+                    '구분', '부위별_갈비_합계', '부위별_등심_합계', '부위별_목심_합계', 
+                    '부위별_사태_합계', '부위별_설도_합계', '부위별_안심_합계', 
+                    '부위별_앞다리_합계', '부위별_양지_합계', '부위별_우둔_합계', 
+                    '부위별_채끝_합계', '부위별_기타_합계', '부위별_계_합계'
+                ]
+                
+                # 컬럼 매핑 및 부족분 채우기
+                curr_cols = filtered_df.shape[1]
+                if curr_cols >= len(expected_cols):
+                    filtered_df = filtered_df.iloc[:, :len(expected_cols)]
+                    filtered_df.columns = expected_cols
+                else:
+                    mapped = expected_cols[:curr_cols]
+                    filtered_df.columns = mapped
+                    for col in expected_cols[curr_cols:]:
+                        filtered_df[col] = 0
+
+                # [중요] 날짜 포맷 통일 (YYYY-MM)
+                filtered_df.insert(0, 'std_date', f"{year}-{month}")
+                
+                # 숫자 변환
+                numeric_cols = [c for c in filtered_df.columns if '합계' in c]
+                for col in numeric_cols:
+                    filtered_df[col] = (
+                        filtered_df[col].astype(str)
+                        .str.replace(',', '').str.replace('-', '0')
+                        .str.replace('nan', '0').str.replace('None', '0')
+                    )
+                    filtered_df[col] = pd.to_numeric(filtered_df[col], errors='coerce').fillna(0)
+
+                # [중요] 합계(계) 재계산 (Null 방지)
+                parts_cols = [c for c in filtered_df.columns if '부위별_' in c and '계_합계' not in c]
+                filtered_df['부위별_계_합계'] = filtered_df[parts_cols].sum(axis=1)
+
+                all_data.append(filtered_df)
+                print(f"성공 ({len(filtered_df)}건)")
             else:
                 print("데이터 없음")
         else:
-            print(f"서버 오류 ({response.status_code})")
+            print(f"오류 ({response.status_code})")
             
     except Exception as e:
-        print(f"오류 발생: {e}")
-        
-    time.sleep(0.5)
+        print(f"Error: {e}")
+    time.sleep(0.2)
 
 # =========================================================
-# 4. 통합 및 저장
+# 4. 통합, 정렬 및 저장
 # =========================================================
 print("\n" + "="*50)
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
     
-    # 최종 저장 (기존 파일명 유지)
+    # [핵심] 날짜 기준 내림차순 정렬 (최신순)
+    # 문자열 날짜(YYYY-MM)여도 ISO 포맷이므로 정렬이 잘 됨
+    final_df = final_df.sort_values(by=['std_date', '구분'], ascending=[False, True])
+    
+    # 저장
     final_df.to_csv(SAVE_PATH, index=False, encoding='utf-8-sig')
     
-    print(f"성공: 미국/호주 냉동 데이터만 추출 완료")
-    print(f"파일 저장 경로: {SAVE_PATH}")
-    print(f"총 행 수: {len(final_df)}행")
+    print(f"✅ 수집 및 정렬 완료!")
+    print(f"📂 저장 경로: {SAVE_PATH}")
+    print(f"📊 총 데이터: {len(final_df)}행")
+    print(f"📅 최신 데이터: {final_df.iloc[0]['std_date']} (상단 확인)")
 else:
-    print("실패: 수집된 데이터가 없습니다.")
+    print("❌ 실패: 수집된 데이터가 없습니다.")
 print("="*50)

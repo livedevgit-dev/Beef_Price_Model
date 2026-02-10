@@ -18,10 +18,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 
+# [파일 정의서]
+# - 파일명: crawl_imp_food_safety.py
+# - 역할: 수집 (식약처 수입축산물 검역실적)
+# - 대상: 수입 소고기 (미국/호주, 냉동 기준)
+# - 주요 수정: 부위별 합계 컬럼명('부위별_계_합계') 통일 및 자동 합산 로직 강화
+
 # 경고 무시 설정
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 warnings.filterwarnings('ignore', category=UserWarning, module='pandas')
-pd.options.mode.chained_assignment = None  # SettingWithCopyWarning 숨기기
+pd.options.mode.chained_assignment = None 
 
 # =========================================================
 # 1. 설정 및 경로
@@ -34,7 +40,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 MASTER_FILE = os.path.join(SAVE_DIR, "master_import_volume.csv")
 
 # =========================================================
-# 2. 날짜 계산 (기존 데이터 마지막 날짜 감지)
+# 2. 날짜 계산
 # =========================================================
 def get_next_month_from_master():
     if not os.path.exists(MASTER_FILE): 
@@ -46,10 +52,7 @@ def get_next_month_from_master():
         if 'std_date' not in df.columns:
             return "2019-01-01"
             
-        # 날짜 파싱 (경고 없이 처리)
         df['dt_parsed'] = pd.to_datetime(df['std_date'], errors='coerce')
-        
-        # 파싱 실패가 많으면 다른 포맷 시도 ('Dec-25' 형태 등)
         if df['dt_parsed'].isnull().sum() > len(df) / 2:
             try:
                 df['dt_parsed'] = pd.to_datetime(df['std_date'], format='%b-%y', errors='coerce')
@@ -69,7 +72,7 @@ def get_next_month_from_master():
         return "2019-01-01"
 
 # =========================================================
-# 3. 드라이버 설정 및 유틸리티
+# 3. 드라이버 설정
 # =========================================================
 def setup_driver():
     chrome_options = Options()
@@ -173,7 +176,6 @@ def crawl_monthly_data(driver, year, month):
         try:
             wait_for_loading_bar(driver)
             
-            # 입력값 초기화 및 입력
             inputs = driver.find_elements(By.XPATH, "//*[contains(text(),'처리일자')]/following::input")
             if len(inputs) >= 2:
                 inputs[0].clear()
@@ -247,7 +249,7 @@ def crawl_monthly_data(driver, year, month):
 def integrate_to_master(new_safety_df):
     if new_safety_df.empty: return
 
-    # [수정] SettingWithCopyWarning 해결을 위해 복사본 생성
+    # [수정] SettingWithCopyWarning 해결
     new_safety_df = new_safety_df.copy()
 
     # 데이터 전처리
@@ -272,16 +274,21 @@ def integrate_to_master(new_safety_df):
             new_cols_map[col] = f"부위별_{col.replace(' ', '')}_합계"
     pivoted.rename(columns=new_cols_map, inplace=True)
 
-    # 부위별 합계 계산
-    part_cols = [c for c in pivoted.columns if c.startswith('부위별_')]
-    pivoted['부위별_합계'] = pivoted[part_cols].sum(axis=1)
+    # ==============================================================================
+    # ★ [수정] 부위별 합계(Total) 계산 로직 강화
+    # ==============================================================================
+    # 1. '부위별_'로 시작하는 컬럼 중 '계'는 제외한 실제 부위 컬럼만 리스트업
+    part_cols = [c for c in pivoted.columns if c.startswith('부위별_') and '계_합계' not in c]
+    
+    # 2. C열~M열(부위들)을 다 더해서 N열(부위별_계_합계)에 집어넣음
+    # (기존 '부위별_합계' 변수명 대신 마스터 파일과 동일한 '부위별_계_합계' 사용)
+    pivoted['부위별_계_합계'] = pivoted[part_cols].sum(axis=1)
+    # ==============================================================================
 
     # 마스터 파일 로드 및 정제
     if os.path.exists(MASTER_FILE):
         master_df = pd.read_csv(MASTER_FILE)
         
-        # [핵심 수정] 꼬인 컬럼명 자동 복구 로직
-        # '구분_구분'이나 다른 이름으로 변형된 '구분' 컬럼을 찾아 정상화
         if '구분' not in master_df.columns:
             possible_cols = [c for c in master_df.columns if '구분' in c]
             if possible_cols:
@@ -299,7 +306,7 @@ def integrate_to_master(new_safety_df):
     else:
         final_df = pivoted
 
-    # [수정] 정렬 시 '구분' 컬럼이 존재하는지 최종 확인
+    # 정렬
     try:
         final_df = final_df.sort_values(by=['std_date', '구분'], ascending=[False, True])
     except KeyError:
@@ -307,7 +314,7 @@ def integrate_to_master(new_safety_df):
         final_df = final_df.sort_values(by=['std_date'], ascending=False)
 
     final_df.to_csv(MASTER_FILE, index=False, encoding='utf-8-sig')
-    print(f"   💾 통합 저장 완료 (정상 컬럼 확인)")
+    print(f"   💾 통합 저장 완료 (합계 컬럼 재계산됨)")
 
 # =========================================================
 # 8. 메인 실행
@@ -319,6 +326,8 @@ def main():
     start_date_str = get_next_month_from_master()
     
     today = datetime.now()
+    # [설정] 수집 종료일: 지난달 말일 (월 단위 확정치 수집용)
+    # 만약 이번 달 데이터도 보고 싶다면 아래 로직을 수정해야 함
     last_day_prev_month = today.replace(day=1) - timedelta(days=1)
     end_date_str = last_day_prev_month.strftime("%Y-%m-%d")
     
