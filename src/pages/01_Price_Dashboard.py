@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go  # [추가] 기존 코드에서 사용하신 라이브러리
 import os
 
 # [파일 정의서]
 # - 파일명: 01_Price_Dashboard.py
-# - 역할: 시각화 (상세 대시보드)
+# - 역할: 시각화 (상세 대시보드 - KPI 및 이동평균 분석)
 # - 데이터 소스: data/2_dashboard/dashboard_ready_data.csv
-# - 주요 기능: 3대 패커 평균 대비 브랜드별 가격 비교
 
 st.set_page_config(page_title="Price Dashboard", page_icon="📈", layout="wide")
 
@@ -57,7 +56,7 @@ cat_list = ['전체'] + sorted(df['category'].unique().tolist())
 cat_idx = cat_list.index(default_cat) if default_cat in cat_list else 0
 sel_cat = st.sidebar.selectbox("원산지 (Origin)", cat_list, index=cat_idx)
 
-# 부위 (원산지 종속)
+# 부위
 if sel_cat != '전체':
     df_cat = df[df['category'] == sel_cat]
 else:
@@ -67,7 +66,7 @@ part_list = ['전체'] + sorted(df_cat['part'].unique().tolist())
 part_idx = part_list.index(default_part) if default_part in part_list else 0
 sel_part = st.sidebar.selectbox("부위 (Part)", part_list, index=part_idx)
 
-# 브랜드 (부위 종속)
+# 브랜드
 if sel_part != '전체':
     df_part = df_cat[df_cat['part'] == sel_part]
 else:
@@ -78,111 +77,141 @@ brand_idx = brand_list.index(default_brand) if default_brand in brand_list else 
 sel_brand = st.sidebar.selectbox("브랜드 (Brand)", brand_list, index=brand_idx)
 
 # --------------------------------------------------------------------------------
-# 4. 차트 데이터 가공 (핵심 로직 변경)
+# 4. 데이터 가공 (차트용 데이터 준비)
 # --------------------------------------------------------------------------------
-st.title("📈 Beef Price Dashboard")
-st.markdown(f"**Selected:** {sel_cat} > {sel_part} > {sel_brand}")
-
-# 4-1. 기본 데이터 필터링 (원산지, 부위까지만)
-base_df = df.copy()
+# 1차 필터링
+filtered_df = df.copy()
 if sel_cat != '전체':
-    base_df = base_df[base_df['category'] == sel_cat]
+    filtered_df = filtered_df[filtered_df['category'] == sel_cat]
 if sel_part != '전체':
-    base_df = base_df[base_df['part'] == sel_part]
+    filtered_df = filtered_df[filtered_df['part'] == sel_part]
+if sel_brand != '전체':
+    filtered_df = filtered_df[filtered_df['brand'] == sel_brand]
 
-if base_df.empty:
-    st.warning("선택한 조건에 해당하는 데이터가 없습니다.")
-else:
-    # 4-2. [Baseline] 3대 패커 평균 계산
-    major_keywords = ['IBP', 'Excel', 'Swift', '엑셀', '스위프트']
-    mask_major = base_df['brand'].str.contains('|'.join(major_keywords), case=False)
+# 2차 가공: 날짜별 집계 (브랜드가 '전체'일 경우 평균값을 보여주기 위함)
+if not filtered_df.empty:
+    # 날짜별로 그룹핑하여 가격 평균 산출
+    chart_df = filtered_df.groupby('date')[['wholesale_price']].mean().reset_index()
     
-    df_major = base_df[mask_major]
+    # 이동평균(MA) 재계산 (필터링된 데이터 기준)
+    chart_df['ma7'] = chart_df['wholesale_price'].rolling(window=7, min_periods=1).mean()
+    chart_df['ma30'] = chart_df['wholesale_price'].rolling(window=30, min_periods=1).mean()
     
-    # 날짜별 평균 산출
-    if not df_major.empty:
-        major_daily = df_major.groupby('date')['wholesale_price'].mean().reset_index()
-        major_daily['brand'] = 'Major 3 Avg (IBP/Excel/Swift)' # 범례 이름
-        major_daily['type'] = 'Baseline'
-    else:
-        major_daily = pd.DataFrame() # 3대 패커 데이터가 없는 부위일 경우
-
-    # 4-3. [Comparison] 비교 대상 데이터 준비
-    plot_df = major_daily.copy() # 일단 3대 패커 평균을 넣음
+    # 표시 이름 설정
+    display_name = f"{sel_part}"
+    if sel_brand != '전체':
+        display_name += f" ({sel_brand})"
     
-    if sel_brand == '전체':
-        # 전체 선택 시: 시장 전체 평균(Market Avg)을 비교 대상으로 추가
-        market_daily = base_df.groupby('date')['wholesale_price'].mean().reset_index()
-        market_daily['brand'] = 'Market Avg (Total)'
-        market_daily['type'] = 'Comparison'
-        
-        # 3대 패커 데이터가 있으면 합치고, 없으면 시장 평균만 보여줌
-        if not plot_df.empty:
-            plot_df = pd.concat([plot_df, market_daily])
-        else:
-            plot_df = market_daily
-            
-    else:
-        # 특정 브랜드 선택 시: 해당 브랜드 데이터만 추가
-        target_df = base_df[base_df['brand'] == sel_brand].copy()
-        target_df['type'] = 'Comparison'
-        
-        # 날짜별로 데이터가 여러 개일 수 있으니(같은 브랜드 다른 스펙 등) 평균 처리
-        target_daily = target_df.groupby('date')['wholesale_price'].mean().reset_index()
-        target_daily['brand'] = sel_brand # 범례 이름 유지
-        
-        plot_df = pd.concat([plot_df, target_daily])
+    # 날짜 포맷 (문자열 변환 for UI)
+    start_date = chart_df['date'].min().strftime('%Y-%m-%d')
+    end_date = chart_df['date'].max().strftime('%Y-%m-%d')
 
     # --------------------------------------------------------------------------------
-    # 5. 시각화
+    # 5. 메인 대시보드 화면 구성 (기획자님 기존 코드 복원)
     # --------------------------------------------------------------------------------
-    # 색상 지정: Major 3는 파란색/검정색 계열, 비교 대상은 빨간색 계열
-    color_map = {
-        'Major 3 Avg (IBP/Excel/Swift)': '#1f77b4', # 파란색
-        'Market Avg (Total)': '#ff7f0e',           # 주황색
-        sel_brand: '#d62728'                       # 빨간색 (선택 브랜드)
-    }
+    st.title(f"🥩 {display_name} 시세 분석")
+    st.markdown(f"기간: {start_date} ~ {end_date}")
 
-    fig = px.line(
-        plot_df, 
-        x='date', 
-        y='wholesale_price', 
-        color='brand',
-        title=f"{sel_part} 가격 비교: 3대 패커 vs {sel_brand}",
-        color_discrete_map=color_map
-    )
+    # [스타일 보정] 폰트 사이즈를 줄이는 CSS 주입
+    st.markdown("""
+        <style>
+        div[data-testid="stMetricValue"] { font-size: 24px !important; }
+        div[data-testid="stMetricLabel"] { font-size: 14px !important; }
+        </style>
+    """, unsafe_allow_html=True)
 
-    # 라인 스타일 커스텀
-    fig.update_traces(line=dict(width=3)) # 선 굵게
-    fig.update_layout(
-        xaxis_title="",
-        yaxis_title="도매가 (원/kg)",
-        legend_title="구분",
-        hovermode="x unified",
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=1.02,
-            xanchor="right",
-            x=1
+    # (1) KPI 카드
+    latest_row = chart_df.iloc[-1]
+    current_price = int(latest_row['wholesale_price'])
+    
+    # 전일 대비 등락
+    if len(chart_df) > 1:
+        prev_price = int(chart_df.iloc[-2]['wholesale_price'])
+        diff_prev = current_price - prev_price
+        diff_pct_prev = (diff_prev / prev_price) * 100 if prev_price else 0
+    else:
+        diff_prev = 0
+        diff_pct_prev = 0.0
+
+    # 기간 내 최고가/최저가
+    max_price_period = int(chart_df['wholesale_price'].max())
+    min_price_period = int(chart_df['wholesale_price'].min())
+
+    diff_from_max = current_price - max_price_period
+    pct_from_max = (diff_from_max / max_price_period) * 100 if max_price_period else 0
+
+    diff_from_min = current_price - min_price_period
+    pct_from_min = (diff_from_min / min_price_period) * 100 if min_price_period else 0
+
+    # KPI 컬럼 배치
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric(
+            label="현재가 (전일비)", 
+            value=f"{current_price:,}원", 
+            delta=f"{diff_prev:,}원 ({diff_pct_prev:.1f}%)"
         )
-    )
+    
+    with col2:
+        st.metric(
+            label="기간 최고가 (괴리율)", 
+            value=f"{max_price_period:,}원", 
+            delta=f"{diff_from_max:,}원 ({pct_from_max:.1f}%)",
+            delta_color="inverse"
+        )
+        
+    with col3:
+        st.metric(
+            label="기간 최저가 (괴리율)", 
+            value=f"{min_price_period:,}원", 
+            delta=f"+{diff_from_min:,}원 (+{pct_from_min:.1f}%)",
+            delta_color="normal"
+        )
 
+    # 메시지 박스
+    if current_price <= (min_price_period * 1.05):
+        st.success(f"✅ **매수 기회!** 최저가({min_price_period:,}원)에 근접")
+    elif current_price >= (max_price_period * 0.95):
+        st.warning(f"🚨 **고점 주의!** 최고가({max_price_period:,}원)에 근접")
+    else:
+        st.info("비교적 평이한 가격 흐름입니다.")
+
+    st.divider()
+
+    # (2) 메인 차트 (Plotly GO)
+    st.subheader("📈 시세 추세 및 이동평균선")
+    
+    fig = go.Figure()
+    
+    # 실제 가격 선
+    fig.add_trace(go.Scatter(x=chart_df['date'], y=chart_df['wholesale_price'],
+                             mode='lines+markers', name='실제 도매가',
+                             line=dict(color='#FF4B4B', width=2)))
+    
+    # 7일 이평선
+    fig.add_trace(go.Scatter(x=chart_df['date'], y=chart_df['ma7'],
+                             mode='lines', name='7일 이동평균',
+                             line=dict(color='#FFA15A', width=1, dash='dot')))
+    
+    # 30일 이평선
+    fig.add_trace(go.Scatter(x=chart_df['date'], y=chart_df['ma30'],
+                             mode='lines', name='30일 이동평균',
+                             line=dict(color='#1F77B4', width=1.5)))
+
+    fig.update_layout(
+        height=500, 
+        hovermode="x unified",
+        margin=dict(l=20, r=20, t=30, b=20),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
     st.plotly_chart(fig, use_container_width=True)
 
-    # --------------------------------------------------------------------------------
-    # 6. 상세 데이터 테이블 (옵션)
-    # --------------------------------------------------------------------------------
-    with st.expander("📊 데이터 상세 보기"):
-        st.caption("선택한 조건의 Raw Data입니다.")
-        # 테이블은 필터링된 원본을 보여줌
-        display_df = base_df.copy()
-        if sel_brand != '전체':
-            display_df = display_df[display_df['brand'] == sel_brand]
-        
-        st.dataframe(
-            display_df[['date', 'category', 'part', 'brand', 'wholesale_price']]
-            .sort_values(by='date', ascending=False)
-            .reset_index(drop=True),
-            use_container_width=True
-        )
+    # (3) 하단 데이터 테이블
+    with st.expander("📊 상세 데이터 보기 (클릭하여 펼치기)"):
+        display_cols = ['date', 'wholesale_price', 'ma7', 'ma30']
+        st.dataframe(chart_df[display_cols].sort_values(by='date', ascending=False),
+                     use_container_width=True)
+
+else:
+    st.warning("선택하신 조건에 해당하는 데이터가 없습니다.")
