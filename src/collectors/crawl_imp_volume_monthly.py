@@ -19,7 +19,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 URL = "https://www.kmta.or.kr/kr/data/stats_import_beef_parts2.php"
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(current_dir)
+src_dir = os.path.dirname(current_dir)
+project_root = os.path.dirname(src_dir)
 SAVE_DIR = os.path.join(project_root, "data", "0_raw")
 os.makedirs(SAVE_DIR, exist_ok=True)
 

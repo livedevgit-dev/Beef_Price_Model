@@ -20,7 +20,8 @@ def load_and_enrich_data():
     """
     # 1. 경로 설정
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
+    src_dir = os.path.dirname(current_dir)
+    project_root = os.path.dirname(src_dir)
     input_path = os.path.join(project_root, "data", "1_processed", "master_price_data.csv")
 
     if not os.path.exists(input_path):
@@ -100,7 +101,8 @@ def save_dashboard_ready_data(df):
 
     # 4. 저장 (data/2_dashboard/dashboard_ready_data.csv)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
+    src_dir = os.path.dirname(current_dir)
+    project_root = os.path.dirname(src_dir)
     
     output_dir = os.path.join(project_root, "data", "2_dashboard")
     if not os.path.exists(output_dir):

@@ -33,7 +33,8 @@ pd.options.mode.chained_assignment = None
 # 1. 설정 및 경로
 # =========================================================
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+SRC_DIR = os.path.dirname(CURRENT_DIR)
+PROJECT_ROOT = os.path.dirname(SRC_DIR)
 SAVE_DIR = os.path.join(PROJECT_ROOT, "data", "0_raw")
 os.makedirs(SAVE_DIR, exist_ok=True)
 
@@ -78,7 +79,7 @@ def setup_driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--log-level=3")
-    driver_path = os.path.join(CURRENT_DIR, "chromedriver.exe")
+    driver_path = os.path.join(SRC_DIR, "chromedriver.exe")
     service = Service(executable_path=driver_path)
     return webdriver.Chrome(service=service, options=chrome_options)
 

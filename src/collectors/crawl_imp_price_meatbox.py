@@ -23,12 +23,13 @@ URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
 
 def get_price_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    # 드라이버 경로 (같은 폴더에 chromedriver.exe가 있다고 가정)
-    driver_path = os.path.join(current_dir, "chromedriver.exe")
+    # 드라이버 경로 (src 폴더에 chromedriver.exe가 있음)
+    src_dir = os.path.dirname(current_dir)
+    driver_path = os.path.join(src_dir, "chromedriver.exe")
     
-    # 경로 설정
-    base_dir = os.path.dirname(current_dir)
-    processed_dir = os.path.join(base_dir, "data", "1_processed")
+    # 경로 설정 (프로젝트 루트: src의 부모 디렉토리)
+    project_root = os.path.dirname(src_dir)
+    processed_dir = os.path.join(project_root, "data", "1_processed")
     
     master_file = os.path.join(processed_dir, "master_price_data.csv")
     backup_file = os.path.join(processed_dir, "master_price_data_backup_full.csv")

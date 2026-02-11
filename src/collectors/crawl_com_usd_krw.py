@@ -5,6 +5,14 @@ import time
 import warnings
 from datetime import datetime
 
+# [파일 정의서]
+# - 파일명: crawl_com_usd_krw.py
+# - 역할: 수집 (환율 데이터)
+# - 대상: USD/KRW 환율 (네이버 금융)
+# - 방식: 웹 크롤링 (증분 업데이트)
+# - 주요 기능: 네이버 금융에서 USD/KRW 일별 환율을 수집하여 엑셀로 저장
+#              기존 데이터가 있을 경우 최신 데이터만 증분 수집
+
 # ======================================================
 # [설정] 기본 환경 설정
 # ======================================================
@@ -12,7 +20,8 @@ warnings.filterwarnings("ignore") # 보안 경고 무시
 
 # 경로 설정
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(current_dir)
+src_dir = os.path.dirname(current_dir)
+project_root = os.path.dirname(src_dir)
 OUTPUT_DIR = os.path.join(project_root, "data", "0_raw")
 OUTPUT_FILE = "exchange_rate_data.xlsx"
 FILE_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILE)

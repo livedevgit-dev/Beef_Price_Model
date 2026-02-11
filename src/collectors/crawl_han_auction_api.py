@@ -3,6 +3,14 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import os
 
+# [파일 정의서]
+# - 파일명: crawl_han_auction_api.py
+# - 역할: 수집 (축산물품질평가원 경락가격)
+# - 대상: 한우 부분육 경락가격 (등급별)
+# - 방식: 공공 API 호출 (XML 응답)
+# - 주요 기능: 축산물품질평가원(EKAPE) API를 통해 한우 부분육의 등급별 경락가격 데이터를 수집
+#              지정된 기간의 도축장별 데이터를 XML로 수신하여 엑셀로 저장
+
 def get_beef_primal_cut_prices():
     # 1. API 접속 정보 설정 (가이드 문서 v1.1 기준) 
     url = "http://data.ekape.or.kr/openapi-data/service/user/grade/auct/beefGrade"
@@ -74,7 +82,8 @@ if __name__ == "__main__":
         
         # 엑셀 파일 저장
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(current_dir)
+        src_dir = os.path.dirname(current_dir)
+        project_root = os.path.dirname(src_dir)
         save_dir = os.path.join(project_root, "data", "0_raw")
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)

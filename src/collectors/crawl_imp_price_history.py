@@ -3,6 +3,13 @@ import pandas as pd
 import os
 import urllib3 # [추가] 보안 경고 메시지를 제어하는 도구
 
+# [파일 정의서]
+# - 파일명: crawl_imp_price_history.py
+# - 역할: 수집 (미트박스 과거 시세 데이터)
+# - 대상: 수입육 (특정 품목 1년치 데이터)
+# - 방식: API 호출 (JSON 응답)
+# - 주요 기능: 특정 시세번호(siseSeq)의 1년치 가격 데이터를 JSON API로 수집하여 엑셀 저장
+
 # ------------------------------------------------------------------
 # [설정] 사내망 보안 에러 해결을 위한 설정
 # ------------------------------------------------------------------
@@ -40,7 +47,8 @@ def get_meatbox_exact_data():
                 
                 # 경로 설정
                 current_dir = os.path.dirname(os.path.abspath(__file__))
-                project_root = os.path.dirname(current_dir)
+                src_dir = os.path.dirname(current_dir)
+                project_root = os.path.dirname(src_dir)
                 save_dir = os.path.join(project_root, 'data', '0_raw')
                 
                 if not os.path.exists(save_dir):

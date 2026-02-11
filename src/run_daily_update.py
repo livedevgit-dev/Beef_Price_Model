@@ -16,7 +16,8 @@ def run_pipeline():
     print("[1/2] 데이터 수집(Crawl)을 시작합니다...")
     try:
         # 기존 수집 코드를 프로세스로 실행
-        subprocess.run([sys.executable, os.path.join(current_dir, "crawl_imp_price_meatbox.py")], check=True)
+        crawler_path = os.path.join(current_dir, "collectors", "crawl_imp_price_meatbox.py")
+        subprocess.run([sys.executable, crawler_path], check=True)
         print("=> 수집 완료")
     except Exception as e:
         print(f"=> 수집 중 오류 발생: {e}")
@@ -26,7 +27,8 @@ def run_pipeline():
     print("\n[2/2] 데이터 가공(Preprocess) 및 지표 계산을 시작합니다...")
     try:
         # 전처리 코드를 프로세스로 실행
-        subprocess.run([sys.executable, os.path.join(current_dir, "preprocess_meat_data.py")], check=True)
+        preprocessor_path = os.path.join(current_dir, "utils", "preprocess_meat_data.py")
+        subprocess.run([sys.executable, preprocessor_path], check=True)
         print("=> 가공 및 dashboard_ready_data.csv 갱신 완료")
     except Exception as e:
         print(f"=> 가공 중 오류 발생: {e}")

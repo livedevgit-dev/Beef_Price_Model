@@ -5,6 +5,14 @@ import os
 import urllib3
 from datetime import datetime
 
+# [파일 정의서]
+# - 파일명: crawl_imp_stock_monthly.py
+# - 역할: 수집 (KMTA 한국육류유통수출협회 재고 데이터)
+# - 대상: 수입 소고기 재고 현황 (월별)
+# - 방식: 웹 크롤링 (증분 업데이트)
+# - 주요 기능: 2019년부터 현재까지 월별 수입 소고기 재고 데이터를 수집
+#              기존 파일이 있을 경우 마지막 수집 날짜 이후 데이터만 증분 수집
+
 # [설정] SSL 보안 경고 무시
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -121,7 +129,8 @@ def get_stock_data(start_year=None, start_month=None, existing_df=None):
 if __name__ == "__main__":
     # 저장 경로 설정
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
+    src_dir = os.path.dirname(current_dir)
+    project_root = os.path.dirname(src_dir)
     save_dir = os.path.join(project_root, "data", "0_raw")
     
     if not os.path.exists(save_dir):
