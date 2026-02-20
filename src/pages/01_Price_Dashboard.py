@@ -18,19 +18,26 @@ st.set_page_config(page_title="소고기 시세 대시보드", page_icon="🥩",
 @st.cache_data
 def load_data():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    # 프로젝트 루트 경로 찾기 (pages 폴더 안에 있을 경우 대비)
     if 'pages' in current_dir:
         project_root = os.path.dirname(os.path.dirname(current_dir))
     else:
         project_root = os.path.dirname(current_dir)
         
-    file_path = os.path.join(project_root, "data", "1_processed", "dashboard_ready_data.csv")
+    file_path = os.path.join(project_root, "data", "2_dashboard", "dashboard_ready_data.csv")
     
     if not os.path.exists(file_path):
         return None
     
     df = pd.read_csv(file_path)
     df['date'] = pd.to_datetime(df['date'])
+    
+    # [추가된 핵심 로직] 가공된 파일의 컬럼명을 대시보드에 맞게 호환시켜줍니다.
+    df = df.rename(columns={
+        'category': 'country',
+        'part': 'part_clean',
+        'brand': 'brand_clean'
+    })
+    
     return df
 
 df = load_data()
