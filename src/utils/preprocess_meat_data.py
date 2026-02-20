@@ -10,13 +10,14 @@ import re
 # - 수집/가공 주기: 일단위
 # - 주요 기능: 
 #   1. 부위/브랜드 텍스트 정제
-#   2. 기술적 지표(이동평균) 산출
-#   3. 3대 패커(IBP, Excel, Swift) 취급 부위 기준 필터링 (Option B)
+#   2. 중복 데이터(등급 차이) 평균 처리 및 결측일 데이터 보간 (Forward Fill)
+#   3. 기술적 지표(이동평균) 산출
+#   4. 3대 패커(IBP, Excel, Swift) 취급 부위 기준 필터링 (Option B)
 
 def load_and_enrich_data():
     """
     master_price_data.csv를 로드하여 브랜드/부위를 분리하고
-    이동평균(MA) 등 보조 지표를 추가합니다.
+    중복값 평균 처리 및 결측치를 채운 후 이동평균(MA) 등 보조 지표를 추가합니다.
     """
     # 1. 경로 설정
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -33,26 +34,39 @@ def load_and_enrich_data():
     df['date'] = pd.to_datetime(df['date'])
     
     # 3. 부위명 및 브랜드 분리 로직
-    # '갈비본살-미국 | IBP(245)' 형태 처리
     def split_part_brand(row):
         full_name = str(row['part_name'])
         if '|' in full_name:
             parts = full_name.split('|')
-            # '갈비본살-미국' -> '갈비본살' (국가명 제거)
             part_clean = parts[0].split('-')[0].strip()
             brand_clean = parts[1].strip()
             return part_clean, brand_clean
-        return row['part_name'], row['brand'] # 예외 처리
+        return row['part_name'], row['brand'] 
 
     # apply 적용
     df[['part', 'brand']] = df.apply(
         lambda x: pd.Series(split_part_brand(x)), axis=1
     )
     
-    # category 컬럼 생성 (Origin)
+    # 4. 등급 차이 평균 처리 및 결측 날짜 보간
+    print("등급 차이 등으로 인한 중복 데이터 평균 산출 및 결측일 데이터 보간(Forward Fill)을 진행합니다...")
+    
+    # [수정된 핵심 로직] 같은 날짜, 국가, 부위, 브랜드의 가격이 여러 개면 평균(mean)을 구하여 하나로 합칩니다.
+    df = df.groupby(['date', 'country', 'part', 'brand'], as_index=False)['wholesale_price'].mean()
+    
+    # category 컬럼 생성 (groupby 이후 다시 생성)
     df['category'] = df['country']
 
-    # 4. 품목별/날짜별 정렬
+    # 날짜를 인덱스로 설정
+    df = df.set_index('date')
+    
+    # 국가, 부위, 브랜드별로 그룹화한 뒤, 매일('D') 단위로 빈 날짜가 있으면 생성하고 직전 값으로 채웁니다.
+    df = df.groupby(['country', 'part', 'brand']).resample('D').ffill()
+    
+    # 그룹화로 인해 중첩된 인덱스를 다시 일반 컬럼으로 풀어줍니다.
+    df = df.drop(columns=['country', 'part', 'brand'], errors='ignore').reset_index()
+    
+    # 계산을 위해 품목별/날짜별로 다시 정렬합니다.
     df = df.sort_values(by=['country', 'part', 'brand', 'date'])
 
     # 5. 핵심 지표 계산 (이동평균)
@@ -81,13 +95,10 @@ def save_dashboard_ready_data(df):
 
     # 1. 3대 패커 키워드 정의
     major_keywords = ['IBP', 'Excel', 'Swift', '엑셀', '스위프트']
-    pattern = '|'.join(major_keywords) # Regex pattern
+    pattern = '|'.join(major_keywords)
 
     # 2. 3대 패커가 취급하는 '유효 부위(Valid Parts)' 식별
-    # 브랜드명에 키워드가 포함된 행 찾기
     is_major_packer = df['brand'].str.contains(pattern, case=False, na=False)
-    
-    # 해당 행들에 존재하는 부위(Part) 목록 추출
     valid_parts = df.loc[is_major_packer, 'part'].unique()
     
     print(f"- Major Packer Keywords: {major_keywords}")
@@ -110,13 +121,11 @@ def save_dashboard_ready_data(df):
     
     output_path = os.path.join(output_dir, "dashboard_ready_data.csv")
     
-    # 필요한 컬럼만 깔끔하게 저장
     cols_to_save = [
         'date', 'category', 'part', 'brand', 
         'wholesale_price', 'ma7', 'ma30', 
         'min_total', 'max_total'
     ]
-    # 만약 컬럼이 없으면 전체 저장 (안전장치)
     final_cols = [c for c in cols_to_save if c in df_ready.columns]
     
     df_ready[final_cols].to_csv(output_path, index=False, encoding='utf-8-sig')
@@ -124,8 +133,5 @@ def save_dashboard_ready_data(df):
 
 # 메인 실행 블록
 if __name__ == "__main__":
-    # 1. 데이터 로드 및 기초 가공
     df_enriched = load_and_enrich_data()
-    
-    # 2. 필터링 및 최종 저장
     save_dashboard_ready_data(df_enriched)

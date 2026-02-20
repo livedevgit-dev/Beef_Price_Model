@@ -1,0 +1,43 @@
+﻿USDA_Code,Korean_Name,Status,Original_Description,Note
+,Unmapped,⚠️ 매핑 제외,"Rib, ribeye, lip-on, bn-in (109E  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, semi-bnls, neck/off (113C  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, shoulder clod (114  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, shoulder clod, trmd (114A  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, clod, arm roast (114E  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, clod tender (114F  5)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, chuck tender (116B  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, roll, retail ready (916A  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, flap (116G  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Chuck, short rib (130  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, bone-in (160  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, boneless (161  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, top inside round (168  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, top inside round (168  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, top inside, denuded (169  5)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, top inside, cap off (169A  5)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, top inside, side off (  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, bottom gooseneck (170  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, outside round (171B  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Round, eye of round (171C  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, short loin, 0x1 (174  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, strip loin, 1x1 (175  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, strip loin bnls. 1x1 (  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, top butt, bnls, heavy (184  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, top butt, boneless (184  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, top butt, CC (184B  3)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, bottom sirloin, flap (185A  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, ball-tip, bnls, heavy (185B  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, sirloin, tri-tip (185C  1)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, sirloin, tri-tip, pld (185D  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, tndrloin, trmd, heavy (189A  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Loin, butt tender, trimmed (191A  4)",분석 대상 아님 (필요 시 규칙 추가)
+,Unmapped,⚠️ 매핑 제외,"Flank, flank steak (193  4)",분석 대상 아님 (필요 시 규칙 추가)
+123A,LA갈비-미국,✅ 정상 (Ready),"Short Plate, short rib (123A  3)",Master 파일과 연결 가능
+114D,부채살-미국,✅ 정상 (Ready),"Chuck, clod, top blade (114D  3)",Master 파일과 연결 가능
+116A,알목심-미국,✅ 정상 (Ready),"Chuck, roll, lxl, neck/off (116A  3)",Master 파일과 연결 가능
+120,차돌양지-미국,✅ 정상 (Ready),"Brisket, deckle-off, bnls (120  1)",Master 파일과 연결 가능
+120,차돌양지-미국,✅ 정상 (Ready),"Brisket, point/off, bnls (120A  3)",Master 파일과 연결 가능
+112A,꽃등심-미국,❌ 이름 불일치,"Rib, ribeye, bnls, light (112A  3)",'꽃등심-미국'이 Master 파일에 없음
+112A,꽃등심-미국,❌ 이름 불일치,"Rib, ribeye, bnls, heavy (112A  3)",'꽃등심-미국'이 Master 파일에 없음
+167A,도가니살-미국,❌ 이름 불일치,"Round, knuckle, peeled (167A  4)",'도가니살-미국'이 Master 파일에 없음
+180,채끝-미국,❌ 이름 불일치,"Loin, strip, bnls, 0x1 (180  3)",'채끝-미국'이 Master 파일에 없음
