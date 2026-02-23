@@ -17,7 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 # ==========================================
 # 1. 설정 변수
 # ==========================================
-DRIVER_PATH = "chromedriver.exe" 
+# src/chromedriver.exe 통일 사용 (버전업 시 src 폴더만 교체) 
 OUTPUT_FILENAME = "us_beef_parts_import_daily.csv"
 TARGET_URL = "https://impfood.mfds.go.kr/ifs/websquare/websquare.html?w2xPath=/ifs/ui/index.xml"
 
@@ -33,8 +33,8 @@ yesterday = datetime.now() - timedelta(days=1)
 SEARCH_DATE_STR = yesterday.strftime("%Y-%m-%d")
 
 def get_driver():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    driver_path_abs = os.path.join(current_dir, DRIVER_PATH)
+    src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    driver_path_abs = os.path.join(src_dir, "chromedriver.exe")
     service = Service(driver_path_abs)
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True) 

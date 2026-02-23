@@ -18,7 +18,7 @@ from selenium.webdriver.support import expected_conditions as EC
 # ==========================================
 # 1. 설정 변수
 # ==========================================
-DRIVER_PATH = "chromedriver.exe"
+# src/chromedriver.exe 통일 사용 (버전업 시 src 폴더만 교체)
 
 # [핵심 변경] 수집 범위 확대 (2019년 ~ 2024년 11월)
 START_DATE = "2019-01-01"  
@@ -33,8 +33,8 @@ ZOOM_LEVELS = 7
 MAX_RETRIES_PER_MONTH = 3
 
 def get_driver():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    driver_path_abs = os.path.join(current_dir, DRIVER_PATH)
+    src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    driver_path_abs = os.path.join(src_dir, "chromedriver.exe")
     service = Service(driver_path_abs)
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")

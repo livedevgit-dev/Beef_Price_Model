@@ -19,8 +19,9 @@ def setup_driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    current_folder = os.path.dirname(os.path.abspath(__file__))
-    driver_path = os.path.join(current_folder, "chromedriver.exe")
+    # src/chromedriver.exe 통일 사용 (버전업 시 src 폴더만 교체)
+    src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    driver_path = os.path.join(src_dir, "chromedriver.exe")
     service = Service(executable_path=driver_path)
     return webdriver.Chrome(service=service, options=chrome_options)
 
