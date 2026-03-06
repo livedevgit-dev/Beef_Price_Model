@@ -3,7 +3,12 @@ import pandas as pd
 import time
 import os
 import urllib3
+from pathlib import Path
 from datetime import datetime
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW, BEEF_STOCK_XLSX
 
 # [파일 정의서]
 # - 파일명: crawl_imp_stock_monthly.py
@@ -24,7 +29,8 @@ CURRENT_MONTH = datetime.now().month
 
 def get_last_collected_date(file_path):
     """기존 파일에서 마지막 수집 날짜를 확인"""
-    if not os.path.exists(file_path):
+    path = Path(file_path) if isinstance(file_path, str) else file_path
+    if not path.exists():
         return START_YEAR, START_MONTH
     
     try:
@@ -127,24 +133,15 @@ def get_stock_data(start_year=None, start_month=None, existing_df=None):
 
 # --- 실행부 ---
 if __name__ == "__main__":
-    # 저장 경로 설정
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    src_dir = os.path.dirname(current_dir)
-    project_root = os.path.dirname(src_dir)
-    save_dir = os.path.join(project_root, "data", "0_raw")
-    
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
-    
-    filename = "beef_stock_data.xlsx"
-    save_path = os.path.join(save_dir, filename)
+    DATA_RAW.mkdir(parents=True, exist_ok=True)
+    save_path = BEEF_STOCK_XLSX
     
     # 기존 데이터 확인 및 시작 날짜 결정
     last_year, last_month = get_last_collected_date(save_path)
     
     # 기존 데이터 로드
     existing_df = None
-    if os.path.exists(save_path):
+    if Path(save_path).exists():
         try:
             existing_df = pd.read_excel(save_path)
             print(f"[확인] 기존 파일 발견: 마지막 수집 날짜 = {last_year-1 if last_month == 1 else last_year}-{12 if last_month == 1 else last_month-1:02d}")

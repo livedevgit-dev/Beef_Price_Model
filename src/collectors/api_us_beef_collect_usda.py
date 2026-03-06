@@ -3,8 +3,13 @@ import requests
 import pandas as pd
 import time
 import urllib3
+from pathlib import Path
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import USDA_BEEF_HISTORY_CSV, ensure_dirs
 
 # [파일 정의서]
 # - 파일명: src/collectors/api_us_beef_collect_usda.py
@@ -23,12 +28,8 @@ def get_api_key():
     return os.getenv("USDA_API_KEY")
 
 def get_paths():
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    save_dir = os.path.join(base_dir, 'data', '0_raw')
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
-    save_path = os.path.join(save_dir, 'usda_beef_history.csv')
-    return save_path
+    ensure_dirs()
+    return str(USDA_BEEF_HISTORY_CSV)
 
 def get_last_update_date(save_path):
     if os.path.exists(save_path):

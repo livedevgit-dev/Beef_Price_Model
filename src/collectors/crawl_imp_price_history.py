@@ -1,7 +1,12 @@
 import requests
 import pandas as pd
 import os
-import urllib3 # [추가] 보안 경고 메시지를 제어하는 도구
+import urllib3
+from pathlib import Path
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW, ensure_dirs
 
 # [파일 정의서]
 # - 파일명: crawl_imp_price_history.py
@@ -46,18 +51,11 @@ def get_meatbox_exact_data():
                 df = pd.DataFrame(chart_data)
                 
                 # 경로 설정
-                current_dir = os.path.dirname(os.path.abspath(__file__))
-                src_dir = os.path.dirname(current_dir)
-                project_root = os.path.dirname(src_dir)
-                save_dir = os.path.join(project_root, 'data', '0_raw')
-                
-                if not os.path.exists(save_dir):
-                    os.makedirs(save_dir)
-                
+                ensure_dirs()
                 file_name = f"meatbox_sise_{payload['siseSeq']}.xlsx"
-                save_path = os.path.join(save_dir, file_name)
+                save_path = DATA_RAW / file_name
                 
-                df.to_excel(save_path, index=False)
+                df.to_excel(str(save_path), index=False)
                 
                 print(f"[완료] 성공! 총 {len(df)}일치의 데이터를 가져왔습니다.")
                 print(f"[경로] 저장 위치: {save_path}")

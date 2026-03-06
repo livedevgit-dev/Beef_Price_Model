@@ -32,24 +32,23 @@ pd.options.mode.chained_assignment = None
 # =========================================================
 # 1. 설정 및 경로
 # =========================================================
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_DIR = os.path.dirname(CURRENT_DIR)
-PROJECT_ROOT = os.path.dirname(SRC_DIR)
-SAVE_DIR = os.path.join(PROJECT_ROOT, "data", "0_raw")
-os.makedirs(SAVE_DIR, exist_ok=True)
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW, MASTER_IMPORT_VOLUME_CSV, CHROMEDRIVER_PATH, ensure_dirs
 
-MASTER_FILE = os.path.join(SAVE_DIR, "master_import_volume.csv")
+ensure_dirs()
+MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
 
 # =========================================================
 # 2. 날짜 계산
 # =========================================================
 def get_next_month_from_master():
-    if not os.path.exists(MASTER_FILE): 
+    if not MASTER_FILE.exists(): 
         print(" ℹ️ 기존 파일이 없습니다. 2019-01-01부터 수집을 시작합니다.")
         return "2019-01-01"
     
     try:
-        df = pd.read_csv(MASTER_FILE)
+        df = pd.read_csv(str(MASTER_FILE))
         if 'std_date' not in df.columns:
             return "2019-01-01"
             
@@ -79,8 +78,7 @@ def setup_driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--log-level=3")
-    driver_path = os.path.join(SRC_DIR, "chromedriver.exe")
-    service = Service(executable_path=driver_path)
+    service = Service(executable_path=str(CHROMEDRIVER_PATH))
     return webdriver.Chrome(service=service, options=chrome_options)
 
 def js_click(driver, element):
@@ -287,8 +285,8 @@ def integrate_to_master(new_safety_df):
     # ==============================================================================
 
     # 마스터 파일 로드 및 정제
-    if os.path.exists(MASTER_FILE):
-        master_df = pd.read_csv(MASTER_FILE)
+    if MASTER_FILE.exists():
+        master_df = pd.read_csv(str(MASTER_FILE))
         
         if '구분' not in master_df.columns:
             possible_cols = [c for c in master_df.columns if '구분' in c]
@@ -314,7 +312,7 @@ def integrate_to_master(new_safety_df):
         print("   ⚠️ 정렬 기준 컬럼('구분')을 찾을 수 없어 날짜로만 정렬합니다.")
         final_df = final_df.sort_values(by=['std_date'], ascending=False)
 
-    final_df.to_csv(MASTER_FILE, index=False, encoding='utf-8-sig')
+    final_df.to_csv(str(MASTER_FILE), index=False, encoding='utf-8-sig')
     print(f"   💾 통합 저장 완료 (합계 컬럼 재계산됨)")
 
 # =========================================================

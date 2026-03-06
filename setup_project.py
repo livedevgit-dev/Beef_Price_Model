@@ -1,22 +1,19 @@
 import os
 
-# 1. 우리가 만들기로 한 폴더 목록 (계층 구조 포함)
+# 1. 실제 사용 중인 폴더 목록
 folders = [
     "data/0_raw",        # 원본 데이터 저장소
-    "data/1_processed",  # 가공된 데이터 저장소
-    "data/2_final",      # 최종 결과물 저장소
+    "data/1_processed",  # 1차 가공 데이터 저장소
+    "data/2_dashboard",  # 대시보드용 최종 데이터
     "src",               # 소스 코드 폴더
-    "notebooks",         # 테스트용 노트북 폴더
-    "docs"               # 문서 저장소
+    "docs",              # 문서 저장소
 ]
 
-# 2. 우리가 만들기로 한 필수 파일 목록
+# 2. 필수 파일 (없을 때만 생성)
 files = [
     ".env",              # API 키 등 비밀번호 저장
     "requirements.txt",  # 설치할 라이브러리 목록
     "README.md",         # 프로젝트 설명서
-    "src/data_collector.py", # (미리 생성) 데이터 수집기
-    "docs/data_definition.md" # (미리 생성) 데이터 정의서
 ]
 
 def create_project_structure():

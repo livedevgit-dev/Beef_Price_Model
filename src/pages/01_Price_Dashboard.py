@@ -2,7 +2,12 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import os
+from pathlib import Path
 from datetime import datetime, timedelta
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DASHBOARD_READY_CSV
 
 # [파일 정의서]
 # - 파일명: 01_Price_Dashboard.py (구 dashboard_price_app.py)
@@ -17,18 +22,9 @@ st.set_page_config(page_title="소고기 시세 대시보드", page_icon="🥩",
 
 @st.cache_data
 def load_data():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    if 'pages' in current_dir:
-        project_root = os.path.dirname(os.path.dirname(current_dir))
-    else:
-        project_root = os.path.dirname(current_dir)
-        
-    file_path = os.path.join(project_root, "data", "2_dashboard", "dashboard_ready_data.csv")
-    
-    if not os.path.exists(file_path):
+    if not DASHBOARD_READY_CSV.exists():
         return None
-    
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(str(DASHBOARD_READY_CSV))
     df['date'] = pd.to_datetime(df['date'])
     
     # [추가된 핵심 로직] 가공된 파일의 컬럼명을 대시보드에 맞게 호환시켜줍니다.

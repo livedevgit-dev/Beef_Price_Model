@@ -1,6 +1,11 @@
 import pandas as pd
 import os
 import re
+from pathlib import Path
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import MASTER_PRICE_CSV, DATA_DASHBOARD, DASHBOARD_READY_CSV, ensure_dirs
 
 # [파일 정의서]
 # - 파일명: preprocess_meat_data.py
@@ -20,17 +25,13 @@ def load_and_enrich_data():
     중복값 평균 처리 및 결측치를 채운 후 이동평균(MA) 등 보조 지표를 추가합니다.
     """
     # 1. 경로 설정
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    src_dir = os.path.dirname(current_dir)
-    project_root = os.path.dirname(src_dir)
-    input_path = os.path.join(project_root, "data", "1_processed", "master_price_data.csv")
-
-    if not os.path.exists(input_path):
+    input_path = MASTER_PRICE_CSV
+    if not input_path.exists():
         print(f"[Error] File not found: {input_path}")
         return None
 
     # 2. 데이터 로드
-    df = pd.read_csv(input_path, encoding='utf-8-sig')
+    df = pd.read_csv(str(input_path), encoding='utf-8-sig')
     df['date'] = pd.to_datetime(df['date'])
     
     # 3. 부위명 및 브랜드 분리 로직
@@ -111,15 +112,8 @@ def save_dashboard_ready_data(df):
     print(f"- Filtering Result: {len(df)} rows -> {len(df_ready)} rows")
 
     # 4. 저장 (data/2_dashboard/dashboard_ready_data.csv)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    src_dir = os.path.dirname(current_dir)
-    project_root = os.path.dirname(src_dir)
-    
-    output_dir = os.path.join(project_root, "data", "2_dashboard")
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    
-    output_path = os.path.join(output_dir, "dashboard_ready_data.csv")
+    ensure_dirs()
+    output_path = DASHBOARD_READY_CSV
     
     cols_to_save = [
         'date', 'category', 'part', 'brand', 
@@ -128,7 +122,7 @@ def save_dashboard_ready_data(df):
     ]
     final_cols = [c for c in cols_to_save if c in df_ready.columns]
     
-    df_ready[final_cols].to_csv(output_path, index=False, encoding='utf-8-sig')
+    df_ready[final_cols].to_csv(str(output_path), index=False, encoding='utf-8-sig')
     print(f"Successfully saved to: {output_path}")
 
 # 메인 실행 블록

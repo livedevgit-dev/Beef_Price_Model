@@ -1,5 +1,10 @@
 import pandas as pd
 import os
+from pathlib import Path
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import MASTER_PRICE_CSV, DATA_RAW
 
 # [파일 정의서]
 # - 파일명: src/utils/check_existing_names.py
@@ -8,25 +13,20 @@ import os
 #         이 이름을 기준으로 USDA 영문명을 매핑할 예정입니다.
 
 def check_master_file():
-    # 1. 파일 경로 설정 (data/1_processed 폴더 가정)
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    file_path = os.path.join(base_dir, 'data', '1_processed', 'master_price_data.csv')
+    # 1. 파일 경로 설정 (1_processed 우선, 없으면 0_raw)
+    file_path = MASTER_PRICE_CSV
+    if not file_path.exists():
+        file_path = DATA_RAW / 'master_price_data.csv'
+        if not file_path.exists():
+            print("❌ 파일을 찾을 수 없습니다. 경로를 확인해주세요.")
+            return
+        print(f"🔄 경로 수정: {file_path} (Raw 폴더에서 발견)")
     
     print(f"📂 파일 읽기 시도: {file_path}")
-    
-    if not os.path.exists(file_path):
-        print("❌ 파일을 찾을 수 없습니다. 경로를 확인해주세요.")
-        # 혹시 data/0_raw 에 있는지 한 번 더 체크
-        file_path_raw = os.path.join(base_dir, 'data', '0_raw', 'master_price_data.csv')
-        if os.path.exists(file_path_raw):
-            file_path = file_path_raw
-            print(f"🔄 경로 수정: {file_path} (Raw 폴더에서 발견)")
-        else:
-            return
 
     try:
         # 2. 데이터 로드
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(str(file_path))
         print("✅ 파일 로드 성공!")
         print("-" * 50)
         

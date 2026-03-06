@@ -3,7 +3,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+from pathlib import Path
 from datetime import datetime
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import BEEF_STOCK_XLSX, MASTER_IMPORT_VOLUME_CSV
 
 # [파일 정의서]
 # - 파일명: 03_Inventory_Management.py
@@ -15,24 +20,25 @@ from datetime import datetime
 # --------------------------------------------------------------------------------
 st.set_page_config(page_title="재고 관리 및 수급 분석", page_icon="🏭", layout="wide")
 
+def _data_files_mtime():
+    """재고/수입 데이터 파일의 최종 수정 시각. 캐시 키로 사용해 파일 갱신 시 자동 재로드."""
+    t1 = BEEF_STOCK_XLSX.stat().st_mtime if BEEF_STOCK_XLSX.exists() else 0
+    t2 = MASTER_IMPORT_VOLUME_CSV.stat().st_mtime if MASTER_IMPORT_VOLUME_CSV.exists() else 0
+    return max(t1, t2)
+
 @st.cache_data
-def load_data():
+def load_data(_cache_key):
     """
     재고(Inventory) 및 수입(Import) 데이터를 로드하고 전처리합니다.
+    _cache_key: 파일 수정 시각으로, 크롤러 등으로 CSV가 갱신되면 캐시가 갱신됩니다.
     """
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(current_dir))
-    
-    # --- 1. 재고 데이터 로드 ---
-    inv_path = os.path.join(project_root, "data", "0_raw", "beef_stock_data.xlsx")
-    
-    if not os.path.exists(inv_path):
+    if not BEEF_STOCK_XLSX.exists():
         return None, None
-        
+
     try:
-        df_inv = pd.read_excel(inv_path)
+        df_inv = pd.read_excel(str(BEEF_STOCK_XLSX))
     except:
-        df_inv = pd.read_csv(inv_path)
+        df_inv = pd.read_csv(str(BEEF_STOCK_XLSX))
 
     col_map = {}
     for col in df_inv.columns:
@@ -49,11 +55,9 @@ def load_data():
     df_inv['date'] = pd.to_datetime(df_inv['date'])
     
     # --- 2. 수입량 데이터 로드 ---
-    imp_path = os.path.join(project_root, "data", "0_raw", "master_import_volume.csv")
     df_imp = pd.DataFrame()
-    
-    if os.path.exists(imp_path):
-        df_imp = pd.read_csv(imp_path)
+    if MASTER_IMPORT_VOLUME_CSV.exists():
+        df_imp = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV))
         df_imp['date'] = pd.to_datetime(df_imp['std_date'])
         
         # Melt 수행
@@ -76,7 +80,7 @@ def load_data():
 
     return df_inv, df_imp
 
-df_inv, df_imp = load_data()
+df_inv, df_imp = load_data(_data_files_mtime())
 
 if df_inv is None:
     st.error("재고 데이터 파일이 없습니다.")
@@ -129,6 +133,7 @@ df_imp_filtered = df_imp[df_imp['date'] >= start_date].copy() if not df_imp.empt
 # --------------------------------------------------------------------------------
 st.title("🏭 재고(Inventory) 인사이트")
 st.markdown(f"**기준 시점:** {latest_date.strftime('%Y년 %m월')} (최신 업데이트)")
+st.caption("💡 기준 시점은 재고 데이터(beef_stock_data.xlsx) 기준입니다. 최신 월이 안 나오면 `src/collectors/crawl_imp_stock_monthly.py`를 실행한 뒤 이 페이지를 새로고침하세요.")
 
 # 날짜 계산
 date_3m_ago = latest_date - pd.DateOffset(months=3)

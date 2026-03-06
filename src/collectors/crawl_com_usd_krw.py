@@ -3,15 +3,20 @@ import requests
 import os
 import time
 import warnings
-from datetime import datetime
+import io
+from pathlib import Path
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW
 
 # [파일 정의서]
 # - 파일명: crawl_com_usd_krw.py
-# - 역할: 수집 (환율 데이터)
-# - 대상: USD/KRW 환율 (네이버 금융)
-# - 방식: 웹 크롤링 (증분 업데이트)
-# - 주요 기능: 네이버 금융에서 USD/KRW 일별 환율을 수집하여 엑셀로 저장
-#              기존 데이터가 있을 경우 최신 데이터만 증분 수집
+# - 역할: 수집
+# - 대상: 공통
+# - 데이터 소스: 네이버 금융 (웹 크롤링)
+# - 수집/가공 주기: 일단위
+# - 주요 기능: 네이버 금융에서 USD/KRW 일별 환율을 수집하여 엑셀로 저장. 기존 데이터 존재 시 최신 데이터만 증분 수집 수행 (2019년 데이터부터 확보).
 
 # ======================================================
 # [설정] 기본 환경 설정
@@ -19,12 +24,8 @@ from datetime import datetime
 warnings.filterwarnings("ignore") # 보안 경고 무시
 
 # 경로 설정
-current_dir = os.path.dirname(os.path.abspath(__file__))
-src_dir = os.path.dirname(current_dir)
-project_root = os.path.dirname(src_dir)
-OUTPUT_DIR = os.path.join(project_root, "data", "0_raw")
-OUTPUT_FILE = "exchange_rate_data.xlsx"
-FILE_PATH = os.path.join(OUTPUT_DIR, OUTPUT_FILE)
+DATA_RAW.mkdir(parents=True, exist_ok=True)
+FILE_PATH = DATA_RAW / "exchange_rate_data.xlsx"
 
 # 초기 구축 시 수집 시작일 (파일이 아예 없을 때)
 DEFAULT_START_DATE = "2019-01-01"
@@ -33,7 +34,7 @@ DEFAULT_START_DATE = "2019-01-01"
 # [함수] 기존 파일에서 '가장 최근 날짜' 확인하기
 # ======================================================
 def get_last_saved_date():
-    if os.path.exists(FILE_PATH):
+    if FILE_PATH.exists():
         try:
             df_exist = pd.read_excel(FILE_PATH)
             if not df_exist.empty and 'Date' in df_exist.columns:
@@ -57,7 +58,8 @@ def update_exchange_rate():
         target_cutoff_date = last_date # 이 날짜 이후 데이터만 필요함
     else:
         print(f"[시작] 기존 파일이 없습니다. {DEFAULT_START_DATE}부터 초기 구축을 시작합니다...")
-        target_cutoff_date = "2019-12-31" # 2020-01-01을 포함하기 위해 하루 전으로 설정
+        # 2019-01-01을 포함하기 위해 하루 전으로 설정
+        target_cutoff_date = "2018-12-31" 
         df_old = pd.DataFrame() # 빈 데이터프레임 생성
 
     # 2. 크롤링 시작
@@ -70,7 +72,8 @@ def update_exchange_rate():
         
         try:
             response = requests.get(url, verify=False)
-            tables = pd.read_html(response.text, encoding='cp949')
+            # 최신 Pandas 버전 호환성을 위해 io.StringIO 사용
+            tables = pd.read_html(io.StringIO(response.text), encoding='cp949')
             
             if not tables:
                 break
@@ -85,14 +88,10 @@ def update_exchange_rate():
             df_page['Date'] = df_page['Date'].str.replace('.', '-')
             
             # [중요] 수집 중단 조건 체크 (이미 있는 날짜를 만났는가?)
-            # 가져온 페이지의 데이터 중 '기준 날짜(target_cutoff_date)'보다 작거나 같은 게 있으면
-            # 그 이후는 이미 우리한테 있는 데이터이므로 더 볼 필요가 없음
-            
             # 이번 페이지에서 "새로운 데이터"만 필터링 (기준일보다 큰 날짜)
             df_new = df_page[df_page['Date'] > target_cutoff_date]
             
-            # 만약 필터링된 데이터가 페이지 전체 데이터보다 적다면?
-            # -> 즉, 과거 데이터가 섞여 나오기 시작했다는 뜻 -> 이제 그만해도 됨
+            # 과거 데이터가 섞여 나오기 시작했다는 뜻 -> 이제 그만해도 됨
             if len(df_new) < len(df_page):
                 stop_scraping = True
             
@@ -101,28 +100,29 @@ def update_exchange_rate():
                 new_data_list.append(df_new)
                 # 로그: 1페이지는 항상 보여주고, 그 외에는 10페이지 단위
                 if page == 1 or page % 10 == 0:
-                    print(f"   Running... {page}페이지에서 최신 데이터 발견 ({len(df_new)}건)")
+                    print(f"   Running... {page}페이지에서 최신/과거 데이터 수집 중 ({len(df_new)}건)")
             
             # 더 이상 새로운 데이터가 없거나, 중단 플래그가 떴으면 종료
             if stop_scraping:
-                print("[완료] 최신 데이터 수집을 완료했습니다. (기존 데이터 시점 도달)")
+                print("[완료] 목표 시점까지의 데이터 수집을 완료했습니다.")
                 break
                 
-            # 안전장치: 너무 많이 돌지 않게 (초기 구축 시 200페이지 제한)
-            if page > 200: 
+            # 안전장치: 2019년까지 수집하려면 약 170페이지 내외 소요. 여유를 두어 300으로 상향
+            if page > 300: 
+                print("[경고] 안전장치 300페이지 도달로 수집을 강제 종료합니다.")
                 break
                 
             page += 1
             time.sleep(0.1)
             
         except Exception as e:
-            print(f"[에러] 에러 발생: {e}")
+            print(f"[에러] 크롤링 중 에러 발생: {e}")
             break
 
     # 3. 데이터 병합 및 저장
     if new_data_list:
         df_new_total = pd.concat(new_data_list, ignore_index=True)
-        print(f"[추가] 새로 추가된 데이터: {len(df_new_total)}일 치")
+        print(f"[추가] 새로 수집된 데이터: {len(df_new_total)}일 치")
         
         # 기존 데이터와 합치기
         if not df_old.empty:
@@ -137,14 +137,12 @@ def update_exchange_rate():
         df_final = df_final.sort_values(by='Date')
         
         # 저장
-        if not os.path.exists(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
-        
-        df_final.to_excel(FILE_PATH, index=False, engine='openpyxl')
+        DATA_RAW.mkdir(parents=True, exist_ok=True)
+        df_final.to_excel(str(FILE_PATH), index=False, engine='openpyxl')
         print(f"[완료] 업데이트 완료! 최종 데이터 기간: {df_final.iloc[0]['Date']} ~ {df_final.iloc[-1]['Date']}")
         
     else:
-        print("[완료] 이미 최신 상태입니다. 추가할 데이터가 없습니다.")
+        print("[완료] 이미 최신 상태이거나 추가할 데이터가 없습니다.")
 
 if __name__ == "__main__":
     update_exchange_rate()

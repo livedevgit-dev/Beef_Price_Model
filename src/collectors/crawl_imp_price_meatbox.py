@@ -11,7 +11,12 @@ import os
 import re
 import shutil
 from datetime import datetime
+from pathlib import Path
 from io import StringIO
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import CHROMEDRIVER_PATH, DATA_PROCESSED
 
 # [파일 정의서]
 # - 파일명: crawl_imp_price_meatbox.py
@@ -22,17 +27,10 @@ from io import StringIO
 URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
 
 def get_price_data():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    src_dir = os.path.dirname(current_dir)
-    
     # [핵심] 사내망 방화벽 우회를 위해 로컬 chromedriver.exe 강제 사용
-    driver_path = os.path.join(src_dir, "chromedriver.exe")
-    
-    project_root = os.path.dirname(src_dir)
-    processed_dir = os.path.join(project_root, "data", "1_processed")
-    
-    master_file = os.path.join(processed_dir, "master_price_data.csv")
-    backup_file = os.path.join(processed_dir, "master_price_data_backup_full.csv")
+    driver_path = CHROMEDRIVER_PATH
+    master_file = DATA_PROCESSED / "master_price_data.csv"
+    backup_file = DATA_PROCESSED / "master_price_data_backup_full.csv"
     
     today_date = datetime.now().strftime("%Y-%m-%d")
     target_cols = ['date', 'part_name', 'country', 'wholesale_price', 'brand']
@@ -42,10 +40,10 @@ def get_price_data():
     print("="*60)
 
     # 1. 파일 최적화 (기존 유지)
-    if os.path.exists(master_file):
+    if master_file.exists():
         try:
-            shutil.copy(master_file, backup_file)
-            df_master = pd.read_csv(master_file)
+            shutil.copy(str(master_file), str(backup_file))
+            df_master = pd.read_csv(str(master_file))
             for col in target_cols:
                 if col not in df_master.columns:
                     df_master[col] = '-' if col == 'brand' else ""
@@ -66,8 +64,8 @@ def get_price_data():
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--log-level=3")
     
-    if os.path.exists(driver_path):
-        service = Service(executable_path=driver_path)
+    if driver_path.exists():
+        service = Service(executable_path=str(driver_path))
         driver = webdriver.Chrome(service=service, options=chrome_options)
     else:
         print("\n[에러] src 폴더에 chromedriver.exe 파일이 없습니다. 버전에 맞춰 다운로드 해주세요.")
@@ -154,7 +152,7 @@ def get_price_data():
             })
             
             new_master_df = pd.concat([df_master, final_df], ignore_index=True).sort_values(by=['date', 'country', 'part_name'])
-            new_master_df.to_csv(master_file, index=False, encoding='utf-8-sig')
+            new_master_df.to_csv(str(master_file), index=False, encoding='utf-8-sig')
             
             print(f"\n[성공] 데이터 저장 완료! (오늘 수집: {len(final_df)}건)")
 

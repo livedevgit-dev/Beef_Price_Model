@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
 import os
+from pathlib import Path
 from datetime import datetime, timedelta
+
+from config import DASHBOARD_READY_CSV
 
 # [파일 정의서]
 # - 파일명: Home.py
@@ -46,14 +49,9 @@ st.markdown("""
 @st.cache_data
 def load_dashboard_data():
     """정제된 dashboard_ready_data.csv 로드"""
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    file_path = os.path.join(project_root, "data", "2_dashboard", "dashboard_ready_data.csv")
-    
-    if not os.path.exists(file_path):
+    if not DASHBOARD_READY_CSV.exists():
         return None
-    
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(str(DASHBOARD_READY_CSV))
     df['date'] = pd.to_datetime(df['date'])
     
     # 최근 날짜 기준 1년치 데이터 필터링

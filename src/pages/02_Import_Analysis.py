@@ -3,7 +3,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os
+from pathlib import Path
 from datetime import datetime, timedelta
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import MASTER_IMPORT_VOLUME_CSV
 
 # [파일 정의서]
 # - 파일명: 02_Import_Analysis.py
@@ -16,17 +21,15 @@ from datetime import datetime, timedelta
 # --------------------------------------------------------------------------------
 st.set_page_config(page_title="수입량 분석", page_icon="🚢", layout="wide")
 
+def _volume_file_mtime():
+    """master_import_volume.csv 수정 시각. 크롤러 갱신 시 캐시 자동 무효화."""
+    return MASTER_IMPORT_VOLUME_CSV.stat().st_mtime if MASTER_IMPORT_VOLUME_CSV.exists() else 0
+
 @st.cache_data
-def load_data():
-    # 경로 설정 (pages 폴더 안에 있으므로 상위 폴더로 이동 필요)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(current_dir))
-    file_path = os.path.join(project_root, "data", "0_raw", "master_import_volume.csv")
-    
-    if not os.path.exists(file_path):
+def load_data(_cache_key):
+    if not MASTER_IMPORT_VOLUME_CSV.exists():
         return None
-    
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV))
     
     # 컬럼명 정리 ('부위별_' 접두어 제거 등 시각화용 전처리)
     # 현재 컬럼: std_date, 구분, 부위별_갈비_합계, ...
@@ -50,7 +53,7 @@ def load_data():
     
     return final_df
 
-df = load_data()
+df = load_data(_volume_file_mtime())
 
 if df is None:
     st.error("데이터 파일(master_import_volume.csv)을 찾을 수 없습니다.")

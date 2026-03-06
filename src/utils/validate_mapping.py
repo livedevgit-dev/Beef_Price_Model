@@ -1,5 +1,10 @@
 import pandas as pd
 import os
+from pathlib import Path
+
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW, DATA_PROCESSED, MASTER_PRICE_CSV
 
 # [파일 정의서]
 # - 파일명: src/utils/validate_mapping.py
@@ -10,24 +15,20 @@ def validate_mapping():
     print("🔍 [Validation] 데이터 매핑 정합성 검사를 시작합니다...\n")
     
     # 1. 경로 설정
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    raw_dir = os.path.join(base_dir, 'data', '0_raw')
-    processed_dir = os.path.join(base_dir, 'data', '1_processed')
-    
-    beef_path = os.path.join(raw_dir, 'usda_choice_cuts_history.csv')
-    master_path = os.path.join(processed_dir, 'master_price_data.csv')
+    beef_path = DATA_RAW / 'usda_choice_cuts_history.csv'
+    master_path = MASTER_PRICE_CSV
 
     # 2. 데이터 로드
-    if not os.path.exists(beef_path):
+    if not beef_path.exists():
         print("❌ USDA Raw 데이터가 없습니다.")
         return
     
-    df_beef = pd.read_csv(beef_path)
+    df_beef = pd.read_csv(str(beef_path))
     
     # Master 파일 로드
     master_parts = set()
-    if os.path.exists(master_path):
-        df_master = pd.read_csv(master_path)
+    if master_path.exists():
+        df_master = pd.read_csv(str(master_path))
         name_col = next((c for c in df_master.columns if 'part' in c or '품목' in c), None)
         if name_col:
             master_parts = set(df_master[name_col].unique())
@@ -104,8 +105,8 @@ def validate_mapping():
     # 보기 좋게 정렬 (매핑된 것 먼저, 그 다음 제외된 것)
     df_result = df_result.sort_values(by=['Status', 'Korean_Name'], ascending=[True, True])
     
-    save_path = os.path.join(processed_dir, 'validation_mapping_result.csv')
-    df_result.to_csv(save_path, index=False, encoding='utf-8-sig')
+    save_path = DATA_PROCESSED / 'validation_mapping_result.csv'
+    df_result.to_csv(str(save_path), index=False, encoding='utf-8-sig')
 
     print("\n" + "=" * 60)
     print(f"📊 [검증 결과 저장 완료]")
