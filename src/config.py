@@ -28,6 +28,7 @@ USDA_PRIMAL_HISTORY_CSV = DATA_RAW / "usda_primal_history.csv"
 PROCESSED_USDA_COST_CSV = DATA_PROCESSED / "processed_usda_cost.csv"
 USDA_PLATE_USD_KG_CSV = DATA_PROCESSED / "usda_plate_usd_kg.csv"
 MANUAL_KOR_PRICE_CSV = DATA_RAW / "manual_kor_price.csv"
+SHORT_PLATE_WHOLESALE_XLSX = DATA_RAW / "beef_Short Plate_wholesale_price.xlsx"
 
 # Chromedriver (collectors에서 사용)
 CHROMEDRIVER_PATH = SRC_DIR / "chromedriver.exe"

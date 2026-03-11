@@ -6,14 +6,14 @@ import sys
 # - 파일명: run_daily_update.py
 # - 역할: 분석 (전체 파이프라인 제어)
 # - 대상: 수입육 (공통)
-# - 주요 기능: 크롤링과 전처리를 순차적으로 실행하여 데이터 최신성 유지
+# - 주요 기능: 크롤링, 전처리, 데이터 사전 갱신을 순차적으로 실행하여 데이터 최신성 유지
 
 def run_pipeline():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     
     # 1. 데이터 수집 실행 (crawl_imp_price_meatbox.py)
     print("="*60)
-    print("[1/2] 데이터 수집(Crawl)을 시작합니다...")
+    print("[1/3] 데이터 수집(Crawl)을 시작합니다...")
     try:
         # 기존 수집 코드를 프로세스로 실행
         crawler_path = os.path.join(current_dir, "collectors", "crawl_imp_price_meatbox.py")
@@ -24,7 +24,7 @@ def run_pipeline():
         return
 
     # 2. 데이터 가공 실행 (preprocess_meat_data.py)
-    print("\n[2/2] 데이터 가공(Preprocess) 및 지표 계산을 시작합니다...")
+    print("\n[2/3] 데이터 가공(Preprocess) 및 지표 계산을 시작합니다...")
     try:
         # 전처리 코드를 프로세스로 실행
         preprocessor_path = os.path.join(current_dir, "utils", "preprocess_meat_data.py")
@@ -34,8 +34,18 @@ def run_pipeline():
         print(f"=> 가공 중 오류 발생: {e}")
         return
 
+    # 3. 데이터 스키마 및 요약 문서 갱신 (extract_data_schema.py)
+    print("\n[3/3] 데이터 스키마 및 요약 문서(Data Dictionary)를 자동 갱신합니다...")
+    try:
+        # 문서 자동화 코드를 프로세스로 실행
+        schema_updater_path = os.path.join(current_dir, "utils", "extract_data_schema.py")
+        subprocess.run([sys.executable, schema_updater_path], check=True)
+        print("=> 데이터 스키마 문서 갱신 완료")
+    except Exception as e:
+        print(f"=> 스키마 갱신 중 오류 발생 (파이프라인은 계속 진행됩니다): {e}")
+
     print("\n" + "="*60)
-    print("✅ 모든 업데이트가 완료되었습니다. 이제 대시보드를 확인하세요!")
+    print("모든 업데이트가 완료되었습니다. 이제 대시보드와 데이터 사전을 확인하세요!")
     print("="*60)
 
 if __name__ == "__main__":

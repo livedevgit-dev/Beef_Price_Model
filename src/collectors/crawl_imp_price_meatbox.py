@@ -1,10 +1,17 @@
+# [파일 정의서]
+# - 파일명: crawl_imp_price_meatbox.py
+# - 역할: 수집
+# - 대상: 수입육
+# - 데이터 소스: 미트박스
+# - 주요 기능: StaleElement 에러를 방지하며 일일 B2B 도매가를 수집하는 로직
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 import pandas as pd
 import time
 import os
@@ -18,16 +25,10 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import CHROMEDRIVER_PATH, DATA_PROCESSED
 
-# [파일 정의서]
-# - 파일명: crawl_imp_price_meatbox.py
-# - 역할: 수집 및 데이터 경량화
-# - 대상: 수입육 (미트박스)
-# - 방식: 로컬 드라이버 사용 (방화벽 우회)
-
 URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
 
 def get_price_data():
-    # [핵심] 사내망 방화벽 우회를 위해 로컬 chromedriver.exe 강제 사용
+    # 사내망 방화벽 우회를 위해 로컬 chromedriver.exe 강제 사용
     driver_path = CHROMEDRIVER_PATH
     master_file = DATA_PROCESSED / "master_price_data.csv"
     backup_file = DATA_PROCESSED / "master_price_data_backup_full.csv"
@@ -39,7 +40,7 @@ def get_price_data():
     print(f"[시스템] 미트박스 시세 수집 (로컬 드라이버 모드)")
     print("="*60)
 
-    # 1. 파일 최적화 (기존 유지)
+    # 1. 파일 최적화
     if master_file.exists():
         try:
             shutil.copy(str(master_file), str(backup_file))
@@ -80,9 +81,12 @@ def get_price_data():
     
     try:
         wait = WebDriverWait(driver, 20)
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "tbody tr")))
 
         while True:
+            # [핵심 수정 1] 매 페이지마다 테이블 요소가 나타날 때까지 대기하도록 반복문 안으로 이동
+            wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "tbody tr")))
+            time.sleep(1) # 자바스크립트가 데이터를 화면에 완전히 그릴 수 있도록 약간의 여유 확보
+            
             print(f"[수집] {current_page}페이지... ", end="")
             html = driver.page_source
             try:
@@ -101,6 +105,7 @@ def get_price_data():
             next_page = current_page + 1
             moved = False
             
+            # [핵심 수정 2] 클릭 시 발생하는 StaleElement 방지 및 재시도 로직 강화
             for attempt in range(3):
                 try:
                     target_btn = driver.find_element(By.XPATH, f"//a[normalize-space()='{next_page}']")
@@ -109,14 +114,18 @@ def get_price_data():
                     except: target_btn = None
                 
                 if target_btn:
-                    driver.execute_script("arguments[0].click();", target_btn)
-                    moved = True
-                    break
+                    try:
+                        driver.execute_script("arguments[0].click();", target_btn)
+                        moved = True
+                        break
+                    except StaleElementReferenceException:
+                        # 클릭 순간에 DOM이 변경되어 에러가 나면 1초 대기 후 다시 요소를 찾음
+                        time.sleep(1)
+                        continue
                 time.sleep(1)
             
             if moved:
                 current_page += 1
-                time.sleep(1)
             else:
                 break
             
@@ -125,7 +134,7 @@ def get_price_data():
     finally:
         driver.quit()
         
-    # 3. 데이터 저장 (기존 유지)
+    # 3. 데이터 저장
     if raw_dfs:
         full_df = pd.concat(raw_dfs, ignore_index=True)
         try:

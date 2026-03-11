@@ -1,3 +1,10 @@
+# [파일 정의서]
+# - 파일명: crawl_imp_food_safety.py
+# - 역할: 수집 (식약처 수입축산물 검역실적)
+# - 대상: 수입 소고기 (미국/호주, 냉동 기준)
+# - 데이터 소스: 식품안전나라(수입식품정보마루)
+# - 주요 기능: 대기 로직(WebDriverWait)을 올바르게 적용하여 안정적인 메뉴 이동 및 데이터 수집
+
 import time
 import os
 import re
@@ -8,7 +15,6 @@ import warnings
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-# 셀레니움 관련 모듈
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -18,13 +24,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 
-# [파일 정의서]
-# - 파일명: crawl_imp_food_safety.py
-# - 역할: 수집 (식약처 수입축산물 검역실적)
-# - 대상: 수입 소고기 (미국/호주, 냉동 기준)
-# - 주요 수정: 부위별 합계 컬럼명('부위별_계_합계') 통일 및 자동 합산 로직 강화
-
-# 경고 무시 설정
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 warnings.filterwarnings('ignore', category=UserWarning, module='pandas')
 pd.options.mode.chained_assignment = None 
@@ -44,7 +43,7 @@ MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
 # =========================================================
 def get_next_month_from_master():
     if not MASTER_FILE.exists(): 
-        print(" ℹ️ 기존 파일이 없습니다. 2019-01-01부터 수집을 시작합니다.")
+        print("[정보] 기존 파일이 없습니다. 2019-01-01부터 수집을 시작합니다.")
         return "2019-01-01"
     
     try:
@@ -62,13 +61,13 @@ def get_next_month_from_master():
              return "2019-01-01"
 
         last_date_obj = df['dt_parsed'].max()
-        print(f" 📅 기존 데이터 마지막 시점: {last_date_obj.strftime('%Y-%m')}")
+        print(f"[정보] 기존 데이터 마지막 시점: {last_date_obj.strftime('%Y-%m')}")
         
         next_month = last_date_obj + relativedelta(months=1)
         return next_month.strftime("%Y-%m-%d")
 
     except Exception as e: 
-        print(f" ⚠️ 날짜 계산 오류: {e}")
+        print(f"[경고] 날짜 계산 오류: {e}")
         return "2019-01-01"
 
 # =========================================================
@@ -101,32 +100,43 @@ def wait_for_loading_bar(driver, timeout=10):
 # 4. 메뉴 이동 및 옵션 설정
 # =========================================================
 def move_to_target_menu_robust(driver):
-    print("\n 👉 [메뉴 이동] 수입식품 > 일반현황 > 검사실적")
+    print("\n[진행] 메뉴 이동: 수입식품 > 일반현황 > 검사실적")
     wait = WebDriverWait(driver, 30)
-    driver.find_element(By.ID, "mf_trv_LeftMenu_label_1").click()
+    
+    # [수정] wait.until을 사용하여 요소가 화면에 완전히 렌더링될 때까지 기다림
+    menu1 = wait.until(EC.presence_of_element_located((By.ID, "mf_trv_LeftMenu_label_1")))
+    js_click(driver, menu1)
     time.sleep(1)
-    driver.find_element(By.ID, "mf_trv_LeftMenu_label_2").click()
+    
+    menu2 = wait.until(EC.presence_of_element_located((By.ID, "mf_trv_LeftMenu_label_2")))
+    js_click(driver, menu2)
     time.sleep(1)
-    driver.find_element(By.ID, "mf_trv_LeftMenu_label_17").click()
+    
+    menu3 = wait.until(EC.presence_of_element_located((By.ID, "mf_trv_LeftMenu_label_17")))
+    js_click(driver, menu3)
     time.sleep(3)
 
 def set_search_options(driver):
+    wait = WebDriverWait(driver, 30)
     wait_for_loading_bar(driver)
-    print(" 👉 [옵션 설정] 냉동 / 미국, 호주")
+    print("[진행] 옵션 설정: 냉동 / 미국, 호주")
     
-    driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_sbx_prodSssnm_button").click()
+    # [수정] 옵션 버튼 클릭 전에도 대기 로직 적용
+    btn1 = wait.until(EC.presence_of_element_located((By.ID, "mf_win_main_subWindow0_wframe_sbx_prodSssnm_button")))
+    js_click(driver, btn1)
     time.sleep(0.5)
-    driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_sbx_prodSssnm_itemTable_2").click() # 냉동
+    driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_sbx_prodSssnm_itemTable_2").click()
     time.sleep(0.5)
 
-    driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_ccb_SearchNtncd_button").click()
+    btn2 = wait.until(EC.presence_of_element_located((By.ID, "mf_win_main_subWindow0_wframe_ccb_SearchNtncd_button")))
+    js_click(driver, btn2)
     time.sleep(1)
     try:
-        driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_73')]").click() # 미국
+        driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_73')]").click()
         time.sleep(0.2)
-        driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_243')]").click() # 호주
+        driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_243')]").click()
     except: pass
-    driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_ccb_SearchNtncd_button").click()
+    js_click(driver, btn2)
 
 # =========================================================
 # 5. 스크래핑 로직
@@ -171,7 +181,7 @@ def crawl_monthly_data(driver, year, month):
     else: end_dt = (datetime(year, month + 1, 1) - relativedelta(days=1)).strftime("%Y-%m-%d")
 
     for attempt in range(1, 4):
-        print(f"\n▶ [조회 시도 {attempt}/3] {start_dt} ~ {end_dt}")
+        print(f"\n[조회 시도 {attempt}/3] {start_dt} ~ {end_dt}")
         try:
             wait_for_loading_bar(driver)
             
@@ -192,7 +202,7 @@ def crawl_monthly_data(driver, year, month):
             search_btn = driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_btn_search")
             js_click(driver, search_btn)
             
-            print(f"   ⏳ 로딩 중 (최대 40초)... ", end="")
+            print(f"[진행] 로딩 중 (최대 40초)... ", end="")
             total_count = 0
             max_wait = 40
             
@@ -212,7 +222,7 @@ def crawl_monthly_data(driver, year, month):
                     
                     if current_count > 0:
                         total_count = current_count
-                        print(f" 완료! (발견: {total_count}건)")
+                        print(f" 완료 (발견: {total_count}건)")
                         break
                     
                     time.sleep(1)
@@ -221,12 +231,12 @@ def crawl_monthly_data(driver, year, month):
                 except: time.sleep(1)
 
             if total_count > 0:
-                print(f"   ✅ 수집 시작...")
+                print(f"[진행] 수집 시작...")
                 return pd.DataFrame(scrape_with_zoom_logic(driver, total_count))
             else:
-                print(f"\n   ⚠️ 데이터 0건 (혹은 로딩 실패)")
+                print(f"\n[경고] 데이터 0건 (혹은 로딩 실패)")
                 if attempt < 3:
-                    print("   🔄 새로고침 후 재시도...")
+                    print("[진행] 새로고침 후 재시도...")
                     driver.refresh()
                     time.sleep(5)
                     move_to_target_menu_robust(driver)
@@ -234,7 +244,7 @@ def crawl_monthly_data(driver, year, month):
                 continue
 
         except Exception as e:
-            print(f"\n   ❌ 오류: {str(e)[:50]}...")
+            print(f"\n[오류] {str(e)[:50]}...")
             if attempt < 3:
                 driver.refresh()
                 time.sleep(5)
@@ -243,21 +253,18 @@ def crawl_monthly_data(driver, year, month):
     return None
 
 # =========================================================
-# 7. KMTA 양식 통합 (오류 수정 핵심 로직)
+# 7. KMTA 양식 통합
 # =========================================================
 def integrate_to_master(new_safety_df):
     if new_safety_df.empty: return
 
-    # [수정] SettingWithCopyWarning 해결
     new_safety_df = new_safety_df.copy()
 
-    # 데이터 전처리
     new_safety_df = new_safety_df.drop_duplicates(subset=['std_ym', '국가', '부위'], keep='first')
     new_safety_df['당월_소계'] = new_safety_df['당월_소계'].astype(str).str.replace(',', '')
     new_safety_df['당월_소계'] = pd.to_numeric(new_safety_df['당월_소계'], errors='coerce').fillna(0)
     new_safety_df['당월_소계'] = (new_safety_df['당월_소계'] / 1000).round(1)
 
-    # Pivot
     pivoted = new_safety_df.pivot_table(
         index=['std_ym', '국가'], 
         columns='부위', 
@@ -273,28 +280,18 @@ def integrate_to_master(new_safety_df):
             new_cols_map[col] = f"부위별_{col.replace(' ', '')}_합계"
     pivoted.rename(columns=new_cols_map, inplace=True)
 
-    # ==============================================================================
-    # ★ [수정] 부위별 합계(Total) 계산 로직 강화
-    # ==============================================================================
-    # 1. '부위별_'로 시작하는 컬럼 중 '계'는 제외한 실제 부위 컬럼만 리스트업
     part_cols = [c for c in pivoted.columns if c.startswith('부위별_') and '계_합계' not in c]
-    
-    # 2. C열~M열(부위들)을 다 더해서 N열(부위별_계_합계)에 집어넣음
-    # (기존 '부위별_합계' 변수명 대신 마스터 파일과 동일한 '부위별_계_합계' 사용)
     pivoted['부위별_계_합계'] = pivoted[part_cols].sum(axis=1)
-    # ==============================================================================
 
-    # 마스터 파일 로드 및 정제
     if MASTER_FILE.exists():
         master_df = pd.read_csv(str(MASTER_FILE))
         
         if '구분' not in master_df.columns:
             possible_cols = [c for c in master_df.columns if '구분' in c]
             if possible_cols:
-                print(f"   🛠️ 잘못된 컬럼명 감지 및 수정: {possible_cols[0]} -> 구분")
+                print(f"[수정] 잘못된 컬럼명 감지 및 수정: {possible_cols[0]} -> 구분")
                 master_df.rename(columns={possible_cols[0]: '구분'}, inplace=True)
 
-        # 컬럼 순서 맞추기
         master_columns = master_df.columns.tolist()
         pivoted_aligned = pivoted.reindex(columns=master_columns, fill_value=0)
         
@@ -305,35 +302,32 @@ def integrate_to_master(new_safety_df):
     else:
         final_df = pivoted
 
-    # 정렬
     try:
         final_df = final_df.sort_values(by=['std_date', '구분'], ascending=[False, True])
     except KeyError:
-        print("   ⚠️ 정렬 기준 컬럼('구분')을 찾을 수 없어 날짜로만 정렬합니다.")
+        print("[경고] 정렬 기준 컬럼('구분')을 찾을 수 없어 날짜로만 정렬합니다.")
         final_df = final_df.sort_values(by=['std_date'], ascending=False)
 
     final_df.to_csv(str(MASTER_FILE), index=False, encoding='utf-8-sig')
-    print(f"   💾 통합 저장 완료 (합계 컬럼 재계산됨)")
+    print(f"[완료] 통합 저장 완료 (합계 컬럼 재계산됨)")
 
 # =========================================================
 # 8. 메인 실행
 # =========================================================
 def main():
     print("="*60)
-    print("🚀 [수집기] 식약처 데이터 (오류 수정 및 안정화 버전)")
+    print("[수집기] 식약처 데이터 (오류 수정 및 안정화 버전)")
     
     start_date_str = get_next_month_from_master()
     
     today = datetime.now()
-    # [설정] 수집 종료일: 지난달 말일 (월 단위 확정치 수집용)
-    # 만약 이번 달 데이터도 보고 싶다면 아래 로직을 수정해야 함
     last_day_prev_month = today.replace(day=1) - timedelta(days=1)
     end_date_str = last_day_prev_month.strftime("%Y-%m-%d")
     
-    print(f" 📅 목표 수집 구간: {start_date_str} ~ {end_date_str}")
+    print(f"[설정] 목표 수집 구간: {start_date_str} ~ {end_date_str}")
     
     if start_date_str > end_date_str:
-        print(" ✅ [완료] 업데이트할 데이터가 없습니다.")
+        print("[완료] 업데이트할 데이터가 없습니다.")
         return
 
     driver = None
@@ -369,13 +363,13 @@ def main():
                 if not df_filtered.empty:
                     integrate_to_master(df_filtered)
                 else:
-                    print(f"   ⚠️ 미국/호주 데이터 없음.")
+                    print(f"[경고] 미국/호주 데이터 없음.")
             time.sleep(2)
 
-        print("\n🎉 모든 업데이트 완료.")
+        print("\n[성공] 모든 업데이트 완료.")
 
     except Exception as e:
-        print(f"\n❌ 오류 발생: {e}")
+        print(f"\n[오류] 에러 발생: {e}")
     finally:
         if driver: driver.quit()
 
