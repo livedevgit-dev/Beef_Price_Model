@@ -12,7 +12,7 @@ from config import DASHBOARD_READY_CSV
 # - 대상: 공통
 # - 데이터 소스: data/2_dashboard/dashboard_ready_data.csv
 # - 수집/가공 주기: N/A
-# - 주요 기능: 시스템 메인 화면, 주요 시세 등락 포착(Top 10 Compact View)
+# - 주요 기능: 시스템 메인 화면, 주요 시세 등락 포착(전체 + Expander)
 
 st.set_page_config(
     page_title="Beef Data Insight Platform",
@@ -62,7 +62,7 @@ def load_dashboard_data():
     return df
 
 def calculate_market_highlights(df):
-    """각 품목별 지표 계산 및 Top 10 추출"""
+    """각 품목별 지표 계산 및 하락/상승 전체 목록 반환"""
     if df is None or df.empty:
         return None, None
     
@@ -77,14 +77,12 @@ def calculate_market_highlights(df):
         if len(group_df) < 2: 
             continue
         
-        # 실제 거래(가격 존재)가 있는 행만 추출
         traded = group_df.dropna(subset=['wholesale_price'])
         if traded.empty:
             continue
         
         last_trade_date = traded['date'].max()
         
-        # 최근 7일 이내에 실제 거래가 없는 품목은 제외 (단종/품절)
         if last_trade_date < active_cutoff:
             continue
         
@@ -112,10 +110,10 @@ def calculate_market_highlights(df):
     
     highlights_df = pd.DataFrame(highlights)
     
-    top_drops = highlights_df.nsmallest(10, 'drop_rate')
-    top_rises = highlights_df.nlargest(10, 'rise_rate')
+    all_drops = highlights_df[highlights_df['drop_rate'] < 0].sort_values('drop_rate', ascending=True)
+    all_rises = highlights_df[highlights_df['rise_rate'] > 0].sort_values('rise_rate', ascending=False)
     
-    return top_drops, top_rises
+    return all_drops, all_rises
 
 # --------------------------------------------------------------------------------
 # 메인 UI 구성
@@ -124,24 +122,57 @@ st.title("Beef Data Insight Platform")
 st.divider()
 
 # Market Highlights 섹션
-st.subheader("📊 Market Highlights (Top 10)")
+st.subheader("📊 Market Highlights")
 st.caption("최근 1년간 가격 변동폭이 큰 품목 (3대 패커 기준)")
 
 df_dashboard = load_dashboard_data()
 
+def render_drop_row(row, key_prefix):
+    """하락 품목 1행 렌더링"""
+    c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
+    with c1:
+        st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
+    with c2:
+        st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
+    with c3:
+        st.markdown(f"<div style='color:blue; padding-top:5px'><b>{row['drop_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
+    with c4:
+        if st.button("🔍", key=key_prefix):
+            st.session_state["target_product"] = {
+                "category": row['category'], "brand": row['brand'], "part": row['part']
+            }
+            st.switch_page("pages/01_Price_Dashboard.py")
+    st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+
+def render_rise_row(row, key_prefix):
+    """상승 품목 1행 렌더링"""
+    c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
+    with c1:
+        st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
+    with c2:
+        st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
+    with c3:
+        st.markdown(f"<div style='color:red; padding-top:5px'><b>+{row['rise_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
+    with c4:
+        if st.button("🔍", key=key_prefix):
+            st.session_state["target_product"] = {
+                "category": row['category'], "brand": row['brand'], "part": row['part']
+            }
+            st.switch_page("pages/01_Price_Dashboard.py")
+    st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+
 if df_dashboard is not None:
-    top_drops, top_rises = calculate_market_highlights(df_dashboard)
+    all_drops, all_rises = calculate_market_highlights(df_dashboard)
     
-    if top_drops is not None and top_rises is not None:
-        col_drop, spacer, col_rise = st.columns([1, 0.05, 1]) # 가운데 여백(spacer) 추가
+    if all_drops is not None and all_rises is not None:
+        col_drop, spacer, col_rise = st.columns([1, 0.05, 1])
         
         # ------------------------------------------------------------------------
-        # [Left Column] Top 10 Price Drop (📉)
+        # [Left Column] Price Drop (📉)
         # ------------------------------------------------------------------------
         with col_drop:
-            st.markdown("#### 📉 Price Drop Top 10")
+            st.markdown(f"#### 📉 Price Drop ({len(all_drops)}건)")
             
-            # 헤더
             h1, h2, h3, h4 = st.columns([3.5, 1.5, 1.5, 1])
             h1.markdown(":grey[**품목 (브랜드)**]")
             h2.markdown(":grey[**현재가**]")
@@ -149,37 +180,20 @@ if df_dashboard is not None:
             h4.markdown("")
             st.markdown("<hr style='margin: 0; border: none; border-bottom: 2px solid #ddd;'>", unsafe_allow_html=True)
             
-            for idx, row in top_drops.iterrows():
-                # 행 간격 조절을 위한 custom css div 사용 안함 (Streamlit native로 최대한 구현)
-                c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
-                
-                with c1:
-                    # 마크다운으로 두 줄을 한 번에 써서 간격 줄임
-                    st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
-                
-                with c2:
-                    st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
-                    
-                with c3:
-                    st.markdown(f"<div style='color:blue; padding-top:5px'><b>{row['drop_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
-                
-                with c4:
-                    if st.button("🔍", key=f"d_{idx}"):
-                        st.session_state["target_product"] = {
-                            "category": row['category'], "brand": row['brand'], "part": row['part']
-                        }
-                        st.switch_page("pages/01_Price_Dashboard.py")
-                
-                # [핵심] st.divider() 대신 얇은 HTML 선 사용 (margin 조절 가능)
-                st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+            for i, (idx, row) in enumerate(all_drops.iloc[:10].iterrows()):
+                render_drop_row(row, f"d_{idx}")
+            
+            if len(all_drops) > 10:
+                with st.expander("목록 전체 펼치기 🔽"):
+                    for i, (idx, row) in enumerate(all_drops.iloc[10:].iterrows()):
+                        render_drop_row(row, f"d_exp_{idx}")
 
         # ------------------------------------------------------------------------
-        # [Right Column] Top 10 Price Rise (🚀)
+        # [Right Column] Price Rise (🚀)
         # ------------------------------------------------------------------------
         with col_rise:
-            st.markdown("#### 🚀 Price Rise Top 10")
+            st.markdown(f"#### 🚀 Price Rise ({len(all_rises)}건)")
             
-            # 헤더
             h1, h2, h3, h4 = st.columns([3.5, 1.5, 1.5, 1])
             h1.markdown(":grey[**품목 (브랜드)**]")
             h2.markdown(":grey[**현재가**]")
@@ -187,26 +201,13 @@ if df_dashboard is not None:
             h4.markdown("")
             st.markdown("<hr style='margin: 0; border: none; border-bottom: 2px solid #ddd;'>", unsafe_allow_html=True)
             
-            for idx, row in top_rises.iterrows():
-                c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
-                
-                with c1:
-                    st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
-                
-                with c2:
-                    st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
-                    
-                with c3:
-                    st.markdown(f"<div style='color:red; padding-top:5px'><b>+{row['rise_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
-                
-                with c4:
-                    if st.button("🔍", key=f"r_{idx}"):
-                        st.session_state["target_product"] = {
-                            "category": row['category'], "brand": row['brand'], "part": row['part']
-                        }
-                        st.switch_page("pages/01_Price_Dashboard.py")
-                
-                st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+            for i, (idx, row) in enumerate(all_rises.iloc[:10].iterrows()):
+                render_rise_row(row, f"r_{idx}")
+            
+            if len(all_rises) > 10:
+                with st.expander("목록 전체 펼치기 🔽"):
+                    for i, (idx, row) in enumerate(all_rises.iloc[10:].iterrows()):
+                        render_rise_row(row, f"r_exp_{idx}")
 
     else:
         st.info("데이터가 충분하지 않아 순위를 계산할 수 없습니다.")
