@@ -98,10 +98,16 @@ if selected_part == "전체 보기 (가격 동향 요약)":
     for part in part_options:
         part_df = df_avg[df_avg['part_clean'] == part].sort_values('date')
         
-        # 현재 가격
-        curr_row = part_df[part_df['date'] == latest_date]
-        if curr_row.empty: continue
-        curr_price = curr_row['wholesale_price'].values[0]
+        # 현재 가격: latest_date 기준 과거 7일 이내 유효한 최신 가격
+        recent_window = part_df[
+            (part_df['date'] >= latest_date - timedelta(days=7))
+            & (part_df['date'] <= latest_date)
+            & (part_df['wholesale_price'].notna())
+            & (part_df['wholesale_price'] != 0)
+        ].sort_values('date', ascending=False)
+        if recent_window.empty:
+            continue
+        curr_price = recent_window.iloc[0]['wholesale_price']
         
         def get_price_at_date(target_date):
             # 타겟 날짜 ±7일(총 14일) 구간의 평균 가격을 계산

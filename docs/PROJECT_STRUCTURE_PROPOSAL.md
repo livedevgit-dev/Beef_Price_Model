@@ -1,7 +1,9 @@
 # Beef Price Model - 프로젝트 구조 정리 제안서
 
-> 작성일: 2025-03-03  
+> 작성일: 2025-03-03
+> 최종 갱신일: 2026-03-25
 > 목적: 현재 구조 파악 및 리팩토링/정리 방안 정의
+> 상태: Phase 1 완료, Phase 2 완료, Phase 3–5 미착수
 
 ---
 
@@ -225,11 +227,12 @@ Beef_Price_Model/
 
 ---
 
-## 6. 요약
+## 6. 요약 및 진행 상태
 
-- **Phase 1 완료 (2025-03-03):** `src/config.py` 추가, setup_project.py 수정, collectors/utils/pages/Home.py 경로 일원화 적용 완료
-- **즉시 적용 권장:** Phase 2 (문서·의존성 정리)
-- **단기:** Phase 2 (문서·의존성), Phase 5 (utils __init__)
-- **중기:** Phase 3 (파이프라인 확장), Phase 4 (z_archive 정리)
-
-원하시면 Phase 1부터 실제 코드 변경까지 단계별로 진행하겠습니다.
+| Phase | 상태 | 완료일 | 비고 |
+|-------|------|--------|------|
+| **Phase 1**: 경로·설정 통합 | **완료** | 2025-03-03 | `src/config.py` 추가, 경로 일원화 |
+| **Phase 2**: 문서·의존성 정리 | **완료** | 2026-03-25 | docs/ 통합, 중복 문서 제거, `src/README.md` → `docs/PROJECT_GUIDE.md` 이전, `DATA_DICTIONARY.md` + `data_schema_summary.md` 통합, `extract_data_schema.py` → DATA_DICTIONARY 부록 갱신 방식으로 전환 |
+| **Phase 3**: 파이프라인 확장 | 미착수 | — | `run_daily_update.py` 확장 (`--full` / `--price-only`) |
+| **Phase 4**: z_archive 정리 | 미착수 | — | 레거시 스크립트 분류·정리 |
+| **Phase 5**: utils 패키지 정리 | 미착수 | — | `__init__.py` 확장, 역할 정리 |
