@@ -48,7 +48,13 @@ if df is None:
     st.stop()
 
 # (1) 국가 선택
-country_list = sorted(df['country'].unique().tolist())
+# [src/pages/01_Price_Dashboard.py 수정]
+
+# (1) 에러가 발생하는 기존 코드
+# country_list = sorted(df['country'].unique().tolist())
+
+# (2) 다음과 같이 수정 (dropna() 추가)
+country_list = sorted(df['country'].dropna().unique().tolist())
 selected_country = st.sidebar.selectbox("원산지 선택", ['전체'] + country_list)
 
 # 데이터 1차 필터링 (국가)
