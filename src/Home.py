@@ -66,7 +66,9 @@ def calculate_market_highlights(df):
     if df is None or df.empty:
         return None, None
     
-    # 그룹 기준: 원산지(category), 브랜드(brand), 부위(part)
+    global_latest_date = df['date'].max()
+    active_cutoff = global_latest_date - timedelta(days=7)
+    
     product_groups = df.groupby(['category', 'brand', 'part'])
     
     highlights = []
@@ -74,12 +76,22 @@ def calculate_market_highlights(df):
     for (category, brand, part), group_df in product_groups:
         if len(group_df) < 2: 
             continue
-            
-        latest_date = group_df['date'].max()
-        current_price = group_df[group_df['date'] == latest_date]['wholesale_price'].mean()
         
-        max_price_12m = group_df['wholesale_price'].max()
-        min_price_12m = group_df['wholesale_price'].min()
+        # 실제 거래(가격 존재)가 있는 행만 추출
+        traded = group_df.dropna(subset=['wholesale_price'])
+        if traded.empty:
+            continue
+        
+        last_trade_date = traded['date'].max()
+        
+        # 최근 7일 이내에 실제 거래가 없는 품목은 제외 (단종/품절)
+        if last_trade_date < active_cutoff:
+            continue
+        
+        current_price = traded[traded['date'] == last_trade_date]['wholesale_price'].mean()
+        
+        max_price_12m = traded['wholesale_price'].max()
+        min_price_12m = traded['wholesale_price'].min()
         
         drop_rate = (current_price - max_price_12m) / max_price_12m if max_price_12m > 0 else 0
         rise_rate = (current_price - min_price_12m) / min_price_12m if min_price_12m > 0 else 0
@@ -100,7 +112,6 @@ def calculate_market_highlights(df):
     
     highlights_df = pd.DataFrame(highlights)
     
-    # Top 10 추출
     top_drops = highlights_df.nsmallest(10, 'drop_rate')
     top_rises = highlights_df.nlargest(10, 'rise_rate')
     

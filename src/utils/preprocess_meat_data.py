@@ -62,7 +62,8 @@ def load_and_enrich_data():
     df = df.set_index('date')
     
     # 국가, 부위, 브랜드별로 그룹화한 뒤, 매일('D') 단위로 빈 날짜가 있으면 생성하고 직전 값으로 채웁니다.
-    df = df.groupby(['country', 'part', 'brand']).resample('D').ffill()
+    # limit=7: 최대 7일 연속까지만 직전 가격을 채우고, 그 이상 공백이면 NaN 유지
+    df = df.groupby(['country', 'part', 'brand']).resample('D').ffill(limit=7)
     
     # 그룹화로 인해 중첩된 인덱스를 다시 일반 컬럼으로 풀어줍니다.
     df = df.drop(columns=['country', 'part', 'brand'], errors='ignore').reset_index()
@@ -73,9 +74,9 @@ def load_and_enrich_data():
     # 5. 핵심 지표 계산 (이동평균)
     grouped = df.groupby(['country', 'part', 'brand'])
 
-    # 7일, 30일 이동평균
-    df['ma7'] = grouped['wholesale_price'].transform(lambda x: x.rolling(window=7, min_periods=1).mean())
-    df['ma30'] = grouped['wholesale_price'].transform(lambda x: x.rolling(window=30, min_periods=1).mean())
+    # 7일, 30일 이동평균 (장기 결측 구간에서의 왜곡 방지를 위해 min_periods 강화)
+    df['ma7'] = grouped['wholesale_price'].transform(lambda x: x.rolling(window=7, min_periods=4).mean())
+    df['ma30'] = grouped['wholesale_price'].transform(lambda x: x.rolling(window=30, min_periods=15).mean())
 
     # 전체 기간 최고/최저 (참고용)
     df['min_total'] = grouped['wholesale_price'].transform('min')

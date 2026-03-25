@@ -97,14 +97,16 @@ if selected_part == "전체 보기 (가격 동향 요약)":
         if curr_row.empty: continue
         curr_price = curr_row['wholesale_price'].values[0]
         
-        # 과거 가격 찾기 (가장 가까운 날짜 검색)
         def get_price_at_date(target_date):
-            # target_date 이전이면서 가장 가까운 날짜 찾기
-            # (데이터가 매일 없을 수 있으므로)
-            available_data = part_df[part_df['date'] <= target_date]
-            if available_data.empty:
+            # 타겟 날짜 ±7일(총 14일) 구간의 평균 가격을 계산
+            window_start = target_date - timedelta(days=7)
+            window_end = target_date + timedelta(days=7)
+            window_data = part_df[
+                (part_df['date'] >= window_start) & (part_df['date'] <= window_end)
+            ]['wholesale_price'].dropna()
+            if window_data.empty:
                 return None
-            return available_data.iloc[-1]['wholesale_price']
+            return window_data.mean()
 
         price_3m = get_price_at_date(date_3m)
         price_6m = get_price_at_date(date_6m)
