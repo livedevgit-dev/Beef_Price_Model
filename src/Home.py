@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
-import os
-from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from config import DASHBOARD_READY_CSV
 
@@ -11,37 +9,13 @@ from config import DASHBOARD_READY_CSV
 # - 역할: 시각화 (Dashboard Landing)
 # - 대상: 공통
 # - 데이터 소스: data/2_dashboard/dashboard_ready_data.csv
-# - 수집/가공 주기: N/A
-# - 주요 기능: 시스템 메인 화면, 주요 시세 등락 포착(전체 + Expander)
+# - 주요 기능: 시스템 메인 화면, 부위별 시세 변동 요약 테이블 (거시적 뷰)
 
 st.set_page_config(
     page_title="Beef Data Insight Platform",
     page_icon="🥩",
     layout="wide"
 )
-
-# --------------------------------------------------------------------------------
-# 스타일 커스텀 (여백 줄이기)
-# --------------------------------------------------------------------------------
-st.markdown("""
-    <style>
-        /* 버튼 여백 최소화 */
-        .stButton > button {
-            height: 2em;
-            padding-top: 0;
-            padding-bottom: 0;
-            min-height: 2.2rem;
-        }
-        /* 마크다운 텍스트 여백 줄이기 */
-        .stMarkdown p {
-            margin-bottom: 0.2rem;
-        }
-        /* 컬럼 간격 좁히기 */
-        [data-testid="column"] {
-            padding: 0;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 # --------------------------------------------------------------------------------
 # 데이터 로드 함수 (캐싱 적용)
@@ -53,67 +27,7 @@ def load_dashboard_data():
         return None
     df = pd.read_csv(str(DASHBOARD_READY_CSV))
     df['date'] = pd.to_datetime(df['date'])
-    
-    # 최근 날짜 기준 1년치 데이터 필터링
-    latest_date = df['date'].max()
-    one_year_ago = latest_date - timedelta(days=365)
-    df = df[df['date'] >= one_year_ago].copy()
-    
     return df
-
-def calculate_market_highlights(df):
-    """각 품목별 지표 계산 및 하락/상승 전체 목록 반환"""
-    if df is None or df.empty:
-        return None, None
-    
-    global_latest_date = df['date'].max()
-    active_cutoff = global_latest_date - timedelta(days=7)
-    
-    product_groups = df.groupby(['category', 'brand', 'part'])
-    
-    highlights = []
-    
-    for (category, brand, part), group_df in product_groups:
-        if len(group_df) < 2: 
-            continue
-        
-        traded = group_df.dropna(subset=['wholesale_price'])
-        if traded.empty:
-            continue
-        
-        last_trade_date = traded['date'].max()
-        
-        if last_trade_date < active_cutoff:
-            continue
-        
-        current_price = traded[traded['date'] == last_trade_date]['wholesale_price'].mean()
-        
-        max_price_12m = traded['wholesale_price'].max()
-        min_price_12m = traded['wholesale_price'].min()
-        
-        drop_rate = (current_price - max_price_12m) / max_price_12m if max_price_12m > 0 else 0
-        rise_rate = (current_price - min_price_12m) / min_price_12m if min_price_12m > 0 else 0
-        
-        highlights.append({
-            'category': category,
-            'brand': brand,
-            'part': part,
-            'current_price': current_price,
-            'max_12m': max_price_12m,
-            'min_12m': min_price_12m,
-            'drop_rate': drop_rate,
-            'rise_rate': rise_rate
-        })
-    
-    if not highlights:
-        return None, None
-    
-    highlights_df = pd.DataFrame(highlights)
-    
-    all_drops = highlights_df[highlights_df['drop_rate'] < 0].sort_values('drop_rate', ascending=True)
-    all_rises = highlights_df[highlights_df['rise_rate'] > 0].sort_values('rise_rate', ascending=False)
-    
-    return all_drops, all_rises
 
 # --------------------------------------------------------------------------------
 # 메인 UI 구성
@@ -121,96 +35,99 @@ def calculate_market_highlights(df):
 st.title("Beef Data Insight Platform")
 st.divider()
 
-# Market Highlights 섹션
-st.subheader("📊 Market Highlights")
-st.caption("최근 1년간 가격 변동폭이 큰 품목 (3대 패커 기준)")
+st.subheader("📉 부위별 시세 변동 요약")
 
-df_dashboard = load_dashboard_data()
+df = load_dashboard_data()
 
-def render_drop_row(row, key_prefix):
-    """하락 품목 1행 렌더링"""
-    c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
-    with c1:
-        st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
-    with c2:
-        st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
-    with c3:
-        st.markdown(f"<div style='color:blue; padding-top:5px'><b>{row['drop_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
-    with c4:
-        if st.button("🔍", key=key_prefix):
-            st.session_state["target_product"] = {
-                "category": row['category'], "brand": row['brand'], "part": row['part']
-            }
-            st.switch_page("pages/01_Price_Dashboard.py")
-    st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+if df is not None:
+    # 브랜드 통합 평균 가격: 날짜 × 부위별 groupby
+    df_avg = df.groupby(['date', 'part'])['wholesale_price'].mean().reset_index()
 
-def render_rise_row(row, key_prefix):
-    """상승 품목 1행 렌더링"""
-    c1, c2, c3, c4 = st.columns([3.5, 1.5, 1.5, 1])
-    with c1:
-        st.markdown(f"**{row['part']}**<br><span style='font-size:0.8em; color:grey'>{row['brand']} ({row['category']})</span>", unsafe_allow_html=True)
-    with c2:
-        st.markdown(f"<div style='padding-top:5px'>{int(row['current_price']):,}원</div>", unsafe_allow_html=True)
-    with c3:
-        st.markdown(f"<div style='color:red; padding-top:5px'><b>+{row['rise_rate']*100:.1f}%</b></div>", unsafe_allow_html=True)
-    with c4:
-        if st.button("🔍", key=key_prefix):
-            st.session_state["target_product"] = {
-                "category": row['category'], "brand": row['brand'], "part": row['part']
-            }
-            st.switch_page("pages/01_Price_Dashboard.py")
-    st.markdown("<hr style='margin: 0.2em 0; border: none; border-bottom: 1px solid #f0f0f0;'>", unsafe_allow_html=True)
+    latest_date = df_avg['date'].max()
+    st.markdown(f"**기준일:** {latest_date.strftime('%Y-%m-%d')} | **기준:** 브랜드 통합 평균가")
 
-if df_dashboard is not None:
-    all_drops, all_rises = calculate_market_highlights(df_dashboard)
-    
-    if all_drops is not None and all_rises is not None:
-        col_drop, spacer, col_rise = st.columns([1, 0.05, 1])
-        
-        # ------------------------------------------------------------------------
-        # [Left Column] Price Drop (📉)
-        # ------------------------------------------------------------------------
-        with col_drop:
-            st.markdown(f"#### 📉 Price Drop ({len(all_drops)}건)")
-            
-            h1, h2, h3, h4 = st.columns([3.5, 1.5, 1.5, 1])
-            h1.markdown(":grey[**품목 (브랜드)**]")
-            h2.markdown(":grey[**현재가**]")
-            h3.markdown(":grey[**하락률**]")
-            h4.markdown("")
-            st.markdown("<hr style='margin: 0; border: none; border-bottom: 2px solid #ddd;'>", unsafe_allow_html=True)
-            
-            for i, (idx, row) in enumerate(all_drops.iloc[:10].iterrows()):
-                render_drop_row(row, f"d_{idx}")
-            
-            if len(all_drops) > 10:
-                with st.expander("목록 전체 펼치기 🔽"):
-                    for i, (idx, row) in enumerate(all_drops.iloc[10:].iterrows()):
-                        render_drop_row(row, f"d_exp_{idx}")
+    date_3m = latest_date - timedelta(days=90)
+    date_6m = latest_date - timedelta(days=180)
+    date_12m = latest_date - timedelta(days=365)
 
-        # ------------------------------------------------------------------------
-        # [Right Column] Price Rise (🚀)
-        # ------------------------------------------------------------------------
-        with col_rise:
-            st.markdown(f"#### 🚀 Price Rise ({len(all_rises)}건)")
-            
-            h1, h2, h3, h4 = st.columns([3.5, 1.5, 1.5, 1])
-            h1.markdown(":grey[**품목 (브랜드)**]")
-            h2.markdown(":grey[**현재가**]")
-            h3.markdown(":grey[**상승률**]")
-            h4.markdown("")
-            st.markdown("<hr style='margin: 0; border: none; border-bottom: 2px solid #ddd;'>", unsafe_allow_html=True)
-            
-            for i, (idx, row) in enumerate(all_rises.iloc[:10].iterrows()):
-                render_rise_row(row, f"r_{idx}")
-            
-            if len(all_rises) > 10:
-                with st.expander("목록 전체 펼치기 🔽"):
-                    for i, (idx, row) in enumerate(all_rises.iloc[10:].iterrows()):
-                        render_rise_row(row, f"r_exp_{idx}")
+    part_options = sorted(df_avg['part'].unique())
+    summary_list = []
 
+    for part_name in part_options:
+        part_df = df_avg[df_avg['part'] == part_name].sort_values('date')
+
+        # 현재 가격: latest_date 기준 과거 7일 이내 유효한 최신 가격
+        recent_window = part_df[
+            (part_df['date'] >= latest_date - timedelta(days=7))
+            & (part_df['date'] <= latest_date)
+            & (part_df['wholesale_price'].notna())
+            & (part_df['wholesale_price'] != 0)
+        ].sort_values('date', ascending=False)
+        if recent_window.empty:
+            continue
+        curr_price = recent_window.iloc[0]['wholesale_price']
+
+        def get_price_at_date(target_date):
+            window_start = target_date - timedelta(days=7)
+            window_end = target_date + timedelta(days=7)
+            window_data = part_df[
+                (part_df['date'] >= window_start) & (part_df['date'] <= window_end)
+            ]['wholesale_price'].dropna()
+            if window_data.empty:
+                return None
+            return window_data.mean()
+
+        price_3m = get_price_at_date(date_3m)
+        price_6m = get_price_at_date(date_6m)
+        price_12m = get_price_at_date(date_12m)
+
+        def calc_pct(curr, past):
+            if past is None or past == 0:
+                return None
+            return ((curr - past) / past) * 100
+
+        summary_list.append({
+            "부위": part_name,
+            "현재가": curr_price,
+            "3개월 전 대비": calc_pct(curr_price, price_3m),
+            "6개월 전 대비": calc_pct(curr_price, price_6m),
+            "1년 전 대비": calc_pct(curr_price, price_12m),
+            "_sort_key": calc_pct(curr_price, price_6m) if price_6m else 0
+        })
+
+    df_summary = pd.DataFrame(summary_list)
+
+    if not df_summary.empty:
+        df_summary = df_summary.sort_values(by="_sort_key", ascending=True)
+        df_display = df_summary.drop(columns=["_sort_key"])
+
+        def style_variance(val):
+            if pd.isna(val):
+                return ""
+            if val > 0:
+                return 'color: #D32F2F; background-color: #FFEBEE; font-weight: bold'
+            elif val < 0:
+                return 'color: #1976D2; background-color: #E3F2FD; font-weight: bold'
+            return ""
+
+        def format_pct(val):
+            if pd.isna(val):
+                return "-"
+            return f"{val:+.1f}%"
+
+        st.dataframe(
+            df_display.style
+            .format({"현재가": "{:,.0f}원"})
+            .format(format_pct, subset=["3개월 전 대비", "6개월 전 대비", "1년 전 대비"])
+            .map(style_variance, subset=["3개월 전 대비", "6개월 전 대비", "1년 전 대비"]),
+            use_container_width=True,
+            height=(len(df_display) + 1) * 35 + 3,
+            hide_index=True
+        )
+
+        st.info("💡 **Tip:** '6개월 전 대비' 하락폭이 큰 순서대로 정렬되어 있습니다. 브랜드별 상세 분석은 Price Dashboard에서 확인하세요.")
     else:
-        st.info("데이터가 충분하지 않아 순위를 계산할 수 없습니다.")
+        st.warning("분석할 데이터가 충분하지 않습니다.")
 else:
     st.warning("⚠️ 데이터 파일(dashboard_ready_data.csv)을 찾을 수 없습니다.")
 
