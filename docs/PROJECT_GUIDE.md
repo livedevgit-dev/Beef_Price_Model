@@ -86,14 +86,31 @@ streamlit run src/Home.py
 ### 2.2 일일 데이터 업데이트
 
 ```bash
+# 기본 (미트박스 가격만)
 python src/run_daily_update.py
+
+# 미트박스 가격만 (명시적)
+python src/run_daily_update.py --price-only
+
+# 전체 수집 + 전처리 (USDA·환율·수입량·재고·식약처 포함)
+python src/run_daily_update.py --full
 ```
 
-파이프라인 수행 순서:
+#### `--price-only` (기본) 수행 순서:
 
 1. **수집** — `collectors/crawl_imp_price_meatbox.py` 실행 → `data/1_processed/master_price_data.csv` 갱신
 2. **전처리** — `utils/preprocess_meat_data.py` 실행 → `data/2_dashboard/dashboard_ready_data.csv` 갱신
 3. **문서 갱신** — `utils/extract_data_schema.py` 실행 → `docs/DATA_DICTIONARY.md` 자동생성 스키마 갱신
+
+#### `--full` 수행 순서:
+
+1. **일별 수집** — 미트박스 시세, USDA 부위별/프라이멀 시세, USD/KRW 환율
+2. **월별 수집** — KMTA 수입량, KMTA 재고, 식약처 검역
+3. **USDA 전처리** — `process_usda_data.py` (환율 반영 원가), `preprocess_primal.py` (Plate USD/kg)
+4. **미트박스 전처리** — `preprocess_meat_data.py` → `dashboard_ready_data.csv`
+5. **문서 갱신** — `extract_data_schema.py` → `DATA_DICTIONARY.md`
+
+> **참고**: `--full` 모드에서는 개별 수집기 실패가 전체 파이프라인을 중단하지 않습니다. 실패한 단계는 로그에 표시되며, 나머지 단계는 계속 진행됩니다.
 
 ### 2.3 개별 크롤러 실행
 
@@ -132,10 +149,10 @@ python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
 
 | 모듈 | 역할 | 파이프라인 포함 |
 |------|------|----------------|
-| `preprocess_meat_data` | master → dashboard_ready 변환 (이동평균, 부위/브랜드 분리) | **자동** (일일) |
-| `extract_data_schema` | 데이터 파일 스키마 분석 → DATA_DICTIONARY.md 갱신 | **자동** (일일) |
-| `process_usda_data` | USDA 시세 + 환율 → KRW 원가 산출 | 수동 (주 1회 권장) |
-| `preprocess_primal` | Primal 시세 → plate USD/kg 변환 | 수동 (USDA와 연계) |
+| `preprocess_meat_data` | master → dashboard_ready 변환 (이동평균, 부위/브랜드 분리) | **자동** (일일 · `--full`) |
+| `extract_data_schema` | 데이터 파일 스키마 분석 → DATA_DICTIONARY.md 갱신 | **자동** (일일 · `--full`) |
+| `process_usda_data` | USDA 시세 + 환율 → KRW 원가 산출 | **자동** (`--full`) |
+| `preprocess_primal` | Primal 시세 → plate USD/kg 변환 | **자동** (`--full`) |
 | `feature_engineering` | 월별 ML 피처 생성 (lag, YoY, MoM 등) | 수동 |
 | `feature_engineering_rolling` | 롤링 윈도우 기반 ML 피처 생성 | 수동 |
 | `init_manual_data` | 수동 가격 입력 템플릿 생성 | 수동 (초기 1회) |
@@ -238,3 +255,25 @@ set PYTHONPATH=%PYTHONPATH%;%cd%\src
 # Linux / Mac
 export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 ```
+
+---
+
+## 8. USDA 데이터 장기 미수집 시 복구 가이드
+
+> 등록일: 2026-04-01 (3개월 공백 발생 시점 기준 작성)
+
+USDA 수집기를 장기간 실행하지 않았을 경우 아래 사항에 유의한다.
+
+### 8.1 수집기별 동작 방식
+
+| 수집기 | 방식 | 장기 미수집 시 동작 |
+|--------|------|---------------------|
+| `api_us_beef_collect_usda.py` | **증분 수집** — 마지막 수집일 이후 영업일만 추가 요청 | 공백 기간만큼 자동 보충. 날짜별 4개 섹션 개별 API 호출 → 3개월 ≈ 63영업일 × 4 = ~252회 호출. 130일마다 중간 저장(checkpoint). |
+| `collect_usda_primal.py` | **전체 재수집** — 2019년~현재까지 연도별 전체 요청 | 매 실행마다 전체 히스토리를 다시 수집하므로 공백 자체는 문제 없음. 단, 연도당 1회 API 호출로 대용량 응답 수신. |
+
+### 8.2 장기 공백 복구 시 주의사항
+
+1. **USDA API 속도 제한**: 단시간 대량 호출 시 일시 차단될 수 있음. `api_us_beef_collect_usda.py`는 내부에 `time.sleep`이 있으나, 공백이 6개월 이상이면 실행 시간이 상당히 길어질 수 있음
+2. **실행 순서**: USDA beef → USDA primal → 환율 수집 완료 후, `process_usda_data.py` → `preprocess_primal.py` 순으로 전처리
+3. **네트워크 중단 대비**: `api_us_beef_collect_usda.py`는 130일 단위 중간 저장을 하므로, 중단 후 재실행하면 마지막 저장 지점부터 이어서 수집
+4. **`--full` 모드 활용**: `python src/run_daily_update.py --full` 실행 시 위 전체 과정이 순차 자동 실행됨

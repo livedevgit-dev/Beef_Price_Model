@@ -56,8 +56,8 @@ def visualize_import():
     fig.write_html(output_html)
     
     print("="*60)
-    print(f"✅ 수입량 시각화 완료!")
-    print(f"📊 생성 파일: {output_html}")
+    print(f"[OK] 수입량 시각화 완료!")
+    print(f"생성 파일: {output_html}")
     print("="*60)
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ from config import BEEF_STOCK_XLSX, MASTER_IMPORT_VOLUME_CSV
 # --------------------------------------------------------------------------------
 # 1. 페이지 및 데이터 로드 설정
 # --------------------------------------------------------------------------------
-st.set_page_config(page_title="재고 관리 및 수급 분석", page_icon="🏭", layout="wide")
+st.set_page_config(page_title="재고 관리 및 수급 분석", page_icon="", layout="wide")
 
 def _data_files_mtime():
     """재고/수입 데이터 파일의 최종 수정 시각. 캐시 키로 사용해 파일 갱신 시 자동 재로드."""
@@ -89,7 +89,7 @@ if df_inv is None:
 # --------------------------------------------------------------------------------
 # 2. 사이드바 (필터링 컨트롤)
 # --------------------------------------------------------------------------------
-st.sidebar.header("🥩 부위 선택")
+st.sidebar.header("부위 선택")
 
 # 2-1. 부위 선택
 raw_parts = [p for p in df_inv['part'].unique() if p not in ['합계', '기타', '부산물']]
@@ -131,9 +131,9 @@ df_imp_filtered = df_imp[df_imp['date'] >= start_date].copy() if not df_imp.empt
 # --------------------------------------------------------------------------------
 # 4. 메인 화면: 인사이트 테이블
 # --------------------------------------------------------------------------------
-st.title("🏭 재고(Inventory) 인사이트")
+st.title("재고(Inventory) 인사이트")
 st.markdown(f"**기준 시점:** {latest_date.strftime('%Y년 %m월')} (최신 업데이트)")
-st.caption("💡 기준 시점은 재고 데이터(beef_stock_data.xlsx) 기준입니다. 최신 월이 안 나오면 `src/collectors/crawl_imp_stock_monthly.py`를 실행한 뒤 이 페이지를 새로고침하세요.")
+st.caption("기준 시점은 재고 데이터(beef_stock_data.xlsx) 기준입니다. 최신 월이 안 나오면 `src/collectors/crawl_imp_stock_monthly.py`를 실행한 뒤 이 페이지를 새로고침하세요.")
 
 # 날짜 계산
 date_3m_ago = latest_date - pd.DateOffset(months=3)
@@ -188,14 +188,14 @@ def format_trend_text(val):
 def color_variant(val):
     if pd.isna(val): return ''
     if val > 0:
-        # 🔴 상승 (재고 증가) = 경고성 붉은색
+        # 상승 (재고 증가) = 경고성 붉은색
         return 'background-color: #FFEBEE; color: #D32F2F; font-weight: bold'
     elif val < 0:
-        # 🔵 하락 (재고 감소) = 안정성 파란색
+        # 하락 (재고 감소) = 안정성 파란색
         return 'background-color: #E3F2FD; color: #1976D2; font-weight: bold'
     return ''
 
-st.subheader(f"📋 {selected_option} 재고 변동 현황")
+st.subheader(f"{selected_option} 재고 변동 현황")
 
 table_height = (len(df_insight) + 1) * 35 + 3
 
@@ -209,7 +209,7 @@ st.dataframe(
     hide_index=True
 )
 
-st.caption("※ 배경색 가이드: 🔴 붉은색(재고 상승/증가), 🔵 파란색(재고 하락/감소)")
+st.caption("※ 배경색 가이드: 붉은색(재고 상승/증가), 파란색(재고 하락/감소)")
 st.divider()
 
 # --------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ st.divider()
 # --------------------------------------------------------------------------------
 chart_title_part = "전체 합계(Total)" if selected_option == "전체 보기" else selected_option
 
-tab1, tab2 = st.tabs(["📊 상세 추이 분석", "⚖️ 수입 vs 재고 비교"])
+tab1, tab2 = st.tabs(["상세 추이 분석", "수입 vs 재고 비교"])
 
 # [Tab 1] 재고 추이 (막대 차트)
 with tab1:
@@ -307,4 +307,4 @@ with tab2:
         # 데이터 시차 안내 문구
         if not merged['재고량(톤)'].dropna().empty:
             last_inv_date = merged['재고량(톤)'].dropna().index.max().strftime('%Y-%m')
-            st.caption(f"💡 참고: 재고 데이터는 {last_inv_date}까지만 제공됩니다. (이후 구간은 수입량만 표시됨)")
+            st.caption(f"참고: 재고 데이터는 {last_inv_date}까지만 제공됩니다. (이후 구간은 수입량만 표시됨)")

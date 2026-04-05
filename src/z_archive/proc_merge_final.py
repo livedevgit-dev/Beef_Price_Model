@@ -122,10 +122,10 @@ def main():
     master_df.to_csv(save_path, index=False, encoding='utf-8-sig')
 
     print("==========================================")
-    print(f"   ✅ [성공] 마스터 데이터셋 생성 완료")
-    print(f"   📂 저장 경로: {save_path}")
-    print(f"   📊 총 데이터: {len(master_df)}행")
-    print(f"   📅 데이터 기간: {master_df['date'].min().date()} ~ {master_df['date'].max().date()}")
+    print(f"   [OK] 마스터 데이터셋 생성 완료")
+    print(f"   저장 경로: {save_path}")
+    print(f"   총 데이터: {len(master_df)}행")
+    print(f"   데이터 기간: {master_df['date'].min().date()} ~ {master_df['date'].max().date()}")
     print("==========================================")
     print(master_df.head())
 

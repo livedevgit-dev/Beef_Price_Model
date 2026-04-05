@@ -64,9 +64,9 @@ def smooth_scroll(driver):
 def wait_for_manual_login(driver):
     """안전한 수동 로그인 무한 대기"""
     print("==========================================================")
-    print("🚨 [1단계] 열린 브라우저에서 직접 카카오 계정으로 로그인해 주세요.")
-    print("🚨 [2단계] 로그인이 완전히 끝나고 다음(Daum) 화면으로 넘어가면,")
-    print("🚨 [3단계] 이 터미널 창으로 돌아와서 [Enter] 키를 누르세요.")
+    print("[!] [1단계] 열린 브라우저에서 직접 카카오 계정으로 로그인해 주세요.")
+    print("[!] [2단계] 로그인이 완전히 끝나고 다음(Daum) 화면으로 넘어가면,")
+    print("[!] [3단계] 이 터미널 창으로 돌아와서 [Enter] 키를 누르세요.")
     print("==========================================================")
     
     # 유저가 제공한 확실한 카카오 로그인 URL로 바로 이동
@@ -74,7 +74,7 @@ def wait_for_manual_login(driver):
     driver.get(login_url)
     
     input("로그인 완료 후 화면이 넘어가면 Enter를 눌러주세요...")
-    print("\n✅ 확인되었습니다. 사람의 속도로 천천히 수집을 시작합니다. 브라우저를 끄지 마세요.")
+    print("\n[OK] 확인되었습니다. 사람의 속도로 천천히 수집을 시작합니다. 브라우저를 끄지 마세요.")
 
 def get_yesterday_string():
     yesterday = datetime.now() - timedelta(days=1)
@@ -110,7 +110,7 @@ def crawl_cafe_board(driver, board_type, url):
         # DOM 파싱 범위 확대 (tbody가 없거나 tr 클래스가 다를 경우 대비)
         rows = soup.select('table.board-list tr')
         if not rows:
-            print("  -> 🚨 [경고] 게시글 목록을 찾을 수 없습니다. (테이블 구조가 변경되었거나 봇 차단됨)")
+            print("  -> [경고] 게시글 목록을 찾을 수 없습니다. (테이블 구조가 변경되었거나 봇 차단됨)")
             break
             
         print(f"  -> {page_num}페이지 파싱 중... (현재 프레임 내 게시글 {len(rows)}개 발견)")
@@ -212,7 +212,7 @@ def main():
             df = pd.DataFrame(all_data)
             os.makedirs(DATA_RAW, exist_ok=True)
             df.to_csv(RAW_CAFE_CRAWLING_CSV, index=False, encoding='utf-8-sig')
-            print(f"\n🎉 크롤링 완료! 총 {len(df)}건의 데이터가 저장되었습니다.")
+            print(f"\n[완료] 크롤링 완료! 총 {len(df)}건의 데이터가 저장되었습니다.")
             print(f"저장 경로: {RAW_CAFE_CRAWLING_CSV}")
         else:
             print("\n어제 날짜로 등록된 게시글이 없거나 수집에 실패했습니다.")

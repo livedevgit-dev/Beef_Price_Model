@@ -13,7 +13,7 @@ from config import DASHBOARD_READY_CSV
 
 st.set_page_config(
     page_title="Beef Data Insight Platform",
-    page_icon="🥩",
+    page_icon="",
     layout="wide"
 )
 
@@ -35,7 +35,7 @@ def load_dashboard_data():
 st.title("Beef Data Insight Platform")
 st.divider()
 
-st.subheader("📉 부위별 시세 변동 요약")
+st.subheader("부위별 시세 변동 요약")
 
 df = load_dashboard_data()
 
@@ -125,16 +125,16 @@ if df is not None:
             hide_index=True
         )
 
-        st.info("💡 **Tip:** '6개월 전 대비' 하락폭이 큰 순서대로 정렬되어 있습니다. 브랜드별 상세 분석은 Price Dashboard에서 확인하세요.")
+        st.info("**Tip:** '6개월 전 대비' 하락폭이 큰 순서대로 정렬되어 있습니다. 브랜드별 상세 분석은 Price Dashboard에서 확인하세요.")
     else:
         st.warning("분석할 데이터가 충분하지 않습니다.")
 else:
-    st.warning("⚠️ 데이터 파일(dashboard_ready_data.csv)을 찾을 수 없습니다.")
+    st.warning("데이터 파일(dashboard_ready_data.csv)을 찾을 수 없습니다.")
 
 st.markdown("---")
 
 # 하단 네비게이션
 c1, c2, c3 = st.columns(3)
-c1.metric("📊 Price Analysis", "Active", "Update 09:00")
-c2.metric("🚢 Import Volume", "Coming Soon", delta_color="off")
-c3.metric("📦 Inventory", "Coming Soon", delta_color="off")
+c1.metric("Price Analysis", "Active", "Update 09:00")
+c2.metric("Import Volume", "Coming Soon", delta_color="off")
+c3.metric("Inventory", "Coming Soon", delta_color="off")

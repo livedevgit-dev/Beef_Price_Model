@@ -26,7 +26,7 @@ def analyze_structure():
     
     debug_file = os.path.join(save_dir, "debug_page_source.html")
 
-    print("🔍 [진단 시작] 브라우저를 실행하고 페이지 구조를 분석합니다...")
+    print("[진단 시작] 브라우저를 실행하고 페이지 구조를 분석합니다...")
     
     options = webdriver.ChromeOptions()
     # options.add_argument('--headless') # 화면을 보면서 확인하기 위해 주석 처리
@@ -77,10 +77,10 @@ def analyze_structure():
                 count += 1
 
     except Exception as e:
-        print(f"❌ 에러 발생: {e}")
+        print(f"[ERROR] 에러 발생: {e}")
     finally:
         driver.quit()
-        print("\n🔍 [진단 종료]")
+        print("\n[진단 종료]")
 
 if __name__ == "__main__":
     analyze_structure()

@@ -114,7 +114,7 @@ def y_fmt(x, pos):
 # ---------------------------------------------------------
 # 4. 시각화
 # ---------------------------------------------------------
-st.title("🥩 미국산 소고기 수급 현황")
+st.title("미국산 소고기 수급 현황")
 st.markdown("---")
 
 imp_data, stk_data = load_data_final()
@@ -193,7 +193,7 @@ if not imp_data.empty:
 
     st.pyplot(fig)
     
-    with st.expander("📋 상세 데이터 보기 (Ton)"):
+    with st.expander("상세 데이터 보기 (Ton)"):
         if has_stock:
             view_df = combined[['Import', 'Stock']].sort_index(ascending=False)
             view_df.columns = ['수입량', '재고량']

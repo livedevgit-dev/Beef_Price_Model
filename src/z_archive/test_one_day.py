@@ -16,7 +16,7 @@ def find_correct_syntax():
     api_key = os.getenv("USDA_API_KEY")
     base_url = "https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2453/Choice Cuts"
     
-    print("🔍 [1단계] 최신 데이터 1건을 조회하여 '확실히 존재하는 날짜'를 확보합니다...")
+    print("[1단계] 최신 데이터 1건을 조회하여 '확실히 존재하는 날짜'를 확보합니다...")
     
     # 1. 쿼리 없이 요청 (Default: 최신 데이터)
     try:
@@ -24,16 +24,16 @@ def find_correct_syntax():
         data = response.json()
         
         if not data.get('results'):
-            print("❌ 최신 데이터 조회 실패. API 상태를 점검해주세요.")
+            print("[실패] 최신 데이터 조회 실패. API 상태를 점검해주세요.")
             return
 
         # 확실히 존재하는 날짜 추출
         valid_date = data['results'][0]['report_date']
-        print(f"✅ 확보된 유효 날짜: {valid_date}")
+        print(f"[OK] 확보된 유효 날짜: {valid_date}")
         print("-" * 60)
         
     except Exception as e:
-        print(f"⛔ 1단계 에러: {e}")
+        print(f"[중단] 1단계 에러: {e}")
         return
 
     # 2. 다양한 문법으로 테스트 시도
@@ -47,10 +47,10 @@ def find_correct_syntax():
         (f"report_date='{valid_date.replace('/', '-')}'", "대시(-) 사용 (Case C)")
     ]
     
-    print(f"🔍 [2단계] '{valid_date}' 날짜로 검색 문법 테스트를 시작합니다...\n")
+    print(f"[2단계] '{valid_date}' 날짜로 검색 문법 테스트를 시작합니다...\n")
     
     for query, desc in test_cases:
-        print(f"🧪 테스트: {desc}")
+        print(f"테스트: {desc}")
         print(f"   Query: {query}")
         
         try:
@@ -64,24 +64,24 @@ def find_correct_syntax():
             
             # 결과 확인
             if "No Results Found" in res.text:
-                print("   👉 결과: ❌ 실패 (No Results)")
+                print("   -> 결과: [실패] (No Results)")
             elif res.status_code == 200:
                 try:
                     json_data = res.json()
                     count = len(json_data.get('results', []))
                     if count > 0:
-                        print(f"   👉 결과: 🎉 성공! ({count}건 수집됨)")
-                        print(f"\n✅ 정답 문법은 [{desc}] 입니다!")
+                        print(f"   -> 결과: 성공! ({count}건 수집됨)")
+                        print(f"\n[OK] 정답 문법은 [{desc}] 입니다!")
                         return # 성공하면 종료
                     else:
-                        print("   👉 결과: ❓ 빈 리스트 (JSON은 왔으나 데이터 없음)")
+                        print("   -> 결과: 빈 리스트 (JSON은 왔으나 데이터 없음)")
                 except:
-                    print(f"   👉 결과: ⚠️ JSON 파싱 실패 ({res.text[:20]})")
+                    print(f"   -> 결과: [주의] JSON 파싱 실패 ({res.text[:20]})")
             else:
-                print(f"   👉 결과: ❌ 에러 코드 {res.status_code}")
+                print(f"   -> 결과: [실패] 에러 코드 {res.status_code}")
                 
         except Exception as e:
-            print(f"   ⛔ 에러: {e}")
+            print(f"   [중단] 에러: {e}")
             
         print("-" * 40)
 

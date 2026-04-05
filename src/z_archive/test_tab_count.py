@@ -94,7 +94,7 @@ def main():
         ActionChains(driver).move_to_element(search_btn).click().perform()
         
         print("\n" + "="*60)
-        print("🚀 [테스트 시작] 이제 직접 키보드의 'Tab' 키를 눌러보세요.")
+        print("[테스트 시작] 이제 직접 키보드의 'Tab' 키를 눌러보세요.")
         print("   - 현재 포커스는 '조회' 버튼에 있습니다.")
         print("   - 탭을 한 번씩 누르면서, 표 안의 데이터(행)가 선택될 때까지 횟수를 세어주세요.")
         print("   - (보통 표가 선택되면 행 색깔이 바뀌거나 점선 테두리가 생깁니다.)")

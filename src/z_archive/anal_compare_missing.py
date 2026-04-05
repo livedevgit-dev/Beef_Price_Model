@@ -19,14 +19,14 @@ def compare_history_vs_id_list():
     # 비교 대상: ID 리스트 (Raw)
     id_list_file = os.path.join(project_root, 'data', '0_raw', 'meatbox_id_list.xlsx')
     
-    print("📊 [검증 시작] '정제된 이력 데이터' vs 'ID 리스트' 비교\n")
+    print("[검증 시작] '정제된 이력 데이터' vs 'ID 리스트' 비교\n")
 
     if not os.path.exists(history_file):
-        print(f"❌ [에러] 이력 파일이 없습니다: {history_file}")
+        print(f"[ERROR] 이력 파일이 없습니다: {history_file}")
         print("   -> 아직 한 번도 데이터 수집/정제를 돌리지 않았을 수 있습니다.")
         return
     if not os.path.exists(id_list_file):
-        print(f"❌ [에러] ID 리스트 파일이 없습니다: {id_list_file}")
+        print(f"[ERROR] ID 리스트 파일이 없습니다: {id_list_file}")
         return
 
     # ------------------------------------------------------------------
@@ -54,7 +54,7 @@ def compare_history_vs_id_list():
     missing_items = []
     matched_count = 0
 
-    print("🔍 대조 작업 진행 중...", end="")
+    print("대조 작업 진행 중...", end="")
 
     for idx, row in df_target.iterrows():
         # 이력 파일의 품목명
@@ -81,8 +81,8 @@ def compare_history_vs_id_list():
     # [4] 결과 리포트
     # ------------------------------------------------------------------
     print("-" * 50)
-    print(f"✅ 매칭 성공: {matched_count}개")
-    print(f"❌ 매칭 실패(누락): {len(missing_items)}개")
+    print(f"[OK] 매칭 성공: {matched_count}개")
+    print(f"[실패] 매칭 실패(누락): {len(missing_items)}개")
     print("-" * 50)
 
     if missing_items:
@@ -96,10 +96,10 @@ def compare_history_vs_id_list():
         # 파일 저장
         save_path = os.path.join(project_root, 'data', '2_final', 'missing_check_result.xlsx')
         pd.DataFrame(missing_items, columns=['누락_품목명']).to_excel(save_path, index=False)
-        print(f"\n📂 누락 리스트 저장 완료: {save_path}")
-        print("💡 팁: 누락된 품목들은 '품절'이거나 '상품명이 변경'되었을 가능성이 높습니다.")
+        print(f"\n누락 리스트 저장 완료: {save_path}")
+        print("팁: 누락된 품목들은 '품절'이거나 '상품명이 변경'되었을 가능성이 높습니다.")
     else:
-        print("🎉 [완벽함] 관리 중인 모든 품목의 ID가 정상적으로 확보되었습니다!")
+        print("[완벽함] 관리 중인 모든 품목의 ID가 정상적으로 확보되었습니다!")
         print("   이제 과거 데이터 수집(Batch Crawling)을 진행하셔도 좋습니다.")
 
 if __name__ == "__main__":

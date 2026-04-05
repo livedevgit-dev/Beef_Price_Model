@@ -15,7 +15,7 @@ def preview_data():
     print("[프리뷰] USDA Composite Primal Values 데이터 스캔")
     print("=" * 60)
 
-    # 💥 기획자님이 찾아주신 정확한 방 이름으로 URL 수정 💥
+    # 기획자님이 찾아주신 정확한 방 이름으로 URL 수정
     base_url = "https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2453/Composite%20Primal%20Values"
     
     # 확실한 과거 날짜 세팅
@@ -34,7 +34,7 @@ def preview_data():
             if 'results' in data and len(data['results']) > 0:
                 df = pd.DataFrame(data['results'])
                 
-                print("🎉 유레카! 성공적으로 데이터를 가져왔습니다.\n")
+                print("유레카! 성공적으로 데이터를 가져왔습니다.\n")
                 
                 print("[1] 제공되는 전체 컬럼(항목) 목록:")
                 print(f"  {df.columns.tolist()}\n")

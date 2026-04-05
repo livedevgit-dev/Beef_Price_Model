@@ -20,7 +20,7 @@ PROCESSED_FILE = USDA_PLATE_USD_KG_CSV
 
 def preprocess_primal():
     print("=" * 60)
-    print("🥩 USDA Primal Plate(우삼겹) 데이터 전처리 시작 (환율 제외)")
+    print("[시작] USDA Primal Plate(우삼겹) 데이터 전처리 (환율 제외)")
     print("=" * 60)
 
     if not RAW_FILE.exists():
@@ -65,8 +65,8 @@ def preprocess_primal():
     ensure_dirs()
     df_final.to_csv(str(PROCESSED_FILE), index=False, encoding='utf-8-sig')
     
-    print(f"✅ 전처리 완료! 총 {len(df_final)}일 치의 우삼겹 USD/kg 데이터가 생성되었습니다.")
-    print(f"📁 저장 위치: {PROCESSED_FILE}")
+    print(f"[완료] 전처리 완료! 총 {len(df_final)}일 치의 우삼겹 USD/kg 데이터가 생성되었습니다.")
+    print(f"[저장 위치] {PROCESSED_FILE}")
     print("=" * 60)
     print(df_final.head())
 

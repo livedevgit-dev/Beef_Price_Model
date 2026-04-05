@@ -51,11 +51,11 @@ def find_datalist_in_context(driver, context_name="Main"):
     try:
         data_lists = driver.execute_script(script)
         if data_lists:
-            print(f"\n🔎 [{context_name}] 탐색 결과:")
+            print(f"\n[{context_name}] 탐색 결과:")
             for dl in data_lists:
-                print(f"   🔹 ID: {dl['id']}")
-                print(f"   📦 개수: {dl['count']}")
-                print(f"   👀 샘플: {str(dl['sample'])[:60]}...")
+                print(f"   ID: {dl['id']}")
+                print(f"   개수: {dl['count']}")
+                print(f"   샘플: {str(dl['sample'])[:60]}...")
                 print("-" * 40)
             return True
     except:
@@ -99,18 +99,18 @@ def main():
 
         js_click(driver, driver.find_element(By.ID, "mf_win_main_subWindow0_wframe_btn_search"))
         
-        print("   ⏳ 데이터 로딩 대기 (40초)...")
+        print("   데이터 로딩 대기 (40초)...")
         time.sleep(40)
 
         # 4. [핵심] 메인 프레임 + 모든 Iframe 순회 탐색
-        print("\n3. 🕵️‍♂️ 모든 프레임(Iframe) 정밀 수색 중...")
+        print("\n3. 모든 프레임(Iframe) 정밀 수색 중...")
         
         # (1) 메인 프레임 탐색
         find_datalist_in_context(driver, "메인 프레임")
 
         # (2) Iframe 탐색
         iframes = driver.find_elements(By.TAG_NAME, "iframe")
-        print(f"   👉 발견된 Iframe 개수: {len(iframes)}개")
+        print(f"   -> 발견된 Iframe 개수: {len(iframes)}개")
 
         for i, frame in enumerate(iframes):
             try:
@@ -121,12 +121,12 @@ def main():
                 driver.switch_to.default_content()
 
         print("\n" + "="*60)
-        print("💡 위 결과에서 '소고기' 데이터가 보이는 ID를 알려주세요.")
+        print("위 결과에서 '소고기' 데이터가 보이는 ID를 알려주세요.")
         print("   (예: dlt_impList, dlt_grdResult, list1 등)")
         print("="*60)
 
     except Exception as e:
-        print(f"\n❌ [오류] {e}")
+        print(f"\n[ERROR] {e}")
 
 if __name__ == "__main__":
     main()

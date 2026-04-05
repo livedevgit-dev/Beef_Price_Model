@@ -233,6 +233,36 @@ Beef_Price_Model/
 |-------|------|--------|------|
 | **Phase 1**: 경로·설정 통합 | **완료** | 2025-03-03 | `src/config.py` 추가, 경로 일원화 |
 | **Phase 2**: 문서·의존성 정리 | **완료** | 2026-03-25 | docs/ 통합, 중복 문서 제거, `src/README.md` → `docs/PROJECT_GUIDE.md` 이전, `DATA_DICTIONARY.md` + `data_schema_summary.md` 통합, `extract_data_schema.py` → DATA_DICTIONARY 부록 갱신 방식으로 전환 |
-| **Phase 3**: 파이프라인 확장 | 미착수 | — | `run_daily_update.py` 확장 (`--full` / `--price-only`) |
+| **Phase 3**: 파이프라인 확장 | **완료** | 2026-04-01 | `run_daily_update.py`에 `--full` / `--price-only` 옵션 추가, USDA·환율·수입량·재고·식약처 수집기 통합 |
 | **Phase 4**: z_archive 정리 | 미착수 | — | 레거시 스크립트 분류·정리 |
 | **Phase 5**: utils 패키지 정리 | 미착수 | — | `__init__.py` 확장, 역할 정리 |
+
+---
+
+## 7. 보류 항목 (향후 작업)
+
+> 등록일: 2026-04-01
+
+아래 항목은 난이도가 높아 현 단계에서는 보류하며, 추후 별도 작업으로 진행한다.
+
+### 7.1 축산물품질평가원 경락가격 (`crawl_han_auction_api.py`)
+
+- **현황**: 크롤러 코드(`src/collectors/crawl_han_auction_api.py`)는 존재하나, `data/0_raw/`에 수집된 출력 파일이 없음
+- **원인 추정**: 축평원 API 키 발급·연동 미완료 또는 API 응답 구조 변경 가능성
+- **필요 작업**:
+  1. 축평원 API 키 유효성 확인 (`.env` 내 키 존재 여부 및 만료 여부)
+  2. API 응답 정상 수신 테스트
+  3. 출력 파일명·경로를 `config.py`에 정의 (현재 미정의)
+  4. 정상 동작 확인 후 `run_daily_update.py` 일일 파이프라인에 편입
+- **난이도**: 높음 (외부 API 의존, 키 발급 절차 필요)
+
+### 7.2 미트미플 카페 B2B 크롤링 (`collect_cafe_b2b.py`)
+
+- **현황**: 크롤러 코드(`src/collectors/collect_cafe_b2b.py`)와 config 변수(`RAW_CAFE_CRAWLING_CSV`)는 존재하나, 실제 출력 파일(`data/0_raw/raw_cafe_b2b_crawling.csv`)이 생성된 적 없음
+- **원인 추정**: 카페 크롤링 특성상 로그인·세션 관리 필요, 사이트 구조 변경 가능성
+- **필요 작업**:
+  1. 미트미플 카페 접근 계정 및 크롤링 가능 여부 확인
+  2. Selenium 기반 로그인·세션 유지 로직 점검
+  3. 크롤링 대상 페이지 구조 변경 여부 확인 및 파서 수정
+  4. 정상 동작 확인 후 수집 주기 결정 (수시 → 주 1회 등)
+- **난이도**: 높음 (로그인 크롤링, 사이트 구조 변경 대응 필요)

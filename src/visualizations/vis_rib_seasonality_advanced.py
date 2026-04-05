@@ -55,7 +55,7 @@ def main():
     df_yearly_summary = pd.DataFrame(yearly_minmax)
     
     print("\n==================================================")
-    print("📊 [로직 1] 연도별 갈비(냉동) 최고/최저가 시점 추적")
+    print("[로직 1] 연도별 갈비(냉동) 최고/최저가 시점 추적")
     print("==================================================")
     print(df_yearly_summary.to_string(index=False))
     print("--------------------------------------------------")
@@ -126,7 +126,7 @@ def main():
     roi_raw = (spread / min_price) * 100
     
     print("\n==================================================")
-    print("💡 [로직 2] EMA 최근 트렌드 기반 차익(Arbitrage) 산출")
+    print("[로직 2] EMA 최근 트렌드 기반 차익(Arbitrage) 산출")
     print("==================================================")
     print(f"1. 최적 매수 달 (최근 트렌드 기준): {int(min_month)}월 (가중평균 {min_price:,.0f}원)")
     print(f"2. 최적 매도 달 (최근 트렌드 기준): {int(max_month)}월 (가중평균 {max_price:,.0f}원)")

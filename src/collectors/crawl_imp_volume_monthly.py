@@ -80,7 +80,7 @@ if start_dt > end_dt:
 
 date_range = pd.date_range(start=start_date, end=end_date, freq='MS')
 
-print(f"--- [시작] 미국/호주 냉동 데이터 수집 (Target: {SAVE_FILENAME}) ---")
+print(f"--- [시작] 미국/호주 냉동 데이터 수집 (Target: {SAVE_PATH.name}) ---")
 if start_date != START_DATE:
     print(f"--- [증분 수집] 기간: {start_date[:7]} ~ {end_date[:7]} (신규 데이터만) ---")
 else:
@@ -95,7 +95,7 @@ for target_date in date_range:
     year = str(target_date.year)
     month = f"{target_date.month:02d}"
     
-    print(f"▶ {year}-{month} 처리 중...", end=" ")
+    print(f">> {year}-{month} 처리 중...", end=" ")
     
     form_data = {
         "ymw_y": year,
@@ -207,7 +207,7 @@ if all_data:
         # 기존 + 신규 병합, 중복 제거 (std_date + 구분 기준)
         final_df = pd.concat([existing_df, new_df], ignore_index=True)
         final_df = final_df.drop_duplicates(subset=['std_date', '구분'], keep='last')
-        print(f"📦 병합: 기존 {len(existing_df)}행 + 신규 {len(new_df)}행 = 총 {len(final_df)}행")
+        print(f"[병합] 기존 {len(existing_df)}행 + 신규 {len(new_df)}행 = 총 {len(final_df)}행")
     else:
         final_df = new_df
 
@@ -217,13 +217,13 @@ if all_data:
     # 저장
     final_df.to_csv(SAVE_PATH, index=False, encoding='utf-8-sig')
 
-    print(f"✅ 수집 및 정렬 완료!")
-    print(f"📂 저장 경로: {SAVE_PATH}")
-    print(f"📊 총 데이터: {len(final_df)}행")
-    print(f"📅 최신 데이터: {final_df.iloc[0]['std_date']} (상단 확인)")
+    print(f"[완료] 수집 및 정렬 완료!")
+    print(f"[저장 경로] {SAVE_PATH}")
+    print(f"[총 데이터] {len(final_df)}행")
+    print(f"[최신 데이터] {final_df.iloc[0]['std_date']} (상단 확인)")
 else:
     if os.path.exists(SAVE_PATH):
-        print("ℹ️ 신규 수집 데이터 없음 (아직 업데이트 안 됨). 기존 파일 유지.")
+        print("[정보] 신규 수집 데이터 없음 (아직 업데이트 안 됨). 기존 파일 유지.")
     else:
-        print("❌ 실패: 수집된 데이터가 없습니다.")
+        print("[실패] 수집된 데이터가 없습니다.")
 print("="*50)

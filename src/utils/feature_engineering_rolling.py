@@ -65,7 +65,7 @@ def create_rolling_targets(df):
         df[f'us_price_lag_{lag}'] = df['us_price'].shift(lag)
         df[f'exchange_rate_lag_{lag}'] = df['exchange_rate'].shift(lag)
 
-    # 💡 [핵심] 기획자 로직: 향후 1~6개월 뒤 가격을 모두 가져옴
+    # [핵심] 기획자 로직: 향후 1~6개월 뒤 가격을 모두 가져옴
     lead_cols = []
     for i in range(1, 7):
         col_name = f'kr_price_lead_{i}'

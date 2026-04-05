@@ -37,7 +37,7 @@ def process_and_visualize():
         # 시각화 파일 저장 (웹브라우저로 열림)
         viz_path = os.path.join(output_dir, "beef_stock_trend.html")
         fig.write_html(viz_path)
-        print(f"✅ 재고 시각화 완료: {viz_path}")
+        print(f"[OK] 재고 시각화 완료: {viz_path}")
     except Exception as e:
         print(f"[오류] 재고 분석 실패: {e}")
 
@@ -53,7 +53,7 @@ def process_and_visualize():
         with pd.ExcelWriter(vol_report_path, engine='openpyxl') as writer:
             df_vol.to_excel(writer, sheet_name='수입량_원본확인', index=False)
         
-        print(f"✅ 수입량 원본 확인용 파일 생성: {vol_report_path}")
+        print(f"[OK] 수입량 원본 확인용 파일 생성: {vol_report_path}")
     except Exception as e:
         print(f"[오류] 수입량 추출 실패: {e}")
 

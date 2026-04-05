@@ -21,7 +21,7 @@ def show_full_menu(slug_id="2453"):
     # Choice Cuts 섹션 (모든 부분육이 들어있는 곳)
     url = f"https://mpr.datamart.ams.usda.gov/services/v1.1/reports/{slug_id}/Choice Cuts"
     
-    print("🥩 USDA 전체 메뉴판(Choice Cuts) 조회 중...")
+    print("USDA 전체 메뉴판(Choice Cuts) 조회 중...")
     
     try:
         response = requests.get(url, auth=(api_key, ''), verify=False)
@@ -41,7 +41,7 @@ def show_full_menu(slug_id="2453"):
             # 중복 제거 후 정렬
             full_menu = sorted(df[desc_col].unique())
             
-            print(f"\n✅ 조회 성공! 총 {len(full_menu)}개의 부위가 발견되었습니다.\n")
+            print(f"\n[OK] 조회 성공! 총 {len(full_menu)}개의 부위가 발견되었습니다.\n")
             print("=" * 60)
             print(f"{'No.':<4} | 품목명 (Item Description)")
             print("=" * 60)
@@ -50,7 +50,7 @@ def show_full_menu(slug_id="2453"):
                 print(f"{i+1:<4} | {item}")
                 
             print("=" * 60)
-            print("👉 위 목록에서 모니터링하고 싶은 부위 번호나 이름을 알려주세요.")
+            print("-> 위 목록에서 모니터링하고 싶은 부위 번호나 이름을 알려주세요.")
             
     except Exception as e:
         print(f"에러 발생: {e}")

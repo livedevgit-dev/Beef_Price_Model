@@ -12,7 +12,7 @@ from config import DATA_RAW, DATA_PROCESSED, MASTER_PRICE_CSV
 # - 저장: data/1_processed/validation_mapping_result.csv
 
 def validate_mapping():
-    print("🔍 [Validation] 데이터 매핑 정합성 검사를 시작합니다...\n")
+    print("[Validation] 데이터 매핑 정합성 검사를 시작합니다...\n")
     
     # 1. 경로 설정
     beef_path = DATA_RAW / 'usda_choice_cuts_history.csv'
@@ -20,7 +20,7 @@ def validate_mapping():
 
     # 2. 데이터 로드
     if not beef_path.exists():
-        print("❌ USDA Raw 데이터가 없습니다.")
+        print("USDA Raw 데이터가 없습니다.")
         return
     
     df_beef = pd.read_csv(str(beef_path))
@@ -32,7 +32,7 @@ def validate_mapping():
         name_col = next((c for c in df_master.columns if 'part' in c or '품목' in c), None)
         if name_col:
             master_parts = set(df_master[name_col].unique())
-            print(f"✅ Master 데이터 로드 완료 ({len(master_parts)}개 품목 기준)")
+            print(f"Master 데이터 로드 완료 ({len(master_parts)}개 품목 기준)")
 
     # 3. 매핑 규칙 정의
     mapping_rules = [
@@ -55,7 +55,7 @@ def validate_mapping():
         return 'Unmapped', None
 
     # 4. 매핑 적용
-    print("🔄 매핑 시뮬레이션 중...")
+    print("매핑 시뮬레이션 중...")
     df_beef[['korean_name', 'matched_code']] = df_beef['item_description'].apply(
         lambda x: pd.Series(apply_mapping(x))
     )
@@ -75,7 +75,7 @@ def validate_mapping():
         note = ""
 
         if k_name == 'Unmapped':
-            status = "⚠️ 매핑 제외"
+            status = "[제외] 매핑 제외"
             note = "분석 대상 아님 (필요 시 규칙 추가)"
         else:
             # Master 파일에 존재하는지 확인
@@ -85,10 +85,10 @@ def validate_mapping():
                     is_found = True
             
             if is_found:
-                status = "✅ 정상 (Ready)"
+                status = "[정상] 정상 (Ready)"
                 note = "Master 파일과 연결 가능"
             else:
-                status = "❌ 이름 불일치"
+                status = "[불일치] 이름 불일치"
                 note = f"'{k_name}'이 Master 파일에 없음"
 
         results.append({
@@ -109,12 +109,12 @@ def validate_mapping():
     df_result.to_csv(str(save_path), index=False, encoding='utf-8-sig')
 
     print("\n" + "=" * 60)
-    print(f"📊 [검증 결과 저장 완료]")
-    print(f"📂 파일 경로: {save_path}")
+    print(f"[검증 결과 저장 완료]")
+    print(f"파일 경로: {save_path}")
     print("=" * 60)
-    print("👉 엑셀로 열어서 'Status' 컬럼을 확인하세요.")
-    print("   1. '❌ 이름 불일치'가 있으면 매핑 규칙 수정 필요")
-    print("   2. '⚠️ 매핑 제외' 중 중요한 부위가 있는지 확인")
+    print("엑셀로 열어서 'Status' 컬럼을 확인하세요.")
+    print("   1. '[불일치] 이름 불일치'가 있으면 매핑 규칙 수정 필요")
+    print("   2. '[제외] 매핑 제외' 중 중요한 부위가 있는지 확인")
 
 if __name__ == "__main__":
     validate_mapping()

@@ -23,21 +23,21 @@ OUTPUT_FILE = USDA_PRIMAL_HISTORY_CSV
 
 def collect_all_primal_data():
     print("=" * 60)
-    print("🚀 [수집 시작] USDA Composite Primal Values 전체 과거 데이터")
+    print("[수집 시작] USDA Composite Primal Values 전체 과거 데이터")
     print("=" * 60)
 
     # 기획자님이 찾아낸 100% 정확한 엔드포인트
     base_url = "https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2453/Composite%20Primal%20Values"
     
-    years = range(2019, 2027) # 2019년부터 2026년 현재까지
+    current_year = pd.Timestamp.today().year
+    years = range(2019, current_year + 1)
     all_data = []
 
     for year in years:
         start_date = f"01/01/{year}"
         end_date = f"12/31/{year}"
         
-        # 현재 연도(2026년)인 경우 오늘 날짜까지만 세팅
-        if year == 2026:
+        if year == current_year:
             end_date = pd.Timestamp.today().strftime('%m/%d/%Y')
 
         query_url = f"{base_url}?q=report_date={start_date}:{end_date}"
@@ -68,8 +68,8 @@ def collect_all_primal_data():
     df = pd.DataFrame(all_data)
     df.to_csv(str(OUTPUT_FILE), index=False, encoding='utf-8-sig')
     print("=" * 60)
-    print(f"🎉 [수집 완료] 총 {len(df)}건의 Primal 데이터 적재 성공!")
-    print(f"📁 저장 위치: {OUTPUT_FILE.resolve()}")
+    print(f"[수집 완료] 총 {len(df)}건의 Primal 데이터 적재 성공!")
+    print(f"[저장 위치] {OUTPUT_FILE.resolve()}")
     print("=" * 60)
     
     # 우리가 가장 기다렸던 Short Plate 데이터가 잘 들어왔는지 최종 검증
