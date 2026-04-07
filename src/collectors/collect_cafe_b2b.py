@@ -12,7 +12,6 @@ import random
 from datetime import datetime, timedelta
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from bs4 import BeautifulSoup
@@ -21,6 +20,7 @@ from bs4 import BeautifulSoup
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import DATA_RAW, RAW_CAFE_CRAWLING_CSV
+from utils.selenium_chrome import build_chrome_driver
 
 # 타겟 게시판 URL
 BOARDS = {
@@ -36,11 +36,7 @@ def init_driver():
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
     
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    driver_path = os.path.join(os.path.dirname(current_dir), "chromedriver.exe") 
-    
-    service = Service(executable_path=driver_path)
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = build_chrome_driver(options)
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     return driver
 

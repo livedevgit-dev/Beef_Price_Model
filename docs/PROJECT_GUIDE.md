@@ -94,7 +94,22 @@ python src/run_daily_update.py --price-only
 
 # 전체 수집 + 전처리 (USDA·환율·수입량·재고·식약처 포함)
 python src/run_daily_update.py --full
+
+# 성공 시 GitHub 반영: 커밋 후 원격 푸시
+python src/run_daily_update.py --full --push
 ```
+
+#### 성공 시 자동 Git 커밋
+
+모든 단계가 성공(`실패 0`)이면 `data/0_raw`, `data/1_processed`, `data/2_dashboard`, `docs/DATA_DICTIONARY.md`만 스테이징하여 커밋합니다(소스 코드는 포함하지 않음).
+
+| 옵션 / 환경변수 | 설명 |
+|-----------------|------|
+| (기본) | 성공 시 로컬 `git commit` |
+| `--no-commit` | 커밋 생략 |
+| `--push` 또는 `PIPELINE_GIT_PUSH=1` | 커밋 후 `git push` (GitHub 등 원격에 반영) |
+
+원격 푸시는 자격 증명(SSH, 자격 증명 관리자 등)이 미리 설정되어 있어야 합니다.
 
 #### `--price-only` (기본) 수행 순서:
 
@@ -242,7 +257,7 @@ from config import DATA_RAW, DATA_PROCESSED, MASTER_PRICE_CSV
 
 ## 7. 주의사항
 
-1. **chromedriver.exe** — Selenium 크롤러는 `src/chromedriver.exe` 필요
+1. **Chrome / ChromeDriver** — 기본적으로 Selenium 4 Manager가 설치된 Chrome 버전에 맞는 드라이버를 자동으로 받아 사용한다 (`utils/selenium_chrome.py`). 사내망 등에서 자동 다운로드가 막혀 있으면 환경변수 `USE_LOCAL_CHROMEDRIVER=1`을 설정하고, `src/chromedriver.exe`를 현재 Chrome 메이저 버전에 맞게 교체한다.
 2. **API Key** — `crawl_han_auction_api.py`는 축평원 API 키 필요 (`.env` 관리)
 3. **USDA API Key** — `api_us_beef_collect_usda.py`는 USDA API 키 필요 (`.env` 관리)
 4. **네트워크** — 모든 크롤러는 인터넷 연결 필요

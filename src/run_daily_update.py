@@ -3,6 +3,8 @@ import os
 import subprocess
 import sys
 import time
+from datetime import datetime
+from pathlib import Path
 
 # [파일 정의서]
 # - 파일명: run_daily_update.py
@@ -13,9 +15,20 @@ import time
 #     python src/run_daily_update.py                → 가격 파이프라인만 (기본, 기존 동작)
 #     python src/run_daily_update.py --price-only   → 가격 파이프라인만 (명시적)
 #     python src/run_daily_update.py --full          → 전체 수집 + 전처리
+# - 성공 시 Git: 모든 단계 성공(fail==0)이면 data/, docs/DATA_DICTIONARY.md 자동 커밋 (--no-commit 으로 끔)
+# - 푸시: --push 또는 환경변수 PIPELINE_GIT_PUSH=1
 
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = Path(CURRENT_DIR).resolve().parent
+
+# 파이프라인이 갱신하는 경로만 스테이징 (코드 변경은 포함하지 않음)
+GIT_PIPELINE_PATHS = [
+    "data/0_raw",
+    "data/1_processed",
+    "data/2_dashboard",
+    "docs/DATA_DICTIONARY.md",
+]
 
 
 def _run_step(label, script_path, critical=True):
@@ -43,6 +56,102 @@ def _collector(name):
 
 def _util(name):
     return os.path.join(CURRENT_DIR, "utils", name)
+
+
+def _git_available() -> bool:
+    try:
+        r = subprocess.run(
+            ["git", "--version"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        return r.returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
+def _try_git_commit_and_push(
+    mode_label: str,
+    do_commit: bool,
+    do_push: bool,
+) -> None:
+    """
+    파이프라인 산출물만 스테이징 후 커밋. 성공 시 선택적으로 git push.
+    """
+    if not do_commit:
+        return
+
+    root = PROJECT_ROOT
+    if not (root / ".git").is_dir():
+        print("\n[Git] .git 이 없어 커밋을 건너뜁니다.")
+        return
+
+    if not _git_available():
+        print("\n[Git] git 명령을 찾을 수 없어 커밋을 건너뜁니다.")
+        return
+
+    to_add = []
+    for rel in GIT_PIPELINE_PATHS:
+        p = root / rel
+        if p.exists():
+            to_add.append(rel)
+
+    if not to_add:
+        print("\n[Git] 커밋 대상 경로가 없어 건너뜁니다.")
+        return
+
+    try:
+        subprocess.run(
+            ["git", "add", "--"] + to_add,
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"\n[Git] git add 실패: {e.stderr or e}")
+        return
+
+    chk = subprocess.run(
+        ["git", "diff", "--cached", "--quiet"],
+        cwd=root,
+    )
+    if chk.returncode == 0:
+        print("\n[Git] 변경 사항 없음 — 커밋하지 않습니다.")
+        return
+
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+    msg = f"chore(data): pipeline OK [{mode_label}] {ts}"
+    try:
+        subprocess.run(
+            ["git", "commit", "-m", msg],
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        print(f"\n[Git] 커밋 완료: {msg}")
+    except subprocess.CalledProcessError as e:
+        err = (e.stderr or e.stdout or "").strip()
+        print(f"\n[Git] 커밋 실패: {err or e}")
+        return
+
+    if not do_push:
+        print("[Git] 원격 반영은 하지 않았습니다. 푸시하려면 --push 또는 PIPELINE_GIT_PUSH=1")
+        return
+
+    pr = subprocess.run(
+        ["git", "push"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+    )
+    if pr.returncode == 0:
+        print("[Git] git push 완료 (origin)")
+    else:
+        out = (pr.stderr or pr.stdout or "").strip()
+        print(f"[Git] git push 실패 — 자격 증명·네트워크·브랜치를 확인하세요.\n{out}")
 
 
 # --- 수집 단계 정의 -----------------------------------------------
@@ -183,6 +292,11 @@ def main():
   python src/run_daily_update.py               가격 파이프라인만 (기본)
   python src/run_daily_update.py --price-only   가격 파이프라인만 (명시적)
   python src/run_daily_update.py --full          전체 수집 + 전처리
+  python src/run_daily_update.py --full --push   전체 수집 후 커밋 + git push
+
+성공 시(모든 단계 성공) data/, docs/DATA_DICTIONARY.md 가 자동 커밋됩니다.
+  --no-commit   커밋 생략
+  --push        커밋 후 origin 으로 push (또는 환경변수 PIPELINE_GIT_PUSH=1)
 """,
     )
     group = parser.add_mutually_exclusive_group()
@@ -196,14 +310,26 @@ def main():
         action="store_true",
         help="미트박스 가격 수집 + 전처리만 (기본값)",
     )
+    parser.add_argument(
+        "--no-commit",
+        action="store_true",
+        help="모든 단계가 성공해도 Git 커밋하지 않음",
+    )
+    parser.add_argument(
+        "--push",
+        action="store_true",
+        help="커밋 후 git push (또는 PIPELINE_GIT_PUSH=1)",
+    )
     args = parser.parse_args()
 
     pipeline_start = time.time()
 
     if args.full:
         total, success, fail = run_full()
+        mode_label = "full"
     else:
         total, success, fail = run_price_only()
+        mode_label = "price-only"
 
     elapsed = time.time() - pipeline_start
 
@@ -212,6 +338,16 @@ def main():
     print(f"{'=' * 60}")
     if fail == 0:
         print("모든 단계가 정상적으로 완료되었습니다. 대시보드와 데이터 사전을 확인하세요!")
+        want_push = args.push or os.environ.get("PIPELINE_GIT_PUSH", "").strip().lower() in (
+            "1",
+            "true",
+            "yes",
+        )
+        _try_git_commit_and_push(
+            mode_label,
+            do_commit=not args.no_commit,
+            do_push=want_push,
+        )
     else:
         print(f"[!] {fail}개 단계에서 오류가 발생했습니다. 위 로그를 확인하세요.")
 

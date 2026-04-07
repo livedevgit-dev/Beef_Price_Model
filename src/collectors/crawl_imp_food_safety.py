@@ -16,7 +16,6 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -33,7 +32,8 @@ pd.options.mode.chained_assignment = None
 # =========================================================
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import DATA_RAW, MASTER_IMPORT_VOLUME_CSV, CHROMEDRIVER_PATH, ensure_dirs
+from config import DATA_RAW, MASTER_IMPORT_VOLUME_CSV, ensure_dirs
+from utils.selenium_chrome import build_chrome_driver
 
 ensure_dirs()
 MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
@@ -77,8 +77,7 @@ def setup_driver():
     chrome_options = Options()
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--log-level=3")
-    service = Service(executable_path=str(CHROMEDRIVER_PATH))
-    return webdriver.Chrome(service=service, options=chrome_options)
+    return build_chrome_driver(chrome_options)
 
 def js_click(driver, element):
     driver.execute_script("arguments[0].click();", element)

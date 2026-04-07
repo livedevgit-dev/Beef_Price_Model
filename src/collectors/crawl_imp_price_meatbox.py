@@ -8,7 +8,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
@@ -23,13 +22,12 @@ from io import StringIO
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import CHROMEDRIVER_PATH, DATA_PROCESSED
+from config import DATA_PROCESSED
+from utils.selenium_chrome import build_chrome_driver
 
 URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
 
 def get_price_data():
-    # 사내망 방화벽 우회를 위해 로컬 chromedriver.exe 강제 사용
-    driver_path = CHROMEDRIVER_PATH
     master_file = DATA_PROCESSED / "master_price_data.csv"
     backup_file = DATA_PROCESSED / "master_price_data_backup_full.csv"
     
@@ -37,7 +35,7 @@ def get_price_data():
     target_cols = ['date', 'part_name', 'country', 'wholesale_price', 'brand']
 
     print("="*60)
-    print(f"[시스템] 미트박스 시세 수집 (로컬 드라이버 모드)")
+    print("[시스템] 미트박스 시세 수집")
     print("="*60)
 
     # 1. 파일 최적화
@@ -64,13 +62,8 @@ def get_price_data():
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--log-level=3")
-    
-    if driver_path.exists():
-        service = Service(executable_path=str(driver_path))
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-    else:
-        print("\n[에러] src 폴더에 chromedriver.exe 파일이 없습니다. 버전에 맞춰 다운로드 해주세요.")
-        return
+
+    driver = build_chrome_driver(chrome_options)
 
     driver.maximize_window()
     driver.implicitly_wait(10)
