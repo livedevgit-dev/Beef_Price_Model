@@ -38,6 +38,9 @@ def load_data():
 
 df = load_data()
 
+# 메이저 3사 브랜드 식별 패턴 (대소문자 무시)
+MAJOR_BRAND_PATTERN = r"IBP|Excel|Swift|엑셀|스위프트"
+
 # --------------------------------------------------------------------------------
 # 1-b. Market Highlights 계산 함수 및 렌더 헬퍼
 # --------------------------------------------------------------------------------
@@ -220,15 +223,28 @@ else:
     # 해당 부위의 데이터만 필터링
     df_part = df_country[df_country['part_clean'] == selected_part]
     
-    # 브랜드 필터
-    available_brands = sorted(df_part['brand_clean'].unique())
-    major_keywords = ['IBP', '엑셀', '스위프트']
-    available_majors = [kw for kw in major_keywords if any(kw in b for b in available_brands)]
-    brand_ui_options = ['전체'] + available_majors
+    # 브랜드 필터: 메인 기준은 메이저 3사 평균, 비교용으로 기타 팩커/전체 제공
+    brand_series = df_part['brand_clean'].fillna("").astype(str)
+    major_mask_all = brand_series.str.contains(MAJOR_BRAND_PATTERN, case=False, regex=True, na=False)
+    other_mask_all = (
+        (~major_mask_all)
+        & (brand_series.str.strip() != "")
+        & (brand_series.str.strip() != "-")
+    )
+
+    has_major = major_mask_all.any()
+    has_other = other_mask_all.any()
+
+    brand_ui_options = []
+    if has_major:
+        brand_ui_options.append("메이저 3사")
+    if has_other:
+        brand_ui_options.append("기타 팩커")
+    brand_ui_options.append("전체")
     
     st.sidebar.markdown("---")
     st.sidebar.subheader("브랜드 필터")
-    selected_brand_ui = st.sidebar.selectbox("브랜드 선택", brand_ui_options)
+    selected_brand_ui = st.sidebar.selectbox("브랜드 선택", brand_ui_options, index=0)
     
     # 기간 필터
     st.sidebar.subheader("조회 기간")
@@ -250,14 +266,15 @@ else:
     mask = (df_part['date'] >= start_date) & (df_part['date'] <= max_date)
     
     # 브랜드 필터링
-    if selected_brand_ui == '전체':
-        display_brand = "시장 전체 평균"
-        # 전체 선택 시에도 브랜드별 데이터가 아니라 '평균'을 구해야 함
-        target_df = df_part[mask]
+    if selected_brand_ui == '메이저 3사':
+        display_brand = "메이저 3사 평균"
+        target_df = df_part[mask & major_mask_all]
+    elif selected_brand_ui == '기타 팩커':
+        display_brand = "기타 팩커 평균"
+        target_df = df_part[mask & other_mask_all]
     else:
-        display_brand = selected_brand_ui
-        # 특정 브랜드 포함된 것만 필터링
-        target_df = df_part[mask & df_part['brand_clean'].str.contains(selected_brand_ui)]
+        display_brand = "시장 전체 평균"
+        target_df = df_part[mask]
         
     # 차트용 데이터 (일별 평균)
     if not target_df.empty:
