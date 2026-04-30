@@ -38,7 +38,11 @@ def _run_step(label, script_path, critical=True):
     print(f"  스크립트: {os.path.relpath(script_path, CURRENT_DIR)}")
     start = time.time()
     try:
-        subprocess.run([sys.executable, script_path], check=True)
+        subprocess.run(
+            [sys.executable, script_path],
+            check=True,
+            env={**os.environ, "PYTHONUNBUFFERED": "1"},
+        )
         elapsed = time.time() - start
         print(f"  [OK] 완료 ({elapsed:.1f}초)")
         return True
@@ -48,6 +52,17 @@ def _run_step(label, script_path, critical=True):
         if critical:
             print("  >> 치명적 단계이므로 파이프라인을 중단합니다.")
         return False
+
+
+def _run_step_with_retry(label, script_path, max_attempts=3, critical=True):
+    """단일 스크립트를 최대 N회 재시도 실행한다."""
+    for attempt in range(1, max_attempts + 1):
+        if attempt > 1:
+            print(f"\n[재시도] {label} ({attempt}/{max_attempts})")
+        if _run_step(label, script_path, critical=critical):
+            return True
+    print(f"[FAIL] 재시도 {max_attempts}회 모두 실패했습니다: {label}")
+    return False
 
 
 def _collector(name):
@@ -193,7 +208,7 @@ def run_price_only():
     # 수집
     label, path = DAILY_COLLECTORS[0]  # crawl_imp_price_meatbox
     total += 1
-    if not _run_step(f"[수집] {label}", path, critical=True):
+    if not _run_step_with_retry(f"[수집] {label}", path, max_attempts=3, critical=True):
         fail += 1
         return total, success, fail
     success += 1
@@ -231,7 +246,12 @@ def run_full():
     print(f"{'='*60}")
     for label, path in DAILY_COLLECTORS:
         total += 1
-        if _run_step(f"[일별 수집] {label}", path, critical=False):
+        run_ok = (
+            _run_step_with_retry(f"[일별 수집] {label}", path, max_attempts=3, critical=False)
+            if path.endswith("crawl_imp_price_meatbox.py")
+            else _run_step(f"[일별 수집] {label}", path, critical=False)
+        )
+        if run_ok:
             success += 1
         else:
             fail += 1
@@ -350,6 +370,7 @@ def main():
         )
     else:
         print(f"[!] {fail}개 단계에서 오류가 발생했습니다. 위 로그를 확인하세요.")
+    raise SystemExit(0 if fail == 0 else 1)
 
 
 if __name__ == "__main__":
