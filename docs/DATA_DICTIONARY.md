@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-05-08 08:00
+> 마지막 갱신: 2026-05-11 08:28
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -125,7 +125,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | 상  품    원  장 | object | nan | 상품명: |
-| Unnamed: 1 | object | nan | 미국산 |
+| Unnamed: 1 | str | nan | 미국산 |
 | Unnamed: 2 | object | nan | nan |
 
 #### `beef_import_data_fast.xlsx`
@@ -133,9 +133,9 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준년월 | object | 2019-01 | 2019-01 |
-| 국가 | object | 미국 | 호주 |
-| 구분 | object | 냉동 | 냉동 |
+| 기준년월 | str | 2019-01 | 2019-01 |
+| 국가 | str | 미국 | 호주 |
+| 구분 | str | 냉동 | 냉동 |
 | 갈비 | int64 | 5977 | 2935 |
 | 등심 | int64 | 87 | 1486 |
 | 목심 | int64 | 105 | 981 |
@@ -154,10 +154,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준일자 | object | 2025-12-22 | 2025-12-22 |
-| 품목명 | object | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 오로라 앵거스 비프(788) |
-| 원산지 | object | 미국 | 미국 |
-| 보관 | object | 냉동 | 냉동 |
+| 기준일자 | str | 2025-12-22 | 2025-12-22 |
+| 품목명 | str | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 오로라 앵거스 비프(788) |
+| 원산지 | str | 미국 | 미국 |
+| 보관 | str | 냉동 | 냉동 |
 | 도매시세 | int64 | 24580 | 22700 |
 
 #### `beef_price_raw_FULL.xlsx`
@@ -165,33 +165,33 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Unnamed: 0 | object | 관심상품 등록하기 | 관심상품 등록하기 |
-| 품목 △ | object | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP |
-| 등급 | object | 3등급 | 프라임 |
-| 보관 | object | 냉동 | 냉장 |
-| 도매시세 (kg당 가격) | object | 17,580 원  - | 37,030 원  - |
-| 미트박스 상품 | object | 상품보기 | 상품보기 |
-| 기준일자_수집 | object | 2025-12-22 | 2025-12-22 |
+| Unnamed: 0 | str | 관심상품 등록하기 | 관심상품 등록하기 |
+| 품목 △ | str | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP |
+| 등급 | str | 3등급 | 프라임 |
+| 보관 | str | 냉동 | 냉장 |
+| 도매시세 (kg당 가격) | str | 17,580 원  - | 37,030 원  - |
+| 미트박스 상품 | str | 상품보기 | 상품보기 |
+| 기준일자_수집 | str | 2025-12-22 | 2025-12-22 |
 
 #### `beef_price_raw_latest.xlsx`
 - **총 행(Row) 수**: 약 465행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Unnamed: 0 | object | 관심상품 등록하기 | 관심상품 등록하기 |
-| 품목 △ | object | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP(245J) |
-| 등급 | object | 3등급 | 프라임 |
-| 보관 | object | 냉동 | 냉장 |
-| 도매시세 (kg당 가격) | object | 18,970 원  - | 32,430 원  - |
-| 미트박스 상품 | object | 상품보기 | 상품보기 |
-| 기준일자_수집 | object | 2026-01-26 | 2026-01-26 |
+| Unnamed: 0 | str | 관심상품 등록하기 | 관심상품 등록하기 |
+| 품목 △ | str | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP(245J) |
+| 등급 | str | 3등급 | 프라임 |
+| 보관 | str | 냉동 | 냉장 |
+| 도매시세 (kg당 가격) | str | 18,970 원  - | 32,430 원  - |
+| 미트박스 상품 | str | 상품보기 | 상품보기 |
+| 기준일자_수집 | str | 2026-01-26 | 2026-01-26 |
 
 #### `beef_primal_cut_prices.xlsx`
 - **총 행(Row) 수**: 약 16행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| cutmeatName | object | 안심 | 등심 |
+| cutmeatName | str | 안심 | 등심 |
 | hanBoxCnt | int64 | 0 | 0 |
 | han_0Cnt | int64 | 0 | 0 |
 | han_1Cnt | int64 | 0 | 0 |
@@ -212,8 +212,8 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준년월 | object | 2019-01 | 2019-01 |
-| 부위별 부위별 | object | 안심 | 등심 |
+| 기준년월 | str | 2019-01 | 2019-01 |
+| 부위별 부위별 | str | 안심 | 등심 |
 | 조사재고량 조사재고량 | int64 | 590 | 18617 |
 | 대비(%) 전월 | int64 | 0 | 0 |
 | 대비(%) 전년 | int64 | 0 | 0 |
@@ -223,7 +223,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Date | object | 2020-01-02 | 2020-01-03 |
+| Date | str | 2020-01-02 | 2020-01-03 |
 | Close | float64 | 1159.0 | 1167.5 |
 
 #### `found_missing_ids.xlsx`
@@ -231,10 +231,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준일자 | object | 2026-01-22 | 2026-01-22 |
-| 품목명 | object | 관심상품 등록하기 삼겹양지-호주  | 관심상품 등록하기 홍두깨-호주  |
-| 원산지 | object | 호주 | 호주 |
-| 보관 | object | 냉동 | 냉동 |
+| 기준일자 | str | 2026-01-22 | 2026-01-22 |
+| 품목명 | str | 관심상품 등록하기 삼겹양지-호주  | 관심상품 등록하기 홍두깨-호주  |
+| 원산지 | str | 호주 | 호주 |
+| 보관 | str | 냉동 | 냉동 |
 | 도매시세 | int64 | 0 | 0 |
 | siseSeq | int64 | 43569155 | 43558120 |
 
@@ -243,7 +243,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 날짜 | object | Jan-18 | Feb-18 |
+| 날짜 | str | Jan-18 | Feb-18 |
 | 갈비_냉동_미국산 | int64 | 2407 | 2445 |
 | 갈비_냉동_호주산 | int64 | 1972 | 1961 |
 | 갈비살_냉장_ | int64 | 2642 | 2332 |
@@ -260,8 +260,8 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| std_date | object | 2026-03 | 2026-03 |
-| 구분 | object | 미국 | 호주 |
+| std_date | str | 2026-03 | 2026-03 |
+| 구분 | str | 미국 | 호주 |
 | 부위별_갈비_합계 | float64 | 7071.6 | 3280.4 |
 | 부위별_등심_합계 | float64 | 209.2 | 2233.4 |
 | 부위별_목심_합계 | float64 | 939.5 | 1068.7 |
@@ -280,10 +280,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준일자 | object | 2026-01-22 | 2026-01-22 |
-| 품목명 | object | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 엑셀(ESA/앵거스)(86K(EXCEL/ESA)) |
-| 원산지 | object | 미국 | 미국 |
-| 보관 | object | 냉동 | 냉동 |
+| 기준일자 | str | 2026-01-22 | 2026-01-22 |
+| 품목명 | str | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 엑셀(ESA/앵거스)(86K(EXCEL/ESA)) |
+| 원산지 | str | 미국 | 미국 |
+| 보관 | str | 냉동 | 냉동 |
 | 도매시세 | int64 | 24580 | 22340 |
 | siseSeq | int64 | 43567223 | 43568980 |
 
@@ -294,7 +294,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 |---|---|---|---|
 | page | int64 | 1 | 1 |
 | visible_text | float64 | nan | nan |
-| raw_html | object | <tr> 						<th>FAMILY</th> 						<td>없음</td> 						<td>없음</td> 					</tr> | <tr> 						<th>SILVER</th> 						<td>분기 중 월 1회 <br> 이상 구매</td> 						<td>1천원 쿠폰<br> X 1장</td> 					</tr> |
+| raw_html | str | <tr> 						<th>FAMILY</th> 						<td>없음</td> 						<td>없음</td> 					</tr> | <tr> 						<th>SILVER</th> 						<td>분기 중 월 1회 <br> 이상 구매</td> 						<td>1천원 쿠폰<br> X 1장</td> 					</tr> |
 
 #### `meatbox_sise_43084139.xlsx`
 - **총 행(Row) 수**: 약 366행
@@ -302,7 +302,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | siseSeq | int64 | 0 | 0 |
-| siseDate | object | 2025-01-20 | 2025-01-21 |
+| siseDate | str | 2025-01-20 | 2025-01-21 |
 | itemKindCd | float64 | nan | nan |
 | itemCatSeq | int64 | 0 | 0 |
 | brandCd | float64 | nan | nan |
@@ -343,41 +343,41 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| std_ym | object | 2026-01 | 2026-01 |
-| 품명 | object | 소고기 | 소고기 |
-| 구분 | object | 냉동 | 냉동 |
-| 부위 | object | 갈비 | 갈비 |
-| 국가 | object | 미국 | 호주 |
-| 전년도_누계 | object | 86,119,639.746 | 37,300,431.04 |
+| std_ym | str | 2026-01 | 2026-01 |
+| 품명 | str | 소고기 | 소고기 |
+| 구분 | str | 냉동 | 냉동 |
+| 부위 | str | 갈비 | 갈비 |
+| 국가 | str | 미국 | 호주 |
+| 전년도_누계 | str | 86,119,639.746 | 37,300,431.04 |
 | 전년도_12월_누계 | int64 | 0 | 0 |
-| 당월_상순 | object | 1,959,187.634 | 1,351,661.63 |
-| 당월_중순 | object | 2,351,361.735 | 1,124,170.21 |
-| 당월_하순 | object | 2,110,859.31 | 1,028,600.92 |
-| 당월_소계 | object | 6,421,408.679 | 3,504,432.76 |
-| 당해년도_누계 | object | 6,421,408.679 | 3,504,432.76 |
+| 당월_상순 | str | 1,959,187.634 | 1,351,661.63 |
+| 당월_중순 | str | 2,351,361.735 | 1,124,170.21 |
+| 당월_하순 | str | 2,110,859.31 | 1,028,600.92 |
+| 당월_소계 | str | 6,421,408.679 | 3,504,432.76 |
+| 당해년도_누계 | str | 6,421,408.679 | 3,504,432.76 |
 
 #### `raw_meatbox_2026-01-26.xlsx`
 - **총 행(Row) 수**: 약 480행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Unnamed: 0 | object | 관심상품 등록하기 | 관심상품 등록하기 |
-| 품목 △ | object | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP(245J) |
-| 등급 | object | 3등급 | 프라임 |
-| 보관 | object | 냉동 | 냉장 |
-| 도매시세 (kg당 가격) | object | 18,970 원  - | 32,430 원  - |
-| 미트박스 상품 | object | 상품보기 | 상품보기 |
-| 기준일자_수집 | object | 2026-01-26 | 2026-01-26 |
+| Unnamed: 0 | str | 관심상품 등록하기 | 관심상품 등록하기 |
+| 품목 △ | str | 갈비-국산(한우암소) / 동명F&B | 갈비본살-미국 / IBP(245J) |
+| 등급 | str | 3등급 | 프라임 |
+| 보관 | str | 냉동 | 냉장 |
+| 도매시세 (kg당 가격) | str | 18,970 원  - | 32,430 원  - |
+| 미트박스 상품 | str | 상품보기 | 상품보기 |
+| 기준일자_수집 | str | 2026-01-26 | 2026-01-26 |
 
 #### `raw_meatbox_20260126.csv`
 - **총 행(Row) 수**: 약 180행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 품목명 | object | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 엑셀(ESA/앵거스)(86K(EXCEL/ESA)) |
-| 보관 | object | 냉동 | 냉동 |
-| 도매시세_raw | object | 24,580 원  - | 22,340 원  - |
-| 원산지 | object | 미국 | 미국 |
+| 품목명 | str | 갈비살/늑간살-미국 / IBP(245L) | 갈비살/늑간살-미국 / 엑셀(ESA/앵거스)(86K(EXCEL/ESA)) |
+| 보관 | str | 냉동 | 냉동 |
+| 도매시세_raw | str | 24,580 원  - | 22,340 원  - |
+| 원산지 | str | 미국 | 미국 |
 | 도매시세 | int64 | 24580 | 22340 |
 
 #### `us_beef_parts_import_daily.csv`
@@ -385,46 +385,46 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| col_0 | object | 소고기 | 소고기 |
-| col_1 | object | 냉동 | 냉동 |
-| col_2 | object | 갈비 | 등심 |
-| col_3 | object | 미국 | 미국 |
-| col_4 | object | 80,246,513.521 | 3,985,130.09 |
-| col_5 | object | 77,893,975.748 | 2,911,156.048 |
-| col_6 | object | 2,736,054.072 | 90,033.21 |
-| col_7 | object | 3,001,242.343 | 5,261.64 |
-| col_8 | object | 1,441,317.613 | 20,624.01 |
-| col_9 | object | 7,178,614.028 | 115,918.86 |
-| col_10 | object | 85,072,589.776 | 3,027,074.908 |
+| col_0 | str | 소고기 | 소고기 |
+| col_1 | str | 냉동 | 냉동 |
+| col_2 | str | 갈비 | 등심 |
+| col_3 | str | 미국 | 미국 |
+| col_4 | str | 80,246,513.521 | 3,985,130.09 |
+| col_5 | str | 77,893,975.748 | 2,911,156.048 |
+| col_6 | str | 2,736,054.072 | 90,033.21 |
+| col_7 | str | 3,001,242.343 | 5,261.64 |
+| col_8 | str | 1,441,317.613 | 20,624.01 |
+| col_9 | str | 7,178,614.028 | 115,918.86 |
+| col_10 | str | 85,072,589.776 | 3,027,074.908 |
 
 #### `usda_beef_history.csv`
 - **총 행(Row) 수**: 약 159186행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 03/31/2026 | 03/31/2026 |
+| report_date | str | 03/31/2026 | 03/31/2026 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| item_description | object | Brisket, deckle-off, bnls (120  1) | Brisket, point/off, bnls (120A  3) |
+| item_description | str | Brisket, deckle-off, bnls (120  1) | Brisket, point/off, bnls (120A  3) |
 | number_trades | int64 | 25 | 8 |
-| total_pounds | object | 56,474 | 5,873 |
+| total_pounds | str | 56,474 | 5,873 |
 | price_range_low | float64 | 464.0 | 769.0 |
 | price_range_high | float64 | 511.0 | 800.0 |
 | weighted_average | float64 | 490.92 | 788.79 |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 03/31/2026 14:46:23 | 03/31/2026 14:46:23 |
-| grade | object | Choice | Choice |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 03/31/2026 14:46:23 | 03/31/2026 14:46:23 |
+| grade | str | Choice | Choice |
 | trim_description | float64 | nan | nan |
 
 #### `usda_choice_cuts_02112026.csv`
@@ -432,137 +432,137 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 02/11/2026 | 02/11/2026 |
+| report_date | str | 02/11/2026 | 02/11/2026 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| item_description | object | Rib, ribeye, bnls, light (112A  3) | Rib, ribeye, bnls, heavy (112A  3) |
+| item_description | str | Rib, ribeye, bnls, light (112A  3) | Rib, ribeye, bnls, heavy (112A  3) |
 | number_trades | int64 | 10 | 45 |
-| total_pounds | object | 116,806 | 197,338 |
-| price_range_low | object | 1,072.16 | 1,015.00 |
-| price_range_high | object | 1,238.50 | 1,163.50 |
-| weighted_average | object | 1,081.83 | 1,048.19 |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| total_pounds | str | 116,806 | 197,338 |
+| price_range_low | str | 1,072.16 | 1,015.00 |
+| price_range_high | str | 1,238.50 | 1,163.50 |
+| weighted_average | str | 1,081.83 | 1,048.19 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
 
 #### `usda_choice_cuts_history.csv`
 - **총 행(Row) 수**: 약 76314행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 02/11/2026 | 02/11/2026 |
+| report_date | str | 02/11/2026 | 02/11/2026 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| item_description | object | Rib, ribeye, lip-on, bn-in (109E  1) | Rib, ribeye, bnls, light (112A  3) |
+| item_description | str | Rib, ribeye, lip-on, bn-in (109E  1) | Rib, ribeye, bnls, light (112A  3) |
 | number_trades | float64 | 16.0 | 10.0 |
-| total_pounds | object | 258,790 | 116,806 |
-| price_range_low | object | 893.66 | 1,072.16 |
-| price_range_high | object | 1,098.00 | 1,238.50 |
-| weighted_average | object | 901.04 | 1,081.83 |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| total_pounds | str | 258,790 | 116,806 |
+| price_range_low | str | 893.66 | 1,072.16 |
+| price_range_high | str | 1,098.00 | 1,238.50 |
+| weighted_average | str | 901.04 | 1,081.83 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
 
 #### `usda_primal_history.csv`
 - **총 행(Row) 수**: 약 12957행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 12/31/2019 | 12/31/2019 |
+| report_date | str | 12/31/2019 | 12/31/2019 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| primal_desc | object | Primal Rib | Primal Chuck |
+| primal_desc | str | Primal Rib | Primal Chuck |
 | choice_600_900 | float64 | 336.99 | 173.02 |
 | select_600_900 | float64 | 320.94 | 169.4 |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 12/31/2019 14:44:22 | 12/31/2019 14:44:22 |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 12/31/2019 14:44:22 | 12/31/2019 14:44:22 |
 
 #### `usda_primal_values_02112026.csv`
 - **총 행(Row) 수**: 약 44219행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 02/11/2026 | 02/11/2026 |
+| report_date | str | 02/11/2026 | 02/11/2026 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| primal_desc | object | Primal Rib | Primal Chuck |
+| primal_desc | str | Primal Rib | Primal Chuck |
 | choice_600_900 | float64 | 491.02 | 325.79 |
 | select_600_900 | float64 | 485.19 | 332.31 |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
 
 #### `usda_raw_20260212.csv`
 - **총 행(Row) 수**: 약 6317행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 02/11/2026 | 02/10/2026 |
+| report_date | str | 02/11/2026 | 02/10/2026 |
 | is_correction | float64 | nan | nan |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| report_title | object | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | AMS_2453 | AMS_2453 |
+| report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
-| office_name | object | Des Moines, IA | Des Moines, IA |
-| office_code | object | LS-NW | LS-NW |
-| office_city | object | Des Moines | Des Moines |
-| office_state | object | IA | IA |
-| market_location_name | object | Des Moines, IA | Des Moines, IA |
-| market_location_city | object | Des Moines | Des Moines |
-| market_location_state | object | IA | IA |
-| market_type | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| market_type_category | object | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | object | 02/11/2026 14:49:49 | 02/10/2026 14:44:16 |
+| office_name | str | Des Moines, IA | Des Moines, IA |
+| office_code | str | LS-NW | LS-NW |
+| office_city | str | Des Moines | Des Moines |
+| office_state | str | IA | IA |
+| market_location_name | str | Des Moines, IA | Des Moines, IA |
+| market_location_city | str | Des Moines | Des Moines |
+| market_location_state | str | IA | IA |
+| market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
+| published_date | str | 02/11/2026 14:49:49 | 02/10/2026 14:44:16 |
 
 #### `미국산소고기_2019_2024_Total.csv`
 - **총 행(Row) 수**: 약 749행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 년월 | object | 2019-01 | 2019-01 |
-| 부위 | object | 갈비 | 등심 |
+| 년월 | str | 2019-01 | 2019-01 |
+| 부위 | str | 갈비 | 등심 |
 | 중량 | float64 | 6930137.81 | 379739.77 |
 
 #### `미국산소고기_202412_202511.csv`
@@ -570,8 +570,8 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 년월 | object | 2025-01 | 2025-01 |
-| 부위 | object | 갈비 | 등심 |
+| 년월 | str | 2025-01 | 2025-01 |
+| 부위 | str | 갈비 | 등심 |
 | 중량 | float64 | 6043215.33 | 23446.39 |
 
 ### 폴더: `1_processed/`
@@ -581,10 +581,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| 기준일자 | object | 2025-12-22 | 2025-12-22 |
-| 품목명 | object | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 엑셀(86R) |
-| 원산지 | object | 미국 | 미국 |
-| 보관 | object | 냉동 | 냉동 |
+| 기준일자 | str | 2025-12-22 | 2025-12-22 |
+| 품목명 | str | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 엑셀(86R) |
+| 원산지 | str | 미국 | 미국 |
+| 보관 | str | 냉동 | 냉동 |
 | 도매시세 | int64 | 11180 | 11180 |
 
 #### `clean_price_data.csv`
@@ -592,10 +592,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-12-22 | 2025-12-22 |
-| part_name | object | 갈비 | 갈비본살 |
-| country | object | 국산(한우암소) | 미국 |
-| brand | object | 동명F&B | IBP |
+| date | str | 2025-12-22 | 2025-12-22 |
+| part_name | str | 갈비 | 갈비본살 |
+| country | str | 국산(한우암소) | 미국 |
+| brand | str | 동명F&B | IBP |
 | wholesale_price | int64 | 17580 | 37030 |
 
 #### `dashboard_ready_data.csv`
@@ -603,61 +603,61 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-01-22 | 2025-01-23 |
-| part_name | object | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 엑셀(86R) |
-| country | object | 미국 | 미국 |
+| date | str | 2025-01-22 | 2025-01-23 |
+| part_name | str | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 엑셀(86R) |
+| country | str | 미국 | 미국 |
 | wholesale_price | float64 | 10380.0 | 10380.0 |
-| brand | object | - | - |
-| part_clean | object | BBQ등갈비 | BBQ등갈비 |
-| brand_clean | object | 엑셀(86R) | 엑셀(86R) |
+| brand | str | - | - |
+| part_clean | str | BBQ등갈비 | BBQ등갈비 |
+| brand_clean | str | 엑셀(86R) | 엑셀(86R) |
 | ma7 | float64 | 10380.0 | 10380.0 |
 | ma30 | float64 | 10380.0 | 10380.0 |
 | min_total | float64 | 9860.0 | 9860.0 |
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 54823행
+- **총 행(Row) 수**: 약 54970행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-01-22 | 2025-01-22 |
-| part_name | object | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
-| country | object | 미국 | 미국 |
+| date | str | 2025-01-22 | 2025-01-22 |
+| part_name | str | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
+| country | str | 미국 | 미국 |
 | wholesale_price | float64 | 10380.0 | 10390.0 |
-| brand | object | - | - |
+| brand | str | - | - |
 
 #### `master_price_data_backup.csv`
 - **총 행(Row) 수**: 약 46508행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-01-22 | 2025-01-22 |
-| part_name | object | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
-| country | object | 미국 | 미국 |
+| date | str | 2025-01-22 | 2025-01-22 |
+| part_name | str | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
+| country | str | 미국 | 미국 |
 | wholesale_price | float64 | 10380.0 | 10390.0 |
-| brand | object | - | - |
+| brand | str | - | - |
 | item_name | float64 | nan | nan |
 | origin | float64 | nan | nan |
 | grade | float64 | nan | nan |
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 54668행
+- **총 행(Row) 수**: 약 54823행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-01-22 | 2025-01-22 |
-| part_name | object | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
-| country | object | 미국 | 미국 |
+| date | str | 2025-01-22 | 2025-01-22 |
+| part_name | str | BBQ등갈비-미국 / 엑셀(86R) | BBQ등갈비-미국 / 오마하(960A) |
+| country | str | 미국 | 미국 |
 | wholesale_price | float64 | 10380.0 | 10390.0 |
-| brand | object | - | - |
+| brand | str | - | - |
 
 #### `ml_features_rib.csv`
 - **총 행(Row) 수**: 약 69행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Unnamed: 0 | object | 2020-04-01 | 2020-05-01 |
+| Unnamed: 0 | str | 2020-04-01 | 2020-05-01 |
 | kr_price | float64 | 2411.0 | 2492.0 |
 | us_price | float64 | 12.16638527607362 | 17.422213756613758 |
 | exchange_rate | float64 | 1224.2 | 1230.4736842105262 |
@@ -685,7 +685,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Unnamed: 0 | object | 2020-04-01 | 2020-05-01 |
+| Unnamed: 0 | str | 2020-04-01 | 2020-05-01 |
 | kr_price | float64 | 2411.0 | 2492.0 |
 | us_price | float64 | 12.16638527607362 | 17.422213756613758 |
 | exchange_rate | float64 | 1224.2 | 1230.4736842105262 |
@@ -717,42 +717,42 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | datetime64[ns] | 2024-12-01 00:00:00 | 2024-12-01 00:00:00 |
+| date | datetime64[us] | 2024-12-01 00:00:00 | 2024-12-01 00:00:00 |
 | avg_price | int64 | 9930 | 9930 |
 | avg_exchange | float64 | 1441.7 | 1441.7 |
-| import_vol | object | 미국 | 미국 |
-| stock_vol | object | 안심 | 등심 |
+| import_vol | str | 미국 | 미국 |
+| stock_vol | str | 안심 | 등심 |
 
 #### `processed_usda_cost.csv`
 - **총 행(Row) 수**: 약 159988행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| Date | object | 2019-01-01 | 2019-01-02 |
+| Date | str | 2019-01-01 | 2019-01-02 |
 | Exchange_Rate | float64 | 1159.0 | 1159.0 |
-| report_date | object | nan | 01/02/2019 |
+| report_date | str | nan | 01/02/2019 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
-| item_description | object | nan | Brisket, deckle-off, bnls (120  1) |
+| item_description | str | nan | Brisket, deckle-off, bnls (120  1) |
 | number_trades | float64 | nan | 32.0 |
 | total_pounds | float64 | nan | 124354.0 |
 | price_range_low | float64 | nan | 280.0 |
 | price_range_high | float64 | nan | 310.0 |
 | weighted_average | float64 | nan | 291.82 |
-| report_title | object | nan | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
-| slug_name | object | nan | AMS_2453 |
+| report_title | str | nan | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
+| slug_name | str | nan | AMS_2453 |
 | slug_id | float64 | nan | 2453.0 |
-| office_name | object | nan | Des Moines, IA |
-| office_code | object | nan | LS-NW |
-| office_city | object | nan | Des Moines |
-| office_state | object | nan | IA |
-| market_location_name | object | nan | Des Moines, IA |
-| market_location_city | object | nan | Des Moines |
-| market_location_state | object | nan | IA |
-| market_type | object | nan | Direct Livestock - LMR Beef |
-| market_type_category | object | nan | Direct Livestock - LMR Beef |
-| published_date | object | nan | 01/02/2019 14:59:12 |
-| grade | object | nan | Choice |
+| office_name | str | nan | Des Moines, IA |
+| office_code | str | nan | LS-NW |
+| office_city | str | nan | Des Moines |
+| office_state | str | nan | IA |
+| market_location_name | str | nan | Des Moines, IA |
+| market_location_city | str | nan | Des Moines |
+| market_location_state | str | nan | IA |
+| market_type | str | nan | Direct Livestock - LMR Beef |
+| market_type_category | str | nan | Direct Livestock - LMR Beef |
+| published_date | str | nan | 01/02/2019 14:59:12 |
+| grade | str | nan | Choice |
 | trim_description | float64 | nan | nan |
 | total_volume_kg | float64 | nan | 56405.98 |
 | price_range_low_USD_kg | float64 | nan | 6.1729 |
@@ -764,8 +764,8 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | object | 2019-01-02 | 2019-01-03 |
-| primal_desc | object | Primal Plate | Primal Plate |
+| report_date | str | 2019-01-02 | 2019-01-03 |
+| primal_desc | str | Primal Plate | Primal Plate |
 | choice_usd_per_kg | float64 | 3.4039 | 3.4313 |
 | select_usd_per_kg | float64 | 3.4039 | 3.4313 |
 
@@ -775,22 +775,22 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | USDA_Code | float64 | nan | nan |
-| Korean_Name | object | Unmapped | Unmapped |
-| Status | object | ⚠️ 매핑 제외 | ⚠️ 매핑 제외 |
-| Original_Description | object | Rib, ribeye, lip-on, bn-in (109E  1) | Chuck, semi-bnls, neck/off (113C  1) |
-| Note | object | 분석 대상 아님 (필요 시 규칙 추가) | 분석 대상 아님 (필요 시 규칙 추가) |
+| Korean_Name | str | Unmapped | Unmapped |
+| Status | str | ⚠️ 매핑 제외 | ⚠️ 매핑 제외 |
+| Original_Description | str | Rib, ribeye, lip-on, bn-in (109E  1) | Chuck, semi-bnls, neck/off (113C  1) |
+| Note | str | 분석 대상 아님 (필요 시 규칙 추가) | 분석 대상 아님 (필요 시 규칙 추가) |
 
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 52523행
+- **총 행(Row) 수**: 약 52921행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2025-01-22 | 2025-01-23 |
-| category | object | 미국 | 미국 |
-| part | object | BBQ등갈비 | BBQ등갈비 |
-| brand | object | 엑셀(86R) | 엑셀(86R) |
+| date | str | 2025-01-22 | 2025-01-23 |
+| category | str | 미국 | 미국 |
+| part | str | BBQ등갈비 | BBQ등갈비 |
+| brand | str | 엑셀(86R) | 엑셀(86R) |
 | wholesale_price | float64 | 10380.0 | 10380.0 |
 | ma7 | float64 | nan | nan |
 | ma30 | float64 | nan | nan |
