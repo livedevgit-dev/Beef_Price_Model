@@ -3,6 +3,7 @@ import pandas as pd
 import time
 import urllib3
 import os
+from io import StringIO
 from datetime import datetime
 from pathlib import Path
 
@@ -110,7 +111,7 @@ for target_date in date_range:
         response = requests.post(URL, data=form_data, headers=HEADERS, verify=False)
         
         if response.status_code == 200:
-            tables = pd.read_html(response.text)
+            tables = pd.read_html(StringIO(response.text))
             target_df = None
             
             # '미국'이 포함된 테이블 찾기

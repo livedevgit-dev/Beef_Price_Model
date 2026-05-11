@@ -10,6 +10,7 @@ import pandas as pd
 import time
 import os
 import urllib3
+from io import StringIO
 from pathlib import Path
 from datetime import datetime
 
@@ -94,7 +95,7 @@ def get_stock_data(start_year=None, start_month=None, existing_df=None):
                 print(f"[조회] {year}년 {str_month}월...", end="")
                 response = requests.post(url, headers=headers, data=data, verify=False)
                 
-                dfs = pd.read_html(response.text)
+                dfs = pd.read_html(StringIO(response.text))
                 if not dfs:
                     print(" [경고] 표 없음")
                     continue

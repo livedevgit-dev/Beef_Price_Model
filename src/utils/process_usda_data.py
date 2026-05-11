@@ -60,7 +60,7 @@ def process_usda_cost():
 
     print(" - 환율 데이터를 병합 및 보간(ffill -> bfill)합니다. (독립 변수 유지)")
     df_merged = pd.merge(calendar_df, df_exch[['Date', 'Close']], on='Date', how='left')
-    df_merged['Close'] = df_merged['Close'].fillna(method='ffill').fillna(method='bfill')
+    df_merged['Close'] = df_merged['Close'].ffill().bfill()
     df_merged = df_merged.rename(columns={'Close': 'Exchange_Rate'})
 
     print(" - USDA 데이터를 병합합니다 (원본 스키마 유지).")

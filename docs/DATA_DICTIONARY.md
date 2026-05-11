@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-05-12 08:01
+> 마지막 갱신: 2026-05-12 08:09
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -219,7 +219,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 대비(%) 전년 | int64 | 0 | 0 |
 
 #### `exchange_rate_data.xlsx`
-- **총 행(Row) 수**: 약 1539행
+- **총 행(Row) 수**: 약 1565행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -256,24 +256,24 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 양지_냉장_호주산 | float64 | nan | nan |
 
 #### `master_import_volume.csv`
-- **총 행(Row) 수**: 약 174행
+- **총 행(Row) 수**: 약 176행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| std_date | str | 2026-03 | 2026-03 |
+| std_date | str | 2026-04 | 2026-04 |
 | 구분 | str | 미국 | 호주 |
-| 부위별_갈비_합계 | float64 | 7071.6 | 3280.4 |
-| 부위별_등심_합계 | float64 | 209.2 | 2233.4 |
-| 부위별_목심_합계 | float64 | 939.5 | 1068.7 |
-| 부위별_사태_합계 | float64 | 106.0 | 85.9 |
-| 부위별_설도_합계 | float64 | 3.3 | 1502.2 |
-| 부위별_안심_합계 | float64 | 9.1 | 2.3 |
-| 부위별_앞다리_합계 | float64 | 924.4 | 2835.3 |
-| 부위별_양지_합계 | float64 | 3598.7 | 2631.5 |
-| 부위별_우둔_합계 | float64 | 0.0 | 2042.2 |
-| 부위별_채끝_합계 | float64 | 12.0 | 22.0 |
-| 부위별_기타_합계 | float64 | 0.0 | 3046.8 |
-| 부위별_계_합계 | float64 | 25747.8 | 37501.5 |
+| 부위별_갈비_합계 | float64 | 5933.1 | 3557.3 |
+| 부위별_등심_합계 | float64 | 428.5 | 2202.6 |
+| 부위별_목심_합계 | float64 | 1615.5 | 1142.9 |
+| 부위별_사태_합계 | float64 | 123.4 | 117.1 |
+| 부위별_설도_합계 | float64 | 0.1 | 1782.0 |
+| 부위별_안심_합계 | float64 | 0.1 | 3.9 |
+| 부위별_앞다리_합계 | float64 | 642.7 | 2812.9 |
+| 부위별_양지_합계 | float64 | 4228.4 | 2646.8 |
+| 부위별_우둔_합계 | float64 | 0.0 | 2442.1 |
+| 부위별_채끝_합계 | float64 | 0.0 | 126.1 |
+| 부위별_기타_합계 | float64 | 0.0 | 3785.2 |
+| 부위별_계_합계 | float64 | 25943.6 | 41237.8 |
 
 #### `meatbox_id_list.xlsx`
 - **총 행(Row) 수**: 약 150행
@@ -398,19 +398,19 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | col_10 | str | 85,072,589.776 | 3,027,074.908 |
 
 #### `usda_beef_history.csv`
-- **총 행(Row) 수**: 약 159186행
+- **총 행(Row) 수**: 약 161680행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| report_date | str | 03/31/2026 | 03/31/2026 |
+| report_date | str | 05/11/2026 | 05/11/2026 |
 | narrative | float64 | nan | nan |
 | trend | float64 | nan | nan |
 | item_description | str | Brisket, deckle-off, bnls (120  1) | Brisket, point/off, bnls (120A  3) |
-| number_trades | int64 | 25 | 8 |
-| total_pounds | str | 56,474 | 5,873 |
-| price_range_low | float64 | 464.0 | 769.0 |
-| price_range_high | float64 | 511.0 | 800.0 |
-| weighted_average | float64 | 490.92 | 788.79 |
+| number_trades | int64 | 32 | 8 |
+| total_pounds | str | 306,528 | 3,932 |
+| price_range_low | float64 | 470.0 | 804.0 |
+| price_range_high | float64 | 537.0 | 859.21 |
+| weighted_average | float64 | 489.52 | 831.7 |
 | report_title | str | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) | National Daily Boxed Beef Cutout & Boxed Beef Cuts - Negotiated Sales - PM (PDF) (LM_XB403) |
 | slug_name | str | AMS_2453 | AMS_2453 |
 | slug_id | int64 | 2453 | 2453 |
@@ -423,7 +423,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_location_state | str | IA | IA |
 | market_type | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
 | market_type_category | str | Direct Livestock - LMR Beef | Direct Livestock - LMR Beef |
-| published_date | str | 03/31/2026 14:46:23 | 03/31/2026 14:46:23 |
+| published_date | str | 05/11/2026 14:45:45 | 05/11/2026 14:45:45 |
 | grade | str | Choice | Choice |
 | trim_description | float64 | nan | nan |
 
@@ -484,7 +484,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | published_date | str | 02/11/2026 14:49:49 | 02/11/2026 14:49:49 |
 
 #### `usda_primal_history.csv`
-- **총 행(Row) 수**: 약 12957행
+- **총 행(Row) 수**: 약 13160행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -616,7 +616,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 55131행
+- **총 행(Row) 수**: 약 55123행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -642,7 +642,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 54970행
+- **총 행(Row) 수**: 약 55131행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -760,7 +760,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | weighted_average_USD_kg | float64 | nan | 6.4335 |
 
 #### `usda_plate_usd_kg.csv`
-- **총 행(Row) 수**: 약 1845행
+- **총 행(Row) 수**: 약 1874행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -783,7 +783,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 53261행
+- **총 행(Row) 수**: 약 53259행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
