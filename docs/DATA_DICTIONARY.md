@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-05-19 07:58
+> 마지막 갱신: 2026-05-20 08:03
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -616,7 +616,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 55897행
+- **총 행(Row) 수**: 약 56064행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -642,7 +642,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 55746행
+- **총 행(Row) 수**: 약 55897행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -774,16 +774,16 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| USDA_Code | float64 | nan | nan |
-| Korean_Name | str | Unmapped | Unmapped |
-| Status | str | ⚠️ 매핑 제외 | ⚠️ 매핑 제외 |
-| Original_Description | str | Rib, ribeye, lip-on, bn-in (109E  1) | Chuck, semi-bnls, neck/off (113C  1) |
-| Note | str | 분석 대상 아님 (필요 시 규칙 추가) | 분석 대상 아님 (필요 시 규칙 추가) |
+| USDA_Code | str | 123A | 114D |
+| Original_Description | str | Short Plate, short rib (123A  3) | Chuck, clod, top blade (114D  3) |
+| Korean_Name | str | LA갈비-미국 | 부채살-미국 |
+| Status | str | 정상 | 정상 |
+| Note | str | Master 품목명과 연결 가능 | Master 품목명과 연결 가능 |
 
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 54230행
+- **총 행(Row) 수**: 약 54478행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
