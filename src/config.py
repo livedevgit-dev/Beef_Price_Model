@@ -1,3 +1,10 @@
+# [파일 정의서]
+# - 파일명: config.py
+# - 역할: 가공
+# - 대상: 공통
+# - 데이터 소스: 프로젝트 디렉터리 구조 (data/0_raw, 1_processed, 2_dashboard)
+# - 주요 기능: PROJECT_ROOT, DATA_* 경로 및 주요 CSV/XLSX 파일 경로를 일원화하여 모든 모듈이 공유
+
 """
 프로젝트 경로 및 설정 일원화
 
@@ -16,6 +23,7 @@ PROJECT_ROOT = _this_file.parent.parent
 DATA_RAW = PROJECT_ROOT / "data" / "0_raw"
 DATA_PROCESSED = PROJECT_ROOT / "data" / "1_processed"
 DATA_DASHBOARD = PROJECT_ROOT / "data" / "2_dashboard"
+DATA_REPORTS = PROJECT_ROOT / "data" / "3_reports"
 
 # 주요 파일 경로 (편의용)
 MASTER_PRICE_CSV = DATA_PROCESSED / "master_price_data.csv"
@@ -38,5 +46,5 @@ RAW_CAFE_CRAWLING_CSV = DATA_RAW / "raw_cafe_b2b_crawling.csv"
 
 def ensure_dirs():
     """필수 데이터 폴더가 없으면 생성"""
-    for d in (DATA_RAW, DATA_PROCESSED, DATA_DASHBOARD):
+    for d in (DATA_RAW, DATA_PROCESSED, DATA_DASHBOARD, DATA_REPORTS):
         d.mkdir(parents=True, exist_ok=True)

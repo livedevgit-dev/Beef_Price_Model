@@ -3,7 +3,7 @@
 > 작성일: 2026-03-03
 > 최종 갱신일: 2026-03-25
 > 목적: 현재 구조 파악 및 리팩토링/정리 방안 정의
-> 상태: Phase 1 완료, Phase 2 완료, Phase 3–5 미착수
+> 상태: Phase 1–5 완료
 
 ---
 
@@ -233,9 +233,9 @@ Beef_Price_Model/
 |-------|------|--------|------|
 | **Phase 1**: 경로·설정 통합 | **완료** | 2025-03-03 | `src/config.py` 추가, 경로 일원화 |
 | **Phase 2**: 문서·의존성 정리 | **완료** | 2026-03-25 | docs/ 통합, 중복 문서 제거, `src/README.md` → `docs/PROJECT_GUIDE.md` 이전, `DATA_DICTIONARY.md` + `data_schema_summary.md` 통합, `extract_data_schema.py` → DATA_DICTIONARY 부록 갱신 방식으로 전환 |
-| **Phase 3**: 파이프라인 확장 | **완료** | 2026-04-01 | `run_daily_update.py`에 `--full` / `--price-only` 옵션 추가, USDA·환율·수입량·재고·식약처 수집기 통합 |
-| **Phase 4**: z_archive 정리 | 미착수 | — | 레거시 스크립트 분류·정리 |
-| **Phase 5**: utils 패키지 정리 | 미착수 | — | `__init__.py` 확장, 역할 정리 |
+| **Phase 3**: 파이프라인 확장 | **완료** | 2026-05-19 | `run_daily_update.py` `--full` / `--price-only`, `config` 경로 일원화 |
+| **Phase 4**: z_archive 정리 | **완료** | 2026-05-19 | 일회성 23개 → `z_deprecated/`, `z_archive/README.md` 작성 |
+| **Phase 5**: utils 패키지 정리 | **완료** | 2026-05-19 | `utils/__init__.py` `__all__` 6모듈 re-export |
 
 ---
 

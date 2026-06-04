@@ -1,3 +1,10 @@
+# [파일 정의서]
+# - 파일명: run_daily_update.py
+# - 역할: 수집
+# - 대상: 공통
+# - 데이터 소스: docs/PROJECT_STRUCTURE_PROPOSAL.md, collectors/, utils/
+# - 주요 기능: argparse(--price-only/--full)로 일일·월별 수집 및 전처리 파이프라인을 순차 실행하고, 성공 시 data/ 산출물을 Git 커밋
+
 import argparse
 import os
 import subprocess
@@ -6,21 +13,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-# [파일 정의서]
-# - 파일명: run_daily_update.py
-# - 역할: 전체 파이프라인 제어
-# - 대상: 수입육 (공통)
-# - 주요 기능: 크롤링, 전처리, 데이터 사전 갱신을 순차적으로 실행하여 데이터 최신성 유지
-# - 실행 옵션:
-#     python src/run_daily_update.py                → 가격 파이프라인만 (기본, 기존 동작)
-#     python src/run_daily_update.py --price-only   → 가격 파이프라인만 (명시적)
-#     python src/run_daily_update.py --full          → 전체 수집 + 전처리
-# - 성공 시 Git: 모든 단계 성공(fail==0)이면 data/, docs/DATA_DICTIONARY.md 자동 커밋 (--no-commit 으로 끔)
-# - 푸시: --push 또는 환경변수 PIPELINE_GIT_PUSH=1
-
-
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = Path(CURRENT_DIR).resolve().parent
+from config import PROJECT_ROOT, SRC_DIR
 
 # 파이프라인이 갱신하는 경로만 스테이징 (코드 변경은 포함하지 않음)
 GIT_PIPELINE_PATHS = [
@@ -35,11 +28,11 @@ def _run_step(label, script_path, critical=True):
     """단일 스크립트를 서브프로세스로 실행하고 결과를 반환한다."""
     print(f"\n{'-'*60}")
     print(f">> {label}")
-    print(f"  스크립트: {os.path.relpath(script_path, CURRENT_DIR)}")
+    print(f"  스크립트: {script_path.relative_to(SRC_DIR)}")
     start = time.time()
     try:
         subprocess.run(
-            [sys.executable, script_path],
+            [sys.executable, str(script_path)],
             check=True,
             env={**os.environ, "PYTHONUNBUFFERED": "1"},
         )
@@ -66,11 +59,11 @@ def _run_step_with_retry(label, script_path, max_attempts=3, critical=True):
 
 
 def _collector(name):
-    return os.path.join(CURRENT_DIR, "collectors", name)
+    return SRC_DIR / "collectors" / name
 
 
 def _util(name):
-    return os.path.join(CURRENT_DIR, "utils", name)
+    return SRC_DIR / "utils" / name
 
 
 def _git_available() -> bool:
@@ -91,14 +84,11 @@ def _try_git_commit_and_push(
     do_commit: bool,
     do_push: bool,
 ) -> None:
-    """
-    파이프라인 산출물만 스테이징 후 커밋. 성공 시 선택적으로 git push.
-    """
+    """파이프라인 산출물만 스테이징 후 커밋. 성공 시 선택적으로 git push."""
     if not do_commit:
         return
 
-    root = PROJECT_ROOT
-    if not (root / ".git").is_dir():
+    if not (PROJECT_ROOT / ".git").is_dir():
         print("\n[Git] .git 이 없어 커밋을 건너뜁니다.")
         return
 
@@ -108,7 +98,7 @@ def _try_git_commit_and_push(
 
     to_add = []
     for rel in GIT_PIPELINE_PATHS:
-        p = root / rel
+        p = PROJECT_ROOT / rel
         if p.exists():
             to_add.append(rel)
 
@@ -119,7 +109,7 @@ def _try_git_commit_and_push(
     try:
         subprocess.run(
             ["git", "add", "--"] + to_add,
-            cwd=root,
+            cwd=PROJECT_ROOT,
             check=True,
             capture_output=True,
             text=True,
@@ -130,7 +120,7 @@ def _try_git_commit_and_push(
 
     chk = subprocess.run(
         ["git", "diff", "--cached", "--quiet"],
-        cwd=root,
+        cwd=PROJECT_ROOT,
     )
     if chk.returncode == 0:
         print("\n[Git] 변경 사항 없음 — 커밋하지 않습니다.")
@@ -141,7 +131,7 @@ def _try_git_commit_and_push(
     try:
         subprocess.run(
             ["git", "commit", "-m", msg],
-            cwd=root,
+            cwd=PROJECT_ROOT,
             check=True,
             capture_output=True,
             text=True,
@@ -158,7 +148,7 @@ def _try_git_commit_and_push(
 
     pr = subprocess.run(
         ["git", "push"],
-        cwd=root,
+        cwd=PROJECT_ROOT,
         capture_output=True,
         text=True,
     )
@@ -171,21 +161,21 @@ def _try_git_commit_and_push(
 
 # --- 수집 단계 정의 -----------------------------------------------
 DAILY_COLLECTORS = [
-    ("미트박스 B2B 도매시세",            _collector("crawl_imp_price_meatbox.py")),
-    ("USDA 부위별 시세 (LM_XB403)",      _collector("api_us_beef_collect_usda.py")),
-    ("USDA 프라이멀 시세",               _collector("collect_usda_primal.py")),
-    ("USD/KRW 환율",                     _collector("crawl_com_usd_krw.py")),
+    ("미트박스 B2B 도매시세", _collector("crawl_imp_price_meatbox.py")),
+    ("USDA 부위별 시세 (LM_XB403)", _collector("api_us_beef_collect_usda.py")),
+    ("USDA 프라이멀 시세", _collector("collect_usda_primal.py")),
+    ("USD/KRW 환율", _collector("crawl_com_usd_krw.py")),
 ]
 
 MONTHLY_COLLECTORS = [
-    ("KMTA 월별 수입량",                 _collector("crawl_imp_volume_monthly.py")),
-    ("KMTA 월별 재고",                   _collector("crawl_imp_stock_monthly.py")),
-    ("식약처 수입 검역 실적",             _collector("crawl_imp_food_safety.py")),
+    ("KMTA 월별 수입량", _collector("crawl_imp_volume_monthly.py")),
+    ("KMTA 월별 재고", _collector("crawl_imp_stock_monthly.py")),
+    ("식약처 수입 검역 실적", _collector("crawl_imp_food_safety.py")),
 ]
 
 USDA_PROCESSORS = [
-    ("USDA 원가 산출 (환율 반영)",       _util("process_usda_data.py")),
-    ("USDA Plate USD/kg 변환",          _util("preprocess_primal.py")),
+    ("USDA 원가 산출 (환율 반영)", _util("process_usda_data.py")),
+    ("USDA Plate USD/kg 변환", _util("preprocess_primal.py")),
 ]
 
 COMMON_PROCESSORS = [
@@ -193,27 +183,27 @@ COMMON_PROCESSORS = [
 ]
 
 SCHEMA_UPDATER = [
-    ("DATA_DICTIONARY 스키마 갱신",       _util("extract_data_schema.py")),
+    ("DATA_DICTIONARY 스키마 갱신", _util("extract_data_schema.py")),
 ]
+
+MEATBOX_SCRIPT = _collector("crawl_imp_price_meatbox.py")
 
 
 def run_price_only():
-    """기존 동작: 미트박스 가격 수집 → 전처리 → 스키마 갱신"""
+    """미트박스 가격 수집 → 전처리 → 스키마 갱신"""
     print("=" * 60)
     print("  모드: --price-only (미트박스 가격 파이프라인)")
     print("=" * 60)
 
     total, success, fail = 0, 0, 0
 
-    # 수집
-    label, path = DAILY_COLLECTORS[0]  # crawl_imp_price_meatbox
+    label, path = DAILY_COLLECTORS[0]
     total += 1
     if not _run_step_with_retry(f"[수집] {label}", path, max_attempts=3, critical=True):
         fail += 1
         return total, success, fail
     success += 1
 
-    # 전처리
     for label, path in COMMON_PROCESSORS:
         total += 1
         if not _run_step(f"[전처리] {label}", path, critical=True):
@@ -221,7 +211,6 @@ def run_price_only():
             return total, success, fail
         success += 1
 
-    # 스키마 갱신 (실패해도 계속)
     for label, path in SCHEMA_UPDATER:
         total += 1
         if _run_step(f"[문서] {label}", path, critical=False):
@@ -240,7 +229,6 @@ def run_full():
 
     total, success, fail = 0, 0, 0
 
-    # -- 1단계: 일별 수집 --
     print(f"\n{'='*60}")
     print("  [1] 일별 데이터 수집")
     print(f"{'='*60}")
@@ -248,7 +236,7 @@ def run_full():
         total += 1
         run_ok = (
             _run_step_with_retry(f"[일별 수집] {label}", path, max_attempts=3, critical=False)
-            if path.endswith("crawl_imp_price_meatbox.py")
+            if path == MEATBOX_SCRIPT
             else _run_step(f"[일별 수집] {label}", path, critical=False)
         )
         if run_ok:
@@ -256,7 +244,6 @@ def run_full():
         else:
             fail += 1
 
-    # -- 2단계: 월별 수집 --
     print(f"\n{'='*60}")
     print("  [2] 월별 데이터 수집")
     print(f"{'='*60}")
@@ -267,7 +254,6 @@ def run_full():
         else:
             fail += 1
 
-    # -- 3단계: USDA 전처리 --
     print(f"\n{'='*60}")
     print("  [3] USDA 전처리")
     print(f"{'='*60}")
@@ -278,7 +264,6 @@ def run_full():
         else:
             fail += 1
 
-    # -- 4단계: 미트박스 전처리 --
     print(f"\n{'='*60}")
     print("  [4] 미트박스 전처리")
     print(f"{'='*60}")
@@ -289,7 +274,6 @@ def run_full():
         else:
             fail += 1
 
-    # -- 5단계: 스키마 갱신 --
     print(f"\n{'='*60}")
     print("  [5] 문서 갱신")
     print(f"{'='*60}")
