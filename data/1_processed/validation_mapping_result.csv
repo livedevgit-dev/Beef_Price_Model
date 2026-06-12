@@ -1,17 +1,17 @@
 ﻿USDA_Code,Original_Description,Korean_Name,Status,Note
+130,"Chuck, short rib (130  4)",LA갈비-미국,정상,Master 품목명과 연결 가능
 123A,"Short Plate, short rib (123A  3)",LA갈비-미국,정상,Master 품목명과 연결 가능
 114D,"Chuck, clod, top blade (114D  3)",부채살-미국,정상,Master 품목명과 연결 가능
 ,"Loin, strip loin bnls. 1x1 (  1)",센터컷-미국,정상,Master 품목명과 연결 가능
 175,"Loin, strip loin, 1x1 (175  3)",센터컷-미국,정상,Master 품목명과 연결 가능
 180,"Loin, strip, bnls, 0x1 (180  3)",센터컷-미국,정상,Master 품목명과 연결 가능
+112A,"Rib, ribeye, bnls, heavy (112A  3)",센터컷-미국,정상,Master 품목명과 연결 가능
+112A,"Rib, ribeye, bnls, light (112A  3)",센터컷-미국,정상,Master 품목명과 연결 가능
+109E,"Rib, ribeye, lip-on, bn-in (109E  1)",센터컷-미국,정상,Master 품목명과 연결 가능
 116A,"Chuck, roll, lxl, neck/off (116A  3)",알목심-미국,정상,Master 품목명과 연결 가능
 916A,"Chuck, roll, retail ready (916A  3)",알목심-미국,정상,Master 품목명과 연결 가능
-130,"Chuck, short rib (130  4)",앞/척갈비-미국,정상,Master 품목명과 연결 가능
 120,"Brisket, deckle-off, bnls (120  1)",차돌양지-미국,정상,Master 품목명과 연결 가능
 120A,"Brisket, point/off, bnls (120A  3)",차돌양지-미국,정상,Master 품목명과 연결 가능
-112A,"Rib, ribeye, bnls, heavy (112A  3)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
-112A,"Rib, ribeye, bnls, light (112A  3)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
-109E,"Rib, ribeye, lip-on, bn-in (109E  1)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
 116B,"Chuck, chuck tender (116B  1)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
 114F,"Chuck, clod tender (114F  5)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
 114E,"Chuck, clod, arm roast (114E  3)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"

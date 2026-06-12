@@ -14,6 +14,7 @@
 from . import (
     check_existing_names,
     init_manual_data,
+    part_mapping,
     preprocess_meat_data,
     preprocess_primal,
     process_usda_data,
@@ -27,4 +28,5 @@ __all__ = [
     "init_manual_data",
     "validate_mapping",
     "check_existing_names",
+    "part_mapping",
 ]

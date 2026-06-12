@@ -35,6 +35,7 @@ USDA_BEEF_HISTORY_CSV = DATA_RAW / "usda_beef_history.csv"
 USDA_PRIMAL_HISTORY_CSV = DATA_RAW / "usda_primal_history.csv"
 PROCESSED_USDA_COST_CSV = DATA_PROCESSED / "processed_usda_cost.csv"
 USDA_PLATE_USD_KG_CSV = DATA_PROCESSED / "usda_plate_usd_kg.csv"
+PART_CROSSWALK_CSV = DATA_PROCESSED / "part_crosswalk.csv"
 MANUAL_KOR_PRICE_CSV = DATA_RAW / "manual_kor_price.csv"
 SHORT_PLATE_WHOLESALE_XLSX = DATA_RAW / "beef_Short Plate_wholesale_price.xlsx"
 

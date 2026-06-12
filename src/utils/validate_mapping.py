@@ -13,6 +13,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DATA_PROCESSED, MASTER_PRICE_CSV, USDA_BEEF_HISTORY_CSV, ensure_dirs
+from utils.part_mapping import build_usda_code_to_korean_map
 
 OUTPUT_COLUMNS = [
     "USDA_Code",
@@ -22,29 +23,8 @@ OUTPUT_COLUMNS = [
     "Note",
 ]
 
-# USDA 품목 코드 -> 미트박스 표준 품목명 (Master part_name 기준)
-USDA_CODE_TO_KOREAN = {
-    # 양지 (Brisket)
-    "120": "차돌양지-미국",
-    "120A": "차돌양지-미국",
-    # 갈비 (Short Rib / Plate)
-    "123A": "LA갈비-미국",
-    "130": "앞/척갈비-미국",
-    # 척아이롤 (Chuck Roll)
-    "116A": "알목심-미국",
-    "916A": "알목심-미국",
-    # 등심 (Ribeye -> 꽃등심, 등갈비/백립과 별도)
-    "109E": "꽃등심-미국",
-    "112A": "꽃등심-미국",
-    # 스트립로인 (Strip Loin -> 센터컷, Master 취급명 기준)
-    "180": "센터컷-미국",
-    "175": "센터컷-미국",
-    # 기타 Master 대응 부위
-    "114D": "부채살-미국",
-    "124": "등갈비/백립-미국",
-    "121C": "안창살-미국",
-    "121D": "안창살-미국",
-}
+# USDA 품목 코드 -> 미트박스 표준 품목명 (part_mapping.CANONICAL_PARTS 기준)
+USDA_CODE_TO_KOREAN = build_usda_code_to_korean_map()
 
 # 코드 추출 실패 시 영문 설명 키워드로 보조 매핑
 KEYWORD_RULES = [

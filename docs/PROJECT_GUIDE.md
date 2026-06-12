@@ -83,6 +83,10 @@ Beef_Price_Model/
 streamlit run src/Home.py
 ```
 
+### 2.1.1 데이터 수집 운영 규칙
+
+재고·수입·USDA 등 **월별 누락 방지**, 실행 스케줄, 검증 체크리스트는 **[DATA_COLLECTION_RULES.md](DATA_COLLECTION_RULES.md)** 를 따른다.
+
 ### 2.2 일일 데이터 업데이트
 
 ```bash
@@ -94,6 +98,12 @@ python src/run_daily_update.py --price-only
 
 # 전체 수집 + 전처리 (USDA·환율·수입량·재고·식약처 포함)
 python src/run_daily_update.py --full
+
+# 월별 수집 (매월 10·20일 권장, 수입만 / 재고는 --with-stock)
+python src/run_daily_update.py --monthly
+
+# GAP 검증만
+python src/run_daily_update.py --gap-check
 
 # 성공 시 GitHub 반영: 커밋 후 원격 푸시
 python src/run_daily_update.py --full --push
@@ -182,6 +192,7 @@ python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
 | `02_Import_Analysis` | 수입량 분석 및 시각화 |
 | `03_Inventory_Management` | 재고 현황 모니터링 |
 | `04_Backtesting_Analysis` | 예측 모델 백테스팅 결과 시각화 |
+| `05_USDA_Analysis` | USDA 도매가, 다소스(미트박스·수입·재고) 통합 비교, 품목 Crosswalk |
 
 ### 3.4 Models — 예측 모델 학습
 
