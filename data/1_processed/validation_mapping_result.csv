@@ -1,41 +1,41 @@
 ﻿USDA_Code,Original_Description,Korean_Name,Status,Note
-130,"Chuck, short rib (130  4)",LA갈비-미국,정상,Master 품목명과 연결 가능
 123A,"Short Plate, short rib (123A  3)",LA갈비-미국,정상,Master 품목명과 연결 가능
 114D,"Chuck, clod, top blade (114D  3)",부채살-미국,정상,Master 품목명과 연결 가능
+116G,"Chuck, flap (116G  4)",살치살-미국,정상,Master 품목명과 연결 가능
+185B,"Loin, ball-tip, bnls, heavy (185B  1)",설도-미국,정상,Master 품목명과 연결 가능
+185C,"Loin, sirloin, tri-tip (185C  1)",설도-미국,정상,Master 품목명과 연결 가능
+185D,"Loin, sirloin, tri-tip, pld (185D  4)",설도-미국,정상,Master 품목명과 연결 가능
+184B,"Loin, top butt, CC (184B  3)",설도-미국,정상,Master 품목명과 연결 가능
+184,"Loin, top butt, bnls, heavy (184  1)",설도-미국,정상,Master 품목명과 연결 가능
+184,"Loin, top butt, boneless (184  3)",설도-미국,정상,Master 품목명과 연결 가능
+170,"Round, bottom gooseneck (170  1)",설도-미국,정상,Master 품목명과 연결 가능
+167A,"Round, knuckle, peeled (167A  4)",설도-미국,정상,Master 품목명과 연결 가능
+171B,"Round, outside round (171B  3)",설도-미국,정상,Master 품목명과 연결 가능
 ,"Loin, strip loin bnls. 1x1 (  1)",센터컷-미국,정상,Master 품목명과 연결 가능
 175,"Loin, strip loin, 1x1 (175  3)",센터컷-미국,정상,Master 품목명과 연결 가능
 180,"Loin, strip, bnls, 0x1 (180  3)",센터컷-미국,정상,Master 품목명과 연결 가능
-112A,"Rib, ribeye, bnls, heavy (112A  3)",센터컷-미국,정상,Master 품목명과 연결 가능
-112A,"Rib, ribeye, bnls, light (112A  3)",센터컷-미국,정상,Master 품목명과 연결 가능
-109E,"Rib, ribeye, lip-on, bn-in (109E  1)",센터컷-미국,정상,Master 품목명과 연결 가능
 116A,"Chuck, roll, lxl, neck/off (116A  3)",알목심-미국,정상,Master 품목명과 연결 가능
 916A,"Chuck, roll, retail ready (916A  3)",알목심-미국,정상,Master 품목명과 연결 가능
+116B,"Chuck, chuck tender (116B  1)",알전각/볼라전각-미국,정상,Master 품목명과 연결 가능
+114E,"Chuck, clod, arm roast (114E  3)",알전각/볼라전각-미국,정상,Master 품목명과 연결 가능
+114,"Chuck, shoulder clod (114  1)",알전각/볼라전각-미국,정상,Master 품목명과 연결 가능
+114A,"Chuck, shoulder clod, trmd (114A  3)",알전각/볼라전각-미국,정상,Master 품목명과 연결 가능
+130,"Chuck, short rib (130  4)",앞/척갈비-미국,정상,Master 품목명과 연결 가능
 120,"Brisket, deckle-off, bnls (120  1)",차돌양지-미국,정상,Master 품목명과 연결 가능
 120A,"Brisket, point/off, bnls (120A  3)",차돌양지-미국,정상,Master 품목명과 연결 가능
-116B,"Chuck, chuck tender (116B  1)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
+112A,"Rib, ribeye, bnls, heavy (112A  3)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
+112A,"Rib, ribeye, bnls, light (112A  3)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
+109E,"Rib, ribeye, lip-on, bn-in (109E  1)",꽃등심-미국,이름 불일치,리브아이 -> 꽃등심 매핑 적용. Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)
 114F,"Chuck, clod tender (114F  5)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
-114E,"Chuck, clod, arm roast (114E  3)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
-116G,"Chuck, flap (116G  4)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
 113C,"Chuck, semi-bnls, neck/off (113C  1)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
-114,"Chuck, shoulder clod (114  1)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
-114A,"Chuck, shoulder clod, trmd (114A  3)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"
 193,"Flank, flank steak (193  4)",,매핑 제외,플랭크 부위 (분석 제외)
-185B,"Loin, ball-tip, bnls, heavy (185B  1)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
 185A,"Loin, bottom sirloin, flap (185A  4)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
 191A,"Loin, butt tender, trimmed (191A  4)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
 174,"Loin, short loin, 0x1 (174  3)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
-185C,"Loin, sirloin, tri-tip (185C  1)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
-185D,"Loin, sirloin, tri-tip, pld (185D  4)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
 189A,"Loin, tndrloin, trmd, heavy (189A  4)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
-184B,"Loin, top butt, CC (184B  3)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
-184,"Loin, top butt, bnls, heavy (184  1)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
-184,"Loin, top butt, boneless (184  3)",,매핑 제외,등심/채끝(Loin) 세부 부위 (분석 제외)
 160,"Round, bone-in (160  1)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
 161,"Round, boneless (161  1)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
-170,"Round, bottom gooseneck (170  1)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
 171C,"Round, eye of round (171C  3)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
-167A,"Round, knuckle, peeled (167A  4)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
-171B,"Round, outside round (171B  3)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
 168,"Round, top inside round (168  1)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
 168,"Round, top inside round (168  3)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)
 169A,"Round, top inside, cap off (169A  5)",,매핑 제외,우둔(Round) 세부 부위 (분석 제외)

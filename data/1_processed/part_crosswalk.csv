@@ -1,16 +1,19 @@
 ﻿canonical_id,canonical_name_ko,kmta_part,usda_primal,ml_target,notes,source,source_key,source_label
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,LA갈비,LA갈비
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,앞/척갈비,앞/척갈비
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,등갈비/백립,등갈비/백립
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,BBQ등갈비,BBQ등갈비
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,백립(조각백립),백립(조각백립)
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,등갈비/백립(#2스펙),등갈비/백립(#2스펙)
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,황제늑간,황제늑간
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,meatbox,갈비살/늑간살,갈비살/늑간살
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,kmta_import_stock,갈비,갈비
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,usda_cut,123A,123A
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,usda_cut,130,130
-galbi,갈비,갈비,Primal Plate,True,USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위,usda_cut,124,124
+la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,LA갈비,LA갈비
+la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,갈비살/늑간살,갈비살/늑간살
+la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,황제늑간,황제늑간
+la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,kmta_import_stock,갈비,갈비
+la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,usda_cut,123A,123A
+chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,meatbox,앞/척갈비,앞/척갈비
+chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,meatbox,척리블렛,척리블렛
+chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,kmta_import_stock,갈비,갈비
+chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,usda_cut,130,130
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,등갈비/백립,등갈비/백립
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,BBQ등갈비,BBQ등갈비
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,백립(조각백립),백립(조각백립)
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,등갈비/백립(#2스펙),등갈비/백립(#2스펙)
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,kmta_import_stock,갈비,갈비
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,usda_primal,Primal Rib,Primal Rib
 brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌양지,차돌양지
 brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌박이,차돌박이
 brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,kmta_import_stock,양지,양지
@@ -20,38 +23,58 @@ plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — 
 plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",meatbox,삼겹양지(조각),삼겹양지(조각)
 plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",kmta_import_stock,양지,양지
 plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",usda_primal,Primal Plate,Primal Plate
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,meatbox,알목심,알목심
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,meatbox,척리블렛,척리블렛
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,meatbox,알전각/볼라전각,알전각/볼라전각
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,kmta_import_stock,목심,목심
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,usda_cut,116A,116A
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll,usda_cut,916A,916A
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,meatbox,센터컷,센터컷
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,meatbox,살치살,살치살
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,kmta_import_stock,등심,등심
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,usda_cut,109E,109E
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,usda_cut,112A,112A
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,usda_cut,180,180
-ribeye,등심,등심,Primal Rib,True,USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응,usda_cut,175,175
-chuck_flap,채끝,채끝,Primal Chuck,False,KMTA 채끝. 미트박스·USDA cut 매핑 미정 — ML 제외,meatbox,,(미매핑)
-chuck_flap,채끝,채끝,Primal Chuck,False,KMTA 채끝. 미트박스·USDA cut 매핑 미정 — ML 제외,kmta_import_stock,채끝,채끝
-chuck_flap,채끝,채끝,Primal Chuck,False,KMTA 채끝. 미트박스·USDA cut 매핑 미정 — ML 제외,usda_primal,Primal Chuck,Primal Chuck
-round,우둔,우둔,Primal Round,False,USDA Round 세부 cut은 validate_mapping에서 분석 제외,meatbox,설도,설도
-round,우둔,우둔,Primal Round,False,USDA Round 세부 cut은 validate_mapping에서 분석 제외,meatbox,설깃,설깃
-round,우둔,우둔,Primal Round,False,USDA Round 세부 cut은 validate_mapping에서 분석 제외,kmta_import_stock,우둔,우둔
-round,우둔,우둔,Primal Round,False,USDA Round 세부 cut은 validate_mapping에서 분석 제외,usda_primal,Primal Round,Primal Round
-shank,사태,사태,,False,,meatbox,아롱사태,아롱사태
-shank,사태,사태,,False,,meatbox,스지,스지
-shank,사태,사태,,False,,meatbox,스지(뒷스지),스지(뒷스지)
-shank,사태,사태,,False,,kmta_import_stock,사태,사태
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Top Blade -> 부채살(미트박스)은 별도 canonical,meatbox,,(미매핑)
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Top Blade -> 부채살(미트박스)은 별도 canonical,kmta_import_stock,앞다리,앞다리
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Top Blade -> 부채살(미트박스)은 별도 canonical,usda_cut,114D,114D
-top_blade,부채살,앞다리,Primal Chuck,True,미트박스 부채살. KMTA는 앞다리 합산 — 수입·재고 해상도 한계,meatbox,부채살,부채살
-top_blade,부채살,앞다리,Primal Chuck,True,미트박스 부채살. KMTA는 앞다리 합산 — 수입·재고 해상도 한계,meatbox,토시살,토시살
-top_blade,부채살,앞다리,Primal Chuck,True,미트박스 부채살. KMTA는 앞다리 합산 — 수입·재고 해상도 한계,kmta_import_stock,앞다리,앞다리
-top_blade,부채살,앞다리,Primal Chuck,True,미트박스 부채살. KMTA는 앞다리 합산 — 수입·재고 해상도 한계,usda_cut,114D,114D
-tenderloin,안심,안심,Primal Loin,False,안창살은 미트박스 명칭. KMTA 안심과 근접,meatbox,안창살,안창살
-tenderloin,안심,안심,Primal Loin,False,안창살은 미트박스 명칭. KMTA 안심과 근접,kmta_import_stock,안심,안심
-tenderloin,안심,안심,Primal Loin,False,안창살은 미트박스 명칭. KMTA 안심과 근접,usda_cut,121C,121C
-tenderloin,안심,안심,Primal Loin,False,안창살은 미트박스 명칭. KMTA 안심과 근접,usda_cut,121D,121D
+chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),meatbox,알목심,알목심
+chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),kmta_import_stock,목심,목심
+chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),usda_cut,116A,116A
+chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),usda_cut,916A,916A
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),meatbox,살치살,살치살
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),kmta_import_stock,목심,목심
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),usda_cut,116G,116G
+ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",meatbox,,(미매핑)
+ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",kmta_import_stock,등심,등심
+ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",usda_cut,109E,109E
+ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",usda_cut,112A,112A
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,meatbox,센터컷,센터컷
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,kmta_import_stock,채끝,채끝
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,usda_cut,180,180
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,usda_cut,175,175
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,meatbox,알전각/볼라전각,알전각/볼라전각
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,kmta_import_stock,앞다리,앞다리
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114,114
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114A,114A
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114E,114E
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,116B,116B
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,meatbox,부채살,부채살
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,kmta_import_stock,앞다리,앞다리
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,usda_cut,114D,114D
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,kmta_import_stock,안심,안심
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,usda_cut,189A,189A
+skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,meatbox,안창살,안창살
+skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,meatbox,토시살,토시살
+skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,kmta_import_stock,기타,기타
+skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,usda_primal,Primal Plate,Primal Plate
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,kmta_import_stock,우둔,우둔
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,168,168
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,169,169
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,169A,169A
+round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,171C,171C
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,meatbox,설도,설도
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,meatbox,설깃,설깃
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,kmta_import_stock,설도,설도
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,167A,167A
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,170,170
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,171B,171B
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,184,184
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,184B,184B
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185B,185B
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185C,185C
+seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185D,185D
+shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,아롱사태,아롱사태
+shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지,스지
+shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지(뒷스지),스지(뒷스지)
+shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,kmta_import_stock,사태,사태
+etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,meatbox,목뼈,목뼈
+etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,meatbox,홍창/소막창,홍창/소막창
+etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,kmta_import_stock,부산물,부산물
