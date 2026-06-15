@@ -50,10 +50,12 @@ top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 �
 tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
 tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,kmta_import_stock,안심,안심
 tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,usda_cut,189A,189A
-skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,meatbox,안창살,안창살
-skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,meatbox,토시살,토시살
-skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,kmta_import_stock,기타,기타
-skirt,안창살/토시살,기타,Primal Plate,False,USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외,usda_primal,Primal Plate,Primal Plate
+hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),meatbox,안창살,안창살
+hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),kmta_import_stock,기타,기타
+hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),usda_primal,Primal Plate,Primal Plate
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,meatbox,토시살,토시살
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,kmta_import_stock,기타,기타
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,usda_cut,185A,185A
 round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
 round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,kmta_import_stock,우둔,우둔
 round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,168,168

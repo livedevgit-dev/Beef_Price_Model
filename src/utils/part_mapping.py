@@ -159,16 +159,25 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         ml_target=False,
         notes="USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용",
     ),
-    # ---------- 안창/토시 (횡격막계 — KMTA 기타 추정) ----------
+    # ---------- 안창/토시 ----------
     PartSpec(
-        "skirt",
-        "안창살/토시살",
+        "hanger",
+        "안창살",
         kmta_part="기타",
-        meatbox_parts=("안창살", "토시살"),
+        meatbox_parts=("안창살",),
         usda_codes=(),
         usda_primal="Primal Plate",
         ml_target=False,
-        notes="USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외",
+        notes="USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정)",
+    ),
+    PartSpec(
+        "sirloin_flap",
+        "토시살",
+        kmta_part="기타",
+        meatbox_parts=("토시살",),
+        usda_codes=("185A",),
+        usda_primal="Primal Loin",
+        notes="USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat",
     ),
     # ---------- 우둔 / 설도 ----------
     PartSpec(
