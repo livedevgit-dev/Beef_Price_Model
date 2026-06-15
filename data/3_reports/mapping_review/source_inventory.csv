@@ -1,0 +1,51 @@
+﻿source,source_item,mapped_canonical_id,mapped_canonical_name_ko,status,review_question
+meatbox_us,BBQ등갈비,back_rib,등갈비/백립,MAPPED,미트박스 미국산 'BBQ등갈비'을(를) '등갈비/백립'로 분류한 것이 정확한가?
+meatbox_us,LA갈비,la_galbi,LA갈비,MAPPED,미트박스 미국산 'LA갈비'을(를) 'LA갈비'로 분류한 것이 정확한가?
+meatbox_us,갈비살/늑간살,la_galbi,LA갈비,MAPPED,미트박스 미국산 '갈비살/늑간살'을(를) 'LA갈비'로 분류한 것이 정확한가?
+meatbox_us,등갈비/백립,back_rib,등갈비/백립,MAPPED,미트박스 미국산 '등갈비/백립'을(를) '등갈비/백립'로 분류한 것이 정확한가?
+meatbox_us,등갈비/백립(#2스펙),back_rib,등갈비/백립,MAPPED,미트박스 미국산 '등갈비/백립(#2스펙)'을(를) '등갈비/백립'로 분류한 것이 정확한가?
+meatbox_us,목뼈,etc_offal,부산물,MAPPED,미트박스 미국산 '목뼈'을(를) '부산물'로 분류한 것이 정확한가?
+meatbox_us,백립(조각백립),back_rib,등갈비/백립,MAPPED,미트박스 미국산 '백립(조각백립)'을(를) '등갈비/백립'로 분류한 것이 정확한가?
+meatbox_us,부채살,top_blade,부채살,MAPPED,미트박스 미국산 '부채살'을(를) '부채살'로 분류한 것이 정확한가?
+meatbox_us,살치살,chuck_flap,살치살,MAPPED,미트박스 미국산 '살치살'을(를) '살치살'로 분류한 것이 정확한가?
+meatbox_us,삼겹양지,plate_yangji,삼겹양지,MAPPED,미트박스 미국산 '삼겹양지'을(를) '삼겹양지'로 분류한 것이 정확한가?
+meatbox_us,삼겹양지(조각),plate_yangji,삼겹양지,MAPPED,미트박스 미국산 '삼겹양지(조각)'을(를) '삼겹양지'로 분류한 것이 정확한가?
+meatbox_us,설깃,seoldo,설도,MAPPED,미트박스 미국산 '설깃'을(를) '설도'로 분류한 것이 정확한가?
+meatbox_us,설도,seoldo,설도,MAPPED,미트박스 미국산 '설도'을(를) '설도'로 분류한 것이 정확한가?
+meatbox_us,센터컷,striploin,채끝,MAPPED,미트박스 미국산 '센터컷'을(를) '채끝'로 분류한 것이 정확한가?
+meatbox_us,스지,shank,사태,MAPPED,미트박스 미국산 '스지'을(를) '사태'로 분류한 것이 정확한가?
+meatbox_us,스지(뒷스지),shank,사태,MAPPED,미트박스 미국산 '스지(뒷스지)'을(를) '사태'로 분류한 것이 정확한가?
+meatbox_us,아롱사태,shank,사태,MAPPED,미트박스 미국산 '아롱사태'을(를) '사태'로 분류한 것이 정확한가?
+meatbox_us,안창살,skirt,안창살/토시살,MAPPED,미트박스 미국산 '안창살'을(를) '안창살/토시살'로 분류한 것이 정확한가?
+meatbox_us,알목심,chuck_roll,목심,MAPPED,미트박스 미국산 '알목심'을(를) '목심'로 분류한 것이 정확한가?
+meatbox_us,알전각/볼라전각,chuck,앞다리,MAPPED,미트박스 미국산 '알전각/볼라전각'을(를) '앞다리'로 분류한 것이 정확한가?
+meatbox_us,앞/척갈비,chuck_galbi,척갈비,MAPPED,미트박스 미국산 '앞/척갈비'을(를) '척갈비'로 분류한 것이 정확한가?
+meatbox_us,차돌박이,brisket_yangji,차돌양지,MAPPED,미트박스 미국산 '차돌박이'을(를) '차돌양지'로 분류한 것이 정확한가?
+meatbox_us,차돌양지,brisket_yangji,차돌양지,MAPPED,미트박스 미국산 '차돌양지'을(를) '차돌양지'로 분류한 것이 정확한가?
+meatbox_us,척리블렛,chuck_galbi,척갈비,MAPPED,미트박스 미국산 '척리블렛'을(를) '척갈비'로 분류한 것이 정확한가?
+meatbox_us,토시살,skirt,안창살/토시살,MAPPED,미트박스 미국산 '토시살'을(를) '안창살/토시살'로 분류한 것이 정확한가?
+meatbox_us,홍창/소막창,etc_offal,부산물,MAPPED,미트박스 미국산 '홍창/소막창'을(를) '부산물'로 분류한 것이 정확한가?
+meatbox_us,황제늑간,la_galbi,LA갈비,MAPPED,미트박스 미국산 '황제늑간'을(를) 'LA갈비'로 분류한 것이 정확한가?
+kmta_import,갈비,back_rib,등갈비/백립,MAPPED,KMTA 수입통계 부위 '갈비'을(를) '등갈비/백립'와 동일 부위로 보는 것이 맞는가?
+kmta_import,기타,skirt,안창살/토시살,MAPPED,KMTA 수입통계 부위 '기타'을(를) '안창살/토시살'와 동일 부위로 보는 것이 맞는가?
+kmta_import,등심,ribeye,등심,MAPPED,KMTA 수입통계 부위 '등심'을(를) '등심'와 동일 부위로 보는 것이 맞는가?
+kmta_import,목심,chuck_flap,살치살,MAPPED,KMTA 수입통계 부위 '목심'을(를) '살치살'와 동일 부위로 보는 것이 맞는가?
+kmta_import,사태,shank,사태,MAPPED,KMTA 수입통계 부위 '사태'을(를) '사태'와 동일 부위로 보는 것이 맞는가?
+kmta_import,설도,seoldo,설도,MAPPED,KMTA 수입통계 부위 '설도'을(를) '설도'와 동일 부위로 보는 것이 맞는가?
+kmta_import,안심,tenderloin,안심,MAPPED,KMTA 수입통계 부위 '안심'을(를) '안심'와 동일 부위로 보는 것이 맞는가?
+kmta_import,앞다리,top_blade,부채살,MAPPED,KMTA 수입통계 부위 '앞다리'을(를) '부채살'와 동일 부위로 보는 것이 맞는가?
+kmta_import,양지,plate_yangji,삼겹양지,MAPPED,KMTA 수입통계 부위 '양지'을(를) '삼겹양지'와 동일 부위로 보는 것이 맞는가?
+kmta_import,우둔,round,우둔,MAPPED,KMTA 수입통계 부위 '우둔'을(를) '우둔'와 동일 부위로 보는 것이 맞는가?
+kmta_import,채끝,striploin,채끝,MAPPED,KMTA 수입통계 부위 '채끝'을(를) '채끝'와 동일 부위로 보는 것이 맞는가?
+kmta_stock,갈비,back_rib,등갈비/백립,MAPPED,KMTA 재고통계 부위 '갈비'을(를) '등갈비/백립'로 분류해도 되는가?
+kmta_stock,기타,skirt,안창살/토시살,MAPPED,KMTA 재고통계 부위 '기타'을(를) '안창살/토시살'로 분류해도 되는가?
+kmta_stock,등심,ribeye,등심,MAPPED,KMTA 재고통계 부위 '등심'을(를) '등심'로 분류해도 되는가?
+kmta_stock,목심,chuck_flap,살치살,MAPPED,KMTA 재고통계 부위 '목심'을(를) '살치살'로 분류해도 되는가?
+kmta_stock,부산물,etc_offal,부산물,MAPPED,KMTA 재고통계 부위 '부산물'을(를) '부산물'로 분류해도 되는가?
+kmta_stock,사태,shank,사태,MAPPED,KMTA 재고통계 부위 '사태'을(를) '사태'로 분류해도 되는가?
+kmta_stock,설도,seoldo,설도,MAPPED,KMTA 재고통계 부위 '설도'을(를) '설도'로 분류해도 되는가?
+kmta_stock,안심,tenderloin,안심,MAPPED,KMTA 재고통계 부위 '안심'을(를) '안심'로 분류해도 되는가?
+kmta_stock,앞다리,top_blade,부채살,MAPPED,KMTA 재고통계 부위 '앞다리'을(를) '부채살'로 분류해도 되는가?
+kmta_stock,양지,plate_yangji,삼겹양지,MAPPED,KMTA 재고통계 부위 '양지'을(를) '삼겹양지'로 분류해도 되는가?
+kmta_stock,우둔,round,우둔,MAPPED,KMTA 재고통계 부위 '우둔'을(를) '우둔'로 분류해도 되는가?
+kmta_stock,채끝,striploin,채끝,MAPPED,KMTA 재고통계 부위 '채끝'을(를) '채끝'로 분류해도 되는가?

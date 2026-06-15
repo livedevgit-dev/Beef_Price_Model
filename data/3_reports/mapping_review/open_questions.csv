@@ -1,0 +1,8 @@
+﻿topic,context,question
+살치살의 KMTA 분류,"미트박스 '살치살'은 USDA Chuck flap(116G, 척롤 인접 부위)에 해당. KMTA 수입·재고 통계에서는 '목심'으로 잡힐 가능성과 '앞다리'로 잡힐 가능성이 있음. 현재는 '목심'으로 매핑.",한국 수입·재고 통계에서 척플랩(살치살)이 '목심'과 '앞다리' 중 어디에 집계되는지 확인 요청. 가능하면 근거 자료(KMTA 분류 기준 등)도 함께.
+설도 vs Loin top butt/Tri-tip,"USDA 184/184B(top butt=보섭), 185B/C/D(ball-tip·tri-tip=삼각살)는 Primal Loin으로 분류되지만, 한국 분류 체계상 '설도'에 속함. 현재는 KMTA '설도' canonical에 묶음.",USDA Loin top butt/Tri-tip을 한국 '설도'로 분류한 것이 정확한지 검증 요청. 학술자료·도축기준상 더 정확한 분류가 있다면 제시.
+삼겹양지의 USDA cut 없음,미트박스 '삼겹양지'는 USDA Short Plate(navel) 부위인데 LM_XB403 boxed beef 보고에서는 plate navel boxed cut 코드를 수집하지 않음. 현재는 Primal Plate 지수(choice_600_900 / 45.36)를 USDA 대체값으로 사용.,"Short Plate navel에 해당하는 다른 USDA 보고(예: 121류, NW_LS441 등)가 있는지, Primal Plate 지수로 대체하는 것이 가격예측에 적절한지 의견 요청."
+등갈비/백립의 USDA cut 없음,USDA back rib(124)는 본 프로젝트의 LM_XB403 수집 결과에 존재하지 않음. 현재는 Primal Rib 지수로 대체.,"USDA 보고서 중 back ribs(124, 124A 등)를 별도로 수집할 수 있는 API 엔드포인트가 있는지, 없다면 Primal Rib 지수로 대체하는 것이 충분한 proxy인지 확인."
+안창살·토시살의 USDA cut,"안창살(outside skirt 121C), 토시살(hanging tender) 모두 LM_XB403 수집 데이터에 없음. 현재 Primal Plate 지수로 대체.","USDA에서 outside/inside skirt(121C/121D), hanging tender의 별도 가격 시계열을 얻을 수 있는 데이터 소스가 있는지 확인."
+차돌양지 vs 삼겹양지 분리,"KMTA '양지' 한 부위에 USDA 측에서 차돌양지(Brisket 120/120A)와 삼겹양지(Short Plate)가 섞임. 가격 신호 보존을 위해 canonical을 둘로 분리(brisket_yangji, plate_yangji)했고, 수입·재고는 두 canonical이 동일한 KMTA '양지' 시계열을 공유함.","이 분리 방식이 ML 모델링에 더 적합한가, 아니면 KMTA 해상도에 맞춰 하나의 '양지' canonical로 유지하고 USDA를 평균내는 편이 더 안정적인가?"
+앞다리 vs 부채살,"USDA Top blade(114D)는 미트박스 '부채살'에 해당. 동시에 미트박스 '알전각/볼라전각'은 Shoulder clod(114/114A/114E)에 해당. 두 canonical(top_blade, chuck) 모두 KMTA '앞다리'를 공유.","부채살(top blade)을 KMTA 앞다리의 일부로 보는 것이 정확한지, 또는 별도 카테고리(예: 한국 분류상 부채살은 척에 속함)로 분리하는 것이 더 정확한지 검토."

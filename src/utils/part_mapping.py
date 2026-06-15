@@ -35,27 +35,43 @@ class PartSpec:
 
 
 # KMTA 부위명 = 수입(master_import_volume) = 재고(beef_stock) 공통 체계
+#
+# [설계 원칙]
+# 1. USDA 프라이멀이 다른 품목은 canonical을 분리한다 (가격 신호가 다름).
+#    예: 양지 -> 차돌양지(Brisket) / 삼겹양지(Plate), 갈비 -> LA갈비(Plate) / 척갈비(Chuck) / 등갈비(Rib)
+# 2. KMTA(수입·재고)는 해상도가 낮아 여러 canonical이 같은 kmta_part를 공유할 수 있다.
+# 3. usda_codes가 비어 있으면 BI에서 usda_primal 지수로 대체한다.
+# 4. ml_target=False: 미트박스 미취급(타깃 없음) 또는 소스 해상도 문제로 ML 제외.
 CANONICAL_PARTS: tuple[PartSpec, ...] = (
+    # ---------- 갈비 (KMTA '갈비' 공유) ----------
     PartSpec(
-        "galbi",
-        "갈비",
+        "la_galbi",
+        "LA갈비",
         kmta_part="갈비",
-        meatbox_parts=(
-            "LA갈비",
-            "앞/척갈비",
-            "등갈비/백립",
-            "BBQ등갈비",
-            "백립(조각백립)",
-            "등갈비/백립(#2스펙)",
-            "황제늑간",
-            "갈비살/늑간살",
-        ),
-        usda_codes=("123A", "130", "124"),
+        meatbox_parts=("LA갈비", "갈비살/늑간살", "황제늑간"),
+        usda_codes=("123A",),
         usda_primal="Primal Plate",
-        notes="USDA Short Plate / Short Rib. 수입·재고는 KMTA '갈비' 단일 부위",
+        notes="USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축",
     ),
-    # 양지는 KMTA 기준 단일 부위지만 USDA는 Brisket / Plate 별도 프라이멀.
-    # 가격 신호가 다르므로 canonical을 분리하고, 수입·재고는 둘 다 KMTA '양지'를 공유한다.
+    PartSpec(
+        "chuck_galbi",
+        "척갈비",
+        kmta_part="갈비",
+        meatbox_parts=("앞/척갈비", "척리블렛"),
+        usda_codes=("130",),
+        usda_primal="Primal Chuck",
+        notes="USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷",
+    ),
+    PartSpec(
+        "back_rib",
+        "등갈비/백립",
+        kmta_part="갈비",
+        meatbox_parts=("등갈비/백립", "BBQ등갈비", "백립(조각백립)", "등갈비/백립(#2스펙)"),
+        usda_codes=(),
+        usda_primal="Primal Rib",
+        notes="USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체",
+    ),
+    # ---------- 양지 (KMTA '양지' 공유, USDA는 Brisket/Plate 별도 프라이멀) ----------
     PartSpec(
         "brisket_yangji",
         "차돌양지",
@@ -74,44 +90,107 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         usda_primal="Primal Plate",
         notes="USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",
     ),
+    # ---------- 목심 ----------
     PartSpec(
         "chuck_roll",
         "목심",
         kmta_part="목심",
-        meatbox_parts=("알목심", "척리블렛", "알전각/볼라전각"),
+        meatbox_parts=("알목심",),
         usda_codes=("116A", "916A"),
         usda_primal="Primal Chuck",
-        notes="USDA Chuck Roll",
+        notes="USDA Chuck Roll(116A/916A)",
     ),
+    PartSpec(
+        "chuck_flap",
+        "살치살",
+        kmta_part="목심",
+        meatbox_parts=("살치살",),
+        usda_codes=("116G",),
+        usda_primal="Primal Chuck",
+        notes="USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음)",
+    ),
+    # ---------- 등심 / 채끝 ----------
     PartSpec(
         "ribeye",
         "등심",
         kmta_part="등심",
-        meatbox_parts=("센터컷", "살치살"),
-        usda_codes=("109E", "112A", "180", "175"),
+        meatbox_parts=(),
+        usda_codes=("109E", "112A"),
         usda_primal="Primal Rib",
-        notes="USDA Ribeye / Strip Loin 일부. 미트박스 센터컷은 Strip 대응",
+        ml_target=False,
+        notes="USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",
     ),
     PartSpec(
-        "chuck_flap",
+        "striploin",
         "채끝",
         kmta_part="채끝",
-        meatbox_parts=(),
-        usda_codes=(),
-        usda_primal="Primal Chuck",
-        ml_target=False,
-        notes="KMTA 채끝. 미트박스·USDA cut 매핑 미정 — ML 제외",
+        meatbox_parts=("센터컷",),
+        usda_codes=("180", "175"),
+        usda_primal="Primal Loin",
+        notes="USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷",
     ),
+    # ---------- 앞다리 (KMTA '앞다리' 공유) ----------
+    PartSpec(
+        "chuck",
+        "앞다리",
+        kmta_part="앞다리",
+        meatbox_parts=("알전각/볼라전각",),
+        usda_codes=("114", "114A", "114E", "116B"),
+        usda_primal="Primal Chuck",
+        notes="USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷",
+    ),
+    PartSpec(
+        "top_blade",
+        "부채살",
+        kmta_part="앞다리",
+        meatbox_parts=("부채살",),
+        usda_codes=("114D",),
+        usda_primal="Primal Chuck",
+        notes="USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계",
+    ),
+    # ---------- 안심 ----------
+    PartSpec(
+        "tenderloin",
+        "안심",
+        kmta_part="안심",
+        meatbox_parts=(),
+        usda_codes=("189A",),
+        usda_primal="Primal Loin",
+        ml_target=False,
+        notes="USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용",
+    ),
+    # ---------- 안창/토시 (횡격막계 — KMTA 기타 추정) ----------
+    PartSpec(
+        "skirt",
+        "안창살/토시살",
+        kmta_part="기타",
+        meatbox_parts=("안창살", "토시살"),
+        usda_codes=(),
+        usda_primal="Primal Plate",
+        ml_target=False,
+        notes="USDA skirt(121C/121D)·hanging tender는 수집 데이터에 없음. KMTA 분류 불명(기타 추정) — ML 제외",
+    ),
+    # ---------- 우둔 / 설도 ----------
     PartSpec(
         "round",
         "우둔",
         kmta_part="우둔",
-        meatbox_parts=("설도", "설깃"),
-        usda_codes=(),
+        meatbox_parts=(),
+        usda_codes=("168", "169", "169A", "171C"),
         usda_primal="Primal Round",
         ml_target=False,
-        notes="USDA Round 세부 cut은 validate_mapping에서 분석 제외",
+        notes="USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용",
     ),
+    PartSpec(
+        "seoldo",
+        "설도",
+        kmta_part="설도",
+        meatbox_parts=("설도", "설깃"),
+        usda_codes=("167A", "170", "171B", "184", "184B", "185B", "185C", "185D"),
+        usda_primal="Primal Round",
+        notes="USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도",
+    ),
+    # ---------- 사태 ----------
     PartSpec(
         "shank",
         "사태",
@@ -120,34 +199,18 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         usda_codes=(),
         usda_primal=None,
         ml_target=False,
+        notes="USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음",
     ),
+    # ---------- 기타 / 부산물 ----------
     PartSpec(
-        "chuck",
-        "앞다리",
-        kmta_part="앞다리",
-        meatbox_parts=(),
-        usda_codes=("114D",),
-        usda_primal="Primal Chuck",
-        notes="USDA Top Blade -> 부채살(미트박스)은 별도 canonical",
-    ),
-    PartSpec(
-        "top_blade",
-        "부채살",
-        kmta_part="앞다리",
-        meatbox_parts=("부채살", "토시살"),
-        usda_codes=("114D",),
-        usda_primal="Primal Chuck",
-        notes="미트박스 부채살. KMTA는 앞다리 합산 — 수입·재고 해상도 한계",
-    ),
-    PartSpec(
-        "tenderloin",
-        "안심",
-        kmta_part="안심",
-        meatbox_parts=("안창살",),
-        usda_codes=("121C", "121D"),
-        usda_primal="Primal Loin",
+        "etc_offal",
+        "부산물",
+        kmta_part="부산물",
+        meatbox_parts=("목뼈", "홍창/소막창"),
+        usda_codes=(),
+        usda_primal=None,
         ml_target=False,
-        notes="안창살은 미트박스 명칭. KMTA 안심과 근접",
+        notes="뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외",
     ),
 )
 
