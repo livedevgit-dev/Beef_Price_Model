@@ -110,7 +110,13 @@ df_grade = df[df["grade"] == selected_grade].copy()
 value_col = "weighted_average_USD_kg"
 unit_label = "USD/kg"
 
-part_options = sorted(df_grade["display_name"].dropna().unique())
+def _part_sort_key(name: str):
+    # 한글 라벨이 붙은 부위([..]로 시작)를 우선 노출
+    has_korean = name.startswith("[")
+    return (0 if has_korean else 1, name)
+
+
+part_options = sorted(df_grade["display_name"].dropna().unique(), key=_part_sort_key)
 selected_part = st.sidebar.selectbox(
     "부위(Cut) 선택",
     ["전체 보기 (가격 동향 요약)"] + part_options,
