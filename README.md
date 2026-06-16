@@ -5,12 +5,18 @@
 ## Quick Start
 
 ```bash
-# 대시보드 실행
+# 1) 환경 변수 (최초 1회)
+copy .env.example .env          # Windows
+# .env 에 USDA / EKAPE / (선택) KAMIS 키 입력
+
+# 2) 대시보드 실행
 streamlit run src/Home.py
 
-# 데이터 수집 + 전처리 + 스키마 문서 갱신
+# 3) 데이터 수집 + 전처리 + 스키마 문서 갱신
 python src/run_daily_update.py
 ```
+
+> **보안**: `.env` 는 git에 올리지 않습니다. 팀원은 `.env.example` 을 복사해 각자 키를 입력하세요.
 
 ## 프로젝트 구조
 
