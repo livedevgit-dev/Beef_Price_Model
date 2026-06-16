@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-06-16 08:02
+> 마지막 갱신: 2026-06-17 08:04
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -237,6 +237,29 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 보관 | object | 냉동 | 냉동 |
 | 도매시세 | int64 | 0 | 0 |
 | siseSeq | int64 | 43569155 | 43558120 |
+
+#### `han_auction_raw.csv`
+- **총 행(Row) 수**: 약 19501행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| auction_start_ymd | int64 | 20190101 | 20190101 |
+| auction_end_ymd | int64 | 20190130 | 20190130 |
+| grade_type | object | QW | QW |
+| grade_cd | int64 | 0 | 0 |
+| grade_nm | object | 1++ | 1++ |
+| breed_cd | float64 | nan | nan |
+| breed_nm | object | 전체 | 전체 |
+| sex_cd | float64 | nan | nan |
+| sex_nm | object | 전체 | 전체 |
+| qgrade_yn | object | Y | Y |
+| defect_include_yn | object | Y | Y |
+| market_code | int64 | 202 | 302 |
+| market_name | object | 부경축공 | 협신식품 |
+| is_regional_total | bool | False | False |
+| is_national_total | bool | False | False |
+| price_won_per_kg | int64 | 20627 | 20748 |
+| head_count | int64 | 678 | 721 |
 
 #### `manual_kor_price.csv`
 - **총 행(Row) 수**: 약 97행
@@ -615,8 +638,24 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | min_total | float64 | 9860.0 | 9860.0 |
 | max_total | float64 | 11180.0 | 11180.0 |
 
+#### `han_auction_daily.csv`
+- **총 행(Row) 수**: 약 19501행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 2019-01-30 | 2019-01-30 |
+| source | object | ekape_auction | ekape_auction |
+| grade | object | 1++ | 1++ |
+| sex | object | 전체 | 전체 |
+| market_code | int64 | 202 | 302 |
+| market_name | object | 부경축공 | 협신식품 |
+| is_national_total | bool | False | False |
+| is_regional_total | bool | False | False |
+| price_won_per_kg | int64 | 20627 | 20748 |
+| head_count | int64 | 678 | 721 |
+
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 58536행
+- **총 행(Row) 수**: 약 58684행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -642,7 +681,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 58378행
+- **총 행(Row) 수**: 약 58536행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -798,7 +837,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 59023행
+- **총 행(Row) 수**: 약 59153행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -811,5 +850,25 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | ma30 | float64 | nan | nan |
 | min_total | float64 | 9860.0 | 9860.0 |
 | max_total | float64 | 12380.0 | 12380.0 |
+
+#### `hanwoo_dashboard_ready.csv`
+- **총 행(Row) 수**: 약 19501행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 2019-01-30 | 2019-03-01 |
+| source | object | ekape_auction | ekape_auction |
+| grade | int64 | 1 | 1 |
+| sex | object | 전체 | 전체 |
+| market_code | object | Center | Center |
+| market_name | object | Center | Center |
+| is_national_total | bool | False | False |
+| is_regional_total | bool | False | False |
+| price_won_per_kg | int64 | 17606 | 17606 |
+| head_count | int64 | 4608 | 2236 |
+| part | object | 전체(도체) | 전체(도체) |
+| country_name | float64 | nan | nan |
+| ma7 | float64 | nan | nan |
+| ma30 | float64 | nan | nan |
 
 <!-- AUTO-GENERATED-SCHEMA:END -->
