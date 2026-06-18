@@ -1,7 +1,12 @@
+import sys
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
 from datetime import timedelta
 
+# Streamlit Cloud 등 실행 환경에 무관하게 src/ 를 모듈 경로에 보장 (config import용)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from config import DASHBOARD_READY_CSV
 
 # [파일 정의서]

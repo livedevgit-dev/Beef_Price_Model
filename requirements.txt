@@ -14,8 +14,10 @@ python-dateutil>=2.8.0
 
 # 시각화
 streamlit>=1.28.0
+plotly>=5.18.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
 # 유틸리티
 beautifulsoup4>=4.12.0
+python-dotenv>=1.0.0
