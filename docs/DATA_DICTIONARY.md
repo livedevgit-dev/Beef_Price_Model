@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-06-17 08:04
+> 마지막 갱신: 2026-06-19 08:24
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -239,7 +239,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | siseSeq | int64 | 43569155 | 43558120 |
 
 #### `han_auction_raw.csv`
-- **총 행(Row) 수**: 약 19501행
+- **총 행(Row) 수**: 약 19718행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -260,6 +260,36 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | is_national_total | bool | False | False |
 | price_won_per_kg | int64 | 20627 | 20748 |
 | head_count | int64 | 678 | 721 |
+
+#### `kamis_hanwoo_raw.csv`
+- **총 행(Row) 수**: 약 81810행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| reg_date | object | 2019-01-01 | 2019-01-01 |
+| product_cls_code | int64 | 1 | 1 |
+| product_cls_name | object | 소매 | 소매 |
+| item_name | object | 소 | 소 |
+| kind_name | object | 갈비 | 갈비 |
+| rank | object | 1++등급 | 1+등급 |
+| unit | object | 100g | 100g |
+| country_name | float64 | nan | nan |
+| market_name | float64 | nan | nan |
+| price | float64 | nan | nan |
+
+#### `macro_indicators_raw.csv`
+- **총 행(Row) 수**: 약 2747행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 2019-01-01 | 2019-01-01 |
+| country | object | KR | KR |
+| indicator_id | object | kr_base_rate | kr_ccsi |
+| indicator_name | object | 한국은행 기준금리 | 소비자심리지수(CCSI) |
+| value | float64 | 1.75 | 98.3 |
+| unit | object | 연% | p (장기평균=100) |
+| freq | object | M | M |
+| source | object | ECOS | ECOS |
 
 #### `manual_kor_price.csv`
 - **총 행(Row) 수**: 약 97행
@@ -639,7 +669,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `han_auction_daily.csv`
-- **총 행(Row) 수**: 약 19501행
+- **총 행(Row) 수**: 약 19718행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -654,8 +684,25 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | price_won_per_kg | int64 | 20627 | 20748 |
 | head_count | int64 | 678 | 721 |
 
+#### `macro_indicators_daily.csv`
+- **총 행(Row) 수**: 약 29975행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 2019-01-01 | 2019-01-02 |
+| country | object | KR | KR |
+| indicator_id | object | kr_base_rate | kr_base_rate |
+| indicator_name | object | 한국은행 기준금리 | 한국은행 기준금리 |
+| value | float64 | 1.75 | 1.75 |
+| unit | object | 연% | 연% |
+| freq | object | M | M |
+| source | object | ECOS | ECOS |
+| ma30 | float64 | nan | nan |
+| yoy_pct | float64 | nan | nan |
+| mom_pct | float64 | nan | nan |
+
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 58684행
+- **총 행(Row) 수**: 약 58986행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -681,7 +728,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 58536행
+- **총 행(Row) 수**: 약 58839행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -837,7 +884,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 59153행
+- **총 행(Row) 수**: 약 59357행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -852,7 +899,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 12380.0 | 12380.0 |
 
 #### `hanwoo_dashboard_ready.csv`
-- **총 행(Row) 수**: 약 19501행
+- **총 행(Row) 수**: 약 68274행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -864,11 +911,40 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_name | object | Center | Center |
 | is_national_total | bool | False | False |
 | is_regional_total | bool | False | False |
-| price_won_per_kg | int64 | 17606 | 17606 |
+| price_won_per_kg | float64 | 17606.0 | 17606.0 |
 | head_count | int64 | 4608 | 2236 |
 | part | object | 전체(도체) | 전체(도체) |
 | country_name | float64 | nan | nan |
 | ma7 | float64 | nan | nan |
 | ma30 | float64 | nan | nan |
+
+#### `macro_dashboard_ready.csv`
+- **총 행(Row) 수**: 약 2725행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 2019-01-01 | 2019-01-02 |
+| kr_base_rate | float64 | 1.75 | 1.75 |
+| kr_ccsi | float64 | 98.3 | 98.3 |
+| kr_cpi_food | float64 | 95.789 | 95.789 |
+| kr_cpi_total | float64 | 98.884 | 98.884 |
+| kr_esi | float64 | 92.6 | 92.6 |
+| kr_ppi_food | float64 | 98.7 | 98.7 |
+| us_corn | float64 | 166.8462 | 166.8462 |
+| us_food_ppi | float64 | 206.2 | 206.2 |
+| us_soybean | float64 | 333.7771 | 333.7771 |
+| us_soybean_meal | float64 | 344.7295 | 344.7295 |
+| us_wti | float64 | nan | 46.31 |
+| kr_base_rate_yoy_pct | float64 | nan | nan |
+| kr_ccsi_yoy_pct | float64 | nan | nan |
+| kr_cpi_food_yoy_pct | float64 | nan | nan |
+| kr_cpi_total_yoy_pct | float64 | nan | nan |
+| kr_esi_yoy_pct | float64 | nan | nan |
+| kr_ppi_food_yoy_pct | float64 | nan | nan |
+| us_corn_yoy_pct | float64 | nan | nan |
+| us_food_ppi_yoy_pct | float64 | nan | nan |
+| us_soybean_yoy_pct | float64 | nan | nan |
+| us_soybean_meal_yoy_pct | float64 | nan | nan |
+| us_wti_yoy_pct | float64 | nan | nan |
 
 <!-- AUTO-GENERATED-SCHEMA:END -->
