@@ -40,6 +40,21 @@ MAPPING_REVIEW_DIR = PROJECT_ROOT / "data" / "3_reports" / "mapping_review"
 MANUAL_KOR_PRICE_CSV = DATA_RAW / "manual_kor_price.csv"
 SHORT_PLATE_WHOLESALE_XLSX = DATA_RAW / "beef_Short Plate_wholesale_price.xlsx"
 
+# 한우 (Hanwoo) — 국내 시장
+# EKAPE 축산물품질평가원 소도체 등급별 경락가격 + 도축장별 두수 (한 API에 둘 다 포함)
+HAN_AUCTION_RAW_CSV = DATA_RAW / "han_auction_raw.csv"          # API 원본(long format)
+HAN_AUCTION_DAILY_CSV = DATA_PROCESSED / "han_auction_daily.csv"  # 일자 × 등급 × 도매시장 정규화
+# KAMIS 한우 도/소매 가격 (한국농수산식품유통공사)
+KAMIS_HANWOO_RAW_CSV = DATA_RAW / "kamis_hanwoo_raw.csv"
+# 통합 대시보드용 (가격 + 두수 + 7/30일 MA 등)
+HANWOO_DASHBOARD_CSV = DATA_DASHBOARD / "hanwoo_dashboard_ready.csv"
+
+# 거시경제 지표 (Macro) — 금리·물가(CPI)·PPI·옥수수·WTI 등 (FRED / ECOS)
+# 환율(USD/KRW)은 EXCHANGE_RATE_XLSX 에 이미 있으므로 macro 에서 중복 수집하지 않음
+MACRO_RAW_CSV = DATA_RAW / "macro_indicators_raw.csv"             # API 원본(long format)
+MACRO_PROCESSED_CSV = DATA_PROCESSED / "macro_indicators_daily.csv"  # 일별 ffill + ma30/yoy/mom
+MACRO_DASHBOARD_CSV = DATA_DASHBOARD / "macro_dashboard_ready.csv"   # 가격 데이터와 date 기준 merge용
+
 # Chromedriver (collectors에서 사용)
 CHROMEDRIVER_PATH = SRC_DIR / "chromedriver.exe"
 

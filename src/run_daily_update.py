@@ -23,6 +23,8 @@ from config import (
     BEEF_STOCK_XLSX,
     DASHBOARD_READY_CSV,
     EXCHANGE_RATE_XLSX,
+    HAN_AUCTION_RAW_CSV,
+    MACRO_RAW_CSV,
     MASTER_IMPORT_VOLUME_CSV,
     PROJECT_ROOT,
     SRC_DIR,
@@ -179,6 +181,8 @@ DAILY_COLLECTORS = [
     ("USDA 부위별 시세 (LM_XB403)", _collector("api_us_beef_collect_usda.py")),
     ("USDA 프라이멀 시세", _collector("collect_usda_primal.py")),
     ("USD/KRW 환율", _collector("crawl_com_usd_krw.py")),
+    ("EKAPE 한우 경락가격·도축두수", _collector("crawl_han_auction_api.py")),
+    ("KAMIS 한우 도/소매가 (키 없으면 자동 skip)", _collector("collect_kamis_hanwoo.py")),
 ]
 
 MONTHLY_COLLECTORS = [
@@ -187,9 +191,24 @@ MONTHLY_COLLECTORS = [
     ("식약처 수입 검역 실적", _collector("crawl_imp_food_safety.py")),
 ]
 
+# 거시경제 지표 (Macro) — 키 없으면 각 수집기가 자동 skip
+MACRO_COLLECTORS = [
+    ("FRED 미국 거시지표 (옥수수·대두·WTI·Food PPI, 키 없으면 skip)", _collector("collect_macro_fred.py")),
+    ("ECOS 국내 거시지표 (기준금리·CPI·PPI·심리지수, 키 없으면 skip)", _collector("collect_macro_ecos.py")),
+    ("KMA 기후 지표 (기온·강수, 키 없으면 skip)", _collector("collect_macro_kma.py")),
+]
+
+MACRO_PROCESSORS = [
+    ("거시지표 전처리 (raw → daily ffill → macro_dashboard_ready)", _util("preprocess_macro.py")),
+]
+
 USDA_PROCESSORS = [
     ("USDA 원가 산출 (환율 반영)", _util("process_usda_data.py")),
     ("USDA Plate USD/kg 변환", _util("preprocess_primal.py")),
+]
+
+HANWOO_PROCESSORS = [
+    ("한우 통합 전처리 (EKAPE + KAMIS → hanwoo_dashboard_ready)", _util("preprocess_hanwoo.py")),
 ]
 
 COMMON_PROCESSORS = [
@@ -275,6 +294,26 @@ def _read_exchange_latest_date():
         return None
     df = pd.read_excel(EXCHANGE_RATE_XLSX, usecols=["Date"])
     return pd.to_datetime(df["Date"], errors="coerce").max()
+
+
+def _read_hanwoo_latest_date():
+    if not HAN_AUCTION_RAW_CSV.exists():
+        return None
+    df = pd.read_csv(HAN_AUCTION_RAW_CSV, usecols=["auction_end_ymd"], low_memory=False)
+    return pd.to_datetime(
+        df["auction_end_ymd"].astype(str), format="%Y%m%d", errors="coerce"
+    ).max()
+
+
+def _read_macro_latest_date():
+    """거시지표 raw 의 최신 date. 파일 없으면 None (키 미설정/미수집)."""
+    if not MACRO_RAW_CSV.exists():
+        return None
+    try:
+        df = pd.read_csv(MACRO_RAW_CSV, usecols=["date"], low_memory=False)
+    except Exception:
+        return None
+    return pd.to_datetime(df["date"], errors="coerce").max()
 
 
 def check_data_gaps(*, check_monthly: bool, check_usda: bool) -> list[dict]:
@@ -436,6 +475,54 @@ def check_data_gaps(*, check_monthly: bool, check_usda: bool) -> list[dict]:
                 "action": "-" if status == "OK" else "환율 수집기 재실행",
             })
 
+    # 거시지표 (Macro) — full 모드에서만 점검. 키 미설정 시 파일이 없을 수 있어 SKIP(info) 처리.
+    # WTI는 일별이지만 옥수수·CPI·PPI는 월별 → 월 지표 발표 지연 감안해 40일 lag 까지 허용.
+    if check_usda:
+        macro_dt = _read_macro_latest_date()
+        if macro_dt is None or pd.isna(macro_dt):
+            findings.append({
+                "name": "거시지표(Macro)",
+                "latest": "-",
+                "expected": "FRED/ECOS 키 설정 시",
+                "status": "SKIP",
+                "severity": "info",
+                "action": ".env 에 FRED_API_KEY / ECOS_API_KEY 설정 후 --full 재실행",
+            })
+        else:
+            lag_days = (today - macro_dt.date()).days
+            status = "OK" if lag_days <= 40 else "GAP"
+            findings.append({
+                "name": "거시지표(Macro)",
+                "latest": macro_dt.strftime("%Y-%m-%d"),
+                "expected": "월 지표 발표 지연 감안(≤40일)",
+                "status": status,
+                "severity": "info" if status == "OK" else "warn",
+                "action": "-" if status == "OK" else "collect_macro_fred/ecos 재실행",
+            })
+
+    # 한우 (EKAPE 경락) — 영업일 기준, 미국 USDA와 유사하게 5일 lag 까지 허용
+    han_dt = _read_hanwoo_latest_date()
+    if han_dt is None or pd.isna(han_dt):
+        findings.append({
+            "name": "한우 경락",
+            "latest": "-",
+            "expected": "전 영업일",
+            "status": "MISSING",
+            "severity": "warn",
+            "action": "crawl_han_auction_api.py 실행 (EKAPE_API_KEY 필요)",
+        })
+    else:
+        lag_days = (today - han_dt.date()).days
+        status = "OK" if lag_days <= 5 else "GAP"
+        findings.append({
+            "name": "한우 경락",
+            "latest": han_dt.strftime("%Y-%m-%d"),
+            "expected": "전 영업일",
+            "status": status,
+            "severity": "info" if status == "OK" else "warn",
+            "action": "-" if status == "OK" else "crawl_han_auction_api.py 재실행",
+        })
+
     return findings
 
 
@@ -519,9 +606,14 @@ def run_monthly(include_stock: bool = False, remediate_import: bool = True):
 
 
 def run_price_only():
-    """미트박스 가격 수집 → 전처리 → 스키마 갱신"""
+    """미트박스 + 한우(EKAPE) 일일 가격 파이프라인.
+
+    - 미트박스: critical (실패 시 중단)
+    - 한우(EKAPE) 수집·전처리: non-critical (실패해도 미트박스 결과는 보존)
+    - KAMIS는 키가 있을 때만 자동 수집 (수집기 자체가 graceful skip)
+    """
     print("=" * 60)
-    print("  모드: --price-only (미트박스 가격 파이프라인)")
+    print("  모드: --price-only (미트박스 + 한우 일일 파이프라인)")
     print("=" * 60)
 
     total, success, fail = 0, 0, 0
@@ -539,6 +631,24 @@ def run_price_only():
             fail += 1
             return total, success, fail
         success += 1
+
+    # 한우 (일별) — non-critical
+    for han_label, han_path in (
+        ("EKAPE 한우 경락가격·도축두수", _collector("crawl_han_auction_api.py")),
+        ("KAMIS 한우 도/소매가 (키 없으면 skip)", _collector("collect_kamis_hanwoo.py")),
+    ):
+        total += 1
+        if _run_step(f"[일별 한우] {han_label}", han_path, critical=False):
+            success += 1
+        else:
+            fail += 1
+
+    for label, path in HANWOO_PROCESSORS:
+        total += 1
+        if _run_step(f"[전처리] {label}", path, critical=False):
+            success += 1
+        else:
+            fail += 1
 
     for label, path in SCHEMA_UPDATER:
         total += 1
@@ -584,6 +694,16 @@ def run_full():
             fail += 1
 
     print(f"\n{'='*60}")
+    print("  [2-1] 거시지표 수집 (Macro — FRED·ECOS)")
+    print(f"{'='*60}")
+    for label, path in MACRO_COLLECTORS:
+        total += 1
+        if _run_step(f"[Macro 수집] {label}", path, critical=False):
+            success += 1
+        else:
+            fail += 1
+
+    print(f"\n{'='*60}")
     print("  [3] USDA 전처리")
     print(f"{'='*60}")
     for label, path in USDA_PROCESSORS:
@@ -604,7 +724,27 @@ def run_full():
             fail += 1
 
     print(f"\n{'='*60}")
-    print("  [5] 문서 갱신")
+    print("  [5] 한우 전처리")
+    print(f"{'='*60}")
+    for label, path in HANWOO_PROCESSORS:
+        total += 1
+        if _run_step(f"[전처리] {label}", path, critical=False):
+            success += 1
+        else:
+            fail += 1
+
+    print(f"\n{'='*60}")
+    print("  [5-1] 거시지표 전처리 (Macro)")
+    print(f"{'='*60}")
+    for label, path in MACRO_PROCESSORS:
+        total += 1
+        if _run_step(f"[전처리] {label}", path, critical=False):
+            success += 1
+        else:
+            fail += 1
+
+    print(f"\n{'='*60}")
+    print("  [6] 문서 갱신")
     print(f"{'='*60}")
     for label, path in SCHEMA_UPDATER:
         total += 1

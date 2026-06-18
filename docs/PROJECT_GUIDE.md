@@ -19,22 +19,24 @@ Beef_Price_Model/
 │   ├── Home.py                      # Streamlit 메인 진입점
 │   ├── run_daily_update.py          # 일일 파이프라인 (수집 → 전처리 → 스키마 갱신)
 │   │
-│   ├── collectors/                  # 데이터 수집 모듈 (10개)
+│   ├── collectors/                  # 데이터 수집 모듈 (11개)
 │   │   ├── crawl_imp_price_meatbox.py
 │   │   ├── crawl_imp_price_history.py
 │   │   ├── crawl_imp_volume_monthly.py
 │   │   ├── crawl_imp_stock_monthly.py
 │   │   ├── crawl_imp_food_safety.py
 │   │   ├── crawl_com_usd_krw.py
-│   │   ├── crawl_han_auction_api.py
+│   │   ├── crawl_han_auction_api.py        # 한우 EKAPE 경락 + 도축두수
+│   │   ├── collect_kamis_hanwoo.py         # 한우 KAMIS 도/소매가
 │   │   ├── api_us_beef_collect_usda.py
 │   │   ├── collect_usda_primal.py
 │   │   └── collect_cafe_b2b.py
 │   │
-│   ├── utils/                       # 전처리·피처 엔지니어링 (9개)
+│   ├── utils/                       # 전처리·피처 엔지니어링 (10개)
 │   │   ├── preprocess_meat_data.py
 │   │   ├── process_usda_data.py
 │   │   ├── preprocess_primal.py
+│   │   ├── preprocess_hanwoo.py             # 한우 EKAPE+KAMIS 통합 전처리
 │   │   ├── feature_engineering.py
 │   │   ├── feature_engineering_rolling.py
 │   │   ├── init_manual_data.py
@@ -42,11 +44,13 @@ Beef_Price_Model/
 │   │   ├── check_existing_names.py
 │   │   └── extract_data_schema.py
 │   │
-│   ├── pages/                       # Streamlit 대시보드 페이지 (4개)
+│   ├── pages/                       # Streamlit 대시보드 페이지 (6개)
 │   │   ├── 01_Price_Dashboard.py
 │   │   ├── 02_Import_Analysis.py
 │   │   ├── 03_Inventory_Management.py
-│   │   └── 04_Backtesting_Analysis.py
+│   │   ├── 04_Backtesting_Analysis.py
+│   │   ├── 05_USDA_Analysis.py
+│   │   └── 06_Hanwoo_Dashboard.py            # 한우 시장 종합 대시보드
 │   │
 │   ├── Models/                      # 예측 모델 학습 (3개)
 │   │   ├── train_baseline.py
@@ -145,7 +149,8 @@ python src/collectors/crawl_imp_volume_monthly.py      # KMTA 월별 수입량
 python src/collectors/crawl_imp_stock_monthly.py       # KMTA 재고
 python src/collectors/crawl_imp_food_safety.py         # 식약처 검역
 python src/collectors/crawl_com_usd_krw.py             # 환율
-python src/collectors/crawl_han_auction_api.py         # 축평원 경락가격
+python src/collectors/crawl_han_auction_api.py         # 한우 EKAPE 경락 + 도축두수 (증분)
+python src/collectors/collect_kamis_hanwoo.py          # 한우 KAMIS 도/소매가 (증분, 키 없으면 skip)
 python src/collectors/api_us_beef_collect_usda.py      # USDA 시세
 python src/collectors/collect_usda_primal.py           # USDA 프라이멀
 python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
@@ -165,19 +170,25 @@ python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
 | `crawl_imp_stock_monthly` | KMTA 월별 재고 현황 | 월별 | `0_raw/beef_stock_data.xlsx` |
 | `crawl_imp_food_safety` | 식약처 수입 검역 실적 | 월별 | `0_raw/raw_food_safety_data.csv` |
 | `crawl_com_usd_krw` | 네이버 금융 USD/KRW 환율 | 일별 | `0_raw/exchange_rate_data.xlsx` |
-| `crawl_han_auction_api` | 축산물품질평가원 경락가격 | 일별 | `0_raw/` |
+| `crawl_han_auction_api` | EKAPE 축산물품질평가원 한우 경락가격·도축장별 두수 | 일별 (증분) | `0_raw/han_auction_raw.csv` |
+| `collect_kamis_hanwoo` | KAMIS 한우 도매·소매가 (키 없으면 자동 skip) | 일별 (증분) | `0_raw/kamis_hanwoo_raw.csv` |
 | `api_us_beef_collect_usda` | USDA LM_XB403 부위별 시세 | 일별 | `0_raw/usda_beef_history.csv` |
 | `collect_usda_primal` | USDA LM_XB403 프라이멀 시세 | 일별 | `0_raw/usda_primal_history.csv` |
 | `collect_cafe_b2b` | 미트미플 카페 B2B 크롤링 | 수시 | `0_raw/raw_cafe_b2b_crawling.csv` |
+| `collect_macro_fred` | FRED 미국 거시지표 (옥수수·WTI·Food PPI, 키 없으면 자동 skip) | 일/월 (증분) | `0_raw/macro_indicators_raw.csv` |
+| `collect_macro_ecos` | 한국은행 ECOS 국내 거시지표 (기준금리·CPI·PPI·심리지수, 키 없으면 자동 skip) | 월 (증분) | `0_raw/macro_indicators_raw.csv` |
+| `collect_macro_kma` | 기상청 ASOS 기후지표 (기온·강수, 키 없으면 자동 skip) | 일 (증분) | `0_raw/macro_indicators_raw.csv` |
 
 ### 3.2 Utils — 전처리·피처 엔지니어링
 
 | 모듈 | 역할 | 파이프라인 포함 |
 |------|------|----------------|
 | `preprocess_meat_data` | master → dashboard_ready 변환 (이동평균, 부위/브랜드 분리) | **자동** (일일 · `--full`) |
+| `preprocess_hanwoo` | EKAPE + KAMIS 정규화 → `hanwoo_dashboard_ready.csv` (등급·부위·시장 통합 long format, 7/30일 MA) | **자동** (일일 · `--full`) |
 | `extract_data_schema` | 데이터 파일 스키마 분석 → DATA_DICTIONARY.md 갱신 | **자동** (일일 · `--full`) |
 | `process_usda_data` | USDA 시세 + 환율 → KRW 원가 산출 | **자동** (`--full`) |
 | `preprocess_primal` | Primal 시세 → plate USD/kg 변환 | **자동** (`--full`) |
+| `preprocess_macro` | 거시지표 raw → 일별 ffill(ma30/yoy/mom) → `macro_dashboard_ready.csv` | **자동** (`--full`) |
 | `feature_engineering` | 월별 ML 피처 생성 (lag, YoY, MoM 등) | 수동 |
 | `feature_engineering_rolling` | 롤링 윈도우 기반 ML 피처 생성 | 수동 |
 | `init_manual_data` | 수동 가격 입력 템플릿 생성 | 수동 (초기 1회) |
@@ -188,11 +199,13 @@ python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
 
 | 페이지 | 기능 |
 |--------|------|
-| `01_Price_Dashboard` | 가격 추세 및 비교 분석 |
+| `01_Price_Dashboard` | 수입육 가격 추세 및 비교 분석 |
 | `02_Import_Analysis` | 수입량 분석 및 시각화 |
 | `03_Inventory_Management` | 재고 현황 모니터링 |
 | `04_Backtesting_Analysis` | 예측 모델 백테스팅 결과 시각화 |
 | `05_USDA_Analysis` | USDA 도매가, 다소스(미트박스·수입·재고) 통합 비교, 품목 Crosswalk |
+| `06_Hanwoo_Dashboard` | **한우 시장 종합** — 도매 경락가(EKAPE) + 도축장별 두수 + 수입육 vs 한우 비교 + 이상 신호 |
+| `07_Macro_Environment` | **거시환경** — 금리·CPI·PPI·옥수수·WTI 추이 (FRED·ECOS), 기간 선택 |
 
 ### 3.4 Models — 예측 모델 학습
 
@@ -218,12 +231,13 @@ python src/collectors/collect_cafe_b2b.py              # 미트미플 카페 B2B
 ```
 [외부 소스]                [Collectors]               [Utils]                  [Dashboard]
 ─────────────────────────────────────────────────────────────────────────────────────────
-미트박스                → 0_raw / 1_processed  ─→  preprocess_meat_data  ─→  2_dashboard
+미트박스                → 0_raw / 1_processed  ─→  preprocess_meat_data  ─→  2_dashboard/dashboard_ready
 KMTA (수입량·재고)     → 0_raw                                               ↓
 식약처                  → 0_raw                                          Pages (시각화)
 네이버 금융 (환율)      → 0_raw                ─→  process_usda_data    ─→  1_processed
 USDA API               → 0_raw                ─→  preprocess_primal    ─→  1_processed
-축평원 API             → 0_raw
+EKAPE (한우 경락+두수) → 0_raw/han_auction_raw  ─→  preprocess_hanwoo   ─→  2_dashboard/hanwoo_dashboard_ready
+KAMIS (한우 도/소매)   → 0_raw/kamis_hanwoo_raw ─→  preprocess_hanwoo   ─→  (위와 같은 파일에 통합)
 수동 입력               → 0_raw
 ```
 
@@ -269,10 +283,15 @@ from config import DATA_RAW, DATA_PROCESSED, MASTER_PRICE_CSV
 ## 7. 주의사항
 
 1. **Chrome / ChromeDriver** — 기본적으로 Selenium 4 Manager가 설치된 Chrome 버전에 맞는 드라이버를 자동으로 받아 사용한다 (`utils/selenium_chrome.py`). 사내망 등에서 자동 다운로드가 막혀 있으면 환경변수 `USE_LOCAL_CHROMEDRIVER=1`을 설정하고, `src/chromedriver.exe`를 현재 Chrome 메이저 버전에 맞게 교체한다.
-2. **API Key** — `crawl_han_auction_api.py`는 축평원 API 키 필요 (`.env` 관리)
-3. **USDA API Key** — `api_us_beef_collect_usda.py`는 USDA API 키 필요 (`.env` 관리)
-4. **네트워크** — 모든 크롤러는 인터넷 연결 필요
-5. **Import 오류** — 프로젝트 루트에서 실행하거나 `PYTHONPATH`에 `src/` 추가
+2. **API Key** (`.env`로 관리)
+   - `USDA_API_KEY` — USDA AMS Datamart (필수: USDA 수집기)
+   - `EKAPE_API_KEY` — 축산물품질평가원 OpenAPI (필수: 한우 수집기). [발급](https://www.data.go.kr/data/15058822/openapi.do)
+   - `KAMIS_CERT_KEY`, `KAMIS_CERT_ID` — KAMIS Open API (선택: 한우 도/소매가). 비어 있으면 KAMIS 수집기는 자동 skip. [신청](https://www.kamis.or.kr/customer/reference/openapi_list.do)
+   - `FRED_API_KEY` — FRED 미국 거시지표 (선택: macro). 비어 있으면 자동 skip. [발급](https://fredaccount.stlouisfed.org/apikeys)
+   - `ECOS_API_KEY` — 한국은행 ECOS 국내 거시지표 (선택: macro). 비어 있으면 자동 skip. [발급](https://ecos.bok.or.kr/api/)
+   - `KMA_API_KEY` — 기상청 ASOS 기후지표 (선택: macro). **Decoding 인증키** 사용. 비어 있으면 자동 skip. [발급](https://www.data.go.kr/data/15059093/openapi.do)
+3. **네트워크** — 모든 크롤러는 인터넷 연결 필요
+4. **Import 오류** — 프로젝트 루트에서 실행하거나 `PYTHONPATH`에 `src/` 추가
 
 ```bash
 # Windows
