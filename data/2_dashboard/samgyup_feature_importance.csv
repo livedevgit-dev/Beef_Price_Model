@@ -1,0 +1,14 @@
+﻿feature,std_coef
+stock_yj,-0.69
+kr_cpi_food,0.339
+fas_china,0.259
+fx,0.189
+import_yj,0.113
+kr_ppi_food,-0.098
+fas_korea,-0.09
+us_soybean_meal,0.073
+cof_placements,-0.047
+cof_inventory,-0.039
+us_wti,-0.038
+kr_base_rate,0.005
+usda_plate,0.001
