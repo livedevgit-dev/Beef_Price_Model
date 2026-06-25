@@ -1,3 +1,7 @@
+import numpy as np
+# NumPy 2.x 에서 제거된 별칭 복원 (plotly.express→xarray 가 np.unicode_ 사용 → import 크래시 방지)
+if not hasattr(np, "unicode_"):
+    np.unicode_ = np.str_
 import streamlit as st
 import pandas as pd
 import plotly.express as px

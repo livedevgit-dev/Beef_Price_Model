@@ -196,10 +196,20 @@ MACRO_COLLECTORS = [
     ("FRED 미국 거시지표 (옥수수·대두·WTI·Food PPI, 키 없으면 skip)", _collector("collect_macro_fred.py")),
     ("ECOS 국내 거시지표 (기준금리·CPI·PPI·심리지수, 키 없으면 skip)", _collector("collect_macro_ecos.py")),
     ("KMA 기후 지표 (기온·강수, 키 없으면 skip)", _collector("collect_macro_kma.py")),
+    ("FAS 미국 소고기 수출 (중국·한국, 덤핑 조기경보, 키 없으면 skip)", _collector("collect_fas_export_sales.py")),
+    ("NASS Cattle on Feed (미국 사육두수, 공급 선행, 키 없으면 skip)", _collector("collect_cattle_on_feed.py")),
 ]
 
 MACRO_PROCESSORS = [
     ("거시지표 전처리 (raw → daily ffill → macro_dashboard_ready)", _util("preprocess_macro.py")),
+    ("FAS 공급경보 전처리 (중국행 급감/한국행 과잉 → 다이버전 경보)", _util("preprocess_fas_signal.py")),
+]
+
+# 삼겹양지 분석·예측·시그널 (수집·전처리 이후 실행)
+ANALYSIS_PROCESSORS = [
+    ("삼겹양지 통합 시계열 (미트박스 + 도매상)", _util("build_samgyup_series.py")),
+    ("삼겹양지 피처·예측·변수영향력", _util("build_samgyup_model.py")),
+    ("품목 전환(상대가치) 시그널", _util("build_switch_signal.py")),
 ]
 
 USDA_PROCESSORS = [
@@ -739,6 +749,16 @@ def run_full():
     for label, path in MACRO_PROCESSORS:
         total += 1
         if _run_step(f"[전처리] {label}", path, critical=False):
+            success += 1
+        else:
+            fail += 1
+
+    print(f"\n{'='*60}")
+    print("  [5-2] 삼겹양지 분석·예측·시그널")
+    print(f"{'='*60}")
+    for label, path in ANALYSIS_PROCESSORS:
+        total += 1
+        if _run_step(f"[분석] {label}", path, critical=False):
             success += 1
         else:
             fail += 1

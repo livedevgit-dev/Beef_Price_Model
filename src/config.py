@@ -55,6 +55,13 @@ MACRO_RAW_CSV = DATA_RAW / "macro_indicators_raw.csv"             # API 원본(l
 MACRO_PROCESSED_CSV = DATA_PROCESSED / "macro_indicators_daily.csv"  # 일별 ffill + ma30/yoy/mom
 MACRO_DASHBOARD_CSV = DATA_DASHBOARD / "macro_dashboard_ready.csv"   # 가격 데이터와 date 기준 merge용
 
+# 미국 수출선약 (USDA FAS Export Sales/ESR) — 중국/한국 등 국가별 주간 수출 (덤핑 조기경보)
+FAS_EXPORT_SALES_CSV = DATA_RAW / "fas_export_sales_raw.csv"
+FAS_SIGNAL_CSV = DATA_DASHBOARD / "fas_supply_signal.csv"   # 월별 중국/한국 수출 + 다이버전 경보
+
+# 미국 Cattle on Feed (USDA NASS QuickStats) — 사육두수, 미국 공급 4~6개월 선행지표
+US_CATTLE_ON_FEED_CSV = DATA_RAW / "us_cattle_on_feed.csv"
+
 # Chromedriver (collectors에서 사용)
 CHROMEDRIVER_PATH = SRC_DIR / "chromedriver.exe"
 

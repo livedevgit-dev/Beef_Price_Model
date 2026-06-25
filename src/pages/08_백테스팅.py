@@ -6,7 +6,7 @@ from pathlib import Path
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import DASHBOARD_READY_CSV, MANUAL_KOR_PRICE_CSV, PROCESSED_USDA_COST_CSV
+from config import DASHBOARD_READY_CSV, PROCESSED_USDA_COST_CSV, DATA_PROCESSED
 
 # [파일 정의서]
 # - 파일명: 04_Backtesting_Analysis.py
@@ -20,7 +20,7 @@ from config import DASHBOARD_READY_CSV, MANUAL_KOR_PRICE_CSV, PROCESSED_USDA_COS
 st.set_page_config(page_title="백테스팅 및 시차 분석", layout="wide")
 
 KOR_AUTO_PATH = DASHBOARD_READY_CSV
-KOR_MANUAL_PATH = MANUAL_KOR_PRICE_CSV
+KOR_UNIFIED_PATH = DATA_PROCESSED / "samgyup_unified_monthly.csv"  # 도매상 과거 + 미트박스 최신 통합
 US_DATA_PATH = PROCESSED_USDA_COST_CSV
 
 # ======================================================
@@ -36,50 +36,33 @@ def load_and_merge_data():
     calendar_df = pd.DataFrame({'date': pd.date_range(start=start_date, end=end_date)})
 
     # --------------------------------------------------
-    # 2. 한국 수기 데이터(Manual) 로드 및 보간 (Option A, Option C)
+    # 2. 한국 삼겹양지 가격 — 통합 시계열(도매상 과거 + 미트박스 최신)
+    #    (기존 manual_kor_price.csv 스키마 불일치 버그 → 통합 시계열로 대체)
     # --------------------------------------------------
-    if KOR_MANUAL_PATH.exists():
-        df_manual = pd.read_csv(KOR_MANUAL_PATH)
-        df_manual['date'] = pd.to_datetime(df_manual['date'])
-        df_manual_target = df_manual[df_manual['part'] == '삼겹양지'][['date', 'wholesale_price']]
-        df_manual_target = df_manual_target.rename(columns={'wholesale_price': 'Manual_Price'})
-        
-        # 달력에 수기 데이터를 붙이고 계단식 보간(ffill) 적용
-        df_kor_combined = pd.merge(calendar_df, df_manual_target, on='date', how='left')
-        df_kor_combined['Manual_Price'] = df_kor_combined['Manual_Price'].fillna(method='ffill')
+    if KOR_UNIFIED_PATH.exists():
+        df_uni = pd.read_csv(KOR_UNIFIED_PATH)
+        df_uni['date'] = pd.to_datetime(df_uni['date'])
+        df_uni = df_uni[['date', 'price_won_per_kg']].rename(columns={'price_won_per_kg': 'KOR_Price_KRW_kg'})
+        df_kor_combined = pd.merge(calendar_df, df_uni, on='date', how='left')
+        # 월별 → 일별 계단식 보간
+        df_kor_combined['KOR_Price_KRW_kg'] = df_kor_combined['KOR_Price_KRW_kg'].ffill()
     else:
-        # 수기 파일이 없으면 빈 컬럼 생성
         df_kor_combined = calendar_df.copy()
-        df_kor_combined['Manual_Price'] = np.nan
-
-    # --------------------------------------------------
-    # 3. 한국 자동화 데이터(Auto) 로드
-    # --------------------------------------------------
-    df_auto = pd.read_csv(KOR_AUTO_PATH)
-    df_auto['date'] = pd.to_datetime(df_auto['date'])
-    mask_kor = (df_auto['category'] == '미국') & (df_auto['part'] == '삼겹양지')
-    
-    df_auto_filtered = df_auto[mask_kor].groupby('date')['wholesale_price'].mean().reset_index()
-    df_auto_filtered = df_auto_filtered.rename(columns={'wholesale_price': 'Auto_Price'})
-    
-    # 달력에 자동화 데이터를 병합
-    df_kor_combined = pd.merge(df_kor_combined, df_auto_filtered, on='date', how='left')
-
-    # --------------------------------------------------
-    # 4. 자동화 우선 충돌 해결 로직 (Req 3)
-    # --------------------------------------------------
-    # Auto_Price가 있으면 그것을 쓰고, 없으면 Manual_Price(보간된 값)를 사용한다.
-    df_kor_combined['KOR_Price_KRW_kg'] = df_kor_combined['Auto_Price'].fillna(df_kor_combined['Manual_Price'])
+        df_kor_combined['KOR_Price_KRW_kg'] = np.nan
 
     # --------------------------------------------------
     # 5. 미국 USDA 상륙 원가 로드 및 병합
     # --------------------------------------------------
     df_us = pd.read_csv(US_DATA_PATH)
-    df_us['Date'] = pd.to_datetime(df_us['Date'])
-    
+    df_us['Date'] = pd.to_datetime(df_us['Date'], errors='coerce')
+    # 상륙원가 KRW = USD/kg × 환율 (processed_usda_cost.csv 는 USD 컬럼 보유)
+    if 'weighted_average_KRW_kg' not in df_us.columns:
+        usd = pd.to_numeric(df_us.get('weighted_average_USD_kg'), errors='coerce')
+        fx = pd.to_numeric(df_us.get('Exchange_Rate'), errors='coerce')
+        df_us['weighted_average_KRW_kg'] = usd * fx
     df_us_valid = df_us.dropna(subset=['item_description', 'weighted_average_KRW_kg'])
-    mask_plate = df_us_valid['item_description'].str.contains('short plate', case=False)
-    mask_skirt = df_us_valid['item_description'].str.contains('skirt', case=False)
+    mask_plate = df_us_valid['item_description'].str.contains('short plate', case=False, na=False)
+    mask_skirt = df_us_valid['item_description'].str.contains('skirt', case=False, na=False)
     
     df_us_filtered = df_us_valid[mask_plate & ~mask_skirt]
     df_us_daily = df_us_filtered.groupby('Date')['weighted_average_KRW_kg'].mean().reset_index()
@@ -124,7 +107,7 @@ def main():
     with tab2:
         st.subheader("일자별 상세 데이터")
         df_display = df_chart.sort_values(by='date', ascending=False)
-        st.dataframe(df_display, use_container_width=True, hide_index=True)
+        st.dataframe(df_display, width="stretch", hide_index=True)
 
 if __name__ == "__main__":
     main()
