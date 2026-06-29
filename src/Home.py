@@ -120,6 +120,18 @@ if fc is not None and not fc.empty:
 st.divider()
 
 # ============================================================
+# A-2. 데이터 신선도 현황 (지표별 최신일자·주기·지연)
+# ============================================================
+_ds = _load(DATA_DASHBOARD / "data_status.csv")
+if _ds is not None and not _ds.empty:
+    n_delay = int((_ds["상태"] == "지연").sum())
+    label = "🟢 모든 데이터 최신" if n_delay == 0 else f"🟡 데이터 현황 (지연 {n_delay}건)"
+    with st.expander(f"📅 {label} — 지표별 최신 수집일·주기", expanded=(n_delay > 0)):
+        st.dataframe(_ds, hide_index=True, width="stretch")
+        st.caption("일별=매 영업일 / 월별=월1회(전월치는 보통 익월 중순 갱신). 재고는 `--monthly --with-stock`로 별도 수집.")
+    st.divider()
+
+# ============================================================
 # B. 부위별 시세 변동 요약 (기존)
 # ============================================================
 st.subheader("부위별 시세 변동 요약")

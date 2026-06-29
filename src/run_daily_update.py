@@ -876,6 +876,9 @@ def main():
         findings = check_data_gaps(check_monthly=check_monthly, check_usda=check_usda)
         gap_warns = _print_gap_report(findings)
 
+    # 전체 데이터 신선도 현황판 (모든 실행 끝에 항상 출력 — 지표별 최신일자·주기·지연)
+    _run_step("[현황] 데이터 신선도 현황판", _util("data_status.py"), critical=False)
+
     elapsed = time.time() - pipeline_start
 
     print(f"\n{'=' * 60}")
