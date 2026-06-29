@@ -56,6 +56,7 @@ FEATURE_STEPS = [
 TRAIN_STEPS = [
     ("삼겹양지 익월가 예측 (XGBoost, walk-forward)", "Models/train_samgyup_xgb.py"),
     ("부위별 상승가능성 랭킹 (pooled XGBoost)", "Models/train_cut_upside.py"),
+    ("일반인용 시장 리포트 생성 (공유·BI용)", "reports/generate_market_report.py"),
 ]
 
 _LEGACY_TRAIN_STEPS = [

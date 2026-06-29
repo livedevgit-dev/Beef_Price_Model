@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 # 실행 환경 무관하게 src/ 를 모듈 경로에 보장
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, MACRO_PROCESSED_CSV, FAS_SIGNAL_CSV
+from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, MACRO_PROCESSED_CSV, FAS_SIGNAL_CSV, DATA_REPORTS
 
 # [파일 정의서]
 # - 파일명: Home.py
@@ -32,6 +32,17 @@ def _load(path):
 st.title("수입육 · 한우 가격 인사이트 플랫폼")
 st.caption("주요 지표 요약 — 상세 분석은 좌측 메뉴 참고")
 st.divider()
+
+# ============================================================
+# 공유용 월간 리포트 (카톡/문자 복붙 — st.code 복사버튼 내장)
+# ============================================================
+_rep = DATA_REPORTS / "market_report_latest.txt"
+if _rep.exists():
+    with st.expander("📋 이번 달 공유용 리포트 (복사해서 카톡·문자로 전달)", expanded=False):
+        _text = _rep.read_text(encoding="utf-8")
+        st.code(_text, language=None)  # 우상단 복사 버튼으로 전체 복사
+        st.download_button("리포트 .txt 내려받기", _text, file_name=_rep.name, mime="text/plain")
+    st.divider()
 
 # ============================================================
 # A. 주요 정보 요약 (한눈에)
