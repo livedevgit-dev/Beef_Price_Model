@@ -91,14 +91,14 @@ def collect_status() -> pd.DataFrame:
     add("한우 경락가(EKAPE)", "EKAPE", "일", _maxdate_csv(HAN_AUCTION_RAW_CSV, "auction_end_ymd", fmt="%Y%m%d"), 7)
     add("한우 도/소매(KAMIS)", "KAMIS", "일", _maxdate_csv(KAMIS_HANWOO_RAW_CSV, "reg_date"), 7)
     add("거시-미국(FRED)", "FRED", "일/월", _macro_max(["us_wti", "us_corn", "us_food_ppi"]), 40)
-    add("거시-국내(ECOS)", "ECOS", "월", _macro_max(["kr_base_rate", "kr_cpi_food", "kr_ppi_food"]), 45)
+    add("거시-국내(ECOS)", "ECOS", "월", _macro_max(["kr_base_rate", "kr_cpi_food", "kr_ppi_food"]), 70)
     add("기후(기온·강수)", "KMA", "일", _macro_max(["kr_temp_avg", "kr_precip"]), 7)
     add("미국 수출(FAS)", "FAS", "주", _maxdate_csv(FAS_EXPORT_SALES_CSV, "week_ending"), 21)
     add("사육두수(CattleOnFeed)", "USDA NASS", "월", _maxdate_csv(US_CATTLE_ON_FEED_CSV, "date"), 45)
 
     # 월별 (전월 데이터가 익월 중순 갱신 → 45일 이내면 최신으로 간주)
-    add("수입량(KMTA)", "KMTA/식약처", "월", _maxdate_csv(MASTER_IMPORT_VOLUME_CSV, "std_date", monthly_suffix="-01"), 50)
-    add("재고(KMTA)", "KMTA", "월", _maxdate_xlsx(BEEF_STOCK_XLSX, "기준년월", monthly_suffix="-01"), 50)
+    add("수입량(KMTA)", "KMTA/식약처", "월", _maxdate_csv(MASTER_IMPORT_VOLUME_CSV, "std_date", monthly_suffix="-01"), 70)
+    add("재고(KMTA)", "KMTA", "월", _maxdate_xlsx(BEEF_STOCK_XLSX, "기준년월", monthly_suffix="-01"), 70)
 
     return pd.DataFrame(rows)
 
