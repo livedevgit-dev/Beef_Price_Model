@@ -1,0 +1,10 @@
+{
+  "n_oos": 19,
+  "mae_xgb": 462,
+  "mae_naive": 355,
+  "r2_xgb_oos": 0.453,
+  "xgb_beats_naive": false,
+  "note": "OOS walk-forward. 익월 가격 예측. naive=당월값 그대로.",
+  "next_month_pred": 9773,
+  "next_month_from": "2026-03-01"
+}

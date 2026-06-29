@@ -120,9 +120,16 @@ if df is not None:
     latest_date = df_avg["date"].max()
     st.markdown(f"**기준일:** {latest_date.strftime('%Y-%m-%d')} | **기준:** 브랜드 통합 평균가")
 
+    # 거래 활성 품목(universe)만 표시 — 거래 끊긴 품목 제외
+    uni = _load(DATA_DASHBOARD / "meatbox_universe.csv")
+    active = set(uni[uni["tier"] > 0]["part"]) if (uni is not None and not uni.empty) else None
+    n_excluded = int((uni["tier"] == 0).sum()) if (uni is not None and not uni.empty) else 0
+
     date_3m, date_6m, date_12m = (latest_date - timedelta(days=d) for d in (90, 180, 365))
     summary_list = []
     for part_name in sorted(df_avg["part"].unique()):
+        if active is not None and part_name not in active:
+            continue
         part_df = df_avg[df_avg["part"] == part_name].sort_values("date")
         recent = part_df[(part_df["date"] >= latest_date - timedelta(days=7)) &
                          (part_df["wholesale_price"].notna()) & (part_df["wholesale_price"] != 0)]
@@ -166,7 +173,10 @@ if df is not None:
               .map(style_var, subset=["3개월 전 대비", "6개월 전 대비", "1년 전 대비"]),
             width="stretch", height=(len(ds) + 1) * 35 + 3, hide_index=True,
         )
-        st.info("'6개월 전 대비' 하락폭이 큰 순으로 정렬. 상세는 좌측 **가격 대시보드** 참고.")
+        _note = "'6개월 전 대비' 하락폭이 큰 순으로 정렬. 상세는 좌측 **가격 대시보드** 참고."
+        if n_excluded:
+            _note += f" · 거래 끊긴 {n_excluded}종은 자동 제외됨."
+        st.info(_note)
     else:
         st.warning("분석할 데이터가 충분하지 않습니다.")
 else:

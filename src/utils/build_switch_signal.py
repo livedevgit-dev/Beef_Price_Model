@@ -17,16 +17,25 @@ import pandas as pd
 warnings.filterwarnings("ignore")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, ensure_dirs
+from utils.select_universe import classify_universe
 
 def main():
     ensure_dirs()
     mb = pd.read_csv(DASHBOARD_READY_CSV)
     mb["date"] = pd.to_datetime(mb["date"], errors="coerce")
     mb = mb.dropna(subset=["date","wholesale_price","part"])
+
+    # 동적 universe: 활성(Tier1·2) 품목만 대상, tier 정보 부여
+    uni = classify_universe(mb)
+    tier_map = dict(zip(uni["part"], uni["tier"]))
+    active = set(uni[uni["tier"] > 0]["part"])
+
     daily = mb.groupby(["part","date"])["wholesale_price"].mean().reset_index()
     latest = daily["date"].max()
     rows=[]
     for part,g in daily.groupby("part"):
+        if part not in active:   # 거래 끊긴 품목 제외
+            continue
         g=g.sort_values("date")
         if len(g)<60: continue
         cur = g[g["date"]>=latest-pd.Timedelta(days=21)]["wholesale_price"].mean()
@@ -36,7 +45,8 @@ def main():
         m60 = g[(g["date"]<latest-pd.Timedelta(days=30))&(g["date"]>=latest-pd.Timedelta(days=60))]["wholesale_price"].mean()
         mom = (m30/m60-1)*100 if (m60 and not np.isnan(m60)) else np.nan
         sig = "매도후보(고평가)" if pct>=75 else ("매수후보(저평가)" if pct<=35 else "중립")
-        rows.append({"part":part,"current_price":int(round(cur)),"pct_rank":int(round(pct)),
+        rows.append({"part":part,"tier":tier_map.get(part,0),"current_price":int(round(cur)),
+                     "pct_rank":int(round(pct)),
                      "momentum_30d": (round(mom,1) if not np.isnan(mom) else None),
                      "signal":sig,"n_obs":len(g)})
     out=pd.DataFrame(rows).sort_values("pct_rank",ascending=False)

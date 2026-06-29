@@ -68,7 +68,8 @@ def build_features() -> pd.DataFrame:
     # macro 핵심
     try:
         mac = pd.read_csv(MACRO_PROCESSED_CSV, parse_dates=["date"]); mac["m"]=mac["date"].dt.to_period("M").dt.to_timestamp()
-        for ind in ["us_soybean_meal","kr_ppi_food","kr_cpi_food","us_wti","kr_base_rate"]:
+        for ind in ["us_soybean_meal","kr_ppi_food","kr_cpi_food","us_wti","kr_base_rate",
+                    "kr_temp_avg","kr_precip"]:
             sub = mac[mac["indicator_id"]==ind].groupby("m")["value"].mean()
             if len(sub): feat[ind]=sub
     except Exception as e: print("  [skip] macro:", e)

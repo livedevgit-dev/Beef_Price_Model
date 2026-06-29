@@ -109,8 +109,41 @@ sw = _load(DATA_DASHBOARD / "switch_signal.csv")
 if sw is None or sw.empty:
     st.info("전환 시그널 없음 — build_switch_signal.py 실행 필요")
 else:
+    st.caption("거래가 지속되는 활성 품목(Tier1·2)만 대상. 거래 끊긴 품목은 자동 제외됨.")
     buy = sw[sw["signal"].astype(str).str.contains("매수")].sort_values("pct_rank")
     st.markdown("**매수 후보 (저평가 상위)**")
     st.dataframe(buy.head(8), hide_index=True, width="stretch")
-    with st.expander("전체 부위 상대가치 표 보기"):
+    with st.expander("전체 활성 부위 상대가치 표 보기"):
         st.dataframe(sw, hide_index=True, width="stretch")
+
+    # ML 예측 상승랭킹 (집계: data/3_reports/ml/, 집PC·이PC 학습 산출)
+    import json
+    from pathlib import Path as _P
+    ml_dir = _P(str(DATA_DASHBOARD)).parents[0] / "3_reports" / "ml"
+    rank = _load(ml_dir / "cut_upside_ranking.csv")
+    if rank is not None and not rank.empty:
+        st.markdown("**🤖 ML 예측 상승 랭킹 (익월 수익률 예측, pooled XGBoost)**")
+        mp = ml_dir / "cut_model_metrics.json"
+        if mp.exists():
+            try:
+                mm = json.loads(mp.read_text(encoding="utf-8"))
+                st.caption(f"모델 신뢰도(OOS): 순위 IC {mm.get('rank_ic','-')}, 방향 적중 {mm.get('direction_hit','-')} "
+                           f"· {mm.get('note','')}")
+            except Exception:
+                pass
+        st.dataframe(rank.head(8), hide_index=True, width="stretch")
+        st.caption("※ 상승예상 + 저평가(낮은 백분위)가 겹치면 강한 매수. 소표본이라 방향성 참고용.")
+
+# ── 5. 거래 활성 품목(Universe) ─────────────────────────────
+uni = _load(DATA_DASHBOARD / "meatbox_universe.csv")
+if uni is not None and not uni.empty:
+    st.divider()
+    st.header("5. 거래 활성 품목 (Universe)")
+    n1 = int((uni["tier"] == 1).sum()); n2 = int((uni["tier"] == 2).sum()); n0 = int((uni["tier"] == 0).sum())
+    cc = st.columns(3)
+    cc[0].metric("Tier1 (안정·이력충분)", f"{n1}종")
+    cc[1].metric("Tier2 (신규·활성)", f"{n2}종")
+    cc[2].metric("제외 (거래끊김)", f"{n0}종")
+    st.caption("미트박스 품목 추가/제거에 매 실행 시 자동 대응(동적 선정). 모델·시그널은 Tier1·2(활성)만 사용.")
+    with st.expander("품목별 활성도 상세"):
+        st.dataframe(uni, hide_index=True, width="stretch")

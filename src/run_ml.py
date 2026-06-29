@@ -48,11 +48,17 @@ def _run_step(label: str, rel_path: str, critical: bool = True) -> bool:
 
 # --- 단계 정의 --------------------------------------------------------------
 FEATURE_STEPS = [
-    ("피처 생성 — 1개월 델타 타겟 (ml_features_rib.csv)", "utils/feature_engineering.py"),
-    ("피처 생성 — 6개월 버퍼 타겟 (ml_features_rolling_rib.csv)", "utils/feature_engineering_rolling.py"),
+    ("거래 활성 품목 선정 (universe)", "utils/select_universe.py"),
+    ("삼겹양지 통합 시계열", "utils/build_samgyup_series.py"),
+    ("삼겹양지 피처·예측·영향력", "utils/build_samgyup_model.py"),
 ]
 
 TRAIN_STEPS = [
+    ("삼겹양지 익월가 예측 (XGBoost, walk-forward)", "Models/train_samgyup_xgb.py"),
+    ("부위별 상승가능성 랭킹 (pooled XGBoost)", "Models/train_cut_upside.py"),
+]
+
+_LEGACY_TRAIN_STEPS = [
     ("학습·중요도 — 1개월 델타 (XGBoost)", "Models/train_baseline.py"),
     ("학습·중요도 — 6개월 최대상승폭 (XGBoost)", "Models/train_rolling_horizon.py"),
 ]

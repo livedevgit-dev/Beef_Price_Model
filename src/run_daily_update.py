@@ -207,6 +207,7 @@ MACRO_PROCESSORS = [
 
 # 삼겹양지 분석·예측·시그널 (수집·전처리 이후 실행)
 ANALYSIS_PROCESSORS = [
+    ("거래 활성 품목 선정 (동적 universe)", _util("select_universe.py")),
     ("삼겹양지 통합 시계열 (미트박스 + 도매상)", _util("build_samgyup_series.py")),
     ("삼겹양지 피처·예측·변수영향력", _util("build_samgyup_model.py")),
     ("품목 전환(상대가치) 시그널", _util("build_switch_signal.py")),

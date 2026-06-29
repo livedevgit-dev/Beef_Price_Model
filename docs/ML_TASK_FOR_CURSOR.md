@@ -48,9 +48,14 @@ pip install -r requirements.txt                      # xgboost, scikit-learn 포
 - 미트박스 수입육 27개 부위, 일별 2025-01-22~현재. 컬럼: `date, category, part, brand, wholesale_price, ma7, ma30, min_total, max_total`
 - 부위 예: 삼겹양지, 차돌양지, 차돌박이, 부채살, 살치살, 안창살, 아롱사태, 등갈비/백립, 목뼈 등
 
+**대상 품목(universe) — 동적 선정**
+- **`data/2_dashboard/meatbox_universe.csv`** 의 활성 품목(tier 1·2)만 학습 대상으로 쓸 것. (거래 끊긴 tier 0 제외)
+- 또는 `src/utils/select_universe.py` 의 `select_universe(mb_df)` 호출로 동일 리스트를 얻을 수 있음.
+- 기준: Tier1=거래일≥250 & 최근90일≥60, Tier2=최근90일≥60 & 이력<250. 품목 추가/제거에 자동 대응.
+
 **요구사항 (사용자 핵심 요청)**
 1. 각 부위의 **향후 N개월(예: 1·3개월) 수익률을 예측**해 **상승 가능성 높은 부위를 추천**.
-2. **부위별 개별 모델 금지** — 데이터가 1.5년뿐이라 과적합. **전 부위 통합(pooled) 모델 1개**로 학습(표본 확대).
+2. **부위별 개별 모델 금지** — 데이터가 1.5년뿐이라 과적합. **전 부위 통합(pooled) 모델 1개**로 학습(표본 확대). (universe = 위 활성 23종 내외)
    - 부위별 피처: 모멘텀(1/3개월 수익률), 자기 이력 백분위, 변동성, 월 계절성, `ma7/ma30` 등
    - 공유 피처(선택): 월별로 매핑해 결합 — `data/2_dashboard/fas_supply_signal.csv`, 환율, macro
    - 타겟: 부위별 forward 1·3개월 수익률(%)
