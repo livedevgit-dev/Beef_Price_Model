@@ -15,7 +15,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, DATA_REPORTS, ensure_dirs
+from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, DATA_PROCESSED, DATA_REPORTS, ensure_dirs
 
 ML_DIR = Path(str(DATA_REPORTS)) / "ml"
 
@@ -62,6 +62,36 @@ def _movers():
     return ups, downs, last
 
 
+def _samgyup_outlook():
+    """삼겹양지 계절성(다음달 과거 평균변화) vs 최근 모멘텀을 비교해 충돌 없는 한 줄 전망 생성."""
+    df = _load(DATA_PROCESSED / "samgyup_unified_monthly.csv")
+    if df is None or df.empty:
+        return None
+    df["date"] = pd.to_datetime(df["date"])
+    s = df.sort_values("date").set_index("date")["price_won_per_kg"].asfreq("MS").interpolate(limit=2)
+    if s.dropna().empty:
+        return None
+    cur = float(s.dropna().iloc[-1])
+    last_m = s.dropna().index[-1]
+    nxt_month = (last_m.month % 12) + 1
+    ret = s.pct_change(fill_method=None)
+    seas = ret[ret.index.month == nxt_month].dropna()
+    seas_avg = seas.mean() * 100 if len(seas) else 0.0
+    recent = s.dropna()
+    mom3 = (recent.iloc[-1] / recent.iloc[-4] - 1) * 100 if len(recent) >= 4 else 0.0
+
+    # 방향 멘트: 계절성·모멘텀 결합
+    if seas_avg < -1 and mom3 > 3:
+        verdict = f"상반기 강세(최근3개월 {mom3:+.0f}%)였으나, {nxt_month}월은 계절적으로 약한 달(과거 평균 {seas_avg:+.0f}%) → 상승세 둔화·소폭 조정 가능성"
+    elif seas_avg > 1 and mom3 > 1:
+        verdict = f"상승 모멘텀(최근3개월 {mom3:+.0f}%)과 계절 강세(과거 {nxt_month}월 평균 {seas_avg:+.0f}%)가 겹쳐 추가 상승 가능성"
+    elif seas_avg < -1 and mom3 < -1:
+        verdict = f"하락 모멘텀과 계절 약세가 겹쳐 약세 지속 가능성 (과거 {nxt_month}월 평균 {seas_avg:+.0f}%)"
+    else:
+        verdict = f"계절성(과거 {nxt_month}월 평균 {seas_avg:+.0f}%)과 최근 흐름(3개월 {mom3:+.0f}%)이 엇갈려 보합권 예상"
+    return cur, nxt_month, verdict
+
+
 def build_report() -> str:
     L = []
     ups, downs, last = _movers()
@@ -70,20 +100,13 @@ def build_report() -> str:
     L.append(f"🥩 수입육 시세 리포트 ({ym} 기준)")
     L.append("=" * 28)
 
-    # 1) 삼겹양지 전망
-    fc = _load(DATA_DASHBOARD / "samgyup_forecast.csv")
-    if fc is not None and not fc.empty:
-        fc["date"] = pd.to_datetime(fc["date"])
-        act = fc[fc["type"] == "actual"].sort_values("date")
-        fut = fc[fc["type"] == "forecast"].sort_values("date")
-        if not act.empty:
-            cur = int(act["base"].iloc[-1])
-            L.append(f"\n■ 삼겹양지(미국산) 현재 약 {cur:,}원/kg")
-            if not fut.empty:
-                f0 = fut.iloc[0]
-                trend = "오를" if f0["base"] > cur else ("내릴" if f0["base"] < cur else "비슷할")
-                L.append(f"  다음달 전망: {int(f0['base']):,}원/kg 부근 ({trend} 것으로 예상, "
-                         f"범위 {int(f0['low']):,}~{int(f0['high']):,})")
+    # 1) 삼겹양지 전망 (계절성·모멘텀 결합 — 충돌 제거)
+    ol = _samgyup_outlook()
+    if ol:
+        cur, nxt_month, verdict = ol
+        L.append(f"\n■ 삼겹양지(미국산) 현재 약 {cur:,.0f}원/kg")
+        L.append(f"  {nxt_month}월 전망: {verdict}")
+        L.append("  · 공급(수입량) 급증 시 하락 폭 확대 주의")
 
     # 2) 공급 신호
     fas = _load(DATA_DASHBOARD / "fas_supply_signal.csv")
@@ -107,8 +130,10 @@ def build_report() -> str:
     # 4) 주목 품목 (ML 상승예상 + 저평가)
     rank = _load(ML_DIR / "cut_upside_ranking.csv")
     if rank is not None and not rank.empty:
+        # 삼겹양지는 위 전망에서 이미 다뤘으므로 제외(중복·충돌 방지)
+        rank = rank[~rank["part"].astype(str).str.contains("삼겹양지", na=False)]
         top = rank.sort_values("pred_return_1m_pct", ascending=False).head(3)
-        L.append("\n■ 다음달 상승 가능성 높은 품목 (참고)")
+        L.append("\n■ 다음달 상승 가능성 높은 다른 품목 (참고)")
         for _, r in top.iterrows():
             L.append(f"  · {r['part']} (예상 {r['pred_return_1m_pct']:+.1f}%)")
 
