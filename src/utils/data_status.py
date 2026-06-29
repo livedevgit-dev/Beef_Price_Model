@@ -80,9 +80,13 @@ def collect_status() -> pd.DataFrame:
             return
         lag = (TODAY - pd.Timestamp(latest)).days
         status = "최신" if lag <= ok_lag_days else "지연"
+        # 월간 지표는 "YYYY-MM (월간)" 표기 — '월 1일'로 오해 방지
+        if str(freq).startswith("월"):
+            shown = pd.Timestamp(latest).strftime("%Y-%m") + " (월)"
+        else:
+            shown = pd.Timestamp(latest).strftime("%Y-%m-%d")
         rows.append({"데이터": name, "소스": src, "주기": freq,
-                     "최신데이터": pd.Timestamp(latest).strftime("%Y-%m-%d"),
-                     "지연(일)": lag, "상태": status})
+                     "최신데이터": shown, "지연(일)": lag, "상태": status})
 
     # 일별 (영업일 기준, 5일 이내면 최신)
     add("미트박스 시세", "미트박스", "일", _maxdate_csv(DASHBOARD_READY_CSV, "date"), 5)

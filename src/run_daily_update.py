@@ -643,6 +643,13 @@ def run_price_only():
             return total, success, fail
         success += 1
 
+    # 환율 (매일 제공 — 기본 일일 수집에 포함, non-critical)
+    total += 1
+    if _run_step("[수집] USD/KRW 환율", _collector("crawl_com_usd_krw.py"), critical=False):
+        success += 1
+    else:
+        fail += 1
+
     # 한우 (일별) — non-critical
     for han_label, han_path in (
         ("EKAPE 한우 경락가격·도축두수", _collector("crawl_han_auction_api.py")),
