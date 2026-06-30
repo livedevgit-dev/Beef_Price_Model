@@ -108,7 +108,8 @@ def collect_status() -> pd.DataFrame:
 
     # 월별 (전월 데이터가 익월 중순 갱신 → 45일 이내면 최신으로 간주)
     add("수입량(KMTA)", "KMTA/식약처", "월", _maxdate_csv(MASTER_IMPORT_VOLUME_CSV, "std_date", monthly_suffix="-01"), 45)
-    add("재고(KMTA)", "KMTA", "월", _maxdate_xlsx(BEEF_STOCK_XLSX, "기준년월", monthly_suffix="-01"), 45)
+    # 재고는 KMTA 발표가 느려 통상 2개월가량 지연이 정상 → 75일 이내면 최신
+    add("재고(KMTA)", "KMTA", "월", _maxdate_xlsx(BEEF_STOCK_XLSX, "기준년월", monthly_suffix="-01"), 75)
 
     return pd.DataFrame(rows)
 
