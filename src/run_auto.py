@@ -5,8 +5,10 @@
 - 동작(상태 기반 — 고정날짜 아님, 주말·공휴일 누락에 강함):
     1. 매 실행: 일일 갱신(미트박스·한우). 단 '전체 갱신'이 도래했으면 그걸로 대체.
     2. 전체 갱신(--full): 마지막 실행 후 7일 이상 경과 시 (또는 월간 ML 직전).
-    3. 월간 ML·리포트: 이번 달에 아직 안 했고 28일 이후면 실행.
-- 상태파일: data/.run_state/last_full.txt, last_ml.txt (ISO 날짜)
+    3. 월초 수입 갱신(--monthly): 이번 달에 아직 안 했으면 1회 — 전월 수입을
+       KMTA→식약처 보완 경로로 수집. (--full이 돈 날은 식약처 포함이라 자동 충족 처리)
+    4. 월간 ML·리포트: 이번 달에 아직 안 했고 28일 이후면 실행.
+- 상태파일: data/.run_state/last_full.txt, last_ml.txt, last_import.txt (ISO 날짜)
 - 실행: python src/run_auto.py   (--dry 면 판단만 출력, 실행 안 함)
 """
 import subprocess
@@ -60,22 +62,32 @@ def main():
     today = date.today()
     last_full = _read("last_full.txt")
     last_ml = _read("last_ml.txt")
+    last_import = _read("last_import.txt")
 
     ml_due = today.day >= ML_DAY and not _ran_this_month(last_ml)
     full_due = _days_since(last_full) >= FULL_INTERVAL_DAYS or (ml_due and last_full != today)
+    import_due = not _ran_this_month(last_import)   # 월 1회 — 새 달 첫 실행 시 전월 수입 수집
 
     print(f"\n[스마트 자동실행] {today.isoformat()} ({['월','화','수','목','금','토','일'][today.weekday()]})")
     print(f"  마지막 전체갱신: {last_full or '없음'} ({_days_since(last_full)}일 전)")
+    print(f"  마지막 월간수입: {last_import or '없음'}")
     print(f"  마지막 월간ML  : {last_ml or '없음'}")
-    print(f"  판단 → 전체갱신: {'예' if full_due else '아니오(일일만)'} / 월간ML: {'예' if ml_due else '아니오'}")
+    print(f"  판단 → 전체갱신: {'예' if full_due else '아니오(일일만)'} / 월간수입: {'예' if import_due else '아니오'} / 월간ML: {'예' if ml_due else '아니오'}")
 
     # 1) 일일 또는 전체
     if full_due:
         rc = _run("run_daily_update.py", ["--full"], "전체 갱신 (주기 도래 — 데이터+거시+예측+경보 전부)")
         if rc == 0 and not DRY:
             _mark("last_full.txt")
+            _mark("last_import.txt")   # --full은 식약처 수입 포함 → 월간 수입도 충족
     else:
         _run("run_daily_update.py", [], "일일 갱신 (미트박스·한우)")
+
+    # 1-2) 월초 수입 갱신 (--full이 안 돈 경우에만 — 전월 수입 KMTA→식약처 보완)
+    if import_due and not full_due:
+        rc = _run("run_daily_update.py", ["--monthly"], "월간 수입 갱신 (전월 — KMTA→식약처 보완)")
+        if rc == 0 and not DRY:
+            _mark("last_import.txt")
 
     # 2) 월간 ML·리포트
     if ml_due:
