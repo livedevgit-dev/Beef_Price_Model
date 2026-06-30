@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-06-30 08:29
+> 마지막 갱신: 2026-07-01 08:03
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -219,7 +219,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 대비(%) 전년 | int64 | 0 | 0 |
 
 #### `exchange_rate_data.xlsx`
-- **총 행(Row) 수**: 약 1587행
+- **총 행(Row) 수**: 약 1599행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -257,7 +257,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | siseSeq | int64 | 43569155 | 43558120 |
 
 #### `han_auction_raw.csv`
-- **총 행(Row) 수**: 약 20272행
+- **총 행(Row) 수**: 약 20489행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -280,7 +280,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | head_count | int64 | 678 | 721 |
 
 #### `kamis_hanwoo_raw.csv`
-- **총 행(Row) 수**: 약 82140행
+- **총 행(Row) 수**: 약 82170행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -707,7 +707,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `han_auction_daily.csv`
-- **총 행(Row) 수**: 약 20272행
+- **총 행(Row) 수**: 약 20489행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -740,7 +740,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | mom_pct | float64 | nan | nan |
 
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 59887행
+- **총 행(Row) 수**: 약 60038행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -955,7 +955,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 60871행
+- **총 행(Row) 수**: 약 61153행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -995,7 +995,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | note | object | 정상 | 정상 |
 
 #### `hanwoo_dashboard_ready.csv`
-- **총 행(Row) 수**: 약 69158행
+- **총 행(Row) 수**: 약 69405행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
