@@ -24,6 +24,15 @@ def build_chrome_driver(
     """
     from config import CHROMEDRIVER_PATH
 
+    # 화면 없이(headless) 실행이 기본. 디버깅 시 SELENIUM_HEADLESS=0 으로 창을 띄운다.
+    headless = os.environ.get("SELENIUM_HEADLESS", "1").strip().lower() not in ("0", "false", "no")
+    if headless:
+        chrome_options.add_argument("--headless=new")
+        # headless는 화면이 없어 maximize가 안 먹으므로 창 크기를 명시(테이블·페이지네이션 렌더 보장)
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--disable-gpu")
+        print("[시스템] headless 모드로 실행 (크롬 창 미표시). 창을 보려면 SELENIUM_HEADLESS=0")
+
     path = local_driver_path if local_driver_path is not None else CHROMEDRIVER_PATH
     force_local = os.environ.get("USE_LOCAL_CHROMEDRIVER", "").strip().lower() in (
         "1",
