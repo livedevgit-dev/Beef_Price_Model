@@ -1,17 +1,19 @@
 # [파일 정의서]
 # - 파일명: src/reports/generate_letter.py
-# - 역할: 산출물 생성 (Reporting)
-# - 대상: 공통 (온라인우편 레터용)
-# - 데이터 소스: dashboard_ready_data.csv, beef_stock_data.xlsx, master_import_volume.csv
-# - 주요 기능:
-#   1. 시세: 전월 대비 평균 도매가 변동 |증감률| Top 10 (상승·하락 혼합)
-#   2. 재고: 전월 대비 변동 부위 증가 Top 3 + 감소 Top 3
-#   3. 수입량: 전월 대비 변동 부위 증가 Top 3 + 감소 Top 3
-#   4. 위 3개 표를 고정폭(monospace) 정렬 텍스트로 묶어 .txt 파일 + 콘솔로 출력
-#
-# 실행 예) python src/reports/generate_letter.py
-#         python src/reports/generate_letter.py --month 2026-04
-#         python src/reports/generate_letter.py --out D:/letter.txt
+# - 역할: 산출물 생성 (온라인우편 복붙용 — 수입육 시장 트렌드 레터)
+# - 대상: 수입육(미트박스 B2B 도매시세) 중심
+# - 데이터 소스: dashboard_ready_data.csv(시세), master_import_volume.csv(수입량)
+# - 목적: "제가 실행하면 전월 기준으로 최근 수입육 시장 트렌드가 한눈에 정리되는"
+#         간단한 복붙용 텍스트 양식 생성. 표보다 요약·핵심 수치 중심.
+# - 구성:
+#     1) 이번 달 총평 (전월 대비 전반 방향 + 평균 변동률 + 오른/내린 부위 수)
+#     2) 대표 부위(삼겹양지) 시세 한 줄
+#     3) 전월 대비 많이 오른/내린 부위 Top 5
+#     4) 수입 물량 한 줄 요약 (최신 확정월 기준)
+# - 실행 예)
+#     python src/reports/generate_letter.py
+#     python src/reports/generate_letter.py --month 2026-06
+#     python src/reports/generate_letter.py --out D:/letter.txt
 
 import argparse
 import sys
@@ -24,24 +26,23 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import (  # noqa: E402
     DASHBOARD_READY_CSV,
-    BEEF_STOCK_XLSX,
     MASTER_IMPORT_VOLUME_CSV,
     DATA_REPORTS,
     ensure_dirs,
 )
 
-# 집계 대상에서 제외할 부위(집계행·기타 버킷)
-EXCLUDED_PARTS = {"합계", "기타", "부산물"}
-
-# 컬럼 사이 간격
-COL_GAP = "  "
+# 대표 부위 (수입육 벤치마크). 데이터에 있으면 총평 아래 단독 표기.
+FLAGSHIP_PART = "삼겹양지"
+# 상승/하락 부위 표기 개수
+TOP_N = 5
+# 총평 방향 판정 임계치(%)
+FLAT_THRESHOLD = 0.5
 
 
 # ==================================================================
-# 1. 고정폭 텍스트 정렬 유틸 (한글 2칸 폭 고려)
+# 고정폭 정렬 유틸 (한글 2칸 폭 — 우편/메모장 등 고정폭 글꼴에서 칸 맞춤)
 # ==================================================================
 def _char_width(ch: str) -> int:
-    """동아시아 전각 문자는 2칸, 그 외는 1칸으로 계산."""
     return 2 if unicodedata.east_asian_width(ch) in ("W", "F") else 1
 
 
@@ -57,278 +58,215 @@ def _pad(text, width: int, align: str = "left") -> str:
     return text + " " * gap if align == "left" else " " * gap + text
 
 
-def render_table(headers, rows, aligns) -> str:
-    """헤더 + 구분선 + 데이터 행을 고정폭 표 문자열로 반환."""
-    widths = [_disp_width(h) for h in headers]
-    for row in rows:
-        for i, cell in enumerate(row):
-            widths[i] = max(widths[i], _disp_width(cell))
-
-    def fmt_row(cells):
-        return COL_GAP.join(_pad(c, widths[i], aligns[i]) for i, c in enumerate(cells))
-
-    line_len = sum(widths) + len(COL_GAP) * (len(widths) - 1)
-    out = [fmt_row(headers), "-" * line_len]
-    out.extend(fmt_row(r) for r in rows)
-    return "\n".join(out)
-
-
-def _fmt_num(v, decimals: int = 0) -> str:
-    return f"{v:,.{decimals}f}"
-
-
 def _fmt_pct(v) -> str:
     return f"{v:+.1f}%"
 
 
-def _period_label(p) -> str:
-    return str(p) if p is not None else "-"
-
-
 # ==================================================================
-# 2. 기준월 선정
+# 기준월 선정 (전월 = 최신 '완료' 월)
 # ==================================================================
-def _pick_months(periods, anchor=None, drop_current=False, today_period=None):
+def _pick_months(periods, anchor=None, today_period=None):
     """
-    당월/전월 Period를 반환.
-    - anchor 지정 시: anchor 이하의 최신 월을 당월로 사용.
-    - anchor 미지정 + drop_current: 실행 시점의 현재 달(부분월)을 제외하고 최신 월 사용.
-    - 전월: 데이터상 당월 직전에 존재하는 월(달력상 연속이 아니어도 직전 데이터).
+    당월/전월 Period 반환.
+    - anchor 지정: anchor 이하 최신 월을 당월로.
+    - 미지정: 실행 시점의 현재 달(부분월)을 제외한 최신 완료월을 당월로.
     """
     periods = sorted(set(periods))
     if anchor is not None:
         eligible = [p for p in periods if p <= anchor]
-    elif drop_current and today_period is not None:
+    elif today_period is not None:
         eligible = [p for p in periods if p < today_period]
     else:
         eligible = periods
-
     if len(eligible) < 2:
         return None, None
     return eligible[-1], eligible[-2]
 
 
 # ==================================================================
-# 3. 표 데이터 빌더
+# 시세 트렌드 집계 (부위별 월평균 도매가 → 전월 대비 변동)
 # ==================================================================
-def build_price_top10(anchor=None, today_period=None):
-    """시세: 전월 대비 평균 도매가 |증감률| 상위 10건 (상승·하락 혼합)."""
+def build_price_trend(anchor=None, today_period=None):
     if not DASHBOARD_READY_CSV.exists():
         return None
     df = pd.read_csv(str(DASHBOARD_READY_CSV))
-    df["date"] = pd.to_datetime(df["date"])
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    df = df.dropna(subset=["date", "part", "wholesale_price"])
+    df = df[df["wholesale_price"] > 0]
     df["month"] = df["date"].dt.to_period("M")
 
-    cur, prev = _pick_months(
-        df["month"].unique(),
-        anchor=anchor,
-        drop_current=(anchor is None),
-        today_period=today_period,
-    )
+    cur, prev = _pick_months(df["month"].unique(), anchor=anchor, today_period=today_period)
     if cur is None:
         return None
 
-    keys = ["part", "category", "brand"]
-    cur_avg = df[df["month"] == cur].groupby(keys)["wholesale_price"].mean()
-    prev_avg = df[df["month"] == prev].groupby(keys)["wholesale_price"].mean()
+    # 부위별 월평균(국가·브랜드 합산 평균)
+    cur_avg = df[df["month"] == cur].groupby("part")["wholesale_price"].mean()
+    prev_avg = df[df["month"] == prev].groupby("part")["wholesale_price"].mean()
     merged = pd.concat([cur_avg.rename("cur"), prev_avg.rename("prev")], axis=1).dropna()
-    merged = merged[merged["prev"] != 0]
+    merged = merged[merged["prev"] > 0]
     if merged.empty:
-        return {"cur": cur, "prev": prev, "rows": []}
+        return {"cur": cur, "prev": prev, "empty": True}
 
     merged["pct"] = (merged["cur"] - merged["prev"]) / merged["prev"] * 100
-    top = merged.reindex(merged["pct"].abs().sort_values(ascending=False).index).head(10)
 
-    rows = []
-    for (part, category, brand), r in top.iterrows():
-        label = f"{part} ({category}/{brand})"
-        rows.append([label, _fmt_num(r["cur"]), _fmt_num(r["prev"]), _fmt_pct(r["pct"])])
-    return {"cur": cur, "prev": prev, "rows": rows}
+    up = merged[merged["pct"] > 0].sort_values("pct", ascending=False)
+    down = merged[merged["pct"] < 0].sort_values("pct", ascending=True)
+    avg_pct = float(merged["pct"].mean())
 
+    flagship = None
+    if FLAGSHIP_PART in merged.index:
+        r = merged.loc[FLAGSHIP_PART]
+        flagship = (float(r["cur"]), float(r["prev"]), float(r["pct"]))
 
-def _monthly_part_series(df_cur, df_prev, value_col):
-    """당월/전월 부위별 합계 → 증감률 DataFrame."""
-    cur_v = df_cur.groupby("part")[value_col].sum()
-    prev_v = df_prev.groupby("part")[value_col].sum()
-    merged = pd.concat([cur_v.rename("cur"), prev_v.rename("prev")], axis=1).dropna()
-    merged = merged[merged["prev"] != 0]
-    if merged.empty:
-        return merged
-    merged["pct"] = (merged["cur"] - merged["prev"]) / merged["prev"] * 100
-    return merged
-
-
-def _split_inc_dec(merged, decimals):
-    """증가 Top3 / 감소 Top3 행 리스트로 변환."""
-    inc = merged[merged["pct"] > 0].sort_values("pct", ascending=False).head(3)
-    dec = merged[merged["pct"] < 0].sort_values("pct", ascending=True).head(3)
-
-    def to_rows(sub):
-        return [
-            [part, _fmt_num(r["cur"], decimals), _fmt_num(r["prev"], decimals), _fmt_pct(r["pct"])]
-            for part, r in sub.iterrows()
-        ]
-
-    return to_rows(inc), to_rows(dec)
+    return {
+        "cur": cur, "prev": prev, "empty": False,
+        "avg_pct": avg_pct,
+        "n_up": int((merged["pct"] > 0).sum()),
+        "n_down": int((merged["pct"] < 0).sum()),
+        "n_total": int(len(merged)),
+        "up": up.head(TOP_N), "down": down.head(TOP_N),
+        "flagship": flagship,
+    }
 
 
-def build_stock_top3(anchor=None):
-    """재고: 전월 대비 부위별 증가 Top3 / 감소 Top3 (단위 톤)."""
-    if not BEEF_STOCK_XLSX.exists():
-        return None
-    df = pd.read_excel(str(BEEF_STOCK_XLSX))
-
-    col_map = {}
-    for col in df.columns:
-        if "기준년월" in col:
-            col_map[col] = "date"
-        elif "부위별" in col:
-            col_map[col] = "part"
-        elif "조사재고량" in col:
-            col_map[col] = "inventory"
-    df = df.rename(columns=col_map)
-
-    df = df[~df["inventory"].astype(str).str.contains("없습니다|자료가", na=False)]
-    df["inventory"] = df["inventory"].astype(str).str.replace(",", "").astype(float)
-    df["date"] = pd.to_datetime(df["date"])
-    df["month"] = df["date"].dt.to_period("M")
-    df = df[~df["part"].isin(EXCLUDED_PARTS)]
-
-    cur, prev = _pick_months(df["month"].unique(), anchor=anchor)
-    if cur is None:
-        return None
-
-    merged = _monthly_part_series(df[df["month"] == cur], df[df["month"] == prev], "inventory")
-    inc_rows, dec_rows = _split_inc_dec(merged, decimals=0)
-    return {"cur": cur, "prev": prev, "inc": inc_rows, "dec": dec_rows}
-
-
-def build_import_top3(anchor=None):
-    """수입량: 전월 대비 부위별(국가 합산) 증가 Top3 / 감소 Top3 (단위 톤)."""
+# ==================================================================
+# 수입 물량 한 줄 요약 (최신 확정월 기준 전월 대비)
+# ==================================================================
+def build_import_line(anchor=None):
     if not MASTER_IMPORT_VOLUME_CSV.exists():
         return None
-    df = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV))
-    df["month"] = pd.to_datetime(df["std_date"]).dt.to_period("M")
-
-    val_cols = [c for c in df.columns if c.startswith("부위별_") and "계_합계" not in c]
-    long = df.melt(id_vars=["month"], value_vars=val_cols, var_name="part_raw", value_name="vol")
-    long["part"] = long["part_raw"].str.replace("부위별_", "").str.replace("_합계", "")
-    long["vol"] = pd.to_numeric(long["vol"], errors="coerce")
-    long = long[~long["part"].isin(EXCLUDED_PARTS)]
-
-    cur, prev = _pick_months(long["month"].unique(), anchor=anchor)
-    if cur is None:
+    try:
+        df = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV))
+        df["month"] = pd.to_datetime(df["std_date"]).dt.to_period("M")
+    except Exception:
         return None
 
-    merged = _monthly_part_series(long[long["month"] == cur], long[long["month"] == prev], "vol")
-    inc_rows, dec_rows = _split_inc_dec(merged, decimals=1)
-    return {"cur": cur, "prev": prev, "inc": inc_rows, "dec": dec_rows}
+    total_col = next((c for c in df.columns if c.startswith("부위별_") and "계_합계" in c), None)
+    if total_col is None:
+        return None
+    grp = df.groupby("month")[total_col].sum()
+
+    months = sorted(grp.index)
+    if anchor is not None:
+        months = [m for m in months if m <= anchor]
+    if len(months) < 2:
+        return None
+    cur, prev = months[-1], months[-2]
+    cv, pv = grp.get(cur), grp.get(prev)
+    if pv is None or pv == 0 or cv is None:
+        return None
+    pct = (cv - pv) / pv * 100
+    return {"cur": cur, "prev": prev, "cur_val": float(cv), "pct": pct}
 
 
 # ==================================================================
-# 4. 레터 본문 조립
+# 레터 본문 조립
 # ==================================================================
-def _section_price(price) -> str:
-    lines = ["1. 시세 — 전월 대비 평균 도매가 변동 Top 10"]
-    if not price or not price["rows"]:
-        lines.append("   (집계 가능한 데이터가 없습니다.)")
-        return "\n".join(lines)
-    lines.append(
-        f"   (기준: {_period_label(price['cur'])} vs {_period_label(price['prev'])}"
-        f" · 단위: 원/kg · 미트박스 B2B 도매시세 · 당월·전월 일평균 비교)"
-    )
-    lines.append("")
-    lines.append(
-        render_table(
-            ["품목 (부위/원산지/브랜드)", "당월", "전월", "증감률"],
-            price["rows"],
-            ["left", "right", "right", "right"],
-        )
-    )
-    return "\n".join(lines)
+def _direction_word(pct) -> str:
+    if pct > FLAT_THRESHOLD:
+        return "상승"
+    if pct < -FLAT_THRESHOLD:
+        return "하락"
+    return "보합"
 
 
-def _section_inc_dec(title, caption, block) -> str:
+def _period_kr(p) -> str:
+    return f"{p.year}년 {p.month}월" if p is not None else "-"
+
+
+def _movers_block(title, sub, marker):
+    if sub is None or sub.empty:
+        return [title, f"  ({marker} 해당 부위 없음)"]
+    name_w = max(_disp_width(str(p)) for p in sub.index)
     lines = [title]
-    if not block or (not block["inc"] and not block["dec"]):
-        lines.append("   (집계 가능한 데이터가 없습니다.)")
-        return "\n".join(lines)
-    lines.append(
-        f"   (기준: {_period_label(block['cur'])} vs {_period_label(block['prev'])} · {caption})"
-    )
-    headers = ["부위", "당월", "전월", "증감률"]
-    aligns = ["left", "right", "right", "right"]
-
-    lines.append("")
-    lines.append("   [▲ 증가 Top 3]")
-    if block["inc"]:
-        lines.append(render_table(headers, block["inc"], aligns))
-    else:
-        lines.append("   (증가 항목 없음)")
-
-    lines.append("")
-    lines.append("   [▼ 감소 Top 3]")
-    if block["dec"]:
-        lines.append(render_table(headers, block["dec"], aligns))
-    else:
-        lines.append("   (감소 항목 없음)")
-    return "\n".join(lines)
+    for part, r in sub.iterrows():
+        lines.append(
+            f"  {marker} {_pad(part, name_w)}  {r['cur']:>7,.0f}원/kg  ({_fmt_pct(r['pct'])})"
+        )
+    return lines
 
 
 def generate_letter(anchor=None) -> str:
     today_period = pd.Period(datetime.now(), "M")
-    price = build_price_top10(anchor=anchor, today_period=today_period)
-    stock = build_stock_top3(anchor=anchor)
-    imp = build_import_top3(anchor=anchor)
+    trend = build_price_trend(anchor=anchor, today_period=today_period)
+    imp = build_import_line(anchor=anchor)
 
-    divider = "=" * 64
-    parts = [
-        divider,
-        "■ 소고기 시세·재고·수입 동향 (전월 대비 변동 요약)",
-        f"  생성일시: {datetime.now():%Y-%m-%d %H:%M}",
-        divider,
-        "",
-        "전월 대비 변동폭이 큰 항목을 아래와 같이 정리해 드립니다.",
-        "",
-        _section_price(price),
-        "",
-        _section_inc_dec(
-            "2. 재고 — 전월 대비 변동 부위 (증가·감소 Top 3)",
-            "단위: 톤",
-            stock,
-        ),
-        "",
-        _section_inc_dec(
-            "3. 수입량 — 전월 대비 변동 부위 (증가·감소 Top 3)",
-            "단위: 톤 · 국가 합산",
-            imp,
-        ),
-        "",
-        divider,
-        "※ 데이터 출처: 시세-미트박스 B2B / 재고·수입-월별 집계자료",
-        "※ 증감률(%) = (당월값 - 전월값) / 전월값 × 100",
-        "※ 데이터 공개 시차로 표마다 기준월이 다를 수 있습니다.",
-        "※ 본 표는 고정폭 글꼴(예: Consolas, D2Coding, 나눔고딕코딩)에서 칸이 맞습니다.",
-        divider,
-    ]
-    return "\n".join(parts)
+    divider = "=" * 60
+    L = [divider]
+
+    if not trend or trend.get("empty"):
+        cur = trend["cur"] if trend else None
+        L.append("■ 수입육 시장 동향 리포트")
+        L.append(f"  생성일시: {datetime.now():%Y-%m-%d %H:%M}")
+        L.append(divider)
+        L.append("")
+        L.append("집계 가능한 시세 데이터가 부족합니다.")
+        L.append(divider)
+        return "\n".join(L)
+
+    cur, prev = trend["cur"], trend["prev"]
+    L.append(f"■ 수입육 시장 동향 리포트 — {_period_kr(cur)} 기준")
+    L.append(f"  생성일시: {datetime.now():%Y-%m-%d %H:%M}")
+    L.append(divider)
+
+    # 1) 이번 달 총평
+    direction = _direction_word(trend["avg_pct"])
+    L.append("")
+    L.append("[이번 달 총평]")
+    L.append(
+        f"{_period_kr(cur)} 수입육 도매가는 전월({_period_kr(prev)}) 대비 전반적으로 "
+        f"'{direction}' 흐름입니다."
+    )
+    L.append(
+        f"  · 부위 평균 변동: {_fmt_pct(trend['avg_pct'])}  (미트박스 B2B 도매시세, 월평균 기준)"
+    )
+    L.append(
+        f"  · 오른 부위 {trend['n_up']}개 / 내린 부위 {trend['n_down']}개 "
+        f"(집계 {trend['n_total']}개 부위)"
+    )
+
+    # 2) 대표 부위 (삼겹양지)
+    if trend["flagship"]:
+        cv, pv, pc = trend["flagship"]
+        L.append("")
+        L.append("[대표 부위 — 삼겹양지(미국·호주산)]")
+        L.append(f"  · {cv:,.0f}원/kg  (전월 {pv:,.0f} → {_fmt_pct(pc)})")
+
+    # 3) 오른/내린 부위 Top N
+    L.append("")
+    L.extend(_movers_block(f"[전월 대비 많이 오른 부위 Top {TOP_N}]", trend["up"], "▲"))
+    L.append("")
+    L.extend(_movers_block(f"[전월 대비 많이 내린 부위 Top {TOP_N}]", trend["down"], "▼"))
+
+    # 4) 수입 물량 한 줄
+    if imp:
+        L.append("")
+        L.append("[수입 물량]")
+        L.append(
+            f"  · {_period_kr(imp['cur'])} 총 수입량 약 {imp['cur_val']:,.0f}톤 "
+            f"(전월 대비 {_fmt_pct(imp['pct'])})"
+        )
+
+    # 꼬리말
+    L.append("")
+    L.append(divider)
+    L.append("※ 출처: 시세-미트박스 B2B 도매시세 / 수입량-KMTA·식약처")
+    L.append("※ 증감률(%) = (당월 평균 - 전월 평균) / 전월 평균 × 100")
+    L.append("※ 데이터 공개 시차로 시세와 수입량의 기준월이 다를 수 있습니다.")
+    L.append("※ 고정폭 글꼴(예: 나눔고딕코딩·Consolas)에서 칸이 맞습니다.")
+    L.append(divider)
+    return "\n".join(L)
 
 
 # ==================================================================
-# 5. CLI
+# CLI
 # ==================================================================
 def main():
-    parser = argparse.ArgumentParser(description="온라인우편 레터용 시세/재고/수입 변동 표 생성")
-    parser.add_argument(
-        "--month",
-        help="기준월(YYYY-MM). 미지정 시 각 데이터의 최신 완료 월을 자동 사용.",
-        default=None,
-    )
-    parser.add_argument(
-        "--out",
-        help="출력 파일 경로. 미지정 시 data/3_reports/letter_<기준월>.txt",
-        default=None,
-    )
+    parser = argparse.ArgumentParser(description="온라인우편 복붙용 수입육 시장 트렌드 레터 생성")
+    parser.add_argument("--month", default=None,
+                        help="기준월(YYYY-MM). 미지정 시 최신 완료월(전월)을 자동 사용.")
+    parser.add_argument("--out", default=None,
+                        help="출력 파일 경로. 미지정 시 data/3_reports/letter_<기준월>.txt")
     args = parser.parse_args()
 
     anchor = None
@@ -345,7 +283,13 @@ def main():
     if args.out:
         out_path = Path(args.out)
     else:
-        stamp = str(anchor) if anchor is not None else datetime.now().strftime("%Y-%m")
+        # 파일명은 '기준월'(레터의 당월)로 — 실행월과 어긋나지 않게
+        today_period = pd.Period(datetime.now(), "M")
+        trend = build_price_trend(anchor=anchor, today_period=today_period)
+        if trend and trend.get("cur") is not None:
+            stamp = str(trend["cur"])
+        else:
+            stamp = str(anchor) if anchor is not None else datetime.now().strftime("%Y-%m")
         out_path = DATA_REPORTS / f"letter_{stamp}.txt"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(letter, encoding="utf-8")

@@ -46,6 +46,8 @@ HAN_AUCTION_RAW_CSV = DATA_RAW / "han_auction_raw.csv"          # API 원본(lon
 HAN_AUCTION_DAILY_CSV = DATA_PROCESSED / "han_auction_daily.csv"  # 일자 × 등급 × 도매시장 정규화
 # KAMIS 한우 도/소매 가격 (한국농수산식품유통공사)
 KAMIS_HANWOO_RAW_CSV = DATA_RAW / "kamis_hanwoo_raw.csv"
+# KAMIS 돼지고기 도/소매 가격 (국내 돼지 + 수입 돼지고기 — 외식 대량소비·대체수요 공급가)
+KAMIS_PORK_RAW_CSV = DATA_RAW / "kamis_pork_raw.csv"
 # 통합 대시보드용 (가격 + 두수 + 7/30일 MA 등)
 HANWOO_DASHBOARD_CSV = DATA_DASHBOARD / "hanwoo_dashboard_ready.csv"
 

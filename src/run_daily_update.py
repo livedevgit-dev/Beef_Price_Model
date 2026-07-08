@@ -183,6 +183,7 @@ DAILY_COLLECTORS = [
     ("USD/KRW 환율", _collector("crawl_com_usd_krw.py")),
     ("EKAPE 한우 경락가격·도축두수", _collector("crawl_han_auction_api.py")),
     ("KAMIS 한우 도/소매가 (키 없으면 자동 skip)", _collector("collect_kamis_hanwoo.py")),
+    ("KAMIS 돼지 도/소매가 (외식 공급가, 키 없으면 자동 skip)", _collector("collect_kamis_pork.py")),
 ]
 
 MONTHLY_COLLECTORS = [
@@ -650,13 +651,14 @@ def run_price_only():
     else:
         fail += 1
 
-    # 한우 (일별) — non-critical
+    # 한우·돼지 (일별) — non-critical
     for han_label, han_path in (
         ("EKAPE 한우 경락가격·도축두수", _collector("crawl_han_auction_api.py")),
         ("KAMIS 한우 도/소매가 (키 없으면 skip)", _collector("collect_kamis_hanwoo.py")),
+        ("KAMIS 돼지 도/소매가 (키 없으면 skip)", _collector("collect_kamis_pork.py")),
     ):
         total += 1
-        if _run_step(f"[일별 한우] {han_label}", han_path, critical=False):
+        if _run_step(f"[일별 축산] {han_label}", han_path, critical=False):
             success += 1
         else:
             fail += 1

@@ -15,7 +15,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import (DASHBOARD_READY_CSV, MASTER_IMPORT_VOLUME_CSV, BEEF_STOCK_XLSX,
                     USDA_BEEF_HISTORY_CSV, EXCHANGE_RATE_XLSX, HAN_AUCTION_RAW_CSV,
-                    KAMIS_HANWOO_RAW_CSV, MACRO_RAW_CSV, FAS_EXPORT_SALES_CSV,
+                    KAMIS_HANWOO_RAW_CSV, KAMIS_PORK_RAW_CSV, MACRO_RAW_CSV, FAS_EXPORT_SALES_CSV,
                     US_CATTLE_ON_FEED_CSV, DATA_DASHBOARD, ensure_dirs)
 
 TODAY = pd.Timestamp(datetime.now().date())
@@ -105,6 +105,14 @@ def collect_status() -> pd.DataFrame:
     add("기후(기온·강수)", "KMA", "일", _macro_max(["kr_temp_avg", "kr_precip"]), 7)
     add("미국 수출(FAS)", "FAS", "주", _maxdate_csv(FAS_EXPORT_SALES_CSV, "week_ending"), 21)
     add("사육두수(CattleOnFeed)", "USDA NASS", "월", _maxdate_csv(US_CATTLE_ON_FEED_CSV, "date"), 45)
+
+    # 수요·유통 (소비시장 요인 — 유통채널/외식). 통계청 발표시차 큼(현재 ~4개월) → 임계치 넉넉히
+    add("소매·외식(ECOS)", "ECOS", "월",
+        _macro_max(["kr_retail_hypermarket", "kr_retail_cvs", "kr_retail_dept", "kr_service_food"]), 120)
+    add("품목물가(쇠/돼지 CPI)", "ECOS", "월",
+        _macro_max(["kr_cpi_beef_imp", "kr_cpi_beef_dom", "kr_cpi_pork"]), 45)
+    # 공급(외식 대량소비·대체재) — 돼지 도매가 (일)
+    add("돼지 도매가(KAMIS)", "KAMIS", "일", _maxdate_csv(KAMIS_PORK_RAW_CSV, "reg_date"), 7)
 
     # 월별 (전월 데이터가 익월 중순 갱신 → 45일 이내면 최신으로 간주)
     add("수입량(KMTA)", "KMTA/식약처", "월", _maxdate_csv(MASTER_IMPORT_VOLUME_CSV, "std_date", monthly_suffix="-01"), 45)

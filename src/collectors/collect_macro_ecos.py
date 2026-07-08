@@ -130,6 +130,73 @@ ECOS_INDICATORS = [
         "unit": "p",
         "freq": "M",
     },
+    # ── 수요·유통 지표(2026-07 추가) ─────────────────────────────────────
+    #   소비 시장 요인(대형마트 폐업 등 유통 채널 변화·외식 수요·품목별 체감가) 포착용.
+    #   판매액·서비스업생산지수는 통계청 발표시차가 커서(현재 ~4개월) 신선도 임계치는 넉넉히 둔다.
+    #   항목코드 검증: ECOS StatisticItemList/StatisticSearch 로 월간 데이터 확인(2026-07).
+    {
+        "indicator_id": "kr_retail_hypermarket",
+        "stat_code": "901Y098",
+        "item_code": "I74C",         # 대형마트 (소매업태별 판매액지수)
+        "cycle": "M",
+        "indicator_name": "소매판매액지수 — 대형마트",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_retail_cvs",
+        "stat_code": "901Y098",
+        "item_code": "I74J",         # 편의점
+        "cycle": "M",
+        "indicator_name": "소매판매액지수 — 편의점",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_retail_dept",
+        "stat_code": "901Y098",
+        "item_code": "I74B",         # 백화점
+        "cycle": "M",
+        "indicator_name": "소매판매액지수 — 백화점",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_service_food",
+        "stat_code": "901Y038",
+        "item_code": "I51ADB",       # 음식점 및 주점업 (서비스업생산지수) — 외식 수요
+        "cycle": "M",
+        "indicator_name": "서비스업생산지수 — 음식점·주점업",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_cpi_beef_imp",
+        "stat_code": "901Y009",
+        "item_code": "A01202",       # 수입 쇠고기 소비자물가 (삼겹양지 소비 체감가)
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 수입 쇠고기",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_cpi_beef_dom",
+        "stat_code": "901Y009",
+        "item_code": "A01201",       # 국산 쇠고기 소비자물가 (한우)
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 국산 쇠고기",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_cpi_pork",
+        "stat_code": "901Y009",
+        "item_code": "A01203",       # 돼지고기 소비자물가 (대체수요)
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 돼지고기",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
 ]
 
 

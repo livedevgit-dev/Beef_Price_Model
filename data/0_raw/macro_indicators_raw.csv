@@ -1,11 +1,18 @@
 ﻿date,country,indicator_id,indicator_name,value,unit,freq,source
 2019-01-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-01-01,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS
+2019-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS
+2019-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS
 2019-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS
+2019-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS
 2019-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS
 2019-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS
 2019-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS
 2019-01-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA
+2019-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS
+2019-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS
+2019-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS
+2019-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS
 2019-01-01,KR,kr_temp_avg,평균기온(전국대표),-1.46,°C,D,KMA
 2019-01-01,KR,kr_temp_max,최고기온(전국대표),2.28,°C,D,KMA
 2019-01-01,US,us_corn,Global Price of Corn (사료비 proxy),166.8462414965987,USD/metric ton,M,FRED
@@ -125,11 +132,18 @@
 2019-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",53.84,USD/barrel,D,FRED
 2019-02-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-02-01,KR,kr_ccsi,소비자심리지수(CCSI),100.4,p (장기평균=100),M,ECOS
+2019-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.845,2020=100,M,ECOS
+2019-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,97.881,2020=100,M,ECOS
 2019-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,96.441,2020=100,M,ECOS
+2019-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,83.777,2020=100,M,ECOS
 2019-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.311,2020=100,M,ECOS
 2019-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",98.1,p,M,ECOS
 2019-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.69,2020=100,M,ECOS
 2019-02-01,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
+2019-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,96.6,2020=100,M,ECOS
+2019-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,111.7,2020=100,M,ECOS
+2019-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,99.6,2020=100,M,ECOS
+2019-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.6,2020=100,M,ECOS
 2019-02-01,KR,kr_temp_avg,평균기온(전국대표),-0.62,°C,D,KMA
 2019-02-01,KR,kr_temp_max,최고기온(전국대표),4.38,°C,D,KMA
 2019-02-01,US,us_corn,Global Price of Corn (사료비 proxy),169.6562834586467,USD/metric ton,M,FRED
@@ -238,11 +252,18 @@
 2019-02-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",57.21,USD/barrel,D,FRED
 2019-03-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-03-01,KR,kr_ccsi,소비자심리지수(CCSI),100.7,p (장기평균=100),M,ECOS
+2019-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.35,2020=100,M,ECOS
+2019-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,97.052,2020=100,M,ECOS
 2019-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.508,2020=100,M,ECOS
+2019-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,83.512,2020=100,M,ECOS
 2019-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.121,2020=100,M,ECOS
 2019-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.2,p,M,ECOS
 2019-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.67,2020=100,M,ECOS
 2019-03-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2019-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.5,2020=100,M,ECOS
+2019-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,113.4,2020=100,M,ECOS
+2019-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,100.5,2020=100,M,ECOS
+2019-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,118.8,2020=100,M,ECOS
 2019-03-01,KR,kr_temp_avg,평균기온(전국대표),7.68,°C,D,KMA
 2019-03-01,KR,kr_temp_max,최고기온(전국대표),14.48,°C,D,KMA
 2019-03-01,US,us_corn,Global Price of Corn (사료비 proxy),166.3213319727891,USD/metric ton,M,FRED
@@ -362,11 +383,18 @@
 2019-03-31,KR,kr_temp_max,최고기온(전국대표),10.48,°C,D,KMA
 2019-04-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-04-01,KR,kr_ccsi,소비자심리지수(CCSI),102.6,p (장기평균=100),M,ECOS
+2019-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.474,2020=100,M,ECOS
+2019-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.775,2020=100,M,ECOS
 2019-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,96.318,2020=100,M,ECOS
+2019-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,91.341,2020=100,M,ECOS
 2019-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.481,2020=100,M,ECOS
 2019-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",98.5,p,M,ECOS
 2019-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.13,2020=100,M,ECOS
 2019-04-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2019-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,97.5,2020=100,M,ECOS
+2019-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,110.8,2020=100,M,ECOS
+2019-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.4,2020=100,M,ECOS
+2019-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,118.4,2020=100,M,ECOS
 2019-04-01,KR,kr_temp_avg,평균기온(전국대표),6.78,°C,D,KMA
 2019-04-01,KR,kr_temp_max,최고기온(전국대표),12.26,°C,D,KMA
 2019-04-01,US,us_corn,Global Price of Corn (사료비 proxy),161.6533865646259,USD/metric ton,M,FRED
@@ -483,11 +511,18 @@
 2019-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",63.83,USD/barrel,D,FRED
 2019-05-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-05-01,KR,kr_ccsi,소비자심리지수(CCSI),98.7,p (장기평균=100),M,ECOS
+2019-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.52,2020=100,M,ECOS
+2019-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,97.141,2020=100,M,ECOS
 2019-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.816,2020=100,M,ECOS
+2019-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,92.938,2020=100,M,ECOS
 2019-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.652,2020=100,M,ECOS
 2019-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.8,p,M,ECOS
 2019-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.19,2020=100,M,ECOS
 2019-05-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2019-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS
+2019-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,115.2,2020=100,M,ECOS
+2019-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,99.8,2020=100,M,ECOS
+2019-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,117.0,2020=100,M,ECOS
 2019-05-01,KR,kr_temp_avg,평균기온(전국대표),16.32,°C,D,KMA
 2019-05-01,KR,kr_temp_max,최고기온(전국대표),22.44,°C,D,KMA
 2019-05-01,US,us_corn,Global Price of Corn (사료비 proxy),171.1801535714285,USD/metric ton,M,FRED
@@ -608,11 +643,18 @@
 2019-05-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",53.49,USD/barrel,D,FRED
 2019-06-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2019-06-01,KR,kr_ccsi,소비자심리지수(CCSI),98.4,p (장기평균=100),M,ECOS
+2019-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.164,2020=100,M,ECOS
+2019-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,98.103,2020=100,M,ECOS
 2019-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,94.768,2020=100,M,ECOS
+2019-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,92.838,2020=100,M,ECOS
 2019-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.491,2020=100,M,ECOS
 2019-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.4,p,M,ECOS
 2019-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.24,2020=100,M,ECOS
 2019-06-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2019-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS
+2019-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,111.7,2020=100,M,ECOS
+2019-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.8,2020=100,M,ECOS
+2019-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.4,2020=100,M,ECOS
 2019-06-01,KR,kr_temp_avg,평균기온(전국대표),19.74,°C,D,KMA
 2019-06-01,KR,kr_temp_max,최고기온(전국대표),25.44,°C,D,KMA
 2019-06-01,US,us_corn,Global Price of Corn (사료비 proxy),195.1679223214286,USD/metric ton,M,FRED
@@ -728,11 +770,18 @@
 2019-06-30,KR,kr_temp_max,최고기온(전국대표),28.82,°C,D,KMA
 2019-07-01,KR,kr_base_rate,한국은행 기준금리,1.5,연%,M,ECOS
 2019-07-01,KR,kr_ccsi,소비자심리지수(CCSI),96.7,p (장기평균=100),M,ECOS
+2019-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.636,2020=100,M,ECOS
+2019-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,97.114,2020=100,M,ECOS
 2019-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,93.923,2020=100,M,ECOS
+2019-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,92.537,2020=100,M,ECOS
 2019-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.187,2020=100,M,ECOS
 2019-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS
 2019-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.16,2020=100,M,ECOS
 2019-07-01,KR,kr_precip,일강수량(전국대표),2.18,mm,D,KMA
+2019-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.0,2020=100,M,ECOS
+2019-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,112.0,2020=100,M,ECOS
+2019-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,94.8,2020=100,M,ECOS
+2019-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.4,2020=100,M,ECOS
 2019-07-01,KR,kr_temp_avg,평균기온(전국대표),23.52,°C,D,KMA
 2019-07-01,KR,kr_temp_max,최고기온(전국대표),27.5,°C,D,KMA
 2019-07-01,US,us_corn,Global Price of Corn (사료비 proxy),189.4863732142856,USD/metric ton,M,FRED
@@ -852,11 +901,18 @@
 2019-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",58.53,USD/barrel,D,FRED
 2019-08-01,KR,kr_base_rate,한국은행 기준금리,1.5,연%,M,ECOS
 2019-08-01,KR,kr_ccsi,소비자심리지수(CCSI),93.1,p (장기평균=100),M,ECOS
+2019-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,92.286,2020=100,M,ECOS
+2019-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,97.907,2020=100,M,ECOS
 2019-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,94.821,2020=100,M,ECOS
+2019-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,92.016,2020=100,M,ECOS
 2019-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.425,2020=100,M,ECOS
 2019-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",91.8,p,M,ECOS
 2019-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.36,2020=100,M,ECOS
 2019-08-01,KR,kr_precip,일강수량(전국대표),5.38,mm,D,KMA
+2019-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.1,2020=100,M,ECOS
+2019-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,115.9,2020=100,M,ECOS
+2019-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.6,2020=100,M,ECOS
+2019-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.3,2020=100,M,ECOS
 2019-08-01,KR,kr_temp_avg,평균기온(전국대표),28.84,°C,D,KMA
 2019-08-01,KR,kr_temp_max,최고기온(전국대표),33.1,°C,D,KMA
 2019-08-01,US,us_corn,Global Price of Corn (사료비 proxy),163.6286142857145,USD/metric ton,M,FRED
@@ -977,11 +1033,18 @@
 2019-08-31,KR,kr_temp_max,최고기온(전국대표),28.82,°C,D,KMA
 2019-09-01,KR,kr_base_rate,한국은행 기준금리,1.5,연%,M,ECOS
 2019-09-01,KR,kr_ccsi,소비자심리지수(CCSI),97.8,p (장기평균=100),M,ECOS
+2019-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,93.432,2020=100,M,ECOS
+2019-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,99.842,2020=100,M,ECOS
 2019-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,97.304,2020=100,M,ECOS
+2019-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,97.437,2020=100,M,ECOS
 2019-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.794,2020=100,M,ECOS
 2019-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.8,p,M,ECOS
 2019-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.44,2020=100,M,ECOS
 2019-09-01,KR,kr_precip,일강수량(전국대표),0.64,mm,D,KMA
+2019-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,99.5,2020=100,M,ECOS
+2019-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,110.3,2020=100,M,ECOS
+2019-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.0,2020=100,M,ECOS
+2019-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.0,2020=100,M,ECOS
 2019-09-01,KR,kr_temp_avg,평균기온(전국대표),22.98,°C,D,KMA
 2019-09-01,KR,kr_temp_max,최고기온(전국대표),27.08,°C,D,KMA
 2019-09-01,US,us_corn,Global Price of Corn (사료비 proxy),157.3744366071428,USD/metric ton,M,FRED
@@ -1097,11 +1160,18 @@
 2019-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",54.09,USD/barrel,D,FRED
 2019-10-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2019-10-01,KR,kr_ccsi,소비자심리지수(CCSI),99.5,p (장기평균=100),M,ECOS
+2019-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,94.237,2020=100,M,ECOS
+2019-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.154,2020=100,M,ECOS
 2019-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,97.497,2020=100,M,ECOS
+2019-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,96.971,2020=100,M,ECOS
 2019-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.041,2020=100,M,ECOS
 2019-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.8,p,M,ECOS
 2019-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.33,2020=100,M,ECOS
 2019-10-01,KR,kr_precip,일강수량(전국대표),12.46,mm,D,KMA
+2019-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.4,2020=100,M,ECOS
+2019-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,108.1,2020=100,M,ECOS
+2019-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.3,2020=100,M,ECOS
+2019-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.6,2020=100,M,ECOS
 2019-10-01,KR,kr_temp_avg,평균기온(전국대표),22.22,°C,D,KMA
 2019-10-01,KR,kr_temp_max,최고기온(전국대표),25.06,°C,D,KMA
 2019-10-01,US,us_corn,Global Price of Corn (사료비 proxy),167.2977940993788,USD/metric ton,M,FRED
@@ -1223,11 +1293,18 @@
 2019-10-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",54.02,USD/barrel,D,FRED
 2019-11-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2019-11-01,KR,kr_ccsi,소비자심리지수(CCSI),101.9,p (장기평균=100),M,ECOS
+2019-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,94.005,2020=100,M,ECOS
+2019-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.154,2020=100,M,ECOS
 2019-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,94.988,2020=100,M,ECOS
+2019-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,86.204,2020=100,M,ECOS
 2019-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.481,2020=100,M,ECOS
 2019-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.1,p,M,ECOS
 2019-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.29,2020=100,M,ECOS
 2019-11-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2019-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.3,2020=100,M,ECOS
+2019-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,111.6,2020=100,M,ECOS
+2019-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,102.6,2020=100,M,ECOS
+2019-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,121.3,2020=100,M,ECOS
 2019-11-01,KR,kr_temp_avg,평균기온(전국대표),15.58,°C,D,KMA
 2019-11-01,KR,kr_temp_max,최고기온(전국대표),22.52,°C,D,KMA
 2019-11-01,US,us_corn,Global Price of Corn (사료비 proxy),166.3617855263158,USD/metric ton,M,FRED
@@ -1342,11 +1419,18 @@
 2019-11-30,KR,kr_temp_max,최고기온(전국대표),13.4,°C,D,KMA
 2019-12-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2019-12-01,KR,kr_ccsi,소비자심리지수(CCSI),101.4,p (장기평균=100),M,ECOS
+2019-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,94.214,2020=100,M,ECOS
+2019-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.894,2020=100,M,ECOS
 2019-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.974,2020=100,M,ECOS
+2019-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,89.954,2020=100,M,ECOS
 2019-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.719,2020=100,M,ECOS
 2019-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.7,p,M,ECOS
 2019-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.31,2020=100,M,ECOS
 2019-12-01,KR,kr_precip,일강수량(전국대표),17.64,mm,D,KMA
+2019-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.7,2020=100,M,ECOS
+2019-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,110.7,2020=100,M,ECOS
+2019-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.7,2020=100,M,ECOS
+2019-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,122.6,2020=100,M,ECOS
 2019-12-01,KR,kr_temp_avg,평균기온(전국대표),6.8,°C,D,KMA
 2019-12-01,KR,kr_temp_max,최고기온(전국대표),8.78,°C,D,KMA
 2019-12-01,US,us_corn,Global Price of Corn (사료비 proxy),167.0590173214286,USD/metric ton,M,FRED
@@ -1466,11 +1550,18 @@
 2019-12-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",61.14,USD/barrel,D,FRED
 2020-01-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2020-01-01,KR,kr_ccsi,소비자심리지수(CCSI),105.2,p (장기평균=100),M,ECOS
+2020-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,95.84,2020=100,M,ECOS
+2020-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.59,2020=100,M,ECOS
 2020-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,97.16,2020=100,M,ECOS
+2020-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.68,2020=100,M,ECOS
 2020-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.09,2020=100,M,ECOS
 2020-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",98.4,p,M,ECOS
 2020-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.48,2020=100,M,ECOS
 2020-01-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA
+2020-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.0,2020=100,M,ECOS
+2020-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,110.7,2020=100,M,ECOS
+2020-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.0,2020=100,M,ECOS
+2020-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,122.5,2020=100,M,ECOS
 2020-01-01,KR,kr_temp_avg,평균기온(전국대표),-0.2,°C,D,KMA
 2020-01-01,KR,kr_temp_max,최고기온(전국대표),4.7,°C,D,KMA
 2020-01-01,US,us_corn,Global Price of Corn (사료비 proxy),171.8141352040817,USD/metric ton,M,FRED
@@ -1590,11 +1681,18 @@
 2020-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",51.58,USD/barrel,D,FRED
 2020-02-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2020-02-01,KR,kr_ccsi,소비자심리지수(CCSI),97.7,p (장기평균=100),M,ECOS
+2020-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,96.62,2020=100,M,ECOS
+2020-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,99.96,2020=100,M,ECOS
 2020-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,96.66,2020=100,M,ECOS
+2020-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,82.11,2020=100,M,ECOS
 2020-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.16,2020=100,M,ECOS
 2020-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",90.3,p,M,ECOS
 2020-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.26,2020=100,M,ECOS
 2020-02-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2020-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,105.5,2020=100,M,ECOS
+2020-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,89.2,2020=100,M,ECOS
+2020-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.5,2020=100,M,ECOS
+2020-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,99.8,2020=100,M,ECOS
 2020-02-01,KR,kr_temp_avg,평균기온(전국대표),3.42,°C,D,KMA
 2020-02-01,KR,kr_temp_max,최고기온(전국대표),8.48,°C,D,KMA
 2020-02-01,US,us_corn,Global Price of Corn (사료비 proxy),168.7445984962405,USD/metric ton,M,FRED
@@ -1706,11 +1804,18 @@
 2020-02-29,KR,kr_temp_max,최고기온(전국대표),13.18,°C,D,KMA
 2020-03-01,KR,kr_base_rate,한국은행 기준금리,0.75,연%,M,ECOS
 2020-03-01,KR,kr_ccsi,소비자심리지수(CCSI),79.0,p (장기평균=100),M,ECOS
+2020-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,96.18,2020=100,M,ECOS
+2020-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,99.29,2020=100,M,ECOS
 2020-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,98.06,2020=100,M,ECOS
+2020-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,90.99,2020=100,M,ECOS
 2020-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.94,2020=100,M,ECOS
 2020-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",68.8,p,M,ECOS
 2020-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.3,2020=100,M,ECOS
 2020-03-01,KR,kr_precip,일강수량(전국대표),0.04,mm,D,KMA
+2020-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,93.8,2020=100,M,ECOS
+2020-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,73.3,2020=100,M,ECOS
+2020-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.2,2020=100,M,ECOS
+2020-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,83.8,2020=100,M,ECOS
 2020-03-01,KR,kr_temp_avg,평균기온(전국대표),7.84,°C,D,KMA
 2020-03-01,KR,kr_temp_max,최고기온(전국대표),12.96,°C,D,KMA
 2020-03-01,US,us_corn,Global Price of Corn (사료비 proxy),162.1791482142857,USD/metric ton,M,FRED
@@ -1831,11 +1936,18 @@
 2020-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",20.51,USD/barrel,D,FRED
 2020-04-01,KR,kr_base_rate,한국은행 기준금리,0.75,연%,M,ECOS
 2020-04-01,KR,kr_ccsi,소비자심리지수(CCSI),71.2,p (장기평균=100),M,ECOS
+2020-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,96.7,2020=100,M,ECOS
+2020-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,98.76,2020=100,M,ECOS
 2020-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,97.65,2020=100,M,ECOS
+2020-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,92.84,2020=100,M,ECOS
 2020-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.5,2020=100,M,ECOS
 2020-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",61.5,p,M,ECOS
 2020-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.6,2020=100,M,ECOS
 2020-04-01,KR,kr_precip,일강수량(전국대표),0.54,mm,D,KMA
+2020-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,94.2,2020=100,M,ECOS
+2020-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,93.1,2020=100,M,ECOS
+2020-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,103.9,2020=100,M,ECOS
+2020-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,95.0,2020=100,M,ECOS
 2020-04-01,KR,kr_temp_avg,평균기온(전국대표),12.0,°C,D,KMA
 2020-04-01,KR,kr_temp_max,최고기온(전국대표),18.46,°C,D,KMA
 2020-04-01,US,us_corn,Global Price of Corn (사료비 proxy),147.0121602040815,USD/metric ton,M,FRED
@@ -1952,11 +2064,18 @@
 2020-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",19.23,USD/barrel,D,FRED
 2020-05-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-05-01,KR,kr_ccsi,소비자심리지수(CCSI),78.1,p (장기평균=100),M,ECOS
+2020-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,97.61,2020=100,M,ECOS
+2020-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,98.04,2020=100,M,ECOS
 2020-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,98.45,2020=100,M,ECOS
+2020-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,105.15,2020=100,M,ECOS
 2020-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.44,2020=100,M,ECOS
 2020-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",63.7,p,M,ECOS
 2020-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.93,2020=100,M,ECOS
 2020-05-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2020-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.1,2020=100,M,ECOS
+2020-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,100.1,2020=100,M,ECOS
+2020-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.6,2020=100,M,ECOS
+2020-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,105.8,2020=100,M,ECOS
 2020-05-01,KR,kr_temp_avg,평균기온(전국대표),21.28,°C,D,KMA
 2020-05-01,KR,kr_temp_max,최고기온(전국대표),27.2,°C,D,KMA
 2020-05-01,US,us_corn,Global Price of Corn (사료비 proxy),143.9892437500002,USD/metric ton,M,FRED
@@ -2075,11 +2194,18 @@
 2020-05-31,KR,kr_temp_max,최고기온(전국대표),26.28,°C,D,KMA
 2020-06-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-06-01,KR,kr_ccsi,소비자심리지수(CCSI),82.4,p (장기평균=100),M,ECOS
+2020-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,101.06,2020=100,M,ECOS
+2020-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.77,2020=100,M,ECOS
 2020-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,98.68,2020=100,M,ECOS
+2020-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,109.27,2020=100,M,ECOS
 2020-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.71,2020=100,M,ECOS
 2020-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",68.4,p,M,ECOS
 2020-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.89,2020=100,M,ECOS
 2020-06-01,KR,kr_precip,일강수량(전국대표),0.2,mm,D,KMA
+2020-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,99.3,2020=100,M,ECOS
+2020-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,111.8,2020=100,M,ECOS
+2020-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.9,2020=100,M,ECOS
+2020-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,106.3,2020=100,M,ECOS
 2020-06-01,KR,kr_temp_avg,평균기온(전국대표),21.5,°C,D,KMA
 2020-06-01,KR,kr_temp_max,최고기온(전국대표),26.34,°C,D,KMA
 2020-06-01,US,us_corn,Global Price of Corn (사료비 proxy),148.0423803571428,USD/metric ton,M,FRED
@@ -2197,11 +2323,18 @@
 2020-06-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",39.27,USD/barrel,D,FRED
 2020-07-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-07-01,KR,kr_ccsi,소비자심리지수(CCSI),84.8,p (장기평균=100),M,ECOS
+2020-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,100.68,2020=100,M,ECOS
+2020-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.42,2020=100,M,ECOS
 2020-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,99.15,2020=100,M,ECOS
+2020-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,106.94,2020=100,M,ECOS
 2020-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,99.63,2020=100,M,ECOS
 2020-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",77.0,p,M,ECOS
 2020-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.89,2020=100,M,ECOS
 2020-07-01,KR,kr_precip,일강수량(전국대표),0.12,mm,D,KMA
+2020-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.8,2020=100,M,ECOS
+2020-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,105.6,2020=100,M,ECOS
+2020-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.9,2020=100,M,ECOS
+2020-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,107.6,2020=100,M,ECOS
 2020-07-01,KR,kr_temp_avg,평균기온(전국대표),21.42,°C,D,KMA
 2020-07-01,KR,kr_temp_max,최고기온(전국대표),25.42,°C,D,KMA
 2020-07-01,US,us_corn,Global Price of Corn (사료비 proxy),152.5876196428571,USD/metric ton,M,FRED
@@ -2322,11 +2455,18 @@
 2020-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",40.1,USD/barrel,D,FRED
 2020-08-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-08-01,KR,kr_ccsi,소비자심리지수(CCSI),88.8,p (장기평균=100),M,ECOS
+2020-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,100.96,2020=100,M,ECOS
+2020-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,101.35,2020=100,M,ECOS
 2020-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,101.8,2020=100,M,ECOS
+2020-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,107.9,2020=100,M,ECOS
 2020-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.19,2020=100,M,ECOS
 2020-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",83.3,p,M,ECOS
 2020-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,99.98,2020=100,M,ECOS
 2020-08-01,KR,kr_precip,일강수량(전국대표),11.92,mm,D,KMA
+2020-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.2,2020=100,M,ECOS
+2020-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,100.1,2020=100,M,ECOS
+2020-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.9,2020=100,M,ECOS
+2020-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,100.8,2020=100,M,ECOS
 2020-08-01,KR,kr_temp_avg,평균기온(전국대표),26.4,°C,D,KMA
 2020-08-01,KR,kr_temp_max,최고기온(전국대표),30.28,°C,D,KMA
 2020-08-01,US,us_corn,Global Price of Corn (사료비 proxy),149.3929998299319,USD/metric ton,M,FRED
@@ -2446,11 +2586,18 @@
 2020-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",42.61,USD/barrel,D,FRED
 2020-09-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-09-01,KR,kr_ccsi,소비자심리지수(CCSI),80.0,p (장기평균=100),M,ECOS
+2020-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,102.99,2020=100,M,ECOS
+2020-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,101.2,2020=100,M,ECOS
 2020-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,104.79,2020=100,M,ECOS
+2020-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,105.79,2020=100,M,ECOS
 2020-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.74,2020=100,M,ECOS
 2020-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",77.6,p,M,ECOS
 2020-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,100.03,2020=100,M,ECOS
 2020-09-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA
+2020-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.3,2020=100,M,ECOS
+2020-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,105.6,2020=100,M,ECOS
+2020-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,112.2,2020=100,M,ECOS
+2020-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,94.6,2020=100,M,ECOS
 2020-09-01,KR,kr_temp_avg,평균기온(전국대표),26.44,°C,D,KMA
 2020-09-01,KR,kr_temp_max,최고기온(전국대표),30.4,°C,D,KMA
 2020-09-01,US,us_corn,Global Price of Corn (사료비 proxy),166.6025335034014,USD/metric ton,M,FRED
@@ -2567,11 +2714,18 @@
 2020-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",40.05,USD/barrel,D,FRED
 2020-10-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-10-01,KR,kr_ccsi,소비자심리지수(CCSI),92.3,p (장기평균=100),M,ECOS
+2020-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,103.84,2020=100,M,ECOS
+2020-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.76,2020=100,M,ECOS
 2020-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,104.85,2020=100,M,ECOS
+2020-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,107.65,2020=100,M,ECOS
 2020-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.18,2020=100,M,ECOS
 2020-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",89.1,p,M,ECOS
 2020-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,100.8,2020=100,M,ECOS
 2020-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2020-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.3,2020=100,M,ECOS
+2020-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,107.5,2020=100,M,ECOS
+2020-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.1,2020=100,M,ECOS
+2020-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,103.8,2020=100,M,ECOS
 2020-10-01,KR,kr_temp_avg,평균기온(전국대표),19.58,°C,D,KMA
 2020-10-01,KR,kr_temp_max,최고기온(전국대표),24.84,°C,D,KMA
 2020-10-01,US,us_corn,Global Price of Corn (사료비 proxy),186.7663875,USD/metric ton,M,FRED
@@ -2692,11 +2846,18 @@
 2020-10-31,KR,kr_temp_max,최고기온(전국대표),19.38,°C,D,KMA
 2020-11-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-11-01,KR,kr_ccsi,소비자심리지수(CCSI),98.8,p (장기평균=100),M,ECOS
+2020-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,103.52,2020=100,M,ECOS
+2020-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,99.3,2020=100,M,ECOS
 2020-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,101.24,2020=100,M,ECOS
+2020-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,101.93,2020=100,M,ECOS
 2020-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.09,2020=100,M,ECOS
 2020-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.2,p,M,ECOS
 2020-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,100.84,2020=100,M,ECOS
 2020-11-01,KR,kr_precip,일강수량(전국대표),4.42,mm,D,KMA
+2020-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2020-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,105.3,2020=100,M,ECOS
+2020-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.7,2020=100,M,ECOS
+2020-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,102.3,2020=100,M,ECOS
 2020-11-01,KR,kr_temp_avg,평균기온(전국대표),13.3,°C,D,KMA
 2020-11-01,KR,kr_temp_max,최고기온(전국대표),15.1,°C,D,KMA
 2020-11-01,US,us_corn,Global Price of Corn (사료비 proxy),190.6250375939849,USD/metric ton,M,FRED
@@ -2811,11 +2972,18 @@
 2020-11-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",45.2,USD/barrel,D,FRED
 2020-12-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2020-12-01,KR,kr_ccsi,소비자심리지수(CCSI),90.5,p (장기평균=100),M,ECOS
+2020-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.01,2020=100,M,ECOS
+2020-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,99.55,2020=100,M,ECOS
 2020-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,101.51,2020=100,M,ECOS
+2020-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,104.73,2020=100,M,ECOS
 2020-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,100.33,2020=100,M,ECOS
 2020-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",86.0,p,M,ECOS
 2020-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,101.01,2020=100,M,ECOS
 2020-12-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2020-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.2,2020=100,M,ECOS
+2020-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,97.8,2020=100,M,ECOS
+2020-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,107.0,2020=100,M,ECOS
+2020-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,77.8,2020=100,M,ECOS
 2020-12-01,KR,kr_temp_avg,평균기온(전국대표),3.32,°C,D,KMA
 2020-12-01,KR,kr_temp_max,최고기온(전국대표),9.64,°C,D,KMA
 2020-12-01,US,us_corn,Global Price of Corn (사료비 proxy),199.1844175170068,USD/metric ton,M,FRED
@@ -2936,11 +3104,18 @@
 2020-12-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",48.35,USD/barrel,D,FRED
 2021-01-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-01-01,KR,kr_ccsi,소비자심리지수(CCSI),95.0,p (장기평균=100),M,ECOS
+2021-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.12,2020=100,M,ECOS
+2021-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,101.13,2020=100,M,ECOS
 2021-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,103.39,2020=100,M,ECOS
+2021-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,102.23,2020=100,M,ECOS
 2021-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,101.04,2020=100,M,ECOS
 2021-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.2,p,M,ECOS
 2021-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,101.93,2020=100,M,ECOS
 2021-01-01,KR,kr_precip,일강수량(전국대표),0.42,mm,D,KMA
+2021-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.8,2020=100,M,ECOS
+2021-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,103.9,2020=100,M,ECOS
+2021-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,100.5,2020=100,M,ECOS
+2021-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,78.4,2020=100,M,ECOS
 2021-01-01,KR,kr_temp_avg,평균기온(전국대표),-2.18,°C,D,KMA
 2021-01-01,KR,kr_temp_max,최고기온(전국대표),2.22,°C,D,KMA
 2021-01-01,US,us_corn,Global Price of Corn (사료비 proxy),231.7544614661655,USD/metric ton,M,FRED
@@ -3058,11 +3233,18 @@
 2021-01-31,KR,kr_temp_max,최고기온(전국대표),11.94,°C,D,KMA
 2021-02-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-02-01,KR,kr_ccsi,소비자심리지수(CCSI),97.2,p (장기평균=100),M,ECOS
+2021-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.12,2020=100,M,ECOS
+2021-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,102.16,2020=100,M,ECOS
 2021-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,105.69,2020=100,M,ECOS
+2021-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,98.42,2020=100,M,ECOS
 2021-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,101.58,2020=100,M,ECOS
 2021-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.2,p,M,ECOS
 2021-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,102.71,2020=100,M,ECOS
 2021-02-01,KR,kr_precip,일강수량(전국대표),10.56,mm,D,KMA
+2021-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.3,2020=100,M,ECOS
+2021-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,120.6,2020=100,M,ECOS
+2021-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.7,2020=100,M,ECOS
+2021-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,93.0,2020=100,M,ECOS
 2021-02-01,KR,kr_temp_avg,평균기온(전국대표),7.54,°C,D,KMA
 2021-02-01,KR,kr_temp_max,최고기온(전국대표),10.6,°C,D,KMA
 2021-02-01,US,us_corn,Global Price of Corn (사료비 proxy),245.5540565789474,USD/metric ton,M,FRED
@@ -3171,11 +3353,18 @@
 2021-02-28,KR,kr_temp_max,최고기온(전국대표),12.74,°C,D,KMA
 2021-03-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-03-01,KR,kr_ccsi,소비자심리지수(CCSI),100.4,p (장기평균=100),M,ECOS
+2021-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.1,2020=100,M,ECOS
+2021-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.12,2020=100,M,ECOS
 2021-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,105.84,2020=100,M,ECOS
+2021-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,96.63,2020=100,M,ECOS
 2021-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,101.84,2020=100,M,ECOS
 2021-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",102.1,p,M,ECOS
 2021-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,103.26,2020=100,M,ECOS
 2021-03-01,KR,kr_precip,일강수량(전국대표),46.26,mm,D,KMA
+2021-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2021-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,121.2,2020=100,M,ECOS
+2021-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,99.1,2020=100,M,ECOS
+2021-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,97.7,2020=100,M,ECOS
 2021-03-01,KR,kr_temp_avg,평균기온(전국대표),9.14,°C,D,KMA
 2021-03-01,KR,kr_temp_max,최고기온(전국대표),13.86,°C,D,KMA
 2021-03-01,US,us_corn,Global Price of Corn (사료비 proxy),245.7603568322983,USD/metric ton,M,FRED
@@ -3297,11 +3486,18 @@
 2021-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",59.19,USD/barrel,D,FRED
 2021-04-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-04-01,KR,kr_ccsi,소비자심리지수(CCSI),102.3,p (장기평균=100),M,ECOS
+2021-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,106.83,2020=100,M,ECOS
+2021-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,100.11,2020=100,M,ECOS
 2021-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,105.35,2020=100,M,ECOS
+2021-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,102.73,2020=100,M,ECOS
 2021-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,101.98,2020=100,M,ECOS
 2021-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",106.3,p,M,ECOS
 2021-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,103.53,2020=100,M,ECOS
 2021-04-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2021-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.3,2020=100,M,ECOS
+2021-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,120.1,2020=100,M,ECOS
+2021-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,103.1,2020=100,M,ECOS
+2021-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,99.7,2020=100,M,ECOS
 2021-04-01,KR,kr_temp_avg,평균기온(전국대표),15.6,°C,D,KMA
 2021-04-01,KR,kr_temp_max,최고기온(전국대표),20.92,°C,D,KMA
 2021-04-01,US,us_corn,Global Price of Corn (사료비 proxy),268.6224488095237,USD/metric ton,M,FRED
@@ -3418,11 +3614,18 @@
 2021-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",63.5,USD/barrel,D,FRED
 2021-05-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-05-01,KR,kr_ccsi,소비자심리지수(CCSI),105.5,p (장기평균=100),M,ECOS
+2021-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,106.9,2020=100,M,ECOS
+2021-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,102.36,2020=100,M,ECOS
 2021-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,105.16,2020=100,M,ECOS
+2021-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,110.7,2020=100,M,ECOS
 2021-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,102.05,2020=100,M,ECOS
 2021-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",106.3,p,M,ECOS
 2021-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,103.74,2020=100,M,ECOS
 2021-05-01,KR,kr_precip,일강수량(전국대표),7.48,mm,D,KMA
+2021-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.0,2020=100,M,ECOS
+2021-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,117.4,2020=100,M,ECOS
+2021-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,99.7,2020=100,M,ECOS
+2021-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,101.4,2020=100,M,ECOS
 2021-05-01,KR,kr_temp_avg,평균기온(전국대표),11.12,°C,D,KMA
 2021-05-01,KR,kr_temp_max,최고기온(전국대표),14.98,°C,D,KMA
 2021-05-01,US,us_corn,Global Price of Corn (사료비 proxy),304.297549659864,USD/metric ton,M,FRED
@@ -3541,11 +3744,18 @@
 2021-05-31,KR,kr_temp_max,최고기온(전국대표),26.72,°C,D,KMA
 2021-06-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-06-01,KR,kr_ccsi,소비자심리지수(CCSI),110.9,p (장기평균=100),M,ECOS
+2021-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.93,2020=100,M,ECOS
+2021-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,103.51,2020=100,M,ECOS
 2021-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,104.56,2020=100,M,ECOS
+2021-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,113.95,2020=100,M,ECOS
 2021-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,102.05,2020=100,M,ECOS
 2021-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",110.5,p,M,ECOS
 2021-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,103.86,2020=100,M,ECOS
 2021-06-01,KR,kr_precip,일강수량(전국대표),0.64,mm,D,KMA
+2021-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS
+2021-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,124.9,2020=100,M,ECOS
+2021-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.9,2020=100,M,ECOS
+2021-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,103.9,2020=100,M,ECOS
 2021-06-01,KR,kr_temp_avg,평균기온(전국대표),22.04,°C,D,KMA
 2021-06-01,KR,kr_temp_max,최고기온(전국대표),27.5,°C,D,KMA
 2021-06-01,US,us_corn,Global Price of Corn (사료비 proxy),292.5237267857143,USD/metric ton,M,FRED
@@ -3663,11 +3873,18 @@
 2021-06-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",73.52,USD/barrel,D,FRED
 2021-07-01,KR,kr_base_rate,한국은행 기준금리,0.5,연%,M,ECOS
 2021-07-01,KR,kr_ccsi,소비자심리지수(CCSI),103.4,p (장기평균=100),M,ECOS
+2021-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.34,2020=100,M,ECOS
+2021-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,105.85,2020=100,M,ECOS
 2021-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,104.75,2020=100,M,ECOS
+2021-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,115.2,2020=100,M,ECOS
 2021-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,102.26,2020=100,M,ECOS
 2021-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",105.0,p,M,ECOS
 2021-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,104.9,2020=100,M,ECOS
 2021-07-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2021-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,106.2,2020=100,M,ECOS
+2021-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,114.6,2020=100,M,ECOS
+2021-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,102.2,2020=100,M,ECOS
+2021-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,99.5,2020=100,M,ECOS
 2021-07-01,KR,kr_temp_avg,평균기온(전국대표),25.72,°C,D,KMA
 2021-07-01,KR,kr_temp_max,최고기온(전국대표),31.22,°C,D,KMA
 2021-07-01,US,us_corn,Global Price of Corn (사료비 proxy),278.445755612245,USD/metric ton,M,FRED
@@ -3787,11 +4004,18 @@
 2021-07-31,KR,kr_temp_max,최고기온(전국대표),34.26,°C,D,KMA
 2021-08-01,KR,kr_base_rate,한국은행 기준금리,0.75,연%,M,ECOS
 2021-08-01,KR,kr_ccsi,소비자심리지수(CCSI),102.7,p (장기평균=100),M,ECOS
+2021-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.34,2020=100,M,ECOS
+2021-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,107.97,2020=100,M,ECOS
 2021-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,106.2,2020=100,M,ECOS
+2021-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,118.0,2020=100,M,ECOS
 2021-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,102.75,2020=100,M,ECOS
 2021-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",106.2,p,M,ECOS
 2021-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,105.48,2020=100,M,ECOS
 2021-08-01,KR,kr_precip,일강수량(전국대표),13.6,mm,D,KMA
+2021-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.4,2020=100,M,ECOS
+2021-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,116.6,2020=100,M,ECOS
+2021-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.9,2020=100,M,ECOS
+2021-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,96.2,2020=100,M,ECOS
 2021-08-01,KR,kr_temp_avg,평균기온(전국대표),27.96,°C,D,KMA
 2021-08-01,KR,kr_temp_max,최고기온(전국대표),32.16,°C,D,KMA
 2021-08-01,US,us_corn,Global Price of Corn (사료비 proxy),257.020755357143,USD/metric ton,M,FRED
@@ -3912,11 +4136,18 @@
 2021-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",68.43,USD/barrel,D,FRED
 2021-09-01,KR,kr_base_rate,한국은행 기준금리,0.75,연%,M,ECOS
 2021-09-01,KR,kr_ccsi,소비자심리지수(CCSI),104.1,p (장기평균=100),M,ECOS
+2021-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.61,2020=100,M,ECOS
+2021-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,111.13,2020=100,M,ECOS
 2021-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,107.87,2020=100,M,ECOS
+2021-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,121.65,2020=100,M,ECOS
 2021-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,103.17,2020=100,M,ECOS
 2021-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",105.7,p,M,ECOS
 2021-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,105.48,2020=100,M,ECOS
 2021-09-01,KR,kr_precip,일강수량(전국대표),32.54,mm,D,KMA
+2021-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,106.9,2020=100,M,ECOS
+2021-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.2,2020=100,M,ECOS
+2021-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.3,2020=100,M,ECOS
+2021-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,105.3,2020=100,M,ECOS
 2021-09-01,KR,kr_temp_avg,평균기온(전국대표),23.16,°C,D,KMA
 2021-09-01,KR,kr_temp_max,최고기온(전국대표),26.44,°C,D,KMA
 2021-09-01,US,us_corn,Global Price of Corn (사료비 proxy),235.8156035714281,USD/metric ton,M,FRED
@@ -4033,11 +4264,18 @@
 2021-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",75.22,USD/barrel,D,FRED
 2021-10-01,KR,kr_base_rate,한국은행 기준금리,0.75,연%,M,ECOS
 2021-10-01,KR,kr_ccsi,소비자심리지수(CCSI),107.3,p (장기평균=100),M,ECOS
+2021-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,113.11,2020=100,M,ECOS
+2021-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,118.25,2020=100,M,ECOS
 2021-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,106.72,2020=100,M,ECOS
+2021-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,118.57,2020=100,M,ECOS
 2021-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,103.35,2020=100,M,ECOS
 2021-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",107.0,p,M,ECOS
 2021-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,105.71,2020=100,M,ECOS
 2021-10-01,KR,kr_precip,일강수량(전국대표),2.66,mm,D,KMA
+2021-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,107.4,2020=100,M,ECOS
+2021-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.5,2020=100,M,ECOS
+2021-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.0,2020=100,M,ECOS
+2021-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,109.1,2020=100,M,ECOS
 2021-10-01,KR,kr_temp_avg,평균기온(전국대표),21.7,°C,D,KMA
 2021-10-01,KR,kr_temp_max,최고기온(전국대표),28.0,°C,D,KMA
 2021-10-01,US,us_corn,Global Price of Corn (사료비 proxy),239.60245085034,USD/metric ton,M,FRED
@@ -4157,11 +4395,18 @@
 2021-10-31,KR,kr_temp_max,최고기온(전국대표),21.64,°C,D,KMA
 2021-11-01,KR,kr_base_rate,한국은행 기준금리,1.0,연%,M,ECOS
 2021-11-01,KR,kr_ccsi,소비자심리지수(CCSI),108.2,p (장기평균=100),M,ECOS
+2021-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,112.98,2020=100,M,ECOS
+2021-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,123.31,2020=100,M,ECOS
 2021-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,107.25,2020=100,M,ECOS
+2021-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,115.04,2020=100,M,ECOS
 2021-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,103.87,2020=100,M,ECOS
 2021-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",107.8,p,M,ECOS
 2021-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,105.87,2020=100,M,ECOS
 2021-11-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2021-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,105.9,2020=100,M,ECOS
+2021-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,132.4,2020=100,M,ECOS
+2021-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,91.1,2020=100,M,ECOS
+2021-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.5,2020=100,M,ECOS
 2021-11-01,KR,kr_temp_avg,평균기온(전국대표),14.42,°C,D,KMA
 2021-11-01,KR,kr_temp_max,최고기온(전국대표),19.8,°C,D,KMA
 2021-11-01,US,us_corn,Global Price of Corn (사료비 proxy),248.7677460714286,USD/metric ton,M,FRED
@@ -4277,11 +4522,18 @@
 2021-11-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",66.14,USD/barrel,D,FRED
 2021-12-01,KR,kr_base_rate,한국은행 기준금리,1.0,연%,M,ECOS
 2021-12-01,KR,kr_ccsi,소비자심리지수(CCSI),104.2,p (장기평균=100),M,ECOS
+2021-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,112.46,2020=100,M,ECOS
+2021-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,121.64,2020=100,M,ECOS
 2021-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,107.85,2020=100,M,ECOS
+2021-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,120.17,2020=100,M,ECOS
 2021-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,104.04,2020=100,M,ECOS
 2021-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",105.8,p,M,ECOS
 2021-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,106.23,2020=100,M,ECOS
 2021-12-01,KR,kr_precip,일강수량(전국대표),0.3,mm,D,KMA
+2021-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,108.3,2020=100,M,ECOS
+2021-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,129.4,2020=100,M,ECOS
+2021-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.2,2020=100,M,ECOS
+2021-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,104.5,2020=100,M,ECOS
 2021-12-01,KR,kr_temp_avg,평균기온(전국대표),1.66,°C,D,KMA
 2021-12-01,KR,kr_temp_max,최고기온(전국대표),4.48,°C,D,KMA
 2021-12-01,US,us_corn,Global Price of Corn (사료비 proxy),264.5731467687075,USD/metric ton,M,FRED
@@ -4402,11 +4654,18 @@
 2021-12-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",75.33,USD/barrel,D,FRED
 2022-01-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2022-01-01,KR,kr_ccsi,소비자심리지수(CCSI),104.9,p (장기평균=100),M,ECOS
+2022-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,113.11,2020=100,M,ECOS
+2022-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,125.56,2020=100,M,ECOS
 2022-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,109.34,2020=100,M,ECOS
+2022-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,114.04,2020=100,M,ECOS
 2022-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,104.85,2020=100,M,ECOS
 2022-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",106.8,p,M,ECOS
 2022-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,107.95,2020=100,M,ECOS
 2022-01-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,108.8,2020=100,M,ECOS
+2022-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,132.2,2020=100,M,ECOS
+2022-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.4,2020=100,M,ECOS
+2022-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,107.2,2020=100,M,ECOS
 2022-01-01,KR,kr_temp_avg,평균기온(전국대표),-1.84,°C,D,KMA
 2022-01-01,KR,kr_temp_max,최고기온(전국대표),4.6,°C,D,KMA
 2022-01-01,US,us_corn,Global Price of Corn (사료비 proxy),276.7191782142856,USD/metric ton,M,FRED
@@ -4525,11 +4784,18 @@
 2022-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",89.16,USD/barrel,D,FRED
 2022-02-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2022-02-01,KR,kr_ccsi,소비자심리지수(CCSI),103.4,p (장기평균=100),M,ECOS
+2022-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,113.17,2020=100,M,ECOS
+2022-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,129.04,2020=100,M,ECOS
 2022-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,109.63,2020=100,M,ECOS
+2022-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,111.53,2020=100,M,ECOS
 2022-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,105.42,2020=100,M,ECOS
 2022-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",107.1,p,M,ECOS
 2022-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,108.09,2020=100,M,ECOS
 2022-02-01,KR,kr_precip,일강수량(전국대표),0.46,mm,D,KMA
+2022-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,108.4,2020=100,M,ECOS
+2022-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.1,2020=100,M,ECOS
+2022-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,88.6,2020=100,M,ECOS
+2022-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,98.3,2020=100,M,ECOS
 2022-02-01,KR,kr_temp_avg,평균기온(전국대표),1.22,°C,D,KMA
 2022-02-01,KR,kr_temp_max,최고기온(전국대표),4.16,°C,D,KMA
 2022-02-01,US,us_corn,Global Price of Corn (사료비 proxy),292.6715930451127,USD/metric ton,M,FRED
@@ -4638,11 +4904,18 @@
 2022-02-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.13,USD/barrel,D,FRED
 2022-03-01,KR,kr_base_rate,한국은행 기준금리,1.25,연%,M,ECOS
 2022-03-01,KR,kr_ccsi,소비자심리지수(CCSI),103.6,p (장기평균=100),M,ECOS
+2022-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,111.26,2020=100,M,ECOS
+2022-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,127.3,2020=100,M,ECOS
 2022-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,109.55,2020=100,M,ECOS
+2022-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,107.26,2020=100,M,ECOS
 2022-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,106.1,2020=100,M,ECOS
 2022-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",104.7,p,M,ECOS
 2022-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,109.2,2020=100,M,ECOS
 2022-03-01,KR,kr_precip,일강수량(전국대표),1.8,mm,D,KMA
+2022-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,110.1,2020=100,M,ECOS
+2022-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.0,2020=100,M,ECOS
+2022-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.8,2020=100,M,ECOS
+2022-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,102.1,2020=100,M,ECOS
 2022-03-01,KR,kr_temp_avg,평균기온(전국대표),8.08,°C,D,KMA
 2022-03-01,KR,kr_temp_max,최고기온(전국대표),13.34,°C,D,KMA
 2022-03-01,US,us_corn,Global Price of Corn (사료비 proxy),335.9306841614907,USD/metric ton,M,FRED
@@ -4764,11 +5037,18 @@
 2022-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",100.53,USD/barrel,D,FRED
 2022-04-01,KR,kr_base_rate,한국은행 기준금리,1.5,연%,M,ECOS
 2022-04-01,KR,kr_ccsi,소비자심리지수(CCSI),104.3,p (장기평균=100),M,ECOS
+2022-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.49,2020=100,M,ECOS
+2022-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,128.6,2020=100,M,ECOS
 2022-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,110.29,2020=100,M,ECOS
+2022-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,109.73,2020=100,M,ECOS
 2022-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,106.83,2020=100,M,ECOS
 2022-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",107.1,p,M,ECOS
 2022-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,111.3,2020=100,M,ECOS
 2022-04-01,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
+2022-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.3,2020=100,M,ECOS
+2022-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,134.2,2020=100,M,ECOS
+2022-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.9,2020=100,M,ECOS
+2022-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,117.6,2020=100,M,ECOS
 2022-04-01,KR,kr_temp_avg,평균기온(전국대표),9.38,°C,D,KMA
 2022-04-01,KR,kr_temp_max,최고기온(전국대표),14.82,°C,D,KMA
 2022-04-01,US,us_corn,Global Price of Corn (사료비 proxy),348.5071169642857,USD/metric ton,M,FRED
@@ -4884,11 +5164,18 @@
 2022-04-30,KR,kr_temp_max,최고기온(전국대표),17.92,°C,D,KMA
 2022-05-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2022-05-01,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS
+2022-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.89,2020=100,M,ECOS
+2022-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,131.04,2020=100,M,ECOS
 2022-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,111.35,2020=100,M,ECOS
+2022-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,132.09,2020=100,M,ECOS
 2022-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,107.5,2020=100,M,ECOS
 2022-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",108.1,p,M,ECOS
 2022-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,111.93,2020=100,M,ECOS
 2022-05-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.2,2020=100,M,ECOS
+2022-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.1,2020=100,M,ECOS
+2022-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,93.5,2020=100,M,ECOS
+2022-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,121.9,2020=100,M,ECOS
 2022-05-01,KR,kr_temp_avg,평균기온(전국대표),14.08,°C,D,KMA
 2022-05-01,KR,kr_temp_max,최고기온(전국대표),19.62,°C,D,KMA
 2022-05-01,US,us_corn,Global Price of Corn (사료비 proxy),344.9092996031747,USD/metric ton,M,FRED
@@ -5008,11 +5295,18 @@
 2022-05-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",114.38,USD/barrel,D,FRED
 2022-06-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS
 2022-06-01,KR,kr_ccsi,소비자심리지수(CCSI),96.6,p (장기평균=100),M,ECOS
+2022-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.48,2020=100,M,ECOS
+2022-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,131.47,2020=100,M,ECOS
 2022-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,111.32,2020=100,M,ECOS
+2022-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.78,2020=100,M,ECOS
 2022-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,108.21,2020=100,M,ECOS
 2022-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",103.8,p,M,ECOS
 2022-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,113.05,2020=100,M,ECOS
 2022-06-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,107.9,2020=100,M,ECOS
+2022-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.7,2020=100,M,ECOS
+2022-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,94.2,2020=100,M,ECOS
+2022-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,121.4,2020=100,M,ECOS
 2022-06-01,KR,kr_temp_avg,평균기온(전국대표),23.16,°C,D,KMA
 2022-06-01,KR,kr_temp_max,최고기온(전국대표),30.68,°C,D,KMA
 2022-06-01,US,us_corn,Global Price of Corn (사료비 proxy),335.7171340136054,USD/metric ton,M,FRED
@@ -5129,11 +5423,18 @@
 2022-06-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",107.76,USD/barrel,D,FRED
 2022-07-01,KR,kr_base_rate,한국은행 기준금리,2.25,연%,M,ECOS
 2022-07-01,KR,kr_ccsi,소비자심리지수(CCSI),85.7,p (장기평균=100),M,ECOS
+2022-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.84,2020=100,M,ECOS
+2022-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,131.86,2020=100,M,ECOS
 2022-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,112.99,2020=100,M,ECOS
+2022-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,126.13,2020=100,M,ECOS
 2022-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,108.73,2020=100,M,ECOS
 2022-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",98.9,p,M,ECOS
 2022-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,115.34,2020=100,M,ECOS
 2022-07-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,108.1,2020=100,M,ECOS
+2022-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,134.4,2020=100,M,ECOS
+2022-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,93.5,2020=100,M,ECOS
+2022-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,124.1,2020=100,M,ECOS
 2022-07-01,KR,kr_temp_avg,평균기온(전국대표),27.82,°C,D,KMA
 2022-07-01,KR,kr_temp_max,최고기온(전국대표),32.96,°C,D,KMA
 2022-07-01,US,us_corn,Global Price of Corn (사료비 proxy),312.6820419642856,USD/metric ton,M,FRED
@@ -5252,11 +5553,18 @@
 2022-07-31,KR,kr_temp_max,최고기온(전국대표),28.62,°C,D,KMA
 2022-08-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2022-08-01,KR,kr_ccsi,소비자심리지수(CCSI),88.5,p (장기평균=100),M,ECOS
+2022-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.12,2020=100,M,ECOS
+2022-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,129.21,2020=100,M,ECOS
 2022-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,114.56,2020=100,M,ECOS
+2022-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,122.29,2020=100,M,ECOS
 2022-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,108.63,2020=100,M,ECOS
 2022-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.2,p,M,ECOS
 2022-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,115.8,2020=100,M,ECOS
 2022-08-01,KR,kr_precip,일강수량(전국대표),7.24,mm,D,KMA
+2022-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.1,2020=100,M,ECOS
+2022-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.0,2020=100,M,ECOS
+2022-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.5,2020=100,M,ECOS
+2022-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.7,2020=100,M,ECOS
 2022-08-01,KR,kr_temp_avg,평균기온(전국대표),28.14,°C,D,KMA
 2022-08-01,KR,kr_temp_max,최고기온(전국대표),31.28,°C,D,KMA
 2022-08-01,US,us_corn,Global Price of Corn (사료비 proxy),293.9307903338509,USD/metric ton,M,FRED
@@ -5378,11 +5686,18 @@
 2022-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",90.09,USD/barrel,D,FRED
 2022-09-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2022-09-01,KR,kr_ccsi,소비자심리지수(CCSI),91.3,p (장기평균=100),M,ECOS
+2022-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,111.23,2020=100,M,ECOS
+2022-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,125.12,2020=100,M,ECOS
 2022-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,116.06,2020=100,M,ECOS
+2022-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,125.75,2020=100,M,ECOS
 2022-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,108.82,2020=100,M,ECOS
 2022-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.0,p,M,ECOS
 2022-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,116.7,2020=100,M,ECOS
 2022-09-01,KR,kr_precip,일강수량(전국대표),0.36,mm,D,KMA
+2022-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.4,2020=100,M,ECOS
+2022-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.3,2020=100,M,ECOS
+2022-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,91.8,2020=100,M,ECOS
+2022-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,121.4,2020=100,M,ECOS
 2022-09-01,KR,kr_temp_avg,평균기온(전국대표),22.5,°C,D,KMA
 2022-09-01,KR,kr_temp_max,최고기온(전국대표),26.58,°C,D,KMA
 2022-09-01,US,us_corn,Global Price of Corn (사료비 proxy),312.5461278911564,USD/metric ton,M,FRED
@@ -5499,11 +5814,18 @@
 2022-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.91,USD/barrel,D,FRED
 2022-10-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2022-10-01,KR,kr_ccsi,소비자심리지수(CCSI),88.6,p (장기평균=100),M,ECOS
+2022-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.92,2020=100,M,ECOS
+2022-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,126.2,2020=100,M,ECOS
 2022-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,114.72,2020=100,M,ECOS
+2022-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,122.19,2020=100,M,ECOS
 2022-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,109.16,2020=100,M,ECOS
 2022-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",96.1,p,M,ECOS
 2022-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,117.95,2020=100,M,ECOS
 2022-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.9,2020=100,M,ECOS
+2022-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.8,2020=100,M,ECOS
+2022-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,92.7,2020=100,M,ECOS
+2022-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,121.4,2020=100,M,ECOS
 2022-10-01,KR,kr_temp_avg,평균기온(전국대표),21.78,°C,D,KMA
 2022-10-01,KR,kr_temp_max,최고기온(전국대표),29.64,°C,D,KMA
 2022-10-01,US,us_corn,Global Price of Corn (사료비 proxy),343.5532833333333,USD/metric ton,M,FRED
@@ -5623,11 +5945,18 @@
 2022-10-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",86.54,USD/barrel,D,FRED
 2022-11-01,KR,kr_base_rate,한국은행 기준금리,3.25,연%,M,ECOS
 2022-11-01,KR,kr_ccsi,소비자심리지수(CCSI),86.2,p (장기평균=100),M,ECOS
+2022-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.96,2020=100,M,ECOS
+2022-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,124.25,2020=100,M,ECOS
 2022-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,112.46,2020=100,M,ECOS
+2022-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,118.18,2020=100,M,ECOS
 2022-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,109.07,2020=100,M,ECOS
 2022-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.2,p,M,ECOS
 2022-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,118.13,2020=100,M,ECOS
 2022-11-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,111.6,2020=100,M,ECOS
+2022-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,121.5,2020=100,M,ECOS
+2022-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,93.1,2020=100,M,ECOS
+2022-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.0,2020=100,M,ECOS
 2022-11-01,KR,kr_temp_avg,평균기온(전국대표),14.26,°C,D,KMA
 2022-11-01,KR,kr_temp_max,최고기온(전국대표),20.64,°C,D,KMA
 2022-11-01,US,us_corn,Global Price of Corn (사료비 proxy),320.929682857143,USD/metric ton,M,FRED
@@ -5744,11 +6073,18 @@
 2022-11-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",80.48,USD/barrel,D,FRED
 2022-12-01,KR,kr_base_rate,한국은행 기준금리,3.25,연%,M,ECOS
 2022-12-01,KR,kr_ccsi,소비자심리지수(CCSI),89.7,p (장기평균=100),M,ECOS
+2022-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.65,2020=100,M,ECOS
+2022-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,125.68,2020=100,M,ECOS
 2022-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,113.53,2020=100,M,ECOS
+2022-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,118.14,2020=100,M,ECOS
 2022-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,109.26,2020=100,M,ECOS
 2022-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.5,p,M,ECOS
 2022-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,118.54,2020=100,M,ECOS
 2022-12-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2022-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,109.7,2020=100,M,ECOS
+2022-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,126.1,2020=100,M,ECOS
+2022-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.8,2020=100,M,ECOS
+2022-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,118.6,2020=100,M,ECOS
 2022-12-01,KR,kr_temp_avg,평균기온(전국대표),-1.76,°C,D,KMA
 2022-12-01,KR,kr_temp_max,최고기온(전국대표),2.34,°C,D,KMA
 2022-12-01,US,us_corn,Global Price of Corn (사료비 proxy),302.2354051020408,USD/metric ton,M,FRED
@@ -5868,11 +6204,18 @@
 2022-12-31,KR,kr_temp_max,최고기온(전국대표),5.0,°C,D,KMA
 2023-01-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-01-01,KR,kr_ccsi,소비자심리지수(CCSI),90.4,p (장기평균=100),M,ECOS
+2023-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.72,2020=100,M,ECOS
+2023-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,122.6,2020=100,M,ECOS
 2023-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,115.37,2020=100,M,ECOS
+2023-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,116.29,2020=100,M,ECOS
 2023-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,110.07,2020=100,M,ECOS
 2023-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",91.1,p,M,ECOS
 2023-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,119.41,2020=100,M,ECOS
 2023-01-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2023-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,120.4,2020=100,M,ECOS
+2023-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,86.9,2020=100,M,ECOS
+2023-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,118.5,2020=100,M,ECOS
 2023-01-01,KR,kr_temp_avg,평균기온(전국대표),1.2,°C,D,KMA
 2023-01-01,KR,kr_temp_max,최고기온(전국대표),6.84,°C,D,KMA
 2023-01-01,US,us_corn,Global Price of Corn (사료비 proxy),302.8399883928572,USD/metric ton,M,FRED
@@ -5985,11 +6328,18 @@
 2023-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",78.95,USD/barrel,D,FRED
 2023-02-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-02-01,KR,kr_ccsi,소비자심리지수(CCSI),89.8,p (장기평균=100),M,ECOS
+2023-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.7,2020=100,M,ECOS
+2023-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,124.19,2020=100,M,ECOS
 2023-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,115.91,2020=100,M,ECOS
+2023-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,110.88,2020=100,M,ECOS
 2023-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,110.33,2020=100,M,ECOS
 2023-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.2,p,M,ECOS
 2023-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,119.41,2020=100,M,ECOS
 2023-02-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.0,2020=100,M,ECOS
+2023-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,140.6,2020=100,M,ECOS
+2023-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.1,2020=100,M,ECOS
+2023-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.1,2020=100,M,ECOS
 2023-02-01,KR,kr_temp_avg,평균기온(전국대표),4.06,°C,D,KMA
 2023-02-01,KR,kr_temp_max,최고기온(전국대표),10.66,°C,D,KMA
 2023-02-01,US,us_corn,Global Price of Corn (사료비 proxy),298.2453033834586,USD/metric ton,M,FRED
@@ -6098,11 +6448,18 @@
 2023-02-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",76.88,USD/barrel,D,FRED
 2023-03-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-03-01,KR,kr_ccsi,소비자심리지수(CCSI),91.7,p (장기평균=100),M,ECOS
+2023-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,103.17,2020=100,M,ECOS
+2023-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,120.29,2020=100,M,ECOS
 2023-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,116.46,2020=100,M,ECOS
+2023-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,109.24,2020=100,M,ECOS
 2023-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,110.52,2020=100,M,ECOS
 2023-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.3,p,M,ECOS
 2023-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,119.63,2020=100,M,ECOS
 2023-03-01,KR,kr_precip,일강수량(전국대표),0.12,mm,D,KMA
+2023-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.2,2020=100,M,ECOS
+2023-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,137.0,2020=100,M,ECOS
+2023-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,94.2,2020=100,M,ECOS
+2023-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.6,2020=100,M,ECOS
 2023-03-01,KR,kr_temp_avg,평균기온(전국대표),7.84,°C,D,KMA
 2023-03-01,KR,kr_temp_max,최고기온(전국대표),12.06,°C,D,KMA
 2023-03-01,US,us_corn,Global Price of Corn (사료비 proxy),284.9574049689442,USD/metric ton,M,FRED
@@ -6224,11 +6581,18 @@
 2023-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",75.68,USD/barrel,D,FRED
 2023-04-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-04-01,KR,kr_ccsi,소비자심리지수(CCSI),94.9,p (장기평균=100),M,ECOS
+2023-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,102.0,2020=100,M,ECOS
+2023-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,121.89,2020=100,M,ECOS
 2023-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,115.9,2020=100,M,ECOS
+2023-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,113.5,2020=100,M,ECOS
 2023-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,110.77,2020=100,M,ECOS
 2023-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.8,p,M,ECOS
 2023-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.02,2020=100,M,ECOS
 2023-04-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.1,2020=100,M,ECOS
+2023-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,137.0,2020=100,M,ECOS
+2023-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.5,2020=100,M,ECOS
+2023-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,119.3,2020=100,M,ECOS
 2023-04-01,KR,kr_temp_avg,평균기온(전국대표),16.38,°C,D,KMA
 2023-04-01,KR,kr_temp_max,최고기온(전국대표),24.6,°C,D,KMA
 2023-04-01,US,us_corn,Global Price of Corn (사료비 proxy),291.1797449248119,USD/metric ton,M,FRED
@@ -6343,11 +6707,18 @@
 2023-04-30,KR,kr_temp_max,최고기온(전국대표),20.36,°C,D,KMA
 2023-05-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-05-01,KR,kr_ccsi,소비자심리지수(CCSI),97.9,p (장기평균=100),M,ECOS
+2023-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,101.71,2020=100,M,ECOS
+2023-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,122.37,2020=100,M,ECOS
 2023-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,115.99,2020=100,M,ECOS
+2023-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,122.38,2020=100,M,ECOS
 2023-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,111.13,2020=100,M,ECOS
 2023-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.3,p,M,ECOS
 2023-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.22,2020=100,M,ECOS
 2023-05-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.1,2020=100,M,ECOS
+2023-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,141.5,2020=100,M,ECOS
+2023-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.0,2020=100,M,ECOS
+2023-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.6,2020=100,M,ECOS
 2023-05-01,KR,kr_temp_avg,평균기온(전국대표),15.64,°C,D,KMA
 2023-05-01,KR,kr_temp_max,최고기온(전국대표),22.0,°C,D,KMA
 2023-05-01,US,us_corn,Global Price of Corn (사료비 proxy),268.1725263605443,USD/metric ton,M,FRED
@@ -6468,11 +6839,18 @@
 2023-05-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",68.11,USD/barrel,D,FRED
 2023-06-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-06-01,KR,kr_ccsi,소비자심리지수(CCSI),100.7,p (장기평균=100),M,ECOS
+2023-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,102.48,2020=100,M,ECOS
+2023-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,122.86,2020=100,M,ECOS
 2023-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,116.3,2020=100,M,ECOS
+2023-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,125.1,2020=100,M,ECOS
 2023-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,111.16,2020=100,M,ECOS
 2023-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",96.7,p,M,ECOS
 2023-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.31,2020=100,M,ECOS
 2023-06-01,KR,kr_precip,일강수량(전국대표),5.84,mm,D,KMA
+2023-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.7,2020=100,M,ECOS
+2023-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.8,2020=100,M,ECOS
+2023-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.4,2020=100,M,ECOS
+2023-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.8,2020=100,M,ECOS
 2023-06-01,KR,kr_temp_avg,평균기온(전국대표),20.2,°C,D,KMA
 2023-06-01,KR,kr_temp_max,최고기온(전국대표),23.44,°C,D,KMA
 2023-06-01,US,us_corn,Global Price of Corn (사료비 proxy),266.9352396258504,USD/metric ton,M,FRED
@@ -6589,11 +6967,18 @@
 2023-06-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",70.66,USD/barrel,D,FRED
 2023-07-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-07-01,KR,kr_ccsi,소비자심리지수(CCSI),103.4,p (장기평균=100),M,ECOS
+2023-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,101.25,2020=100,M,ECOS
+2023-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,124.35,2020=100,M,ECOS
 2023-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,117.3,2020=100,M,ECOS
+2023-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,121.79,2020=100,M,ECOS
 2023-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,111.29,2020=100,M,ECOS
 2023-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.2,p,M,ECOS
 2023-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.06,2020=100,M,ECOS
 2023-07-01,KR,kr_precip,일강수량(전국대표),0.32,mm,D,KMA
+2023-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.9,2020=100,M,ECOS
+2023-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.2,2020=100,M,ECOS
+2023-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.1,2020=100,M,ECOS
+2023-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.2,2020=100,M,ECOS
 2023-07-01,KR,kr_temp_avg,평균기온(전국대표),25.88,°C,D,KMA
 2023-07-01,KR,kr_temp_max,최고기온(전국대표),31.12,°C,D,KMA
 2023-07-01,US,us_corn,Global Price of Corn (사료비 proxy),235.2719472789116,USD/metric ton,M,FRED
@@ -6712,11 +7097,18 @@
 2023-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.8,USD/barrel,D,FRED
 2023-08-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-08-01,KR,kr_ccsi,소비자심리지수(CCSI),103.2,p (장기평균=100),M,ECOS
+2023-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,102.07,2020=100,M,ECOS
+2023-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,120.79,2020=100,M,ECOS
 2023-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,120.53,2020=100,M,ECOS
+2023-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,121.51,2020=100,M,ECOS
 2023-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,112.28,2020=100,M,ECOS
 2023-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.1,p,M,ECOS
 2023-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.93,2020=100,M,ECOS
 2023-08-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.2,2020=100,M,ECOS
+2023-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.2,2020=100,M,ECOS
+2023-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.7,2020=100,M,ECOS
+2023-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.0,2020=100,M,ECOS
 2023-08-01,KR,kr_temp_avg,평균기온(전국대표),29.72,°C,D,KMA
 2023-08-01,KR,kr_temp_max,최고기온(전국대표),34.38,°C,D,KMA
 2023-08-01,US,us_corn,Global Price of Corn (사료비 proxy),207.6758886645963,USD/metric ton,M,FRED
@@ -6838,11 +7230,18 @@
 2023-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",83.55,USD/barrel,D,FRED
 2023-09-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-09-01,KR,kr_ccsi,소비자심리지수(CCSI),99.7,p (장기평균=100),M,ECOS
+2023-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.17,2020=100,M,ECOS
+2023-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,124.92,2020=100,M,ECOS
 2023-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,122.46,2020=100,M,ECOS
+2023-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,124.6,2020=100,M,ECOS
 2023-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,112.85,2020=100,M,ECOS
 2023-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.7,p,M,ECOS
 2023-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.72,2020=100,M,ECOS
 2023-09-01,KR,kr_precip,일강수량(전국대표),23.48,mm,D,KMA
+2023-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.7,2020=100,M,ECOS
+2023-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.8,2020=100,M,ECOS
+2023-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,97.6,2020=100,M,ECOS
+2023-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,117.8,2020=100,M,ECOS
 2023-09-01,KR,kr_temp_avg,평균기온(전국대표),24.4,°C,D,KMA
 2023-09-01,KR,kr_temp_max,최고기온(전국대표),28.94,°C,D,KMA
 2023-09-01,US,us_corn,Global Price of Corn (사료비 proxy),223.8476664285715,USD/metric ton,M,FRED
@@ -6958,11 +7357,18 @@
 2023-09-30,KR,kr_temp_max,최고기온(전국대표),23.56,°C,D,KMA
 2023-10-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-10-01,KR,kr_ccsi,소비자심리지수(CCSI),98.0,p (장기평균=100),M,ECOS
+2023-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.81,2020=100,M,ECOS
+2023-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,126.68,2020=100,M,ECOS
 2023-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,122.85,2020=100,M,ECOS
+2023-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,122.44,2020=100,M,ECOS
 2023-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,113.27,2020=100,M,ECOS
 2023-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.8,p,M,ECOS
 2023-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,120.91,2020=100,M,ECOS
 2023-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.9,2020=100,M,ECOS
+2023-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.7,2020=100,M,ECOS
+2023-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,91.9,2020=100,M,ECOS
+2023-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.9,2020=100,M,ECOS
 2023-10-01,KR,kr_temp_avg,평균기온(전국대표),19.2,°C,D,KMA
 2023-10-01,KR,kr_temp_max,최고기온(전국대표),24.28,°C,D,KMA
 2023-10-01,US,us_corn,Global Price of Corn (사료비 proxy),221.90251875,USD/metric ton,M,FRED
@@ -7082,11 +7488,18 @@
 2023-10-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.64,USD/barrel,D,FRED
 2023-11-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-11-01,KR,kr_ccsi,소비자심리지수(CCSI),97.1,p (장기평균=100),M,ECOS
+2023-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,106.32,2020=100,M,ECOS
+2023-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,128.12,2020=100,M,ECOS
 2023-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,119.8,2020=100,M,ECOS
+2023-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,116.03,2020=100,M,ECOS
 2023-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,112.68,2020=100,M,ECOS
 2023-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.2,p,M,ECOS
 2023-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.14,2020=100,M,ECOS
 2023-11-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2023-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.3,2020=100,M,ECOS
+2023-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,98.5,2020=100,M,ECOS
+2023-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.0,2020=100,M,ECOS
 2023-11-01,KR,kr_temp_avg,평균기온(전국대표),18.04,°C,D,KMA
 2023-11-01,KR,kr_temp_max,최고기온(전국대표),23.42,°C,D,KMA
 2023-11-01,US,us_corn,Global Price of Corn (사료비 proxy),209.0402968303571,USD/metric ton,M,FRED
@@ -7166,11 +7579,18 @@
 2023-11-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",75.66,USD/barrel,D,FRED
 2023-12-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2023-12-01,KR,kr_ccsi,소비자심리지수(CCSI),99.5,p (장기평균=100),M,ECOS
+2023-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.04,2020=100,M,ECOS
+2023-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,128.38,2020=100,M,ECOS
 2023-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,120.56,2020=100,M,ECOS
+2023-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,116.14,2020=100,M,ECOS
 2023-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,112.73,2020=100,M,ECOS
 2023-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.0,p,M,ECOS
 2023-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.21,2020=100,M,ECOS
 2023-12-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2023-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.4,2020=100,M,ECOS
+2023-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.8,2020=100,M,ECOS
+2023-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.4,2020=100,M,ECOS
+2023-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.0,2020=100,M,ECOS
 2023-12-01,KR,kr_temp_avg,평균기온(전국대표),0.08,°C,D,KMA
 2023-12-01,KR,kr_temp_max,최고기온(전국대표),4.52,°C,D,KMA
 2023-12-01,US,us_corn,Global Price of Corn (사료비 proxy),207.3979688909774,USD/metric ton,M,FRED
@@ -7289,11 +7709,18 @@
 2023-12-31,KR,kr_temp_max,최고기온(전국대표),7.62,°C,D,KMA
 2024-01-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-01-01,KR,kr_ccsi,소비자심리지수(CCSI),101.5,p (장기평균=100),M,ECOS
+2024-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.46,2020=100,M,ECOS
+2024-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,129.63,2020=100,M,ECOS
 2024-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,122.2,2020=100,M,ECOS
+2024-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,113.61,2020=100,M,ECOS
 2024-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,113.17,2020=100,M,ECOS
 2024-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.2,p,M,ECOS
 2024-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.05,2020=100,M,ECOS
 2024-01-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2024-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.7,2020=100,M,ECOS
+2024-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.3,2020=100,M,ECOS
+2024-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.4,2020=100,M,ECOS
+2024-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.0,2020=100,M,ECOS
 2024-01-01,KR,kr_temp_avg,평균기온(전국대표),4.76,°C,D,KMA
 2024-01-01,KR,kr_temp_max,최고기온(전국대표),9.8,°C,D,KMA
 2024-01-01,US,us_corn,Global Price of Corn (사료비 proxy),198.7579285289115,USD/metric ton,M,FRED
@@ -7413,11 +7840,18 @@
 2024-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",76.28,USD/barrel,D,FRED
 2024-02-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-02-01,KR,kr_ccsi,소비자심리지수(CCSI),101.7,p (장기평균=100),M,ECOS
+2024-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.13,2020=100,M,ECOS
+2024-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,130.22,2020=100,M,ECOS
 2024-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,123.96,2020=100,M,ECOS
+2024-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,110.79,2020=100,M,ECOS
 2024-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,113.78,2020=100,M,ECOS
 2024-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.1,p,M,ECOS
 2024-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.15,2020=100,M,ECOS
 2024-02-01,KR,kr_precip,일강수량(전국대표),0.7,mm,D,KMA
+2024-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,105.5,2020=100,M,ECOS
+2024-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.2,2020=100,M,ECOS
+2024-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,92.0,2020=100,M,ECOS
+2024-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,118.0,2020=100,M,ECOS
 2024-02-01,KR,kr_temp_avg,평균기온(전국대표),5.36,°C,D,KMA
 2024-02-01,KR,kr_temp_max,최고기온(전국대표),8.5,°C,D,KMA
 2024-02-01,US,us_corn,Global Price of Corn (사료비 proxy),188.9477444642856,USD/metric ton,M,FRED
@@ -7530,11 +7964,18 @@
 2024-02-29,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.22,USD/barrel,D,FRED
 2024-03-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-03-01,KR,kr_ccsi,소비자심리지수(CCSI),100.5,p (장기평균=100),M,ECOS
+2024-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,103.5,2020=100,M,ECOS
+2024-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,130.96,2020=100,M,ECOS
 2024-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,124.22,2020=100,M,ECOS
+2024-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,110.67,2020=100,M,ECOS
 2024-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,113.95,2020=100,M,ECOS
 2024-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.9,p,M,ECOS
 2024-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.04,2020=100,M,ECOS
 2024-03-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2024-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.3,2020=100,M,ECOS
+2024-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.6,2020=100,M,ECOS
+2024-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,94.1,2020=100,M,ECOS
+2024-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,117.6,2020=100,M,ECOS
 2024-03-01,KR,kr_temp_avg,평균기온(전국대표),-0.8,°C,D,KMA
 2024-03-01,KR,kr_temp_max,최고기온(전국대표),3.54,°C,D,KMA
 2024-03-01,US,us_corn,Global Price of Corn (사료비 proxy),190.2272114285714,USD/metric ton,M,FRED
@@ -7653,11 +8094,18 @@
 2024-03-31,KR,kr_temp_max,최고기온(전국대표),18.98,°C,D,KMA
 2024-04-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-04-01,KR,kr_ccsi,소비자심리지수(CCSI),100.6,p (장기평균=100),M,ECOS
+2024-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,100.95,2020=100,M,ECOS
+2024-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,128.69,2020=100,M,ECOS
 2024-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,122.75,2020=100,M,ECOS
+2024-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,113.8,2020=100,M,ECOS
 2024-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.01,2020=100,M,ECOS
 2024-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.1,p,M,ECOS
 2024-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.38,2020=100,M,ECOS
 2024-04-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2024-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.2,2020=100,M,ECOS
+2024-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,132.3,2020=100,M,ECOS
+2024-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,94.1,2020=100,M,ECOS
+2024-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.5,2020=100,M,ECOS
 2024-04-01,KR,kr_temp_avg,평균기온(전국대표),13.98,°C,D,KMA
 2024-04-01,KR,kr_temp_max,최고기온(전국대표),21.7,°C,D,KMA
 2024-04-01,US,us_corn,Global Price of Corn (사료비 proxy),190.9000500000001,USD/metric ton,M,FRED
@@ -7775,11 +8223,18 @@
 2024-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",83.49,USD/barrel,D,FRED
 2024-05-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-05-01,KR,kr_ccsi,소비자심리지수(CCSI),98.2,p (장기평균=100),M,ECOS
+2024-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,99.4,2020=100,M,ECOS
+2024-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,128.22,2020=100,M,ECOS
 2024-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,121.9,2020=100,M,ECOS
+2024-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,115.96,2020=100,M,ECOS
 2024-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.1,2020=100,M,ECOS
 2024-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.4,p,M,ECOS
 2024-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.42,2020=100,M,ECOS
 2024-05-01,KR,kr_precip,일강수량(전국대표),0.72,mm,D,KMA
+2024-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.8,2020=100,M,ECOS
+2024-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.2,2020=100,M,ECOS
+2024-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.3,2020=100,M,ECOS
+2024-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.9,2020=100,M,ECOS
 2024-05-01,KR,kr_temp_avg,평균기온(전국대표),15.38,°C,D,KMA
 2024-05-01,KR,kr_temp_max,최고기온(전국대표),19.76,°C,D,KMA
 2024-05-01,US,us_corn,Global Price of Corn (사료비 proxy),201.0194705357142,USD/metric ton,M,FRED
@@ -7900,11 +8355,18 @@
 2024-05-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",77.97,USD/barrel,D,FRED
 2024-06-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-06-01,KR,kr_ccsi,소비자심리지수(CCSI),100.7,p (장기평균=100),M,ECOS
+2024-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,100.2,2020=100,M,ECOS
+2024-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,129.81,2020=100,M,ECOS
 2024-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,120.68,2020=100,M,ECOS
+2024-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,124.49,2020=100,M,ECOS
 2024-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,113.84,2020=100,M,ECOS
 2024-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.4,p,M,ECOS
 2024-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.55,2020=100,M,ECOS
 2024-06-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2024-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.8,2020=100,M,ECOS
+2024-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,129.8,2020=100,M,ECOS
+2024-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,91.0,2020=100,M,ECOS
+2024-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.1,2020=100,M,ECOS
 2024-06-01,KR,kr_temp_avg,평균기온(전국대표),20.72,°C,D,KMA
 2024-06-01,KR,kr_temp_max,최고기온(전국대표),25.84,°C,D,KMA
 2024-06-01,US,us_corn,Global Price of Corn (사료비 proxy),191.2409429464286,USD/metric ton,M,FRED
@@ -8019,11 +8481,18 @@
 2024-06-30,KR,kr_temp_max,최고기온(전국대표),26.46,°C,D,KMA
 2024-07-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-07-01,KR,kr_ccsi,소비자심리지수(CCSI),103.6,p (장기평균=100),M,ECOS
+2024-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,99.52,2020=100,M,ECOS
+2024-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,132.33,2020=100,M,ECOS
 2024-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,121.54,2020=100,M,ECOS
+2024-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,128.92,2020=100,M,ECOS
 2024-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.13,2020=100,M,ECOS
 2024-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",96.7,p,M,ECOS
 2024-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,122.23,2020=100,M,ECOS
 2024-07-01,KR,kr_precip,일강수량(전국대표),1.06,mm,D,KMA
+2024-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.6,2020=100,M,ECOS
+2024-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.1,2020=100,M,ECOS
+2024-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,92.1,2020=100,M,ECOS
+2024-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,112.3,2020=100,M,ECOS
 2024-07-01,KR,kr_temp_avg,평균기온(전국대표),26.14,°C,D,KMA
 2024-07-01,KR,kr_temp_max,최고기온(전국대표),30.64,°C,D,KMA
 2024-07-01,US,us_corn,Global Price of Corn (사료비 proxy),177.7677084464286,USD/metric ton,M,FRED
@@ -8144,11 +8613,18 @@
 2024-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.36,USD/barrel,D,FRED
 2024-08-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-08-01,KR,kr_ccsi,소비자심리지수(CCSI),100.6,p (장기평균=100),M,ECOS
+2024-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,99.33,2020=100,M,ECOS
+2024-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,130.62,2020=100,M,ECOS
 2024-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,122.99,2020=100,M,ECOS
+2024-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,124.9,2020=100,M,ECOS
 2024-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.54,2020=100,M,ECOS
 2024-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.8,p,M,ECOS
 2024-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.71,2020=100,M,ECOS
 2024-08-01,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
+2024-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.1,2020=100,M,ECOS
+2024-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.3,2020=100,M,ECOS
+2024-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.0,2020=100,M,ECOS
+2024-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.3,2020=100,M,ECOS
 2024-08-01,KR,kr_temp_avg,평균기온(전국대표),30.16,°C,D,KMA
 2024-08-01,KR,kr_temp_max,최고기온(전국대표),34.02,°C,D,KMA
 2024-08-01,US,us_corn,Global Price of Corn (사료비 proxy),169.2967424107143,USD/metric ton,M,FRED
@@ -8269,11 +8745,18 @@
 2024-08-31,KR,kr_temp_max,최고기온(전국대표),32.46,°C,D,KMA
 2024-09-01,KR,kr_base_rate,한국은행 기준금리,3.5,연%,M,ECOS
 2024-09-01,KR,kr_ccsi,소비자심리지수(CCSI),99.8,p (장기평균=100),M,ECOS
+2024-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,102.74,2020=100,M,ECOS
+2024-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,132.42,2020=100,M,ECOS
 2024-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,124.72,2020=100,M,ECOS
+2024-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,128.26,2020=100,M,ECOS
 2024-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.65,2020=100,M,ECOS
 2024-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.4,p,M,ECOS
 2024-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,121.83,2020=100,M,ECOS
 2024-09-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2024-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.9,2020=100,M,ECOS
+2024-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,129.4,2020=100,M,ECOS
+2024-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.2,2020=100,M,ECOS
+2024-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.7,2020=100,M,ECOS
 2024-09-01,KR,kr_temp_avg,평균기온(전국대표),27.38,°C,D,KMA
 2024-09-01,KR,kr_temp_max,최고기온(전국대표),32.4,°C,D,KMA
 2024-09-01,US,us_corn,Global Price of Corn (사료비 proxy),183.6558276597744,USD/metric ton,M,FRED
@@ -8389,11 +8872,18 @@
 2024-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",68.75,USD/barrel,D,FRED
 2024-10-01,KR,kr_base_rate,한국은행 기준금리,3.25,연%,M,ECOS
 2024-10-01,KR,kr_ccsi,소비자심리지수(CCSI),101.6,p (장기평균=100),M,ECOS
+2024-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.02,2020=100,M,ECOS
+2024-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,131.46,2020=100,M,ECOS
 2024-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,124.53,2020=100,M,ECOS
+2024-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,128.19,2020=100,M,ECOS
 2024-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.69,2020=100,M,ECOS
 2024-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.1,p,M,ECOS
 2024-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,122.13,2020=100,M,ECOS
 2024-10-01,KR,kr_precip,일강수량(전국대표),0.9,mm,D,KMA
+2024-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.8,2020=100,M,ECOS
+2024-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,127.7,2020=100,M,ECOS
+2024-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.6,2020=100,M,ECOS
+2024-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS
 2024-10-01,KR,kr_temp_avg,평균기온(전국대표),19.98,°C,D,KMA
 2024-10-01,KR,kr_temp_max,최고기온(전국대표),25.28,°C,D,KMA
 2024-10-01,US,us_corn,Global Price of Corn (사료비 proxy),189.5879058618013,USD/metric ton,M,FRED
@@ -8514,11 +9004,18 @@
 2024-10-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",69.58,USD/barrel,D,FRED
 2024-11-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2024-11-01,KR,kr_ccsi,소비자심리지수(CCSI),100.6,p (장기평균=100),M,ECOS
+2024-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.45,2020=100,M,ECOS
+2024-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,131.87,2020=100,M,ECOS
 2024-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,121.32,2020=100,M,ECOS
+2024-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,123.59,2020=100,M,ECOS
 2024-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.4,2020=100,M,ECOS
 2024-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.4,p,M,ECOS
 2024-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,122.58,2020=100,M,ECOS
 2024-11-01,KR,kr_precip,일강수량(전국대표),15.04,mm,D,KMA
+2024-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.0,2020=100,M,ECOS
+2024-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,128.6,2020=100,M,ECOS
+2024-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,95.1,2020=100,M,ECOS
+2024-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.7,2020=100,M,ECOS
 2024-11-01,KR,kr_temp_avg,평균기온(전국대표),14.54,°C,D,KMA
 2024-11-01,KR,kr_temp_max,최고기온(전국대표),16.68,°C,D,KMA
 2024-11-01,US,us_corn,Global Price of Corn (사료비 proxy),201.3082701884922,USD/metric ton,M,FRED
@@ -8633,11 +9130,18 @@
 2024-11-30,KR,kr_temp_max,최고기온(전국대표),10.82,°C,D,KMA
 2024-12-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2024-12-01,KR,kr_ccsi,소비자심리지수(CCSI),87.9,p (장기평균=100),M,ECOS
+2024-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.92,2020=100,M,ECOS
+2024-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,133.96,2020=100,M,ECOS
 2024-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,123.61,2020=100,M,ECOS
+2024-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,123.68,2020=100,M,ECOS
 2024-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,114.91,2020=100,M,ECOS
 2024-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",83.6,p,M,ECOS
 2024-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,122.49,2020=100,M,ECOS
 2024-12-01,KR,kr_precip,일강수량(전국대표),0.14,mm,D,KMA
+2024-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.7,2020=100,M,ECOS
+2024-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.0,2020=100,M,ECOS
+2024-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.6,2020=100,M,ECOS
+2024-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.1,2020=100,M,ECOS
 2024-12-01,KR,kr_temp_avg,평균기온(전국대표),8.06,°C,D,KMA
 2024-12-01,KR,kr_temp_max,최고기온(전국대표),13.36,°C,D,KMA
 2024-12-01,US,us_corn,Global Price of Corn (사료비 proxy),202.8299610267858,USD/metric ton,M,FRED
@@ -8757,11 +9261,18 @@
 2024-12-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",72.44,USD/barrel,D,FRED
 2025-01-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2025-01-01,KR,kr_ccsi,소비자심리지수(CCSI),91.0,p (장기평균=100),M,ECOS
+2025-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,108.35,2020=100,M,ECOS
+2025-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,137.33,2020=100,M,ECOS
 2025-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,125.13,2020=100,M,ECOS
+2025-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,123.11,2020=100,M,ECOS
 2025-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,115.71,2020=100,M,ECOS
 2025-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",87.1,p,M,ECOS
 2025-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,122.76,2020=100,M,ECOS
 2025-01-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.0,2020=100,M,ECOS
+2025-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.3,2020=100,M,ECOS
+2025-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,96.4,2020=100,M,ECOS
+2025-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.5,2020=100,M,ECOS
 2025-01-01,KR,kr_temp_avg,평균기온(전국대표),3.28,°C,D,KMA
 2025-01-01,KR,kr_temp_max,최고기온(전국대표),10.0,°C,D,KMA
 2025-01-01,US,us_corn,Global Price of Corn (사료비 proxy),214.3599267857142,USD/metric ton,M,FRED
@@ -8880,11 +9391,18 @@
 2025-01-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",72.84,USD/barrel,D,FRED
 2025-02-01,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS
 2025-02-01,KR,kr_ccsi,소비자심리지수(CCSI),95.0,p (장기평균=100),M,ECOS
+2025-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.58,2020=100,M,ECOS
+2025-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,137.21,2020=100,M,ECOS
 2025-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.45,2020=100,M,ECOS
+2025-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,119.26,2020=100,M,ECOS
 2025-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.08,2020=100,M,ECOS
 2025-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",90.5,p,M,ECOS
 2025-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,123.18,2020=100,M,ECOS
 2025-02-01,KR,kr_precip,일강수량(전국대표),7.46,mm,D,KMA
+2025-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,99.5,2020=100,M,ECOS
+2025-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,131.2,2020=100,M,ECOS
+2025-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,89.2,2020=100,M,ECOS
+2025-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,111.4,2020=100,M,ECOS
 2025-02-01,KR,kr_temp_avg,평균기온(전국대표),3.78,°C,D,KMA
 2025-02-01,KR,kr_temp_max,최고기온(전국대표),6.78,°C,D,KMA
 2025-02-01,US,us_corn,Global Price of Corn (사료비 proxy),221.2545443139097,USD/metric ton,M,FRED
@@ -8993,11 +9511,18 @@
 2025-02-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",69.97,USD/barrel,D,FRED
 2025-03-01,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS
 2025-03-01,KR,kr_ccsi,소비자심리지수(CCSI),93.2,p (장기평균=100),M,ECOS
+2025-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.52,2020=100,M,ECOS
+2025-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,138.23,2020=100,M,ECOS
 2025-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,127.26,2020=100,M,ECOS
+2025-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,117.82,2020=100,M,ECOS
 2025-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.29,2020=100,M,ECOS
 2025-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",87.6,p,M,ECOS
 2025-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,123.9,2020=100,M,ECOS
 2025-03-01,KR,kr_precip,일강수량(전국대표),1.52,mm,D,KMA
+2025-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.3,2020=100,M,ECOS
+2025-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,128.0,2020=100,M,ECOS
+2025-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,91.3,2020=100,M,ECOS
+2025-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.6,2020=100,M,ECOS
 2025-03-01,KR,kr_temp_avg,평균기온(전국대표),9.3,°C,D,KMA
 2025-03-01,KR,kr_temp_max,최고기온(전국대표),13.34,°C,D,KMA
 2025-03-01,US,us_corn,Global Price of Corn (사료비 proxy),207.7516908163266,USD/metric ton,M,FRED
@@ -9117,11 +9642,18 @@
 2025-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",71.87,USD/barrel,D,FRED
 2025-04-01,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS
 2025-04-01,KR,kr_ccsi,소비자심리지수(CCSI),93.6,p (장기평균=100),M,ECOS
+2025-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.19,2020=100,M,ECOS
+2025-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,135.7,2020=100,M,ECOS
 2025-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.48,2020=100,M,ECOS
+2025-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,121.5,2020=100,M,ECOS
 2025-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.38,2020=100,M,ECOS
 2025-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",87.9,p,M,ECOS
 2025-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,123.92,2020=100,M,ECOS
 2025-04-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.3,2020=100,M,ECOS
+2025-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,125.1,2020=100,M,ECOS
+2025-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.0,2020=100,M,ECOS
+2025-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.4,2020=100,M,ECOS
 2025-04-01,KR,kr_temp_avg,평균기온(전국대표),10.12,°C,D,KMA
 2025-04-01,KR,kr_temp_max,최고기온(전국대표),17.52,°C,D,KMA
 2025-04-01,US,us_corn,Global Price of Corn (사료비 proxy),215.5690933673469,USD/metric ton,M,FRED
@@ -9238,11 +9770,18 @@
 2025-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",59.55,USD/barrel,D,FRED
 2025-05-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-05-01,KR,kr_ccsi,소비자심리지수(CCSI),101.7,p (장기평균=100),M,ECOS
+2025-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.65,2020=100,M,ECOS
+2025-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,135.17,2020=100,M,ECOS
 2025-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,124.78,2020=100,M,ECOS
+2025-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,125.73,2020=100,M,ECOS
 2025-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.27,2020=100,M,ECOS
 2025-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS
 2025-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,124.87,2020=100,M,ECOS
 2025-05-01,KR,kr_precip,일강수량(전국대표),26.66,mm,D,KMA
+2025-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.6,2020=100,M,ECOS
+2025-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,128.3,2020=100,M,ECOS
+2025-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.3,2020=100,M,ECOS
+2025-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.3,2020=100,M,ECOS
 2025-05-01,KR,kr_temp_avg,평균기온(전국대표),15.62,°C,D,KMA
 2025-05-01,KR,kr_temp_max,최고기온(전국대표),20.9,°C,D,KMA
 2025-05-01,US,us_corn,Global Price of Corn (사료비 proxy),204.8084481292517,USD/metric ton,M,FRED
@@ -9362,11 +9901,18 @@
 2025-05-31,KR,kr_temp_max,최고기온(전국대표),26.5,°C,D,KMA
 2025-06-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-06-01,KR,kr_ccsi,소비자심리지수(CCSI),108.6,p (장기평균=100),M,ECOS
+2025-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,103.48,2020=100,M,ECOS
+2025-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,135.68,2020=100,M,ECOS
 2025-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,124.74,2020=100,M,ECOS
+2025-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,129.93,2020=100,M,ECOS
 2025-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.31,2020=100,M,ECOS
 2025-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.2,p,M,ECOS
 2025-06-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.22,2020=100,M,ECOS
 2025-06-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-06-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,99.6,2020=100,M,ECOS
+2025-06-01,KR,kr_retail_dept,소매판매액지수 — 백화점,129.9,2020=100,M,ECOS
+2025-06-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.6,2020=100,M,ECOS
+2025-06-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.7,2020=100,M,ECOS
 2025-06-01,KR,kr_temp_avg,평균기온(전국대표),21.96,°C,D,KMA
 2025-06-01,KR,kr_temp_max,최고기온(전국대표),28.72,°C,D,KMA
 2025-06-01,US,us_corn,Global Price of Corn (사료비 proxy),195.7190773214286,USD/metric ton,M,FRED
@@ -9482,11 +10028,18 @@
 2025-06-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",66.3,USD/barrel,D,FRED
 2025-07-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-07-01,KR,kr_ccsi,소비자심리지수(CCSI),110.7,p (장기평균=100),M,ECOS
+2025-07-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,104.43,2020=100,M,ECOS
+2025-07-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,132.49,2020=100,M,ECOS
 2025-07-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,125.75,2020=100,M,ECOS
+2025-07-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,132.22,2020=100,M,ECOS
 2025-07-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.52,2020=100,M,ECOS
 2025-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.3,p,M,ECOS
 2025-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.66,2020=100,M,ECOS
 2025-07-01,KR,kr_precip,일강수량(전국대표),0.18,mm,D,KMA
+2025-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.9,2020=100,M,ECOS
+2025-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.6,2020=100,M,ECOS
+2025-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,89.9,2020=100,M,ECOS
+2025-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS
 2025-07-01,KR,kr_temp_avg,평균기온(전국대표),28.84,°C,D,KMA
 2025-07-01,KR,kr_temp_max,최고기온(전국대표),32.94,°C,D,KMA
 2025-07-01,US,us_corn,Global Price of Corn (사료비 proxy),192.4525892142857,USD/metric ton,M,FRED
@@ -9607,11 +10160,18 @@
 2025-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",70.36,USD/barrel,D,FRED
 2025-08-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-08-01,KR,kr_ccsi,소비자심리지수(CCSI),111.2,p (장기평균=100),M,ECOS
+2025-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,105.93,2020=100,M,ECOS
+2025-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,133.01,2020=100,M,ECOS
 2025-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.96,2020=100,M,ECOS
+2025-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,136.64,2020=100,M,ECOS
 2025-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,116.45,2020=100,M,ECOS
 2025-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",95.0,p,M,ECOS
 2025-08-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.99,2020=100,M,ECOS
 2025-08-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.0,2020=100,M,ECOS
+2025-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,130.5,2020=100,M,ECOS
+2025-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,80.7,2020=100,M,ECOS
+2025-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.5,2020=100,M,ECOS
 2025-08-01,KR,kr_temp_avg,평균기온(전국대표),30.2,°C,D,KMA
 2025-08-01,KR,kr_temp_max,최고기온(전국대표),35.28,°C,D,KMA
 2025-08-01,US,us_corn,Global Price of Corn (사료비 proxy),183.0247028911564,USD/metric ton,M,FRED
@@ -9731,11 +10291,18 @@
 2025-08-31,KR,kr_temp_max,최고기온(전국대표),32.26,°C,D,KMA
 2025-09-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-09-01,KR,kr_ccsi,소비자심리지수(CCSI),110.0,p (장기평균=100),M,ECOS
+2025-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,107.64,2020=100,M,ECOS
+2025-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,135.36,2020=100,M,ECOS
 2025-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.82,2020=100,M,ECOS
+2025-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,136.35,2020=100,M,ECOS
 2025-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,117.06,2020=100,M,ECOS
 2025-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",91.7,p,M,ECOS
 2025-09-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.15,2020=100,M,ECOS
 2025-09-01,KR,kr_precip,일강수량(전국대표),9.78,mm,D,KMA
+2025-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.3,2020=100,M,ECOS
+2025-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.7,2020=100,M,ECOS
+2025-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,89.0,2020=100,M,ECOS
+2025-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.5,2020=100,M,ECOS
 2025-09-01,KR,kr_temp_avg,평균기온(전국대표),26.96,°C,D,KMA
 2025-09-01,KR,kr_temp_max,최고기온(전국대표),31.36,°C,D,KMA
 2025-09-01,US,us_corn,Global Price of Corn (사료비 proxy),196.1459412448979,USD/metric ton,M,FRED
@@ -9852,11 +10419,18 @@
 2025-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",63.17,USD/barrel,D,FRED
 2025-10-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-10-01,KR,kr_ccsi,소비자심리지수(CCSI),109.6,p (장기평균=100),M,ECOS
+2025-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.84,2020=100,M,ECOS
+2025-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,138.37,2020=100,M,ECOS
 2025-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.88,2020=100,M,ECOS
+2025-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,135.98,2020=100,M,ECOS
 2025-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,117.42,2020=100,M,ECOS
 2025-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.8,p,M,ECOS
 2025-10-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.49,2020=100,M,ECOS
 2025-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-10-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.7,2020=100,M,ECOS
+2025-10-01,KR,kr_retail_dept,소매판매액지수 — 백화점,135.1,2020=100,M,ECOS
+2025-10-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,90.6,2020=100,M,ECOS
+2025-10-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.3,2020=100,M,ECOS
 2025-10-01,KR,kr_temp_avg,평균기온(전국대표),21.36,°C,D,KMA
 2025-10-01,KR,kr_temp_max,최고기온(전국대표),27.32,°C,D,KMA
 2025-10-01,US,us_corn,Global Price of Corn (사료비 proxy),198.0176441964286,USD/metric ton,M,FRED
@@ -9977,11 +10551,18 @@
 2025-10-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",61.75,USD/barrel,D,FRED
 2025-11-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-11-01,KR,kr_ccsi,소비자심리지수(CCSI),112.3,p (장기평균=100),M,ECOS
+2025-11-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.26,2020=100,M,ECOS
+2025-11-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,140.81,2020=100,M,ECOS
 2025-11-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,127.08,2020=100,M,ECOS
+2025-11-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,129.94,2020=100,M,ECOS
 2025-11-01,KR,kr_cpi_total,소비자물가지수 — 총지수,117.2,2020=100,M,ECOS
 2025-11-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.5,p,M,ECOS
 2025-11-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.66,2020=100,M,ECOS
 2025-11-01,KR,kr_precip,일강수량(전국대표),2.12,mm,D,KMA
+2025-11-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.1,2020=100,M,ECOS
+2025-11-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.6,2020=100,M,ECOS
+2025-11-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.3,2020=100,M,ECOS
+2025-11-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,115.6,2020=100,M,ECOS
 2025-11-01,KR,kr_temp_avg,평균기온(전국대표),13.92,°C,D,KMA
 2025-11-01,KR,kr_temp_max,최고기온(전국대표),18.76,°C,D,KMA
 2025-11-01,US,us_corn,Global Price of Corn (사료비 proxy),201.6578882352942,USD/metric ton,M,FRED
@@ -10095,11 +10676,18 @@
 2025-11-30,KR,kr_temp_max,최고기온(전국대표),19.18,°C,D,KMA
 2025-12-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2025-12-01,KR,kr_ccsi,소비자심리지수(CCSI),109.8,p (장기평균=100),M,ECOS
+2025-12-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,111.13,2020=100,M,ECOS
+2025-12-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.65,2020=100,M,ECOS
 2025-12-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.01,2020=100,M,ECOS
+2025-12-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,129.12,2020=100,M,ECOS
 2025-12-01,KR,kr_cpi_total,소비자물가지수 — 총지수,117.57,2020=100,M,ECOS
 2025-12-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",93.5,p,M,ECOS
 2025-12-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.87,2020=100,M,ECOS
 2025-12-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2025-12-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.2,2020=100,M,ECOS
+2025-12-01,KR,kr_retail_dept,소매판매액지수 — 백화점,134.3,2020=100,M,ECOS
+2025-12-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS
+2025-12-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.0,2020=100,M,ECOS
 2025-12-01,KR,kr_temp_avg,평균기온(전국대표),9.0,°C,D,KMA
 2025-12-01,KR,kr_temp_max,최고기온(전국대표),14.32,°C,D,KMA
 2025-12-01,US,us_corn,Global Price of Corn (사료비 proxy),205.3150795535714,USD/metric ton,M,FRED
@@ -10220,11 +10808,18 @@
 2025-12-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",57.26,USD/barrel,D,FRED
 2026-01-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2026-01-01,KR,kr_ccsi,소비자심리지수(CCSI),110.8,p (장기평균=100),M,ECOS
+2026-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,112.39,2020=100,M,ECOS
+2026-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,147.19,2020=100,M,ECOS
 2026-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.75,2020=100,M,ECOS
+2026-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,126.65,2020=100,M,ECOS
 2026-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,118.03,2020=100,M,ECOS
 2026-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.0,p,M,ECOS
 2026-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.44,2020=100,M,ECOS
 2026-01-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.1,2020=100,M,ECOS
+2026-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,143.6,2020=100,M,ECOS
+2026-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,86.3,2020=100,M,ECOS
+2026-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.6,2020=100,M,ECOS
 2026-01-01,KR,kr_temp_avg,평균기온(전국대표),-4.6,°C,D,KMA
 2026-01-01,KR,kr_temp_max,최고기온(전국대표),-0.3,°C,D,KMA
 2026-01-01,US,us_corn,Global Price of Corn (사료비 proxy),203.8978238392856,USD/metric ton,M,FRED
@@ -10343,11 +10938,18 @@
 2026-01-31,KR,kr_temp_max,최고기온(전국대표),3.58,°C,D,KMA
 2026-02-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2026-02-01,KR,kr_ccsi,소비자심리지수(CCSI),112.1,p (장기평균=100),M,ECOS
+2026-02-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,113.59,2020=100,M,ECOS
+2026-02-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.1,2020=100,M,ECOS
 2026-02-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.12,2020=100,M,ECOS
+2026-02-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,127.96,2020=100,M,ECOS
 2026-02-01,KR,kr_cpi_total,소비자물가지수 — 총지수,118.4,2020=100,M,ECOS
 2026-02-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",98.8,p,M,ECOS
 2026-02-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.71,2020=100,M,ECOS
 2026-02-01,KR,kr_precip,일강수량(전국대표),0.03,mm,D,KMA
+2026-02-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,100.5,2020=100,M,ECOS
+2026-02-01,KR,kr_retail_dept,소매판매액지수 — 백화점,144.4,2020=100,M,ECOS
+2026-02-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,89.4,2020=100,M,ECOS
+2026-02-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,112.4,2020=100,M,ECOS
 2026-02-01,KR,kr_temp_avg,평균기온(전국대표),-0.72,°C,D,KMA
 2026-02-01,KR,kr_temp_max,최고기온(전국대표),4.25,°C,D,KMA
 2026-02-01,US,us_corn,Global Price of Corn (사료비 proxy),210.6354865131578,USD/metric ton,M,FRED
@@ -10456,11 +11058,18 @@
 2026-02-28,KR,kr_temp_max,최고기온(전국대표),14.66,°C,D,KMA
 2026-03-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2026-03-01,KR,kr_ccsi,소비자심리지수(CCSI),107.0,p (장기평균=100),M,ECOS
+2026-03-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,111.65,2020=100,M,ECOS
+2026-03-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.14,2020=100,M,ECOS
 2026-03-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,127.91,2020=100,M,ECOS
+2026-03-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,125.21,2020=100,M,ECOS
 2026-03-01,KR,kr_cpi_total,소비자물가지수 — 총지수,118.8,2020=100,M,ECOS
 2026-03-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",94.0,p,M,ECOS
 2026-03-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.58,2020=100,M,ECOS
 2026-03-01,KR,kr_precip,일강수량(전국대표),0.1,mm,D,KMA
+2026-03-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2026-03-01,KR,kr_retail_dept,소매판매액지수 — 백화점,141.7,2020=100,M,ECOS
+2026-03-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,81.7,2020=100,M,ECOS
+2026-03-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,112.4,2020=100,M,ECOS
 2026-03-01,KR,kr_temp_avg,평균기온(전국대표),9.06,°C,D,KMA
 2026-03-01,KR,kr_temp_max,최고기온(전국대표),13.28,°C,D,KMA
 2026-03-01,US,us_corn,Global Price of Corn (사료비 proxy),213.3041428571428,USD/metric ton,M,FRED
@@ -10581,11 +11190,18 @@
 2026-03-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",102.86,USD/barrel,D,FRED
 2026-04-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2026-04-01,KR,kr_ccsi,소비자심리지수(CCSI),99.2,p (장기평균=100),M,ECOS
+2026-04-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.5,2020=100,M,ECOS
+2026-04-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,145.29,2020=100,M,ECOS
 2026-04-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.84,2020=100,M,ECOS
+2026-04-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,127.7,2020=100,M,ECOS
 2026-04-01,KR,kr_cpi_total,소비자물가지수 — 총지수,119.37,2020=100,M,ECOS
 2026-04-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",91.7,p,M,ECOS
 2026-04-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,125.72,2020=100,M,ECOS
 2026-04-01,KR,kr_precip,일강수량(전국대표),0.3,mm,D,KMA
+2026-04-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.7,2020=100,M,ECOS
+2026-04-01,KR,kr_retail_dept,소매판매액지수 — 백화점,144.0,2020=100,M,ECOS
+2026-04-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.1,2020=100,M,ECOS
+2026-04-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.9,2020=100,M,ECOS
 2026-04-01,KR,kr_temp_avg,평균기온(전국대표),13.24,°C,D,KMA
 2026-04-01,KR,kr_temp_max,최고기온(전국대표),16.92,°C,D,KMA
 2026-04-01,US,us_corn,Global Price of Corn (사료비 proxy),214.5239610119047,USD/metric ton,M,FRED
@@ -10702,10 +11318,18 @@
 2026-04-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",108.64,USD/barrel,D,FRED
 2026-05-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
 2026-05-01,KR,kr_ccsi,소비자심리지수(CCSI),106.1,p (장기평균=100),M,ECOS
+2026-05-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.01,2020=100,M,ECOS
+2026-05-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,145.43,2020=100,M,ECOS
 2026-05-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.79,2020=100,M,ECOS
+2026-05-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,132.99,2020=100,M,ECOS
 2026-05-01,KR,kr_cpi_total,소비자물가지수 — 총지수,119.92,2020=100,M,ECOS
 2026-05-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.5,p,M,ECOS
+2026-05-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,126.66,2020=100,M,ECOS
 2026-05-01,KR,kr_precip,일강수량(전국대표),2.54,mm,D,KMA
+2026-05-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,104.9,2020=100,M,ECOS
+2026-05-01,KR,kr_retail_dept,소매판매액지수 — 백화점,147.2,2020=100,M,ECOS
+2026-05-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,80.6,2020=100,M,ECOS
+2026-05-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,116.7,2020=100,M,ECOS
 2026-05-01,KR,kr_temp_avg,평균기온(전국대표),16.48,°C,D,KMA
 2026-05-01,KR,kr_temp_max,최고기온(전국대표),23.08,°C,D,KMA
 2026-05-01,US,us_corn,Global Price of Corn (사료비 proxy),215.6206469812925,USD/metric ton,M,FRED
@@ -10822,6 +11446,14 @@
 2026-05-31,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-05-31,KR,kr_temp_avg,평균기온(전국대표),24.74,°C,D,KMA
 2026-05-31,KR,kr_temp_max,최고기온(전국대표),31.76,°C,D,KMA
+2026-06-01,KR,kr_base_rate,한국은행 기준금리,2.5,연%,M,ECOS
+2026-06-01,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS
+2026-06-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,111.28,2020=100,M,ECOS
+2026-06-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.95,2020=100,M,ECOS
+2026-06-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,127.27,2020=100,M,ECOS
+2026-06-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,135.77,2020=100,M,ECOS
+2026-06-01,KR,kr_cpi_total,소비자물가지수 — 총지수,119.99,2020=100,M,ECOS
+2026-06-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",96.8,p,M,ECOS
 2026-06-01,KR,kr_precip,일강수량(전국대표),0.32,mm,D,KMA
 2026-06-01,KR,kr_temp_avg,평균기온(전국대표),23.9,°C,D,KMA
 2026-06-01,KR,kr_temp_max,최고기온(전국대표),30.08,°C,D,KMA
