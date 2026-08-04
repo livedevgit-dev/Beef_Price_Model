@@ -6,6 +6,7 @@ chcp 65001 >nul
 setlocal EnableExtensions
 cd /d "%~dp0"
 set "PYTHONIOENCODING=utf-8"
+set "PYTHONUNBUFFERED=1"
 
 if not exist "logs" mkdir "logs"
 

@@ -59,7 +59,7 @@ def _run(script, args, label):
     return subprocess.run(
         [PY, str(SRC / script)] + args,
         cwd=str(ROOT),
-        env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+        env={**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUNBUFFERED": "1"},
     ).returncode
 
 
