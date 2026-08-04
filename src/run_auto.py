@@ -11,6 +11,7 @@
 - 상태파일: data/.run_state/last_full.txt, last_ml.txt, last_import.txt (ISO 날짜)
 - 실행: python src/run_auto.py   (--dry 면 판단만 출력, 실행 안 함)
 """
+import os
 import subprocess
 import sys
 from datetime import date
