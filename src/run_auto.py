@@ -55,7 +55,11 @@ def _run(script, args, label):
     if DRY:
         print("    [DRY] 실제 실행 생략")
         return 0
-    return subprocess.run([PY, str(SRC / script)] + args, cwd=str(ROOT)).returncode
+    return subprocess.run(
+        [PY, str(SRC / script)] + args,
+        cwd=str(ROOT),
+        env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+    ).returncode
 
 
 def main():

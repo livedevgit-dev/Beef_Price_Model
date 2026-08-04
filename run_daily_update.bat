@@ -1,6 +1,8 @@
 @echo off
+chcp 65001 >nul
 setlocal EnableExtensions
 cd /d "%~dp0"
+set "PYTHONIOENCODING=utf-8"
 
 set "PYEXE="
 if exist ".venv\Scripts\python.exe" set "PYEXE=%~dp0.venv\Scripts\python.exe"

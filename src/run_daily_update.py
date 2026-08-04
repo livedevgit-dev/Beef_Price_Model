@@ -50,7 +50,7 @@ def _run_step(label, script_path, critical=True):
         subprocess.run(
             [sys.executable, str(script_path)],
             check=True,
-            env={**os.environ, "PYTHONUNBUFFERED": "1"},
+            env={**os.environ, "PYTHONUNBUFFERED": "1", "PYTHONIOENCODING": "utf-8"},
         )
         elapsed = time.time() - start
         print(f"  [OK] 완료 ({elapsed:.1f}초)")

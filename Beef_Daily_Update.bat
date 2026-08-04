@@ -2,6 +2,7 @@
 chcp 65001 >nul
 setlocal EnableExtensions
 cd /d "%~dp0"
+set "PYTHONIOENCODING=utf-8"
 
 echo ============================================================
 echo   Beef Price Model - 스마트 자동 실행 (일/주/월 자동 판단)
