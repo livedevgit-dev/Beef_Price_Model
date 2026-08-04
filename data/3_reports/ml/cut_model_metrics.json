@@ -1,7 +1,7 @@
 {
-  "pooled_n": 275,
-  "oos_n": 142,
-  "rank_ic": 0.202,
-  "direction_hit": 0.549,
+  "pooled_n": 304,
+  "oos_n": 160,
+  "rank_ic": 0.25,
+  "direction_hit": 0.613,
   "note": "IC>0·적중>0.5 면 약한 예측력. 소표본이라 방향성 참고용."
 }
