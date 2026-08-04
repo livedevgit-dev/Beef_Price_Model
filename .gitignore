@@ -20,3 +20,6 @@ Thumbs.db
 # Local logs / temp
 *.log
 *.tmp
+
+# Pipeline runtime state (machine-local)
+data/.run_state/
