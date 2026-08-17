@@ -2779,6 +2779,13 @@
 2026-08-09,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
 2026-08-10,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
 2026-08-11,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-12,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-13,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-14,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-15,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-16,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-17,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
+2026-08-18,KR,kr_base_rate,한국은행 기준금리,2.75,연%,M,ECOS,2.75,10.0,0.0
 2019-01-01,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-02,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-03,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
@@ -5559,6 +5566,13 @@
 2026-08-09,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
 2026-08-10,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
 2026-08-11,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-12,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-13,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-14,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-15,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-16,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-17,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
+2026-08-18,KR,kr_ccsi,소비자심리지수(CCSI),106.8,p (장기평균=100),M,ECOS,106.8,-3.9568,0.0
 2019-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
@@ -8339,6 +8353,13 @@
 2026-08-09,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
 2026-08-10,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
 2026-08-11,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-12,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-13,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-14,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-15,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-16,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-17,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
+2026-08-18,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,110.35,2020=100,M,ECOS,110.35,4.1726,0.0
 2019-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
@@ -11119,6 +11140,13 @@
 2026-08-09,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
 2026-08-10,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
 2026-08-11,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-12,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-13,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-14,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-15,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-16,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-17,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
+2026-08-18,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,144.03,2020=100,M,ECOS,144.03,8.2851,0.0
 2019-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
@@ -13899,6 +13927,13 @@
 2026-08-09,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
 2026-08-10,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
 2026-08-11,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-12,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-13,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-14,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-15,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-16,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-17,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
+2026-08-18,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,126.94,2020=100,M,ECOS,126.94,-1.5664,0.0
 2019-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
@@ -16679,6 +16714,13 @@
 2026-08-09,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
 2026-08-10,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
 2026-08-11,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-12,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-13,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-14,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-15,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-16,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-17,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
+2026-08-18,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,134.56,2020=100,M,ECOS,134.56,-1.5222,0.0
 2019-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
@@ -19459,6 +19501,13 @@
 2026-08-09,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
 2026-08-10,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
 2026-08-11,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-12,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-13,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-14,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-15,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-16,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-17,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
+2026-08-18,KR,kr_cpi_total,소비자물가지수 — 총지수,119.77,2020=100,M,ECOS,119.77,2.851,0.0
 2019-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-02,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-03,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
@@ -22239,6 +22288,13 @@
 2026-08-09,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
 2026-08-10,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
 2026-08-11,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-12,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-13,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-14,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-15,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-16,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-17,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
+2026-08-18,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS,97.9,3.0526,0.0
 2019-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
@@ -25019,6 +25075,13 @@
 2026-08-09,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
 2026-08-10,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
 2026-08-11,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-12,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-13,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-14,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-15,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-16,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-17,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
+2026-08-18,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.27,2020=100,M,ECOS,127.27,1.016,0.0
 2019-01-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA,,,
 2019-01-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
 2019-01-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
@@ -27799,6 +27862,13 @@
 2026-08-09,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.8507,-100.0,-100.0
 2026-08-10,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.8507,-100.0,
 2026-08-11,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.8507,-100.0,
+2026-08-12,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.8507,-100.0,
+2026-08-13,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.3413,-100.0,-100.0
+2026-08-14,KR,kr_precip,일강수량(전국대표),0.54,mm,D,KMA,3.1727,-95.2212,-90.3571
+2026-08-15,KR,kr_precip,일강수량(전국대표),0.74,mm,D,KMA,3.1973,inf,inf
+2026-08-16,KR,kr_precip,일강수량(전국대표),53.34,mm,D,KMA,3.9707,inf,76.9741
+2026-08-17,KR,kr_precip,일강수량(전국대표),30.24,mm,D,KMA,4.018,inf,4.9271
+2026-08-18,KR,kr_precip,일강수량(전국대표),5.02,mm,D,KMA,3.872,1040.9091,-46.5957
 2019-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
@@ -30579,6 +30649,13 @@
 2026-08-09,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
 2026-08-10,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
 2026-08-11,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-12,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-13,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-14,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-15,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-16,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-17,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
+2026-08-18,KR,kr_retail_cvs,소매판매액지수 — 편의점,103.1,2020=100,M,ECOS,103.1,2.0792,0.0
 2019-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
@@ -33359,6 +33436,13 @@
 2026-08-09,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
 2026-08-10,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
 2026-08-11,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-12,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-13,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-14,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-15,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-16,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-17,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
+2026-08-18,KR,kr_retail_dept,소매판매액지수 — 백화점,151.1,2020=100,M,ECOS,151.1,15.7854,0.0
 2019-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
@@ -36139,6 +36223,13 @@
 2026-08-09,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
 2026-08-10,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
 2026-08-11,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-12,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-13,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-14,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-15,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-16,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-17,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
+2026-08-18,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,79.9,2020=100,M,ECOS,79.9,-0.9913,0.0
 2019-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
@@ -38919,6 +39010,13 @@
 2026-08-09,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
 2026-08-10,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
 2026-08-11,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-12,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-13,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-14,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-15,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-16,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-17,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
+2026-08-18,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.7,2020=100,M,ECOS,114.7,-0.6926,0.0
 2019-01-01,KR,kr_temp_avg,평균기온(전국대표),-1.46,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_avg,평균기온(전국대표),-1.52,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_avg,평균기온(전국대표),-0.54,°C,D,KMA,,,
@@ -41698,7 +41796,14 @@
 2026-08-08,KR,kr_temp_avg,평균기온(전국대표),30.38,°C,D,KMA,29.3887,13.5277,18.9507
 2026-08-09,KR,kr_temp_avg,평균기온(전국대표),28.52,°C,D,KMA,29.4173,16.7895,3.1092
 2026-08-10,KR,kr_temp_avg,평균기온(전국대표),27.88,°C,D,KMA,29.366,8.8212,-5.2345
-2026-08-11,KR,kr_temp_avg,평균기온(전국대표),27.88,°C,D,KMA,29.2973,13.0576,-6.8804
+2026-08-11,KR,kr_temp_avg,평균기온(전국대표),26.44,°C,D,KMA,29.2493,7.2182,-11.69
+2026-08-12,KR,kr_temp_avg,평균기온(전국대표),26.0,°C,D,KMA,29.1213,6.82,-12.8686
+2026-08-13,KR,kr_temp_avg,평균기온(전국대표),27.2,°C,D,KMA,29.0733,1.1152,-5.0279
+2026-08-14,KR,kr_temp_avg,평균기온(전국대표),27.72,°C,D,KMA,29.0707,-1.2117,-0.2878
+2026-08-15,KR,kr_temp_avg,평균기온(전국대표),26.84,°C,D,KMA,29.0493,-6.611,-2.329
+2026-08-16,KR,kr_temp_avg,평균기온(전국대표),24.12,°C,D,KMA,28.9407,-16.4241,-11.9065
+2026-08-17,KR,kr_temp_avg,평균기온(전국대표),24.88,°C,D,KMA,28.8827,-12.8852,-6.5364
+2026-08-18,KR,kr_temp_avg,평균기온(전국대표),24.88,°C,D,KMA,28.8313,-14.3251,-5.8289
 2019-01-01,KR,kr_temp_max,최고기온(전국대표),2.28,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_max,최고기온(전국대표),3.58,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_max,최고기온(전국대표),5.7,°C,D,KMA,,,
@@ -44478,7 +44583,14 @@
 2026-08-08,KR,kr_temp_max,최고기온(전국대표),35.28,°C,D,KMA,33.8713,13.9535,25.7306
 2026-08-09,KR,kr_temp_max,최고기온(전국대표),32.7,°C,D,KMA,33.8973,20.2206,2.4436
 2026-08-10,KR,kr_temp_max,최고기온(전국대표),31.74,°C,D,KMA,33.81,4.0656,-7.6251
-2026-08-11,KR,kr_temp_max,최고기온(전국대표),25.8,°C,D,KMA,33.5267,-11.4619,-24.7813
+2026-08-11,KR,kr_temp_max,최고기온(전국대표),31.46,°C,D,KMA,33.7153,7.9616,-8.2799
+2026-08-12,KR,kr_temp_max,최고기온(전국대표),31.2,°C,D,KMA,33.636,12.6354,-7.0876
+2026-08-13,KR,kr_temp_max,최고기온(전국대표),32.36,°C,D,KMA,33.6547,5.5447,1.761
+2026-08-14,KR,kr_temp_max,최고기온(전국대표),32.4,°C,D,KMA,33.682,2.4668,2.5966
+2026-08-15,KR,kr_temp_max,최고기온(전국대표),30.8,°C,D,KMA,33.6653,-7.5075,-1.5974
+2026-08-16,KR,kr_temp_max,최고기온(전국대표),27.16,°C,D,KMA,33.5033,-18.4874,-15.178
+2026-08-17,KR,kr_temp_max,최고기온(전국대표),27.88,°C,D,KMA,33.4267,-16.2763,-7.6209
+2026-08-18,KR,kr_temp_max,최고기온(전국대표),25.9,°C,D,KMA,33.278,-22.5015,-14.6904
 2019-01-01,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
@@ -47217,48 +47329,55 @@
 2026-06-28,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,197.1045,0.0321,-9.2008
 2026-06-29,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,196.4432,0.0321,-9.2008
 2026-06-30,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,0.0321,-9.2008
-2026-07-01,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-02,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-03,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-04,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-05,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-06,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-07,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-08,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-09,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-10,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-11,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-12,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-13,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-14,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-15,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-16,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-17,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-18,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-19,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-20,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-21,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-22,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-23,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-24,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-25,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-26,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-27,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-28,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-29,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-30,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-07-31,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,1.7299,0.0
-2026-08-01,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-02,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-03,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-04,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-05,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-06,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-07,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-08,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-09,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-10,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
-2026-08-11,US,us_corn,Global Price of Corn (사료비 proxy),195.7819,USD/metric ton,M,FRED,195.7819,6.9702,0.0
+2026-07-01,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,196.3622,10.7754,8.8917
+2026-07-02,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,196.9424,10.7754,8.8917
+2026-07-03,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,197.5227,10.7754,8.8917
+2026-07-04,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,198.103,10.7754,8.8917
+2026-07-05,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,198.6833,10.7754,8.8917
+2026-07-06,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,199.2635,10.7754,8.8917
+2026-07-07,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,199.8438,10.7754,8.8917
+2026-07-08,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,200.4241,10.7754,8.8917
+2026-07-09,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,201.0044,10.7754,8.8917
+2026-07-10,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,201.5846,10.7754,8.8917
+2026-07-11,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,202.1649,10.7754,8.8917
+2026-07-12,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,202.7452,10.7754,8.8917
+2026-07-13,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,203.3255,10.7754,8.8917
+2026-07-14,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,203.9057,10.7754,8.8917
+2026-07-15,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,204.486,10.7754,8.8917
+2026-07-16,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,205.0663,10.7754,8.8917
+2026-07-17,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,205.6466,10.7754,8.8917
+2026-07-18,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,206.2268,10.7754,8.8917
+2026-07-19,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,206.8071,10.7754,8.8917
+2026-07-20,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,207.3874,10.7754,8.8917
+2026-07-21,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,207.9677,10.7754,8.8917
+2026-07-22,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,208.5479,10.7754,8.8917
+2026-07-23,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,209.1282,10.7754,8.8917
+2026-07-24,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,209.7085,10.7754,8.8917
+2026-07-25,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,210.2888,10.7754,8.8917
+2026-07-26,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,210.8691,10.7754,8.8917
+2026-07-27,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,211.4493,10.7754,8.8917
+2026-07-28,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,212.0296,10.7754,8.8917
+2026-07-29,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,212.6099,10.7754,8.8917
+2026-07-30,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,10.7754,8.8917
+2026-07-31,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,10.7754,0.0
+2026-08-01,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-02,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-03,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-04,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-05,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-06,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-07,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-08,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-09,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-10,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-11,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-12,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-13,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-14,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-15,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-16,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-17,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
+2026-08-18,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,16.4816,0.0
 2019-01-01,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-02,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-03,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
@@ -49967,78 +50086,85 @@
 2026-05-29,US,us_food_ppi,PPI: Processed Foods and Feeds,278.436,Index 1982=100,M,FRED,278.4096,1.8658,0.2856
 2026-05-30,US,us_food_ppi,PPI: Processed Foods and Feeds,278.436,Index 1982=100,M,FRED,278.436,1.8658,0.2856
 2026-05-31,US,us_food_ppi,PPI: Processed Foods and Feeds,278.436,Index 1982=100,M,FRED,278.436,1.8658,0.0
-2026-06-01,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.4689,1.6294,0.3541
-2026-06-02,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.5017,1.6294,0.3541
-2026-06-03,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.5346,1.6294,0.3541
-2026-06-04,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.5675,1.6294,0.3541
-2026-06-05,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.6003,1.6294,0.3541
-2026-06-06,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.6332,1.6294,0.3541
-2026-06-07,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.6661,1.6294,0.3541
-2026-06-08,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.6989,1.6294,0.3541
-2026-06-09,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.7318,1.6294,0.3541
-2026-06-10,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.7647,1.6294,0.3541
-2026-06-11,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.7975,1.6294,0.3541
-2026-06-12,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.8304,1.6294,0.3541
-2026-06-13,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.8633,1.6294,0.3541
-2026-06-14,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.8961,1.6294,0.3541
-2026-06-15,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.929,1.6294,0.3541
-2026-06-16,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.9619,1.6294,0.3541
-2026-06-17,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,278.9947,1.6294,0.3541
-2026-06-18,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.0276,1.6294,0.3541
-2026-06-19,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.0605,1.6294,0.3541
-2026-06-20,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.0933,1.6294,0.3541
-2026-06-21,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.1262,1.6294,0.3541
-2026-06-22,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.1591,1.6294,0.3541
-2026-06-23,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.1919,1.6294,0.3541
-2026-06-24,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.2248,1.6294,0.3541
-2026-06-25,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.2577,1.6294,0.3541
-2026-06-26,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.2905,1.6294,0.3541
-2026-06-27,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.3234,1.6294,0.3541
-2026-06-28,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.3563,1.6294,0.3541
-2026-06-29,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.3891,1.6294,0.3541
-2026-06-30,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.6294,0.3541
-2026-07-01,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-02,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-03,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-04,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-05,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-06,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-07,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-08,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-09,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-10,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-11,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-12,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-13,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-14,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-15,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-16,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-17,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-18,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-19,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-20,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-21,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-22,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-23,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-24,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-25,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-26,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-27,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-28,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-29,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-30,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-07-31,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,1.4844,0.0
-2026-08-01,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-02,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-03,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-04,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-05,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-06,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-07,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-08,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-09,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-10,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
-2026-08-11,US,us_food_ppi,PPI: Processed Foods and Feeds,279.422,Index 1982=100,M,FRED,279.422,0.826,0.0
+2026-06-01,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.4759,1.7065,0.4303
+2026-06-02,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.5159,1.7065,0.4303
+2026-06-03,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.5558,1.7065,0.4303
+2026-06-04,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.5957,1.7065,0.4303
+2026-06-05,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.6357,1.7065,0.4303
+2026-06-06,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.6756,1.7065,0.4303
+2026-06-07,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.7155,1.7065,0.4303
+2026-06-08,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.7555,1.7065,0.4303
+2026-06-09,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.7954,1.7065,0.4303
+2026-06-10,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.8353,1.7065,0.4303
+2026-06-11,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.8753,1.7065,0.4303
+2026-06-12,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.9152,1.7065,0.4303
+2026-06-13,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.9551,1.7065,0.4303
+2026-06-14,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,278.9951,1.7065,0.4303
+2026-06-15,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.035,1.7065,0.4303
+2026-06-16,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.0749,1.7065,0.4303
+2026-06-17,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.1149,1.7065,0.4303
+2026-06-18,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.1548,1.7065,0.4303
+2026-06-19,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.1947,1.7065,0.4303
+2026-06-20,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.2347,1.7065,0.4303
+2026-06-21,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.2746,1.7065,0.4303
+2026-06-22,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.3145,1.7065,0.4303
+2026-06-23,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.3545,1.7065,0.4303
+2026-06-24,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.3944,1.7065,0.4303
+2026-06-25,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.4343,1.7065,0.4303
+2026-06-26,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.4743,1.7065,0.4303
+2026-06-27,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.5142,1.7065,0.4303
+2026-06-28,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.5541,1.7065,0.4303
+2026-06-29,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.5941,1.7065,0.4303
+2026-06-30,US,us_food_ppi,PPI: Processed Foods and Feeds,279.634,Index 1982=100,M,FRED,279.634,1.7065,0.4303
+2026-07-01,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.5945,1.131,-0.4238
+2026-07-02,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.555,1.131,-0.4238
+2026-07-03,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.5155,1.131,-0.4238
+2026-07-04,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.476,1.131,-0.4238
+2026-07-05,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.4365,1.131,-0.4238
+2026-07-06,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.397,1.131,-0.4238
+2026-07-07,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.3575,1.131,-0.4238
+2026-07-08,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.318,1.131,-0.4238
+2026-07-09,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.2785,1.131,-0.4238
+2026-07-10,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.239,1.131,-0.4238
+2026-07-11,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.1995,1.131,-0.4238
+2026-07-12,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.16,1.131,-0.4238
+2026-07-13,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.1205,1.131,-0.4238
+2026-07-14,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.081,1.131,-0.4238
+2026-07-15,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.0415,1.131,-0.4238
+2026-07-16,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,279.002,1.131,-0.4238
+2026-07-17,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.9625,1.131,-0.4238
+2026-07-18,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.923,1.131,-0.4238
+2026-07-19,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.8835,1.131,-0.4238
+2026-07-20,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.844,1.131,-0.4238
+2026-07-21,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.8045,1.131,-0.4238
+2026-07-22,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.765,1.131,-0.4238
+2026-07-23,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.7255,1.131,-0.4238
+2026-07-24,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.686,1.131,-0.4238
+2026-07-25,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.6465,1.131,-0.4238
+2026-07-26,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.607,1.131,-0.4238
+2026-07-27,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.5675,1.131,-0.4238
+2026-07-28,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.528,1.131,-0.4238
+2026-07-29,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.4885,1.131,-0.4238
+2026-07-30,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,1.131,-0.4238
+2026-07-31,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,1.131,0.0
+2026-08-01,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-02,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-03,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-04,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-05,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-06,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-07,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-08,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-09,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-10,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-11,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-12,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-13,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-14,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-15,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-16,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-17,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
+2026-08-18,US,us_food_ppi,PPI: Processed Foods and Feeds,278.449,Index 1982=100,M,FRED,278.449,0.4749,0.0
 2019-01-01,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
@@ -52777,48 +52903,55 @@
 2026-06-28,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,416.1828,8.0886,-5.6034
 2026-06-29,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,415.3626,8.0886,-5.6034
 2026-06-30,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,8.0886,-5.6034
-2026-07-01,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-02,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-03,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-04,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-05,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-06,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-07,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-08,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-09,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-10,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-11,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-12,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-13,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-14,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-15,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-16,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-17,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-18,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-19,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-20,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-21,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-22,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-23,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-24,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-25,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-26,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-27,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-28,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-29,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-30,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-07-31,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,10.6127,0.0
-2026-08-01,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-02,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-03,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-04,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-05,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-06,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-07,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-08,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-09,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-10,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
-2026-08-11,US,us_soybean,Global Price of Soybeans (사료비),414.5423,USD/metric ton,M,FRED,414.5423,11.1484,0.0
+2026-07-01,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,415.4726,18.0595,6.7323
+2026-07-02,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,416.4029,18.0595,6.7323
+2026-07-03,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,417.3332,18.0595,6.7323
+2026-07-04,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,418.2634,18.0595,6.7323
+2026-07-05,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,419.1937,18.0595,6.7323
+2026-07-06,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,420.124,18.0595,6.7323
+2026-07-07,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,421.0543,18.0595,6.7323
+2026-07-08,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,421.9845,18.0595,6.7323
+2026-07-09,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,422.9148,18.0595,6.7323
+2026-07-10,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,423.8451,18.0595,6.7323
+2026-07-11,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,424.7754,18.0595,6.7323
+2026-07-12,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,425.7056,18.0595,6.7323
+2026-07-13,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,426.6359,18.0595,6.7323
+2026-07-14,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,427.5662,18.0595,6.7323
+2026-07-15,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,428.4965,18.0595,6.7323
+2026-07-16,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,429.4267,18.0595,6.7323
+2026-07-17,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,430.357,18.0595,6.7323
+2026-07-18,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,431.2873,18.0595,6.7323
+2026-07-19,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,432.2176,18.0595,6.7323
+2026-07-20,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,433.1478,18.0595,6.7323
+2026-07-21,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,434.0781,18.0595,6.7323
+2026-07-22,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,435.0084,18.0595,6.7323
+2026-07-23,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,435.9386,18.0595,6.7323
+2026-07-24,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,436.8689,18.0595,6.7323
+2026-07-25,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,437.7992,18.0595,6.7323
+2026-07-26,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,438.7295,18.0595,6.7323
+2026-07-27,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,439.6597,18.0595,6.7323
+2026-07-28,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,440.59,18.0595,6.7323
+2026-07-29,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,441.5203,18.0595,6.7323
+2026-07-30,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.0595,6.7323
+2026-07-31,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.0595,0.0
+2026-08-01,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-02,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-03,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-04,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-05,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-06,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-07,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-08,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-09,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-10,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-11,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-12,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-13,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-14,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-15,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-16,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-17,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
+2026-08-18,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,18.6313,0.0
 2019-01-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
@@ -55557,48 +55690,55 @@
 2026-06-28,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,297.8879,-5.4154,-8.05
 2026-06-29,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,297.0237,-5.4154,-8.05
 2026-06-30,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,-5.4154,-8.05
-2026-07-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-04,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-05,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-06,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-07,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-08,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-09,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-10,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-11,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-12,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-13,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-14,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-15,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-16,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-17,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-18,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-19,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-20,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-21,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-22,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-23,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-24,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-25,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-26,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-27,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-28,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-29,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-30,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-07-31,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,20.6137,0.0
-2026-08-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-04,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-05,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-06,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-07,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-08,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-09,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-10,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
-2026-08-11,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",296.1594,USD/metric ton,M,FRED,296.1594,5.2592,0.0
+2026-07-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,297.2685,34.1647,11.235
+2026-07-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,298.3776,34.1647,11.235
+2026-07-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,299.4867,34.1647,11.235
+2026-07-04,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,300.5959,34.1647,11.235
+2026-07-05,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,301.705,34.1647,11.235
+2026-07-06,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,302.8141,34.1647,11.235
+2026-07-07,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,303.9232,34.1647,11.235
+2026-07-08,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,305.0323,34.1647,11.235
+2026-07-09,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,306.1414,34.1647,11.235
+2026-07-10,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,307.2506,34.1647,11.235
+2026-07-11,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,308.3597,34.1647,11.235
+2026-07-12,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,309.4688,34.1647,11.235
+2026-07-13,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,310.5779,34.1647,11.235
+2026-07-14,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,311.687,34.1647,11.235
+2026-07-15,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,312.7961,34.1647,11.235
+2026-07-16,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,313.9053,34.1647,11.235
+2026-07-17,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,315.0144,34.1647,11.235
+2026-07-18,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,316.1235,34.1647,11.235
+2026-07-19,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,317.2326,34.1647,11.235
+2026-07-20,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,318.3417,34.1647,11.235
+2026-07-21,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,319.4509,34.1647,11.235
+2026-07-22,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,320.56,34.1647,11.235
+2026-07-23,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,321.6691,34.1647,11.235
+2026-07-24,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,322.7782,34.1647,11.235
+2026-07-25,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,323.8873,34.1647,11.235
+2026-07-26,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,324.9964,34.1647,11.235
+2026-07-27,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,326.1056,34.1647,11.235
+2026-07-28,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,327.2147,34.1647,11.235
+2026-07-29,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,328.3238,34.1647,11.235
+2026-07-30,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,34.1647,11.235
+2026-07-31,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,34.1647,0.0
+2026-08-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-04,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-05,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-06,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-07,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-08,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-09,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-10,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-11,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-12,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-13,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-14,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-15,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-16,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-17,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
+2026-08-18,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,17.0851,0.0
 2019-01-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",,USD/barrel,D,FRED,,,
 2019-01-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.31,USD/barrel,D,FRED,,,
 2019-01-03,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.92,USD/barrel,D,FRED,,,
@@ -58371,11 +58511,18 @@
 2026-08-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",86.16,USD/barrel,D,FRED,80.7053,25.9833,23.5623
 2026-08-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",86.16,USD/barrel,D,FRED,81.253,25.9833,23.5623
 2026-08-03,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,81.6607,19.8421,17.5391
-2026-08-04,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,82.0683,21.7288,17.5391
-2026-08-05,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,82.4803,23.8066,17.7586
-2026-08-06,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,82.828,25.3594,14.5813
-2026-08-07,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,83.0747,26.2866,9.9249
-2026-08-08,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,83.3683,26.2088,12.0437
-2026-08-09,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,83.6853,26.2088,13.1263
-2026-08-10,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,84.0023,26.2088,13.1263
-2026-08-11,US,us_wti,"WTI Crude Oil (Cushing, OK)",81.96,USD/barrel,D,FRED,84.3193,26.0341,13.1263
+2026-08-04,US,us_wti,"WTI Crude Oil (Cushing, OK)",77.33,USD/barrel,D,FRED,81.914,14.8522,10.8992
+2026-08-05,US,us_wti,"WTI Crude Oil (Cushing, OK)",76.78,USD/barrel,D,FRED,82.1533,15.9819,10.3161
+2026-08-06,US,us_wti,"WTI Crude Oil (Cushing, OK)",78.88,USD/barrel,D,FRED,82.3983,20.6485,10.2754
+2026-08-07,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.77,USD/barrel,D,FRED,82.572,22.9122,6.9877
+2026-08-08,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.77,USD/barrel,D,FRED,82.7927,22.8365,9.0499
+2026-08-09,US,us_wti,"WTI Crude Oil (Cushing, OK)",79.77,USD/barrel,D,FRED,83.0367,22.8365,10.1035
+2026-08-10,US,us_wti,"WTI Crude Oil (Cushing, OK)",83.76,USD/barrel,D,FRED,83.4137,28.9806,15.6108
+2026-08-11,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,83.8243,30.3552,17.0048
+2026-08-12,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.01,31.9994,7.0328
+2026-08-13,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.1543,33.1187,5.3829
+2026-08-14,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.289,30.4355,5.0043
+2026-08-15,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.447,32.91,5.9228
+2026-08-16,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.4917,32.91,1.6061
+2026-08-17,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.5363,32.91,1.6061
+2026-08-18,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.77,USD/barrel,D,FRED,84.581,31.406,1.6061
