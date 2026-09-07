@@ -11584,6 +11584,10 @@
 2026-07-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",97.9,p,M,ECOS
 2026-07-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.38,2020=100,M,ECOS
 2026-07-01,KR,kr_precip,일강수량(전국대표),26.52,mm,D,KMA
+2026-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS
+2026-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS
+2026-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS
+2026-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS
 2026-07-01,KR,kr_temp_avg,평균기온(전국대표),22.54,°C,D,KMA
 2026-07-01,KR,kr_temp_max,최고기온(전국대표),25.86,°C,D,KMA
 2026-07-01,US,us_corn,Global Price of Corn (사료비 proxy),213.1901539821428,USD/metric ton,M,FRED
@@ -11702,7 +11706,13 @@
 2026-07-31,KR,kr_temp_avg,평균기온(전국대표),30.2,°C,D,KMA
 2026-07-31,KR,kr_temp_max,최고기온(전국대표),35.1,°C,D,KMA
 2026-07-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",86.16,USD/barrel,D,FRED
+2026-08-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2026-08-01,KR,kr_ccsi,소비자심리지수(CCSI),104.5,p (장기평균=100),M,ECOS
+2026-08-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.39,2020=100,M,ECOS
+2026-08-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,142.91,2020=100,M,ECOS
+2026-08-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.27,2020=100,M,ECOS
+2026-08-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.57,2020=100,M,ECOS
+2026-08-01,KR,kr_cpi_total,소비자물가지수 — 총지수,120.05,2020=100,M,ECOS
 2026-08-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.4,p,M,ECOS
 2026-08-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-08-01,KR,kr_temp_avg,평균기온(전국대표),31.16,°C,D,KMA
@@ -11799,17 +11809,46 @@
 2026-08-26,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-08-26,KR,kr_temp_avg,평균기온(전국대표),29.64,°C,D,KMA
 2026-08-26,KR,kr_temp_max,최고기온(전국대표),34.62,°C,D,KMA
+2026-08-26,US,us_wti,"WTI Crude Oil (Cushing, OK)",83.46,USD/barrel,D,FRED
 2026-08-27,KR,kr_precip,일강수량(전국대표),10.72,mm,D,KMA
 2026-08-27,KR,kr_temp_avg,평균기온(전국대표),28.68,°C,D,KMA
 2026-08-27,KR,kr_temp_max,최고기온(전국대표),33.54,°C,D,KMA
+2026-08-27,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.81,USD/barrel,D,FRED
 2026-08-28,KR,kr_precip,일강수량(전국대표),58.54,mm,D,KMA
 2026-08-28,KR,kr_temp_avg,평균기온(전국대표),26.52,°C,D,KMA
 2026-08-28,KR,kr_temp_max,최고기온(전국대표),29.86,°C,D,KMA
+2026-08-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",84.57,USD/barrel,D,FRED
 2026-08-29,KR,kr_precip,일강수량(전국대표),7.96,mm,D,KMA
 2026-08-29,KR,kr_temp_avg,평균기온(전국대표),26.98,°C,D,KMA
 2026-08-29,KR,kr_temp_max,최고기온(전국대표),30.7,°C,D,KMA
 2026-08-30,KR,kr_precip,일강수량(전국대표),25.78,mm,D,KMA
 2026-08-30,KR,kr_temp_avg,평균기온(전국대표),26.68,°C,D,KMA
 2026-08-30,KR,kr_temp_max,최고기온(전국대표),31.2,°C,D,KMA
-2026-08-31,KR,kr_precip,일강수량(전국대표),9.3,mm,D,KMA
-2026-08-31,KR,kr_temp_max,최고기온(전국대표),26.52,°C,D,KMA
+2026-08-31,KR,kr_precip,일강수량(전국대표),25.98,mm,D,KMA
+2026-08-31,KR,kr_temp_avg,평균기온(전국대표),26.38,°C,D,KMA
+2026-08-31,KR,kr_temp_max,최고기온(전국대표),29.26,°C,D,KMA
+2026-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",87.03,USD/barrel,D,FRED
+2026-09-01,KR,kr_precip,일강수량(전국대표),4.74,mm,D,KMA
+2026-09-01,KR,kr_temp_avg,평균기온(전국대표),26.58,°C,D,KMA
+2026-09-01,KR,kr_temp_max,최고기온(전국대표),30.84,°C,D,KMA
+2026-09-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",91.48,USD/barrel,D,FRED
+2026-09-02,KR,kr_precip,일강수량(전국대표),0.1,mm,D,KMA
+2026-09-02,KR,kr_temp_avg,평균기온(전국대표),26.58,°C,D,KMA
+2026-09-02,KR,kr_temp_max,최고기온(전국대표),30.86,°C,D,KMA
+2026-09-03,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA
+2026-09-03,KR,kr_temp_avg,평균기온(전국대표),26.64,°C,D,KMA
+2026-09-03,KR,kr_temp_max,최고기온(전국대표),31.0,°C,D,KMA
+2026-09-04,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-09-04,KR,kr_temp_avg,평균기온(전국대표),25.46,°C,D,KMA
+2026-09-04,KR,kr_temp_max,최고기온(전국대표),29.56,°C,D,KMA
+2026-09-05,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-09-05,KR,kr_temp_avg,평균기온(전국대표),24.52,°C,D,KMA
+2026-09-05,KR,kr_temp_max,최고기온(전국대표),29.32,°C,D,KMA
+2026-09-06,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-09-06,KR,kr_temp_avg,평균기온(전국대표),24.48,°C,D,KMA
+2026-09-06,KR,kr_temp_max,최고기온(전국대표),29.3,°C,D,KMA
+2026-09-07,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-09-07,KR,kr_temp_avg,평균기온(전국대표),24.26,°C,D,KMA
+2026-09-07,KR,kr_temp_max,최고기온(전국대표),29.8,°C,D,KMA
+2026-09-08,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-09-08,KR,kr_temp_max,최고기온(전국대표),22.32,°C,D,KMA
