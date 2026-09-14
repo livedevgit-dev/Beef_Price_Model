@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-09-15 08:05
+> 마지막 갱신: 2026-09-15 08:06
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -993,9 +993,9 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 데이터 | object | 미트박스 시세 | USDA 부위시세 |
 | 소스 | object | 미트박스 | USDA |
 | 주기 | object | 일 | 일 |
-| 최신데이터 | object | 2026-09-14 | 2026-09-04 |
-| 지연(일) | int64 | 0 | 10 |
-| 상태 | object | 최신 | 지연 |
+| 최신데이터 | object | 2026-09-15 | 2026-09-14 |
+| 지연(일) | int64 | 0 | 1 |
+| 상태 | object | 최신 | 최신 |
 
 #### `fas_supply_signal.csv`
 - **총 행(Row) 수**: 약 93행
