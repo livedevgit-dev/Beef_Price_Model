@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-09-23 08:04
+> 마지막 갱신: 2026-09-24 11:44
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -280,7 +280,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | head_count | int64 | 678 | 721 |
 
 #### `kamis_hanwoo_raw.csv`
-- **총 행(Row) 수**: 약 84690행
+- **총 행(Row) 수**: 약 84720행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -296,7 +296,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | price | float64 | nan | nan |
 
 #### `kamis_pork_raw.csv`
-- **총 행(Row) 수**: 약 28230행
+- **총 행(Row) 수**: 약 28240행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -312,7 +312,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | price | float64 | nan | nan |
 
 #### `macro_indicators_raw.csv`
-- **총 행(Row) 수**: 약 11902행
+- **총 행(Row) 수**: 약 11906행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -739,7 +739,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | head_count | int64 | 678 | 721 |
 
 #### `macro_indicators_daily.csv`
-- **총 행(Row) 수**: 약 59262행
+- **총 행(Row) 수**: 약 59283행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -756,7 +756,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | mom_pct | float64 | nan | nan |
 
 #### `master_price_data.csv`
-- **총 행(Row) 수**: 약 66875행
+- **총 행(Row) 수**: 약 66980행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -782,7 +782,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | marketPrice | float64 | nan | nan |
 
 #### `master_price_data_backup_full.csv`
-- **총 행(Row) 수**: 약 66716행
+- **총 행(Row) 수**: 약 66875행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -948,7 +948,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | n_obs | int64 | 4 | 6 |
 
 #### `usda_plate_usd_kg.csv`
-- **총 행(Row) 수**: 약 1966행
+- **총 행(Row) 수**: 약 1967행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -971,7 +971,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 ### 폴더: `2_dashboard/`
 
 #### `dashboard_ready_data.csv`
-- **총 행(Row) 수**: 약 74206행
+- **총 행(Row) 수**: 약 74260행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -993,7 +993,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 데이터 | object | 미트박스 시세 | USDA 부위시세 |
 | 소스 | object | 미트박스 | USDA |
 | 주기 | object | 일 | 일 |
-| 최신데이터 | object | 2026-09-22 | 2026-09-21 |
+| 최신데이터 | object | 2026-09-23 | 2026-09-22 |
 | 지연(일) | int64 | 0 | 1 |
 | 상태 | object | 최신 | 최신 |
 
@@ -1011,7 +1011,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | note | object | 정상 | 정상 |
 
 #### `hanwoo_dashboard_ready.csv`
-- **총 행(Row) 수**: 약 77319행
+- **총 행(Row) 수**: 약 77349행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -1031,7 +1031,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | ma30 | float64 | nan | nan |
 
 #### `macro_dashboard_ready.csv`
-- **총 행(Row) 수**: 약 2822행
+- **총 행(Row) 수**: 약 2823행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -1085,9 +1085,9 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | part | object | 황제늑간 | 척리블렛 |
-| n_days | int64 | 572 | 553 |
+| n_days | int64 | 572 | 554 |
 | coverage_pct | int64 | 94 | 91 |
-| recent_days | int64 | 54 | 36 |
+| recent_days | int64 | 53 | 36 |
 | max_gap | int64 | 17 | 56 |
 | start | object | 2025-01-22 | 2025-01-23 |
 | tier | int64 | 0 | 0 |
@@ -1119,10 +1119,10 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 |---|---|---|---|
 | part | object | 차돌박이 | 앞/척갈비 |
 | tier | int64 | 1 | 1 |
-| current_price | int64 | 22119 | 15398 |
+| current_price | int64 | 22287 | 15410 |
 | pct_rank | int64 | 98 | 97 |
-| momentum_30d | float64 | 10.5 | 3.7 |
+| momentum_30d | float64 | 10.7 | 3.6 |
 | signal | object | 매도후보(고평가) | 매도후보(고평가) |
-| n_obs | int64 | 608 | 608 |
+| n_obs | int64 | 610 | 610 |
 
 <!-- AUTO-GENERATED-SCHEMA:END -->
