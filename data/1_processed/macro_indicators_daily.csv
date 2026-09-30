@@ -2828,6 +2828,7 @@
 2026-09-27,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2026-09-28,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2026-09-29,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
+2026-09-30,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2019-01-01,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-02,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-03,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
@@ -5657,6 +5658,7 @@
 2026-09-27,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS,106.39,-3.0909,2.0096
 2026-09-28,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS,106.46,-3.0909,2.0096
 2026-09-29,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS,106.53,-3.0909,2.0096
+2026-09-30,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS,106.6,-3.0909,2.0096
 2019-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,,,
@@ -8486,6 +8488,7 @@
 2026-09-27,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.39,2020=100,M,ECOS,109.39,1.6258,0.0
 2026-09-28,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.39,2020=100,M,ECOS,109.39,1.6258,0.0
 2026-09-29,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.39,2020=100,M,ECOS,109.39,1.6258,0.0
+2026-09-30,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,109.39,2020=100,M,ECOS,109.39,1.6258,0.0
 2019-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,,,
@@ -11315,6 +11318,7 @@
 2026-09-27,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,142.91,2020=100,M,ECOS,142.91,5.5777,0.0
 2026-09-28,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,142.91,2020=100,M,ECOS,142.91,5.5777,0.0
 2026-09-29,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,142.91,2020=100,M,ECOS,142.91,5.5777,0.0
+2026-09-30,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,142.91,2020=100,M,ECOS,142.91,5.5777,0.0
 2019-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,,,
@@ -14144,6 +14148,7 @@
 2026-09-27,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.27,2020=100,M,ECOS,128.27,-0.427,0.0
 2026-09-28,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.27,2020=100,M,ECOS,128.27,-0.427,0.0
 2026-09-29,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.27,2020=100,M,ECOS,128.27,-0.427,0.0
+2026-09-30,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,128.27,2020=100,M,ECOS,128.27,-0.427,0.0
 2019-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,,,
@@ -16973,6 +16978,7 @@
 2026-09-27,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.57,2020=100,M,ECOS,133.57,-2.0389,0.0
 2026-09-28,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.57,2020=100,M,ECOS,133.57,-2.0389,0.0
 2026-09-29,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.57,2020=100,M,ECOS,133.57,-2.0389,0.0
+2026-09-30,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,133.57,2020=100,M,ECOS,133.57,-2.0389,0.0
 2019-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,,,
@@ -19802,6 +19808,7 @@
 2026-09-27,KR,kr_cpi_total,소비자물가지수 — 총지수,120.05,2020=100,M,ECOS,120.05,2.5542,0.0
 2026-09-28,KR,kr_cpi_total,소비자물가지수 — 총지수,120.05,2020=100,M,ECOS,120.05,2.5542,0.0
 2026-09-29,KR,kr_cpi_total,소비자물가지수 — 총지수,120.05,2020=100,M,ECOS,120.05,2.5542,0.0
+2026-09-30,KR,kr_cpi_total,소비자물가지수 — 총지수,120.05,2020=100,M,ECOS,120.05,2.5542,0.0
 2019-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-02,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-03,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
@@ -22631,6 +22638,7 @@
 2026-09-27,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.9,p,M,ECOS,99.85,8.9422,0.503
 2026-09-28,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.9,p,M,ECOS,99.8667,8.9422,0.503
 2026-09-29,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.9,p,M,ECOS,99.8833,8.9422,0.503
+2026-09-30,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.9,p,M,ECOS,99.9,8.9422,0.503
 2019-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
@@ -25460,6 +25468,7 @@
 2026-09-27,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.73,2020=100,M,ECOS,127.73,2.0615,0.0
 2026-09-28,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.73,2020=100,M,ECOS,127.73,2.0615,0.0
 2026-09-29,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.73,2020=100,M,ECOS,127.73,2.0615,0.0
+2026-09-30,KR,kr_ppi_food,생산자물가지수 — 음식료품,127.73,2020=100,M,ECOS,127.73,2.0615,0.0
 2019-01-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA,,,
 2019-01-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
 2019-01-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
@@ -28288,7 +28297,8 @@
 2026-09-26,KR,kr_precip,일강수량(전국대표),10.3,mm,D,KMA,4.6353,inf,-3.9179
 2026-09-27,KR,kr_precip,일강수량(전국대표),3.62,mm,D,KMA,2.8047,inf,-93.8162
 2026-09-28,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,2.5393,-100.0,-100.0
-2026-09-29,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,1.68,,-100.0
+2026-09-29,KR,kr_precip,일강수량(전국대표),0.2,mm,D,KMA,1.6867,inf,-99.2242
+2026-09-30,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,0.8207,,-100.0
 2019-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
@@ -31118,6 +31128,7 @@
 2026-09-27,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS,102.2,0.8885,0.0
 2026-09-28,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS,102.2,0.8885,0.0
 2026-09-29,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS,102.2,0.8885,0.0
+2026-09-30,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS,102.2,0.8885,0.0
 2019-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
@@ -33947,6 +33958,7 @@
 2026-09-27,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS,142.6,6.6567,0.0
 2026-09-28,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS,142.6,6.6567,0.0
 2026-09-29,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS,142.6,6.6567,0.0
+2026-09-30,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS,142.6,6.6567,0.0
 2019-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
@@ -36776,6 +36788,7 @@
 2026-09-27,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS,83.3,-6.4045,0.0
 2026-09-28,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS,83.3,-6.4045,0.0
 2026-09-29,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS,83.3,-6.4045,0.0
+2026-09-30,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS,83.3,-6.4045,0.0
 2019-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
@@ -39605,6 +39618,7 @@
 2026-09-27,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS,113.4,-0.9607,0.0
 2026-09-28,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS,113.4,-0.9607,0.0
 2026-09-29,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS,113.4,-0.9607,0.0
+2026-09-30,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS,113.4,-0.9607,0.0
 2019-01-01,KR,kr_temp_avg,평균기온(전국대표),-1.46,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_avg,평균기온(전국대표),-1.52,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_avg,평균기온(전국대표),-0.54,°C,D,KMA,,,
@@ -42433,7 +42447,8 @@
 2026-09-26,KR,kr_temp_avg,평균기온(전국대표),20.26,°C,D,KMA,23.9187,-11.9896,-29.3584
 2026-09-27,KR,kr_temp_avg,평균기온(전국대표),22.06,°C,D,KMA,23.77,-5.9676,-16.8175
 2026-09-28,KR,kr_temp_avg,평균기온(전국대표),21.94,°C,D,KMA,23.602,1.3863,-18.6805
-2026-09-29,KR,kr_temp_avg,평균기온(전국대표),21.94,°C,D,KMA,23.444,4.5758,-17.7661
+2026-09-29,KR,kr_temp_avg,평균기온(전국대표),21.32,°C,D,KMA,23.4233,1.6206,-20.09
+2026-09-30,KR,kr_temp_avg,평균기온(전국대표),21.32,°C,D,KMA,23.2547,4.0,-19.1812
 2019-01-01,KR,kr_temp_max,최고기온(전국대표),2.28,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_max,최고기온(전국대표),3.58,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_max,최고기온(전국대표),5.7,°C,D,KMA,,,
@@ -45262,7 +45277,8 @@
 2026-09-26,KR,kr_temp_max,최고기온(전국대표),23.58,°C,D,KMA,28.48,-15.7255,-29.6959
 2026-09-27,KR,kr_temp_max,최고기온(전국대표),26.58,°C,D,KMA,28.3707,-5.4093,-10.9846
 2026-09-28,KR,kr_temp_max,최고기온(전국대표),26.56,°C,D,KMA,28.2327,9.571,-13.4853
-2026-09-29,KR,kr_temp_max,최고기온(전국대표),19.8,°C,D,KMA,27.8527,-22.6562,-36.5385
+2026-09-29,KR,kr_temp_max,최고기온(전국대표),26.38,°C,D,KMA,28.072,3.0469,-15.4487
+2026-09-30,KR,kr_temp_max,최고기온(전국대표),20.0,°C,D,KMA,27.7633,-21.3218,-31.6473
 2019-01-01,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_corn,Global Price of Corn (사료비 proxy),166.8462,USD/metric ton,M,FRED,,,
@@ -48092,6 +48108,7 @@
 2026-09-27,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,8.6896,0.0
 2026-09-28,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,8.6896,0.0
 2026-09-29,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,8.6896,0.0
+2026-09-30,US,us_corn,Global Price of Corn (사료비 proxy),213.1902,USD/metric ton,M,FRED,213.1902,8.6896,0.0
 2019-01-01,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-02,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-03,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
@@ -50921,6 +50938,7 @@
 2026-09-27,US,us_food_ppi,PPI: Processed Foods and Feeds,277.528,Index 1982=100,M,FRED,277.528,-0.5593,0.0
 2026-09-28,US,us_food_ppi,PPI: Processed Foods and Feeds,277.528,Index 1982=100,M,FRED,277.528,-0.5593,0.0
 2026-09-29,US,us_food_ppi,PPI: Processed Foods and Feeds,277.528,Index 1982=100,M,FRED,277.528,-0.5593,0.0
+2026-09-30,US,us_food_ppi,PPI: Processed Foods and Feeds,277.528,Index 1982=100,M,FRED,277.528,-0.5593,0.0
 2019-01-01,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
@@ -53750,6 +53768,7 @@
 2026-09-27,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,20.0438,0.0
 2026-09-28,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,20.0438,0.0
 2026-09-29,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,20.0438,0.0
+2026-09-30,US,us_soybean,Global Price of Soybeans (사료비),442.4506,USD/metric ton,M,FRED,442.4506,20.0438,0.0
 2019-01-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
@@ -56579,6 +56598,7 @@
 2026-09-27,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,1.135,0.0
 2026-09-28,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,1.135,0.0
 2026-09-29,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,1.135,0.0
+2026-09-30,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329,USD/metric ton,M,FRED,329.4329,1.135,0.0
 2019-01-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",,USD/barrel,D,FRED,,,
 2019-01-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.31,USD/barrel,D,FRED,,,
 2019-01-03,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.92,USD/barrel,D,FRED,,,
@@ -59408,3 +59428,4 @@
 2026-09-27,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.41,USD/barrel,D,FRED,96.5993,44.9774,14.0002
 2026-09-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.41,USD/barrel,D,FRED,96.994,44.9774,14.0002
 2026-09-29,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.41,USD/barrel,D,FRED,97.3887,50.0078,14.0002
+2026-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.41,USD/barrel,D,FRED,97.7013,52.6199,10.7779
