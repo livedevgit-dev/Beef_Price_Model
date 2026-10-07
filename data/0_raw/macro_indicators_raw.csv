@@ -11836,6 +11836,11 @@
 2026-08-31,US,us_wti,"WTI Crude Oil (Cushing, OK)",87.03,USD/barrel,D,FRED
 2026-09-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2026-09-01,KR,kr_ccsi,소비자심리지수(CCSI),106.6,p (장기평균=100),M,ECOS
+2026-09-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,114.71,2020=100,M,ECOS
+2026-09-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,145.16,2020=100,M,ECOS
+2026-09-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,130.09,2020=100,M,ECOS
+2026-09-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.92,2020=100,M,ECOS
+2026-09-01,KR,kr_cpi_total,소비자물가지수 — 총지수,120.43,2020=100,M,ECOS
 2026-09-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",99.9,p,M,ECOS
 2026-09-01,KR,kr_precip,일강수량(전국대표),4.74,mm,D,KMA
 2026-09-01,KR,kr_temp_avg,평균기온(전국대표),26.58,°C,D,KMA
@@ -11947,4 +11952,19 @@
 2026-10-01,KR,kr_temp_avg,평균기온(전국대표),19.38,°C,D,KMA
 2026-10-01,KR,kr_temp_max,최고기온(전국대표),23.88,°C,D,KMA
 2026-10-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
-2026-10-02,KR,kr_temp_max,최고기온(전국대표),16.08,°C,D,KMA
+2026-10-02,KR,kr_temp_avg,평균기온(전국대표),17.5,°C,D,KMA
+2026-10-02,KR,kr_temp_max,최고기온(전국대표),24.16,°C,D,KMA
+2026-10-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-03,KR,kr_temp_avg,평균기온(전국대표),18.12,°C,D,KMA
+2026-10-03,KR,kr_temp_max,최고기온(전국대표),24.18,°C,D,KMA
+2026-10-04,KR,kr_precip,일강수량(전국대표),0.48,mm,D,KMA
+2026-10-04,KR,kr_temp_avg,평균기온(전국대표),20.54,°C,D,KMA
+2026-10-04,KR,kr_temp_max,최고기온(전국대표),26.52,°C,D,KMA
+2026-10-05,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
+2026-10-05,KR,kr_temp_avg,평균기온(전국대표),18.4,°C,D,KMA
+2026-10-05,KR,kr_temp_max,최고기온(전국대표),23.04,°C,D,KMA
+2026-10-06,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-06,KR,kr_temp_avg,평균기온(전국대표),16.96,°C,D,KMA
+2026-10-06,KR,kr_temp_max,최고기온(전국대표),23.14,°C,D,KMA
+2026-10-07,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-07,KR,kr_temp_max,최고기온(전국대표),14.82,°C,D,KMA
