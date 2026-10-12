@@ -11948,12 +11948,15 @@
 2026-09-30,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-09-30,KR,kr_temp_avg,평균기온(전국대표),22.34,°C,D,KMA
 2026-09-30,KR,kr_temp_max,최고기온(전국대표),28.7,°C,D,KMA
+2026-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",97.18,USD/barrel,D,FRED
 2026-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-01,KR,kr_temp_avg,평균기온(전국대표),19.38,°C,D,KMA
 2026-10-01,KR,kr_temp_max,최고기온(전국대표),23.88,°C,D,KMA
+2026-10-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",99.77,USD/barrel,D,FRED
 2026-10-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-02,KR,kr_temp_avg,평균기온(전국대표),17.5,°C,D,KMA
 2026-10-02,KR,kr_temp_max,최고기온(전국대표),24.16,°C,D,KMA
+2026-10-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",97.89,USD/barrel,D,FRED
 2026-10-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-03,KR,kr_temp_avg,평균기온(전국대표),18.12,°C,D,KMA
 2026-10-03,KR,kr_temp_max,최고기온(전국대표),24.18,°C,D,KMA
@@ -11963,8 +11966,25 @@
 2026-10-05,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
 2026-10-05,KR,kr_temp_avg,평균기온(전국대표),18.4,°C,D,KMA
 2026-10-05,KR,kr_temp_max,최고기온(전국대표),23.04,°C,D,KMA
+2026-10-05,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.13,USD/barrel,D,FRED
 2026-10-06,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-06,KR,kr_temp_avg,평균기온(전국대표),16.96,°C,D,KMA
 2026-10-06,KR,kr_temp_max,최고기온(전국대표),23.14,°C,D,KMA
+2026-10-06,US,us_wti,"WTI Crude Oil (Cushing, OK)",96.24,USD/barrel,D,FRED
 2026-10-07,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
-2026-10-07,KR,kr_temp_max,최고기온(전국대표),14.82,°C,D,KMA
+2026-10-07,KR,kr_temp_avg,평균기온(전국대표),17.7,°C,D,KMA
+2026-10-07,KR,kr_temp_max,최고기온(전국대표),25.06,°C,D,KMA
+2026-10-08,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-08,KR,kr_temp_avg,평균기온(전국대표),18.46,°C,D,KMA
+2026-10-08,KR,kr_temp_max,최고기온(전국대표),26.4,°C,D,KMA
+2026-10-09,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-09,KR,kr_temp_avg,평균기온(전국대표),19.22,°C,D,KMA
+2026-10-09,KR,kr_temp_max,최고기온(전국대표),26.9,°C,D,KMA
+2026-10-10,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-10,KR,kr_temp_avg,평균기온(전국대표),21.12,°C,D,KMA
+2026-10-10,KR,kr_temp_max,최고기온(전국대표),28.54,°C,D,KMA
+2026-10-11,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-11,KR,kr_temp_avg,평균기온(전국대표),22.58,°C,D,KMA
+2026-10-11,KR,kr_temp_max,최고기온(전국대표),29.12,°C,D,KMA
+2026-10-12,KR,kr_precip,일강수량(전국대표),0.08,mm,D,KMA
+2026-10-12,KR,kr_temp_max,최고기온(전국대표),29.82,°C,D,KMA
