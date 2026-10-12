@@ -120,9 +120,24 @@ def dismiss_meatbox_overlays(driver, rounds: int = 3, send_escape: bool = True) 
 
 
 MIN_EXPECTED_PAGES = 20
+# 목록이 실제로 짧아진 날(페이지네이션상 마지막 페이지 도달)은 이 페이지 수 이상이면 정상 처리
+# (2026-10-12: 평소 21~24페이지 → 사이트 목록 19페이지로 축소되어 정상 수집이 실패 처리됨)
+MIN_PAGES_AT_LIST_END = 10
 # 20페이지 미만 구간에서만: 테이블 파싱 실패·다음페이지 미탐지 시 최대 대기(초)
 STALL_MAX_SEC = 30
 POLL_INTERVAL_SEC = 1.0
+
+
+def _is_last_page(driver, current_page: int) -> bool:
+    """페이지네이션에 현재보다 큰 번호나 '>' 링크가 없으면 목록의 실제 마지막 페이지."""
+    for a in driver.find_elements(By.XPATH, "//a"):
+        try:
+            t = a.text.strip()
+        except StaleElementReferenceException:
+            continue
+        if t == ">" or (t.isdigit() and len(t) <= 3 and int(t) > current_page):
+            return False
+    return True
 
 
 def _parse_meatbox_tables_from_html(html: str):
@@ -201,7 +216,8 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
     raw_dfs = []
     current_page = 1
     crawled_pages = 0
-    
+    reached_list_end = False
+
     try:
         wait = WebDriverWait(driver, 20)
 
@@ -282,14 +298,21 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
             if moved:
                 current_page += 1
             else:
+                reached_list_end = _is_last_page(driver, current_page)
                 break
-            
+
     except Exception as e:
         print(f"\n[에러] 크롤링 중단: {e}")
     finally:
         driver.quit()
-        
-    if crawled_pages < min_expected_pages:
+
+    if crawled_pages < min_expected_pages and reached_list_end and crawled_pages >= MIN_PAGES_AT_LIST_END:
+        print(
+            f"\n[안내] 목록 마지막 페이지({crawled_pages})까지 수집 — 기대치({min_expected_pages}) 미만이지만 "
+            "사이트 목록이 짧아진 것으로 보고 정상 처리합니다.",
+            flush=True,
+        )
+    elif crawled_pages < min_expected_pages:
         print(
             f"\n[오류] 페이지 수집 부족: {crawled_pages}페이지 "
             f"(최소 기대 {min_expected_pages}페이지)",

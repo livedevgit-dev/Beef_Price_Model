@@ -97,7 +97,7 @@ def collect_status() -> pd.DataFrame:
     # 일별 (영업일 기준, 5일 이내면 최신)
     add("미트박스 시세", "미트박스", "일", _maxdate_csv(DASHBOARD_READY_CSV, "date"), 5)
     add("USDA 부위시세", "USDA", "일", _maxdate_csv(USDA_BEEF_HISTORY_CSV, "report_date", fmt="%m/%d/%Y"), 7)
-    add("환율(USD/KRW)", "네이버", "일", _maxdate_xlsx(EXCHANGE_RATE_XLSX, "Date"), 5)
+    add("환율(USD/KRW)", "ECOS", "일", _maxdate_xlsx(EXCHANGE_RATE_XLSX, "Date"), 5)
     add("한우 경락가(EKAPE)", "EKAPE", "일", _maxdate_csv(HAN_AUCTION_RAW_CSV, "auction_end_ymd", fmt="%Y%m%d"), 7)
     add("한우 도/소매(KAMIS)", "KAMIS", "일", _maxdate_csv(KAMIS_HANWOO_RAW_CSV, "reg_date"), 7)
     add("거시-미국(FRED)", "FRED", "일/월", _macro_max(["us_wti", "us_corn", "us_food_ppi"]), 40)

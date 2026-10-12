@@ -39,7 +39,7 @@ def build_features() -> pd.DataFrame:
     # 환율
     try:
         ex = pd.read_excel(EXCHANGE_RATE_XLSX); ex["m"]=_m(ex["Date"])
-        feat["fx"] = ex.groupby("m")["Close"].mean()
+        feat["fx"] = pd.to_numeric(ex["Close"], errors="coerce").groupby(ex["m"]).mean()
     except Exception as e: print("  [skip] fx:", e)
     # 수입/재고 양지
     try:

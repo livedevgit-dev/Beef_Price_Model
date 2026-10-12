@@ -79,29 +79,42 @@ def main():
     print(f"  마지막 월간ML  : {last_ml or '없음'}")
     print(f"  판단 → 전체갱신: {'예' if full_due else '아니오(일일만)'} / 월간수입: {'예' if import_due else '아니오'} / 월간ML: {'예' if ml_due else '아니오'}")
 
+    failed = []   # 실패 단계 — 종료 코드로 노출해 작업 스케줄러 '마지막 실행 결과'에 드러나게 함
+
     # 1) 일일 또는 전체
     if full_due:
         rc = _run("run_daily_update.py", ["--full"], "전체 갱신 (주기 도래 — 데이터+거시+예측+경보 전부)")
         if rc == 0 and not DRY:
             _mark("last_full.txt")
             _mark("last_import.txt")   # --full은 식약처 수입 포함 → 월간 수입도 충족
+        elif rc != 0:
+            failed.append("전체 갱신")
     else:
-        _run("run_daily_update.py", [], "일일 갱신 (미트박스·한우)")
+        if _run("run_daily_update.py", [], "일일 갱신 (미트박스·한우)") != 0:
+            failed.append("일일 갱신")
 
     # 1-2) 월초 수입 갱신 (--full이 안 돈 경우에만 — 전월 수입 KMTA→식약처 보완)
     if import_due and not full_due:
         rc = _run("run_daily_update.py", ["--monthly"], "월간 수입 갱신 (전월 — KMTA→식약처 보완)")
         if rc == 0 and not DRY:
             _mark("last_import.txt")
+        elif rc != 0:
+            failed.append("월간 수입 갱신")
 
     # 2) 월간 ML·리포트
     if ml_due:
         rc = _run("run_ml.py", [], "월간 ML·시장리포트 (월말 — 예측/랭킹/리포트 갱신)")
         if rc == 0 and not DRY:
             _mark("last_ml.txt")
+        elif rc != 0:
+            failed.append("월간 ML")
 
-    print(f"\n{'='*64}\n[완료] 스마트 자동실행 종료. 상세는 위 로그·현황판 참고.\n{'='*64}")
+    print(f"\n{'='*64}\n[완료] 스마트 자동실행 종료. 상세는 위 로그·현황판 참고.")
+    if failed:
+        print(f"[!] 실패 포함: {', '.join(failed)} — 위 로그의 [FAIL] 항목 확인 (종료 코드 1)")
+    print("=" * 64)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

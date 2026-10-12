@@ -5,4 +5,5 @@ Dim shell, root
 Set shell = CreateObject("WScript.Shell")
 root = Left(WScript.ScriptFullName, InStrRev(WScript.ScriptFullName, "\"))
 ' 0 = hidden window, True = wait so the task state/time limit tracks the pipeline
-shell.Run """" & root & "Beef_Daily_Update_Task.bat""", 0, True
+' Pass the bat exit code through so Task Scheduler's Last Run Result shows failures
+WScript.Quit shell.Run("""" & root & "Beef_Daily_Update_Task.bat""", 0, True)
