@@ -11957,6 +11957,7 @@
 2026-09-30,KR,kr_temp_avg,평균기온(전국대표),22.34,°C,D,KMA
 2026-09-30,KR,kr_temp_max,최고기온(전국대표),28.7,°C,D,KMA
 2026-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",97.18,USD/barrel,D,FRED
+2026-10-01,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS
 2026-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-01,KR,kr_temp_avg,평균기온(전국대표),19.38,°C,D,KMA
 2026-10-01,KR,kr_temp_max,최고기온(전국대표),23.88,°C,D,KMA
@@ -12049,5 +12050,8 @@
 2026-10-26,KR,kr_precip,일강수량(전국대표),3.98,mm,D,KMA
 2026-10-26,KR,kr_temp_avg,평균기온(전국대표),17.72,°C,D,KMA
 2026-10-26,KR,kr_temp_max,최고기온(전국대표),22.28,°C,D,KMA
-2026-10-27,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA
-2026-10-27,KR,kr_temp_max,최고기온(전국대표),16.18,°C,D,KMA
+2026-10-27,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-27,KR,kr_temp_avg,평균기온(전국대표),13.88,°C,D,KMA
+2026-10-27,KR,kr_temp_max,최고기온(전국대표),18.32,°C,D,KMA
+2026-10-28,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-28,KR,kr_temp_max,최고기온(전국대표),9.32,°C,D,KMA
