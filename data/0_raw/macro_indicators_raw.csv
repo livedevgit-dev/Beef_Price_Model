@@ -11958,6 +11958,7 @@
 2026-09-30,KR,kr_temp_max,최고기온(전국대표),28.7,°C,D,KMA
 2026-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",97.18,USD/barrel,D,FRED
 2026-10-01,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS
+2026-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS
 2026-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-01,KR,kr_temp_avg,평균기온(전국대표),19.38,°C,D,KMA
 2026-10-01,KR,kr_temp_max,최고기온(전국대표),23.88,°C,D,KMA
@@ -12035,12 +12036,15 @@
 2026-10-21,KR,kr_precip,일강수량(전국대표),1.1,mm,D,KMA
 2026-10-21,KR,kr_temp_avg,평균기온(전국대표),14.72,°C,D,KMA
 2026-10-21,KR,kr_temp_max,최고기온(전국대표),19.5,°C,D,KMA
+2026-10-21,US,us_wti,"WTI Crude Oil (Cushing, OK)",103.95,USD/barrel,D,FRED
 2026-10-22,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-22,KR,kr_temp_avg,평균기온(전국대표),11.64,°C,D,KMA
 2026-10-22,KR,kr_temp_max,최고기온(전국대표),17.88,°C,D,KMA
+2026-10-22,US,us_wti,"WTI Crude Oil (Cushing, OK)",104.27,USD/barrel,D,FRED
 2026-10-23,KR,kr_precip,일강수량(전국대표),2.14,mm,D,KMA
 2026-10-23,KR,kr_temp_avg,평균기온(전국대표),15.46,°C,D,KMA
 2026-10-23,KR,kr_temp_max,최고기온(전국대표),22.22,°C,D,KMA
+2026-10-23,US,us_wti,"WTI Crude Oil (Cushing, OK)",109.72,USD/barrel,D,FRED
 2026-10-24,KR,kr_precip,일강수량(전국대표),34.06,mm,D,KMA
 2026-10-24,KR,kr_temp_avg,평균기온(전국대표),16.42,°C,D,KMA
 2026-10-24,KR,kr_temp_max,최고기온(전국대표),17.84,°C,D,KMA
@@ -12050,8 +12054,13 @@
 2026-10-26,KR,kr_precip,일강수량(전국대표),3.98,mm,D,KMA
 2026-10-26,KR,kr_temp_avg,평균기온(전국대표),17.72,°C,D,KMA
 2026-10-26,KR,kr_temp_max,최고기온(전국대표),22.28,°C,D,KMA
+2026-10-26,US,us_wti,"WTI Crude Oil (Cushing, OK)",105.25,USD/barrel,D,FRED
 2026-10-27,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-27,KR,kr_temp_avg,평균기온(전국대표),13.88,°C,D,KMA
 2026-10-27,KR,kr_temp_max,최고기온(전국대표),18.32,°C,D,KMA
+2026-10-27,US,us_wti,"WTI Crude Oil (Cushing, OK)",103.37,USD/barrel,D,FRED
 2026-10-28,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
-2026-10-28,KR,kr_temp_max,최고기온(전국대표),9.32,°C,D,KMA
+2026-10-28,KR,kr_temp_avg,평균기온(전국대표),9.78,°C,D,KMA
+2026-10-28,KR,kr_temp_max,최고기온(전국대표),16.38,°C,D,KMA
+2026-10-29,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-29,KR,kr_temp_max,최고기온(전국대표),7.48,°C,D,KMA
