@@ -12062,5 +12062,8 @@
 2026-10-28,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-28,KR,kr_temp_avg,평균기온(전국대표),9.78,°C,D,KMA
 2026-10-28,KR,kr_temp_max,최고기온(전국대표),16.38,°C,D,KMA
-2026-10-29,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
-2026-10-29,KR,kr_temp_max,최고기온(전국대표),7.48,°C,D,KMA
+2026-10-29,KR,kr_precip,일강수량(전국대표),1.16,mm,D,KMA
+2026-10-29,KR,kr_temp_avg,평균기온(전국대표),9.88,°C,D,KMA
+2026-10-29,KR,kr_temp_max,최고기온(전국대표),12.92,°C,D,KMA
+2026-10-30,KR,kr_precip,일강수량(전국대표),0.78,mm,D,KMA
+2026-10-30,KR,kr_temp_max,최고기온(전국대표),11.74,°C,D,KMA
