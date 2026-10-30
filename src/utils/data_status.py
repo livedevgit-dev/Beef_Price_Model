@@ -176,6 +176,19 @@ def collect_status() -> pd.DataFrame:
         _macro_stalest(["kr_retail_hypermarket", "kr_retail_cvs", "kr_retail_dept", "kr_service_food"]), 75)
     add("품목물가(쇠/돼지 CPI)", "ECOS", "월",
         _macro_stalest(["kr_cpi_beef_imp", "kr_cpi_beef_dom", "kr_cpi_pork"]), 45)
+    # 원가·물류비·외식 소비 (2026-10 추가)
+    add("환율(AUD/KRW)", "ECOS", "일", _macro_stalest(["kr_fx_aud"]), 7)
+    add("호주 생우가(EYCI·Heavy Steer)", "MLA", "일", _macro_stalest(["au_eyci", "au_heavy_steer"]), 7)
+    add("미국 경유(FRED)", "FRED", "주", _macro_stalest(["us_diesel"]), 14)
+    # IMF 소고기 국제가(익월 초)·미국 PPI(익월 중순) → 다음 발표 직전 최대 ~45일
+    add("수입원가(호주 소고기·미국 비육우·해상운임)", "FRED", "월",
+        _macro_stalest(["au_beef_price", "us_fed_steer", "us_ppi_ocean_freight"]), 50)
+    # 수입물가 익월 중순, CPI 익월 초, PPI 익월 ~20일 → 다음 발표 직전 최대 ~50일
+    add("수입물가-쇠고기(ECOS)", "ECOS", "월", _macro_stalest(["kr_impi_beef_krw", "kr_impi_beef_lc"]), 50)
+    add("물류비(경유·화물·냉동창고·외항)", "ECOS", "월",
+        _macro_stalest(["kr_cpi_diesel", "kr_ppi_road_freight", "kr_ppi_cold_storage", "kr_ppi_ocean_freight"]), 55)
+    add("외식물가(외식·쇠고기 외식)", "ECOS", "월", _macro_stalest(["kr_cpi_dineout", "kr_cpi_dineout_beef"]), 45)
+    add("음식료품 소매판매(ECOS)", "ECOS", "월", _macro_stalest(["kr_retail_food"]), 75)
     # 공급(외식 대량소비·대체재) — 돼지 도매가 (일)
     add("돼지 도매가(KAMIS)", "KAMIS", "일", _maxdate_csv(KAMIS_PORK_RAW_CSV, "reg_date"), 7)
 

@@ -11,6 +11,8 @@
        유지되는 것이 정상이므로 ffill 에 limit 을 두지 않음 (가격 ffill 과 다른 정책)
        일별 지표(freq=D)는 짧은 결측만 채운다: WTI 는 주말·휴장 대비 4일, 기상(KMA)은 2일까지만 ffill,
        기상은 마지막 관측일 이후로 연장하지 않는다. 채우지 못한 날은 행을 만들지 않는다.
+       주별 지표(freq=W, 예: 미국 경유 GASDESW 월요일 관측)는 다음 관측 전까지 7일 한도로 ffill (2026-10 추가).
+       호주 생우(MLA)는 거래일(월~목·금)만 저장되므로 일별 기본 한도(4일)로 주말·공휴일을 채운다.
     3. value, ma30, yoy_pct, mom_pct 산출 — 원 주기 기준 (2026-10 정합성 수정)
        - 월별 지표: 월 시계열에서 전월(mom)·전년동월(yoy) 대비를 계산한 뒤 일별로 펼침
          (예전 일별 shift(30)/shift(365) 는 31일에 mom=0, 3월 1일에 2개월 변화가 되는 오류가 있었음)
@@ -44,6 +46,8 @@ HISTORY_START = pd.Timestamp(2019, 1, 1)
 # 일별 지표 ffill 한도 (일). 기상은 짧은 결측만, 시장가격(WTI)은 주말·연휴까지.
 DAILY_FFILL_LIMIT = {"KMA": 2}
 DAILY_FFILL_LIMIT_DEFAULT = 4
+# 원 주기별 ffill 한도 (소스별 한도가 없을 때 적용) — 주별 지표는 다음 관측일 직전까지
+FREQ_FFILL_LIMIT = {"W": 7}
 # 일별 지표 yoy/mom 비교 시 1년/1개월 전 날짜에 관측이 없으면 직전 관측을 쓰되 허용 간격
 ASOF_TOLERANCE = pd.Timedelta(days=7)
 # 변화율(yoy/mom %)을 산출하지 않는 소스 — 기상(기온·강수량)은 % 변화가 무의미(0 분모·부호 전환)
@@ -114,8 +118,8 @@ def build_daily(df_raw: pd.DataFrame) -> pd.DataFrame:
             mom = mom_m.reindex(daily_idx).ffill()
             yoy = yoy_m.reindex(daily_idx).ffill()
         else:
-            # 일별: 짧은 결측만 ffill, 비교는 달력 기준 1개월/1년 전 관측(asof)
-            limit = DAILY_FFILL_LIMIT.get(source, DAILY_FFILL_LIMIT_DEFAULT)
+            # 일별·주별: 짧은 결측만 ffill, 비교는 달력 기준 1개월/1년 전 관측(asof, 7일 이내 직전 관측)
+            limit = DAILY_FFILL_LIMIT.get(source, FREQ_FFILL_LIMIT.get(freq, DAILY_FFILL_LIMIT_DEFAULT))
             last_obs = g.index.max()
             end = last_obs if source in DAILY_FFILL_LIMIT else max(last_obs, min(today, last_obs + pd.Timedelta(days=limit)))
             daily_idx = pd.date_range(start=start, end=end, freq="D")

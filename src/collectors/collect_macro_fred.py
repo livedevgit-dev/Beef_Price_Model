@@ -2,7 +2,7 @@
 [파일 정의서]
 - 파일명: collect_macro_fred.py
 - 역할: 수집
-- 대상: 미국 거시경제 지표 (옥수수·WTI 원유·Food PPI)
+- 대상: 미국 거시경제 지표 (옥수수·WTI 원유·Food PPI·비육우·경유·해상운임) + 호주/뉴질랜드 소고기 국제가격
 - 데이터 소스: FRED (Federal Reserve Bank of St. Louis) API
     https://api.stlouisfed.org/fred/series/observations
 - 수집/가공 주기: 일단위 — indicator_id별 기존 raw CSV max(date) 이후만 증분 수집
@@ -23,11 +23,23 @@
     us_soybean      = PSOYBUSDM (Global price of Soybeans, 월별, USD/metric ton, 1992~)  사료비
     us_soybean_meal = PSMEAUSDM (Global price of Soybean Meal, 월별, USD/metric ton)  대두박(사료 직접 투입재)
 
+  2026-10 추가 (series/search·series API 로 존재·관측 범위 검증, 2026-10-30):
+    au_beef_price        = PBEEFUSDM       (IMF Global price of Beef, 월별, US cents/lb, 2010-05~)
+                           IMF 정의: 호주·뉴질랜드산 냉동 정육(chuck·cow forequarters 85CL) CIF 미국항 가격
+                           → 호주산 수출 소고기 원가. country='AU' (산지 가격이므로)
+    us_fed_steer         = WPU013101       (PPI Farm Products: Slaughter Steers and Heifers, 월별, 1982=100)
+                           미국 비육우(fed steer·heifer) 생체가 — 미국산 소고기 원가의 뿌리.
+                           (WPS013101 은 2020-12 단종, WPU0131 은 암소·송아지 포함이라 제외)
+    us_diesel            = GASDESW        (EIA US Diesel Sales Price, 주별(월요일), USD/gallon)
+                           주별 원주기 그대로 저장 (freq='W') — 전처리에서 7일 한도 ffill
+    us_ppi_ocean_freight = PCU483111483111 (PPI Industry: Deep Sea Freight Transportation, 월별, Jun 1988=100)
+    (검토 후 제외: WPU013401 Feeder cattle — 2021-09 시작으로 짧음 / GASDESM — 주별 GASDESW 의 월평균, 중복)
+
 산출 컬럼(long format) — data/0_raw/macro_indicators_raw.csv:
     date, country, indicator_id, indicator_name, value, unit, freq, source
-    - country = 'US', source = 'FRED'
+    - country = 'US' (indicator 에 country 지정 시 그 값 — au_beef_price='AU'), source = 'FRED'
     - 월별 지표의 date 는 FRED 규약대로 해당 월 1일(YYYY-MM-01)로 통일
-    - 일별 지표(WTI)는 관측일 그대로
+    - 일별 지표(WTI)·주별 지표(경유)는 관측일 그대로
 """
 
 from __future__ import annotations
@@ -63,6 +75,7 @@ REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5                  # FRED 트래픽 보호
 REFETCH_MONTHS = 3                         # 월별 지표 재수집 개월 수 (잠정치·개정 반영)
 REFETCH_DAYS = 10                          # 일별 지표 재수집 일수
+REFETCH_DAYS_WEEKLY = 21                   # 주별 지표 재수집 일수 (최근 3주)
 
 COUNTRY = "US"
 SOURCE = "FRED"
@@ -105,6 +118,36 @@ FRED_INDICATORS = [
         "series_id": "PSMEAUSDM",
         "indicator_name": "Global Price of Soybean Meal (대두박, 사료 직접 투입재)",
         "unit": "USD/metric ton",
+        "freq": "M",
+    },
+    # ── 원가·물류비 (2026-10 추가) ────────────────────────────────────────
+    {
+        "indicator_id": "au_beef_price",
+        "series_id": "PBEEFUSDM",
+        "indicator_name": "IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국)",
+        "unit": "US cents/lb",
+        "freq": "M",
+        "country": "AU",
+    },
+    {
+        "indicator_id": "us_fed_steer",
+        "series_id": "WPU013101",
+        "indicator_name": "PPI: Slaughter Steers and Heifers (미국 비육우 생체가)",
+        "unit": "Index 1982=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "us_diesel",
+        "series_id": "GASDESW",
+        "indicator_name": "US Diesel Sales Price (EIA, 주별)",
+        "unit": "USD/gallon",
+        "freq": "W",
+    },
+    {
+        "indicator_id": "us_ppi_ocean_freight",
+        "series_id": "PCU483111483111",
+        "indicator_name": "PPI: Deep Sea Freight Transportation (해상 화물운임)",
+        "unit": "Index Jun 1988=100",
         "freq": "M",
     },
 ]
@@ -195,7 +238,7 @@ def _fetch_series(
             continue
         long_rows.append({
             "date": norm_date,
-            "country": COUNTRY,
+            "country": indicator.get("country", COUNTRY),
             "indicator_id": indicator["indicator_id"],
             "indicator_name": indicator["indicator_name"],
             "value": value,
@@ -291,10 +334,12 @@ def collect_macro_fred_increment() -> int:
             print(f"[수집] {indicator['indicator_id']} ({indicator['series_id']}) "
                   f"— 기존 없음 → {start} 부터 전체")
         else:
-            # 최근 구간 재수집 (월별: 마지막 달 포함 3개월 / 일별: 10일)
+            # 최근 구간 재수집 (월별: 마지막 달 포함 3개월 / 주별: 21일 / 일별: 10일)
             if indicator["freq"] == "M":
                 start = (pd.Timestamp(last_date).replace(day=1)
                          - pd.DateOffset(months=REFETCH_MONTHS - 1)).date()
+            elif indicator["freq"] == "W":
+                start = last_date - timedelta(days=REFETCH_DAYS_WEEKLY)
             else:
                 start = last_date - timedelta(days=REFETCH_DAYS)
             print(f"[수집] {indicator['indicator_id']} ({indicator['series_id']}) "

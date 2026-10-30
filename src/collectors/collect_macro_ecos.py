@@ -2,7 +2,7 @@
 [파일 정의서]
 - 파일명: collect_macro_ecos.py
 - 역할: 수집
-- 대상: 국내 거시경제 지표 (한국은행 기준금리·CPI·PPI)
+- 대상: 국내 거시경제 지표 (한국은행 기준금리·CPI·PPI·수입물가·환율(AUD)·물류비·외식물가)
 - 데이터 소스: 한국은행 ECOS Open API (StatisticSearch)
     https://ecos.bok.or.kr/api/StatisticSearch/{KEY}/json/kr/{start}/{end}/{통계표코드}/{주기}/{검색시작}/{검색종료}/{통계항목코드}
 - 수집/가공 주기: 일/월 — indicator_id별 기존 raw CSV max(date) 이후만 증분 수집
@@ -14,8 +14,32 @@
        - INFO-200(해당 데이터 없음 = 아직 미발표) → 정상(exit 0)
        - 네트워크 예외 / HTTP 200 이외 / JSON 파싱 실패 / 그 밖의 RESULT 코드(인증 INFO-100, ERROR-xxx)
          → 오류로 집계, 받은 만큼 저장 후 exit 1 (2026-10 정합성 수정)
-    5. 자가 치유 증분: 마지막 달 포함 최근 3개월을 매번 다시 받아 해당 구간 행을 교체 (잠정치·개정 반영)
+    5. 자가 치유 증분: 마지막 달 포함 최근 3개월(일별은 최근 7일)을 매번 다시 받아 해당 구간 행을 교체
+       (잠정치·개정 반영)
     6. 기존 raw CSV 를 읽지 못하면 2019년부터 재수집하지 않고 중단(exit 1)
+    7. (2026-10 추가) 응답이 1,000행을 넘으면(일별 환율 백필) list_total_count 기준으로 페이지를 나눠 받는다.
+       indicator 별 country 지정 가능(기본 'KR').
+
+항목코드가 여러 그룹(Group2: 경상/불변/계절조정, 원화/계약통화/달러 기준 등)으로 나뉜 통계표는
+item_code 를 'Group1코드/Group2코드' 로 명시한다. 그룹을 생략하면 ECOS 가 모든 그룹 값을 한꺼번에 돌려주고
+같은 (date, indicator_id) 가 여러 개 생겨 dedup(keep=last) 순서에 의존하게 된다.
+    (2026-10 점검: kr_retail_* / kr_service_food 는 그동안 응답의 마지막 그룹 = 계절조정지수가 저장돼 왔음
+     → 같은 값을 명시 코드로 고정. 저장값 불변 검증 완료)
+
+2026-10 추가 지표 (원가·물류비·외식 소비 — StatisticTableList / StatisticItemList / StatisticSearch 로 검증):
+    kr_impi_beef_krw     : 401Y017 / 10121201AA/W  수입물가지수(품목별) 쇠고기, 원화기준   (월)
+    kr_impi_beef_lc      : 401Y017 / 10121201AA/C  수입물가지수(품목별) 쇠고기, 계약통화기준 (월)
+    kr_fx_aud            : 731Y001 / 0000017       원/호주달러 매매기준율 (일) — 호주산 수입원가 환율 축
+                           (원화 측 가격이므로 country='KR'. USD/KRW 는 crawl_com_usd_krw.py 가 별도 xlsx 로 관리)
+    kr_cpi_diesel        : 901Y009 / G02102        소비자물가 경유 (월) — 국내 화물 유류비 proxy
+    kr_ppi_road_freight  : 404Y014 / 501122AA      생산자물가 도로화물운송서비스 (월) — 국내 배송비
+    kr_ppi_cold_storage  : 404Y016 / 50143102AA    생산자물가(품목) 냉장및냉동창고운영 (월) — 냉동육 보관비
+    kr_ppi_ocean_freight : 404Y016 / 50121201AA    생산자물가(품목) 외항화물 (월) — 국적선사 해상운임
+    kr_cpi_dineout       : 901Y009 / K011          소비자물가 음식 서비스(외식 전체) (월)
+    kr_cpi_dineout_beef  : 901Y009 / K01110        소비자물가 쇠고기(외식) (월) — 외식 판매가(전가) 지표
+    kr_retail_food       : 901Y100 / G31/T3        상품군별 소매판매액지수 음식료품, 계절조정 (월)
+    (검토 후 제외: 601Y002 카드 음식점 승인액 — 2023-08 단종 / 601Y003 신용카드 이용액 — 업종 구분 없음 /
+     200Y14x 가계 목적별 소비지출 — 분기)
 
 ECOS 통계표코드 (공식: https://ecos.bok.or.kr/  > 통계검색):
     kr_base_rate = 722Y001  한국은행 기준금리 및 여수신금리 (주기 M)
@@ -74,6 +98,8 @@ REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5
 MAX_ROWS_PER_CALL = 1000                  # ECOS 1회 응답 상한
 REFETCH_MONTHS = 3                        # 월별 지표 재수집 개월 수 (잠정치·개정 반영)
+REFETCH_DAYS = 7                          # 일별 지표(환율) 재수집 일수
+MAX_PAGES = 20                            # 페이지 반복 상한 (1,000행 × 20 = 일별 50년치 — 무한루프 방지)
 NO_DATA_CODES = {"INFO-200"}              # 해당 데이터 없음(미발표) → 오류 아님
 
 COUNTRY = "KR"
@@ -145,7 +171,7 @@ ECOS_INDICATORS = [
     {
         "indicator_id": "kr_retail_hypermarket",
         "stat_code": "901Y098",
-        "item_code": "I74C",         # 대형마트 (소매업태별 판매액지수)
+        "item_code": "I74C/I74C",    # 대형마트 / 계절조정지수 (소매업태별 판매액지수)
         "cycle": "M",
         "indicator_name": "소매판매액지수 — 대형마트",
         "unit": "Index 2020=100",
@@ -154,7 +180,7 @@ ECOS_INDICATORS = [
     {
         "indicator_id": "kr_retail_cvs",
         "stat_code": "901Y098",
-        "item_code": "I74J",         # 편의점
+        "item_code": "I74J/I74C",    # 편의점 / 계절조정지수
         "cycle": "M",
         "indicator_name": "소매판매액지수 — 편의점",
         "unit": "Index 2020=100",
@@ -163,7 +189,7 @@ ECOS_INDICATORS = [
     {
         "indicator_id": "kr_retail_dept",
         "stat_code": "901Y098",
-        "item_code": "I74B",         # 백화점
+        "item_code": "I74B/I74C",    # 백화점 / 계절조정지수
         "cycle": "M",
         "indicator_name": "소매판매액지수 — 백화점",
         "unit": "Index 2020=100",
@@ -172,7 +198,7 @@ ECOS_INDICATORS = [
     {
         "indicator_id": "kr_service_food",
         "stat_code": "901Y038",
-        "item_code": "I51ADB",       # 음식점 및 주점업 (서비스업생산지수) — 외식 수요
+        "item_code": "I51ADB/3",     # 음식점 및 주점업 / 계절조정지수 (서비스업생산지수) — 외식 수요
         "cycle": "M",
         "indicator_name": "서비스업생산지수 — 음식점·주점업",
         "unit": "Index 2020=100",
@@ -202,6 +228,101 @@ ECOS_INDICATORS = [
         "item_code": "A01203",       # 돼지고기 소비자물가 (대체수요)
         "cycle": "M",
         "indicator_name": "소비자물가지수 — 돼지고기",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    # ── 원가·물류비·외식 소비 지표(2026-10 추가) ──────────────────────────
+    #   수입원가: 수입물가 쇠고기(원화=환율 포함 / 계약통화=산지 가격만), 원/호주달러(호주산 원가 축)
+    #   물류비: 경유(유류비)·도로화물·냉장냉동창고·외항화물 운임
+    #   소비: 외식 물가(전체·쇠고기 외식 = 판매가 전가), 음식료품 소매판매(가정 내 소비량)
+    {
+        "indicator_id": "kr_impi_beef_krw",
+        "stat_code": "401Y017",
+        "item_code": "10121201AA/W",  # 쇠고기 / 원화기준 (수입물가지수 품목별)
+        "cycle": "M",
+        "indicator_name": "수입물가지수 — 쇠고기(원화기준)",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_impi_beef_lc",
+        "stat_code": "401Y017",
+        "item_code": "10121201AA/C",  # 쇠고기 / 계약통화기준 (환율 효과 제외한 산지 수입단가)
+        "cycle": "M",
+        "indicator_name": "수입물가지수 — 쇠고기(계약통화기준)",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_fx_aud",
+        "stat_code": "731Y001",
+        "item_code": "0000017",       # 원/호주달러 (매매기준율)
+        "cycle": "D",
+        "indicator_name": "원/호주달러 환율(매매기준율)",
+        "unit": "원/AUD",
+        "freq": "D",
+        "country": "KR",              # 원화 측 가격 — KR (호주 산지 지표는 au_* / country='AU')
+    },
+    {
+        "indicator_id": "kr_cpi_diesel",
+        "stat_code": "901Y009",
+        "item_code": "G02102",        # 경유
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 경유",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_ppi_road_freight",
+        "stat_code": "404Y014",
+        "item_code": "501122AA",      # 도로화물운송서비스
+        "cycle": "M",
+        "indicator_name": "생산자물가지수 — 도로화물운송서비스",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_ppi_cold_storage",
+        "stat_code": "404Y016",
+        "item_code": "50143102AA",    # 냉장및냉동창고운영 (품목별)
+        "cycle": "M",
+        "indicator_name": "생산자물가지수 — 냉장·냉동창고운영",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_ppi_ocean_freight",
+        "stat_code": "404Y016",
+        "item_code": "50121201AA",    # 외항화물 (품목별)
+        "cycle": "M",
+        "indicator_name": "생산자물가지수 — 외항화물",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_cpi_dineout",
+        "stat_code": "901Y009",
+        "item_code": "K011",          # 음식 서비스 (외식 전체)
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 외식(음식 서비스)",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_cpi_dineout_beef",
+        "stat_code": "901Y009",
+        "item_code": "K01110",        # 쇠고기(외식)
+        "cycle": "M",
+        "indicator_name": "소비자물가지수 — 쇠고기(외식)",
+        "unit": "Index 2020=100",
+        "freq": "M",
+    },
+    {
+        "indicator_id": "kr_retail_food",
+        "stat_code": "901Y100",
+        "item_code": "G31/T3",        # 음식료품 / 계절조정지수 (재별·상품군별 판매액지수)
+        "cycle": "M",
+        "indicator_name": "소매판매액지수 — 음식료품(계절조정)",
         "unit": "Index 2020=100",
         "freq": "M",
     },
@@ -277,15 +398,34 @@ def _fetch_indicator(
     start: date,
     end: date,
 ) -> list[dict] | None:
-    """long row 리스트 반환. 무자료(INFO-200)면 [], 오류면 None."""
+    """long row 리스트 반환. 무자료(INFO-200)면 [], 오류면 None.
+    1회 응답 상한(1,000행)을 넘으면 list_total_count 기준으로 페이지를 이어 받는다(일별 환율 백필)."""
     cycle = indicator["cycle"]
     start_p = _fmt_period(start, cycle)
     end_p = _fmt_period(end, cycle)
 
-    url = (
-        f"{BASE_URL}/{api_key}/json/kr/1/{MAX_ROWS_PER_CALL}/"
-        f"{indicator['stat_code']}/{cycle}/{start_p}/{end_p}/{indicator['item_code']}"
-    )
+    rows: list[dict] = []
+    for page in range(MAX_PAGES):
+        lo = page * MAX_ROWS_PER_CALL + 1
+        hi = lo + MAX_ROWS_PER_CALL - 1
+        url = (
+            f"{BASE_URL}/{api_key}/json/kr/{lo}/{hi}/"
+            f"{indicator['stat_code']}/{cycle}/{start_p}/{end_p}/{indicator['item_code']}"
+        )
+        got = _fetch_page(url, indicator)
+        if got is None:
+            return None
+        page_rows, total = got
+        rows.extend(page_rows)
+        if not page_rows or len(rows) >= total:
+            break
+        time.sleep(SLEEP_BETWEEN_CALLS)
+
+    return _to_long_rows(rows, indicator)
+
+
+def _fetch_page(url: str, indicator: dict) -> tuple[list[dict], int] | None:
+    """한 페이지 요청 → (row 리스트, list_total_count). 무자료(INFO-200)면 ([], 0), 오류면 None."""
     try:
         resp = requests.get(url, timeout=REQUEST_TIMEOUT, verify=VERIFY_SSL)
     except requests.RequestException as e:
@@ -310,15 +450,25 @@ def _fetch_indicator(
         msg = result.get("MESSAGE", "")
         if code in NO_DATA_CODES:
             print(f"   └ [ECOS {code}] {indicator['indicator_id']}: {msg} (미발표 — 정상)")
-            return []
+            return [], 0
         print(f"   └ [ECOS {code}] {indicator['indicator_id']}: {msg} "
               f"(인증키/item_code 확인 필요)")
         return None
 
-    rows = []
+    rows: list[dict] = []
+    total = 0
     if isinstance(payload, dict) and "StatisticSearch" in payload:
-        rows = payload["StatisticSearch"].get("row", []) or []
+        body = payload["StatisticSearch"]
+        rows = body.get("row", []) or []
+        try:
+            total = int(body.get("list_total_count", len(rows)) or len(rows))
+        except (TypeError, ValueError):
+            total = len(rows)
+    return rows, total
 
+
+def _to_long_rows(rows: list[dict], indicator: dict) -> list[dict]:
+    cycle = indicator["cycle"]
     long_rows: list[dict] = []
     for r in rows:
         if not isinstance(r, dict):
@@ -337,7 +487,7 @@ def _fetch_indicator(
         unit = str(r.get("UNIT_NAME", "") or "").strip() or indicator["unit"]
         long_rows.append({
             "date": norm_date,
-            "country": COUNTRY,
+            "country": indicator.get("country", COUNTRY),
             "indicator_id": indicator["indicator_id"],
             "indicator_name": indicator["indicator_name"],
             "value": value,
@@ -434,6 +584,9 @@ def collect_macro_ecos_increment() -> int:
             if indicator["cycle"] == "M":
                 # 마지막 달 포함 최근 3개월 재수집 (잠정치·개정 반영)
                 start = last_date.replace(day=1) - relativedelta(months=REFETCH_MONTHS - 1)
+            elif indicator["cycle"] == "D":
+                # 일별(환율): 최근 7일 재수집 (영업일 소급 정정 반영)
+                start = last_date - relativedelta(days=REFETCH_DAYS)
             else:
                 start = _next_period_start(last_date, indicator["cycle"])
             print(f"[수집] {indicator['indicator_id']} ({indicator['stat_code']}) "
