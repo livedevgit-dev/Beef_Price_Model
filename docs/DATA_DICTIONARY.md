@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-10-30 14:50
+> 마지막 갱신: 2026-10-30 16:08
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -258,12 +258,12 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | siseSeq | int64 | 43569155 | 43558120 |
 
 #### `han_auction_raw.csv`
-- **총 행(Row) 수**: 약 58566행
+- **총 행(Row) 수**: 약 137693행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| auction_start_ymd | int64 | 20190101 | 20190101 |
-| auction_end_ymd | int64 | 20190130 | 20190130 |
+| auction_start_ymd | int64 | 20190102 | 20190102 |
+| auction_end_ymd | int64 | 20190102 | 20190102 |
 | grade_type | object | QW | QW |
 | grade_cd | int64 | 0 | 0 |
 | grade_nm | object | 1++ | 1++ |
@@ -277,11 +277,11 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_name | object | 부경축공 | 협신식품 |
 | is_regional_total | bool | False | False |
 | is_national_total | bool | False | False |
-| price_won_per_kg | int64 | 20627 | 20748 |
-| head_count | int64 | 678 | 721 |
+| price_won_per_kg | int64 | 20902 | 21341 |
+| head_count | int64 | 18 | 28 |
 
 #### `kamis_hanwoo_raw.csv`
-- **총 행(Row) 수**: 약 42900행
+- **총 행(Row) 수**: 약 49956행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -313,18 +313,18 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | price | float64 | nan | nan |
 
 #### `macro_indicators_raw.csv`
-- **총 행(Row) 수**: 약 12112행
+- **총 행(Row) 수**: 약 18912행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | date | object | 2019-01-01 | 2019-01-01 |
-| country | object | KR | KR |
-| indicator_id | object | kr_base_rate | kr_ccsi |
-| indicator_name | object | 한국은행 기준금리 | 소비자심리지수(CCSI) |
-| value | float64 | 1.75 | 98.3 |
-| unit | object | 연% | p (장기평균=100) |
+| country | object | AU | KR |
+| indicator_id | object | au_beef_price | kr_base_rate |
+| indicator_name | object | IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국) | 한국은행 기준금리 |
+| value | float64 | 185.9565217391304 | 1.75 |
+| unit | object | US cents/lb | 연% |
 | freq | object | M | M |
-| source | object | ECOS | ECOS |
+| source | object | FRED | ECOS |
 
 #### `manual_kor_price.csv`
 - **총 행(Row) 수**: 약 97행
@@ -726,13 +726,13 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | max_total | float64 | 11180.0 | 11180.0 |
 
 #### `han_auction_daily.csv`
-- **총 행(Row) 수**: 약 58566행
+- **총 행(Row) 수**: 약 137693행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2019-01-30 | 2019-01-30 |
-| auction_start_date | object | 2019-01-01 | 2019-01-01 |
-| period_days | int64 | 30 | 30 |
+| date | object | 2019-01-02 | 2019-01-02 |
+| auction_start_date | object | 2019-01-02 | 2019-01-02 |
+| period_days | int64 | 1 | 1 |
 | source | object | ekape_auction | ekape_auction |
 | grade | object | 1++ | 1++ |
 | sex | object | 전체 | 전체 |
@@ -740,22 +740,22 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_name | object | 부경축공 | 협신식품 |
 | is_national_total | bool | False | False |
 | is_regional_total | bool | False | False |
-| price_won_per_kg | int64 | 20627 | 20748 |
-| head_count | int64 | 678 | 721 |
+| price_won_per_kg | int64 | 20902 | 21341 |
+| head_count | int64 | 18 | 28 |
 
 #### `macro_indicators_daily.csv`
-- **총 행(Row) 수**: 약 60056행
+- **총 행(Row) 수**: 약 105701행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | date | object | 2019-01-01 | 2019-01-02 |
-| country | object | KR | KR |
-| indicator_id | object | kr_base_rate | kr_base_rate |
-| indicator_name | object | 한국은행 기준금리 | 한국은행 기준금리 |
-| value | float64 | 1.75 | 1.75 |
-| unit | object | 연% | 연% |
+| country | object | AU | AU |
+| indicator_id | object | au_beef_price | au_beef_price |
+| indicator_name | object | IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국) | IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국) |
+| value | float64 | 185.9565 | 185.9565 |
+| unit | object | US cents/lb | US cents/lb |
 | freq | object | M | M |
-| source | object | ECOS | ECOS |
+| source | object | FRED | FRED |
 | ma30 | float64 | nan | nan |
 | yoy_pct | float64 | nan | nan |
 | mom_pct | float64 | nan | nan |
@@ -859,7 +859,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | stock_vol | object | 안심 | 등심 |
 
 #### `part_crosswalk.csv`
-- **총 행(Row) 수**: 약 81행
+- **총 행(Row) 수**: 약 115행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -868,10 +868,12 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | kmta_part | object | 갈비 | 갈비 |
 | usda_primal | object | Primal Plate | Primal Plate |
 | ml_target | bool | True | True |
-| notes | object | USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축 | USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축 |
+| notes | object | USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요 | USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요 |
 | source | object | meatbox | meatbox |
 | source_key | object | LA갈비 | 갈비살/늑간살 |
 | source_label | object | LA갈비 | 갈비살/늑간살 |
+| meatbox_origins | object | 미국/호주 | 미국/호주 |
+| usda_compare | object | direct(미국)/proxy(호주) | direct(미국)/proxy(호주) |
 
 #### `processed_usda_cost.csv`
 - **총 행(Row) 수**: 약 172349행
@@ -942,9 +944,9 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| USDA_Code | object | 123A | 114D |
-| Original_Description | object | Short Plate, short rib (123A  3) | Chuck, clod, top blade (114D  3) |
-| Korean_Name | object | LA갈비-미국 | 부채살-미국 |
+| USDA_Code | object | 123A | 112A |
+| Original_Description | object | Short Plate, short rib (123A  3) | Rib, ribeye, bnls, heavy (112A  3) |
+| Korean_Name | object | LA갈비-미국 | 등심-호주 |
 | Status | object | 정상 | 정상 |
 | Note | object | Master 품목명과 연결 가능 | Master 품목명과 연결 가능 |
 
@@ -967,7 +969,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | is_filled | bool | False | True |
 
 #### `data_status.csv`
-- **총 행(Row) 수**: 약 16행
+- **총 행(Row) 수**: 약 24행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -999,12 +1001,12 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | korea_base | float64 | 4065.8 | 4678.1 |
 
 #### `hanwoo_dashboard_ready.csv`
-- **총 행(Row) 수**: 약 84839행
+- **총 행(Row) 수**: 약 92388행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| date | object | 2019-01-30 | 2019-03-01 |
-| period_days | int64 | 30 | 30 |
+| date | object | 2026-05-06 | 2026-05-07 |
+| period_days | int64 | 1 | 1 |
 | source | object | ekape_auction | ekape_auction |
 | grade | int64 | 1 | 1 |
 | sex | object | 전체 | 전체 |
@@ -1012,12 +1014,13 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_name | object | 관성 | 관성 |
 | is_national_total | bool | False | False |
 | is_regional_total | bool | False | False |
-| price_won_per_kg | float64 | 17434.0 | 17722.0 |
-| head_count | int64 | 377 | 146 |
+| price_won_per_kg | float64 | 18400.0 | 17427.0 |
+| head_count | int64 | 14 | 20 |
 | part | object | 전체(도체) | 전체(도체) |
 | country_name | float64 | nan | nan |
-| ma7 | float64 | nan | nan |
-| ma30 | float64 | nan | nan |
+| origin | object | 국내산 | 국내산 |
+| ma7 | float64 | 17244.333333333332 | 17290.333333333332 |
+| ma30 | float64 | 17477.95 | 17398.9 |
 | is_outlier | bool | False | False |
 
 #### `macro_dashboard_ready.csv`
@@ -1026,45 +1029,77 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
 | date | object | 2019-01-01 | 2019-01-02 |
+| au_beef_price | float64 | 185.9565 | 185.9565 |
+| au_eyci | float64 | nan | 472.7273 |
+| au_heavy_steer | float64 | nan | 280.5917 |
 | kr_base_rate | float64 | 1.75 | 1.75 |
 | kr_ccsi | float64 | 98.3 | 98.3 |
 | kr_cpi_beef_dom | float64 | 91.195 | 91.195 |
 | kr_cpi_beef_imp | float64 | 96.731 | 96.731 |
+| kr_cpi_diesel | float64 | 104.995 | 104.995 |
+| kr_cpi_dineout | float64 | 98.891 | 98.891 |
+| kr_cpi_dineout_beef | float64 | 96.662 | 96.662 |
 | kr_cpi_food | float64 | 95.789 | 95.789 |
 | kr_cpi_pork | float64 | 84.205 | 84.205 |
 | kr_cpi_total | float64 | 98.884 | 98.884 |
 | kr_esi | float64 | 92.6 | 92.6 |
+| kr_fx_aud | float64 | nan | 787.98 |
+| kr_impi_beef_krw | float64 | 96.96 | 96.96 |
+| kr_impi_beef_lc | float64 | 101.98 | 101.98 |
+| kr_ppi_cold_storage | float64 | 102.69 | 102.69 |
 | kr_ppi_food | float64 | 98.7 | 98.7 |
+| kr_ppi_ocean_freight | float64 | 113.54 | 113.54 |
+| kr_ppi_road_freight | float64 | 98.47 | 98.47 |
 | kr_precip | float64 | 0.02 | 0.0 |
 | kr_retail_cvs | float64 | 98.6 | 98.6 |
 | kr_retail_dept | float64 | 112.4 | 112.4 |
+| kr_retail_food | float64 | 105.0 | 105.0 |
 | kr_retail_hypermarket | float64 | 101.1 | 101.1 |
 | kr_service_food | float64 | 120.8 | 120.8 |
 | kr_temp_avg | float64 | -1.46 | -1.52 |
 | kr_temp_max | float64 | 2.28 | 3.58 |
 | us_corn | float64 | 166.8462 | 166.8462 |
+| us_diesel | float64 | nan | nan |
+| us_fed_steer | float64 | 188.2 | 188.2 |
 | us_food_ppi | float64 | 206.2 | 206.2 |
+| us_ppi_ocean_freight | float64 | 307.2 | 307.2 |
 | us_soybean | float64 | 333.7771 | 333.7771 |
 | us_soybean_meal | float64 | 344.7295 | 344.7295 |
 | us_wti | float64 | nan | 46.31 |
+| au_beef_price_yoy_pct | float64 | nan | nan |
+| au_eyci_yoy_pct | float64 | nan | nan |
+| au_heavy_steer_yoy_pct | float64 | nan | nan |
 | kr_base_rate_yoy_pct | float64 | nan | nan |
 | kr_ccsi_yoy_pct | float64 | nan | nan |
 | kr_cpi_beef_dom_yoy_pct | float64 | nan | nan |
 | kr_cpi_beef_imp_yoy_pct | float64 | nan | nan |
+| kr_cpi_diesel_yoy_pct | float64 | nan | nan |
+| kr_cpi_dineout_yoy_pct | float64 | nan | nan |
+| kr_cpi_dineout_beef_yoy_pct | float64 | nan | nan |
 | kr_cpi_food_yoy_pct | float64 | nan | nan |
 | kr_cpi_pork_yoy_pct | float64 | nan | nan |
 | kr_cpi_total_yoy_pct | float64 | nan | nan |
 | kr_esi_yoy_pct | float64 | nan | nan |
+| kr_fx_aud_yoy_pct | float64 | nan | nan |
+| kr_impi_beef_krw_yoy_pct | float64 | nan | nan |
+| kr_impi_beef_lc_yoy_pct | float64 | nan | nan |
+| kr_ppi_cold_storage_yoy_pct | float64 | nan | nan |
 | kr_ppi_food_yoy_pct | float64 | nan | nan |
+| kr_ppi_ocean_freight_yoy_pct | float64 | nan | nan |
+| kr_ppi_road_freight_yoy_pct | float64 | nan | nan |
 | kr_precip_yoy_pct | float64 | nan | nan |
 | kr_retail_cvs_yoy_pct | float64 | nan | nan |
 | kr_retail_dept_yoy_pct | float64 | nan | nan |
+| kr_retail_food_yoy_pct | float64 | nan | nan |
 | kr_retail_hypermarket_yoy_pct | float64 | nan | nan |
 | kr_service_food_yoy_pct | float64 | nan | nan |
 | kr_temp_avg_yoy_pct | float64 | nan | nan |
 | kr_temp_max_yoy_pct | float64 | nan | nan |
 | us_corn_yoy_pct | float64 | nan | nan |
+| us_diesel_yoy_pct | float64 | nan | nan |
+| us_fed_steer_yoy_pct | float64 | nan | nan |
 | us_food_ppi_yoy_pct | float64 | nan | nan |
+| us_ppi_ocean_freight_yoy_pct | float64 | nan | nan |
 | us_soybean_yoy_pct | float64 | nan | nan |
 | us_soybean_meal_yoy_pct | float64 | nan | nan |
 | us_wti_yoy_pct | float64 | nan | nan |
@@ -1074,11 +1109,11 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| part | object | 갈비살/늑간살 | 차돌박이 |
-| n_days | int64 | 520 | 514 |
-| coverage_pct | int64 | 80 | 79 |
-| recent_days | int64 | 40 | 36 |
-| max_gap | int64 | 21 | 16 |
+| part | object | 황제늑간 | 센터컷 |
+| n_days | int64 | 476 | 474 |
+| coverage_pct | int64 | 74 | 73 |
+| recent_days | int64 | 10 | 0 |
+| max_gap | int64 | 17 | 8 |
 | start | object | 2025-01-22 | 2025-01-22 |
 | tier | int64 | 0 | 0 |
 | status | object | 제외(거래끊김) | 제외(거래끊김) |
@@ -1103,16 +1138,16 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | high | float64 | nan | nan |
 
 #### `switch_signal.csv`
-- **총 행(Row) 수**: 약 16행
+- **총 행(Row) 수**: 약 23행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
-| part | object | 설도 | 스지 |
+| part | object | 갈비살/늑간살 | 차돌박이 |
 | tier | int64 | 1 | 1 |
-| current_price | int64 | 15060 | 11145 |
-| pct_rank | int64 | 98 | 98 |
-| momentum_30d | float64 | 3.4 | 17.8 |
+| current_price | int64 | 31350 | 26732 |
+| pct_rank | int64 | 100 | 100 |
+| momentum_30d | float64 | 6.3 | 11.2 |
 | signal | object | 매도후보(고평가) | 매도후보(고평가) |
-| n_obs | int64 | 647 | 647 |
+| n_obs | int64 | 620 | 628 |
 
 <!-- AUTO-GENERATED-SCHEMA:END -->
