@@ -8,7 +8,8 @@
     1) 타깃: 삼겹양지 월평균가 → 익월 수익률 ret[t] = price[t+1]/price[t]-1
        (의사결정 시점 = 월 t 말. 이 시점에 '알 수 있는' 값만 사용해 누수 방지)
     2) 발표시차(avail_lag) 반영: 일단위 파생(환율·USDA·돼지도매)=0개월,
-       월간 발표(CPI·수입·재고)=1개월, 통계청 판매/서비스=2개월 지연으로 shift.
+       월간 발표(CPI·수입)=1개월, KMTA 재고·통계청 판매/서비스=2개월 지연으로 shift.
+       (build_samgyup_model.AVAIL_LAG 와 같은 근거: 10월 말 기준 수입 최신 9월, 재고 최신 8월)
     3) 단변량 IC: Spearman corr(지표 MoM, 익월 수익률)
     4) walk-forward(확장창, 최소학습 36개월) OOS 비교:
        naive(무변동) vs 기존피처 Ridge vs 기존+신규 Ridge
@@ -72,13 +73,14 @@ def build_panel():
         print("  [skip] fx:", e)
     try:
         imp = pd.read_csv(MASTER_IMPORT_VOLUME_CSV); imp["mm"] = _m(imp["std_date"].astype(str) + "-01")
-        raw["import_yj"] = imp.groupby("mm")["부위별_양지_합계"].sum()
+        raw["import_yj"] = imp.groupby("mm")["부위별_양지_합계"].sum(min_count=1)   # 결측을 0 으로 만들지 않음
     except Exception as e:
         print("  [skip] import_yj:", e)
     try:
         stk = pd.read_excel(BEEF_STOCK_XLSX); stk["mm"] = _m(stk["기준년월"].astype(str) + "-01")
         sj = stk[stk["부위별 부위별"].astype(str).str.contains("양지", na=False)]
-        raw["stock_yj"] = sj.groupby("mm")["조사재고량 조사재고량"].sum()
+        # 결측 처리된 월(2023-04, 사이트 원본 복제 오류)이 0 으로 바뀌면 MoM -100% 가 생김 → min_count=1
+        raw["stock_yj"] = pd.to_numeric(sj["조사재고량 조사재고량"], errors="coerce").groupby(sj["mm"]).sum(min_count=1)
     except Exception as e:
         print("  [skip] stock_yj:", e)
 
@@ -112,7 +114,8 @@ def build_panel():
 # 피처별 발표시차(개월) — 이 시점에 '알 수 있는' 값만 쓰기 위한 shift
 AVAIL_LAG = {
     "usda_plate": 0, "fx": 0, "pork_whole": 0,      # 일단위 → 당월 말 확보
-    "import_yj": 1, "stock_yj": 1,                  # 월간 발표(익월)
+    "import_yj": 1,                                 # 월간 발표(익월 중순)
+    "stock_yj": 2,                                  # KMTA 재고 — 2개월 지연 게시
     "cpi_beef_imp": 1, "cpi_beef_dom": 1, "cpi_pork": 1,
     "retail_hyper": 2, "retail_cvs": 2, "retail_dept": 2, "service_food": 2,  # 통계청 시차 큼
 }

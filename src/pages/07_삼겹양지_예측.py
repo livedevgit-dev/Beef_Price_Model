@@ -76,20 +76,24 @@ else:
         tag = {0: "🟢 정상", 1: "🟡 주의", 2: "🔴 경보"}.get(int(last["alert_level"]), "-")
         st.subheader(f"현재 경보: {tag}  ({last['date'].strftime('%Y-%m')})")
         st.caption(str(last["note"]))
+    # 주 4회/5회 달 차이·집계 중인 달의 꺼짐을 피하려고 월내 주평균 사용 (구버전 파일이면 월합계)
+    cy, ky = ("china_wk_avg", "korea_wk_avg") if "china_wk_avg" in fas.columns else ("china_exp", "korea_exp")
     fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(x=fas["date"], y=fas["china_exp"], name="→중국", mode="lines",
+    fig2.add_trace(go.Scatter(x=fas["date"], y=fas[cy], name="→중국", mode="lines",
                               line=dict(color="#C62828", width=2)))
-    fig2.add_trace(go.Scatter(x=fas["date"], y=fas["korea_exp"], name="→한국", mode="lines",
+    fig2.add_trace(go.Scatter(x=fas["date"], y=fas[ky], name="→한국", mode="lines",
                               line=dict(color="#1565C0", width=2)))
     fig2.update_layout(height=360, hovermode="x unified", margin=dict(l=20, r=20, t=10, b=20),
-                       yaxis_title="미국 beef 주간수출 합(월)", legend=dict(orientation="h"))
+                       yaxis_title="미국 beef 수출 (월내 주평균, 톤/주)" if cy == "china_wk_avg" else "미국 beef 주간수출 합(월)",
+                       legend=dict(orientation="h"))
     st.plotly_chart(fig2, width="stretch")
 
 
 # ── 3. 변수 영향력 ───────────────────────────────────────────
 st.divider()
 st.header("3. 가격 변수 영향력 (표준화 릿지)")
-st.caption("음(-): 값↑ → 가격↓ / 양(+): 값↑ → 가격↑. 추세 공유·소표본으로 방향성 해석용.")
+st.caption("음(-): 값↑ → 가격↓ / 양(+): 값↑ → 가격↑. 추세 공유·소표본으로 방향성 해석용. "
+           "각 변수는 그 달 말에 실제 공개된 값 기준(재고 2개월·수입/물가 1개월 발표시차 반영), 재고는 2023-05 조사기준 단절 이후만 사용.")
 imp = _load(DATA_DASHBOARD / "samgyup_feature_importance.csv")
 if imp is None or imp.empty:
     st.info("영향력 데이터 없음 — build_samgyup_model.py 실행 필요")

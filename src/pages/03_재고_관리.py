@@ -138,6 +138,8 @@ df_imp_filtered = df_imp[df_imp['date'] >= start_date].copy() if not df_imp.empt
 st.title("재고(Inventory) 인사이트")
 st.markdown(f"**기준 시점:** {latest_date.strftime('%Y년 %m월')} (최신 업데이트)")
 st.caption("기준 시점은 재고 데이터(beef_stock_data.xlsx) 기준입니다. 최신 월이 안 나오면 `src/collectors/crawl_imp_stock_monthly.py`를 실행한 뒤 이 페이지를 새로고침하세요.")
+st.caption("⚠️ KMTA 재고는 2023-05부터 조사 기준이 바뀐 것으로 보여(합계 27.9만→16.2만 톤 단절) 그 이전과 수준 비교는 부적절합니다. "
+           "2023-04는 협회 원본 오류(2022-07 복제)로 결측 처리, 2022-08·2025-04 갈비와 2026-03 부산물은 합계−타부위로 역산한 값입니다.")
 
 # 날짜 계산
 date_3m_ago = latest_date - pd.DateOffset(months=3)

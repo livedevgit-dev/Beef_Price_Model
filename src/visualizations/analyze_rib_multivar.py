@@ -57,7 +57,7 @@ def load_and_merge_rib_data():
     stock_df = stock_df[stock_df['부위별 부위별'].str.contains('갈비', na=False)]
     stock_df['date'] = pd.to_datetime(stock_df['기준년월'], format='%Y-%m')
     stock_df = stock_df[['date', '조사재고량 조사재고량']].rename(columns={'조사재고량 조사재고량': 'stock_volume'})
-    stock_df = stock_df.groupby('date')['stock_volume'].sum().reset_index()
+    stock_df = stock_df.groupby('date')['stock_volume'].sum(min_count=1).reset_index()
     stock_df.set_index('date', inplace=True)
     
     # 데이터 병합 (2019-01-01 이후)

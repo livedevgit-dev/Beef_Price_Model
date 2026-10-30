@@ -1,230 +1,260 @@
-import requests
-import pandas as pd
+# [파일 정의서]
+# - 파일명: src/collectors/crawl_imp_volume_monthly.py
+# - 역할: 수집 (KMTA 한국육류유통수출협회 부위별 수입실적)
+# - 대상: 수입 소고기 (미국/호주 냉동), 단위 톤
+# - 출력: data/0_raw/master_import_volume.csv
+#         컬럼: std_date, 구분, 부위별_*_합계 ..., 부위별_계_합계, data_source(KMTA/MFDS)
+# - 기능:
+#   1. 신규 월(마지막 월 다음 달 ~ 전월) + 최근 N개월 재확인(--recheck, 기본 12) + 식약처(MFDS) 잠정치 월 전부를 조회.
+#      KMTA 확정치가 게시된 월은 MFDS 잠정치를 덮어쓰고 data_source=KMTA 로 표시 (식약처 보완분 자동 교체).
+#   2. KMTA 수치가 바뀐 월(수정 게시)은 변경 내역을 출력하고 갱신.
+#   3. 결측과 0 구분: 사이트의 '-' 만 0, 빈칸·파싱 실패는 NaN → 해당 월을 오류로 거부(부분 저장 안 함).
+#   4. 검증: 냉동 섹션에 미국·호주 각 1행, Σ부위 ≈ 사이트 '계'(반올림 허용), 부위 컬럼 수 일치.
+#   5. 종료 코드: 조회·파싱·검증 오류 → exit 1 / 미게시 → exit 0. 기존 파일을 읽을 수 없으면 덮어쓰지 않고 exit 1.
+#   6. --dry-run: 조회·비교만 하고 저장 안 함.
+
+import argparse
+import sys
 import time
-import urllib3
-import os
-from io import StringIO
 from datetime import datetime
+from io import StringIO
 from pathlib import Path
 
-import sys
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import DATA_RAW
+import numpy as np
+import pandas as pd
+import requests
+import urllib3
 
-# [파일 정의서]
-# - 파일명: src/crawl_imp_volume_monthly.py
-# - 역할: 수집 (KMTA 한국육류유통수출협회)
-# - 대상: 수입 소고기 (미국/호주 냉동)
-# - 기능: 월별 데이터 수집 -> 정제 -> 정렬 -> 저장 (증분 업데이트)
-#         기존 파일이 있을 경우 마지막 수집 월 이후 데이터만 증분 수집
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_RAW, MASTER_IMPORT_VOLUME_CSV
+from utils.io_safe import atomic_to_csv
 
 # =========================================================
-# 1. 설정 (URL 및 저장 경로)
+# 1. 설정
 # =========================================================
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 URL = "https://www.kmta.or.kr/kr/data/stats_import_beef_parts2.php"
-
-DATA_RAW.mkdir(parents=True, exist_ok=True)
-SAVE_PATH = DATA_RAW / "master_import_volume.csv"
-
+SAVE_PATH = MASTER_IMPORT_VOLUME_CSV
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Origin": "https://www.kmta.or.kr",
-    "Referer": "https://www.kmta.or.kr/kr/data/stats_import_beef_parts2.php"
+    "Referer": URL,
 }
+START_YM = "2019-01"
+COUNTRIES = ["미국", "호주"]
+PART_COLS = [
+    '부위별_갈비_합계', '부위별_등심_합계', '부위별_목심_합계', '부위별_사태_합계', '부위별_설도_합계',
+    '부위별_안심_합계', '부위별_앞다리_합계', '부위별_양지_합계', '부위별_우둔_합계', '부위별_채끝_합계',
+    '부위별_기타_합계',
+]
+TOTAL_COL = '부위별_계_합계'
+SRC_COL = 'data_source'           # KMTA(협회 확정) / MFDS(식약처 검역 잠정, crawl_imp_food_safety.py)
+COLS = ['std_date', '구분'] + PART_COLS + [TOTAL_COL, SRC_COL]
+SITE_PARTS = [c.split('_')[1] for c in PART_COLS] + ['계']
+
 
 # =========================================================
-# 2. 수집 기간 설정 (증분 업데이트)
+# 2. 기존 파일
 # =========================================================
-START_DATE = "2019-01-01"
-end_date = datetime.now().strftime("%Y-%m-%d")
+def infer_source(df):
+    """data_source 컬럼이 없던 시절 파일 백필: KMTA 는 정수(톤), 식약처 보완분은 소수 1자리(kg/1000)."""
+    vals = df[PART_COLS + [TOTAL_COL]].apply(pd.to_numeric, errors='coerce')
+    frac = (vals - vals.round()).abs().fillna(0).gt(1e-9).any(axis=1)
+    return np.where(frac, 'MFDS', 'KMTA')
 
 
-def get_last_collected_date(file_path):
-    """기존 파일에서 마지막 수집 월을 확인하여 다음 월 반환"""
-    if not os.path.exists(file_path):
-        return START_DATE
+def load_existing(path):
+    """반환: DataFrame (없으면 빈 프레임). 파일이 있는데 읽을 수 없으면 예외 → 호출측에서 중단."""
+    if not Path(path).exists():
+        return pd.DataFrame(columns=COLS)
+    df = pd.read_csv(path, encoding='utf-8-sig', dtype={'std_date': str})
+    need = {'std_date', '구분', TOTAL_COL}
+    if not need <= set(df.columns):
+        raise ValueError(f"필수 컬럼 없음: {need - set(df.columns)}")
+    for c in PART_COLS:
+        if c not in df.columns:
+            df[c] = np.nan
+    if SRC_COL not in df.columns:
+        df[SRC_COL] = infer_source(df)
+        print(f"[백필] {SRC_COL} 컬럼 추가 (정수=KMTA, 소수=MFDS): "
+              f"{df.groupby(SRC_COL)['std_date'].agg(['min', 'max', 'count']).to_dict('index')}")
+    return df[COLS].copy()
 
+
+# =========================================================
+# 3. 사이트 조회 (월 1건)
+# =========================================================
+def _num(v):
+    """'1,234' → 1234 / '-' → 0 (KMTA 의 0 표기) / 빈칸·기타 → NaN (0 과 구분)"""
+    s = str(v).strip().replace(',', '')
+    if s == '-':
+        return 0.0
     try:
-        existing_df = pd.read_csv(file_path, encoding='utf-8-sig')
-        if existing_df.empty or 'std_date' not in existing_df.columns:
-            return START_DATE
+        return float(s)
+    except ValueError:
+        return np.nan
 
-        last_date = existing_df['std_date'].max()
-        year, month = map(int, str(last_date).split('-')[:2])
 
-        # 다음 달부터 수집
-        month += 1
-        if month > 12:
-            month = 1
-            year += 1
+def fetch_month(session, ym):
+    """반환: (status, df|None, msg). status ∈ OK / UNPUBLISHED / ERROR"""
+    y, m = ym.split('-')
+    form = {"ymw_y": y, "ymw_m": m, "ymw2_y": y, "ymw2_m": m, "typ": "write", "gubun": "CC01"}
+    try:
+        r = session.post(URL, data=form, headers=HEADERS, verify=False, timeout=30)
+    except requests.RequestException as e:
+        return 'ERROR', None, f"요청 실패: {e}"
+    if r.status_code != 200:
+        return 'ERROR', None, f"HTTP {r.status_code}"
+    try:
+        tables = pd.read_html(StringIO(r.text))
+    except ValueError as e:
+        return 'ERROR', None, f"표 파싱 실패: {e}"
+    if not tables:
+        return 'ERROR', None, "표 없음"
 
-        return f"{year}-{month:02d}-01"
+    t = tables[0]
+    if t.shape[1] != 1 + len(SITE_PARTS):
+        return 'ERROR', None, f"표 구조 변경: 열 {t.shape[1]}개 (기대 {1 + len(SITE_PARTS)})"
+    if t.shape[0] == 0:
+        return 'UNPUBLISHED', None, "미게시(빈 표)"
+    hdr = [str(c[1]) if isinstance(c, tuple) else str(c) for c in t.columns[1:]]
+    if hdr != SITE_PARTS:
+        return 'ERROR', None, f"부위 헤더 변경: {hdr}"
+
+    first = t.iloc[:, 0].astype(str).str.strip()
+    frozen = first[first == '냉동'].index.tolist()
+    chilled = first[first == '냉장'].index.tolist()
+    if len(frozen) != 1:
+        return 'ERROR', None, f"'냉동' 구분행 {len(frozen)}개"
+    end = next((i for i in chilled if i > frozen[0]), len(t))
+    sec = t.loc[frozen[0] + 1:end - 1]
+    sec = sec[sec.iloc[:, 0].astype(str).str.strip().isin(COUNTRIES)]
+    got = sec.iloc[:, 0].astype(str).str.strip().tolist()
+    if sorted(got) != sorted(COUNTRIES):
+        return 'ERROR', None, f"냉동 섹션 국가행 이상: {got}"
+
+    rows = []
+    for _, r_ in sec.iterrows():
+        vals = [_num(v) for v in r_.iloc[1:]]
+        parts, site_total = vals[:-1], vals[-1]
+        if any(np.isnan(v) for v in vals):
+            return 'ERROR', None, f"{r_.iloc[0]} 빈 값/숫자 아님: {list(r_.iloc[1:])}"
+        s = sum(parts)
+        if abs(s - site_total) > max(len(parts), 0.005 * site_total):
+            return 'ERROR', None, f"{r_.iloc[0]} Σ부위 {s:,.0f} ≠ 사이트 계 {site_total:,.0f}"
+        row = {'std_date': ym, '구분': str(r_.iloc[0]).strip()}
+        row.update(dict(zip(PART_COLS, parts)))
+        row[TOTAL_COL] = s
+        row[SRC_COL] = 'KMTA'
+        rows.append(row)
+    msg = " / ".join(f"{r['구분']} 계 {r[TOTAL_COL]:,.0f}" for r in rows)
+    return 'OK', pd.DataFrame(rows)[COLS], msg
+
+
+# =========================================================
+# 4. 비교·병합
+# =========================================================
+def diff_rows(old, new):
+    """같은 월·국가의 기존행 vs 신규행 차이 요약 (|Δ|≥0.5 톤)"""
+    out = []
+    for c in PART_COLS + [TOTAL_COL]:
+        a, b = old.get(c), new.get(c)
+        if pd.isna(a) and pd.isna(b):
+            continue
+        if pd.isna(a) or pd.isna(b) or abs(float(a) - float(b)) >= 0.5:
+            out.append(f"{c.split('_')[1]} {a if pd.isna(a) else round(float(a), 1)}→{b if pd.isna(b) else round(float(b), 1)}")
+    return out
+
+
+def parse_args():
+    ap = argparse.ArgumentParser(description="KMTA 월별 수입실적(미국/호주 냉동) 수집")
+    ap.add_argument('--recheck', type=int, default=12, help="최근 N개월 재확인 (기본 12)")
+    ap.add_argument('--months', help="지정 월만 조회 (예: 2026-02,2026-03)")
+    ap.add_argument('--all', action='store_true', help=f"{START_YM}부터 전체 재조회")
+    ap.add_argument('--dry-run', action='store_true', help="조회·비교만, 저장 안 함")
+    return ap.parse_args()
+
+
+def main():
+    args = parse_args()
+    DATA_RAW.mkdir(parents=True, exist_ok=True)
+    try:
+        existing = load_existing(SAVE_PATH)
     except Exception as e:
-        print(f"[경고] 기존 파일 읽기 실패: {e}. 처음부터 수집합니다.")
-        return START_DATE
+        print(f"[실패] 기존 수입량 파일을 읽을 수 없어 중단합니다 (덮어쓰기 방지): {SAVE_PATH}\n  사유: {e}")
+        return 1
 
+    now = datetime.now()
+    last_complete = str(pd.Period(now, freq='M') - 1)       # 전월까지 (당월은 집계 전)
+    have = sorted(existing['std_date'].astype(str).unique())
+    if args.months:
+        targets = sorted({m.strip() for m in args.months.split(',') if m.strip()})
+    elif args.all or not have:
+        targets = [str(p) for p in pd.period_range(START_YM, last_complete, freq='M')]
+    else:
+        start = min(have[-1], str(pd.Period(last_complete, freq='M') - (args.recheck - 1)))
+        window = [str(p) for p in pd.period_range(start, last_complete, freq='M')]
+        mfds = sorted(existing.loc[existing[SRC_COL] == 'MFDS', 'std_date'].astype(str).unique())
+        targets = sorted(set(window) | set(mfds))
 
-# 기존 파일에서 마지막 수집 월 확인
-start_date = get_last_collected_date(SAVE_PATH)
-end_year = datetime.now().year
-end_month = datetime.now().month
+    print(f"--- [시작] KMTA 미국/호주 냉동 수입실적 ({SAVE_PATH.name}) 대상 {len(targets)}개월: "
+          f"{targets[0] if targets else '-'} ~ {targets[-1] if targets else '-'} ---")
 
-# 이미 최신 상태인지 확인 (다음 수집 시작 월이 현재보다 미래인 경우)
-start_dt = pd.to_datetime(start_date)
-end_dt = pd.to_datetime(f"{end_year}-{end_month:02d}-01")
-if start_dt > end_dt:
-    print(f"--- [정보] 이미 최신 데이터입니다. 수집할 데이터가 없습니다. ---")
-    print(f"--- 경로: {SAVE_PATH} ---")
-    exit(0)
-
-date_range = pd.date_range(start=start_date, end=end_date, freq='MS')
-
-print(f"--- [시작] 미국/호주 냉동 데이터 수집 (Target: {SAVE_PATH.name}) ---")
-if start_date != START_DATE:
-    print(f"--- [증분 수집] 기간: {start_date[:7]} ~ {end_date[:7]} (신규 데이터만) ---")
-else:
-    print(f"--- [전체 수집] 기간: {start_date[:7]} ~ {end_date[:7]} ---")
-
-all_data = []
-
-# =========================================================
-# 3. 데이터 순회 및 수집
-# =========================================================
-for target_date in date_range:
-    year = str(target_date.year)
-    month = f"{target_date.month:02d}"
-    
-    print(f">> {year}-{month} 처리 중...", end=" ")
-    
-    form_data = {
-        "ymw_y": year,
-        "ymw_m": month,
-        "ymw2_y": year,
-        "ymw2_m": month,
-        "typ": "write",
-        "gubun": "CC01"
-    }
-    
-    try:
-        response = requests.post(URL, data=form_data, headers=HEADERS, verify=False)
-        
-        if response.status_code == 200:
-            tables = pd.read_html(StringIO(response.text))
-            target_df = None
-            
-            # '미국'이 포함된 테이블 찾기
-            for t in tables:
-                if t.shape[0] > 5 and t.apply(lambda x: x.astype(str).str.contains('미국').any(), axis=1).any():
-                    target_df = t
-                    break
-            
-            if target_df is not None:
-                # -------------------------------------------------------------
-                # [핵심] 냉동 섹션 정밀 슬라이싱 (합계/냉장 제외)
-                # -------------------------------------------------------------
-                df_str = target_df.astype(str)
-                frozen_start = df_str[df_str.apply(lambda x: x.str.contains('냉동').any(), axis=1)].index.tolist()
-                chilled_start = df_str[df_str.apply(lambda x: x.str.contains('냉장').any(), axis=1)].index.tolist()
-                
-                start_idx = 0
-                end_idx = len(target_df)
-                
-                if frozen_start: start_idx = frozen_start[0]
-                if chilled_start:
-                    valid_ends = [i for i in chilled_start if i > start_idx]
-                    if valid_ends: end_idx = valid_ends[0]
-                
-                section_df = target_df.iloc[start_idx:end_idx].copy()
-                
-                # 미국/호주 행만 추출
-                mask = section_df.apply(lambda x: x.astype(str).isin(['미국', '호주']).any(), axis=1)
-                filtered_df = section_df[mask].copy()
-                
-                # 컬럼 정의
-                expected_cols = [
-                    '구분', '부위별_갈비_합계', '부위별_등심_합계', '부위별_목심_합계', 
-                    '부위별_사태_합계', '부위별_설도_합계', '부위별_안심_합계', 
-                    '부위별_앞다리_합계', '부위별_양지_합계', '부위별_우둔_합계', 
-                    '부위별_채끝_합계', '부위별_기타_합계', '부위별_계_합계'
-                ]
-                
-                # 컬럼 매핑 및 부족분 채우기
-                curr_cols = filtered_df.shape[1]
-                if curr_cols >= len(expected_cols):
-                    filtered_df = filtered_df.iloc[:, :len(expected_cols)]
-                    filtered_df.columns = expected_cols
-                else:
-                    mapped = expected_cols[:curr_cols]
-                    filtered_df.columns = mapped
-                    for col in expected_cols[curr_cols:]:
-                        filtered_df[col] = 0
-
-                # [중요] 날짜 포맷 통일 (YYYY-MM)
-                filtered_df.insert(0, 'std_date', f"{year}-{month}")
-                
-                # 숫자 변환
-                numeric_cols = [c for c in filtered_df.columns if '합계' in c]
-                for col in numeric_cols:
-                    filtered_df[col] = (
-                        filtered_df[col].astype(str)
-                        .str.replace(',', '').str.replace('-', '0')
-                        .str.replace('nan', '0').str.replace('None', '0')
-                    )
-                    filtered_df[col] = pd.to_numeric(filtered_df[col], errors='coerce').fillna(0)
-
-                # [중요] 합계(계) 재계산 (Null 방지)
-                parts_cols = [c for c in filtered_df.columns if '부위별_' in c and '계_합계' not in c]
-                filtered_df['부위별_계_합계'] = filtered_df[parts_cols].sum(axis=1)
-
-                all_data.append(filtered_df)
-                print(f"성공 ({len(filtered_df)}건)")
-            else:
-                print("데이터 없음")
+    session = requests.Session()
+    fetched, errors, unpublished = [], [], []
+    for ym in targets:
+        status, df, msg = fetch_month(session, ym)
+        print(f">> {ym} {status} {msg}")
+        if status == 'OK':
+            fetched.append(df)
+        elif status == 'UNPUBLISHED':
+            unpublished.append(ym)
         else:
-            print(f"오류 ({response.status_code})")
-            
-    except Exception as e:
-        print(f"Error: {e}")
-    time.sleep(0.2)
+            errors.append(f"{ym}: {msg}")
+        time.sleep(0.5)
 
-# =========================================================
-# 4. 통합, 기존 데이터 병합, 정렬 및 저장
-# =========================================================
-print("\n" + "="*50)
-if all_data:
-    new_df = pd.concat(all_data, ignore_index=True)
+    # 병합: KMTA 행이 같은 월·국가의 기존행(MFDS 잠정 또는 이전 KMTA)을 대체
+    final = existing.copy()
+    changes = []
+    if fetched:
+        new = pd.concat(fetched, ignore_index=True)
+        key = lambda d: d['std_date'].astype(str) + '|' + d['구분'].astype(str)
+        old_idx = dict(zip(key(existing), existing.index))
+        for _, r in new.iterrows():
+            k = f"{r['std_date']}|{r['구분']}"
+            if k in old_idx:
+                o = existing.loc[old_idx[k]]
+                d = diff_rows(o, r)
+                if d or o[SRC_COL] != 'KMTA':
+                    changes.append(f"{k} [{o[SRC_COL]}→KMTA] " + (", ".join(d) if d else "값 동일"))
+            else:
+                changes.append(f"{k} [신규 KMTA] 계 {r[TOTAL_COL]:,.0f}")
+        final = pd.concat([existing[~key(existing).isin(set(key(new)))], new], ignore_index=True)
 
-    # 기존 데이터가 있으면 병합
-    existing_df = None
-    if os.path.exists(SAVE_PATH):
-        try:
-            existing_df = pd.read_csv(SAVE_PATH, encoding='utf-8-sig')
-        except Exception:
-            existing_df = None
+    final = final.sort_values(by=['std_date', '구분'], ascending=[False, True])[COLS]
 
-    if existing_df is not None and not existing_df.empty:
-        # 기존 + 신규 병합, 중복 제거 (std_date + 구분 기준)
-        final_df = pd.concat([existing_df, new_df], ignore_index=True)
-        final_df = final_df.drop_duplicates(subset=['std_date', '구분'], keep='last')
-        print(f"[병합] 기존 {len(existing_df)}행 + 신규 {len(new_df)}행 = 총 {len(final_df)}행")
+    print("\n" + "=" * 50)
+    for c in changes:
+        print(f"[변경] {c}")
+    src_added = SRC_COL not in pd.read_csv(SAVE_PATH, nrows=0, encoding='utf-8-sig').columns if SAVE_PATH.exists() else True
+    if (changes or src_added) and not final.empty:
+        if args.dry_run:
+            print(f"[dry-run] 저장하지 않음 (변경 {len(changes)}건)")
+        else:
+            atomic_to_csv(final, SAVE_PATH, index=False, encoding='utf-8-sig')
+            print(f"[저장] {SAVE_PATH} ({len(final)}행, 변경 {len(changes)}건, 최신 {final.iloc[0]['std_date']})")
     else:
-        final_df = new_df
+        print("[정보] 변경 없음 — 기존 파일 유지")
+    print(f"[출처] {final.groupby(SRC_COL)['std_date'].agg(['min', 'max', 'count']).to_dict('index')}")
+    if unpublished:
+        print(f"[정보] KMTA 미게시: {unpublished}")
+    if errors:
+        print("[실패] 조회/검증 오류 (해당 월은 반영 안 함):\n  " + "\n  ".join(errors))
+        return 1
+    print("=" * 50)
+    return 0
 
-    # [핵심] 날짜 기준 내림차순 정렬 (최신순)
-    final_df = final_df.sort_values(by=['std_date', '구분'], ascending=[False, True])
 
-    # 저장
-    final_df.to_csv(SAVE_PATH, index=False, encoding='utf-8-sig')
-
-    print(f"[완료] 수집 및 정렬 완료!")
-    print(f"[저장 경로] {SAVE_PATH}")
-    print(f"[총 데이터] {len(final_df)}행")
-    print(f"[최신 데이터] {final_df.iloc[0]['std_date']} (상단 확인)")
-else:
-    if os.path.exists(SAVE_PATH):
-        print("[정보] 신규 수집 데이터 없음 (아직 업데이트 안 됨). 기존 파일 유지.")
-    else:
-        print("[실패] 수집된 데이터가 없습니다.")
-print("="*50)
+if __name__ == "__main__":
+    sys.exit(main())

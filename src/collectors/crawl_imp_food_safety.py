@@ -4,6 +4,9 @@
 # - 대상: 수입 소고기 (미국/호주, 냉동 기준)
 # - 데이터 소스: 식품안전나라(수입식품정보마루)
 # - 주요 기능: 대기 로직(WebDriverWait)을 올바르게 적용하여 안정적인 메뉴 이동 및 데이터 수집
+# - 출력: master_import_volume.csv 에 KMTA 미게시 월만 잠정치로 추가 (data_source=MFDS, 단위 톤=kg/1000)
+#         KMTA 확정치가 있는 월은 덮어쓰지 않음. KMTA 게시 후 crawl_imp_volume_monthly.py 가 KMTA 로 교체.
+# - 실패 처리: 월 조회 3회 실패·국가 선택 실패·기타 예외·기존 파일 읽기 실패 → exit 1 (조용한 [성공] 금지)
 
 import time
 import os
@@ -34,6 +37,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DATA_RAW, MASTER_IMPORT_VOLUME_CSV, ensure_dirs
 from utils.selenium_chrome import build_chrome_driver
+from utils.io_safe import atomic_to_csv
 
 ensure_dirs()
 MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
@@ -42,33 +46,21 @@ MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
 # 2. 날짜 계산
 # =========================================================
 def get_next_month_from_master():
-    if not MASTER_FILE.exists(): 
+    if not MASTER_FILE.exists():
         print("[정보] 기존 파일이 없습니다. 2019-01-01부터 수집을 시작합니다.")
         return "2019-01-01"
-    
-    try:
-        df = pd.read_csv(str(MASTER_FILE))
-        if 'std_date' not in df.columns:
-            return "2019-01-01"
-            
-        df['dt_parsed'] = pd.to_datetime(df['std_date'], errors='coerce')
-        if df['dt_parsed'].isnull().sum() > len(df) / 2:
-            try:
-                df['dt_parsed'] = pd.to_datetime(df['std_date'], format='%b-%y', errors='coerce')
-            except: pass
-        
-        if df['dt_parsed'].isnull().all():
-             return "2019-01-01"
 
-        last_date_obj = df['dt_parsed'].max()
-        print(f"[정보] 기존 데이터 마지막 시점: {last_date_obj.strftime('%Y-%m')}")
-        
-        next_month = last_date_obj + relativedelta(months=1)
-        return next_month.strftime("%Y-%m-%d")
+    # 읽기 실패 시 2019-01 부터 재수집하면 KMTA 확정치를 식약처 잠정치로 덮어쓰게 됨 → 예외로 중단
+    df = pd.read_csv(str(MASTER_FILE))
+    if 'std_date' not in df.columns:
+        raise ValueError(f"{MASTER_FILE.name} 에 std_date 컬럼이 없습니다: {list(df.columns)}")
+    dt = pd.to_datetime(df['std_date'].astype(str), format='%Y-%m', errors='coerce')
+    if dt.isnull().all():
+        raise ValueError(f"{MASTER_FILE.name} 의 std_date 를 해석할 수 없습니다 (예: {df['std_date'].iloc[0]})")
 
-    except Exception as e: 
-        print(f"[경고] 날짜 계산 오류: {e}")
-        return "2019-01-01"
+    last_date_obj = dt.max()
+    print(f"[정보] 기존 데이터 마지막 시점: {last_date_obj.strftime('%Y-%m')}")
+    return (last_date_obj + relativedelta(months=1)).strftime("%Y-%m-%d")
 
 # =========================================================
 # 3. 드라이버 설정
@@ -134,7 +126,9 @@ def set_search_options(driver):
         driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_73')]").click()
         time.sleep(0.2)
         driver.find_element(By.XPATH, "//*[contains(@id, 'itemTable_243')]").click()
-    except: pass
+    except Exception as e:
+        # 국가 미선택 상태로 조회하면 전체 국가가 섞여 건수·스크롤 수집이 틀어짐 → 실패로 처리
+        raise RuntimeError(f"국가(미국/호주) 선택 실패: {e}") from e
     js_click(driver, btn2)
 
 # =========================================================
@@ -231,7 +225,17 @@ def crawl_monthly_data(driver, year, month):
 
             if total_count > 0:
                 print(f"[진행] 수집 시작...")
-                return pd.DataFrame(scrape_with_zoom_logic(driver, total_count))
+                rows = scrape_with_zoom_logic(driver, total_count)
+                if len(rows) >= total_count:
+                    return pd.DataFrame(rows)
+                # 스크롤 수집이 일부만 된 경우 → 부분 데이터로 저장하지 않고 재시도
+                print(f"[경고] 일부만 수집됨 ({len(rows)}/{total_count}건)")
+                if attempt < 3:
+                    driver.refresh()
+                    time.sleep(5)
+                    move_to_target_menu_robust(driver)
+                    set_search_options(driver)
+                continue
             else:
                 print(f"\n[경고] 데이터 0건 (혹은 로딩 실패)")
                 if attempt < 3:
@@ -255,7 +259,8 @@ def crawl_monthly_data(driver, year, month):
 # 7. KMTA 양식 통합
 # =========================================================
 def integrate_to_master(new_safety_df):
-    if new_safety_df.empty: return
+    """반환: 저장한 월 목록. 실패는 예외로 올린다."""
+    if new_safety_df.empty: return []
 
     new_safety_df = new_safety_df.copy()
 
@@ -284,8 +289,10 @@ def integrate_to_master(new_safety_df):
     part_cols = [c for c in pivoted.columns if c.startswith('부위별_') and '계_합계' not in c]
     pivoted['부위별_계_합계'] = pivoted[part_cols].sum(axis=1)
 
+    pivoted['data_source'] = 'MFDS'
+
     if MASTER_FILE.exists():
-        master_df = pd.read_csv(str(MASTER_FILE))
+        master_df = pd.read_csv(str(MASTER_FILE))   # 읽기 실패 시 예외 → 덮어쓰기 안 함
         
         if '구분' not in master_df.columns:
             possible_cols = [c for c in master_df.columns if '구분' in c]
@@ -293,11 +300,24 @@ def integrate_to_master(new_safety_df):
                 print(f"[수정] 잘못된 컬럼명 감지 및 수정: {possible_cols[0]} -> 구분")
                 master_df.rename(columns={possible_cols[0]: '구분'}, inplace=True)
 
+        if 'data_source' not in master_df.columns:
+            raise ValueError("마스터에 data_source 컬럼이 없습니다 — crawl_imp_volume_monthly.py 를 먼저 실행해 백필하세요.")
         master_columns = master_df.columns.tolist()
-        pivoted_aligned = pivoted.reindex(columns=master_columns, fill_value=0)
+        pivoted_aligned = pivoted.reindex(columns=master_columns)
         # 계는 마스터에 실제 저장되는 부위 컬럼만으로 재계산 (저장 안 되는 미지 컬럼이 합계에 섞이지 않게)
         master_parts = [c for c in master_columns if c.startswith('부위별_') and c != '부위별_계_합계']
+        # 조회는 성공했는데 해당 국가·부위 검역 실적 행이 없는 경우 = 수입 0 (KMTA 도 0 으로 게시) → 0 으로 통일
+        pivoted_aligned[master_parts] = pivoted_aligned[master_parts].fillna(0)
         pivoted_aligned['부위별_계_합계'] = pivoted_aligned[master_parts].sum(axis=1).round(1)
+
+        # KMTA 확정치가 이미 있는 월은 잠정치로 덮어쓰지 않음
+        kmta_months = set(master_df.loc[master_df['data_source'] == 'KMTA', 'std_date'].astype(str))
+        skip = sorted(set(pivoted_aligned['std_date'].astype(str)) & kmta_months)
+        if skip:
+            print(f"[정보] KMTA 확정치가 있는 월은 건너뜀: {skip}")
+            pivoted_aligned = pivoted_aligned[~pivoted_aligned['std_date'].astype(str).isin(skip)]
+        if pivoted_aligned.empty:
+            return []
 
         target_dates = pivoted_aligned['std_date'].unique()
         master_df = master_df[~master_df['std_date'].isin(target_dates)]
@@ -312,70 +332,92 @@ def integrate_to_master(new_safety_df):
         print("[경고] 정렬 기준 컬럼('구분')을 찾을 수 없어 날짜로만 정렬합니다.")
         final_df = final_df.sort_values(by=['std_date'], ascending=False)
 
-    final_df.to_csv(str(MASTER_FILE), index=False, encoding='utf-8-sig')
-    print(f"[완료] 통합 저장 완료 (합계 컬럼 재계산됨)")
+    atomic_to_csv(final_df, str(MASTER_FILE), index=False, encoding='utf-8-sig')
+    saved = sorted(final_df.loc[final_df['data_source'] == 'MFDS', 'std_date'].astype(str).unique())
+    saved = [m for m in saved if m in set(pivoted['std_date'].astype(str))]
+    print(f"[완료] 통합 저장 완료 (합계 컬럼 재계산됨, data_source=MFDS): {saved}")
+    return saved
 
 # =========================================================
 # 8. 메인 실행
 # =========================================================
 def main():
+    """반환: 종료 코드 (0=정상/수집할 월 없음, 1=한 달이라도 실패)"""
     print("="*60)
     print("[수집기] 식약처 데이터 (오류 수정 및 안정화 버전)")
-    
-    start_date_str = get_next_month_from_master()
-    
+
+    try:
+        start_date_str = get_next_month_from_master()
+    except Exception as e:
+        print(f"[실패] 기존 마스터 파일을 읽을 수 없어 중단합니다 (덮어쓰기 방지): {e}")
+        return 1
+
     today = datetime.now()
     last_day_prev_month = today.replace(day=1) - timedelta(days=1)
     end_date_str = last_day_prev_month.strftime("%Y-%m-%d")
-    
+
     print(f"[설정] 목표 수집 구간: {start_date_str} ~ {end_date_str}")
-    
+
     if start_date_str > end_date_str:
         print("[완료] 업데이트할 데이터가 없습니다.")
-        return
+        return 0
 
+    failed, saved = [], []
     driver = None
     try:
         driver = setup_driver()
         driver.get("https://impfood.mfds.go.kr/ifs/websquare/websquare.html?w2xPath=/ifs/ui/index.xml")
         time.sleep(5)
-        
+
         close_any_popup(driver)
         move_to_target_menu_robust(driver)
-        set_search_options(driver) 
+        set_search_options(driver)
 
         date_range = pd.date_range(start=start_date_str, end=end_date_str, freq='MS')
-        
-        for target_date in date_range:
-            result = crawl_monthly_data(driver, target_date.year, target_date.month)
-            
-            if isinstance(result, pd.DataFrame) and not result.empty:
-                col_names = [
-                    '품명', '구분', '부위', '국가', 
-                    '전년도_누계', '전년도_12월_누계', 
-                    '당월_상순', '당월_중순', '당월_하순', '당월_소계', '당해년도_누계'
-                ]
-                
-                cols = result.columns.tolist()
-                result.columns = col_names[:len(cols)]
 
-                result.insert(0, 'std_ym', target_date.strftime("%Y-%m"))
-                
-                mask = result['국가'].astype(str).str.contains('미국|호주')
-                df_filtered = result[mask].copy()
-                
-                if not df_filtered.empty:
-                    integrate_to_master(df_filtered)
-                else:
-                    print(f"[경고] 미국/호주 데이터 없음.")
+        for target_date in date_range:
+            ym = target_date.strftime("%Y-%m")
+            result = crawl_monthly_data(driver, target_date.year, target_date.month)
+
+            if not isinstance(result, pd.DataFrame) or result.empty:
+                print(f"[실패] {ym} 조회 3회 모두 실패 — 저장하지 않음")
+                failed.append(ym)
+                continue
+
+            col_names = [
+                '품명', '구분', '부위', '국가',
+                '전년도_누계', '전년도_12월_누계',
+                '당월_상순', '당월_중순', '당월_하순', '당월_소계', '당해년도_누계'
+            ]
+            if result.shape[1] < len(col_names):
+                print(f"[실패] {ym} 결과 열 {result.shape[1]}개 (기대 {len(col_names)}) — 표 구조 변경?")
+                failed.append(ym)
+                continue
+            result = result.iloc[:, :len(col_names)]
+            result.columns = col_names
+            result.insert(0, 'std_ym', ym)
+
+            mask = result['국가'].astype(str).str.contains('미국|호주')
+            df_filtered = result[mask].copy()
+
+            if df_filtered.empty:
+                print(f"[실패] {ym} 미국/호주 데이터 없음 (국가 필터·조회 조건 확인)")
+                failed.append(ym)
+                continue
+            saved += integrate_to_master(df_filtered)
             time.sleep(2)
 
-        print("\n[성공] 모든 업데이트 완료.")
-
     except Exception as e:
-        print(f"\n[오류] 에러 발생: {e}")
+        print(f"\n[실패] 에러 발생: {e}")
+        failed.append(f"예외: {str(e)[:80]}")
     finally:
         if driver: driver.quit()
 
+    if failed:
+        print(f"\n[실패] 식약처 수집 실패: {failed} / 저장된 월: {saved or '-'}")
+        return 1
+    print(f"\n[성공] 모든 업데이트 완료. 저장된 월: {saved or '-'}")
+    return 0
+
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

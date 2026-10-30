@@ -17,7 +17,7 @@ from config import MASTER_IMPORT_VOLUME_CSV
 # [파일 정의서]
 # - 파일명: 02_Import_Analysis.py
 # - 역할: 수입량 데이터 시각화
-# - 데이터 소스: data/0_raw/master_import_volume.csv
+# - 데이터 소스: data/0_raw/master_import_volume.csv (data_source: KMTA 확정 / MFDS 식약처 잠정 → 화면에 표시)
 # - 주요 기능: 국가별/부위별 교차 분석, YoY(전년 대비) 비교, 기간 필터링
 
 # --------------------------------------------------------------------------------
@@ -94,6 +94,16 @@ filtered_df = df[df['date'] >= start_date].copy()
 # --------------------------------------------------------------------------------
 st.title("수입 소고기 물량 분석")
 st.markdown(f"**조회 기간:** {start_date.strftime('%Y-%m')} ~ {max_date.strftime('%Y-%m')}")
+# 출처 표시: KMTA 확정치 / 식약처 검역 잠정치(KMTA 미게시 월 보완, 소수점 톤)
+try:
+    _src = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV), usecols=["std_date", "data_source"], dtype=str)
+    _mfds = sorted(_src.loc[_src["data_source"] == "MFDS", "std_date"].unique())
+    if _mfds:
+        st.caption(f"⚠️ {', '.join(_mfds)} 은(는) 식약처 검역실적 기반 잠정치입니다 (KMTA 게시 후 자동 교체).")
+    else:
+        st.caption("출처: 한국육류유통수출협회(KMTA) 확정 수입실적 (미국·호주 냉동)")
+except (ValueError, KeyError):
+    pass
 
 # KPI 계산을 위한 데이터 준비
 current_month_date = max_date
