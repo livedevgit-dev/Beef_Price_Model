@@ -68,7 +68,7 @@ def load_data():
     df["date"] = pd.to_datetime(df["Date"])
     df = df.dropna(subset=["item_description"])
 
-    # USDA 원본의 빈 가격이 전처리 과정에서 0으로 채워진 케이스를 결측치로 복원
+    # 무거래일 가격 0 → 결측 (process_usda_data.py 가 이미 NaN 처리하지만, 구버전 산출물 대비 방어 코드로 유지)
     df["weighted_average_USD_kg"] = df["weighted_average_USD_kg"].replace(0, pd.NA)
     df["weighted_average_USD_kg"] = pd.to_numeric(df["weighted_average_USD_kg"], errors="coerce")
 

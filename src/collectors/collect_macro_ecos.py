@@ -10,7 +10,12 @@
     1. .env(ECOS_API_KEY) 로딩. 키가 비어 있으면 즉시 graceful skip (파이프라인 중단 없음)
     2. Tier-1 국내 지표 3종을 long format 으로 수집하여 공통 raw CSV(FRED 와 공유)에 병합
     3. 최초 실행 시 2019-01 부터 백필, 이후 증분
-    4. indicator 단위 실패(코드 불일치·무자료 INFO-200 등)는 경고만 출력하고 계속 진행
+    4. indicator 단위 실패는 경고 출력 후 계속 진행
+       - INFO-200(해당 데이터 없음 = 아직 미발표) → 정상(exit 0)
+       - 네트워크 예외 / HTTP 200 이외 / JSON 파싱 실패 / 그 밖의 RESULT 코드(인증 INFO-100, ERROR-xxx)
+         → 오류로 집계, 받은 만큼 저장 후 exit 1 (2026-10 정합성 수정)
+    5. 자가 치유 증분: 마지막 달 포함 최근 3개월을 매번 다시 받아 해당 구간 행을 교체 (잠정치·개정 반영)
+    6. 기존 raw CSV 를 읽지 못하면 2019년부터 재수집하지 않고 중단(exit 1)
 
 ECOS 통계표코드 (공식: https://ecos.bok.or.kr/  > 통계검색):
     kr_base_rate = 722Y001  한국은행 기준금리 및 여수신금리 (주기 M)
@@ -51,6 +56,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import MACRO_RAW_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 # 사내망 SSL 검사(중간 프록시)로 인한 인증서 오류 대응.
 # collect_usda_primal.py 와 동일한 패턴 (verify=False + 경고 억제).
@@ -67,6 +73,8 @@ INITIAL_START = date(2019, 1, 1)          # 다른 데이터셋과 정합
 REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5
 MAX_ROWS_PER_CALL = 1000                  # ECOS 1회 응답 상한
+REFETCH_MONTHS = 3                        # 월별 지표 재수집 개월 수 (잠정치·개정 반영)
+NO_DATA_CODES = {"INFO-200"}              # 해당 데이터 없음(미발표) → 오류 아님
 
 COUNTRY = "KR"
 SOURCE = "ECOS"
@@ -268,7 +276,8 @@ def _fetch_indicator(
     indicator: dict,
     start: date,
     end: date,
-) -> list[dict]:
+) -> list[dict] | None:
+    """long row 리스트 반환. 무자료(INFO-200)면 [], 오류면 None."""
     cycle = indicator["cycle"]
     start_p = _fmt_period(start, cycle)
     end_p = _fmt_period(end, cycle)
@@ -282,26 +291,29 @@ def _fetch_indicator(
     except requests.RequestException as e:
         # 예외 메시지에는 인증키가 포함된 URL 이 들어갈 수 있으므로 타입만 출력
         print(f"   └ [예외] {indicator['indicator_id']}: 연결 실패 ({type(e).__name__})")
-        return []
+        return None
 
     if resp.status_code != 200:
         print(f"   └ [에러] HTTP {resp.status_code} ({indicator['indicator_id']})")
-        return []
+        return None
 
     try:
         payload = resp.json()
     except ValueError:
         print(f"   └ [에러] JSON 파싱 실패 ({indicator['indicator_id']})")
-        return []
+        return None
 
     # 오류/무자료: {"RESULT": {"CODE": "INFO-200", "MESSAGE": "..."}}
     if isinstance(payload, dict) and "RESULT" in payload:
         result = payload["RESULT"]
         code = result.get("CODE", "")
         msg = result.get("MESSAGE", "")
+        if code in NO_DATA_CODES:
+            print(f"   └ [ECOS {code}] {indicator['indicator_id']}: {msg} (미발표 — 정상)")
+            return []
         print(f"   └ [ECOS {code}] {indicator['indicator_id']}: {msg} "
-              f"(item_code 확인 필요 가능성)")
-        return []
+              f"(인증키/item_code 확인 필요)")
+        return None
 
     rows = []
     if isinstance(payload, dict) and "StatisticSearch" in payload:
@@ -339,14 +351,20 @@ def _fetch_indicator(
 # --------------------------------------------------------------------------
 # 누적 저장 (공통 raw — FRED 와 공유)
 # --------------------------------------------------------------------------
-def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
+def _merge_and_save(new_rows: list[dict], save_path: Path, windows: dict[str, str]) -> int:
+    """windows = {indicator_id: 재수집 시작일} — 해당 indicator 의 시작일 이후 기존 행은 이번 응답으로 교체.
+    다른 소스(FRED·KMA) 행은 건드리지 않는다."""
     df_new = pd.DataFrame(new_rows)
-    if df_new.empty:
+    if df_new.empty and not windows:
         return _existing_row_count(save_path)
 
     if save_path.exists():
         df_old = pd.read_csv(save_path, low_memory=False)
-        df_final = pd.concat([df_old, df_new], ignore_index=True)
+        old_dt = pd.to_datetime(df_old["date"], errors="coerce")
+        drop = pd.Series(False, index=df_old.index)
+        for iid, start in windows.items():
+            drop |= (df_old["indicator_id"] == iid) & (old_dt >= pd.Timestamp(start))
+        df_final = pd.concat([df_old[~drop], df_new], ignore_index=True)
     else:
         df_final = df_new
 
@@ -360,7 +378,7 @@ def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
     ).drop(columns=["_sort_dt"])
 
     save_path.parent.mkdir(parents=True, exist_ok=True)
-    df_final.to_csv(str(save_path), index=False, encoding="utf-8-sig")
+    atomic_to_csv(df_final, save_path, index=False, encoding="utf-8-sig")
     return len(df_final)
 
 
@@ -374,18 +392,16 @@ def _existing_row_count(save_path: Path) -> int:
 
 
 def _load_existing(save_path: Path) -> pd.DataFrame:
+    """파일이 없으면 빈 DF. 있는데 읽지 못하면 예외 (2019년부터 재수집해 덮어쓰는 사고 방지)."""
     if not save_path.exists():
         return pd.DataFrame()
-    try:
-        return pd.read_csv(save_path, low_memory=False)
-    except Exception:
-        return pd.DataFrame()
+    return pd.read_csv(save_path, low_memory=False)
 
 
 # --------------------------------------------------------------------------
 # 메인
 # --------------------------------------------------------------------------
-def collect_macro_ecos_increment() -> None:
+def collect_macro_ecos_increment() -> int:
     ensure_dirs()
     save_path = Path(MACRO_RAW_CSV)
 
@@ -396,12 +412,18 @@ def collect_macro_ecos_increment() -> None:
             "         발급 후 입력하면 다음 실행부터 국내 거시지표가 자동 수집됩니다.\n"
             "         발급: https://ecos.bok.or.kr/api/"
         )
-        return
+        return 0
 
-    df_existing = _load_existing(save_path)
+    try:
+        df_existing = _load_existing(save_path)
+    except Exception as e:
+        print(f"[중단] 기존 raw 를 읽을 수 없습니다 ({type(e).__name__}): {save_path}")
+        return 1
     today = date.today()
 
     new_rows: list[dict] = []
+    windows: dict[str, str] = {}
+    errors: list[str] = []
     for indicator in ECOS_INDICATORS:
         last_date = _read_last_date(df_existing, indicator["indicator_id"])
         if last_date is None:
@@ -409,26 +431,39 @@ def collect_macro_ecos_increment() -> None:
             print(f"[수집] {indicator['indicator_id']} ({indicator['stat_code']}) "
                   f"— 기존 없음 → {start} 부터 전체")
         else:
-            start = _next_period_start(last_date, indicator["cycle"])
+            if indicator["cycle"] == "M":
+                # 마지막 달 포함 최근 3개월 재수집 (잠정치·개정 반영)
+                start = last_date.replace(day=1) - relativedelta(months=REFETCH_MONTHS - 1)
+            else:
+                start = _next_period_start(last_date, indicator["cycle"])
             print(f"[수집] {indicator['indicator_id']} ({indicator['stat_code']}) "
-                  f"— 마지막 {last_date} → {start} 부터 증분")
+                  f"— 마지막 {last_date} → {start} 부터 재수집·증분")
 
         if start > today:
             print("   └ 이미 최신")
             continue
 
         rows = _fetch_indicator(api_key, indicator, start, today)
-        print(f"   └ 신규 {len(rows)}건")
-        new_rows.extend(rows)
+        if rows is None:
+            errors.append(indicator["indicator_id"])
+        else:
+            print(f"   └ 수신 {len(rows)}건")
+            new_rows.extend(rows)
+            if rows:  # 빈 응답으로 기존 구간을 지우지 않도록, 받은 게 있을 때만 교체
+                windows[indicator["indicator_id"]] = start.strftime("%Y-%m-%d")
         time.sleep(SLEEP_BETWEEN_CALLS)
 
-    if not new_rows:
-        print("[안내] ECOS 신규 데이터가 없습니다 (item_code 확인 필요 가능성 — docs 참조).")
-        return
+    if new_rows or windows:
+        total = _merge_and_save(new_rows, save_path, windows)
+        print(f"[완료] ECOS {len(new_rows)}건 반영(최근 구간 교체) — raw 누적 총 {total}건 ({save_path})")
+    else:
+        print("[안내] ECOS 신규 데이터가 없습니다.")
 
-    total = _merge_and_save(new_rows, save_path)
-    print(f"[완료] ECOS 신규 {len(new_rows)}건 병합 — raw 누적 총 {total}건 ({save_path})")
+    if errors:
+        print(f"[오류] ECOS 수집 실패 {len(errors)}종 (기존 값 유지): {errors}")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    collect_macro_ecos_increment()
+    sys.exit(collect_macro_ecos_increment())

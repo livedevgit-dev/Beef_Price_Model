@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import USDA_BEEF_HISTORY_CSV, EXCHANGE_RATE_XLSX, PROCESSED_USDA_COST_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 # [파일 정의서]
 # - 파일명: process_usda_data.py
@@ -15,6 +16,12 @@ from config import USDA_BEEF_HISTORY_CSV, EXCHANGE_RATE_XLSX, PROCESSED_USDA_COS
 # - 데이터 소스: USDA 도매가 및 환율
 # - 수집/가공 주기: 필요시 (배치성 단위 변환)
 # - 주요 기능: 원본 스키마를 보존하며, 환율(Exchange_Rate)을 독립 변수로 분리 유지하고, 고기 가격은 USD/kg 단위로 명시적 변환함.
+#   * 무거래(no trade) 처리 (2026-10 정합성 수정): USDA 원본은 거래가 없던 날 가격을 .00 으로,
+#     number_trades/total_pounds 를 빈 값으로 준다. 이를 가격 0 으로 두면 월/일 평균이 하향 왜곡되므로
+#     (weighted_average 가 0/공란 & number_trades 결측) 행의 가격 3종을 NaN 으로 바꾼다. (raw 파일은 그대로 보존)
+#   * 아무도 읽지 않는 상수 메타 컬럼(report_title, office_*, market_* 등)은 출력에서 제외 (파일 용량 절감).
+#     읽는 곳: pages/04_USDA_분석.py, pages/08_백테스팅.py, utils/feature_engineering*.py
+#     → Date, item_description, grade, weighted_average_USD_kg, Exchange_Rate 는 반드시 유지.
 
 # ======================================================
 # [설정] 기본 환경 설정 및 경로 지정
@@ -27,6 +34,14 @@ OUTPUT_FILE_PATH = PROCESSED_USDA_COST_CSV
 
 LB_TO_KG = 0.453592
 CWT_DIVISOR = 100 
+
+# 출력에서 제외하는 컬럼 (보고서 제목·사무소·시장 위치 등 전 행 동일한 상수 메타 + 미사용 텍스트)
+DROP_META_COLS = [
+    'narrative', 'trend', 'report_title', 'slug_name', 'slug_id',
+    'office_name', 'office_code', 'office_city', 'office_state',
+    'market_location_name', 'market_location_city', 'market_location_state',
+    'market_type', 'market_type_category', 'published_date',
+]
 
 # ======================================================
 # [핵심 로직] 명시적 타겟팅 및 파생 변수 생성
@@ -82,6 +97,15 @@ def process_usda_cost():
             
             df_final[col] = converted_num
 
+    # 무거래일 가격 0 → NaN (평균 계산 시 자동 제외되도록)
+    price_cols = [c for c in ['price_range_low', 'price_range_high', 'weighted_average'] if c in df_final.columns]
+    if 'weighted_average' in df_final.columns and 'number_trades' in df_final.columns:
+        # 가중평균이 0 또는 비어 있고 거래건수가 없는 행 (가중평균 공란 + 고저가 0 인 경우도 포함)
+        no_trade = (df_final['weighted_average'].fillna(0) == 0) & df_final['number_trades'].isna()
+        changed = no_trade & df_final[price_cols].notna().any(axis=1)
+        df_final.loc[no_trade, price_cols] = np.nan
+        print(f" - 무거래(가격 0·거래건수 결측) {int(changed.sum()):,}행의 가격을 NaN 처리했습니다.")
+
     print(" - 지정된 타겟 컬럼의 단위 변환(USD/kg, kg)을 수행합니다. (환율 곱셈 제거)")
     
     # 1. 물량 단위 변환 (lbs -> kg)
@@ -99,8 +123,10 @@ def process_usda_cost():
             # 1 파운드당 가격을 kg당 가격으로 환산 (환율은 곱하지 않음!)
             df_final[new_col_name] = (price_per_lb / LB_TO_KG).round(4)
 
+    df_final = df_final.drop(columns=[c for c in DROP_META_COLS if c in df_final.columns])
+
     ensure_dirs()
-    df_final.to_csv(str(OUTPUT_FILE_PATH), index=False, encoding='utf-8-sig')
+    atomic_to_csv(df_final, OUTPUT_FILE_PATH, index=False, encoding='utf-8-sig')
     print("=" * 60)
     print(f"[완료] 데이터 가공 성공! (저장 위치: {OUTPUT_FILE_PATH})")
     

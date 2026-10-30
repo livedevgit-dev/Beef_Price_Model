@@ -41,7 +41,10 @@ def load_and_merge_data():
         
     df_kr_price_m = df_kr_price.set_index('date')[['갈비_냉동_미국산']].rename(columns={'갈비_냉동_미국산': 'kr_price'})
 
-    df_us_price = pd.read_csv(PROCESSED_USDA_COST_CSV, parse_dates=['Date'], low_memory=False)
+    # 필요한 컬럼만 로드. 무거래일(가격 NaN/0)은 월평균에서 제외 (0 이 섞이면 월평균이 하향 왜곡됨)
+    df_us_price = pd.read_csv(PROCESSED_USDA_COST_CSV, parse_dates=['Date'], low_memory=False,
+                              usecols=['Date', 'item_description', 'weighted_average_USD_kg'])
+    df_us_price = df_us_price[df_us_price['weighted_average_USD_kg'] > 0]
     df_us_price_rib = df_us_price[df_us_price['item_description'].str.contains('Rib', case=False, na=False)]
     df_us_price_m = process_daily_to_monthly(df_us_price_rib, 'Date', 'weighted_average_USD_kg', 'us_price')
 
@@ -52,7 +55,7 @@ def load_and_merge_data():
     df_stock = pd.read_excel(BEEF_STOCK_XLSX)
     df_stock['date'] = pd.to_datetime(df_stock['기준년월'] + '-01')
     df_stock_rib = df_stock[df_stock['부위별 부위별'].str.contains('갈비', na=False)]
-    df_stock_m = df_stock_rib.groupby('date')['조사재고량 조사재고량'].sum().to_frame(name='stock')
+    df_stock_m = df_stock_rib.groupby('date')['조사재고량 조사재고량'].sum(min_count=1).to_frame(name='stock')
 
     df_merged = pd.concat([
         df_kr_price_m, df_us_price_m, df_exchange_m, df_import_m, df_stock_m

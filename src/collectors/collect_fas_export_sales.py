@@ -13,6 +13,10 @@
        → beef 상품코드, China / Korea, South 국가코드를 응답에서 직접 찾음(할루시네이션 방지)
     3. marketYear 2019~현재 범위로 beef 수출 주간 데이터 수집 → 국가별 long format 저장
     4. 검증 포인트: 중국행 급감 / 한국행 급증 = 덤핑 다이버전 조기경보
+    5. 매 실행마다 marketYear 전체를 다시 받아 (week_ending, 상품, 국가) 기준으로 교체 → 수정치 자가 치유
+    6. 실패 처리 (2026-10 정합성 수정): 네트워크 예외 / HTTP 200 이외 / JSON 파싱 실패 / 상품·국가코드 조회 실패는
+       오류로 집계 → 받은 만큼 저장 후 exit 1. 키 미설정은 graceful skip(exit 0).
+       기존 CSV 를 읽지 못하면 수집 전에 중단(exit 1).
 
 산출 컬럼(long) — data/0_raw/fas_export_sales_raw.csv:
     week_ending, market_year, commodity_code, commodity_name,
@@ -38,6 +42,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import FAS_EXPORT_SALES_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 VERIFY_SSL = False
@@ -53,6 +58,9 @@ SLEEP = 0.4
 BEEF_NAME_KEYS = ("beef",)              # commodityName 에 'beef' 포함
 
 DUPLICATE_KEYS = ["week_ending", "commodity_code", "country_code"]
+
+# 실행 중 발생한 실제 오류(네트워크·HTTP·파싱) 목록 — 종료 코드 판단용
+_ERRORS: list[str] = []
 
 
 def _get_api_key() -> str | None:
@@ -76,13 +84,16 @@ def _get(path: str, api_key: str, params: dict | None = None):
             continue
         if r.status_code != 200:
             print(f"   └ [에러] HTTP {r.status_code} ({path}) — 키/엔드포인트 확인 필요")
+            _ERRORS.append(f"HTTP {r.status_code} {path}")
             return None
         try:
             return r.json()
         except ValueError:
             print(f"   └ [에러] JSON 파싱 실패 ({path})")
+            _ERRORS.append(f"JSON {path}")
             return None
     print(f"   └ [예외] {path}: 연결 실패 ({last_err}) — 재시도 초과")
+    _ERRORS.append(f"연결 실패 {path}")
     return None
 
 
@@ -137,7 +148,7 @@ def _merge_and_save(rows: list[dict], save_path: Path) -> int:
     df["_dt"] = pd.to_datetime(df["week_ending"], errors="coerce")
     df = df.sort_values(["_dt", "country_code"]).drop(columns=["_dt"])
     save_path.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(str(save_path), index=False, encoding="utf-8-sig")
+    atomic_to_csv(df, save_path, index=False, encoding="utf-8-sig")
     return len(df)
 
 
@@ -150,7 +161,7 @@ def _count(p: Path) -> int:
         return 0
 
 
-def collect_fas_export_sales() -> None:
+def collect_fas_export_sales() -> int:
     ensure_dirs()
     save_path = Path(FAS_EXPORT_SALES_CSV)
     api_key = _get_api_key()
@@ -159,17 +170,25 @@ def collect_fas_export_sales() -> None:
             "[건너뜀] .env 의 FAS_API_KEY 가 비어 있습니다.\n"
             "         발급(무료): https://api.fas.usda.gov  → .env 에 FAS_API_KEY=... 입력"
         )
-        return
+        return 0
+
+    # 기존 파일이 깨져 있으면 수집 전에 중단 (병합 단계에서 덮어쓰기 방지)
+    if save_path.exists():
+        try:
+            pd.read_csv(save_path, usecols=["week_ending"], nrows=5)
+        except Exception as e:
+            print(f"[중단] 기존 파일을 읽을 수 없습니다 ({type(e).__name__}): {save_path}")
+            return 1
 
     print("[FAS] 상품/국가 코드 런타임 조회 중...")
     beefs = _find_beef_commodities(api_key)
     countries = _find_target_countries(api_key)
     if not beefs:
         print("[중단] beef 상품코드를 찾지 못했습니다 (인증 실패 또는 엔드포인트 변경 가능).")
-        return
+        return 1
     if not countries:
         print("[중단] 중국/한국 국가코드를 찾지 못했습니다 (countries 응답 확인 필요).")
-        return
+        return 1
     print(f"   └ beef 상품: {beefs}")
     print(f"   └ 대상 국가: {countries}")
 
@@ -200,13 +219,19 @@ def collect_fas_export_sales() -> None:
                 time.sleep(SLEEP)
         print(f"   └ '{cname}' 수집 누적 {len(rows)} rows")
 
-    if not rows:
+    if rows:
+        total = _merge_and_save(rows, save_path)
+        print(f"[완료] FAS 신규 {len(rows)}건 병합 — 누적 {total}건 ({save_path})")
+    else:
         print("[안내] 수집된 FAS 데이터가 없습니다 (엔드포인트/코드 확인 필요).")
-        return
 
-    total = _merge_and_save(rows, save_path)
-    print(f"[완료] FAS 신규 {len(rows)}건 병합 — 누적 {total}건 ({save_path})")
+    if _ERRORS:
+        print(f"[오류] 요청 {len(_ERRORS)}건 실패 — 받은 데이터만 저장했습니다: {_ERRORS[:5]}")
+        return 1
+    if not rows:
+        return 1   # 전 구간 0건은 정상 상황이 아님 (코드/엔드포인트 변경 의심)
+    return 0
 
 
 if __name__ == "__main__":
-    collect_fas_export_sales()
+    sys.exit(collect_fas_export_sales())

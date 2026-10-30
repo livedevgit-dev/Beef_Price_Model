@@ -137,6 +137,8 @@ def main():
         fig = go.Figure()
         for ind in selected:
             g = view[view["indicator_id"] == ind].sort_values("date")
+            if g["yoy_pct"].notna().sum() == 0:
+                continue  # 기상(기온·강수량)은 변화율 미산출 (preprocess_macro.py 참조)
             fig.add_trace(go.Scatter(x=g["date"], y=g["yoy_pct"], name=ind, mode="lines"))
         fig.update_layout(height=360, margin=dict(l=10, r=10, t=10, b=10),
                           legend=dict(orientation="h"))

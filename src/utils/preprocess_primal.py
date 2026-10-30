@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import USDA_PRIMAL_HISTORY_CSV, USDA_PLATE_USD_KG_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 # [파일 정의서]
 # - 파일명: src/utils/preprocess_primal.py
@@ -14,6 +15,8 @@ from config import USDA_PRIMAL_HISTORY_CSV, USDA_PLATE_USD_KG_CSV, ensure_dirs
 #   1. 'Primal Plate(우삼겹)' 데이터만 필터링
 #   2. 단위 변환 (100lbs 당 달러 -> 1kg 당 달러(USD/kg))
 #   * 환율은 곱하지 않고 독립 변수로 남겨둠 (기획자 요청사항)
+#   3. 가격이 0 이하/결측인 날은 제외 (무거래·미게시 값이 평균을 왜곡하지 않도록)
+#   * 읽는 곳: pages/08_백테스팅.py(우삼겹 원가 비교), build_samgyup_model.py, build_html_dashboard.py 등
 
 RAW_FILE = USDA_PRIMAL_HISTORY_CSV
 PROCESSED_FILE = USDA_PLATE_USD_KG_CSV
@@ -52,6 +55,10 @@ def preprocess_primal():
     # 1kg당 달러(USD) 가격 산출
     df_plate['choice_usd_per_kg'] = df_plate['choice_600_900'] / LBS100_TO_KG
     df_plate['select_usd_per_kg'] = df_plate['select_600_900'] / LBS100_TO_KG
+    bad = ~(df_plate['choice_600_900'] > 0)
+    if bad.any():
+        print(f" - 가격 0 이하/결측 {int(bad.sum())}일 제외")
+    df_plate = df_plate[~bad]
 
     # 5. 필요한 컬럼만 정리하여 최종 데이터프레임 생성
     final_cols = ['report_date', 'primal_desc', 'choice_usd_per_kg', 'select_usd_per_kg']
@@ -63,7 +70,7 @@ def preprocess_primal():
 
     # 6. 저장
     ensure_dirs()
-    df_final.to_csv(str(PROCESSED_FILE), index=False, encoding='utf-8-sig')
+    atomic_to_csv(df_final, PROCESSED_FILE, index=False, encoding='utf-8-sig')
     
     print(f"[완료] 전처리 완료! 총 {len(df_final)}일 치의 우삼겹 USD/kg 데이터가 생성되었습니다.")
     print(f"[저장 위치] {PROCESSED_FILE}")

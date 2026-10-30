@@ -10,7 +10,11 @@
     1. .env(FRED_API_KEY) 로딩. 키가 비어 있으면 즉시 graceful skip (파이프라인 중단 없음)
     2. Tier-1 미국 지표 3종을 long format 으로 수집하여 공통 raw CSV 에 병합
     3. 최초 실행 시 2019-01-01 부터 백필, 이후 증분
-    4. indicator 단위 실패는 경고만 출력하고 다음 indicator 로 계속 진행
+    4. indicator 단위 실패는 경고 출력 후 다음 indicator 로 계속 진행하되, 받은 만큼 저장한 뒤 exit 1
+       (네트워크 예외 / HTTP 200 이외 / JSON 파싱 실패 = 오류. 신규 관측치 0건 = 정상, exit 0)
+    5. 자가 치유 증분 (2026-10 정합성 수정): 월별 지표는 최근 3개월, 일별 지표는 최근 10일을 매번 다시 받아
+       해당 구간 행을 교체 → 잠정치 수정·개정(revision)이 반영된다.
+    6. 기존 raw CSV 를 읽지 못하면 2019년부터 재수집하지 않고 중단(exit 1)
 
 검증한 FRED series ID (공식: https://fred.stlouisfed.org/series/<ID>):
     us_corn      = PMAIZMTUSDM  (Global price of Corn, 월별, USD/metric ton, 1992~)  사료비 proxy
@@ -41,6 +45,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import MACRO_RAW_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 # 사내망 SSL 검사(중간 프록시)로 인한 인증서 오류 대응.
 # collect_usda_primal.py 와 동일한 패턴 (verify=False + 경고 억제).
@@ -56,6 +61,8 @@ BASE_URL = "https://api.stlouisfed.org/fred/series/observations"
 INITIAL_START = date(2019, 1, 1)          # 다른 데이터셋과 정합
 REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5                  # FRED 트래픽 보호
+REFETCH_MONTHS = 3                         # 월별 지표 재수집 개월 수 (잠정치·개정 반영)
+REFETCH_DAYS = 10                          # 일별 지표 재수집 일수
 
 COUNTRY = "US"
 SOURCE = "FRED"
@@ -143,8 +150,8 @@ def _fetch_series(
     indicator: dict,
     start: date,
     end: date,
-) -> list[dict]:
-    """단일 FRED series 를 long row 리스트로 반환."""
+) -> list[dict] | None:
+    """단일 FRED series 를 long row 리스트로 반환. 오류(네트워크·HTTP·파싱)면 None."""
     params = {
         "series_id": indicator["series_id"],
         "api_key": api_key,
@@ -157,19 +164,19 @@ def _fetch_series(
     except requests.RequestException as e:
         # 예외 메시지에는 api_key 가 포함된 URL 이 들어갈 수 있으므로 타입만 출력
         print(f"   └ [예외] {indicator['indicator_id']}: 연결 실패 ({type(e).__name__})")
-        return []
+        return None
 
     if resp.status_code != 200:
         # FRED 는 키 오류 등을 400/403 + 메시지로 반환 → 경고만 출력하고 skip
         snippet = resp.text[:160].replace("\n", " ")
         print(f"   └ [에러] HTTP {resp.status_code} ({indicator['indicator_id']}): {snippet}")
-        return []
+        return None
 
     try:
         payload = resp.json()
     except ValueError:
         print(f"   └ [에러] JSON 파싱 실패 ({indicator['indicator_id']})")
-        return []
+        return None
 
     observations = payload.get("observations", []) if isinstance(payload, dict) else []
     long_rows: list[dict] = []
@@ -204,14 +211,20 @@ def _fetch_series(
 # --------------------------------------------------------------------------
 # 누적 저장 (공통 raw 파일 — ECOS 와 공유)
 # --------------------------------------------------------------------------
-def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
+def _merge_and_save(new_rows: list[dict], save_path: Path, windows: dict[str, str]) -> int:
+    """windows = {indicator_id: 재수집 시작일 'YYYY-MM-DD'} — 해당 indicator 의 시작일 이후 기존 행은
+    이번 응답으로 통째로 교체한다 (개정·삭제분 반영). 다른 소스(ECOS·KMA) 행은 건드리지 않는다."""
     df_new = pd.DataFrame(new_rows)
-    if df_new.empty:
+    if df_new.empty and not windows:
         return _existing_row_count(save_path)
 
     if save_path.exists():
         df_old = pd.read_csv(save_path, low_memory=False)
-        df_final = pd.concat([df_old, df_new], ignore_index=True)
+        old_dt = pd.to_datetime(df_old["date"], errors="coerce")
+        drop = pd.Series(False, index=df_old.index)
+        for iid, start in windows.items():
+            drop |= (df_old["indicator_id"] == iid) & (old_dt >= pd.Timestamp(start))
+        df_final = pd.concat([df_old[~drop], df_new], ignore_index=True)
     else:
         df_final = df_new
 
@@ -225,7 +238,7 @@ def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
     ).drop(columns=["_sort_dt"])
 
     save_path.parent.mkdir(parents=True, exist_ok=True)
-    df_final.to_csv(str(save_path), index=False, encoding="utf-8-sig")
+    atomic_to_csv(df_final, save_path, index=False, encoding="utf-8-sig")
     return len(df_final)
 
 
@@ -239,18 +252,16 @@ def _existing_row_count(save_path: Path) -> int:
 
 
 def _load_existing(save_path: Path) -> pd.DataFrame:
+    """파일이 없으면 빈 DF. 있는데 읽지 못하면 예외 (2019년부터 재수집해 덮어쓰는 사고 방지)."""
     if not save_path.exists():
         return pd.DataFrame()
-    try:
-        return pd.read_csv(save_path, low_memory=False)
-    except Exception:
-        return pd.DataFrame()
+    return pd.read_csv(save_path, low_memory=False)
 
 
 # --------------------------------------------------------------------------
 # 메인
 # --------------------------------------------------------------------------
-def collect_macro_fred_increment() -> None:
+def collect_macro_fred_increment() -> int:
     ensure_dirs()
     save_path = Path(MACRO_RAW_CSV)
 
@@ -261,12 +272,18 @@ def collect_macro_fred_increment() -> None:
             "         발급 후 입력하면 다음 실행부터 미국 거시지표가 자동 수집됩니다.\n"
             "         발급: https://fredaccount.stlouisfed.org/apikeys"
         )
-        return
+        return 0
 
-    df_existing = _load_existing(save_path)
+    try:
+        df_existing = _load_existing(save_path)
+    except Exception as e:
+        print(f"[중단] 기존 raw 를 읽을 수 없습니다 ({type(e).__name__}): {save_path}")
+        return 1
     today = date.today()
 
     new_rows: list[dict] = []
+    windows: dict[str, str] = {}
+    errors: list[str] = []
     for indicator in FRED_INDICATORS:
         last_date = _read_last_date(df_existing, indicator["indicator_id"])
         if last_date is None:
@@ -274,26 +291,36 @@ def collect_macro_fred_increment() -> None:
             print(f"[수집] {indicator['indicator_id']} ({indicator['series_id']}) "
                   f"— 기존 없음 → {start} 부터 전체")
         else:
-            start = last_date + timedelta(days=1)
+            # 최근 구간 재수집 (월별: 마지막 달 포함 3개월 / 일별: 10일)
+            if indicator["freq"] == "M":
+                start = (pd.Timestamp(last_date).replace(day=1)
+                         - pd.DateOffset(months=REFETCH_MONTHS - 1)).date()
+            else:
+                start = last_date - timedelta(days=REFETCH_DAYS)
             print(f"[수집] {indicator['indicator_id']} ({indicator['series_id']}) "
-                  f"— 마지막 {last_date} → {start} 부터 증분")
-
-        if start > today:
-            print("   └ 이미 최신")
-            continue
+                  f"— 마지막 {last_date} → {start} 부터 재수집·증분")
 
         rows = _fetch_series(api_key, indicator, start, today)
-        print(f"   └ 신규 {len(rows)}건")
-        new_rows.extend(rows)
+        if rows is None:
+            errors.append(indicator["indicator_id"])
+        else:
+            print(f"   └ 수신 {len(rows)}건")
+            new_rows.extend(rows)
+            if rows:  # 빈 응답으로 기존 구간을 지우지 않도록, 받은 게 있을 때만 교체
+                windows[indicator["indicator_id"]] = start.strftime("%Y-%m-%d")
         time.sleep(SLEEP_BETWEEN_CALLS)
 
-    if not new_rows:
+    if new_rows or windows:
+        total = _merge_and_save(new_rows, save_path, windows)
+        print(f"[완료] FRED {len(new_rows)}건 반영(최근 구간 교체) — raw 누적 총 {total}건 ({save_path})")
+    else:
         print("[안내] FRED 신규 데이터가 없습니다.")
-        return
 
-    total = _merge_and_save(new_rows, save_path)
-    print(f"[완료] FRED 신규 {len(new_rows)}건 병합 — raw 누적 총 {total}건 ({save_path})")
+    if errors:
+        print(f"[오류] FRED 수집 실패 {len(errors)}종 (기존 값 유지): {errors}")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    collect_macro_fred_increment()
+    sys.exit(collect_macro_fred_increment())
