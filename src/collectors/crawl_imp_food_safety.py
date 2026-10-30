@@ -259,6 +259,8 @@ def integrate_to_master(new_safety_df):
 
     new_safety_df = new_safety_df.copy()
 
+    # '전체(국가별)' 행은 부위 칸에 국가명이 들어간 국가 합계 → 부위로 피벗되면 계가 2배가 됨(2026-02~09 실제 발생)
+    new_safety_df = new_safety_df[~new_safety_df['구분'].astype(str).str.contains('국가별')]
     new_safety_df = new_safety_df.drop_duplicates(subset=['std_ym', '국가', '부위'], keep='first')
     new_safety_df['당월_소계'] = new_safety_df['당월_소계'].astype(str).str.replace(',', '')
     new_safety_df['당월_소계'] = pd.to_numeric(new_safety_df['당월_소계'], errors='coerce').fillna(0)
@@ -293,7 +295,10 @@ def integrate_to_master(new_safety_df):
 
         master_columns = master_df.columns.tolist()
         pivoted_aligned = pivoted.reindex(columns=master_columns, fill_value=0)
-        
+        # 계는 마스터에 실제 저장되는 부위 컬럼만으로 재계산 (저장 안 되는 미지 컬럼이 합계에 섞이지 않게)
+        master_parts = [c for c in master_columns if c.startswith('부위별_') and c != '부위별_계_합계']
+        pivoted_aligned['부위별_계_합계'] = pivoted_aligned[master_parts].sum(axis=1).round(1)
+
         target_dates = pivoted_aligned['std_date'].unique()
         master_df = master_df[~master_df['std_date'].isin(target_dates)]
         
