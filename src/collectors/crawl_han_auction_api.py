@@ -20,6 +20,15 @@
        (auction_end_ymd, grade_cd, grade_nm, sex_cd, qgrade_yn, defect_include_yn, market_code) 키로 최신 우선 중복 제거
     7. 휴장일(응답 정상·값 없음)은 정상 처리, 네트워크/HTTP/인증/파싱 오류는 '실패'로 집계 →
        끝에 요약 출력 후 실패가 1건이라도 있으면 exit 1 (받은 데이터는 저장, 다음 실행 재수집 창에서 복구)
+       공공데이터포털 트래픽 초과·인증키 오류(resultCode 20/22/30/31/32/99, HTTP 429 등)는 이후 호출이
+       모두 실패하므로 즉시 중단(ApiStopError) — 받은 데이터까지만 저장하고 exit 1
+    8. 일별 백필: 일일 실행마다 남은 2019~2025 합산 구간을 AUTO_BACKFILL_MAX_CALLS 회씩 자동으로 이어 받음. 수동: `python crawl_han_auction_api.py --backfill-daily 2019-01-01 2025-12-31`
+       - 과거 30일 합산 행을 1일 청크 호출로 받아 교체 (약 2,550회 호출)
+       - BACKFILL_BATCH_DAYS(30)일 묶음마다 즉시 병합·저장(체크포인트) → 중단돼도 끝난 묶음은 보존
+       - 묶음 경계는 기존 합산 행을 자르지 않도록 그 행의 종료일까지 늘린다(이중 집계 방지)
+       - 재실행 시 '기간합산 행이 남아 있거나 행이 전혀 없는 묶음'만 다시 받는다(재개 가능, 별도 상태 파일 없음)
+       - 묶음 안에 실패일이 있으면 그 묶음은 기존 합산 행을 그대로 두고 새 행을 버린다 → 재실행 시 재시도
+       - 트래픽 초과로 중단되면 트래픽 리셋(익일) 후 같은 명령을 다시 실행하면 이어서 받는다
 
 산출 컬럼(long format):
     auction_start_ymd, auction_end_ymd, grade_type, grade_cd, grade_nm,
@@ -59,6 +68,22 @@ REFETCH_DAYS = 7                      # 매 실행 재수집·교체하는 최�
 MAX_CALLS_PER_RUN = 500               # 1회 실행 호출 상한 (공공데이터포털 일일 트래픽 보호)
 REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5             # 공공API 트래픽 보호
+BACKFILL_BATCH_DAYS = 30              # 일별 백필 체크포인트(병합·저장) 단위 일수
+BACKFILL_SLEEP = 0.3                  # 일별 백필 호출 간격(초)
+AUTO_BACKFILL_FROM = datetime(2019, 1, 1)    # 일일 실행 시 자동으로 이어 받는 과거 합산 구간
+AUTO_BACKFILL_TO = datetime(2025, 12, 31)
+AUTO_BACKFILL_MAX_CALLS = 500                # 일일 실행 1회당 자동 백필 호출 상한
+
+# 이후 호출도 모두 실패할 '중단형' 오류 — 공공데이터포털 표준 오류코드
+#   20 SERVICE_ACCESS_DENIED / 22 LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS(트래픽 초과)
+#   30 SERVICE_KEY_IS_NOT_REGISTERED / 31 DEADLINE_HAS_EXPIRED / 32 UNREGISTERED_IP
+#   99 (EKAPE 는 '등록되지 않은 서비스키' 를 99 로 반환)
+STOP_CODES = {"20", "22", "30", "31", "32", "99"}
+STOP_MSG_PATTERN = re.compile(
+    r"LIMITED_NUMBER|EXCEEDS|rate limit|ACCESS_DENIED|SERVICE_KEY|DEADLINE_HAS_EXPIRED|"
+    r"UNREGISTERED|서비스키|서비스 키|트래픽|요청제한|초과",
+    re.IGNORECASE,
+)
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -194,6 +219,14 @@ def _apply_market_meta(df: pd.DataFrame) -> pd.DataFrame:
 # --------------------------------------------------------------------------
 # API 호출
 # --------------------------------------------------------------------------
+class ApiStopError(RuntimeError):
+    """트래픽 초과·인증키 오류 — 이후 호출도 실패하므로 수집을 즉시 멈춰야 하는 오류."""
+
+
+def _is_stop(code: str, msg: str) -> bool:
+    return code.strip() in STOP_CODES or bool(STOP_MSG_PATTERN.search(msg or ""))
+
+
 def _fetch_range(
     api_key: str,
     start_ymd: str,
@@ -222,12 +255,16 @@ def _fetch_range(
 
     if resp.status_code != 200:
         print(f"   └ [에러] HTTP {resp.status_code}")
+        if resp.status_code == 429 or STOP_MSG_PATTERN.search(resp.text[:500] or ""):
+            raise ApiStopError(f"HTTP {resp.status_code} (트래픽 제한)")
         return None
 
     try:
         root = ET.fromstring(resp.content)
     except ET.ParseError as e:
         print(f"   └ [에러] XML 파싱 실패: {e} / 응답 일부: {resp.text[:150]!r}")
+        if STOP_MSG_PATTERN.search(resp.text[:500] or ""):
+            raise ApiStopError(f"비XML 오류 응답: {resp.text[:150]!r}")
         return None
 
     # 인증 실패 등은 <OpenAPI_ServiceResponse><cmmMsgHeader><returnReasonCode> 로 떨어진다
@@ -235,12 +272,16 @@ def _fetch_range(
     if reason_el is not None and (reason_el.text or "").strip() not in {"", "00"}:
         msg = root.findtext(".//returnAuthMsg") or root.findtext(".//errMsg") or ""
         print(f"   └ [API 에러] {reason_el.text} {msg}")
+        if _is_stop(reason_el.text or "", msg):
+            raise ApiStopError(f"returnReasonCode={reason_el.text} {msg}")
         return None
 
     result_code = (root.findtext(".//resultCode") or "").strip()
     if result_code != "00":
         msg = root.findtext(".//resultMsg") or ""
         print(f"   └ [API 에러] resultCode={result_code or '(없음)'} {msg}")
+        if _is_stop(result_code, msg):
+            raise ApiStopError(f"resultCode={result_code} {msg}")
         return None
 
     rows: list[dict] = []
@@ -422,8 +463,16 @@ def collect_han_auction_increment() -> int:
     failed: list[tuple[str, str]] = []
     holidays = 0
 
+    stopped = ""
     for i, (s, e) in enumerate(chunks, 1):
-        wide = _fetch_range(api_key, s, e, qgrade_yn="Y", defect_include_yn="Y")
+        try:
+            wide = _fetch_range(api_key, s, e, qgrade_yn="Y", defect_include_yn="Y")
+        except ApiStopError as ex:
+            # 트래픽 초과·인증 오류 → 남은 호출도 실패하므로 중단 (받은 것까지만 저장)
+            stopped = str(ex)
+            print(f" - [{i}/{len(chunks)}] {s} ~ {e} 중단: {stopped}")
+            failed.append((s, e))
+            break
         if wide is None:
             print(f" - [{i}/{len(chunks)}] {s} ~ {e} 실패")
             failed.append((s, e))
@@ -443,8 +492,11 @@ def collect_han_auction_increment() -> int:
         print(f"[완료] 신규 long row {len(new_long_rows)}건 반영 — 누적 총 {total}건 ({save_path})")
 
     print(
-        f"[요약] 호출 {len(chunks)}회: 정상 {len(fetched)} (휴장·무거래 {holidays}) / 실패 {len(failed)}"
+        f"[요약] 호출 {len(fetched) + len(failed)}/{len(chunks)}회: 정상 {len(fetched)} "
+        f"(휴장·무거래 {holidays}) / 실패 {len(failed)}"
     )
+    if stopped:
+        print(f"[중단] 트래픽 초과·인증 오류로 수집 중단: {stopped} — 남은 구간은 다음 실행에서 이어 받습니다.")
     if failed:
         print(
             f"[경고] 실패 구간 {len(failed)}건 (첫 3건: {failed[:3]}) — "
@@ -453,5 +505,135 @@ def collect_han_auction_increment() -> int:
     return len(failed)
 
 
+# --------------------------------------------------------------------------
+# 일별 백필 (수동 실행 전용)
+# --------------------------------------------------------------------------
+def _parse_date(text: str) -> datetime:
+    return datetime.strptime(text.strip().replace("-", ""), "%Y%m%d")
+
+
+def _backfill_batches(df_old: pd.DataFrame, start: datetime, end: datetime) -> list[tuple[str, str]]:
+    """[start, end] 을 BACKFILL_BATCH_DAYS 묶음으로 나누되, 기존 합산 행을 가로지르지 않도록 경계를 늘린다."""
+    spans: list[tuple[str, str]] = []
+    if not df_old.empty:
+        s, e = df_old["auction_start_ymd"].astype(str), df_old["auction_end_ymd"].astype(str)
+        spans = sorted(set(zip(s[s < e], e[s < e])))
+    batches: list[tuple[str, str]] = []
+    cursor = start
+    while cursor <= end:
+        b_end_s = min(cursor + timedelta(days=BACKFILL_BATCH_DAYS - 1), end).strftime("%Y%m%d")
+        for a, b in spans:          # 경계에 걸친 합산 행 → 그 행 종료일까지 확장
+            if a <= b_end_s < b:
+                b_end_s = max(b_end_s, b)
+        batches.append((cursor.strftime("%Y%m%d"), b_end_s))
+        cursor = _parse_date(b_end_s) + timedelta(days=1)
+    return batches
+
+
+def _batch_pending(df_old: pd.DataFrame, a: str, b: str) -> bool:
+    """묶음 구간에 기간합산 행이 남아 있거나 행이 전혀 없으면 미완료(=받아야 함)."""
+    if df_old.empty:
+        return True
+    in_rng = _overlap_mask(df_old, [(a, b)])
+    if not in_rng.any():
+        return True
+    sub = df_old.loc[in_rng]
+    return bool((sub["auction_start_ymd"].astype(str) < sub["auction_end_ymd"].astype(str)).any())
+
+
+def backfill_daily(start: datetime, end: datetime, max_calls: int | None = None) -> int:
+    """[start, end] 구간을 1일 청크로 받아 기존 기간합산 행을 교체. 반환값 = 실패(오류) 일수(중단 시 최소 1)."""
+    ensure_dirs()
+    save_path = Path(HAN_AUCTION_RAW_CSV)
+    api_key = _get_api_key()
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    today_ymd = today.strftime("%Y%m%d")
+    end = min(end, today - timedelta(days=1))
+    if start > end:
+        print("[안내] 백필 구간이 비어 있습니다.")
+        return 0
+
+    # 읽을 수 없는 파일 위에 덮어쓰지 않는다 (_load_existing 예외는 그대로 전파 → 비정상 종료)
+    df_old = _load_existing(save_path)
+    batches = _backfill_batches(df_old, start, end)
+    pending = [bt for bt in batches if _batch_pending(df_old, *bt)]
+    n_days = sum((_parse_date(b) - _parse_date(a)).days + 1 for a, b in pending)
+    print(f"[백필] {start.date()} ~ {end.date()}: 묶음 {len(batches)}개 중 미완료 {len(pending)}개 "
+          f"(≈{n_days}회 호출 예정)")
+
+    calls = filled_days = holidays = fail_days = 0
+    stopped = ""
+    for bi, (a, b) in enumerate(pending, 1):
+        days = _date_chunks(_parse_date(a), _parse_date(b), 1)
+        if max_calls is not None and calls + len(days) > max_calls:
+            print(f"[안내] 호출 상한 {max_calls}회 도달 → {a}부터는 다음 실행")
+            break
+        new_rows: list[dict] = []
+        fetched: list[tuple[str, str]] = []
+        failed: list[tuple[str, str]] = []
+        n_hol = 0
+        for s, e in days:
+            calls += 1
+            try:
+                wide = _fetch_range(api_key, s, e, qgrade_yn="Y", defect_include_yn="Y")
+            except ApiStopError as ex:
+                stopped = str(ex)
+                break
+            if wide is None:
+                failed.append((s, e))
+            else:
+                fetched.append((s, e))
+                rows = _wide_to_long(wide, qgrade_yn="Y", defect_include_yn="Y")
+                new_rows.extend(rows)
+                n_hol += 0 if rows else 1
+            time.sleep(BACKFILL_SLEEP)
+
+        if stopped:
+            # 묶음 도중 중단 → 이 묶음은 저장하지 않음(기존 합산 행 유지). 재실행 시 이 묶음부터 다시 받는다
+            print(f" - 묶음 [{bi}/{len(pending)}] {a}~{b}: 중단 ({stopped}) — 이 묶음은 미반영")
+            break
+
+        # 실패일이 있으면 묶음 전체를 실패 구간으로 보고 기존 합산 행 유지(이중 집계 방지 → 재실행 시 재시도)
+        n_failed = len(failed)
+        if failed:
+            fail_days += n_failed
+            failed = [(a, b)]
+        else:
+            filled_days += len(days)
+            holidays += n_hol
+        # 저장 직전 최신 파일 재로딩(일일 파이프라인과 겹쳐도 다른 구간을 덮어쓰지 않도록)
+        df_cur = _load_existing(save_path)
+        total = _merge_and_save(df_cur, new_rows, fetched, failed, today_ymd, save_path)
+        print(f" - 묶음 [{bi}/{len(pending)}] {a}~{b}: {len(days)}일, long {len(new_rows)}행"
+              f"{f' (실패일 {n_failed} → 묶음 미반영)' if n_failed else ''} / 누적 {total}행 저장", flush=True)
+
+    print(f"[백필 요약] 호출 {calls}회, 일별 교체 완료 {filled_days}일 (그중 휴장·무거래 {holidays}일), "
+          f"실패일 {fail_days}")
+    if stopped:
+        print(f"[중단] {stopped}\n"
+              f"       → 트래픽 리셋(익일) 후 같은 명령을 다시 실행하면 미완료 묶음부터 이어 받습니다.")
+        return max(1, fail_days)
+    return fail_days
+
+
 if __name__ == "__main__":
-    sys.exit(1 if collect_han_auction_increment() else 0)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="EKAPE 한우 경락가격 수집 (인자 없으면 일일 증분)")
+    parser.add_argument("--backfill-daily", nargs=2, metavar=("FROM", "TO"),
+                        help="기간합산 행을 1일 단위로 재수집 (예: 2019-01-01 2025-12-31)")
+    parser.add_argument("--max-calls", type=int, default=None, help="백필 호출 상한(선택)")
+    args = parser.parse_args()
+    if args.backfill_daily:
+        n_fail = backfill_daily(_parse_date(args.backfill_daily[0]), _parse_date(args.backfill_daily[1]),
+                                max_calls=args.max_calls)
+    else:
+        n_fail = collect_han_auction_increment()
+        # 2019~2025 30일 합산 행이 남아 있으면 일일 실행마다 일정량씩 1일 단위로 이어 받음
+        # (data.go.kr 일일 호출 한도 ≈1,000회 → 증분 호출 몫을 남기고 AUTO_BACKFILL_MAX_CALLS 만 사용).
+        # 한도 초과로 멈춰도 다음 실행에 이어지므로 일일 파이프라인 실패로는 집계하지 않음.
+        if not n_fail:
+            print("\n[자동 백필] 과거 30일 합산 구간 일별 재수집 (남은 구간이 없으면 호출 없음)")
+            if backfill_daily(AUTO_BACKFILL_FROM, AUTO_BACKFILL_TO, max_calls=AUTO_BACKFILL_MAX_CALLS):
+                print("[자동 백필] 이번 실행분 일부 미완료 — 다음 실행에서 이어 받습니다.")
+    sys.exit(1 if n_fail else 0)

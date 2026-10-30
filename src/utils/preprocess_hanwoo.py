@@ -5,18 +5,24 @@
 - 대상: 한우
 - 데이터 소스:
     - data/0_raw/han_auction_raw.csv   (EKAPE 경락가격 + 도축장별 두수, long format)
-    - data/0_raw/kamis_hanwoo_raw.csv  (KAMIS 한우 부위별 소매가, long format)
+    - data/0_raw/kamis_hanwoo_raw.csv  (KAMIS 한우 부위별 소매가 + 수입 소고기 소매가, long format)
 - 출력:
     - data/1_processed/han_auction_daily.csv  (EKAPE 경매일×등급×시장 정규화 + 합산구간 period_days)
     - data/2_dashboard/hanwoo_dashboard_ready.csv  (대시보드 통합 long format)
 - 주요 기능:
     1. EKAPE long → 경매일(auction_end_ymd)×등급×시장 표준화 (단위: 원/kg — EKAPE는 도체 1kg 가격)
-       - period_days = 합산 구간 일수. 2026년~ 은 1(일별), 2019~2025는 30일 합산 행(date=구간 종료일)
+       - period_days = 합산 구간 일수. 1 = 일별. 2026-10-30 일별 백필(--backfill-daily) 이후 2019~ 전 구간이 1이며,
+         백필 전/미완료 구간은 30일 합산 행(date=구간 종료일)으로 남아 있을 수 있다
        - 등급 표준화: 평균→전체, D→등외 (1++~3 + D = 평균 확인), A/B/C(육량등급)·등외제외·결함제외는 원문 유지
        - 권역/전국 플래그는 market_code 로 대소문자 무관 재계산 (CCenterAmt→'Center' 누락 교정)
     2. KAMIS long → 부위·등급 파싱 + 단위 환산(100g → kg). 소매(01)만 사용 —
        KAMIS 축산물 '도매(02)' 응답은 소매와 동일한 중복이라 kamis_wholesale 은 더 이상 만들지 않는다.
        is_outlier: 부위·등급별 ±7일 중앙값 대비 ±50% 넘게 튄 단일일 값 표시(삭제하지 않음)
+       - 한우 행 → source 'kamis_retail', origin '국내산'
+       - 수입 소고기 행(item_name '수입 소고기', rank=원산지) → source 'kamis_retail_import',
+         part '수입 갈비'/'수입 갈비살'(한우 '갈비' 와 이름이 섞이지 않도록 접두어), grade '전체', origin '미국'/'호주'
+         (origin 표기는 미트박스 category 와 동일 — 유통마진 비교용)
+       - KAMIS 축산 소매 price 0 은 '미조사'(2022 상반기 이전 대부분) → 수집 단계에서 결측 처리됨
     3. 두 소스를 통합 long format으로 결합, 일별 행(period_days==1)에 한해 시간 기준 7D/30D 이동평균 산출
        (행 개수 기준 rolling 은 30일 합산 행에서 7개월 평균이 되던 문제 교정. 합산 행의 ma7/ma30 은 공란)
 """
@@ -54,6 +60,7 @@ EKAPE_REGION_NAMES = {
 
 KAMIS_OUTLIER_WINDOW = "15D"      # 중심 ±7일
 KAMIS_OUTLIER_THRESHOLD = 0.5     # 중앙값 대비 ±50%
+MARKET_ROWS_KEEP_DAYS = 180         # 대시보드 파일에 남길 개별 도매시장 행 기간(일)
 
 
 def _to_canonical_grade(text: str) -> str:
@@ -152,8 +159,17 @@ def _parse_kamis_unit_to_kg_factor(unit: str) -> float | None:
     return 1.0 / kg
 
 
+def _import_origin(rank: str) -> str:
+    """수입 소고기 rank(원산지 문자열) → 미트박스 category 표기(미국/호주)."""
+    r = str(rank or "").strip()
+    for key, name in (("미국", "미국"), ("호주", "호주"), ("뉴질랜드", "뉴질랜드"), ("캐나다", "캐나다")):
+        if key in r:
+            return name
+    return r or "수입"
+
+
 def process_kamis() -> pd.DataFrame:
-    """kamis_hanwoo_raw.csv → 일자×부위×등급 소매가 long format. 단위 원/kg."""
+    """kamis_hanwoo_raw.csv → 일자×부위×등급(한우) / 일자×부위×원산지(수입) 소매가 long format. 단위 원/kg."""
     path = Path(KAMIS_HANWOO_RAW_CSV)
     if not path.exists():
         print(f"[건너뜀] KAMIS 원본 없음(키 미설정 가능): {path}")
@@ -173,6 +189,10 @@ def process_kamis() -> pd.DataFrame:
     raw["date"] = pd.to_datetime(raw["reg_date"], errors="coerce")
     raw = raw.dropna(subset=["date"])
 
+    # 수입 소고기 행 구분 (rank 에 등급 대신 원산지가 들어온다)
+    _item = raw["item_name"].fillna("").astype(str)
+    is_import = _item.str.contains("수입") & _item.str.contains("소고기|쇠고기")
+
     # KAMIS 실제 응답: 부위는 kind_name(안심/등심/설도/양지), 등급은 별도 rank 필드("1++등급")
     raw["part"] = raw["kind_name"].astype(str).str.strip().replace("", "기타")
     if "rank" in raw.columns:
@@ -182,9 +202,14 @@ def process_kamis() -> pd.DataFrame:
             .str.strip()
             .apply(_to_canonical_grade)
         )
+        raw["origin"] = "국내산"
+        raw.loc[is_import, "origin"] = raw.loc[is_import, "rank"].apply(_import_origin)
     else:
         # 구버전 raw(=rank 미수집)는 등급 정보 없음 → 전체로 처리
         raw["grade"] = "전체"
+        raw["origin"] = "국내산"
+    raw.loc[is_import, "grade"] = "전체"
+    raw.loc[is_import, "part"] = "수입 " + raw.loc[is_import, "part"]
 
     raw["unit_factor"] = raw["unit"].apply(_parse_kamis_unit_to_kg_factor)
     raw["price_won_per_kg"] = pd.to_numeric(raw["price"], errors="coerce") * raw["unit_factor"]
@@ -192,10 +217,11 @@ def process_kamis() -> pd.DataFrame:
     df = pd.DataFrame({
         "date": raw["date"],
         "period_days": 1,
-        "source": "kamis_retail",
+        "source": is_import.map({True: "kamis_retail_import", False: "kamis_retail"}),
         "grade": raw["grade"],
         "sex": "전체",
         "part": raw["part"],
+        "origin": raw["origin"],
         "market_code": "",
         "market_name": raw["market_name"].fillna("").astype(str),
         "country_name": raw["country_name"].fillna("").astype(str),
@@ -206,7 +232,8 @@ def process_kamis() -> pd.DataFrame:
     })
     # 단위 변환 실패(예: '1마리') 또는 가격 결측 제외
     df = df[df["price_won_per_kg"].notna()]
-    print(f"[KAMIS] 정규화 완료: {len(df):,} rows (소매)")
+    n_imp = int((df["source"] == "kamis_retail_import").sum())
+    print(f"[KAMIS] 정규화 완료: {len(df):,} rows (한우 소매 {len(df) - n_imp:,} / 수입 소고기 소매 {n_imp:,})")
     return df
 
 
@@ -238,10 +265,11 @@ def build_dashboard_ready(
     if not ekape_part.empty:
         ekape_part["part"] = "전체(도체)"  # EKAPE는 부위 미구분
         ekape_part["country_name"] = ""
+        ekape_part["origin"] = "국내산"
 
     kamis_part = kamis_df.copy() if not kamis_df.empty else pd.DataFrame()
 
-    union_cols = common_cols + ["part", "country_name"]
+    union_cols = common_cols + ["part", "country_name", "origin"]
     for c in union_cols:
         if c not in ekape_part.columns:
             ekape_part[c] = pd.NA
@@ -258,19 +286,19 @@ def build_dashboard_ready(
     combined["date"] = pd.to_datetime(combined["date"])
     combined["period_days"] = pd.to_numeric(combined["period_days"], errors="coerce").fillna(1).astype(int)
     combined = combined.sort_values(
-        by=["source", "part", "grade", "market_name", "sex", "date"]
+        by=["source", "part", "grade", "market_name", "sex", "origin", "date"]
     ).reset_index(drop=True)
 
     # 이동평균: (source, part, grade, market_name, sex) 그룹 단위, 날짜 기준 창.
     # 기간합산 행(period_days>1)은 창 계산에서 제외 → 해당 행의 ma7/ma30 은 NaN
-    grp_cols = ["source", "part", "grade", "market_name", "sex"]
+    grp_cols = ["source", "part", "grade", "market_name", "sex", "origin"]
     daily = combined[combined["period_days"] == 1]
     combined["ma7"] = _time_rolling(daily, grp_cols, "7D", min_periods=3)
     combined["ma30"] = _time_rolling(daily, grp_cols, "30D", min_periods=10)
 
     # KAMIS 단일일 급등락 표시 (데이터는 보존, 차트·분석에서 선택적으로 제외)
     combined["is_outlier"] = False
-    kam = combined[combined["source"] == "kamis_retail"]
+    kam = combined[combined["source"].isin(["kamis_retail", "kamis_retail_import"])]
     if not kam.empty:
         med = _time_rolling(kam, grp_cols, KAMIS_OUTLIER_WINDOW, min_periods=5,
                             stat="median", center=True)
@@ -290,6 +318,17 @@ def main() -> None:
     if final_df.empty:
         print("[안내] 통합 결과가 비어 있어 대시보드 파일을 생성하지 않았습니다.")
         return
+
+    # 대시보드 파일 경량화: 개별 도매시장 행은 페이지 05 '최근 이상 신호'에만 쓰이므로 최근 N일만 유지
+    # (전국·권역 합계와 KAMIS 는 전 기간 유지, 시장별 전체 이력은 han_auction_daily.csv 에 그대로 있음).
+    # 2019~2025 일별 백필 후 전체 보관 시 ~55MB 로 GitHub 50MB 경고선을 넘기 때문.
+    is_market = (final_df["source"] == "ekape_auction") & ~final_df["is_national_total"].astype(bool) \
+        & ~final_df["is_regional_total"].astype(bool)
+    cutoff = pd.to_datetime(final_df["date"]).max() - pd.Timedelta(days=MARKET_ROWS_KEEP_DAYS)
+    drop = is_market & (pd.to_datetime(final_df["date"]) < cutoff)
+    if drop.any():
+        final_df = final_df[~drop]
+        print(f"[경량화] 개별 시장 행 중 {MARKET_ROWS_KEEP_DAYS}일 이전 {int(drop.sum()):,}행 제외 (han_auction_daily.csv 에 보관)")
 
     atomic_to_csv(final_df, HANWOO_DASHBOARD_CSV, index=False, encoding="utf-8-sig")
     print(

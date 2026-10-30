@@ -57,6 +57,8 @@ TRAIN_STEPS = [
     ("삼겹양지 익월가 예측 (XGBoost, walk-forward)", "Models/train_samgyup_xgb.py"),
     ("부위별 상승가능성 랭킹 (pooled XGBoost)", "Models/train_cut_upside.py"),
     ("일반인용 시장 리포트 생성 (공유·BI용)", "reports/generate_market_report.py"),
+    # 2026-10-30 추가: 한우 경락·소매 ↔ 수입육 도매·소매 상관·선후행·유통마진 (data/3_reports/analysis/)
+    ("국내산(한우) vs 수입육 상관·유통마진 분석", "Models/domestic_vs_import.py"),
 ]
 
 _LEGACY_TRAIN_STEPS = [

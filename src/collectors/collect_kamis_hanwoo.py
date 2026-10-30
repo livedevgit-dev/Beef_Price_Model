@@ -2,14 +2,17 @@
 [파일 정의서]
 - 파일명: collect_kamis_hanwoo.py
 - 역할: 수집
-- 대상: 한우 부위별 소매 가격 (KAMIS 한국농수산식품유통공사)
+- 대상: 한우 부위별 소매 가격 + 수입 소고기(미국산/호주산 갈비·갈비살) 소매 가격 (KAMIS 한국농수산식품유통공사)
 - 데이터 소스:
     http://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList
 - 수집/가공 주기: 일단위 — 마지막 reg_date 이후 + 최근 REFETCH_DAYS(7)일을 매번 다시 받아 교체(일시 실패·지연 게시 자가 복구)
 - 주요 기능:
     1. .env(KAMIS_CERT_KEY, KAMIS_CERT_ID) 로딩
     2. 키가 비어 있으면 즉시 graceful skip (파이프라인 중단 없이 종료)
-    3. 소매(p_product_cls_code=01)만 호출하여 부류=500(축산물) 응답에서 한우/소 row만 필터링
+    3. 소매(p_product_cls_code=01)만 호출하여 부류=500(축산물) 응답에서 한우/소 row + 수입 소고기 row 필터링
+       - 수입 소고기(item_code 4401): item_name='수입 소고기', kind_name=부위(갈비/갈비살),
+         rank=원산지(미국산/호주산) — KAMIS 가 등급 자리에 원산지를 넣어 준다. 수입 돼지고기 등은 제외
+       - 2026-10-30 이전 누적분은 수입 소고기를 버리고 있었음 → --backfill-import 로 과거분 보충
        ※ 2026-10-30 확인: 축산물은 p_product_cls_code 를 무시하고 02(도매) 요청에도 소매와 100% 동일한 응답을 준다
          (과거 누적 42,900쌍 전부 일치, 가격 수준도 소매). → 도매 요청 중단, 누적분의 02 행은 병합 시 제거.
          도매 기준가는 EKAPE 도체 경락가(crawl_han_auction_api.py)를 사용한다.
@@ -18,6 +21,10 @@
        나머지는 (reg_date, product_cls_code, item_name, kind_name, rank, country_name, market_name) 키로 중복 제거
     6. 응답 없음(error_code 001·빈 목록 = 휴장/미게시)은 정상, 네트워크/HTTP/파싱/그 외 error_code 는 실패로 집계 →
        끝에 요약 출력 후 실패가 있으면 exit 1 (받은 데이터는 저장)
+    7. 수입 소고기 과거분 백필(수동): `python collect_kamis_hanwoo.py --backfill-import 2022-07-01 2026-10-29`
+       - 일자별 호출(≈1.5초/일) 후 '수입 소고기' 행만 교체·추가 — 한우 행은 건드리지 않는다
+       - BACKFILL_SAVE_EVERY(30)일마다 저장(체크포인트). 재실행 시 이미 수입 행이 있는 일자는 건너뜀(재개 가능)
+       - KAMIS 축산 소매가는 2022년 상반기까지 대부분 0(미조사)이라 2022-07 이전은 실익이 거의 없다
 
 산출 컬럼(long format):
     reg_date, product_cls_code('01'), product_cls_name('소매'),
@@ -60,6 +67,7 @@ INITIAL_START = date(2019, 1, 1)  # 다른 데이터셋과 정합성
 REQUEST_TIMEOUT = 20
 SLEEP_BETWEEN_CALLS = 0.3         # KAMIS 트래픽 보호 (개발계정 1만/일)
 MAX_DAYS_PER_RUN = 400            # 1회 실행당 안전 상한 (백필 분할)
+BACKFILL_SAVE_EVERY = 30          # 수입 소고기 백필 체크포인트(저장) 단위 일수
 REFETCH_DAYS = 7                  # 매 실행 재수집·교체하는 최근 일수
 PRODUCT_CLS_CODE = "01"           # 소매만 (축산물은 02 요청도 소매와 동일 응답 — 파일 정의서 참고)
 
@@ -67,6 +75,8 @@ PRODUCT_CLS_CODE = "01"           # 소매만 (축산물은 02 요청도 소매�
 # kind_name 예시: "안심(1++등급)", "등심(1+등급)", "갈비(1등급)" 등
 HANWOO_ITEM_NAMES = {"소", "쇠고기", "한우"}
 IMPORT_KEYWORDS = ("수입", "미국산", "호주산", "뉴질랜드", "캐나다", "멕시코")
+# 수입 소고기 식별 — item_name '수입 소고기'(item_code 4401). '수입 돼지고기' 는 제외
+IMPORT_BEEF_ITEM_KEYWORDS = ("소고기", "쇠고기")
 
 DUPLICATE_KEYS = [
     "reg_date",
@@ -126,6 +136,18 @@ def _is_hanwoo_row(row: dict) -> bool:
     return True
 
 
+def _is_import_beef_row(row: dict) -> bool:
+    """수입 소고기(미국산/호주산 갈비·갈비살 등)인지 판별. rank 필드에 원산지가 들어온다."""
+    item_name = str(row.get("item_name", "") or "")
+    return "수입" in item_name and any(k in item_name for k in IMPORT_BEEF_ITEM_KEYWORDS)
+
+
+def _is_import_saved(df: pd.DataFrame) -> pd.Series:
+    """누적 CSV 행 중 수입 소고기 행 마스크."""
+    name = df["item_name"].fillna("").astype(str)
+    return name.str.contains("수입") & name.str.contains("|".join(IMPORT_BEEF_ITEM_KEYWORDS))
+
+
 # --------------------------------------------------------------------------
 # API 호출
 # --------------------------------------------------------------------------
@@ -173,7 +195,7 @@ def _fetch_day(
     target_date: date,
     product_cls_code: str = PRODUCT_CLS_CODE,
 ) -> list[dict] | None:
-    """일자별 한 번 호출. 한우 row만 필터링하여 long row 반환.
+    """일자별 한 번 호출. 한우 + 수입 소고기 row만 필터링하여 long row 반환.
     정상 응답이면 list(휴장·미게시일은 빈 list), 네트워크/HTTP/파싱/API 오류면 None."""
     params = {
         "action": "dailyPriceByCategoryList",
@@ -215,7 +237,7 @@ def _fetch_day(
     for it in items:
         if not isinstance(it, dict):
             continue
-        if not _is_hanwoo_row(it):
+        if not (_is_hanwoo_row(it) or _is_import_beef_row(it)):
             continue
 
         # 'dpr1' (당일가) 가 핵심. 결측·하이픈은 None 처리.
@@ -234,7 +256,7 @@ def _fetch_day(
             "product_cls_name": product_cls_name,
             "item_name": str(it.get("item_name", "") or "").strip(),
             "kind_name": str(it.get("kind_name", "") or "").strip(),   # 부위 (안심/등심/설도/양지 …)
-            "rank": str(it.get("rank", "") or "").strip(),             # 등급 (1++등급/1+등급/1등급 …)
+            "rank": str(it.get("rank", "") or "").strip(),             # 등급 (1++등급 …) / 수입 소고기는 원산지
             "unit": str(it.get("unit", "") or "").strip(),
             "country_name": str(it.get("countyname", it.get("county_name", "")) or "").strip(),
             "market_name": str(it.get("marketname", it.get("market_name", "")) or "").strip(),
@@ -246,15 +268,22 @@ def _fetch_day(
 # --------------------------------------------------------------------------
 # 누적 저장
 # --------------------------------------------------------------------------
-def _merge_and_save(new_rows: list[dict], fetched_dates: set[str], save_path: Path) -> int:
-    """fetched_dates(정상 응답 일자)의 기존 행은 새 응답으로 교체 후 병합."""
+def _merge_and_save(new_rows: list[dict], fetched_dates: set[str], save_path: Path,
+                    only_import: bool = False) -> int:
+    """fetched_dates(정상 응답 일자)의 기존 행은 새 응답으로 교체 후 병합.
+    only_import=True(수입 소고기 백필)면 해당 일자의 '수입 소고기' 행만 교체하고 한우 행은 그대로 둔다."""
     df_new = pd.DataFrame(new_rows)
     if df_new.empty and not fetched_dates and save_path.exists():
         return _existing_row_count(save_path)
 
     if save_path.exists():
         df_old = pd.read_csv(save_path, dtype={"product_cls_code": str}, low_memory=False)
-        df_old = df_old[~df_old["reg_date"].astype(str).isin(fetched_dates)]
+        drop = df_old["reg_date"].astype(str).isin(fetched_dates)
+        if only_import:
+            drop &= _is_import_saved(df_old)
+            if not df_new.empty:
+                df_new = df_new[_is_import_saved(df_new)]
+        df_old = df_old[~drop]
         df_final = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_final = df_new
@@ -361,5 +390,62 @@ def collect_kamis_hanwoo_increment() -> int:
     return len(failed_days)
 
 
+# --------------------------------------------------------------------------
+# 수입 소고기 과거분 백필 (수동 실행 전용)
+# --------------------------------------------------------------------------
+def backfill_import(start: date, end: date) -> int:
+    """[start, end] 일자별 호출로 '수입 소고기' 행만 보충. 반환값 = 실패 일수."""
+    ensure_dirs()
+    save_path = Path(KAMIS_HANWOO_RAW_CSV)
+    creds = _get_credentials()
+    if creds is None:
+        print("[건너뜀] .env 의 KAMIS_CERT_KEY / KAMIS_CERT_ID 가 비어 있습니다.")
+        return 0
+    cert_key, cert_id = creds
+
+    done: set[str] = set()
+    if save_path.exists():
+        # 읽을 수 없는 파일이면 예외 그대로 전파(덮어쓰기 방지)
+        df_old = pd.read_csv(save_path, usecols=["reg_date", "item_name"], low_memory=False)
+        done = set(df_old.loc[_is_import_saved(df_old), "reg_date"].astype(str))
+    days = [d for d in _iter_dates(start, min(end, date.today())) if d.strftime("%Y-%m-%d") not in done]
+    print(f"[백필-수입] {start} ~ {end}: 미수집 {len(days)}일 (이미 수입 행 있는 {len(done)}일 제외) "
+          f"— 예상 {len(days) * 1.5 / 60:.0f}분")
+
+    new_rows: list[dict] = []
+    fetched: set[str] = set()
+    failed_days: list[date] = []
+    n_rows = 0
+    for i, d in enumerate(days, 1):
+        rows = _fetch_day(cert_key, cert_id, d)
+        time.sleep(SLEEP_BETWEEN_CALLS)
+        if rows is None:
+            failed_days.append(d)
+        else:
+            fetched.add(d.strftime("%Y-%m-%d"))
+            new_rows.extend(r for r in rows if _is_import_beef_row(r))
+        if i % BACKFILL_SAVE_EVERY == 0 or i == len(days):
+            if fetched:
+                total = _merge_and_save(new_rows, fetched, save_path, only_import=True)
+                n_rows += len(new_rows)
+                print(f" - 진행 {i}/{len(days)}일 ({d}) 수입 행 누적 {n_rows}건 / 파일 {total}행 저장, "
+                      f"실패 {len(failed_days)}일", flush=True)
+            new_rows, fetched = [], set()
+
+    print(f"[백필-수입 요약] {len(days)}일 호출: 실패 {len(failed_days)}일, 수입 소고기 행 {n_rows}건 반영")
+    if failed_days:
+        print(f"[경고] 실패일 첫 3건: {failed_days[:3]} — 같은 명령을 다시 실행하면 미수집 일자만 재시도합니다.")
+    return len(failed_days)
+
+
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="KAMIS 한우·수입 소고기 소매가 수집 (인자 없으면 일일 증분)")
+    parser.add_argument("--backfill-import", nargs=2, metavar=("FROM", "TO"),
+                        help="수입 소고기 행만 과거분 보충 (예: 2022-07-01 2026-10-29)")
+    args = parser.parse_args()
+    if args.backfill_import:
+        a, b = (datetime.strptime(x, "%Y-%m-%d").date() for x in args.backfill_import)
+        sys.exit(1 if backfill_import(a, b) else 0)
     sys.exit(1 if collect_kamis_hanwoo_increment() else 0)
