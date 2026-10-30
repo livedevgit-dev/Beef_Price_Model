@@ -887,6 +887,8 @@ def main():
 
     # 전체 데이터 신선도 현황판 (모든 실행 끝에 항상 출력 — 지표별 최신일자·주기·지연)
     _run_step("[현황] 데이터 신선도 현황판", _util("data_status.py"), critical=False)
+    # 로컬 열람용 HTML 대시보드 (dashboard/beef_dashboard.html — git 추적 제외, 정보성이라 실패 집계 제외)
+    _run_step("[대시보드] HTML 대시보드 생성", _util("build_html_dashboard.py"), critical=False)
 
     elapsed = time.time() - pipeline_start
 

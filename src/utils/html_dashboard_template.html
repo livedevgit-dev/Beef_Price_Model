@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수입육 시세 대시보드</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --accent-wash: rgba(42,120,214,0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --div-pos: #2a78d6;
+  --div-neg: #e34948;
+  --good: #0ca30c;
+  --good-text: #006300;
+  --warning: #fab219;
+  --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --accent-wash: rgba(57,135,229,0.16);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --div-pos: #3987e5;
+    --div-neg: #e66767;
+    --good-text: #0ca30c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255,255,255,0.10);
+  --accent-wash: rgba(57,135,229,0.16);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --div-pos: #3987e5;
+  --div-neg: #e66767;
+  --good-text: #0ca30c;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+header {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  padding: 20px 24px 8px; max-width: 1280px; margin: 0 auto;
+}
+header h1 { font-size: 20px; margin: 0; font-weight: 650; }
+header .meta { color: var(--text-secondary); font-size: 13px; }
+header .spacer { flex: 1; }
+button.ghost {
+  font: inherit; font-size: 13px; color: var(--text-secondary); background: transparent;
+  border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; cursor: pointer;
+}
+button.ghost:hover { background: var(--accent-wash); color: var(--text-primary); }
+nav {
+  position: sticky; top: 0; z-index: 5; background: var(--page);
+  border-bottom: 1px solid var(--border);
+}
+nav .inner { max-width: 1280px; margin: 0 auto; padding: 0 16px; display: flex; gap: 2px; overflow-x: auto; }
+nav button {
+  font: inherit; background: none; border: 0; border-bottom: 2px solid transparent;
+  color: var(--text-secondary); padding: 10px 12px; cursor: pointer; white-space: nowrap;
+}
+nav button:hover { color: var(--text-primary); }
+nav button[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--series-1); font-weight: 600; }
+main { max-width: 1280px; margin: 0 auto; padding: 16px 24px 48px; }
+section.panel { display: none; }
+section.panel.active { display: block; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; grid-column: span 12; min-width: 0;
+}
+.card.half { grid-column: span 6; }
+@media (max-width: 900px) { .card.half { grid-column: span 12; } }
+.card h2 { font-size: 15px; margin: 0 0 2px; font-weight: 620; }
+.card .sub { color: var(--text-secondary); font-size: 12.5px; margin: 0 0 10px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 4px 0 10px; }
+.controls label { color: var(--text-secondary); font-size: 13px; display: flex; gap: 6px; align-items: center; }
+select {
+  font: inherit; color: var(--text-primary); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px; min-width: 140px;
+}
+.chart { width: 100%; height: 380px; }
+.chart.tall { height: 480px; }
+.table-wrap.free { max-height: none; }
+.kpis { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-column: span 12; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.kpi .label { color: var(--text-secondary); font-size: 13px; }
+.kpi .value { font-size: 26px; font-weight: 650; margin: 2px 0; }
+.kpi .value small { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-left: 3px; }
+.kpi .note { color: var(--text-muted); font-size: 12.5px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--text-secondary); font-weight: 600; position: sticky; top: 0; background: var(--surface); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-wrap { overflow: auto; max-height: 420px; }
+details { margin-top: 8px; }
+details summary { cursor: pointer; color: var(--text-secondary); font-size: 13px; }
+details .table-wrap { margin-top: 8px; max-height: 320px; }
+pre.report {
+  white-space: pre-wrap; font-family: inherit; margin: 0; font-size: 13.5px; line-height: 1.65;
+  color: var(--text-primary);
+}
+.badge { display: inline-flex; align-items: center; gap: 5px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.muted { color: var(--text-muted); }
+.up { color: var(--critical); }
+.down { color: var(--series-1); }
+.empty { color: var(--text-muted); padding: 24px 0; }
+@media (max-width: 600px) {
+  header, main { padding-left: 16px; padding-right: 16px; }
+  .chart { height: 300px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>수입육 시세 대시보드</h1>
+  <span class="meta" id="generated"></span>
+  <span class="spacer"></span>
+  <button class="ghost" id="themeBtn" type="button">테마 전환</button>
+</header>
+<nav><div class="inner" role="tablist" id="tabs"></div></nav>
+<main id="main"></main>
+
+<script>/*__PLOTLY_JS__*/</script>
+<script>
+const D = /*__DATA__*/null;
+
+const TABS = [
+  ["overview", "개요"], ["meatbox", "수입육 시세"], ["samgyup", "삼겹양지 예측"],
+  ["supply", "수입·재고"], ["usdafx", "USDA·환율"], ["hanwoo", "한우"],
+  ["macro", "거시지표"], ["fas", "FAS 공급"],
+];
+
+// ---------------------------------------------------------------- 공통 유틸
+const $ = (s, el = document) => el.querySelector(s);
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const fmt = (v, d = 0) => (v === null || v === undefined || Number.isNaN(v)) ? "–"
+  : Number(v).toLocaleString("ko-KR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (v) => (v === null || v === undefined) ? "–" : (v > 0 ? "+" : "") + fmt(v, 1) + "%";
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function seriesColor(i) { return css(`--series-${i + 1}`); }
+
+function baseLayout(extra = {}) {
+  const ink2 = css("--text-secondary"), grid = css("--grid"), axis = css("--axis");
+  return {
+    paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
+    font: { family: 'system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif', size: 12, color: ink2 },
+    margin: { l: 64, r: 16, t: 40, b: 40 },
+    hovermode: "x unified",
+    hoverlabel: { bgcolor: css("--surface"), bordercolor: css("--axis"), font: { color: css("--text-primary") } },
+    legend: { orientation: "h", x: 0, y: 1.12, font: { color: ink2 } },
+    xaxis: { gridcolor: grid, linecolor: axis, zeroline: false, showspikes: true, spikemode: "across",
+             spikethickness: 1, spikecolor: axis, spikedash: "solid", tickfont: { color: css("--text-muted") } },
+    yaxis: { gridcolor: grid, linecolor: axis, zeroline: false, tickformat: ",", tickfont: { color: css("--text-muted") },
+             separatethousands: true },
+    separators: ".,",
+    ...extra,
+  };
+}
+
+const RANGE_BUTTONS = {
+  buttons: [
+    { count: 6, label: "6개월", step: "month", stepmode: "backward" },
+    { count: 1, label: "1년", step: "year", stepmode: "backward" },
+    { count: 3, label: "3년", step: "year", stepmode: "backward" },
+    { step: "all", label: "전체" },
+  ],
+  x: 1, xanchor: "right", y: 1.12, font: { size: 11 },
+};
+
+function timeLayout(yTitle, extra = {}) {
+  const l = baseLayout(extra);
+  l.xaxis = { ...l.xaxis, type: "date", hoverformat: "%Y-%m-%d",
+              tickformatstops: [
+                { dtickrange: [null, "M1"], value: "%m/%d" },
+                { dtickrange: ["M1", "M12"], value: "%Y.%m" },
+                { dtickrange: ["M12", null], value: "%Y" },
+              ],
+              rangeselector: { ...RANGE_BUTTONS, bgcolor: css("--surface"),
+              activecolor: css("--accent-wash"), bordercolor: css("--border"), borderwidth: 1,
+              font: { size: 11, color: css("--text-secondary") } } };
+  // 단위는 세로 회전 제목 대신 축 위쪽에 가로로 표시 (한글 회전 시 가독성 저하)
+  l.annotations = [{ text: yTitle, xref: "paper", yref: "paper", x: 0, y: 1, xanchor: "right", yanchor: "bottom",
+                     showarrow: false, xshift: -6, yshift: 6, font: { size: 11, color: css("--text-muted") } }];
+  return l;
+}
+
+function line(xy, name, colorIdx, extra = {}) {
+  return { type: "scatter", mode: "lines", x: xy.x, y: xy.y, name,
+           line: { color: seriesColor(colorIdx), width: 2 }, ...extra };
+}
+
+const PLOT_CONFIG = { displaylogo: false, responsive: true,
+  modeBarButtonsToRemove: ["select2d", "lasso2d", "autoScale2d", "toggleSpikelines"] };
+
+function plot(el, traces, layout) {
+  Plotly.react(el, traces, layout, PLOT_CONFIG);
+}
+
+// traces → 날짜별 표 (최근 n행, 최신 먼저)
+function traceTable(container, traces, n = 36, digits = 0) {
+  const rows = new Map();
+  traces.forEach((t, i) => t.x.forEach((x, j) => {
+    if (!rows.has(x)) rows.set(x, {});
+    rows.get(x)[i] = t.y[j];
+  }));
+  const keys = [...rows.keys()].sort().reverse().slice(0, n);
+  const head = `<tr><th>날짜</th>${traces.map((t) => `<th class="num">${esc(t.name)}</th>`).join("")}</tr>`;
+  const body = keys.map((k) => `<tr><td>${esc(k)}</td>${traces.map((_, i) =>
+    `<td class="num">${fmt(rows.get(k)[i], digits)}</td>`).join("")}</tr>`).join("");
+  container.innerHTML = `<details><summary>데이터 표 보기 (최근 ${keys.length}개)</summary>
+    <div class="table-wrap"><table>${head}${body}</table></div></details>`;
+}
+
+function card({ title, sub = "", half = false, controls = "", chartClass = "chart", id }) {
+  return `<div class="card${half ? " half" : ""}">
+    <h2>${esc(title)}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}
+    ${controls ? `<div class="controls">${controls}</div>` : ""}
+    <div class="${chartClass}" id="${id}"></div><div id="${id}-table"></div></div>`;
+}
+
+function options(list, selected) {
+  return list.map((o) => {
+    const [v, label] = Array.isArray(o) ? o : [o, o];
+    return `<option value="${esc(v)}"${v === selected ? " selected" : ""}>${esc(label)}</option>`;
+  }).join("");
+}
+
+function emptyPanel(msg) { return `<div class="card"><p class="empty">${esc(msg)}</p></div>`; }
+
+function lastOf(xy) { return xy && xy.y.length ? { x: xy.x[xy.x.length - 1], y: xy.y[xy.y.length - 1] } : null; }
+function valueDaysAgo(xy, days) {
+  if (!xy || !xy.x.length) return null;
+  const target = new Date(xy.x[xy.x.length - 1]); target.setDate(target.getDate() - days);
+  for (let i = xy.x.length - 1; i >= 0; i--) if (new Date(xy.x[i]) <= target) return xy.y[i];
+  return null;
+}
+
+// ---------------------------------------------------------------- 탭: 개요
+function renderOverview(panel) {
+  const kpis = [];
+  if (D.samgyup) {
+    const a = lastOf(D.samgyup.actual);
+    const f = D.samgyup.forecast;
+    const nx = f.x.length > 1 ? 1 : null;
+    kpis.push(`<div class="kpi"><div class="label">삼겹양지(미국산) ${a ? a.x.slice(0, 7) : ""} 실적</div>
+      <div class="value">${fmt(a?.y)}<small>원/kg</small></div>
+      <div class="note">${nx ? `${f.x[nx].slice(0, 7)} 전망 ${fmt(f.y[nx])}원 (${fmt(f.low[nx])}~${fmt(f.high[nx])})` : "전망 없음"}</div></div>`);
+  }
+  if (D.usda_fx) {
+    const fx = lastOf(D.usda_fx.fx), fx30 = valueDaysAgo(D.usda_fx.fx, 30);
+    kpis.push(`<div class="kpi"><div class="label">환율 USD/KRW</div>
+      <div class="value">${fmt(fx?.y, 1)}<small>원</small></div>
+      <div class="note">${fx?.x ?? ""} · 30일 전 대비 ${fx30 ? pct((fx.y / fx30 - 1) * 100) : "–"}</div></div>`);
+    const pl = lastOf(D.usda_fx.plate), pl30 = valueDaysAgo(D.usda_fx.plate, 30);
+    kpis.push(`<div class="kpi"><div class="label">USDA 플레이트(Choice)</div>
+      <div class="value">${fmt(pl?.y, 2)}<small>USD/kg</small></div>
+      <div class="note">${pl?.x ?? ""} · 30일 전 대비 ${pl30 ? pct((pl.y / pl30 - 1) * 100) : "–"}</div></div>`);
+  }
+  if (D.hanwoo && D.hanwoo.auction_latest["1++"]) {
+    const h = D.hanwoo.auction_latest["1++"];
+    kpis.push(`<div class="kpi"><div class="label">한우 1++ 경락가(전국)</div>
+      <div class="value">${fmt(h.price)}<small>원/kg</small></div><div class="note">${h.date}</div></div>`);
+  }
+  if (D.status) {
+    const late = D.status.filter((r) => r["상태"] !== "최신");
+    kpis.push(`<div class="kpi"><div class="label">데이터 신선도</div>
+      <div class="value">${late.length ? `${late.length}<small>건 지연</small>` : `${D.status.length}<small>개 지표 최신</small>`}</div>
+      <div class="note">${late.length ? esc(late.map((r) => r["데이터"]).join(", ")) : "지연 없음"}</div></div>`);
+  }
+
+  const statusRows = (D.status || []).map((r) => {
+    const ok = r["상태"] === "최신";
+    return `<tr><td>${esc(r["데이터"])}</td><td>${esc(r["소스"])}</td><td>${esc(r["주기"])}</td>
+      <td>${esc(r["최신데이터"])}</td><td class="num">${fmt(r["지연(일)"])}</td>
+      <td><span class="badge"><span class="dot" style="background:${ok ? "var(--good)" : "var(--warning)"}"></span>
+      ${ok ? "최신" : "▲ " + esc(r["상태"])}</span></td></tr>`;
+  }).join("");
+
+  const sigIcon = (s) => s.startsWith("매수") ? "▼ 저평가(매수후보)" : s.startsWith("매도") ? "▲ 고평가(매도후보)" : "– 중립";
+  const switchRows = (D.switch || []).map((r) => `<tr><td>${esc(r.part)}</td>
+    <td class="num">${fmt(r.current_price)}</td><td class="num">${fmt(r.pct_rank)}</td>
+    <td class="num">${pct(r.momentum_30d)}</td><td>${sigIcon(String(r.signal))}</td></tr>`).join("");
+
+  panel.innerHTML = `<div class="grid">
+    <div class="kpis">${kpis.join("")}</div>
+    <div class="card half"><h2>데이터 현황판</h2><p class="sub">지표별 최신 수집일 · 월별 지표는 보통 익월 중순 갱신</p>
+      <div class="table-wrap free"><table><tr><th>데이터</th><th>소스</th><th>주기</th><th>최신</th><th class="num">지연(일)</th><th>상태</th></tr>${statusRows}</table></div></div>
+    <div class="card half"><h2>시장 리포트</h2><p class="sub">market_report_latest.txt</p>
+      <pre class="report">${esc(D.report || "리포트 없음")}</pre></div>
+    <div class="card"><h2>품목 스위칭 시그널</h2>
+      <p class="sub">현재가의 과거 분포 내 백분위(0=최저, 100=최고) · 75 이상 고평가 / 35 이하 저평가</p>
+      <div class="table-wrap"><table><tr><th>품목</th><th class="num">현재가(원/kg)</th><th class="num">백분위</th>
+      <th class="num">30일 모멘텀</th><th>시그널</th></tr>${switchRows}</table></div></div>
+  </div>`;
+}
+
+// ---------------------------------------------------------------- 탭: 수입육 시세
+function renderMeatbox(panel) {
+  const M = D.meatbox;
+  if (!M) { panel.innerHTML = emptyPanel("미트박스 데이터가 없습니다."); return; }
+  const def = M.parts.find((p) => p.name === "삼겹양지") ? "삼겹양지" : M.parts[0].name;
+  const opts = M.parts.map((p) => [p.name, p.status.startsWith("제외") ? `${p.name} (거래끊김)` : p.name]);
+  const sumRows = [...M.summary].sort((a, b) => a.part.localeCompare(b.part, "ko") || a.country.localeCompare(b.country, "ko"))
+    .map((r) => `<tr><td>${esc(r.part)}</td><td>${esc(r.country)}</td><td>${esc(r.date)}</td>
+      <td class="num">${fmt(r.price)}</td><td class="num ${r.chg7 > 0 ? "up" : r.chg7 < 0 ? "down" : ""}">${pct(r.chg7)}</td>
+      <td class="num ${r.chg30 > 0 ? "up" : r.chg30 < 0 ? "down" : ""}">${pct(r.chg30)}</td>
+      <td class="muted">${esc(r.status)}</td></tr>`).join("");
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "미트박스 도매시세 추이", sub: "브랜드 평균 일별 도매가(원/kg) · 냉동 · 미국/호주",
+             controls: `<label>부위 <select id="mbPart">${options(opts, def)}</select></label>`, id: "mbChart" })}
+    <div class="card"><h2>부위별 최신 시세</h2><p class="sub">최근 수집일 기준 · 7일/30일 전 대비 변동률 (▲빨강 상승 / 파랑 하락)</p>
+      <div class="table-wrap"><table><tr><th>부위</th><th>원산지</th><th>최신일</th><th class="num">가격(원/kg)</th>
+      <th class="num">7일</th><th class="num">30일</th><th>거래 상태</th></tr>${sumRows}</table></div></div></div>`;
+  const draw = () => {
+    const part = $("#mbPart", panel).value;
+    const s = M.series[part] || {};
+    const traces = ["미국", "호주"].filter((c) => s[c]).map((c) => line(s[c], c, c === "미국" ? 0 : 1));
+    plot($("#mbChart", panel), traces, timeLayout("원/kg"));
+    traceTable($("#mbChart-table", panel), traces, 30);
+  };
+  $("#mbPart", panel).addEventListener("change", draw);
+  draw();
+}
+
+// ---------------------------------------------------------------- 탭: 삼겹양지 예측
+function renderSamgyup(panel) {
+  const S = D.samgyup;
+  if (!S) { panel.innerHTML = emptyPanel("예측 데이터가 없습니다."); return; }
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "삼겹양지(미국산) 월평균 시세와 전망", sub: "실적: 미트박스+도매상 통합 월평균 · 전망: 계절+추세 모델(음영은 예측 범위)", id: "sgChart" })}
+    ${card({ title: "가격 영향 요인", sub: "릿지 회귀 표준화 계수 · 파랑(+)은 가격과 같은 방향, 빨강(−)은 반대 방향으로 움직임", id: "sgImp", chartClass: "chart tall" })}
+  </div>`;
+  const f = S.forecast;
+  const band = (a) => a.map((v, i) => v ?? f.y[i]);
+  const s2 = seriesColor(1);
+  const traces = [
+    { type: "scatter", mode: "lines", x: f.x, y: band(f.high), line: { width: 0 }, hoverinfo: "skip", showlegend: false },
+    { type: "scatter", mode: "lines", x: f.x, y: band(f.low), line: { width: 0 }, fill: "tonexty",
+      fillcolor: s2.startsWith("#") ? s2 + "26" : s2, hoverinfo: "skip", name: "예측 범위" },
+    line(S.actual, "실적", 0),
+    line({ x: f.x, y: f.y }, "전망", 1, { mode: "lines+markers", marker: { size: 8, line: { width: 2, color: css("--surface") } } }),
+  ];
+  plot($("#sgChart", panel), traces, timeLayout("원/kg"));
+  traceTable($("#sgChart-table", panel), [traces[2], traces[3]], 24);
+
+  const imp = [...S.importance].sort((a, b) => Math.abs(a.std_coef) - Math.abs(b.std_coef));
+  const pos = css("--div-pos"), neg = css("--div-neg");
+  const l = baseLayout({ hovermode: "closest", margin: { l: 140, r: 24, t: 16, b: 32 }, showlegend: false });
+  l.xaxis = { ...l.xaxis, zeroline: true, zerolinecolor: css("--axis"), showspikes: false, tickformat: ".1f" };
+  l.yaxis = { ...l.yaxis, gridcolor: "rgba(0,0,0,0)", tickfont: { color: css("--text-secondary") } };
+  plot($("#sgImp", panel), [{
+    type: "bar", orientation: "h", y: imp.map((r) => r.label), x: imp.map((r) => r.std_coef),
+    marker: { color: imp.map((r) => r.std_coef >= 0 ? pos : neg), line: { width: 0 } },
+    hovertemplate: "%{y}: %{x:.3f}<extra></extra>", text: imp.map((r) => (r.std_coef > 0 ? "+" : "") + r.std_coef.toFixed(2)),
+    textposition: "outside", textfont: { color: css("--text-secondary"), size: 11 }, cliponaxis: false,
+  }], l);
+}
+
+// ---------------------------------------------------------------- 탭: 수입·재고
+function renderSupply(panel) {
+  const I = D.import_stock;
+  if (!I) { panel.innerHTML = emptyPanel("수입·재고 데이터가 없습니다."); return; }
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "월별 쇠고기 수입량", sub: "KMTA/식약처 · 톤 · 미국/호주",
+             controls: `<label>부위 <select id="impPart">${options(I.import_parts.map((p) => [p, p === "계" ? "전체(계)" : p]), "계")}</select></label>`, id: "impChart" })}
+    ${card({ title: "월별 수입육 재고", sub: "KMTA 조사재고량 · 톤 · 협회 게시가 보통 2개월가량 늦음",
+             controls: `<label>부위 <select id="stkPart">${options(I.stock_parts, "합계")}</select></label>`, id: "stkChart" })}
+  </div>`;
+  const drawImp = () => {
+    const s = I.imports[$("#impPart", panel).value] || {};
+    const traces = ["미국", "호주"].filter((c) => s[c]).map((c) => line(s[c], c, c === "미국" ? 0 : 1));
+    plot($("#impChart", panel), traces, timeLayout("톤"));
+    traceTable($("#impChart-table", panel), traces, 24);
+  };
+  const drawStk = () => {
+    const p = $("#stkPart", panel).value;
+    const traces = [line(I.stock[p], `${p} 재고`, 0, { showlegend: false })];
+    plot($("#stkChart", panel), traces, timeLayout("톤"));
+    traceTable($("#stkChart-table", panel), traces, 24);
+  };
+  $("#impPart", panel).addEventListener("change", drawImp);
+  $("#stkPart", panel).addEventListener("change", drawStk);
+  drawImp(); drawStk();
+}
+
+// ---------------------------------------------------------------- 탭: USDA·환율
+function renderUsdaFx(panel) {
+  const U = D.usda_fx;
+  if (!U) { panel.innerHTML = emptyPanel("USDA·환율 데이터가 없습니다."); return; }
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "USDA 플레이트(Choice) 원가", sub: "USDA 일별 부위시세 · USD/kg · 삼겹양지 원가의 기준", half: true, id: "plChart" })}
+    ${card({ title: "원/달러 환율", sub: "한국은행 ECOS 매매기준율 · 원", half: true, id: "fxChart" })}
+  </div>`;
+  const pl = [line(U.plate, "플레이트 USD/kg", 0, { showlegend: false })];
+  const lp = timeLayout("USD/kg"); lp.yaxis.tickformat = ".2f";
+  plot($("#plChart", panel), pl, lp);
+  traceTable($("#plChart-table", panel), pl, 30, 2);
+  const fx = [line(U.fx, "USD/KRW", 0, { showlegend: false })];
+  plot($("#fxChart", panel), fx, timeLayout("원"));
+  traceTable($("#fxChart-table", panel), fx, 30, 1);
+}
+
+// ---------------------------------------------------------------- 탭: 한우
+function renderHanwoo(panel) {
+  const H = D.hanwoo;
+  if (!H) { panel.innerHTML = emptyPanel("한우 데이터가 없습니다."); return; }
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "한우 경락가격(전국, 도체)", sub: "EKAPE · 등급별 월평균 · 원/kg", id: "auChart" })}
+    ${card({ title: "한우 부위별 소비자가격", sub: H.kamis_same
+               ? "KAMIS · 주간 평균 · 원/kg · ※ 수집된 도매·소매 값이 동일해 한 선으로 표시 (KAMIS 응답 확인 필요)"
+               : "KAMIS · 주간 평균 · 원/kg",
+             controls: `<label>부위 <select id="kmPart">${options(H.kamis_parts, H.kamis_parts.includes("등심") ? "등심" : H.kamis_parts[0])}</select></label>
+                        <label>등급 <select id="kmGrade">${options(H.kamis_grades, "1+")}</select></label>`, id: "kmChart" })}
+  </div>`;
+  const au = ["1++", "1+", "1"].filter((g) => H.auction[g]).map((g, i) => line(H.auction[g], `${g}등급`, i));
+  plot($("#auChart", panel), au, timeLayout("원/kg"));
+  traceTable($("#auChart-table", panel), au, 24);
+  const draw = () => {
+    const s = (H.kamis[$("#kmPart", panel).value] || {})[$("#kmGrade", panel).value] || {};
+    const traces = Object.keys(s).map((k) => line(s[k], k, k === "도매" ? 1 : 0, { showlegend: Object.keys(s).length > 1 }));
+    plot($("#kmChart", panel), traces, timeLayout("원/kg"));
+    traceTable($("#kmChart-table", panel), traces, 26);
+  };
+  $("#kmPart", panel).addEventListener("change", draw);
+  $("#kmGrade", panel).addEventListener("change", draw);
+  draw();
+}
+
+// ---------------------------------------------------------------- 탭: 거시지표
+function renderMacro(panel) {
+  const M = D.macro;
+  if (!M || !M.length) { panel.innerHTML = emptyPanel("거시지표 데이터가 없습니다."); return; }
+  const group = (c, label) => `<optgroup label="${label}">${M.filter((m) => m.country === c)
+    .map((m) => `<option value="${esc(m.id)}"${m.id === "kr_cpi_beef_imp" ? " selected" : ""}>${esc(m.name)}</option>`).join("")}</optgroup>`;
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "거시경제 지표", sub: "FRED · ECOS · 기상청 · 월평균",
+             controls: `<label>지표 <select id="mcSel">${group("KR", "국내")}${group("US", "미국")}</select></label>`, id: "mcChart" })}
+  </div>`;
+  const draw = () => {
+    const m = M.find((x) => x.id === $("#mcSel", panel).value);
+    const traces = [line(m, m.name, 0, { showlegend: false })];
+    const l = timeLayout(m.unit); l.yaxis.tickformat = "";
+    plot($("#mcChart", panel), traces, l);
+    traceTable($("#mcChart-table", panel), traces, 24, 2);
+  };
+  $("#mcSel", panel).addEventListener("change", draw);
+  draw();
+}
+
+// ---------------------------------------------------------------- 탭: FAS 공급
+function renderFas(panel) {
+  const F = D.fas;
+  if (!F) { panel.innerHTML = emptyPanel("FAS 데이터가 없습니다."); return; }
+  const rows = [...F.recent].reverse().map((r) => `<tr><td>${esc(r.date)}</td><td class="num">${fmt(r.china_exp)}</td>
+    <td class="num">${fmt(r.korea_exp)}</td><td class="num">${r.china_vs_med == null ? "–" : fmt(r.china_vs_med, 2) + "x"}</td><td class="num">${r.korea_vs_med == null ? "–" : fmt(r.korea_vs_med, 2) + "x"}</td>
+    <td><span class="badge"><span class="dot" style="background:${r.alert_level > 0 ? "var(--warning)" : "var(--good)"}"></span>
+    ${r.alert_level > 0 ? "▲ " : ""}${esc(r.note)}</span></td></tr>`).join("");
+  panel.innerHTML = `<div class="grid">
+    ${card({ title: "미국산 쇠고기 수출 — 중국 vs 한국", sub: "USDA FAS 주간 수출 월합계 · 톤 · 중국행 급감 시 한국행 물량 증가(다이버전) 가능성", id: "fasChart" })}
+    <div class="card"><h2>최근 12개월 공급 경보</h2><p class="sub">과거 중앙값 대비 배수 · 중국행 급감/한국행 과잉 시 경보</p>
+      <div class="table-wrap"><table><tr><th>월</th><th class="num">중국행</th><th class="num">한국행</th>
+      <th class="num">중국 배수</th><th class="num">한국 배수</th><th>판정</th></tr>${rows}</table></div></div>
+  </div>`;
+  const traces = [line(F.korea, "한국행", 0), line(F.china, "중국행", 1)];
+  plot($("#fasChart", panel), traces, timeLayout("톤"));
+  traceTable($("#fasChart-table", panel), traces, 24);
+}
+
+// ---------------------------------------------------------------- 탭 전환·테마
+const RENDER = { overview: renderOverview, meatbox: renderMeatbox, samgyup: renderSamgyup, supply: renderSupply,
+                 usdafx: renderUsdaFx, hanwoo: renderHanwoo, macro: renderMacro, fas: renderFas };
+const rendered = new Set();
+
+function show(key) {
+  document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === key)));
+  document.querySelectorAll("section.panel").forEach((p) => p.classList.toggle("active", p.id === "tab-" + key));
+  const panel = $("#tab-" + key);
+  if (!rendered.has(key)) {
+    try { RENDER[key](panel); } catch (e) { panel.innerHTML = emptyPanel("표시 오류: " + e.message); console.error(e); }
+    rendered.add(key);
+  } else {
+    panel.querySelectorAll(".js-plotly-plot").forEach((el) => Plotly.Plots.resize(el));
+  }
+  try { localStorage.setItem("beefTab", key); } catch (e) {}
+  if (location.hash !== "#" + key) history.replaceState(null, "", "#" + key);
+}
+
+function rerenderAll() {
+  const active = document.querySelector("nav button[aria-selected='true']")?.dataset.tab;
+  rendered.forEach((k) => { const p = $("#tab-" + k); p.querySelectorAll(".js-plotly-plot").forEach((el) => Plotly.purge(el)); });
+  rendered.clear();
+  if (active) show(active);
+}
+
+function init() {
+  if (!D) { $("#main").innerHTML = emptyPanel("데이터가 비어 있습니다. build_html_dashboard.py 로 다시 생성하세요."); return; }
+  $("#generated").textContent = `생성: ${D.generated}`;
+  $("#tabs").innerHTML = TABS.map(([k, label]) => `<button role="tab" data-tab="${k}">${label}</button>`).join("");
+  $("#main").innerHTML = TABS.map(([k]) => `<section class="panel" id="tab-${k}" role="tabpanel"></section>`).join("");
+  $("#tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.tab); });
+
+  let saved = null;
+  try { saved = localStorage.getItem("beefTheme"); } catch (e) {}
+  if (saved) document.documentElement.dataset.theme = saved;
+  $("#themeBtn").addEventListener("click", () => {
+    const dark = css("--surface") === "#1a1a19";
+    const next = dark ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("beefTheme", next); } catch (e) {}
+    rerenderAll();
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", rerenderAll);
+
+  let start = location.hash.slice(1);
+  if (!RENDER[start]) { try { start = localStorage.getItem("beefTab"); } catch (e) { start = null; } }
+  show(RENDER[start] ? start : "overview");
+}
+init();
+</script>
+</body>
+</html>
