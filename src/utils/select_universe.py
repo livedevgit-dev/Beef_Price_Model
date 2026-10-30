@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, ensure_dirs
 
 RECENT_DAYS = 90
-RECENT_MIN = 45      # 최근 90일 중 실제 관측일(주중 ~64일 − 공휴일·미수집일 → 꾸준한 품목은 55~60일)
+RECENT_MIN = 30      # 최근 90일 중 실제 관측일(꾸준한 품목 55~60일, 격일·간헐 거래 품목 35~45일 — 절반 미만이면 거래끊김)
 HIST_MIN = 250       # 누적 거래일(약 1년)
 
 

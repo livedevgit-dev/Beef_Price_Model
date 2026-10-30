@@ -82,17 +82,28 @@ def build_meatbox():
     d = pd.read_csv(DASHBOARD_READY_CSV, parse_dates=["date"])
     if "is_filled" in d.columns:   # 직전 값으로 채운 날 제외 — 실제 관측 브랜드만 평균
         d = d[~d["is_filled"].astype(str).str.lower().eq("true")]
-    daily = d.groupby(["part", "category", "date"])["wholesale_price"].mean()
     uni = pd.read_csv(DATA_DASHBOARD / "meatbox_universe.csv").set_index("part")["status"].to_dict()
     series, summary = {}, []
-    for (part, cat), s in daily.groupby(level=[0, 1]):
-        s = s.droplevel([0, 1]).sort_index()
+    for (part, cat), g in d.groupby(["part", "category"]):
+        pv = g.pivot_table(index="date", columns="brand", values="wholesale_price", aggfunc="mean").sort_index()
+        # 일별 평균은 브랜드 구성에 민감 → 평소(최근 60관측일 중앙값) 브랜드 수의 절반 미만만 잡힌 날은 제외
+        n_brand = pv.notna().sum(axis=1)
+        typical = n_brand.rolling(60, min_periods=1).median()
+        s = pv.mean(axis=1)[n_brand >= (typical * 0.5).clip(lower=1)]
+        if s.empty:
+            continue
         series.setdefault(part, {})[cat] = _xy(s, 0)
         last_date, last = s.index[-1], s.iloc[-1]
 
         def chg(days):
-            past = s[s.index <= last_date - pd.Timedelta(days=days)]
-            return round((last / past.iloc[-1] - 1) * 100, 1) if len(past) else None
+            # 같은 브랜드끼리 비교한 변동률의 중앙값 (부분 수집일·브랜드 교체로 인한 평균 착시 방지)
+            # 비교 시점 직전 14일 안의 브랜드별 마지막 관측만 사용 (몇 달 만에 재등장한 브랜드의 옛 가격과 비교 방지)
+            cut = last_date - pd.Timedelta(days=days)
+            win = pv[(pv.index <= cut) & (pv.index > cut - pd.Timedelta(days=14))]
+            if win.empty:
+                return None
+            r = (pv.loc[last_date] / win.ffill().iloc[-1] - 1).dropna()
+            return round(float(r.median()) * 100, 1) if len(r) else None
         summary.append({"part": part, "country": cat, "date": last_date.strftime("%Y-%m-%d"),
                         "price": round(float(last)), "chg7": chg(7), "chg30": chg(30),
                         "status": uni.get(part, "-")})
@@ -198,10 +209,23 @@ def build_fas():
             "recent": _records(f.reset_index().tail(12).assign(date=lambda x: x["date"].dt.strftime("%Y-%m"))[cols])}
 
 
+def build_margin():
+    """KAMIS 수입 쇠고기 소매가 vs 미트박스 도매가 (Models/domestic_vs_import.py 산출)."""
+    m = pd.read_csv(DATA_REPORTS / "analysis" / "import_retail_margin.csv")
+    m["date"] = pd.to_datetime(m["period"].astype(str) + "-01")
+    items = []
+    for (kp, origin, mp), g in m.groupby(["kamis_part", "origin", "meatbox_part"], sort=False):
+        g = g.set_index("date").sort_index()
+        items.append({"key": f"{kp}|{origin}|{mp}", "label": f"{origin} {kp.replace('수입 ', '')} ↔ 도매 {mp}",
+                      "retail": _xy(g["retail_won_kg"], 0), "wholesale": _xy(g["wholesale_won_kg"], 0),
+                      "margin": _xy(g["margin_pct"], 1)})
+    return {"items": items}
+
+
 SECTIONS = {
     "status": build_status, "report": build_report, "switch": build_switch, "meatbox": build_meatbox,
     "samgyup": build_samgyup, "usda_fx": build_usda_fx, "import_stock": build_import_stock,
-    "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas,
+    "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas, "margin": build_margin,
 }
 
 

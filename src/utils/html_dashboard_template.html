@@ -348,7 +348,11 @@ function renderMeatbox(panel) {
              controls: `<label>부위 <select id="mbPart">${options(opts, def)}</select></label>`, id: "mbChart" })}
     <div class="card"><h2>부위별 최신 시세</h2><p class="sub">최근 수집일 기준 · 7일/30일 전 대비 변동률 (▲빨강 상승 / 파랑 하락)</p>
       <div class="table-wrap"><table><tr><th>부위</th><th>원산지</th><th>최신일</th><th class="num">가격(원/kg)</th>
-      <th class="num">7일</th><th class="num">30일</th><th>거래 상태</th></tr>${sumRows}</table></div></div></div>`;
+      <th class="num">7일</th><th class="num">30일</th><th>거래 상태</th></tr>${sumRows}</table></div></div>
+    ${D.margin && D.margin.items.length ? card({ title: "소비자가 vs 도매가 (유통마진)",
+        sub: "KAMIS 수입 쇠고기 소매가 vs 미트박스 같은 부위·원산지 도매가 · 월평균 원/kg · 마진 = 소매 ÷ 도매 − 1",
+        controls: `<label>품목 <select id="mgItem">${options(D.margin.items.map((x) => [x.key, x.label]), D.margin.items[0].key)}</select></label>
+                   <span class="muted" id="mgNote"></span>`, id: "mgChart" }) : ""}</div>`;
   const draw = () => {
     const part = $("#mbPart", panel).value;
     const s = M.series[part] || {};
@@ -358,6 +362,18 @@ function renderMeatbox(panel) {
   };
   $("#mbPart", panel).addEventListener("change", draw);
   draw();
+  if (D.margin && D.margin.items.length) {
+    const drawMargin = () => {
+      const it = D.margin.items.find((x) => x.key === $("#mgItem", panel).value);
+      const traces = [line(it.retail, "소비자가(KAMIS)", 0), line(it.wholesale, "도매가(미트박스)", 1)];
+      plot($("#mgChart", panel), traces, timeLayout("원/kg"));
+      traceTable($("#mgChart-table", panel), traces, 24);
+      const m = it.margin.y, last = m[m.length - 1], avg = m.reduce((a, v) => a + v, 0) / m.length;
+      $("#mgNote", panel).textContent = `최근 마진 ${fmt(last, 0)}% · 기간 평균 ${fmt(avg, 0)}% (${it.margin.x[it.margin.x.length - 1].slice(0, 7)})`;
+    };
+    $("#mgItem", panel).addEventListener("change", drawMargin);
+    drawMargin();
+  }
 }
 
 // ---------------------------------------------------------------- 탭: 삼겹양지 예측
@@ -469,8 +485,8 @@ function renderMacro(panel) {
   const group = (c, label) => `<optgroup label="${label}">${M.filter((m) => m.country === c)
     .map((m) => `<option value="${esc(m.id)}"${m.id === "kr_cpi_beef_imp" ? " selected" : ""}>${esc(m.name)}</option>`).join("")}</optgroup>`;
   panel.innerHTML = `<div class="grid">
-    ${card({ title: "거시경제 지표", sub: "FRED · ECOS · 기상청 · 월평균",
-             controls: `<label>지표 <select id="mcSel">${group("KR", "국내")}${group("US", "미국")}</select></label>`, id: "mcChart" })}
+    ${card({ title: "거시경제 지표", sub: "FRED · ECOS · 기상청 · MLA · 월평균 (원가·물류·소비 지표 포함)",
+             controls: `<label>지표 <select id="mcSel">${group("KR", "국내")}${group("US", "미국")}${group("AU", "호주")}</select></label>`, id: "mcChart" })}
   </div>`;
   const draw = () => {
     const m = M.find((x) => x.id === $("#mcSel", panel).value);
