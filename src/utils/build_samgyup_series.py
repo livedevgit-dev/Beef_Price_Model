@@ -27,7 +27,10 @@ def _meatbox_monthly() -> pd.DataFrame:
         return pd.DataFrame()
     mb = pd.read_csv(DASHBOARD_READY_CSV)
     mb["date"] = pd.to_datetime(mb["date"], errors="coerce")
-    s = mb[mb["part"] == "삼겹양지"].dropna(subset=["wholesale_price", "date"]).copy()
+    # 미국산 실제 관측일만 (호주산은 5~15% 비싸 섞이면 월평균이 구성비에 따라 흔들림, 채운 날은 n_obs 부풀림)
+    s = mb[(mb["part"] == "삼겹양지") & (mb["category"] == "미국")].dropna(subset=["wholesale_price", "date"]).copy()
+    if "is_filled" in s.columns:
+        s = s[~s["is_filled"].astype(str).str.lower().eq("true")]
     if s.empty:
         return pd.DataFrame()
     s["month"] = s["date"].dt.to_period("M").dt.to_timestamp()

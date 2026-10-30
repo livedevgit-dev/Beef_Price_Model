@@ -4,6 +4,12 @@
 # - 대상: 수입육
 # - 데이터 소스: 미트박스
 # - 주요 기능: StaleElement 에러를 방지하며 일일 B2B 도매가를 수집하는 로직
+# - 데이터 보호 (2026-10-30, 당일 전용·백필 불가 데이터이므로):
+#   1. 기존 마스터를 읽지 못하면 중단 (예전엔 빈 표로 대체 후 전체 이력을 오늘분으로 덮어쓸 수 있었음)
+#   2. 저장 전 git 밖 날짜별 백업(BEEF_BACKUP_DIR, 기본 <프로젝트 상위>/Beef_Price_Model_backups/meatbox), 원자적 쓰기
+#   3. 페이지 이동 후 표 내용이 실제로 바뀔 때까지 대기 (이전 페이지 재수집 → 부분 수집 12일 발생했던 문제)
+#   4. 오늘 수집 건수가 최근 10일 중앙값의 75% 미만이면 실패 처리, 같은 날 재실행이 더 적게 수집하면 기존 유지
+#   5. 등급(프라임/초이스 등) 컬럼 저장 — 같은 품목의 등급별 가격이 평균되어 진동하던 문제 대응
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -24,8 +30,9 @@ from io import StringIO
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import DATA_PROCESSED
+from config import DATA_PROCESSED, PROJECT_ROOT
 from utils.selenium_chrome import build_chrome_driver
+from utils.io_safe import atomic_to_csv
 
 URL = "https://www.meatbox.co.kr/fo/sise/siseListPage.do"
 
@@ -120,6 +127,15 @@ def dismiss_meatbox_overlays(driver, rounds: int = 3, send_escape: bool = True) 
 
 
 MIN_EXPECTED_PAGES = 20
+# 오늘 수집 건수가 최근 N일(실수집일) 중앙값의 이 비율 미만이면 부분 수집으로 보고 실패 처리
+MIN_ROWS_RATIO = 0.75
+RECENT_DAYS_FOR_RATIO = 10
+REAL_COLLECTION_START = "2026-01-23"   # 이전 구간은 주말 포함 일괄 백필이라 건수 비교에서 제외
+# git 밖 날짜별 백업 (최근 BACKUP_KEEP_DAYS 개 유지)
+BACKUP_DIR = Path(os.environ.get("BEEF_BACKUP_DIR", str(PROJECT_ROOT.parent / "Beef_Price_Model_backups"))) / "meatbox"
+BACKUP_KEEP_DAYS = 60
+# 페이지 이동 후 표 내용 변경 대기(초)
+PAGE_CHANGE_TIMEOUT_SEC = 15
 # 목록이 실제로 짧아진 날(페이지네이션상 마지막 페이지 도달)은 이 페이지 수 이상이면 정상 처리
 # (2026-10-12: 평소 21~24페이지 → 사이트 목록 19페이지로 축소되어 정상 수집이 실패 처리됨)
 MIN_PAGES_AT_LIST_END = 10
@@ -140,6 +156,50 @@ def _is_last_page(driver, current_page: int) -> bool:
     return True
 
 
+def _table_signature(driver):
+    """현재 시세 표의 앞부분 텍스트 — 페이지 이동이 실제로 반영됐는지 비교하는 용도.
+    문서 첫 tbody 는 빈 보조 표(5행)라 고정값이므로, 행이 가장 많은 tbody(시세 표)를 기준으로 한다.
+    (클릭 후 표 교체까지 1~3초 걸려, 고정 대기만으로는 이전 페이지를 다시 읽는 경우가 있었음)"""
+    try:
+        bodies = [tb.find_elements(By.CSS_SELECTOR, "tr") for tb in driver.find_elements(By.CSS_SELECTOR, "tbody")]
+        rows = max(bodies, key=len) if bodies else []
+        return "|".join(r.text for r in rows[:3]) if rows else None
+    except StaleElementReferenceException:
+        return None
+
+
+def _wait_table_changed(driver, prev_sig, timeout=PAGE_CHANGE_TIMEOUT_SEC) -> bool:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        sig = _table_signature(driver)
+        if sig and sig != prev_sig:
+            return True
+        time.sleep(0.3)
+    return False
+
+
+def _pick_column(df, keyword):
+    """헤더 이름으로 열 선택 (사이트 열 순서가 바뀌어도 엉뚱한 열을 읽지 않도록)."""
+    for c in df.columns:
+        if keyword in str(c):
+            return c
+    raise KeyError(f"시세 표에서 '{keyword}' 열을 찾을 수 없습니다: {list(df.columns)}")
+
+
+def _backup_master(master_file: Path, today_date: str):
+    """git 밖 폴더에 날짜별 사본 저장, 오래된 사본 정리."""
+    BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+    dest = BACKUP_DIR / f"master_price_data_{today_date}.csv"
+    if not dest.exists():
+        shutil.copy2(str(master_file), str(dest))
+    for f in sorted(BACKUP_DIR.glob("master_price_data_*.csv"))[:-BACKUP_KEEP_DAYS]:
+        try:
+            f.unlink()
+        except OSError:
+            pass
+    return dest
+
+
 def _parse_meatbox_tables_from_html(html: str):
     """미트박스 시세 테이블 후보만 추출. 없으면 None."""
     try:
@@ -158,30 +218,31 @@ def _parse_meatbox_tables_from_html(html: str):
 
 def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
     master_file = DATA_PROCESSED / "master_price_data.csv"
-    backup_file = DATA_PROCESSED / "master_price_data_backup_full.csv"
-    
+
     today_date = datetime.now().strftime("%Y-%m-%d")
-    target_cols = ['date', 'part_name', 'country', 'wholesale_price', 'brand']
+    target_cols = ['date', 'part_name', 'country', 'wholesale_price', 'brand', 'grade']
 
     print("="*60)
     print("[시스템] 미트박스 시세 수집")
     print("="*60)
 
-    # 1. 파일 최적화
+    # 1. 기존 마스터 로드 — 읽기 실패 시 덮어쓰지 않고 중단 (당일 전용 데이터라 이력 유실은 복구 불가)
+    today_existing = 0
     if master_file.exists():
         try:
-            shutil.copy(str(master_file), str(backup_file))
-            df_master = pd.read_csv(str(master_file))
-            for col in target_cols:
-                if col not in df_master.columns:
-                    df_master[col] = '-' if col == 'brand' else ""
-            df_master = df_master[target_cols] 
-            cond_empty = df_master['part_name'].isna() | (df_master['part_name'] == '')
-            cond_today = df_master['date'] == today_date
-            df_master = df_master[~(cond_empty | cond_today)]
-            print(f"[파일 정리] 기존 파일 최적화 완료 (잔여 {len(df_master)}행)")
+            df_master = pd.read_csv(str(master_file), encoding="utf-8-sig")
         except Exception as e:
-            df_master = pd.DataFrame(columns=target_cols) 
+            print(f"[오류] 기존 마스터 파일을 읽지 못해 중단합니다 (덮어쓰기 방지): {e}")
+            return False
+        for col in target_cols:
+            if col not in df_master.columns:
+                df_master[col] = '-' if col == 'brand' else pd.NA
+        df_master = df_master[target_cols]
+        cond_empty = df_master['part_name'].isna() | (df_master['part_name'] == '')
+        cond_today = df_master['date'] == today_date
+        today_existing = int(cond_today.sum())
+        df_master = df_master[~(cond_empty | cond_today)]
+        print(f"[파일 정리] 기존 파일 로드 (오늘 제외 {len(df_master)}행, 오늘 기존 {today_existing}행)")
     else:
         df_master = pd.DataFrame(columns=target_cols)
 
@@ -280,9 +341,13 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
 
                     if target_btn:
                         try:
+                            prev_sig = _table_signature(driver)
                             driver.execute_script("arguments[0].click();", target_btn)
-                            moved = True
-                            break
+                            # 클릭 직후 이전 페이지 표를 다시 읽지 않도록 내용이 바뀔 때까지 대기
+                            if _wait_table_changed(driver, prev_sig):
+                                moved = True
+                                break
+                            print("(이동 확인 실패, 재시도) ", end="", flush=True)
                         except StaleElementReferenceException:
                             time.sleep(1)
                             continue
@@ -325,8 +390,12 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
     if raw_dfs:
         full_df = pd.concat(raw_dfs, ignore_index=True)
         try:
-            clean_df = full_df.iloc[:, [1, 3, 4]].copy()
-            clean_df.columns = ['품목명', '보관', '도매시세_raw']
+            clean_df = pd.DataFrame({
+                '품목명': full_df[_pick_column(full_df, '품목')],
+                '등급': full_df[_pick_column(full_df, '등급')],
+                '보관': full_df[_pick_column(full_df, '보관')],
+                '도매시세_raw': full_df[_pick_column(full_df, '도매시세')],
+            })
             clean_df['품목명'] = clean_df['품목명'].astype(str).str.replace('관심상품 등록하기', '', regex=False).str.strip()
             clean_df = clean_df[clean_df['보관'].astype(str).str.contains("냉동")]
             clean_df['원산지'] = clean_df['품목명'].apply(lambda x: '미국' if '미국' in str(x) else ('호주' if '호주' in str(x) else '기타'))
@@ -344,7 +413,8 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
                 'part_name': clean_df['품목명'].tolist(),
                 'country': clean_df['원산지'].tolist(),
                 'wholesale_price': clean_df['도매시세'].tolist(),
-                'brand': ['-'] * len(clean_df)
+                'brand': ['-'] * len(clean_df),
+                'grade': clean_df['등급'].astype(str).str.strip().tolist(),
             })
             # 날짜·품목·시세 등 모든 컬럼이 동일한 행은 한 건만 유지 (다중 페이지·재시도로 인한 완전 중복 제거)
             _n_final = len(final_df)
@@ -354,6 +424,20 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
                     f"[파일 정리] 금일 수집분 내 완전 동일 행 {_n_final - len(final_df)}건 제거",
                     flush=True,
                 )
+
+            # 부분 수집 검증: 최근 실수집일 건수 중앙값 대비
+            hist = df_master[df_master['date'] >= REAL_COLLECTION_START].groupby('date').size()
+            recent = hist.sort_index().tail(RECENT_DAYS_FOR_RATIO)
+            if len(recent) >= 5:
+                floor = recent.median() * MIN_ROWS_RATIO
+                if len(final_df) < floor:
+                    print(f"[오류] 오늘 수집 {len(final_df)}건 < 최근 {len(recent)}일 중앙값 {recent.median():.0f}건의 "
+                          f"{MIN_ROWS_RATIO:.0%} ({floor:.0f}건) — 부분 수집으로 보고 저장하지 않습니다.", flush=True)
+                    return False
+            if today_existing > len(final_df):
+                print(f"[안내] 오늘 이미 저장된 {today_existing}건이 이번 수집({len(final_df)}건)보다 많아 기존 데이터를 유지합니다.",
+                      flush=True)
+                return True
 
             new_master_df = pd.concat([df_master, final_df], ignore_index=True).sort_values(
                 by=["date", "country", "part_name"]
@@ -366,7 +450,9 @@ def get_price_data(min_expected_pages: int = MIN_EXPECTED_PAGES) -> bool:
                     f"(잔여 {len(new_master_df)}행)",
                     flush=True,
                 )
-            new_master_df.to_csv(str(master_file), index=False, encoding="utf-8-sig")
+            if master_file.exists():
+                print(f"[백업] {_backup_master(master_file, today_date)}", flush=True)
+            atomic_to_csv(new_master_df, master_file, index=False, encoding="utf-8-sig")
 
             print(f"\n[성공] 데이터 저장 완료! (오늘 수집: {len(final_df)}건)")
             return True

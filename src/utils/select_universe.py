@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DASHBOARD_READY_CSV, DATA_DASHBOARD, ensure_dirs
 
 RECENT_DAYS = 90
-RECENT_MIN = 60      # 최근 90일 중 거래일(주중 거의 매일이면 ~64)
+RECENT_MIN = 45      # 최근 90일 중 실제 관측일(주중 ~64일 − 공휴일·미수집일 → 꾸준한 품목은 55~60일)
 HIST_MIN = 250       # 누적 거래일(약 1년)
 
 
@@ -29,6 +29,8 @@ def classify_universe(mb: pd.DataFrame,
                       hist_min: int = HIST_MIN) -> pd.DataFrame:
     mb = mb.dropna(subset=["date", "part"]).copy()
     mb = mb[(mb["wholesale_price"].notna()) & (mb["wholesale_price"] > 0)]
+    if "is_filled" in mb.columns:   # 직전 값으로 채운 날은 거래일로 세지 않음
+        mb = mb[~mb["is_filled"].astype(str).str.lower().eq("true")]
     mb["date"] = pd.to_datetime(mb["date"], errors="coerce")
     full_end = mb["date"].max()
     full_span = (full_end - mb["date"].min()).days + 1

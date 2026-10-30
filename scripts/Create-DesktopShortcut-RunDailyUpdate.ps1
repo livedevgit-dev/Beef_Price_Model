@@ -1,7 +1,8 @@
-# Beef_Price_Model 바탕화면 바로가기: run_daily_update.bat 실행
+# Beef_Price_Model 바탕화면 바로가기: Beef_Daily_Update.bat (스케줄과 같은 스마트 실행) 실행
+# (예전 run_daily_update.bat 은 price-only·로그 없음으로 스케줄 실행과 겹쳐 데이터를 덮어썼음 — 2026-10-07)
 $ErrorActionPreference = "Stop"
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
-$BatPath = Join-Path $ProjectRoot "run_daily_update.bat"
+$BatPath = Join-Path $ProjectRoot "Beef_Daily_Update.bat"
 if (-not (Test-Path -LiteralPath $BatPath)) {
     Write-Error "찾을 수 없음: $BatPath"
 }

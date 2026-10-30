@@ -30,6 +30,7 @@ from config import (
     SRC_DIR,
     USDA_BEEF_HISTORY_CSV,
 )
+from utils.io_safe import PipelineLocked, pipeline_lock
 
 # 파이프라인이 갱신하는 경로만 스테이징 (코드 변경은 포함하지 않음)
 GIT_PIPELINE_PATHS = [
@@ -915,4 +916,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # 스케줄 실행과 수동 실행(바탕화면 바로가기 등)이 겹치면 같은 날 데이터를 서로 덮어쓰므로(2026-10-07) 잠금으로 직렬화
+    try:
+        with pipeline_lock(PROJECT_ROOT / "data" / ".run_state" / "pipeline.lock", wait_sec=20 * 60):
+            main()
+    except PipelineLocked as e:
+        print(f"[중단] {e}")
+        raise SystemExit(1)
