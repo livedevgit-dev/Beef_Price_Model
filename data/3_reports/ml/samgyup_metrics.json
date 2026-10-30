@@ -1,10 +1,11 @@
 {
-  "n_oos": 20,
-  "mae_xgb": 480,
-  "mae_naive": 332,
-  "r2_xgb_oos": 0.449,
+  "n_oos": 16,
+  "mae_xgb": 370,
+  "mae_naive": 283,
+  "r2_xgb_oos": 0.594,
   "xgb_beats_naive": false,
-  "note": "OOS walk-forward. 익월 가격 예측. naive=당월값 그대로.",
-  "next_month_pred": 10201,
-  "next_month_from": "2026-05-01"
+  "oos_period": "2025-06~2026-09",
+  "note": "OOS walk-forward. 익월 가격 예측. 피처는 발표시차 반영(월말 공개값만). naive=당월값 그대로.",
+  "next_month_pred": 9969,
+  "next_month_from": "2026-10-01"
 }
