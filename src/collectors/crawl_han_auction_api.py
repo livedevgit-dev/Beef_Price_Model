@@ -5,19 +5,27 @@
 - 대상: 한우 (국내 도매시장 소도체 경락가격 + 도축장별 경매두수)
 - 데이터 소스: 축산물품질평가원(EKAPE) OpenAPI
     http://data.ekape.or.kr/openapi-data/service/user/grade/auct/cattle
-- 수집/가공 주기: 일단위 — 기존 CSV의 마지막 auction_date 이후만 증분 수집
+- 수집/가공 주기: 일단위 증분 — 수집 범위는 '어제'까지 (당일 경매는 오전 실행 시점에 미완결이라 제외)
 - 주요 기능:
     1. .env(EKAPE_API_KEY) 로딩, 인증키 미설정 시 즉시 종료
-    2. qgradeYn='Y' (육질등급별: 1++, 1+, 1, 2, 3, 등외) × 결함포함 가격 기준
-    3. wide format(도매시장별 c_XXXXAmt/c_XXXXCnt 컬럼) → long format(market_code, market_name, price, head_count)으로 정규화 후 저장
-    4. 호출당 1~30일 범위로 잘라 요청 (EKAPE는 응답에 일별 합산만 들어오는 구조라 큰 범위도 가능하나, 안정성을 위해 30일 청크)
-    5. 누적 CSV(`data/0_raw/han_auction_raw.csv`)에 (auction_start_ymd, auction_end_ymd, grade_cd, sex_cd, market_code) 키 기준 중복 제거 병합
+    2. qgradeYn='Y' (육질등급별: 1++, 1+, 1, 2, 3, D(=등외), 평균 등) × 결함포함 가격 기준
+    3. wide format(도매시장별 c_XXXXAmt/c_XXXXCnt, CCityAmt 등) → long format(market_code, market_name, price, head_count)으로 정규화
+    4. 응답은 요청 구간 [startYmd, endYmd] 전체의 '기간 합산'(두수 합계·평균가) 1건이다(일별 분해 아님).
+       → DAILY_SINCE(2026-01-01) 이후는 1일 청크로 호출해 일별 값으로 저장.
+         그 이전(2019~2025)은 30일 청크 합산 행으로 보존 — auction_start_ymd~auction_end_ymd 가 합산 구간이며
+         전처리(preprocess_hanwoo.py)가 period_days 컬럼으로 명시한다.
+    5. 매 실행마다 최근 REFETCH_DAYS(7)일을 다시 받아 기존 행을 '교체' (지연 게시·일시 실패 자가 복구).
+       DAILY_SINCE 이후에 기간 합산 행이 남아 있으면 그 구간도 1일 단위로 재수집해 교체.
+    6. 누적 CSV(`data/0_raw/han_auction_raw.csv`) 병합: 새로 받은 구간과 겹치는 기존 행을 지운 뒤
+       (auction_end_ymd, grade_cd, grade_nm, sex_cd, qgrade_yn, defect_include_yn, market_code) 키로 최신 우선 중복 제거
+    7. 휴장일(응답 정상·값 없음)은 정상 처리, 네트워크/HTTP/인증/파싱 오류는 '실패'로 집계 →
+       끝에 요약 출력 후 실패가 1건이라도 있으면 exit 1 (받은 데이터는 저장, 다음 실행 재수집 창에서 복구)
 
 산출 컬럼(long format):
     auction_start_ymd, auction_end_ymd, grade_type, grade_cd, grade_nm,
     breed_cd, breed_nm, sex_cd, sex_nm,
     qgrade_yn, defect_include_yn,
-    market_code, market_name, price_won_per_kg, head_count
+    market_code, market_name, is_regional_total, is_national_total, price_won_per_kg, head_count
 """
 
 from __future__ import annotations
@@ -36,6 +44,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import HAN_AUCTION_RAW_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 load_dotenv()
 
@@ -44,7 +53,10 @@ load_dotenv()
 # --------------------------------------------------------------------------
 API_URL = "http://data.ekape.or.kr/openapi-data/service/user/grade/auct/cattle"
 INITIAL_START = datetime(2019, 1, 1)  # EKAPE는 2010-05부터 데이터가 있으나 다른 소스와 정합성 위해 2019-01-01부터
-CHUNK_DAYS = 30                       # API 호출당 일수
+DAILY_SINCE = datetime(2026, 1, 1)    # 이 날부터는 1일 청크(일별 값). 이전은 30일 합산 청크
+HIST_CHUNK_DAYS = 30                  # DAILY_SINCE 이전 구간의 호출당 일수 (전체 재구축 시에만 사용)
+REFETCH_DAYS = 7                      # 매 실행 재수집·교체하는 최근 일수
+MAX_CALLS_PER_RUN = 500               # 1회 실행 호출 상한 (공공데이터포털 일일 트래픽 보호)
 REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 0.5             # 공공API 트래픽 보호
 
@@ -58,7 +70,7 @@ HEADERS = {"User-Agent": USER_AGENT}
 #   c_0101Amt / c_0101Cnt   → 코드: 0101
 #   CCityAmt  / CCityCnt    → 코드: City
 #   CTotAmt   / CTotCnt     → 코드: Tot
-#   c_centerAmt / c_centerCnt → 코드: center
+#   CCenterAmt / CCenterCnt → 코드: Center  (대소문자 무관하게 매핑)
 MARKET_PATTERN = re.compile(r"^(?:c_|C)(.+?)(Amt|Cnt)$")
 
 # 시장 코드 → 한글명 매핑 (응답에 따로 시장명이 없어 컬럼명 기반으로 운영)
@@ -84,24 +96,31 @@ MARKET_NAME_MAP: dict[str, str] = {
     "1101": "제주축협",
     "Tot": "전국(전체)",
     "0613": "관성",
-    "center": "중부권(권역)",
+    "Center": "중부권(권역)",
     "0616": "농협포크빌",
     "1015": "창녕축공",
     "0918": "안동봉화",
     "0717": "중앙축산물도매시장",
 }
+_MARKET_NAME_LC = {k.lower(): v for k, v in MARKET_NAME_MAP.items()}
 
-REGIONAL_CODES = {"City", "East", "West", "center"}  # 권역 합계
-NATIONAL_CODES = {"Tot"}                              # 전국 합계
+# 권역/전국 합계 — 비교는 소문자 기준 (응답 컬럼은 CCenterAmt 인데 과거 코드가 'center'로 비교해 누락됐던 문제 대응)
+REGIONAL_CODES = {"city", "east", "west", "center"}  # 권역 합계
+NATIONAL_CODES = {"tot"}                              # 전국 합계
 
 DUPLICATE_KEYS = [
-    "auction_start_ymd",
-    "auction_end_ymd",
+    "auction_end_ymd",   # 경매일(1일 청크는 시작=종료)
     "grade_cd",
+    "grade_nm",
     "sex_cd",
     "qgrade_yn",
     "defect_include_yn",
     "market_code",
+]
+# CSV 재로딩 시 int/str 혼재로 중복 제거가 어긋나지 않도록 문자열로 고정
+STR_COLS = [
+    "auction_start_ymd", "auction_end_ymd", "grade_type", "grade_cd", "grade_nm",
+    "breed_cd", "breed_nm", "sex_cd", "sex_nm", "qgrade_yn", "defect_include_yn", "market_code",
 ]
 
 
@@ -119,21 +138,16 @@ def _get_api_key() -> str:
     return key
 
 
-def _read_last_date(save_path: Path) -> datetime | None:
+def _load_existing(save_path: Path) -> pd.DataFrame:
     if not save_path.exists():
-        return None
-    try:
-        df = pd.read_csv(save_path, usecols=["auction_end_ymd"], low_memory=False)
-    except Exception:
-        return None
-    if df.empty:
-        return None
-    parsed = pd.to_datetime(
-        df["auction_end_ymd"].astype(str), format="%Y%m%d", errors="coerce"
-    ).dropna()
-    if parsed.empty:
-        return None
-    return parsed.max().to_pydatetime()
+        return pd.DataFrame()
+    df = pd.read_csv(save_path, dtype={c: str for c in STR_COLS}, keep_default_na=False,
+                     na_values={"price_won_per_kg": [""], "head_count": [""]}, low_memory=False)
+    return df
+
+
+def _ymd(s: pd.Series) -> pd.Series:
+    return pd.to_datetime(s.astype(str), format="%Y%m%d", errors="coerce")
 
 
 def _date_chunks(start: datetime, end: datetime, days: int) -> list[tuple[str, str]]:
@@ -143,6 +157,16 @@ def _date_chunks(start: datetime, end: datetime, days: int) -> list[tuple[str, s
         chunk_end = min(cursor + timedelta(days=days - 1), end)
         chunks.append((cursor.strftime("%Y%m%d"), chunk_end.strftime("%Y%m%d")))
         cursor = chunk_end + timedelta(days=1)
+    return chunks
+
+
+def _build_chunks(start: datetime, end: datetime) -> list[tuple[str, str]]:
+    """DAILY_SINCE 이전은 30일 합산 청크, 이후는 1일 청크."""
+    chunks: list[tuple[str, str]] = []
+    if start < DAILY_SINCE:
+        chunks += _date_chunks(start, min(end, DAILY_SINCE - timedelta(days=1)), HIST_CHUNK_DAYS)
+    if end >= DAILY_SINCE:
+        chunks += _date_chunks(max(start, DAILY_SINCE), end, 1)
     return chunks
 
 
@@ -158,6 +182,15 @@ def _to_int(text: str | None) -> int | None:
         return None
 
 
+def _apply_market_meta(df: pd.DataFrame) -> pd.DataFrame:
+    """market_code 기준으로 시장명·권역/전국 플래그를 다시 계산 (기존 누적분 교정 포함)."""
+    code_lc = df["market_code"].astype(str).str.strip().str.lower()
+    df["market_name"] = code_lc.map(_MARKET_NAME_LC).fillna(df["market_code"].astype(str))
+    df["is_regional_total"] = code_lc.isin(REGIONAL_CODES)
+    df["is_national_total"] = code_lc.isin(NATIONAL_CODES)
+    return df
+
+
 # --------------------------------------------------------------------------
 # API 호출
 # --------------------------------------------------------------------------
@@ -168,8 +201,9 @@ def _fetch_range(
     *,
     qgrade_yn: str = "Y",
     defect_include_yn: str = "Y",
-) -> list[dict]:
-    """단일 청크 호출. 등급별 합산 시장별 row 반환(wide)."""
+) -> list[dict] | None:
+    """단일 청크 호출. 등급별 합산 시장별 row 반환(wide).
+    정상 응답이면 list(휴장일은 값 없는 item 들), 네트워크/HTTP/파싱/API 오류면 None."""
     params = {
         "serviceKey": api_key,
         "startYmd": start_ymd,
@@ -182,26 +216,32 @@ def _fetch_range(
             API_URL, params=params, headers=HEADERS, timeout=REQUEST_TIMEOUT
         )
     except requests.RequestException as e:
-        print(f"   └ [예외] {e}")
-        return []
+        # 예외 메시지에 serviceKey 가 포함된 URL 이 들어갈 수 있으므로 타입만 출력
+        print(f"   └ [예외] 연결 실패 ({type(e).__name__})")
+        return None
 
     if resp.status_code != 200:
         print(f"   └ [에러] HTTP {resp.status_code}")
-        return []
+        return None
 
     try:
         root = ET.fromstring(resp.content)
     except ET.ParseError as e:
-        print(f"   └ [에러] XML 파싱 실패: {e}")
-        return []
+        print(f"   └ [에러] XML 파싱 실패: {e} / 응답 일부: {resp.text[:150]!r}")
+        return None
 
-    result_code_el = root.find(".//resultCode")
-    result_msg_el = root.find(".//resultMsg")
-    result_code = result_code_el.text if result_code_el is not None else ""
-    if result_code and result_code != "00":
-        msg = result_msg_el.text if result_msg_el is not None else ""
-        print(f"   └ [API 에러] {result_code} {msg}")
-        return []
+    # 인증 실패 등은 <OpenAPI_ServiceResponse><cmmMsgHeader><returnReasonCode> 로 떨어진다
+    reason_el = root.find(".//returnReasonCode")
+    if reason_el is not None and (reason_el.text or "").strip() not in {"", "00"}:
+        msg = root.findtext(".//returnAuthMsg") or root.findtext(".//errMsg") or ""
+        print(f"   └ [API 에러] {reason_el.text} {msg}")
+        return None
+
+    result_code = (root.findtext(".//resultCode") or "").strip()
+    if result_code != "00":
+        msg = root.findtext(".//resultMsg") or ""
+        print(f"   └ [API 에러] resultCode={result_code or '(없음)'} {msg}")
+        return None
 
     rows: list[dict] = []
     for item in root.findall(".//item"):
@@ -255,9 +295,6 @@ def _wide_to_long(
             long_rows.append({
                 **meta,
                 "market_code": code,
-                "market_name": MARKET_NAME_MAP.get(code, code),
-                "is_regional_total": code in REGIONAL_CODES,
-                "is_national_total": code in NATIONAL_CODES,
                 "price_won_per_kg": price,
                 "head_count": count,
             })
@@ -267,110 +304,154 @@ def _wide_to_long(
 # --------------------------------------------------------------------------
 # 누적 저장
 # --------------------------------------------------------------------------
-def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
-    df_new = pd.DataFrame(new_rows)
-    if df_new.empty:
-        return _existing_row_count(save_path)
+def _overlap_mask(df: pd.DataFrame, intervals: list[tuple[str, str]]) -> pd.Series:
+    """df 의 [auction_start_ymd, auction_end_ymd] 가 intervals 중 하나라도 겹치면 True."""
+    mask = pd.Series(False, index=df.index)
+    if df.empty or not intervals:
+        return mask
+    s = df["auction_start_ymd"].astype(str)
+    e = df["auction_end_ymd"].astype(str)
+    for a, b in intervals:
+        mask |= (s <= b) & (e >= a)   # YYYYMMDD 문자열 비교 = 날짜 비교
+    return mask
 
-    if save_path.exists():
-        df_old = pd.read_csv(save_path, low_memory=False)
-        df_final = pd.concat([df_old, df_new], ignore_index=True)
-    else:
-        df_final = df_new
+
+def _merge_and_save(
+    df_old: pd.DataFrame,
+    new_rows: list[dict],
+    fetched: list[tuple[str, str]],
+    failed: list[tuple[str, str]],
+    today_ymd: str,
+    save_path: Path,
+) -> int:
+    """fetched(정상 응답 구간)와 겹치는 기존 행은 새 응답으로 교체.
+    단, 실패 구간과도 겹치는 기존 기간합산 행은 남기고 그 구간의 새 행을 버린다(이중 집계 방지 → 다음 실행에 재시도)."""
+    df_new = pd.DataFrame(new_rows)
+    if not df_old.empty:
+        keep_old = _overlap_mask(df_old, failed)
+        drop_old = _overlap_mask(df_old, fetched) & ~keep_old
+        # 당일(미완결) 이후 행은 무조건 제거 — 과거 08시 실행이 저장한 부분 집계분 정리
+        drop_old |= df_old["auction_end_ymd"].astype(str) >= today_ymd
+        kept_spans = (
+            df_old.loc[keep_old, ["auction_start_ymd", "auction_end_ymd"]]
+            .drop_duplicates().itertuples(index=False, name=None)
+        )
+        if not df_new.empty:
+            df_new = df_new[~_overlap_mask(df_new, list(kept_spans))]
+        df_old = df_old[~drop_old]
+
+    df_final = pd.concat([df_old, df_new], ignore_index=True)
+    if df_final.empty:
+        return 0
+    for c in STR_COLS:
+        if c in df_final.columns:
+            df_final[c] = df_final[c].fillna("").astype(str)
+    df_final = _apply_market_meta(df_final)
 
     subset = [c for c in DUPLICATE_KEYS if c in df_final.columns]
-    if subset:
-        df_final = df_final.drop_duplicates(subset=subset, keep="last")
+    df_final = df_final.drop_duplicates(subset=subset, keep="last")
 
-    if "auction_end_ymd" in df_final.columns:
-        df_final["_sort_dt"] = pd.to_datetime(
-            df_final["auction_end_ymd"].astype(str), format="%Y%m%d", errors="coerce"
-        )
-        df_final = df_final.sort_values(
-            by=["_sort_dt", "grade_cd", "market_code"]
-        ).drop(columns=["_sort_dt"])
+    df_final["_sort_dt"] = _ymd(df_final["auction_end_ymd"])
+    df_final = df_final.sort_values(by=["_sort_dt", "grade_cd", "market_code"]).drop(columns=["_sort_dt"])
 
-    save_path.parent.mkdir(parents=True, exist_ok=True)
-    df_final.to_csv(str(save_path), index=False, encoding="utf-8-sig")
+    cols = ["auction_start_ymd", "auction_end_ymd", "grade_type", "grade_cd", "grade_nm",
+            "breed_cd", "breed_nm", "sex_cd", "sex_nm", "qgrade_yn", "defect_include_yn",
+            "market_code", "market_name", "is_regional_total", "is_national_total",
+            "price_won_per_kg", "head_count"]
+    df_final = df_final[[c for c in cols if c in df_final.columns]]
+    atomic_to_csv(df_final, save_path, index=False, encoding="utf-8-sig")
     return len(df_final)
-
-
-def _existing_row_count(save_path: Path) -> int:
-    if not save_path.exists():
-        return 0
-    try:
-        return sum(1 for _ in open(save_path, "r", encoding="utf-8-sig")) - 1
-    except OSError:
-        return 0
 
 
 # --------------------------------------------------------------------------
 # 메인
 # --------------------------------------------------------------------------
-def collect_han_auction_increment() -> None:
+def collect_han_auction_increment() -> int:
+    """증분 수집. 반환값 = 실패(오류) 청크 수."""
     ensure_dirs()
     save_path = Path(HAN_AUCTION_RAW_CSV)
     api_key = _get_api_key()
 
-    last_date = _read_last_date(save_path)
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    yesterday = today - timedelta(days=1)
+    today_ymd = today.strftime("%Y%m%d")
 
-    if last_date is None:
+    df_old = _load_existing(save_path)
+    if df_old.empty:
         start = INITIAL_START
         print(f"[시스템] 기존 데이터 없음 → {start.date()}부터 전체 수집")
     else:
-        start = last_date + timedelta(days=1)
+        end_dt = _ymd(df_old["auction_end_ymd"])
+        start_dt = _ymd(df_old["auction_start_ymd"])
+        complete = end_dt < today
+        last_date = end_dt[complete].max()
+        # 시작점 = min(마지막 완결 경매일+1, 최근 7일 재수집 창, DAILY_SINCE 이후 남은 기간합산 행 시작일)
+        cands = [yesterday - timedelta(days=REFETCH_DAYS - 1)]
+        if pd.notna(last_date):
+            cands.append(last_date.to_pydatetime() + timedelta(days=1))
+        multi = (end_dt >= DAILY_SINCE) & (start_dt < end_dt) & complete
+        if multi.any():
+            cands.append(start_dt[multi].min().to_pydatetime())
+            print(f"[안내] {DAILY_SINCE.date()} 이후 기간합산 행 {int(multi.sum())}건 → 1일 단위로 재수집·교체")
+        start = min(cands)
         print(
-            f"[시스템] 기존 데이터 마지막 경매일: {last_date.date()} "
-            f"→ {start.date()}부터 증분 수집"
+            f"[시스템] 기존 데이터 마지막 경매일(완결): "
+            f"{last_date.date() if pd.notna(last_date) else '-'} → {start.date()}부터 수집 "
+            f"(최근 {REFETCH_DAYS}일 재수집 포함, 당일 제외)"
         )
 
-    if start > today:
+    if start > yesterday:
         print("[성공] 이미 최신 상태입니다. 수집할 데이터가 없습니다.")
-        return
+        return 0
 
-    chunks = _date_chunks(start, today, CHUNK_DAYS)
-    print(
-        f"[안내] {len(chunks)}개 청크 × {CHUNK_DAYS}일 호출 "
-        f"({start.date()} ~ {today.date()})"
-    )
+    chunks = _build_chunks(start, yesterday)
+    if len(chunks) > MAX_CALLS_PER_RUN:
+        # 기존 기간합산 행을 중간에서 자르지 않도록 그 행 시작 전까지로 절단 → 나머지는 다음 실행
+        cut = chunks[MAX_CALLS_PER_RUN - 1][1]
+        if not df_old.empty:
+            s, e = df_old["auction_start_ymd"], df_old["auction_end_ymd"]
+            straddle = s[(s <= cut) & (e > cut)]
+            if not straddle.empty:
+                cut = (datetime.strptime(straddle.min(), "%Y%m%d") - timedelta(days=1)).strftime("%Y%m%d")
+        chunks = [c for c in chunks[:MAX_CALLS_PER_RUN] if c[1] <= cut]
+        print(f"[안내] 호출 상한 {MAX_CALLS_PER_RUN}건 → 이번 실행은 {cut}까지만 수집, 나머지는 다음 실행")
+    print(f"[안내] {len(chunks)}회 호출 ({chunks[0][0]} ~ {chunks[-1][1]})")
 
     new_long_rows: list[dict] = []
-    success_chunks = 0
-    failed_chunks: list[tuple[str, str]] = []
+    fetched: list[tuple[str, str]] = []
+    failed: list[tuple[str, str]] = []
+    holidays = 0
 
     for i, (s, e) in enumerate(chunks, 1):
-        print(f" - [{i}/{len(chunks)}] {s} ~ {e}")
         wide = _fetch_range(api_key, s, e, qgrade_yn="Y", defect_include_yn="Y")
-        if not wide:
-            failed_chunks.append((s, e))
-            time.sleep(SLEEP_BETWEEN_CALLS)
-            continue
-        long_rows = _wide_to_long(wide, qgrade_yn="Y", defect_include_yn="Y")
-        if long_rows:
-            print(f"   └ 수집: wide {len(wide)}행 → long {len(long_rows)}행")
-            new_long_rows.extend(long_rows)
-            success_chunks += 1
+        if wide is None:
+            print(f" - [{i}/{len(chunks)}] {s} ~ {e} 실패")
+            failed.append((s, e))
         else:
-            print("   └ 응답에 유효 가격/두수 없음")
+            fetched.append((s, e))
+            long_rows = _wide_to_long(wide, qgrade_yn="Y", defect_include_yn="Y")
+            if long_rows:
+                new_long_rows.extend(long_rows)
+                if len(chunks) <= 31 or i % 30 == 0 or i == len(chunks):
+                    print(f" - [{i}/{len(chunks)}] {s} ~ {e}: wide {len(wide)}행 → long {len(long_rows)}행")
+            else:
+                holidays += 1   # 정상 응답 + 값 없음 = 휴장일
         time.sleep(SLEEP_BETWEEN_CALLS)
 
-    if not new_long_rows:
-        print("[안내] API에서 신규 데이터가 반환되지 않았습니다.")
-        if failed_chunks:
-            print(f"[경고] 실패 청크 {len(failed_chunks)}건. 첫 3건: {failed_chunks[:3]}")
-        return
+    if fetched or not df_old.empty:
+        total = _merge_and_save(df_old, new_long_rows, fetched, failed, today_ymd, save_path)
+        print(f"[완료] 신규 long row {len(new_long_rows)}건 반영 — 누적 총 {total}건 ({save_path})")
 
-    total = _merge_and_save(new_long_rows, save_path)
     print(
-        f"[완료] 신규 long row {len(new_long_rows)}건 병합 — "
-        f"누적 총 {total}건 ({save_path})"
+        f"[요약] 호출 {len(chunks)}회: 정상 {len(fetched)} (휴장·무거래 {holidays}) / 실패 {len(failed)}"
     )
-    if failed_chunks:
+    if failed:
         print(
-            f"[경고] 실패 청크 {len(failed_chunks)}건 — 재실행 시 같은 범위를 자동 재시도합니다."
+            f"[경고] 실패 구간 {len(failed)}건 (첫 3건: {failed[:3]}) — "
+            f"최근 {REFETCH_DAYS}일 이내는 다음 실행 재수집 창에서 다시 받습니다. 그보다 오래된 구간은 수동 재실행 필요."
         )
+    return len(failed)
 
 
 if __name__ == "__main__":
-    collect_han_auction_increment()
+    sys.exit(1 if collect_han_auction_increment() else 0)

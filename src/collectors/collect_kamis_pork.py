@@ -2,21 +2,25 @@
 [파일 정의서]
 - 파일명: collect_kamis_pork.py
 - 역할: 수집
-- 대상: 돼지고기 도/소매 가격 (국내 돼지 + 수입 돼지고기)
+- 대상: 돼지고기 부위별 소매 가격 (국내 돼지 + 수입 돼지고기)
 - 데이터 소스: KAMIS(한국농수산식품유통공사)
     http://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList
 - 배경: 외식(요식업)이 대량 소비하는 돼지고기(삼겹살 등)와 수입 돼지고기는
         수입육 삼겹양지의 대체재이자 국내 소비/외식 공급가 신호. 수요측 지표(대형마트·
         음식점 생산지수·품목 CPI)와 짝을 이루는 공급측 지표로 사용한다.
-- 수집/가공 주기: 일단위 — 기존 CSV의 마지막 reg_date 이후 영업일만 증분 수집
+- 수집/가공 주기: 일단위 — 마지막 reg_date 이후 + 최근 REFETCH_DAYS(7)일을 매번 다시 받아 교체(일시 실패·지연 게시 자가 복구)
 - 주요 기능:
     1. .env(KAMIS_CERT_KEY, KAMIS_CERT_ID) 로딩. 키 없으면 즉시 graceful skip
-    2. 도매(02) + 소매(01) 각각 호출, 부류=500(축산물) 응답에서 돼지 row만 필터링
-    3. 누적 CSV(`data/0_raw/kamis_pork_raw.csv`)에 중복 제거 병합
+    2. 소매(01)만 호출, 부류=500(축산물) 응답에서 돼지 row만 필터링
+       ※ 2026-10-30 확인: 축산물은 p_product_cls_code 를 무시하고 02(도매) 요청에도 소매와 100% 동일한 응답을 준다
+         (과거 누적 14,300쌍 전부 일치). → 도매 요청 중단, 누적분의 02 행은 병합 시 제거.
+    3. 누적 CSV(`data/0_raw/kamis_pork_raw.csv`): 정상 응답 일자의 기존 행은 교체, 나머지는 키 기준 중복 제거 병합
+    4. 응답 없음(error_code 001·빈 목록)은 정상, 네트워크/HTTP/파싱/그 외 error_code 는 실패로 집계 →
+       끝에 요약 출력 후 실패가 있으면 exit 1 (받은 데이터는 저장)
 - 필터: item_name 이 '돼지'(국내) 또는 '수입 돼지고기'(수입) 인 행만.
 
 산출 컬럼(long format) — collect_kamis_hanwoo 와 동일 스키마:
-    reg_date, product_cls_code, product_cls_name(도매/소매),
+    reg_date, product_cls_code('01'), product_cls_name('소매'),
     item_name(돼지 / 수입 돼지고기), kind_name(부위 — 삼겹살/앞다리/갈비/목심),
     rank, unit, country_name, market_name, price
 """
@@ -36,6 +40,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import KAMIS_PORK_RAW_CSV, ensure_dirs
+from utils.io_safe import atomic_to_csv
 
 # 사내망 SSL 검사(중간 프록시) 대응 — 한우 수집기와 동일 패턴
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -51,7 +56,9 @@ ITEM_CATEGORY_LIVESTOCK = "500"   # 축산물
 INITIAL_START = date(2019, 1, 1)  # 다른 데이터셋과 정합
 REQUEST_TIMEOUT = 20
 SLEEP_BETWEEN_CALLS = 0.3         # KAMIS 트래픽 보호 (개발계정 1만/일)
-MAX_DAYS_PER_RUN = 3000           # 1회 실행당 상한. 도매+소매 2콜/일 → 3000일도 6천콜 < KAMIS 1만/일 한도
+MAX_DAYS_PER_RUN = 3000           # 1회 실행당 상한. 소매 1콜/일 → 3000일도 3천콜 < KAMIS 1만/일 한도
+REFETCH_DAYS = 7                  # 매 실행 재수집·교체하는 최근 일수
+PRODUCT_CLS_CODE = "01"           # 소매만 (축산물은 02 요청도 소매와 동일 응답 — 파일 정의서 참고)
 CHECKPOINT_DAYS = 120             # 이 일수마다 중간 저장 (진행 가시화 + 중단 시 이어받기 안전)
 
 # 돼지 식별 — 응답 item_name 텍스트 기반 (국내 '돼지' + '수입 돼지고기' 모두)
@@ -103,8 +110,48 @@ def _is_pork_row(row: dict) -> bool:
 # --------------------------------------------------------------------------
 # API 호출
 # --------------------------------------------------------------------------
-def _fetch_day(cert_key: str, cert_id: str, target_date: date, product_cls_code: str) -> list[dict]:
-    """일자 + 도매/소매 구분으로 한 번 호출. 돼지 row만 필터링하여 long row 반환."""
+KAMIS_OK_CODES = {"", "000"}      # 정상
+KAMIS_NODATA_CODES = {"001"}      # 데이터 없음(휴장·미게시) — 오류 아님
+
+
+def _extract_items(payload, target_date: date) -> list[dict] | None:
+    """KAMIS 응답에서 item 목록 추출. 데이터 없음 → [], 오류·예상 밖 구조 → None.
+    응답 형태: {'condition':..., 'data': {'error_code': '000', 'item': [...]}}
+              {'data': ['001']} (데이터 없음) / {'price': [...]} (구버전)"""
+    if not isinstance(payload, dict):
+        print(f"   └ [에러] {target_date} 예상 밖 응답 형식: {type(payload).__name__}")
+        return None
+    if isinstance(payload.get("price"), list):
+        return payload["price"]
+    data = payload.get("data")
+    if isinstance(data, dict):
+        code = str(data.get("error_code", "") or "").strip()
+        if code in KAMIS_NODATA_CODES:
+            return []
+        if code not in KAMIS_OK_CODES:
+            print(f"   └ [KAMIS 에러] {target_date} error_code={code}")
+            return None
+        inner = data.get("item")
+        if inner is None:
+            return []
+        return inner if isinstance(inner, list) else [inner]
+    if isinstance(data, list):
+        codes = {str(x).strip() for x in data if not isinstance(x, dict)}
+        if not codes or codes <= KAMIS_NODATA_CODES:
+            return [x for x in data if isinstance(x, dict)]
+        print(f"   └ [KAMIS 에러] {target_date} error_code={sorted(codes)}")
+        return None
+    code = str(payload.get("error_code", "") or "").strip()
+    if code in KAMIS_NODATA_CODES:
+        return []
+    print(f"   └ [에러] {target_date} 예상 밖 응답 구조: keys={list(payload.keys())} error_code={code or '-'}")
+    return None
+
+
+def _fetch_day(cert_key: str, cert_id: str, target_date: date,
+               product_cls_code: str = PRODUCT_CLS_CODE) -> list[dict] | None:
+    """일자별 한 번 호출. 돼지 row만 필터링하여 long row 반환.
+    정상 응답이면 list(휴장·미게시일은 빈 list), 네트워크/HTTP/파싱/API 오류면 None."""
     params = {
         "action": "dailyPriceByCategoryList",
         "p_cert_key": cert_key,
@@ -120,32 +167,22 @@ def _fetch_day(cert_key: str, cert_id: str, target_date: date, product_cls_code:
     except requests.RequestException as e:
         # 예외 메시지에 인증정보가 포함된 URL 이 들어갈 수 있으므로 타입만 출력
         print(f"   └ [예외] {target_date} {product_cls_code}: 연결 실패 ({type(e).__name__})")
-        return []
+        return None
 
     if resp.status_code != 200:
-        print(f"   └ [에러] HTTP {resp.status_code}")
-        return []
+        print(f"   └ [에러] {target_date} HTTP {resp.status_code}")
+        return None
 
     try:
         payload = resp.json()
     except ValueError:
         snippet = resp.text[:200].replace("\n", " ")
-        print(f"   └ [에러] JSON 파싱 실패. 응답 일부: {snippet}")
-        return []
+        print(f"   └ [에러] {target_date} JSON 파싱 실패. 응답 일부: {snippet}")
+        return None
 
-    # KAMIS 응답: dict({'price': [...]}) 또는 dict({'data': {'item': [...]}})
-    items: list[dict] = []
-    if isinstance(payload, dict):
-        if "price" in payload and isinstance(payload["price"], list):
-            items = payload["price"]
-        elif "data" in payload and isinstance(payload["data"], dict):
-            inner = payload["data"].get("item")
-            if isinstance(inner, list):
-                items = inner
-        elif isinstance(payload.get("error_code", None), str):
-            print(f"   └ [KAMIS 에러] {payload.get('error_code')}")
-            return []
-
+    items = _extract_items(payload, target_date)
+    if items is None:
+        return None
     if not items:
         return []
 
@@ -184,16 +221,25 @@ def _fetch_day(cert_key: str, cert_id: str, target_date: date, product_cls_code:
 # --------------------------------------------------------------------------
 # 누적 저장
 # --------------------------------------------------------------------------
-def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
+def _merge_and_save(new_rows: list[dict], fetched_dates: set[str], save_path: Path) -> int:
+    """fetched_dates(정상 응답 일자)의 기존 행은 새 응답으로 교체 후 병합."""
     df_new = pd.DataFrame(new_rows)
-    if df_new.empty:
+    if df_new.empty and not fetched_dates and save_path.exists():
         return _existing_row_count(save_path)
 
     if save_path.exists():
-        df_old = pd.read_csv(save_path, low_memory=False)
+        df_old = pd.read_csv(save_path, dtype={"product_cls_code": str}, low_memory=False)
+        df_old = df_old[~df_old["reg_date"].astype(str).isin(fetched_dates)]
         df_final = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_final = df_new
+    if df_final.empty:
+        return 0
+
+    # product_cls_code 가 CSV 재로딩 시 int(1/2)로 읽혀 '01' 과 키가 어긋나던 문제 → 문자열 2자리로 고정
+    df_final["product_cls_code"] = df_final["product_cls_code"].astype(str).str.strip().str.zfill(2)
+    # 도매(02) 행은 소매 응답의 중복이므로 제거 (파일 정의서 참고)
+    df_final = df_final[df_final["product_cls_code"] != "02"]
 
     subset = [c for c in DUPLICATE_KEYS if c in df_final.columns]
     if subset:
@@ -205,8 +251,7 @@ def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
             by=["_sort_dt", "product_cls_code", "kind_name"]
         ).drop(columns=["_sort_dt"])
 
-    save_path.parent.mkdir(parents=True, exist_ok=True)
-    df_final.to_csv(str(save_path), index=False, encoding="utf-8-sig")
+    atomic_to_csv(df_final, save_path, index=False, encoding="utf-8-sig")
     return len(df_final)
 
 
@@ -222,7 +267,8 @@ def _existing_row_count(save_path: Path) -> int:
 # --------------------------------------------------------------------------
 # 메인
 # --------------------------------------------------------------------------
-def collect_kamis_pork_increment() -> None:
+def collect_kamis_pork_increment() -> int:
+    """증분 수집. 반환값 = 실패(오류) 일수."""
     ensure_dirs()
     save_path = Path(KAMIS_PORK_RAW_CSV)
     creds = _get_credentials()
@@ -231,7 +277,7 @@ def collect_kamis_pork_increment() -> None:
             "[건너뜀] .env 의 KAMIS_CERT_KEY / KAMIS_CERT_ID 가 비어 있습니다.\n"
             "         (한우 수집기와 동일 키. 입력 시 다음 실행부터 돼지가격도 자동 수집)"
         )
-        return
+        return 0
     cert_key, cert_id = creds
 
     last_date = _read_last_date(save_path)
@@ -241,11 +287,8 @@ def collect_kamis_pork_increment() -> None:
         start = INITIAL_START
         print(f"[시스템] KAMIS 돼지 기존 데이터 없음 → {start} 부터 전체 수집")
     else:
-        start = last_date + timedelta(days=1)
-
-    if start > today:
-        print(f"[안내] KAMIS 돼지 이미 최신 (마지막 {last_date})")
-        return
+        # 마지막일 다음날부터 + 최근 REFETCH_DAYS 일은 매번 재수집(교체)
+        start = min(last_date + timedelta(days=1), today - timedelta(days=REFETCH_DAYS - 1))
 
     # 백필 상한 적용
     end = min(today, start + timedelta(days=MAX_DAYS_PER_RUN - 1))
@@ -255,26 +298,34 @@ def collect_kamis_pork_increment() -> None:
         days.append(d)
         d += timedelta(days=1)
 
-    print(f"[시스템] KAMIS 돼지 도/소매 수집: {start} ~ {end} ({len(days)}일, {CHECKPOINT_DAYS}일마다 중간 저장)")
+    print(f"[시스템] KAMIS 돼지 소매 수집: {start} ~ {end} ({len(days)}일, 최근 {REFETCH_DAYS}일 재수집 포함, {CHECKPOINT_DAYS}일마다 중간 저장)")
     buffer: list[dict] = []          # 체크포인트 대기 버퍼
+    buffer_dates: set[str] = set()   # 버퍼 구간 중 정상 응답 일자 (기존 행 교체 대상)
     collected_total = 0              # 이번 실행 누적 신규건
     days_since_ckpt = 0
+    empty_days: list[date] = []
+    failed_days: list[date] = []
 
     def _flush():
         """버퍼를 파일에 병합 저장하고 비운다 (중단 대비·진행 가시화)."""
-        nonlocal buffer, collected_total
-        if not buffer:
+        nonlocal buffer, buffer_dates, collected_total
+        if not buffer_dates:
             return
-        total = _merge_and_save(buffer, save_path)
+        total = _merge_and_save(buffer, buffer_dates, save_path)
         collected_total += len(buffer)
-        print(f"   └ [중간저장] +{len(buffer)}건 → 파일 누적 {total}건 (~{buffer[-1]['reg_date']}까지)")
-        buffer = []
+        print(f"   └ [중간저장] +{len(buffer)}건 → 파일 누적 {total}건 (~{max(buffer_dates)}까지)")
+        buffer, buffer_dates = [], set()
 
     for d in days:
-        for cls in ("02", "01"):   # 도매, 소매
-            rows = _fetch_day(cert_key, cert_id, d, cls)
+        rows = _fetch_day(cert_key, cert_id, d)
+        time.sleep(SLEEP_BETWEEN_CALLS)
+        if rows is None:
+            failed_days.append(d)
+        else:
+            buffer_dates.add(d.strftime("%Y-%m-%d"))
             buffer.extend(rows)
-            time.sleep(SLEEP_BETWEEN_CALLS)
+            if not rows:
+                empty_days.append(d)
         days_since_ckpt += 1
         if days_since_ckpt >= CHECKPOINT_DAYS:
             _flush()
@@ -282,12 +333,14 @@ def collect_kamis_pork_increment() -> None:
 
     _flush()   # 잔여분 저장
 
-    if collected_total == 0:
-        print("[안내] KAMIS 돼지 신규 데이터 없음 (주말·공휴일 구간이거나 미게시).")
-        return
-
-    print(f"[완료] KAMIS 돼지 신규 {collected_total}건 수집 — 최종 {end}까지 ({save_path})")
+    print(
+        f"[요약] KAMIS 돼지 {len(days)}일 호출: 정상 {len(days) - len(failed_days)}일 "
+        f"(데이터 없음 {len(empty_days)}일, 신규 {collected_total}건) / 실패 {len(failed_days)}일 — 최종 {end}까지 ({save_path})"
+    )
+    if failed_days:
+        print(f"[경고] 실패일 {len(failed_days)}건 (첫 3건: {failed_days[:3]}) — 최근 {REFETCH_DAYS}일 이내는 다음 실행에서 재시도됩니다.")
+    return len(failed_days)
 
 
 if __name__ == "__main__":
-    collect_kamis_pork_increment()
+    sys.exit(1 if collect_kamis_pork_increment() else 0)

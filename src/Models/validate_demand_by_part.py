@@ -76,6 +76,9 @@ def build_targets() -> dict:
                                  ("등심", "한우_등심", False),
                                  ("양지", "한우_양지", False)]:
         sub = hw[(hw["part"] == part) & (nat_mask if use_nat else ~nat_mask)]
+        if use_nat and "grade" in sub.columns:
+            # 전국 행에는 품질·육량·합계 등급(1++~3, A/B/C, 등외제외 등)이 함께 있음 → 전체 등급 합계 행만
+            sub = sub[sub["grade"].astype(str).isin(["전체", "평균"])]
         s = sub.groupby("mm")["price_won_per_kg"].mean().dropna()
         if len(s) >= MIN_N:
             tg[label] = _monthly_ret(s)
@@ -93,16 +96,17 @@ def build_demand() -> dict:
         s["mm"] = _m(s["date"])
         lvl = s.groupby("mm")["value"].mean()
         feats[label] = lvl.pct_change(fill_method=None).shift(lag)
-    # 돼지 삼겹살 도매가 (일→월평균) MoM
+    # 돼지 삼겹살 소매가 (일→월평균) MoM
     try:
         pk = pd.read_csv(KAMIS_PORK_RAW_CSV)
-        pk = pk[(pk["product_cls_name"] == "도매") & (pk["item_name"] == "돼지") &
+        # KAMIS 축산물은 도매(02) 요청에도 소매값을 돌려줘 2026-10-30부터 소매만 수집 (예전 '도매'도 실제로는 소매값)
+        pk = pk[(pk["product_cls_name"] == "소매") & (pk["item_name"] == "돼지") &
                 (pk["kind_name"].astype(str).str.contains("삼겹", na=False))]
         pk["mm"] = _m(pk["reg_date"])
         lvl = pk.groupby("mm")["price"].mean()
-        feats["돼지도매(삼겹)"] = lvl.pct_change(fill_method=None).shift(PORK_LAG)
+        feats["돼지소매(삼겹)"] = lvl.pct_change(fill_method=None).shift(PORK_LAG)
     except Exception as e:
-        print("  [skip] 돼지도매:", e)
+        print("  [skip] 돼지소매:", e)
     return feats
 
 

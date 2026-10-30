@@ -1,15 +1,19 @@
 """
 [파일 정의서]
-- 파일명: 06_Hanwoo_Dashboard.py
+- 파일명: 05_한우_시장.py
 - 역할: 시각화 (한우 시장 종합 현황)
 - 데이터 소스:
     - data/2_dashboard/hanwoo_dashboard_ready.csv (preprocess_hanwoo.py 산출)
     - data/2_dashboard/dashboard_ready_data.csv   (수입육 비교용)
-- 구성: 단일 페이지 4섹션
+- 구성: 단일 페이지 5섹션
     1. 한우 도매 경락가 현황 (EKAPE) — 등급별 추이 + KPI
-    2. 공급 사이클 — 도축장별 경매두수(주간 합산) + 가격과의 역상관
+    2. 공급 사이클 — 전국 경매두수(주간 합산, 등급 '전체' 행만) + 가격과의 역상관
+       (EKAPE 등급 행은 육질·육량·합계가 겹쳐 있어 전부 더하면 약 4.8배 과대 → '전체'(=평균) 행만 사용.
+        2025년 이전 30일 합산 행은 period_days 로 균등 배분해 주간 합산)
     3. 수입육 vs 한우 — 가격 추이 동시 비교 + 가격차/배수
     4. 이상 신호 — 최근 30일 가격 급변(± 5% 이상) 등급/시장 리스트
+    5. KAMIS 부위별 소매가 + 도매 기준선(EKAPE 도체 경락가)
+       (KAMIS 축산물 '도매' 응답은 소매와 동일한 중복이라 사용하지 않음)
 """
 from __future__ import annotations
 
@@ -17,6 +21,7 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
@@ -46,12 +51,21 @@ GRADE_COLOR = {
 def load_hanwoo() -> pd.DataFrame | None:
     if not HANWOO_DASHBOARD_CSV.exists():
         return None
-    df = pd.read_csv(str(HANWOO_DASHBOARD_CSV))
+    df = pd.read_csv(str(HANWOO_DASHBOARD_CSV), dtype={"market_code": str}, low_memory=False)
     df["date"] = pd.to_datetime(df["date"])
     df["price_won_per_kg"] = pd.to_numeric(df["price_won_per_kg"], errors="coerce")
     df["head_count"] = pd.to_numeric(df["head_count"], errors="coerce")
     df["is_national_total"] = df["is_national_total"].fillna(False).astype(bool)
     df["is_regional_total"] = df["is_regional_total"].fillna(False).astype(bool)
+    # 합산 구간 일수(2025년 이전 EKAPE 는 30일 합산 행). 구버전 파일이면 1로 간주
+    if "period_days" in df.columns:
+        df["period_days"] = pd.to_numeric(df["period_days"], errors="coerce").fillna(1).astype(int)
+    else:
+        df["period_days"] = 1
+    if "is_outlier" in df.columns:
+        df["is_outlier"] = df["is_outlier"].astype(str).str.lower().eq("true")
+    else:
+        df["is_outlier"] = False
     return df
 
 
@@ -113,14 +127,16 @@ ekape_period_grade = ekape_period[ekape_period["grade"].isin(selected_grades)]
 _active_sources = sorted(hanwoo_df["source"].dropna().unique().tolist())
 _source_labels = {
     "ekape_auction": "EKAPE 경락·두수",
-    "kamis_wholesale": "KAMIS 도매",
     "kamis_retail": "KAMIS 소매",
 }
+# 구버전 파일의 kamis_wholesale(소매와 동일한 중복 응답)은 표시하지 않음
+kamis = kamis[kamis["source"] == "kamis_retail"]
+_active_sources = [s for s in _active_sources if s != "kamis_wholesale"]
 _active_labels = [_source_labels.get(s, s) for s in _active_sources]
-if "kamis_wholesale" not in _active_sources and "kamis_retail" not in _active_sources:
+if "kamis_retail" not in _active_sources:
     _kamis_note = (
         " · KAMIS: **미연동** (`.env`에 `KAMIS_CERT_KEY`/`KAMIS_CERT_ID` 입력 후 "
-        "`collect_kamis_hanwoo.py` 실행 시 부위별 도·소매가 추가)"
+        "`collect_kamis_hanwoo.py` 실행 시 부위별 소매가 추가)"
     )
 else:
     _kamis_note = ""
@@ -215,20 +231,29 @@ else:
 st.divider()
 st.header("2. 공급 사이클 — 도축(경매) 두수 추이")
 st.caption(
-    "EKAPE는 도매시장 경매 기준 두수입니다. 농가 도축실적과 강한 상관관계를 보이며, "
-    "주간 합산해 단기 공급 변동을 평활화했습니다."
+    "EKAPE는 도매시장 경매 기준 두수입니다(전국, 등급 '전체' 행). 농가 도축실적과 강한 상관관계를 보이며, "
+    "주간 합산해 단기 공급 변동을 평활화했습니다. 2025년 이전은 EKAPE 30일 합산치를 일수로 균등 배분한 값입니다."
 )
 
 if ekape_period.empty:
     st.warning("선택 기간에 EKAPE 두수 데이터가 없습니다.")
 else:
-    head_df = ekape_period.dropna(subset=["head_count"]).copy()
+    # 등급 행(1++~3·등외 / A·B·C / 등외제외·결함제외 / 전체)은 서로 겹치므로 '전체'(=EKAPE 평균) 행만 사용
+    head_df = ekape_period[ekape_period["grade"] == "전체"].dropna(subset=["head_count"]).copy()
     if head_df.empty:
         st.info("두수(head_count) 컬럼이 비어 있어 차트를 그릴 수 없습니다.")
     else:
-        # 등급 합산 일별 두수 → 주간 합산
+        # 기간합산 행(period_days>1)은 구간 [date-period_days+1, date] 에 균등 배분해 일별로 펼침
+        reps = head_df["period_days"].clip(lower=1).to_numpy()
+        expanded = head_df.loc[head_df.index.repeat(reps), ["date", "head_count"]].reset_index(drop=True)
+        rep_days = np.repeat(reps, reps)
+        offsets = expanded.groupby(np.repeat(np.arange(len(head_df)), reps)).cumcount().to_numpy()
+        expanded["date"] = expanded["date"] - pd.to_timedelta(rep_days - 1 - offsets, unit="D")
+        expanded["head_count"] = expanded["head_count"] / rep_days
+        expanded = expanded[expanded["date"] >= start_date]
+        # 일별 두수 → 주간 합산
         daily_head = (
-            head_df.groupby("date", as_index=False)["head_count"].sum()
+            expanded.groupby("date", as_index=False)["head_count"].sum()
             .sort_values("date")
         )
         daily_head["week"] = daily_head["date"] - pd.to_timedelta(
@@ -265,7 +290,7 @@ else:
                 y=weekly_head["head_count"],
                 name="주간 경매두수 (전국)",
                 marker_color="rgba(120,144,156,0.55)",
-                hovertemplate="%{x|%Y-%m-%d} 주<br>두수: %{y:,}<extra></extra>",
+                hovertemplate="%{x|%Y-%m-%d} 주<br>두수: %{y:,.0f}<extra></extra>",
             ),
             secondary_y=False,
         )
@@ -468,23 +493,25 @@ else:
     st.dataframe(styled, hide_index=True, use_container_width=True)
 
 # --------------------------------------------------------------------------------
-# 섹션 5: KAMIS 부위별 한우 소매·도매가
+# 섹션 5: KAMIS 부위별 한우 소매가 + 도매 기준선(EKAPE 도체 경락가)
 # --------------------------------------------------------------------------------
 st.divider()
-st.header("5. KAMIS 부위별 한우 소·도매가")
+st.header("5. KAMIS 부위별 한우 소매가 (도매 기준: EKAPE 도체 경락가)")
 
 if kamis.empty:
     st.info(
         "KAMIS 데이터가 없습니다. `.env`에 `KAMIS_CERT_KEY`/`KAMIS_CERT_ID` 입력 후 "
-        "`collect_kamis_hanwoo.py` → `preprocess_hanwoo.py` 실행 시 부위별 도·소매가가 표시됩니다."
+        "`collect_kamis_hanwoo.py` → `preprocess_hanwoo.py` 실행 시 부위별 소매가가 표시됩니다."
     )
 else:
     st.caption(
-        "KAMIS 부위별 한우 가격(원/kg, 100g 단위를 kg로 환산). EKAPE 경락가(도체 전체)와 달리 "
-        "**부위·등급별 소비자/도매 가격**을 제공합니다. 과거 일자는 KAMIS 미게시일이 많아 값이 희소할 수 있습니다."
+        "KAMIS 부위별 한우 **소매가**(원/kg, 100g 단위를 kg로 환산). KAMIS 축산물 '도매' 응답은 소매와 동일한 값이라 "
+        "사용하지 않으며, 도매 기준선은 **EKAPE 전국 도체 경락가**(같은 등급, 점선)로 표시합니다. "
+        "도체가(뼈·지방 포함 1kg)와 부위 정육 소매가는 단위 기준이 달라 수준 차이는 유통마진 그대로가 아닙니다. "
+        "단일일 급등락(이상치 표시 행)은 차트에서 제외했습니다."
     )
     kamis_period = kamis[
-        (kamis["date"] >= start_date) & (kamis["date"] <= latest_date)
+        (kamis["date"] >= start_date) & (kamis["date"] <= latest_date) & ~kamis["is_outlier"]
     ].dropna(subset=["price_won_per_kg"]).copy()
 
     parts_avail = sorted(kamis_period["part"].dropna().unique())
@@ -493,41 +520,47 @@ else:
     if kamis_period.empty or not parts_avail or not grades_avail_k:
         st.warning("선택한 기간에 표시할 KAMIS 데이터가 없습니다. 기간을 넓혀 보세요.")
     else:
-        c1, c2, c3 = st.columns(3)
+        c1, c2 = st.columns(2)
         sel_parts = c1.multiselect("부위", parts_avail, default=parts_avail)
         sel_grade_k = c2.selectbox("등급", grades_avail_k, index=0)
-        channels = []
-        if "kamis_retail" in kamis_period["source"].unique():
-            channels.append("소매")
-        if "kamis_wholesale" in kamis_period["source"].unique():
-            channels.append("도매")
-        sel_channel = c3.radio("구분", channels, horizontal=True) if channels else "소매"
-        src_key = "kamis_retail" if sel_channel == "소매" else "kamis_wholesale"
 
         if not sel_parts:
             sel_parts = parts_avail
 
         view_k = kamis_period[
-            (kamis_period["source"] == src_key)
-            & (kamis_period["grade"] == sel_grade_k)
+            (kamis_period["grade"] == sel_grade_k)
             & (kamis_period["part"].isin(sel_parts))
         ].sort_values("date")
 
+        # 도매 기준선: EKAPE 전국 동일 등급 도체 경락가 (일별 행만)
+        ref_w = ekape_national[
+            (ekape_national["grade"] == sel_grade_k)
+            & (ekape_national["period_days"] == 1)
+            & (ekape_national["date"] >= start_date)
+            & (ekape_national["date"] <= latest_date)
+        ].dropna(subset=["price_won_per_kg"]).sort_values("date")
+
         if view_k.empty:
-            st.warning("선택 조건(부위/등급/구분)에 해당하는 KAMIS 데이터가 없습니다.")
+            st.warning("선택 조건(부위/등급)에 해당하는 KAMIS 데이터가 없습니다.")
         else:
-            # KPI: 부위별 최신가
+            # KPI: 부위별 최신 소매가 + EKAPE 도체 최신가
             latest_k = view_k.groupby("part").last()
-            kpi_cols = st.columns(min(len(sel_parts), 5) or 1)
+            kpi_cols = st.columns(min(len(sel_parts) + 1, 6) or 1)
             for i, p in enumerate(sel_parts):
                 if p in latest_k.index:
                     with kpi_cols[i % len(kpi_cols)]:
                         st.metric(
-                            f"{p} ({sel_grade_k}, {sel_channel})",
+                            f"{p} ({sel_grade_k}, 소매)",
                             f"{latest_k.loc[p, 'price_won_per_kg']:,.0f} 원/kg",
                         )
+            if not ref_w.empty:
+                with kpi_cols[len(sel_parts) % len(kpi_cols)]:
+                    st.metric(
+                        f"도체 경락가 ({sel_grade_k}, EKAPE)",
+                        f"{ref_w['price_won_per_kg'].iloc[-1]:,.0f} 원/kg",
+                    )
 
-            # 부위별 가격 추이
+            # 부위별 소매가 추이 + 도체 경락가 기준선
             figk = go.Figure()
             for p in sel_parts:
                 gp = view_k[view_k["part"] == p]
@@ -536,14 +569,23 @@ else:
                 figk.add_trace(
                     go.Scatter(
                         x=gp["date"], y=gp["price_won_per_kg"],
-                        mode="lines+markers", name=p,
+                        mode="lines+markers", name=f"{p} (소매)",
                         hovertemplate="%{x|%Y-%m-%d}<br>" + p + ": %{y:,.0f}원/kg<extra></extra>",
+                    )
+                )
+            if not ref_w.empty:
+                figk.add_trace(
+                    go.Scatter(
+                        x=ref_w["date"], y=ref_w["price_won_per_kg"],
+                        mode="lines", name=f"도체 경락가 {sel_grade_k} (EKAPE, 도매 기준)",
+                        line=dict(color="#37474F", width=2, dash="dot"),
+                        hovertemplate="%{x|%Y-%m-%d}<br>도체 경락가: %{y:,.0f}원/kg<extra></extra>",
                     )
                 )
             figk.update_layout(
                 height=420, hovermode="x unified",
                 margin=dict(l=20, r=20, t=10, b=20),
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-                yaxis_title=f"{sel_channel}가 (원/kg)",
+                yaxis_title="가격 (원/kg)",
             )
             st.plotly_chart(figk, width="stretch")
