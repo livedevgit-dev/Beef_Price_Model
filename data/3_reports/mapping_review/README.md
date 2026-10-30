@@ -9,13 +9,17 @@
 
 | 소스 | 내용 | 단위 | 부위 체계 |
 |------|------|------|-----------|
-| **미트박스** | 한국 B2B 도매가격 (미국산 부분육) | 일별, 원/kg | 한국 식육 유통명 (LA갈비, 차돌양지 등) |
+| **미트박스** | 한국 B2B 도매가격 (미국·호주산 부분육·부산물) | 일별, 원/kg | 한국 식육 유통명 (LA갈비, 차돌양지 등) |
 | **KMTA 수입** | 한국육류유통수출협회 부위별 수입량 | 월별, 톤 | 11개 대분류 (갈비·등심·목심·…) |
 | **KMTA 재고** | 한국육류유통수출협회 부위별 재고 | 월별, 톤 | 12개 대분류 (수입과 거의 동일 + 부산물) |
 | **USDA** | 미국 LM_XB403 Boxed Beef 가격 | 일별, USD/cwt | IMPS/NAMP cut code (109E, 116A 등) |
 
 서로 분류 체계가 달라서 **canonical (표준 부위)** 라는 중간 키를 두고 각 소스를 연결했습니다.
 예: `la_galbi` -> 미트박스 'LA갈비' + KMTA '갈비' + USDA 123A
+
+미트박스 품목명에는 원산지 구분이 없고(part_name의 '-원산지' 앞부분), 원산지는 `source_inventory.csv`의
+`origin`/`usda_compare` 열로 표시합니다. `usda_compare`: direct(미국산+USDA cut) / proxy(호주산 또는
+primal 지수만) / none(USDA 대응 없음).
 
 ## 검토 요청 사항
 
@@ -26,8 +30,8 @@
 
 ## 파일 안내
 
-### 1. `canonical_summary.csv` (17행)
-17개 canonical(표준 부위)의 전체 매핑 정보를 한 행씩 정리.
+### 1. `canonical_summary.csv` (19행)
+19개 canonical(표준 부위)의 전체 매핑 정보를 한 행씩 정리.
 
 | 컬럼 | 의미 |
 |------|------|
@@ -54,11 +58,12 @@ USDA 원본 데이터에 나타난 모든 item_description과 그 매핑 결과.
 | `status` | MAPPED / UNMAPPED / NO_CODE |
 | `review_question` | 코드별 검토 질문 |
 
-### 3. `source_inventory.csv` (50행)
-미트박스·KMTA 수입·KMTA 재고에 등장하는 모든 부위명과 매핑 결과.
+### 3. `source_inventory.csv` (98행)
+미트박스(미국·호주, 원산지별)·KMTA 수입·KMTA 재고에 등장하는 모든 부위명과 매핑 결과.
+미트박스 행은 전체/최근 120일 거래 행 수, 최근 거래일, USDA 비교 방식(`usda_compare`) 포함.
 
-### 4. `open_questions.csv` (7행)
-현재 매핑에서 **불확실한 7개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
+### 4. `open_questions.csv` (10행)
+현재 매핑에서 **불확실한 10개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
 
 ## 검토 결과 회신 형식 (제안)
 
@@ -81,12 +86,13 @@ CSV의 `review_question` 컬럼에 대해 각 행마다:
 | 갈비 (등갈비/백립) | Rib (back rib) | 등쪽 늑간 |
 | 양지 (차돌양지) | Brisket | 가슴 앞쪽 |
 | 양지 (삼겹양지) | Plate (Navel) | 가슴 뒤쪽 (Brisket 후방) |
-| 목심 | Chuck (Chuck roll) | 목 부위 |
-| 등심 (꽃등심) | Rib (Ribeye) | 한국 미트박스 미취급 |
-| 채끝 | Loin (Strip loin) | 미트박스 '센터컷' |
-| 안심 | Loin (Tenderloin) | 미트박스 미취급 |
+| 목심 | Chuck (Chuck roll 116A) | 미트박스 '알목심'·'목심'(호주) |
+| 등심 (꽃등심) | Rib (Ribeye 112A) | 미트박스 '등심'(호주, 2026-10-20~) |
+| 채끝 | Loin (Strip loin) | 미트박스 '센터컷'(확인 필요)·'채끝등심' |
+| 안심 | Loin (Tenderloin) | 미트박스 호주산 단발 거래 |
 | 앞다리 (부채살) | Chuck (Top blade 114D) | 한국 분류 모호 |
 | 앞다리 (전각) | Chuck (Shoulder clod 114) | |
 | 설도 | Round + Loin top butt | 한국 분류는 후지 |
-| 우둔 | Round (Top inside) | 미트박스 미취급 |
+| 우둔 | Round (Top inside 168/169) | 미트박스 호주산 |
+| 홍두깨 | Round (Eye of round 171C) | 미트박스 호주산 |
 | 사태 | Shank (USDA boxed beef 미보고) | - |

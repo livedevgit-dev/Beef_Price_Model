@@ -2,7 +2,7 @@
 # - 파일명: export_mapping_review.py
 # - 역할: 산출물 생성 (External LLM Review Package)
 # - 대상: 공통 (미트박스·KMTA·USDA 품목 매핑)
-# - 데이터 소스: utils.part_mapping.CANONICAL_PARTS, dashboard_ready_data.csv,
+# - 데이터 소스: utils.part_mapping.CANONICAL_PARTS, master_price_data.csv(미트박스 미국·호주),
 #                master_import_volume.csv, beef_stock_data.xlsx, usda_beef_history.csv
 # - 주요 기능: 다른 LLM(GPT, Gemini 등)이 매핑 정확성을 더블체크할 수 있도록
 #              data/3_reports/mapping_review/ 아래에 CSV 4종 + README 1종을 생성
@@ -20,6 +20,7 @@ from config import (
     BEEF_STOCK_XLSX,
     DASHBOARD_READY_CSV,
     MAPPING_REVIEW_DIR,
+    MASTER_PRICE_CSV,
     MASTER_IMPORT_VOLUME_CSV,
     USDA_BEEF_HISTORY_CSV,
 )
@@ -28,7 +29,12 @@ from utils.part_mapping import (
     USDA_CODE_TO_CANONICAL,
     kmta_to_canonical,
     meatbox_to_canonical,
+    meatbox_usda_compare,
+    split_meatbox_part_name,
 )
+
+MEATBOX_ORIGIN_SOURCE = {"미국": "meatbox_us", "호주": "meatbox_au"}
+ACTIVE_DAYS = 120
 
 USDA_CODE_PATTERN = re.compile(r"\(\s*([0-9]+[A-Z]?)\s+")
 
@@ -106,26 +112,59 @@ def build_usda_codes_detail() -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values(["primal_group", "usda_code"])
 
 
+def _meatbox_inventory_rows() -> list[dict]:
+    """미트박스 (품목, 원산지)별 매핑 결과. master_price_data 우선, 없으면 대시보드 데이터."""
+    if MASTER_PRICE_CSV.exists():
+        mb = pd.read_csv(str(MASTER_PRICE_CSV), usecols=["date", "part_name"], encoding="utf-8-sig")
+        mb["date"] = pd.to_datetime(mb["date"], errors="coerce")
+        split = mb["part_name"].astype(str).map(split_meatbox_part_name)
+        mb["part"], mb["origin"] = split.str[0], split.str[1]
+    elif DASHBOARD_READY_CSV.exists():
+        mb = pd.read_csv(str(DASHBOARD_READY_CSV))
+        mb["date"] = pd.to_datetime(mb["date"], errors="coerce")
+        mb["origin"] = mb["category"]
+    else:
+        return []
+
+    mb = mb.dropna(subset=["date", "part"])
+    active_cutoff = mb["date"].max() - pd.Timedelta(days=ACTIVE_DAYS)
+    inv = (
+        mb.groupby(["origin", "part"])
+        .agg(
+            rows_total=("date", "size"),
+            rows_recent=("date", lambda d: int((d > active_cutoff).sum())),
+            last_date=("date", "max"),
+        )
+        .reset_index()
+    )
+
+    rows = []
+    for r in inv.itertuples(index=False):
+        cid = meatbox_to_canonical(r.part)
+        spec = next((s for s in CANONICAL_PARTS if s.canonical_id == cid), None)
+        name = spec.name_ko if spec else "(미매핑)"
+        rows.append({
+            "source": MEATBOX_ORIGIN_SOURCE.get(r.origin, f"meatbox_{r.origin}"),
+            "source_item": r.part,
+            "origin": r.origin,
+            "rows_total": r.rows_total,
+            f"rows_last_{ACTIVE_DAYS}d": r.rows_recent,
+            "last_date": r.last_date.date().isoformat(),
+            "mapped_canonical_id": cid or "",
+            "mapped_canonical_name_ko": spec.name_ko if spec else "",
+            "usda_compare": meatbox_usda_compare(r.part, r.origin),
+            "status": "MAPPED" if cid else "UNMAPPED",
+            "review_question": (
+                f"미트박스 {r.origin}산 '{r.part}'을(를) '{name}'로 분류한 것이 정확한가?"
+            ),
+        })
+    return rows
+
+
 def build_source_inventory() -> pd.DataFrame:
     rows = []
 
-    if DASHBOARD_READY_CSV.exists():
-        mb = pd.read_csv(str(DASHBOARD_READY_CSV))
-        mb_us = mb[mb["category"] == "미국"]
-        for part in sorted(mb_us["part"].dropna().unique()):
-            cid = meatbox_to_canonical(part)
-            spec = next((s for s in CANONICAL_PARTS if s.canonical_id == cid), None)
-            rows.append({
-                "source": "meatbox_us",
-                "source_item": part,
-                "mapped_canonical_id": cid or "",
-                "mapped_canonical_name_ko": spec.name_ko if spec else "",
-                "status": "MAPPED" if cid else "UNMAPPED",
-                "review_question": (
-                    f"미트박스 미국산 '{part}'을(를) '{spec.name_ko if spec else '(미매핑)'}'로 "
-                    "분류한 것이 정확한가?"
-                ),
-            })
+    rows.extend(_meatbox_inventory_rows())
 
     if MASTER_IMPORT_VOLUME_CSV.exists():
         imp = pd.read_csv(str(MASTER_IMPORT_VOLUME_CSV), encoding="utf-8-sig")
@@ -169,7 +208,11 @@ def build_source_inventory() -> pd.DataFrame:
                 ),
             })
 
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+    for col in ("rows_total", f"rows_last_{ACTIVE_DAYS}d"):
+        if col in df.columns:
+            df[col] = df[col].astype("Int64")
+    return df
 
 
 def build_open_questions() -> pd.DataFrame:
@@ -248,6 +291,41 @@ def build_open_questions() -> pd.DataFrame:
             ),
         },
         {
+            "topic": "미트박스 '센터컷'의 실체",
+            "context": (
+                "미트박스 '센터컷'(엑셀 86K, 2025-01~2026-07)은 채끝(스트립로인 180) 센터컷으로 매핑되어 있으나, "
+                "시세가 약 1.1만원/kg으로 같은 시기 미국산 채끝·등심류(2.5만원+)보다 크게 낮고 "
+                "삼겹양지(약 1만원) 수준. 미트박스에는 별도 '채끝등심' 품목도 존재."
+            ),
+            "question": (
+                "한국 수입육 유통에서 엑셀 '센터컷'이 스트립로인 센터컷인지, "
+                "삼겹양지(플레이트)·차돌양지(브리스킷) 등 다른 부위의 센터컷인지 확인 요청."
+            ),
+        },
+        {
+            "topic": "뼈 위주 갈비 품목의 canonical 배정",
+            "context": (
+                "호주산 '양지갈비'(약 7천원)->LA갈비(123A), '스페어립'(약 7.8천원)->등갈비/백립(Primal Rib), "
+                "'일반갈비'->척갈비(130), 미국산 '숏립앤드'->LA갈비(123A), '립캡'->등심(Rib)으로 배정. "
+                "가격 수준이 대표 품목과 크게 다른 저가·뼈 위주 품목임."
+            ),
+            "question": (
+                "각 품목의 실제 원료 부위(AUS-MEAT/IMPS 코드)를 확인하고, "
+                "더 적절한 canonical 또는 별도 '갈비뼈류' canonical 분리가 필요한지 의견 요청."
+            ),
+        },
+        {
+            "topic": "호주산 품목의 USDA 비교 방식",
+            "context": (
+                "목심·홍두깨·우둔·등심 등은 미트박스에서 호주산만 거래됨. crosswalk의 usda_compare='proxy'로 표시해 "
+                "USDA 가격과의 직접 비교 대신 방향성 참고용으로만 쓰도록 함."
+            ),
+            "question": (
+                "호주산 도매가를 USDA cut 가격(미국 시장)으로 설명하는 것이 타당한지, "
+                "MLA/NLRS 등 호주 시세를 별도로 붙여야 하는지 의견 요청."
+            ),
+        },
+        {
             "topic": "앞다리 vs 부채살",
             "context": (
                 "USDA Top blade(114D)는 미트박스 '부채살'에 해당. 동시에 미트박스 "
@@ -275,13 +353,17 @@ README_TEMPLATE = """# 품목 매핑 검토 패키지 (External LLM Review)
 
 | 소스 | 내용 | 단위 | 부위 체계 |
 |------|------|------|-----------|
-| **미트박스** | 한국 B2B 도매가격 (미국산 부분육) | 일별, 원/kg | 한국 식육 유통명 (LA갈비, 차돌양지 등) |
+| **미트박스** | 한국 B2B 도매가격 (미국·호주산 부분육·부산물) | 일별, 원/kg | 한국 식육 유통명 (LA갈비, 차돌양지 등) |
 | **KMTA 수입** | 한국육류유통수출협회 부위별 수입량 | 월별, 톤 | 11개 대분류 (갈비·등심·목심·…) |
 | **KMTA 재고** | 한국육류유통수출협회 부위별 재고 | 월별, 톤 | 12개 대분류 (수입과 거의 동일 + 부산물) |
 | **USDA** | 미국 LM_XB403 Boxed Beef 가격 | 일별, USD/cwt | IMPS/NAMP cut code (109E, 116A 등) |
 
 서로 분류 체계가 달라서 **canonical (표준 부위)** 라는 중간 키를 두고 각 소스를 연결했습니다.
 예: `la_galbi` -> 미트박스 'LA갈비' + KMTA '갈비' + USDA 123A
+
+미트박스 품목명에는 원산지 구분이 없고(part_name의 '-원산지' 앞부분), 원산지는 `source_inventory.csv`의
+`origin`/`usda_compare` 열로 표시합니다. `usda_compare`: direct(미국산+USDA cut) / proxy(호주산 또는
+primal 지수만) / none(USDA 대응 없음).
 
 ## 검토 요청 사항
 
@@ -293,7 +375,7 @@ README_TEMPLATE = """# 품목 매핑 검토 패키지 (External LLM Review)
 ## 파일 안내
 
 ### 1. `canonical_summary.csv` ({n_canonical}행)
-17개 canonical(표준 부위)의 전체 매핑 정보를 한 행씩 정리.
+{n_canonical}개 canonical(표준 부위)의 전체 매핑 정보를 한 행씩 정리.
 
 | 컬럼 | 의미 |
 |------|------|
@@ -321,10 +403,11 @@ USDA 원본 데이터에 나타난 모든 item_description과 그 매핑 결과.
 | `review_question` | 코드별 검토 질문 |
 
 ### 3. `source_inventory.csv` ({n_source}행)
-미트박스·KMTA 수입·KMTA 재고에 등장하는 모든 부위명과 매핑 결과.
+미트박스(미국·호주, 원산지별)·KMTA 수입·KMTA 재고에 등장하는 모든 부위명과 매핑 결과.
+미트박스 행은 전체/최근 {active_days}일 거래 행 수, 최근 거래일, USDA 비교 방식(`usda_compare`) 포함.
 
 ### 4. `open_questions.csv` ({n_questions}행)
-현재 매핑에서 **불확실한 7개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
+현재 매핑에서 **불확실한 {n_questions}개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
 
 ## 검토 결과 회신 형식 (제안)
 
@@ -347,14 +430,15 @@ CSV의 `review_question` 컬럼에 대해 각 행마다:
 | 갈비 (등갈비/백립) | Rib (back rib) | 등쪽 늑간 |
 | 양지 (차돌양지) | Brisket | 가슴 앞쪽 |
 | 양지 (삼겹양지) | Plate (Navel) | 가슴 뒤쪽 (Brisket 후방) |
-| 목심 | Chuck (Chuck roll) | 목 부위 |
-| 등심 (꽃등심) | Rib (Ribeye) | 한국 미트박스 미취급 |
-| 채끝 | Loin (Strip loin) | 미트박스 '센터컷' |
-| 안심 | Loin (Tenderloin) | 미트박스 미취급 |
+| 목심 | Chuck (Chuck roll 116A) | 미트박스 '알목심'·'목심'(호주) |
+| 등심 (꽃등심) | Rib (Ribeye 112A) | 미트박스 '등심'(호주, 2026-10-20~) |
+| 채끝 | Loin (Strip loin) | 미트박스 '센터컷'(확인 필요)·'채끝등심' |
+| 안심 | Loin (Tenderloin) | 미트박스 호주산 단발 거래 |
 | 앞다리 (부채살) | Chuck (Top blade 114D) | 한국 분류 모호 |
 | 앞다리 (전각) | Chuck (Shoulder clod 114) | |
 | 설도 | Round + Loin top butt | 한국 분류는 후지 |
-| 우둔 | Round (Top inside) | 미트박스 미취급 |
+| 우둔 | Round (Top inside 168/169) | 미트박스 호주산 |
+| 홍두깨 | Round (Eye of round 171C) | 미트박스 호주산 |
 | 사태 | Shank (USDA boxed beef 미보고) | - |
 """
 
@@ -387,6 +471,7 @@ def export_all() -> dict[str, Path]:
             n_usda=len(df_usda),
             n_source=len(df_source),
             n_questions=len(df_q),
+            active_days=ACTIVE_DAYS,
         ),
         encoding="utf-8",
     )

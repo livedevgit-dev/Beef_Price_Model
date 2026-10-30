@@ -4,6 +4,7 @@
 # - 대상: 수입육
 # - 데이터 소스: PROJECT_GUIDE.md, DATA_DICTIONARY.md
 # - 주요 기능: USDA 시세 원본 명칭(Original_Description)과 한국 부위 명칭(Korean_Name) 간의 매핑을 검증하고, 결과를 validation_mapping_result.csv로 출력
+#              + 최근 거래된 미트박스 품목의 canonical 매핑 커버리지(원산지별)를 점검
 
 import re
 import sys
@@ -13,7 +14,12 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import DATA_PROCESSED, MASTER_PRICE_CSV, USDA_BEEF_HISTORY_CSV, ensure_dirs
-from utils.part_mapping import build_usda_code_to_korean_map
+from utils.part_mapping import (
+    build_usda_code_to_korean_map,
+    meatbox_to_canonical,
+    meatbox_usda_compare,
+    split_meatbox_part_name,
+)
 
 OUTPUT_COLUMNS = [
     "USDA_Code",
@@ -33,19 +39,21 @@ KEYWORD_RULES = [
     (("chuck", "short rib"), "앞/척갈비-미국"),
     (("chuck", "roll"), "알목심-미국"),
     (("chuck", "top blade"), "부채살-미국"),
-    (("rib", "ribeye"), "꽃등심-미국"),
+    (("rib", "ribeye"), USDA_CODE_TO_KOREAN.get("112A", "등심-호주")),
     (("strip loin",), "센터컷-미국"),
     (("strip,", "bnls"), "센터컷-미국"),
+    (("round", "top inside"), USDA_CODE_TO_KOREAN.get("168", "우둔-호주")),
 ]
 
-# 분석 대상에서 제외할 USDA 코드 (미트박스 미취급 부위)
-# 114/114A/114E/116B(전각), 116G(살치살), 167A/170/171B/184/184B/185B-D(설도)는
+# 분석 대상에서 제외할 USDA 코드 (미트박스 대응 품목 없음)
+# 114/114A/114E/116B(전각), 116G(살치살), 167A/170/171B/184/184B/185B-D(설도),
+# 168/169/169A(우둔), 171C(홍두깨), 185A(토시살), 189A(안심)는
 # part_mapping.CANONICAL_PARTS에 매핑되어 제외 목록에서 제거됨
 EXCLUDED_CODES = {
     "113C", "114F",
-    "160", "161", "168", "169", "169A", "171C",
-    "174", "185A",
-    "189A", "191A", "193",
+    "160", "161",
+    "174",
+    "191A", "193",
 }
 
 USDA_CODE_PATTERN = re.compile(r"\(\s*([0-9]+[A-Z]?)\s+\d+\)")
@@ -87,17 +95,14 @@ def _load_master_part_bases() -> set[str]:
 
     bases = set()
     for part_name in df_master["part_name"].dropna().astype(str):
-        base = part_name.split("|")[0].strip()
-        if base.endswith("-미국"):
-            base = base[: -len("-미국")]
-        bases.add(base)
+        bases.add(split_meatbox_part_name(part_name)[0])
     return bases
 
 
 def _korean_base_name(korean_name: str) -> str:
     if not korean_name:
         return ""
-    return korean_name.replace("-미국", "").strip()
+    return split_meatbox_part_name(korean_name)[0]
 
 
 def _is_in_master(korean_name: str, master_bases: set[str]) -> bool:
@@ -138,11 +143,6 @@ def _build_note(code: str, description: str, korean_name: str, status: str) -> s
         return "Master 품목명과 연결 가능"
     if status == "이름 불일치":
         base = _korean_base_name(korean_name)
-        if base == "꽃등심":
-            return (
-                "리브아이 -> 꽃등심 매핑 적용. "
-                "Master에 꽃등심 품목 없음 (등갈비/백립과 별도 부위)"
-            )
         return f"'{korean_name}'이 Master 파일에 없음"
     if status == "매핑 제외":
         if code in EXCLUDED_CODES or _is_excluded(code, description):
@@ -244,5 +244,45 @@ def validate_mapping() -> pd.DataFrame | None:
     return df_result
 
 
+def check_meatbox_coverage(days: int = 120) -> pd.DataFrame | None:
+    """최근 `days`일 거래된 미트박스 (품목, 원산지)의 canonical 매핑 여부와 원산지별 커버리지."""
+    if not MASTER_PRICE_CSV.exists():
+        print("Master 파일이 없어 미트박스 커버리지 점검을 생략합니다.")
+        return None
+
+    df = pd.read_csv(str(MASTER_PRICE_CSV), usecols=["date", "part_name"], encoding="utf-8-sig")
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+    df = df.dropna(subset=["date", "part_name"])
+    cutoff = df["date"].max() - pd.Timedelta(days=days)
+    df = df[df["date"] > cutoff]
+    split = df["part_name"].astype(str).map(split_meatbox_part_name)
+    df["part"] = split.str[0]
+    df["origin"] = split.str[1]
+
+    inv = (
+        df.groupby(["part", "origin"])
+        .agg(rows=("date", "size"), first_date=("date", "min"), last_date=("date", "max"))
+        .reset_index()
+    )
+    inv["canonical_id"] = inv["part"].map(lambda p: meatbox_to_canonical(p) or "")
+    inv["usda_compare"] = [meatbox_usda_compare(p, o) for p, o in zip(inv["part"], inv["origin"])]
+
+    print("\n" + "=" * 60)
+    print(f"[미트박스 매핑 커버리지] 최근 {days}일 ({cutoff.date()} 이후)")
+    by_origin = inv.assign(mapped_rows=inv["rows"].where(inv["canonical_id"] != "", 0))
+    by_origin = by_origin.groupby("origin")[["rows", "mapped_rows"]].sum()
+    for origin, r in by_origin.iterrows():
+        print(f"  {origin}: {r.mapped_rows}/{r.rows}행 매핑 ({r.mapped_rows / r.rows:.1%})")
+    unmapped = inv[inv["canonical_id"] == ""].sort_values("rows", ascending=False)
+    if unmapped.empty:
+        print("  미매핑 품목 없음")
+    else:
+        print(f"  [경고] 미매핑 품목 {len(unmapped)}개 -> part_mapping.CANONICAL_PARTS에 추가 필요")
+        for _, r in unmapped.iterrows():
+            print(f"    - {r.part}-{r.origin}: {r.rows}행 (최근 {r.last_date.date()})")
+    return inv
+
+
 if __name__ == "__main__":
     validate_mapping()
+    check_meatbox_coverage()

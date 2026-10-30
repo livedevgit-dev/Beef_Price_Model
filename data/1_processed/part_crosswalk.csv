@@ -1,82 +1,116 @@
-﻿canonical_id,canonical_name_ko,kmta_part,usda_primal,ml_target,notes,source,source_key,source_label
-la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,LA갈비,LA갈비
-la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,갈비살/늑간살,갈비살/늑간살
-la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,meatbox,황제늑간,황제늑간
-la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,kmta_import_stock,갈비,갈비
-la_galbi,LA갈비,갈비,Primal Plate,True,USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축,usda_cut,123A,123A
-chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,meatbox,앞/척갈비,앞/척갈비
-chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,meatbox,척리블렛,척리블렛
-chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,kmta_import_stock,갈비,갈비
-chuck_galbi,척갈비,갈비,Primal Chuck,True,USDA Chuck short rib(130). 척리블렛은 척갈비 부산 컷,usda_cut,130,130
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,등갈비/백립,등갈비/백립
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,BBQ등갈비,BBQ등갈비
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,백립(조각백립),백립(조각백립)
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,meatbox,등갈비/백립(#2스펙),등갈비/백립(#2스펙)
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,kmta_import_stock,갈비,갈비
-back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체,usda_primal,Primal Rib,Primal Rib
-brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌양지,차돌양지
-brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌박이,차돌박이
-brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,kmta_import_stock,양지,양지
-brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,usda_cut,120,120
-brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,usda_cut,120A,120A
-plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",meatbox,삼겹양지,삼겹양지
-plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",meatbox,삼겹양지(조각),삼겹양지(조각)
-plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",kmta_import_stock,양지,양지
-plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",usda_primal,Primal Plate,Primal Plate
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),meatbox,알목심,알목심
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),kmta_import_stock,목심,목심
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),usda_cut,116A,116A
-chuck_roll,목심,목심,Primal Chuck,True,USDA Chuck Roll(116A/916A),usda_cut,916A,916A
-chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),meatbox,살치살,살치살
-chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),kmta_import_stock,목심,목심
-chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),usda_cut,116G,116G
-ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",meatbox,,(미매핑)
-ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",kmta_import_stock,등심,등심
-ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",usda_cut,109E,109E
-ribeye,등심,등심,Primal Rib,False,"USDA Ribeye. 미트박스 미취급(꽃등심 품목 없음) — ML 타깃 불가, 피처(선행지표)로만 사용",usda_cut,112A,112A
-striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,meatbox,센터컷,센터컷
-striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,kmta_import_stock,채끝,채끝
-striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,usda_cut,180,180
-striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝. 미트박스 '센터컷'은 스트립로인 센터컷,usda_cut,175,175
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,meatbox,알전각/볼라전각,알전각/볼라전각
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,kmta_import_stock,앞다리,앞다리
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114,114
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114A,114A
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,114E,114E
-chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)는 전각(clod) 컷,usda_cut,116B,116B
-top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,meatbox,부채살,부채살
-top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,kmta_import_stock,앞다리,앞다리
-top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,usda_cut,114D,114D
-tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
-tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,kmta_import_stock,안심,안심
-tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 미취급 — 피처 전용,usda_cut,189A,189A
-hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),meatbox,안창살,안창살
-hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),kmta_import_stock,기타,기타
-hanger,안창살,기타,Primal Plate,False,USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정),usda_primal,Primal Plate,Primal Plate
-sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,meatbox,토시살,토시살
-sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,kmta_import_stock,기타,기타
-sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,usda_cut,185A,185A
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,meatbox,,(미매핑)
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,kmta_import_stock,우둔,우둔
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,168,168
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,169,169
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,169A,169A
-round,우둔,우둔,Primal Round,False,USDA Top inside round(168/169/169A)·Eye of round(171C=홍두깨). 미트박스 미취급 — 피처 전용,usda_cut,171C,171C
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,meatbox,설도,설도
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,meatbox,설깃,설깃
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,kmta_import_stock,설도,설도
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,167A,167A
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,170,170
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,171B,171B
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,184,184
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,184B,184B
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185B,185B
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185C,185C
-seoldo,설도,설도,Primal Round,True,USDA Knuckle(167A=도가니)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도,usda_cut,185D,185D
-shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,아롱사태,아롱사태
-shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지,스지
-shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지(뒷스지),스지(뒷스지)
-shank,사태,사태,,False,USDA shank는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,kmta_import_stock,사태,사태
-etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,meatbox,목뼈,목뼈
-etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,meatbox,홍창/소막창,홍창/소막창
-etc_offal,부산물,부산물,,False,뼈·부산물류. '부산물'은 재고 전용 카테고리(수입 통계에는 없음) — ML 제외,kmta_import_stock,부산물,부산물
+﻿canonical_id,canonical_name_ko,kmta_part,usda_primal,ml_target,notes,source,source_key,source_label,meatbox_origins,usda_compare
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",meatbox,LA갈비,LA갈비,미국|호주,direct(미국)/proxy(호주)
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",meatbox,갈비살/늑간살,갈비살/늑간살,미국|호주,direct(미국)/proxy(호주)
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",meatbox,황제늑간,황제늑간,미국,direct
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",meatbox,숏립앤드,숏립앤드,미국,direct
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",meatbox,양지갈비,양지갈비,호주,proxy
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",kmta_import_stock,갈비,갈비,,
+la_galbi,LA갈비,갈비,Primal Plate,True,"USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. 숏립앤드(short rib end)=숏립 정형 끝단. 양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요",usda_cut,123A,123A,,
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,앞/척갈비,앞/척갈비,호주|미국,direct(미국)/proxy(호주)
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,척리블렛,척리블렛,미국,direct
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,척빽립,척빽립,미국,direct
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,척스페어립,척스페어립,미국,direct
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,척갈비살/늑간살,척갈비살/늑간살,미국,direct
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",meatbox,일반갈비,일반갈비,호주,proxy
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",kmta_import_stock,갈비,갈비,,
+chuck_galbi,척갈비,갈비,Primal Chuck,True,"USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), 척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정",usda_cut,130,130,,
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),meatbox,등갈비/백립,등갈비/백립,미국|호주,proxy
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),meatbox,BBQ등갈비,BBQ등갈비,미국,proxy
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),meatbox,백립(조각백립),백립(조각백립),미국|호주,proxy
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),meatbox,등갈비/백립(#2스펙),등갈비/백립(#2스펙),미국,proxy
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),meatbox,스페어립,스페어립,호주,proxy
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),kmta_import_stock,갈비,갈비,,
+back_rib,등갈비/백립,갈비,Primal Rib,True,USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. 스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당),usda_primal,Primal Rib,Primal Rib,,
+brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌양지,차돌양지,호주|미국,direct(미국)/proxy(호주)
+brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,meatbox,차돌박이,차돌박이,미국,direct
+brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,kmta_import_stock,양지,양지,,
+brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,usda_cut,120,120,,
+brisket_yangji,차돌양지,양지,Primal Brisket,True,USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유,usda_cut,120A,120A,,
+plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",meatbox,삼겹양지,삼겹양지,미국|호주,proxy
+plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",meatbox,삼겹양지(조각),삼겹양지(조각),미국,proxy
+plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",kmta_import_stock,양지,양지,,
+plate_yangji,삼겹양지,양지,Primal Plate,True,"USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",usda_primal,Primal Plate,Primal Plate,,
+chuck_roll,목심,목심,Primal Chuck,True,"USDA Chuck Roll(116A/916A). 목심(호주)=AUS-MEAT chuck roll, 알목심=chuck eye roll(116D 상당, LM_XB403 미보고 -> 116A로 대응)",meatbox,알목심,알목심,미국|호주,direct(미국)/proxy(호주)
+chuck_roll,목심,목심,Primal Chuck,True,"USDA Chuck Roll(116A/916A). 목심(호주)=AUS-MEAT chuck roll, 알목심=chuck eye roll(116D 상당, LM_XB403 미보고 -> 116A로 대응)",meatbox,목심,목심,호주,proxy
+chuck_roll,목심,목심,Primal Chuck,True,"USDA Chuck Roll(116A/916A). 목심(호주)=AUS-MEAT chuck roll, 알목심=chuck eye roll(116D 상당, LM_XB403 미보고 -> 116A로 대응)",kmta_import_stock,목심,목심,,
+chuck_roll,목심,목심,Primal Chuck,True,"USDA Chuck Roll(116A/916A). 목심(호주)=AUS-MEAT chuck roll, 알목심=chuck eye roll(116D 상당, LM_XB403 미보고 -> 116A로 대응)",usda_cut,116A,116A,,
+chuck_roll,목심,목심,Primal Chuck,True,"USDA Chuck Roll(116A/916A). 목심(호주)=AUS-MEAT chuck roll, 알목심=chuck eye roll(116D 상당, LM_XB403 미보고 -> 116A로 대응)",usda_cut,916A,916A,,
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),meatbox,살치살,살치살,미국,direct
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),kmta_import_stock,목심,목심,,
+chuck_flap,살치살,목심,Primal Chuck,True,USDA Chuck flap(116G). 척롤 복합부위에서 분리 — KMTA 분류는 목심 추정 (앞다리 가능성 있음),usda_cut,116G,116G,,
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,meatbox,등심,등심,호주,proxy
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,meatbox,윗등심,윗등심,,no_trade
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,meatbox,아랫등심,아랫등심,,no_trade
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,meatbox,립캡,립캡,미국,direct
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,kmta_import_stock,등심,등심,,
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,usda_cut,109E,109E,,
+ribeye,등심,등심,Primal Rib,False,USDA Ribeye(109E/112A). 미트박스 '등심'은 별도 품목 '채끝등심'(striploin)과 구분되는 꽃등심·윗/아랫등심 계열 = ribeye roll(AUS-MEAT cube roll). 2026-10-20부터 호주산만 거래 — 이력 부족으로 ML 타깃 보류. 립캡(미국)=rib cap/blade meat(109B 계열) — Rib 프라이멀 축이나 저가 정형육,usda_cut,112A,112A,,
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음),meatbox,센터컷,센터컷,미국,direct
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음),meatbox,채끝등심,채끝등심,,no_trade
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음),kmta_import_stock,채끝,채끝,,
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음),usda_cut,180,180,,
+striploin,채끝,채끝,Primal Loin,True,USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음),usda_cut,175,175,,
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,meatbox,알전각/볼라전각,알전각/볼라전각,호주|미국,direct(미국)/proxy(호주)
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,meatbox,앞다리/전각,앞다리/전각,호주,proxy
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,kmta_import_stock,앞다리,앞다리,,
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,usda_cut,114,114,,
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,usda_cut,114A,114A,,
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,usda_cut,114E,114E,,
+chuck,앞다리,앞다리,Primal Chuck,True,USDA Shoulder clod(114/114A/114E)·Chuck tender(116B). 알전각/볼라(bolar)·앞다리/전각(호주 clod)은 전각(clod) 컷,usda_cut,116B,116B,,
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,meatbox,부채살,부채살,미국|호주,direct(미국)/proxy(호주)
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,kmta_import_stock,앞다리,앞다리,,
+top_blade,부채살,앞다리,Primal Chuck,True,USDA Top blade(114D). KMTA는 앞다리 합산 — 수입·재고 해상도 한계,usda_cut,114D,114D,,
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 거래는 호주산 단발(2025-10~2026-03)뿐 — 피처 전용,meatbox,안심,안심,호주,proxy
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 거래는 호주산 단발(2025-10~2026-03)뿐 — 피처 전용,kmta_import_stock,안심,안심,,
+tenderloin,안심,안심,Primal Loin,False,USDA Tenderloin(189A). 미트박스 거래는 호주산 단발(2025-10~2026-03)뿐 — 피처 전용,usda_cut,189A,189A,,
+hanger,안창살,기타,Primal Plate,False,"USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정). 안창살(조각)=안창살 조각 규격, 양지안창=inside skirt(121D) 추정 (2026-10-27 신규, 저가)",meatbox,안창살,안창살,미국|호주,proxy
+hanger,안창살,기타,Primal Plate,False,"USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정). 안창살(조각)=안창살 조각 규격, 양지안창=inside skirt(121D) 추정 (2026-10-27 신규, 저가)",meatbox,안창살(조각),안창살(조각),미국,proxy
+hanger,안창살,기타,Primal Plate,False,"USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정). 안창살(조각)=안창살 조각 규격, 양지안창=inside skirt(121D) 추정 (2026-10-27 신규, 저가)",meatbox,양지안창,양지안창,미국,proxy
+hanger,안창살,기타,Primal Plate,False,"USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정). 안창살(조각)=안창살 조각 규격, 양지안창=inside skirt(121D) 추정 (2026-10-27 신규, 저가)",kmta_import_stock,기타,기타,,
+hanger,안창살,기타,Primal Plate,False,"USDA hanging tender·skirt(121C/121D)는 LM_XB403 미보고 — USDA 가격 없음. KMTA 분류 불명(기타 추정). 안창살(조각)=안창살 조각 규격, 양지안창=inside skirt(121D) 추정 (2026-10-27 신규, 저가)",usda_primal,Primal Plate,Primal Plate,,
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,meatbox,토시살,토시살,미국,direct
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,kmta_import_stock,기타,기타,,
+sirloin_flap,토시살,기타,Primal Loin,True,USDA Bottom sirloin flap(185A). 한국 수입 '토시살'의 다수가 sirloin flap meat,usda_cut,185A,185A,,
+round,우둔,우둔,Primal Round,True,USDA Top inside round(168/169/169A) = 우둔(AUS-MEAT topside/inside). 미트박스는 호주산만 거래(2025-12~) — USDA 비교는 proxy,meatbox,우둔,우둔,호주,proxy
+round,우둔,우둔,Primal Round,True,USDA Top inside round(168/169/169A) = 우둔(AUS-MEAT topside/inside). 미트박스는 호주산만 거래(2025-12~) — USDA 비교는 proxy,kmta_import_stock,우둔,우둔,,
+round,우둔,우둔,Primal Round,True,USDA Top inside round(168/169/169A) = 우둔(AUS-MEAT topside/inside). 미트박스는 호주산만 거래(2025-12~) — USDA 비교는 proxy,usda_cut,168,168,,
+round,우둔,우둔,Primal Round,True,USDA Top inside round(168/169/169A) = 우둔(AUS-MEAT topside/inside). 미트박스는 호주산만 거래(2025-12~) — USDA 비교는 proxy,usda_cut,169,169,,
+round,우둔,우둔,Primal Round,True,USDA Top inside round(168/169/169A) = 우둔(AUS-MEAT topside/inside). 미트박스는 호주산만 거래(2025-12~) — USDA 비교는 proxy,usda_cut,169A,169A,,
+eye_round,홍두깨,우둔,Primal Round,True,USDA Eye of round(171C) = 홍두깨(AUS-MEAT eye round). 한국 분류상 우둔에 속해 KMTA는 '우둔' 공유. 미트박스는 호주산만 거래 — USDA 비교는 proxy,meatbox,홍두깨,홍두깨,호주,proxy
+eye_round,홍두깨,우둔,Primal Round,True,USDA Eye of round(171C) = 홍두깨(AUS-MEAT eye round). 한국 분류상 우둔에 속해 KMTA는 '우둔' 공유. 미트박스는 호주산만 거래 — USDA 비교는 proxy,kmta_import_stock,우둔,우둔,,
+eye_round,홍두깨,우둔,Primal Round,True,USDA Eye of round(171C) = 홍두깨(AUS-MEAT eye round). 한국 분류상 우둔에 속해 KMTA는 '우둔' 공유. 미트박스는 호주산만 거래 — USDA 비교는 proxy,usda_cut,171C,171C,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",meatbox,설도,설도,호주|미국,direct(미국)/proxy(호주)
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",meatbox,설깃,설깃,호주|미국,direct(미국)/proxy(호주)
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",meatbox,설깃살,설깃살,,no_trade
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",meatbox,삼각살,삼각살,,no_trade
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",kmta_import_stock,설도,설도,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,167A,167A,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,170,170,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,171B,171B,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,184,184,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,184B,184B,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,185B,185B,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,185C,185C,,
+seoldo,설도,설도,Primal Round,True,"USDA Knuckle(167A=도가니살)·Gooseneck(170)·Outside(171B=설깃)·Top butt(184=보섭)·Ball tip/Tri-tip(185B-D=삼각). 184/185계는 USDA Loin이나 한국 분류는 설도. 미트박스 '도가니'(무릎 연골, 부산물)는 도가니살(167A)과 다른 품목",usda_cut,185D,185D,,
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,아롱사태,아롱사태,미국,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지,스지,미국|호주,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,스지(뒷스지),스지(뒷스지),미국,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,사태,사태,호주,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,앞사태,앞사태,호주,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,meatbox,뒷사태,뒷사태,호주,none
+shank,사태,사태,,False,USDA shank(fore/hind)는 LM_XB403 boxed beef에 미보고 — USDA 소스 없음,kmta_import_stock,사태,사태,,
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,목뼈,목뼈,호주|미국,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,홍창/소막창,홍창/소막창,미국,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,양(깐양),양(깐양),호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,곱창,곱창,호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,대창,대창,호주|미국,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,꼬리,꼬리,호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,사골(뒷왕사골),사골(뒷왕사골),미국|호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,사골(앞왕사골),사골(앞왕사골),호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,사골(앞쪽사골),사골(앞쪽사골),호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,사골(뒤쪽사골),사골(뒤쪽사골),호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,학본,학본,미국,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,도가니,도가니,미국,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,뽈살,뽈살,호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",meatbox,헤드미트,헤드미트,호주,none
+etc_offal,부산물,부산물,,False,"뼈·부산물·두부육(양·곱창·대창·꼬리·사골·학본·도가니·뽈살·헤드미트). '부산물'은 재고 전용 카테고리(수입 통계에는 없음), USDA boxed beef 대응 없음 — ML 제외",kmta_import_stock,부산물,부산물,,
