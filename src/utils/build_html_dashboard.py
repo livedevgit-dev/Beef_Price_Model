@@ -80,6 +80,8 @@ def build_switch():
 
 def build_meatbox():
     d = pd.read_csv(DASHBOARD_READY_CSV, parse_dates=["date"])
+    if "is_filled" in d.columns:   # 직전 값으로 채운 날 제외 — 실제 관측 브랜드만 평균
+        d = d[~d["is_filled"].astype(str).str.lower().eq("true")]
     daily = d.groupby(["part", "category", "date"])["wholesale_price"].mean()
     uni = pd.read_csv(DATA_DASHBOARD / "meatbox_universe.csv").set_index("part")["status"].to_dict()
     series, summary = {}, []
@@ -135,7 +137,7 @@ def build_import_stock():
             imports.setdefault(part, {})[ctry] = _xy(g.groupby("m")[c].sum(), 1)
     stk = pd.read_excel(BEEF_STOCK_XLSX)
     stk["m"] = pd.to_datetime(stk["기준년월"].astype(str) + "-01", errors="coerce")
-    stock = {str(p): _xy(g.groupby("m")["조사재고량 조사재고량"].sum(), 0)
+    stock = {str(p): _xy(g.groupby("m")["조사재고량 조사재고량"].sum(min_count=1), 0, keep_gaps=True)
              for p, g in stk.groupby("부위별 부위별")}
     stock_order = ["합계"] + sorted(p for p in stock if p != "합계")
     return {"import_parts": order, "imports": imports, "stock_parts": stock_order, "stock": stock}
@@ -147,25 +149,26 @@ def build_hanwoo():
     nat = h[(h["source"] == "ekape_auction") & h["is_national_total"]]
     auction = {}
     for g in ["1++", "1+", "1"]:
-        s = nat[nat["grade"] == g].groupby("date")["price_won_per_kg"].mean()
-        auction[g] = _xy(s.resample("MS").mean(), 0, keep_gaps=True)
+        # 월평균은 두수 가중 (2026년부터 일별 행, 그 이전은 30일 합산 행이 섞여 단순평균이면 왜곡)
+        x = nat[nat["grade"] == g].dropna(subset=["price_won_per_kg"]).set_index("date")
+        w = pd.to_numeric(x["head_count"], errors="coerce").fillna(0)
+        amt = (x["price_won_per_kg"] * w).resample("MS").sum()
+        heads = w.resample("MS").sum()
+        auction[g] = _xy((amt / heads.where(heads > 0)), 0, keep_gaps=True)
     latest = {}
     for g in ["1++", "1+", "1"]:
         s = nat[nat["grade"] == g].dropna(subset=["price_won_per_kg"]).sort_values("date")
         if len(s):
             latest[g] = {"date": s["date"].iloc[-1].strftime("%Y-%m-%d"), "price": float(s["price_won_per_kg"].iloc[-1])}
+    # KAMIS: 축산물은 도매(02) 요청에도 소매값이 와서 2026-10-30부터 소매만 수집 — 소매 단일 선
     kamis = {}
-    k = h[h["source"].isin(["kamis_retail", "kamis_wholesale"])]
-    # 2026-10 확인: KAMIS 응답이 도매/소매 구분 없이 동일 값 → 같으면 한 선으로만 표시
-    pv = k.pivot_table(index=["date", "part", "grade"], columns="source", values="price_won_per_kg")
-    same = bool(len(pv)) and {"kamis_retail", "kamis_wholesale"} <= set(pv.columns) and         bool((pv["kamis_retail"] - pv["kamis_wholesale"]).abs().max() < 1)
-    if same:
-        k = k[k["source"] == "kamis_retail"]
-    for (part, grade, src), g in k.groupby(["part", "grade", "source"]):
+    k = h[h["source"] == "kamis_retail"]
+    if "is_outlier" in k.columns:
+        k = k[~k["is_outlier"].astype(str).str.lower().eq("true")]
+    for (part, grade), g in k.groupby(["part", "grade"]):
         s = g.groupby("date")["price_won_per_kg"].mean().resample("W-MON").mean()
-        name = "KAMIS 가격" if same else ("소매" if src == "kamis_retail" else "도매")
-        kamis.setdefault(part, {}).setdefault(str(grade), {})[name] = _xy(s, 0, keep_gaps=True)
-    return {"auction": auction, "auction_latest": latest, "kamis": kamis, "kamis_same": same,
+        kamis.setdefault(part, {}).setdefault(str(grade), {})["소매"] = _xy(s, 0, keep_gaps=True)
+    return {"auction": auction, "auction_latest": latest, "kamis": kamis,
             "kamis_parts": sorted(kamis), "kamis_grades": ["1++", "1+", "1"]}
 
 
@@ -184,9 +187,15 @@ def build_macro():
 
 def build_fas():
     f = pd.read_csv(FAS_SIGNAL_CSV, parse_dates=["date"]).set_index("date")
-    return {"china": _xy(f["china_exp"], 0), "korea": _xy(f["korea_exp"], 0),
-            "recent": _records(f.reset_index().tail(12).assign(date=lambda x: x["date"].dt.strftime("%Y-%m"))
-                               [["date", "china_exp", "korea_exp", "china_vs_med", "korea_vs_med", "alert_level", "note"]])}
+    # 주 4회/5회 달의 차이가 왜곡되지 않도록 월내 주평균(톤/주) 사용, 집계 중인 달은 표시만
+    china = f["china_wk_avg"] if "china_wk_avg" in f else f["china_exp"]
+    korea = f["korea_wk_avg"] if "korea_wk_avg" in f else f["korea_exp"]
+    cols = ["date", "china_exp", "korea_exp", "china_vs_med", "korea_vs_med", "alert_level", "note"]
+    if "is_partial" in f:
+        cols.append("is_partial")
+    return {"china": _xy(china, 0), "korea": _xy(korea, 0),
+            "china_base": float(f["china_base"].dropna().iloc[-1]) if "china_base" in f else None,
+            "recent": _records(f.reset_index().tail(12).assign(date=lambda x: x["date"].dt.strftime("%Y-%m"))[cols])}
 
 
 SECTIONS = {

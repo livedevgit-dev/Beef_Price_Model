@@ -399,9 +399,9 @@ function renderSupply(panel) {
   const I = D.import_stock;
   if (!I) { panel.innerHTML = emptyPanel("수입·재고 데이터가 없습니다."); return; }
   panel.innerHTML = `<div class="grid">
-    ${card({ title: "월별 쇠고기 수입량", sub: "KMTA/식약처 · 톤 · 미국/호주",
+    ${card({ title: "월별 쇠고기 수입량", sub: "KMTA 확정치(미게시 최근 달은 식약처 잠정치) · 톤 · 미국/호주",
              controls: `<label>부위 <select id="impPart">${options(I.import_parts.map((p) => [p, p === "계" ? "전체(계)" : p]), "계")}</select></label>`, id: "impChart" })}
-    ${card({ title: "월별 수입육 재고", sub: "KMTA 조사재고량 · 톤 · 협회 게시가 보통 2개월가량 늦음",
+    ${card({ title: "월별 수입육 재고", sub: "KMTA 조사재고량 · 톤 · 협회 게시가 보통 2개월가량 늦음 · 2023-04는 원천 오류로 제외, 2023-04~05에 조사 기준 변경으로 수준 단절",
              controls: `<label>부위 <select id="stkPart">${options(I.stock_parts, "합계")}</select></label>`, id: "stkChart" })}
   </div>`;
   const drawImp = () => {
@@ -443,10 +443,8 @@ function renderHanwoo(panel) {
   const H = D.hanwoo;
   if (!H) { panel.innerHTML = emptyPanel("한우 데이터가 없습니다."); return; }
   panel.innerHTML = `<div class="grid">
-    ${card({ title: "한우 경락가격(전국, 도체)", sub: "EKAPE · 등급별 월평균 · 원/kg", id: "auChart" })}
-    ${card({ title: "한우 부위별 소비자가격", sub: H.kamis_same
-               ? "KAMIS · 주간 평균 · 원/kg · ※ 수집된 도매·소매 값이 동일해 한 선으로 표시 (KAMIS 응답 확인 필요)"
-               : "KAMIS · 주간 평균 · 원/kg",
+    ${card({ title: "한우 경락가격(전국, 도체)", sub: "EKAPE · 등급별 월평균(두수 가중) · 원/kg · 2025년까지는 30일 합산 자료", id: "auChart" })}
+    ${card({ title: "한우 부위별 소비자가격", sub: "KAMIS 소매 · 주간 평균 · 원/kg · 2021년 이전은 일부 부위·등급만 게시됨",
              controls: `<label>부위 <select id="kmPart">${options(H.kamis_parts, H.kamis_parts.includes("등심") ? "등심" : H.kamis_parts[0])}</select></label>
                         <label>등급 <select id="kmGrade">${options(H.kamis_grades, "1+")}</select></label>`, id: "kmChart" })}
   </div>`;
@@ -491,16 +489,16 @@ function renderFas(panel) {
   if (!F) { panel.innerHTML = emptyPanel("FAS 데이터가 없습니다."); return; }
   const rows = [...F.recent].reverse().map((r) => `<tr><td>${esc(r.date)}</td><td class="num">${fmt(r.china_exp)}</td>
     <td class="num">${fmt(r.korea_exp)}</td><td class="num">${r.china_vs_med == null ? "–" : fmt(r.china_vs_med, 2) + "x"}</td><td class="num">${r.korea_vs_med == null ? "–" : fmt(r.korea_vs_med, 2) + "x"}</td>
-    <td><span class="badge"><span class="dot" style="background:${r.alert_level > 0 ? "var(--warning)" : "var(--good)"}"></span>
-    ${r.alert_level > 0 ? "▲ " : ""}${esc(r.note)}</span></td></tr>`).join("");
+    <td><span class="badge"><span class="dot" style="background:${r.alert_level == null ? "var(--text-muted)" : r.alert_level > 0 ? "var(--warning)" : "var(--good)"}"></span>
+    ${r.alert_level == null ? "… " : r.alert_level > 0 ? "▲ " : ""}${esc(r.note)}</span></td></tr>`).join("");
   panel.innerHTML = `<div class="grid">
-    ${card({ title: "미국산 쇠고기 수출 — 중국 vs 한국", sub: "USDA FAS 주간 수출 월합계 · 톤 · 중국행 급감 시 한국행 물량 증가(다이버전) 가능성", id: "fasChart" })}
-    <div class="card"><h2>최근 12개월 공급 경보</h2><p class="sub">과거 중앙값 대비 배수 · 중국행 급감/한국행 과잉 시 경보</p>
+    ${card({ title: "미국산 쇠고기 수출 — 중국 vs 한국", sub: "USDA FAS 주간 수출 · 월내 주평균(톤/주) · 중국행 급감 시 한국행 물량 증가(다이버전) 가능성", id: "fasChart" })}
+    <div class="card"><h2>최근 12개월 공급 경보</h2><p class="sub">고정 기준선(평시 주평균) 대비 배수 · 표의 중국행/한국행은 월합계(톤) · 집계 중인 달은 판단 제외</p>
       <div class="table-wrap"><table><tr><th>월</th><th class="num">중국행</th><th class="num">한국행</th>
       <th class="num">중국 배수</th><th class="num">한국 배수</th><th>판정</th></tr>${rows}</table></div></div>
   </div>`;
   const traces = [line(F.korea, "한국행", 0), line(F.china, "중국행", 1)];
-  plot($("#fasChart", panel), traces, timeLayout("톤"));
+  plot($("#fasChart", panel), traces, timeLayout("톤/주"));
   traceTable($("#fasChart-table", panel), traces, 24);
 }
 
