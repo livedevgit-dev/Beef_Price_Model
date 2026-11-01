@@ -62,8 +62,8 @@ USDA 원본 데이터에 나타난 모든 item_description과 그 매핑 결과.
 미트박스(미국·호주, 원산지별)·KMTA 수입·KMTA 재고에 등장하는 모든 부위명과 매핑 결과.
 미트박스 행은 전체/최근 120일 거래 행 수, 최근 거래일, USDA 비교 방식(`usda_compare`) 포함.
 
-### 4. `open_questions.csv` (10행)
-현재 매핑에서 **불확실한 10개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
+### 4. `open_questions.csv` (9행)
+현재 매핑에서 **불확실한 9개 항목**의 배경과 질문. LLM이 우선 답변하면 좋은 항목.
 
 ## 검토 결과 회신 형식 (제안)
 
@@ -88,7 +88,7 @@ CSV의 `review_question` 컬럼에 대해 각 행마다:
 | 양지 (삼겹양지) | Plate (Navel) | 가슴 뒤쪽 (Brisket 후방) |
 | 목심 | Chuck (Chuck roll 116A) | 미트박스 '알목심'·'목심'(호주) |
 | 등심 (꽃등심) | Rib (Ribeye 112A) | 미트박스 '등심'(호주, 2026-10-20~) |
-| 채끝 | Loin (Strip loin) | 미트박스 '센터컷'(확인 필요)·'채끝등심' |
+| 채끝 | Loin (Strip loin) | 미트박스 '채끝등심' ('센터컷'은 상품 설명상 센터컷 백립 → 등갈비/백립) |
 | 안심 | Loin (Tenderloin) | 미트박스 호주산 단발 거래 |
 | 앞다리 (부채살) | Chuck (Top blade 114D) | 한국 분류 모호 |
 | 앞다리 (전각) | Chuck (Shoulder clod 114) | |

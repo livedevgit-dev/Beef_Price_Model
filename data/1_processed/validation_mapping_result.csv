@@ -14,9 +14,6 @@
 170,"Round, bottom gooseneck (170  1)",설도-미국,정상,Master 품목명과 연결 가능
 167A,"Round, knuckle, peeled (167A  4)",설도-미국,정상,Master 품목명과 연결 가능
 171B,"Round, outside round (171B  3)",설도-미국,정상,Master 품목명과 연결 가능
-,"Loin, strip loin bnls. 1x1 (  1)",센터컷-미국,정상,Master 품목명과 연결 가능
-175,"Loin, strip loin, 1x1 (175  3)",센터컷-미국,정상,Master 품목명과 연결 가능
-180,"Loin, strip, bnls, 0x1 (180  3)",센터컷-미국,정상,Master 품목명과 연결 가능
 189A,"Loin, tndrloin, trmd, heavy (189A  4)",안심-호주,정상,Master 품목명과 연결 가능
 116A,"Chuck, roll, lxl, neck/off (116A  3)",알목심-미국,정상,Master 품목명과 연결 가능
 916A,"Chuck, roll, retail ready (916A  3)",알목심-미국,정상,Master 품목명과 연결 가능
@@ -32,6 +29,9 @@
 ,"Round, top inside, side off (  3)",우둔-호주,정상,Master 품목명과 연결 가능
 120,"Brisket, deckle-off, bnls (120  1)",차돌양지-미국,정상,Master 품목명과 연결 가능
 120A,"Brisket, point/off, bnls (120A  3)",차돌양지-미국,정상,Master 품목명과 연결 가능
+,"Loin, strip loin bnls. 1x1 (  1)",채끝등심-미국,정상,Master 품목명과 연결 가능
+175,"Loin, strip loin, 1x1 (175  3)",채끝등심-미국,정상,Master 품목명과 연결 가능
+180,"Loin, strip, bnls, 0x1 (180  3)",채끝등심-미국,정상,Master 품목명과 연결 가능
 185A,"Loin, bottom sirloin, flap (185A  4)",토시살-미국,정상,Master 품목명과 연결 가능
 171C,"Round, eye of round (171C  3)",홍두깨-호주,정상,Master 품목명과 연결 가능
 114F,"Chuck, clod tender (114F  5)",,매핑 제외,"척 세부 부위 (알목심·LA갈비 외, 분석 제외)"

@@ -55,37 +55,41 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         "la_galbi",
         "LA갈비",
         kmta_part="갈비",
-        meatbox_parts=("LA갈비", "갈비살/늑간살", "황제늑간", "숏립앤드", "양지갈비"),
+        meatbox_parts=("LA갈비", "갈비살/늑간살", "황제늑간", "숏립앤드", "양지갈비", "일반갈비"),
         usda_codes=("123A",),
         usda_primal="Primal Plate",
         notes=(
             "USDA Short Plate short rib(123A). 늑간살(rib finger)은 갈비뼈 사이 살 — LA갈비와 동일 원료 축. "
             "숏립앤드(short rib end)=숏립 정형 끝단. "
-            "양지갈비(호주)=양지 쪽 갈비뼈(plate/brisket rib) 추정 — 뼈 비중 높은 저가품, 확인 필요"
+            "양지갈비=Plate Short Ribs(플레이트 쪽 갈비, 갈비탕·저가 백립 대용) — 부위는 123A 와 같으나 호주산은 "
+            "저가품이라 미국 123A 시세와 수준이 달라 proxy 로만 비교. "
+            "일반갈비=갈비 블록(상품 태그 '3-7RIB'·'5RIB 갈비(6~10번)', 찜·탕용) — 척(2~5번)보다 "
+            "LA갈비와 같은 플레이트 쪽 갈비 원료에 가까워 2026-11-02 척갈비(130)에서 이동"
         ),
     ),
     PartSpec(
         "chuck_galbi",
         "척갈비",
         kmta_part="갈비",
-        meatbox_parts=("앞/척갈비", "척리블렛", "척빽립", "척스페어립", "척갈비살/늑간살", "일반갈비"),
+        meatbox_parts=("앞/척갈비", "척리블렛", "척빽립", "척스페어립", "척갈비살/늑간살"),
         usda_codes=("130",),
         usda_primal="Primal Chuck",
         notes=(
             "USDA Chuck short rib(130). 척리블렛·척빽립·척스페어립은 척갈비 부산 컷(뼈 위주), "
-            "척갈비살/늑간살은 척 쪽 rib finger. 일반갈비(호주)=찜갈비용 척갈비 추정"
+            "척갈비살/늑간살은 척 쪽 rib finger"
         ),
     ),
     PartSpec(
         "back_rib",
         "등갈비/백립",
         kmta_part="갈비",
-        meatbox_parts=("등갈비/백립", "BBQ등갈비", "백립(조각백립)", "등갈비/백립(#2스펙)", "스페어립"),
+        meatbox_parts=("등갈비/백립", "BBQ등갈비", "백립(조각백립)", "등갈비/백립(#2스펙)", "스페어립", "센터컷"),
         usda_codes=(),
         usda_primal="Primal Rib",
         notes=(
             "USDA back rib(124)는 LM_XB403 수집 데이터에 없음 — Primal Rib 지수 대체. "
-            "스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당)"
+            "스페어립(호주)=rib set에서 큐브롤 분리 후 남는 등쪽 갈비뼈(back rib 상당). "
+            "센터컷=미트박스 상품 설명 '마구리없는 센터컷백립(살밥우수)' — 백립 중앙부 (2026-11-02 채끝에서 이동)"
         ),
     ),
     # ---------- 양지 (KMTA '양지' 공유, USDA는 Brisket/Plate 별도 프라이멀) ----------
@@ -96,7 +100,11 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         meatbox_parts=("차돌양지", "차돌박이"),
         usda_codes=("120", "120A"),
         usda_primal="Primal Brisket",
-        notes="USDA Brisket(120/120A). 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유",
+        notes=(
+            "차돌양지=양지머리+차돌박이 전체 브리스킷 → USDA 'Brisket, deckle-off'(120) 대응. "
+            "120A 는 'point/off' 즉 차돌(포인트)을 제거한 양지머리(flat)라 차돌박이의 반대 부위 — "
+            "차돌박이(포인트)는 USDA 단독 시세가 없어 proxy 비교만 함. 수입·재고는 KMTA '양지' 합산 — 삼겹양지와 공유"
+        ),
     ),
     PartSpec(
         "plate_yangji",
@@ -105,7 +113,7 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         meatbox_parts=("삼겹양지", "삼겹양지(조각)"),
         usda_codes=(),
         usda_primal="Primal Plate",
-        notes="USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",
+        notes="우삼겹 원료(판매처는 '우삼겹양지'로도 표기). USDA Short Plate(Navel) — boxed cut 코드 없음, Primal Plate 지수 사용. 수입·재고는 KMTA '양지' 합산 — 차돌양지와 공유",
     ),
     # ---------- 목심 ----------
     PartSpec(
@@ -148,12 +156,11 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
         "striploin",
         "채끝",
         kmta_part="채끝",
-        meatbox_parts=("센터컷", "채끝등심"),
+        meatbox_parts=("채끝등심",),
         usda_codes=("180", "175"),
         usda_primal="Primal Loin",
         notes=(
-            "USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심'). '센터컷'은 스트립로인 센터컷으로 가정했으나 "
-            "시세(약 1.1만원/kg)가 채끝 수준보다 크게 낮아 재확인 필요 (2026-07-24 이후 거래 없음)"
+            "USDA Strip loin(180/175) = 채끝(미트박스 '채끝등심')"
         ),
     ),
     # ---------- 앞다리 (KMTA '앞다리' 공유) ----------
@@ -282,6 +289,9 @@ CANONICAL_PARTS: tuple[PartSpec, ...] = (
 )
 
 ORIGIN_US = "미국"
+# 같은 canonical 이어도 USDA 품목이 실제 부위와 달라 직접 비교하면 안 되는 미트박스 품목
+# 차돌박이: 브리스킷 포인트 단독 시세 없음(120=전체, 120A=포인트 제거품). 양지갈비·일반갈비: 123A 와 등급·형태가 다른 저가 블록
+NO_DIRECT_USDA_PARTS = frozenset({"차돌박이", "양지갈비", "일반갈비"})
 ORIGIN_AU = "호주"
 
 
@@ -363,6 +373,8 @@ def meatbox_usda_compare(meatbox_part: str, origin: str) -> str:
         return "unmapped"
     if not spec.usda_codes and not spec.usda_primal:
         return "none"
+    if str(meatbox_part).strip() in NO_DIRECT_USDA_PARTS:
+        return "proxy"
     if str(origin).strip() == ORIGIN_US and spec.usda_codes:
         return "direct"
     return "proxy"

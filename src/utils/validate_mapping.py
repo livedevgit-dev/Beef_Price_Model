@@ -40,8 +40,8 @@ KEYWORD_RULES = [
     (("chuck", "roll"), "알목심-미국"),
     (("chuck", "top blade"), "부채살-미국"),
     (("rib", "ribeye"), USDA_CODE_TO_KOREAN.get("112A", "등심-호주")),
-    (("strip loin",), "센터컷-미국"),
-    (("strip,", "bnls"), "센터컷-미국"),
+    (("strip loin",), "채끝등심-미국"),
+    (("strip,", "bnls"), "채끝등심-미국"),
     (("round", "top inside"), USDA_CODE_TO_KOREAN.get("168", "우둔-호주")),
 ]
 
