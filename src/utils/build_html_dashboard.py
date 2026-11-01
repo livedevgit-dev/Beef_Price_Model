@@ -209,6 +209,11 @@ def build_fas():
             "recent": _records(f.reset_index().tail(12).assign(date=lambda x: x["date"].dt.strftime("%Y-%m"))[cols])}
 
 
+def build_quota():
+    """호주산 저율관세 쿼터 소진 이력 (analysis/au_safeguard_event.py 산출)."""
+    return _records(pd.read_csv(DATA_REPORTS / "analysis" / "au_safeguard_history.csv"))
+
+
 def build_margin():
     """KAMIS 수입 쇠고기 소매가 vs 미트박스 도매가 (Models/domestic_vs_import.py 산출)."""
     m = pd.read_csv(DATA_REPORTS / "analysis" / "import_retail_margin.csv")
@@ -225,7 +230,7 @@ def build_margin():
 SECTIONS = {
     "status": build_status, "report": build_report, "switch": build_switch, "meatbox": build_meatbox,
     "samgyup": build_samgyup, "usda_fx": build_usda_fx, "import_stock": build_import_stock,
-    "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas, "margin": build_margin,
+    "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas, "margin": build_margin, "quota": build_quota,
 }
 
 

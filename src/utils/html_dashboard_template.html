@@ -383,6 +383,11 @@ function renderSamgyup(panel) {
   panel.innerHTML = `<div class="grid">
     ${card({ title: "삼겹양지(미국산) 월평균 시세와 전망", sub: "실적: 미트박스+도매상 통합 월평균 · 전망: 계절+추세 모델(음영은 예측 범위)", id: "sgChart" })}
     ${card({ title: "가격 영향 요인", sub: "릿지 회귀 표준화 계수 · 파랑(+)은 가격과 같은 방향, 빨강(−)은 반대 방향으로 움직임", id: "sgImp", chartClass: "chart tall" })}
+    ${D.quota ? `<div class="card"><h2>호주산 저율관세 쿼터 소진 이력</h2>
+      <p class="sub">쿼터 소진 후 연말까지 호주산 관세 24%, 매년 1월 1일 새 쿼터 시작 · 2026년 쿼터 내 5.3%, 2027년 2.6% · 전망 모델에는 미반영</p>
+      <div class="table-wrap free"><table><tr><th>연도</th><th class="num">쿼터(톤)</th><th>소진일</th><th>비고</th></tr>
+      ${[...D.quota].reverse().map((r) => `<tr><td>${esc(r.year)}</td><td class="num">${fmt(r.quota_t)}</td><td>${esc(r.trigger ?? "미발동")}</td><td class="muted">${esc(r.note)}</td></tr>`).join("")}
+      </table></div></div>` : ""}
   </div>`;
   const f = S.forecast;
   const band = (a) => a.map((v, i) => v ?? f.y[i]);
