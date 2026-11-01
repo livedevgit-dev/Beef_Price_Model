@@ -41,6 +41,7 @@ from utils.io_safe import atomic_to_csv
 
 ensure_dirs()
 MASTER_FILE = MASTER_IMPORT_VOLUME_CSV
+MFDS_PUBLISH_GRACE_DAYS = 10   # 매월 이 날까지 전월 자료 0건이면 미게시로 처리
 
 # =========================================================
 # 2. 날짜 계산
@@ -380,6 +381,10 @@ def main():
             result = crawl_monthly_data(driver, target_date.year, target_date.month)
 
             if not isinstance(result, pd.DataFrame) or result.empty:
+                # 식약처는 월초 며칠간 전월 자료가 0건으로 조회됨 (2026-09-01·11-02 관측, 같은 날 그 전달은 정상)
+                if ym == last_day_prev_month.strftime("%Y-%m") and today.day <= MFDS_PUBLISH_GRACE_DAYS:
+                    print(f"[안내] {ym} 식약처 미게시로 판단 — 저장하지 않음 (주간 전체 갱신에서 재시도)")
+                    continue
                 print(f"[실패] {ym} 조회 3회 모두 실패 — 저장하지 않음")
                 failed.append(ym)
                 continue

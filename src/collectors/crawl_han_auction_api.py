@@ -72,7 +72,7 @@ BACKFILL_BATCH_DAYS = 30              # 일별 백필 체크포인트(병합·�
 BACKFILL_SLEEP = 0.3                  # 일별 백필 호출 간격(초)
 AUTO_BACKFILL_FROM = datetime(2019, 1, 1)    # 일일 실행 시 자동으로 이어 받는 과거 합산 구간
 AUTO_BACKFILL_TO = datetime(2025, 12, 31)
-AUTO_BACKFILL_MAX_CALLS = 500                # 일일 실행 1회당 자동 백필 호출 상한
+AUTO_BACKFILL_MAX_CALLS = 850                # 일일 실행 1회당 자동 백필 호출 상한
 
 # 이후 호출도 모두 실패할 '중단형' 오류 — 공공데이터포털 표준 오류코드
 #   20 SERVICE_ACCESS_DENIED / 22 LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS(트래픽 초과)
