@@ -18162,7 +18162,7 @@
 2026-07-01,KR,kr_precip,일강수량(전국대표),26.52,mm,D,KMA
 2026-07-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.2,2020=100,M,ECOS
 2026-07-01,KR,kr_retail_dept,소매판매액지수 — 백화점,142.6,2020=100,M,ECOS
-2026-07-01,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),95.9,2020=100,M,ECOS
+2026-07-01,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),96.0,2020=100,M,ECOS
 2026-07-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,83.3,2020=100,M,ECOS
 2026-07-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,113.4,2020=100,M,ECOS
 2026-07-01,KR,kr_temp_avg,평균기온(전국대표),22.54,°C,D,KMA
@@ -18368,8 +18368,8 @@
 2026-08-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,101.3,2020=100,M,ECOS
 2026-08-01,KR,kr_retail_dept,소매판매액지수 — 백화점,133.5,2020=100,M,ECOS
 2026-08-01,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),93.7,2020=100,M,ECOS
-2026-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,78.4,2020=100,M,ECOS
-2026-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,111.8,2020=100,M,ECOS
+2026-08-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,80.5,2020=100,M,ECOS
+2026-08-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,111.9,2020=100,M,ECOS
 2026-08-01,KR,kr_temp_avg,평균기온(전국대표),31.16,°C,D,KMA
 2026-08-01,KR,kr_temp_max,최고기온(전국대표),36.06,°C,D,KMA
 2026-08-01,US,us_corn,Global Price of Corn (사료비 proxy),221.3034955803572,USD/metric ton,M,FRED
@@ -18570,6 +18570,11 @@
 2026-09-01,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,130.21,2020=100,M,ECOS
 2026-09-01,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,119.13,2020=100,M,ECOS
 2026-09-01,KR,kr_precip,일강수량(전국대표),4.74,mm,D,KMA
+2026-09-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS
+2026-09-01,KR,kr_retail_dept,소매판매액지수 — 백화점,136.3,2020=100,M,ECOS
+2026-09-01,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),99.9,2020=100,M,ECOS
+2026-09-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS
+2026-09-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.8,2020=100,M,ECOS
 2026-09-01,KR,kr_temp_avg,평균기온(전국대표),26.58,°C,D,KMA
 2026-09-01,KR,kr_temp_max,최고기온(전국대표),30.84,°C,D,KMA
 2026-09-01,US,us_corn,Global Price of Corn (사료비 proxy),236.9161241071429,USD/metric ton,M,FRED
@@ -18746,6 +18751,14 @@
 2026-10-01,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",920.4802,AU c/kg cwt,D,MLA
 2026-10-01,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),455.0768,AU c/kg lwt,D,MLA
 2026-10-01,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS
+2026-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_diesel,소비자물가지수 — 경유,153.19,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),129.15,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),124.27,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.49,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.43,2020=100,M,ECOS
+2026-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS
 2026-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS
 2026-10-01,KR,kr_fx_aud,원/호주달러 환율(매매기준율),941.67,원,D,ECOS
 2026-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
@@ -18904,10 +18917,49 @@
 2026-10-28,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-28,KR,kr_temp_avg,평균기온(전국대표),9.78,°C,D,KMA
 2026-10-28,KR,kr_temp_max,최고기온(전국대표),16.38,°C,D,KMA
+2026-10-28,US,us_wti,"WTI Crude Oil (Cushing, OK)",106.25,USD/barrel,D,FRED
 2026-10-29,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1037.2234,AU c/kg cwt,D,MLA
 2026-10-29,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),485.3713,AU c/kg lwt,D,MLA
 2026-10-29,KR,kr_fx_aud,원/호주달러 환율(매매기준율),942.09,원,D,ECOS
 2026-10-29,KR,kr_precip,일강수량(전국대표),1.16,mm,D,KMA
 2026-10-29,KR,kr_temp_avg,평균기온(전국대표),9.88,°C,D,KMA
 2026-10-29,KR,kr_temp_max,최고기온(전국대표),12.92,°C,D,KMA
+2026-10-29,US,us_wti,"WTI Crude Oil (Cushing, OK)",105.51,USD/barrel,D,FRED
 2026-10-30,KR,kr_fx_aud,원/호주달러 환율(매매기준율),937.45,원,D,ECOS
+2026-10-30,KR,kr_precip,일강수량(전국대표),0.76,mm,D,KMA
+2026-10-30,KR,kr_temp_avg,평균기온(전국대표),14.14,°C,D,KMA
+2026-10-30,KR,kr_temp_max,최고기온(전국대표),20.28,°C,D,KMA
+2026-10-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",107.56,USD/barrel,D,FRED
+2026-10-31,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-10-31,KR,kr_temp_avg,평균기온(전국대표),14.1,°C,D,KMA
+2026-10-31,KR,kr_temp_max,최고기온(전국대표),20.34,°C,D,KMA
+2026-11-01,KR,kr_precip,일강수량(전국대표),14.98,mm,D,KMA
+2026-11-01,KR,kr_temp_avg,평균기온(전국대표),10.24,°C,D,KMA
+2026-11-01,KR,kr_temp_max,최고기온(전국대표),12.58,°C,D,KMA
+2026-11-02,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1031.0457,AU c/kg cwt,D,MLA
+2026-11-02,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),487.4279,AU c/kg lwt,D,MLA
+2026-11-02,KR,kr_fx_aud,원/호주달러 환율(매매기준율),939.98,원,D,ECOS
+2026-11-02,KR,kr_precip,일강수량(전국대표),0.6,mm,D,KMA
+2026-11-02,KR,kr_temp_avg,평균기온(전국대표),11.78,°C,D,KMA
+2026-11-02,KR,kr_temp_max,최고기온(전국대표),17.56,°C,D,KMA
+2026-11-02,US,us_diesel,"US Diesel Sales Price (EIA, 주별)",6.292,USD/gallon,W,FRED
+2026-11-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",100.06,USD/barrel,D,FRED
+2026-11-03,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1037.8404,AU c/kg cwt,D,MLA
+2026-11-03,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),484.0005,AU c/kg lwt,D,MLA
+2026-11-03,KR,kr_fx_aud,원/호주달러 환율(매매기준율),938.16,원,D,ECOS
+2026-11-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-11-03,KR,kr_temp_avg,평균기온(전국대표),11.26,°C,D,KMA
+2026-11-03,KR,kr_temp_max,최고기온(전국대표),17.62,°C,D,KMA
+2026-11-03,US,us_wti,"WTI Crude Oil (Cushing, OK)",99.64,USD/barrel,D,FRED
+2026-11-04,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1041.6334,AU c/kg cwt,D,MLA
+2026-11-04,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),487.5154,AU c/kg lwt,D,MLA
+2026-11-04,KR,kr_fx_aud,원/호주달러 환율(매매기준율),933.94,원,D,ECOS
+2026-11-04,KR,kr_precip,일강수량(전국대표),0.32,mm,D,KMA
+2026-11-04,KR,kr_temp_avg,평균기온(전국대표),12.26,°C,D,KMA
+2026-11-04,KR,kr_temp_max,최고기온(전국대표),16.66,°C,D,KMA
+2026-11-05,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1043.7642,AU c/kg cwt,D,MLA
+2026-11-05,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),487.4966,AU c/kg lwt,D,MLA
+2026-11-05,KR,kr_fx_aud,원/호주달러 환율(매매기준율),939.03,원,D,ECOS
+2026-11-05,KR,kr_precip,일강수량(전국대표),17.68,mm,D,KMA
+2026-11-05,KR,kr_temp_avg,평균기온(전국대표),12.84,°C,D,KMA
+2026-11-05,KR,kr_temp_max,최고기온(전국대표),16.04,°C,D,KMA
