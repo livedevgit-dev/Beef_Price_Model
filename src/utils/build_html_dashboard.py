@@ -133,6 +133,8 @@ def build_usda_fx():
     ex = pd.read_excel(EXCHANGE_RATE_XLSX)
     fx = pd.Series(pd.to_numeric(ex["Close"], errors="coerce").values,
                    index=pd.to_datetime(ex["Date"], errors="coerce")).dropna()
+    # 원천은 2005년부터 있으나(2026-11 백필) 일별 차트는 다른 탭과 같은 2019~ 창만 그린다
+    plate, fx = plate[plate.index >= "2019-01-01"], fx[fx.index >= "2019-01-01"]
     return {"plate": _xy(plate, 3), "fx": _xy(fx, 1)}
 
 
