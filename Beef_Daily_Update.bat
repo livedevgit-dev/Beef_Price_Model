@@ -1,11 +1,14 @@
 @echo off
+rem Manual smart run (same path as the scheduler: run_auto.py decides daily/weekly/monthly).
+rem Keep this file ASCII-only with CRLF line endings: cmd misreads UTF-8/LF batch files
+rem (2026-11-09: Korean text + LF endings made cmd split lines and fail).
 chcp 65001 >nul
 setlocal EnableExtensions
 cd /d "%~dp0"
 set "PYTHONIOENCODING=utf-8"
 
 echo ============================================================
-echo   Beef Price Model - 스마트 자동 실행 (일/주/월 자동 판단)
+echo   Beef Price Model - smart run (daily / weekly / monthly auto)
 echo ============================================================
 
 set "PYEXE="
@@ -20,7 +23,7 @@ if defined PYEXE (
 
 set "RC=%ERRORLEVEL%"
 echo.
-if %RC% neq 0 echo [오류] 종료 코드: %RC%
-echo (창을 닫으려면 아무 키나 누르세요)
+if %RC% neq 0 echo [ERROR] exit code: %RC%  - see messages above
+echo (press any key to close)
 pause >nul
 exit /b %RC%
