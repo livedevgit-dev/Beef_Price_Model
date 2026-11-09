@@ -94,14 +94,19 @@ def fetch_ecos(api_key, start, end):
     return clean_fx(df)
 
 
-def update_exchange_rate():
+def update_exchange_rate(backfill_from: date | None = None):
+    """backfill_from: 지정하면 그 날짜부터 오늘까지 다시 받아 기존과 합친다(같은 날짜는 새 값 우선).
+    장기 이력 확장용 (예: --backfill-from 2005-01-01, USDA 프라이멀 이력과 기간 일치)."""
     api_key = os.getenv("ECOS_API_KEY")
     if not api_key:
         print("[에러] ECOS_API_KEY 가 .env 에 없습니다.")
         return 1
 
     df_old = load_existing()
-    if df_old.empty:
+    if backfill_from is not None:
+        start = backfill_from
+        print(f"[백필] {start}부터 전체 재수집 후 기존과 병합합니다...")
+    elif df_old.empty:
         start = DEFAULT_START_DATE
         print(f"[시작] 기존 데이터가 없습니다. {start}부터 초기 구축을 시작합니다...")
     else:
@@ -134,4 +139,8 @@ def update_exchange_rate():
 
 
 if __name__ == "__main__":
-    sys.exit(update_exchange_rate())
+    import argparse
+    _ap = argparse.ArgumentParser(description="USD/KRW 일별 환율 수집 (ECOS)")
+    _ap.add_argument("--backfill-from", help="YYYY-MM-DD — 이 날짜부터 다시 받아 병합(장기 이력 확장)")
+    _a = _ap.parse_args()
+    sys.exit(update_exchange_rate(date.fromisoformat(_a.backfill_from) if _a.backfill_from else None))

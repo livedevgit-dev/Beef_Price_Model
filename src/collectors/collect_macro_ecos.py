@@ -551,7 +551,9 @@ def _load_existing(save_path: Path) -> pd.DataFrame:
 # --------------------------------------------------------------------------
 # 메인
 # --------------------------------------------------------------------------
-def collect_macro_ecos_increment() -> int:
+def collect_macro_ecos_increment(backfill_from: date | None = None, only: set[str] | None = None) -> int:
+    """backfill_from: 지정하면 (only 로 고른) 지표를 그 날짜부터 전부 다시 받아 해당 구간을 교체한다
+    (장기 이력 확장용, 예: --backfill-from 1990-01-01 --only kr_cpi_beef_imp,kr_impi_beef_krw)."""
     ensure_dirs()
     save_path = Path(MACRO_RAW_CSV)
 
@@ -575,8 +577,13 @@ def collect_macro_ecos_increment() -> int:
     windows: dict[str, str] = {}
     errors: list[str] = []
     for indicator in ECOS_INDICATORS:
+        if only and indicator["indicator_id"] not in only:
+            continue
         last_date = _read_last_date(df_existing, indicator["indicator_id"])
-        if last_date is None:
+        if backfill_from is not None:
+            start = backfill_from
+            print(f"[백필] {indicator['indicator_id']} ({indicator['stat_code']}) — {start} 부터 전체 재수집")
+        elif last_date is None:
             start = INITIAL_START
             print(f"[수집] {indicator['indicator_id']} ({indicator['stat_code']}) "
                   f"— 기존 없음 → {start} 부터 전체")
@@ -618,5 +625,17 @@ def collect_macro_ecos_increment() -> int:
     return 0
 
 
+def _parse_args(argv: list[str]) -> tuple[date | None, set[str] | None]:
+    import argparse
+    ap = argparse.ArgumentParser(description="ECOS 거시지표 증분 수집")
+    ap.add_argument("--backfill-from", help="YYYY-MM-DD — 이 날짜부터 전부 다시 받아 교체(장기 이력 확장)")
+    ap.add_argument("--only", help="쉼표로 구분한 indicator_id 목록 (백필 대상 제한)")
+    a = ap.parse_args(argv)
+    bf = date.fromisoformat(a.backfill_from) if a.backfill_from else None
+    only = {s.strip() for s in a.only.split(",") if s.strip()} if a.only else None
+    return bf, only
+
+
 if __name__ == "__main__":
-    sys.exit(collect_macro_ecos_increment())
+    _bf, _only = _parse_args(sys.argv[1:])
+    sys.exit(collect_macro_ecos_increment(_bf, _only))

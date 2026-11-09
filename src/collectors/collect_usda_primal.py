@@ -116,7 +116,9 @@ def _merge_and_save(new_rows: list[dict], save_path: Path) -> int:
     return len(df_final)
 
 
-def collect_primal_increment() -> int:
+def collect_primal_increment(backfill_from: datetime | None = None) -> int:
+    """backfill_from: 지정하면 그 날짜부터 오늘까지 전부 다시 받아 해당 report_date 행을 교체한다
+    (장기 이력 확장용 — Datamart 는 2005년부터 제공, 예: --backfill-from 2005-01-01)."""
     ensure_dirs()
     save_path = Path(USDA_PRIMAL_HISTORY_CSV)
 
@@ -128,7 +130,10 @@ def collect_primal_increment() -> int:
         return 1
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 
-    if last_date is None:
+    if backfill_from is not None:
+        start = backfill_from
+        print(f"[시스템] 백필 모드 → {start.date()}부터 전체 재수집 (기존 동일 날짜 행 교체)")
+    elif last_date is None:
         start = INITIAL_START
         print(f"[시스템] 기존 데이터 없음 → {start.date()}부터 전체 수집")
     else:
@@ -169,4 +174,9 @@ def collect_primal_increment() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(collect_primal_increment())
+    import argparse
+    _ap = argparse.ArgumentParser(description="USDA 프라이멀 복합가격 증분 수집")
+    _ap.add_argument("--backfill-from", help="YYYY-MM-DD — 이 날짜부터 전부 다시 받아 교체(장기 이력 확장)")
+    _a = _ap.parse_args()
+    _bf = datetime.fromisoformat(_a.backfill_from) if _a.backfill_from else None
+    sys.exit(collect_primal_increment(_bf))
