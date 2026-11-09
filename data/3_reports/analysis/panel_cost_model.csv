@@ -1,0 +1,16 @@
+﻿model,freq,target,n_oos,n_items,mae_model,mae_naive,vs_naive_pct,dir_acc,samgyup_vs_naive_pct,samgyup_n
+pooled_ridge,M,target_h1,199,22,0.0216,0.0212,2.0,61.3,-24.2,11
+pooled_ridge_cost_only,M,target_h1,248,25,0.0243,0.0209,15.9,52.4,-14.4,13
+pooled_ridge_own_only,M,target_h1,199,22,0.0199,0.0212,-6.3,64.8,-11.5,11
+pooled_xgb,M,target_h1,199,22,0.023,0.0212,8.5,62.3,-28.2,11
+item_ridge,M,target_h1,177,21,0.0262,0.0203,28.9,58.2,22.2,11
+pooled_ridge,M,target_h3,155,22,0.0537,0.0507,6.0,60.6,-15.4,9
+pooled_ridge_cost_only,M,target_h3,199,22,0.0561,0.0498,12.5,55.3,-7.4,11
+pooled_ridge_own_only,M,target_h3,155,22,0.0484,0.0507,-4.4,60.6,-10.2,9
+pooled_xgb,M,target_h3,155,22,0.0575,0.0507,13.5,59.4,-4.4,9
+item_ridge,M,target_h3,136,18,0.0649,0.05,29.7,64.0,-7.9,9
+pooled_ridge,W,target_h1,1175,23,0.0094,0.0092,2.3,54.3,0.9,71
+pooled_ridge_cost_only,W,target_h1,1272,26,0.0095,0.0092,3.1,47.8,-6.6,73
+pooled_ridge_own_only,W,target_h1,1182,23,0.0092,0.0091,0.1,56.1,4.1,71
+pooled_xgb,W,target_h1,1175,23,0.0096,0.0092,5.3,53.1,-4.6,71
+item_ridge,W,target_h1,1145,23,0.0105,0.0087,21.5,52.6,45.8,71
