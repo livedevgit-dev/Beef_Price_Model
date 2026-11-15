@@ -4,8 +4,8 @@ stock_yj,-0.488
 fas_china,0.378
 us_wti,0.338
 kr_base_rate,0.233
-kr_cpi_food,0.204
 kr_ppi_food,0.203
+kr_cpi_food,0.203
 kr_temp_avg,0.192
 usda_plate,-0.144
 import_yj,-0.119

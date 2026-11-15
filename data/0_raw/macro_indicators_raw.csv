@@ -24080,7 +24080,7 @@
 2026-07-01,KR,kr_temp_max,최고기온(전국대표),25.86,°C,D,KMA
 2026-07-01,US,us_corn,Global Price of Corn (사료비 proxy),213.1901539821428,USD/metric ton,M,FRED
 2026-07-01,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),377.024,Index 1982=100,M,FRED
-2026-07-01,US,us_food_ppi,PPI: Processed Foods and Feeds,278.297,Index 1982=100,M,FRED
+2026-07-01,US,us_food_ppi,PPI: Processed Foods and Feeds,278.303,Index 1982=100,M,FRED
 2026-07-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),521.184,Index Jun 1988=100,M,FRED
 2026-07-01,US,us_soybean,Global Price of Soybeans (사료비),442.4505721529122,USD/metric ton,M,FRED
 2026-07-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",329.4329095064775,USD/metric ton,M,FRED
@@ -24285,8 +24285,8 @@
 2026-08-01,KR,kr_temp_max,최고기온(전국대표),36.06,°C,D,KMA
 2026-08-01,US,us_corn,Global Price of Corn (사료비 proxy),221.3034955803572,USD/metric ton,M,FRED
 2026-08-01,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),350.998,Index 1982=100,M,FRED
-2026-08-01,US,us_food_ppi,PPI: Processed Foods and Feeds,276.29,Index 1982=100,M,FRED
-2026-08-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),532.736,Index Jun 1988=100,M,FRED
+2026-08-01,US,us_food_ppi,PPI: Processed Foods and Feeds,276.754,Index 1982=100,M,FRED
+2026-08-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),544.261,Index Jun 1988=100,M,FRED
 2026-08-01,US,us_soybean,Global Price of Soybeans (사료비),449.043925962608,USD/metric ton,M,FRED
 2026-08-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",367.665544124595,USD/metric ton,M,FRED
 2026-08-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
@@ -24490,8 +24490,8 @@
 2026-09-01,KR,kr_temp_max,최고기온(전국대표),30.84,°C,D,KMA
 2026-09-01,US,us_corn,Global Price of Corn (사료비 proxy),236.9161241071429,USD/metric ton,M,FRED
 2026-09-01,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),341.105,Index 1982=100,M,FRED
-2026-09-01,US,us_food_ppi,PPI: Processed Foods and Feeds,276.68,Index 1982=100,M,FRED
-2026-09-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),534.796,Index Jun 1988=100,M,FRED
+2026-09-01,US,us_food_ppi,PPI: Processed Foods and Feeds,277.218,Index 1982=100,M,FRED
+2026-09-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),573.44,Index Jun 1988=100,M,FRED
 2026-09-01,US,us_soybean,Global Price of Soybeans (사료비),481.7223363582059,USD/metric ton,M,FRED
 2026-09-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",488.2656993089945,USD/metric ton,M,FRED
 2026-09-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",91.48,USD/barrel,D,FRED
@@ -24661,6 +24661,7 @@
 2026-09-30,US,us_wti,"WTI Crude Oil (Cushing, OK)",97.18,USD/barrel,D,FRED
 2026-10-01,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",920.4802,AU c/kg cwt,D,MLA
 2026-10-01,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),455.0768,AU c/kg lwt,D,MLA
+2026-10-01,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS
 2026-10-01,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS
 2026-10-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS
 2026-10-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS
@@ -24672,9 +24673,14 @@
 2026-10-01,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS
 2026-10-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS
 2026-10-01,KR,kr_fx_aud,원/호주달러 환율(매매기준율),941.67,원,D,ECOS
+2026-10-01,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),151.55,2020=100,M,ECOS
+2026-10-01,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),133.7,2020=100,M,ECOS
 2026-10-01,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-10-01,KR,kr_temp_avg,평균기온(전국대표),19.38,°C,D,KMA
 2026-10-01,KR,kr_temp_max,최고기온(전국대표),23.88,°C,D,KMA
+2026-10-01,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),343.478,Index 1982=100,M,FRED
+2026-10-01,US,us_food_ppi,PPI: Processed Foods and Feeds,277.635,Index 1982=100,M,FRED
+2026-10-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),572.968,Index Jun 1988=100,M,FRED
 2026-10-01,US,us_wti,"WTI Crude Oil (Cushing, OK)",99.77,USD/barrel,D,FRED
 2026-10-02,KR,kr_fx_aud,원/호주달러 환율(매매기준율),941.93,원,D,ECOS
 2026-10-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
@@ -24868,11 +24874,60 @@
 2026-11-04,KR,kr_precip,일강수량(전국대표),0.32,mm,D,KMA
 2026-11-04,KR,kr_temp_avg,평균기온(전국대표),12.26,°C,D,KMA
 2026-11-04,KR,kr_temp_max,최고기온(전국대표),16.66,°C,D,KMA
+2026-11-04,US,us_wti,"WTI Crude Oil (Cushing, OK)",91.73,USD/barrel,D,FRED
 2026-11-05,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1043.7642,AU c/kg cwt,D,MLA
 2026-11-05,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),487.4966,AU c/kg lwt,D,MLA
 2026-11-05,KR,kr_fx_aud,원/호주달러 환율(매매기준율),939.03,원,D,ECOS
 2026-11-05,KR,kr_precip,일강수량(전국대표),17.68,mm,D,KMA
 2026-11-05,KR,kr_temp_avg,평균기온(전국대표),12.84,°C,D,KMA
 2026-11-05,KR,kr_temp_max,최고기온(전국대표),16.04,°C,D,KMA
+2026-11-05,US,us_wti,"WTI Crude Oil (Cushing, OK)",94.05,USD/barrel,D,FRED
 2026-11-06,KR,kr_fx_aud,원/호주달러 환율(매매기준율),929.74,원,D,ECOS
+2026-11-06,KR,kr_precip,일강수량(전국대표),0.06,mm,D,KMA
+2026-11-06,KR,kr_temp_avg,평균기온(전국대표),10.08,°C,D,KMA
+2026-11-06,KR,kr_temp_max,최고기온(전국대표),15.1,°C,D,KMA
+2026-11-06,US,us_wti,"WTI Crude Oil (Cushing, OK)",94.37,USD/barrel,D,FRED
+2026-11-07,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-11-07,KR,kr_temp_avg,평균기온(전국대표),7.08,°C,D,KMA
+2026-11-07,KR,kr_temp_max,최고기온(전국대표),13.16,°C,D,KMA
+2026-11-08,KR,kr_precip,일강수량(전국대표),0.52,mm,D,KMA
+2026-11-08,KR,kr_temp_avg,평균기온(전국대표),7.78,°C,D,KMA
+2026-11-08,KR,kr_temp_max,최고기온(전국대표),11.9,°C,D,KMA
+2026-11-09,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1051.2007,AU c/kg cwt,D,MLA
+2026-11-09,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),485.8144,AU c/kg lwt,D,MLA
 2026-11-09,KR,kr_fx_aud,원/호주달러 환율(매매기준율),932.95,원,D,ECOS
+2026-11-09,KR,kr_precip,일강수량(전국대표),3.18,mm,D,KMA
+2026-11-09,KR,kr_temp_avg,평균기온(전국대표),8.92,°C,D,KMA
+2026-11-09,KR,kr_temp_max,최고기온(전국대표),12.64,°C,D,KMA
+2026-11-09,US,us_diesel,"US Diesel Sales Price (EIA, 주별)",6.127,USD/gallon,W,FRED
+2026-11-09,US,us_wti,"WTI Crude Oil (Cushing, OK)",90.4,USD/barrel,D,FRED
+2026-11-10,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1053.6952,AU c/kg cwt,D,MLA
+2026-11-10,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),488.926,AU c/kg lwt,D,MLA
+2026-11-10,KR,kr_fx_aud,원/호주달러 환율(매매기준율),938.42,원,D,ECOS
+2026-11-10,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-11-10,KR,kr_temp_avg,평균기온(전국대표),8.86,°C,D,KMA
+2026-11-10,KR,kr_temp_max,최고기온(전국대표),15.52,°C,D,KMA
+2026-11-10,US,us_wti,"WTI Crude Oil (Cushing, OK)",89.62,USD/barrel,D,FRED
+2026-11-11,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1050.5401,AU c/kg cwt,D,MLA
+2026-11-11,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),488.6005,AU c/kg lwt,D,MLA
+2026-11-11,KR,kr_fx_aud,원/호주달러 환율(매매기준율),922.31,원,D,ECOS
+2026-11-11,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-11-11,KR,kr_temp_avg,평균기온(전국대표),10.3,°C,D,KMA
+2026-11-11,KR,kr_temp_max,최고기온(전국대표),17.76,°C,D,KMA
+2026-11-11,US,us_wti,"WTI Crude Oil (Cushing, OK)",89.62,USD/barrel,D,FRED
+2026-11-12,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1049.9282,AU c/kg cwt,D,MLA
+2026-11-12,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),489.1736,AU c/kg lwt,D,MLA
+2026-11-12,KR,kr_fx_aud,원/호주달러 환율(매매기준율),914.9,원,D,ECOS
+2026-11-12,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
+2026-11-12,KR,kr_temp_avg,평균기온(전국대표),11.1,°C,D,KMA
+2026-11-12,KR,kr_temp_max,최고기온(전국대표),18.34,°C,D,KMA
+2026-11-13,KR,kr_fx_aud,원/호주달러 환율(매매기준율),907.1,원,D,ECOS
+2026-11-13,KR,kr_precip,일강수량(전국대표),1.1,mm,D,KMA
+2026-11-13,KR,kr_temp_avg,평균기온(전국대표),12.76,°C,D,KMA
+2026-11-13,KR,kr_temp_max,최고기온(전국대표),17.68,°C,D,KMA
+2026-11-14,KR,kr_precip,일강수량(전국대표),14.26,mm,D,KMA
+2026-11-14,KR,kr_temp_avg,평균기온(전국대표),12.98,°C,D,KMA
+2026-11-14,KR,kr_temp_max,최고기온(전국대표),14.16,°C,D,KMA
+2026-11-15,KR,kr_precip,일강수량(전국대표),1.58,mm,D,KMA
+2026-11-15,KR,kr_temp_avg,평균기온(전국대표),13.0,°C,D,KMA
+2026-11-15,KR,kr_temp_max,최고기온(전국대표),17.14,°C,D,KMA
