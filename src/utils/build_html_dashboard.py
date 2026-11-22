@@ -16,6 +16,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from plotly.offline import get_plotlyjs
 
@@ -239,10 +240,58 @@ def build_margin():
     return {"items": items}
 
 
+def build_cost_signal():
+    """원가 대비 괴리(미트박스 미국산 품목 vs USDA 부위 원가×환율) + 6개월 추세 신호.
+    근거: analysis/panel_and_longrun_note.md (2026-11-09) — 월 단위 예측은 불가, 마진 괴리는 반감기 ~5개월로 되돌아오고
+    미국 원가(USD)·환율의 6개월 변화는 수입육 가격 6개월 추세 방향을 ~72% 맞힘(2012~2026 OOS)."""
+    from analysis import panel_cost_model as PCM
+    from analysis import cost_passthrough_long as CPL
+    from utils.part_mapping import NO_DIRECT_USDA_PARTS
+
+    panel = PCM.build_panel("M")
+    panel = panel[(panel["is_au"] == 0) & panel["y_chg"].notna()].copy()
+    panel["part"] = panel["item"].str.split("·").str[1]
+    items = []
+    for item, g in panel.groupby("item", sort=False):
+        g = g.sort_values("date")
+        last = g.iloc[-1]
+        part = last["part"]
+        direct = (part not in NO_DIRECT_USDA_PARTS) and not str(last["cost_src"]).startswith("Primal")
+        if len(g) < 8:
+            continue
+        items.append({"part": part, "cost_src": str(last["cost_src"]), "direct": bool(direct),
+                      "asof": pd.Timestamp(last["date"]).strftime("%Y-%m"), "n": int(len(g)),
+                      "gap_pct": round(float(np.expm1(last["gap"]) * 100), 1) if pd.notna(last["gap"]) else None,
+                      "price_3m_pct": round(float(np.expm1(last["own_3"]) * 100), 1) if pd.notna(last["own_3"]) else None,
+                      "cost_3m_pct": round(float(np.expm1(last["cost_3"]) * 100), 1) if pd.notna(last["cost_3"]) else None})
+    items.sort(key=lambda r: (not r["direct"], r["part"]))
+
+    # 6개월 추세 신호: ΔCPI(수입 쇠고기, t→t+6) ~ Δ6 플레이트 USD + Δ6 환율 (2005~ 전체 적합, drift 대비)
+    _, D = CPL.load()
+    L = np.log(CPL.load()[0])
+    y6 = (L["cpi_imp"].shift(-6) - L["cpi_imp"])
+    x1 = L["plate_usd"] - L["plate_usd"].shift(6)
+    x2 = L["fx"] - L["fx"].shift(6)
+    fit = pd.concat([y6, x1, x2], axis=1).dropna()
+    A = np.column_stack([np.ones(len(fit)), fit.iloc[:, 1], fit.iloc[:, 2]])
+    b, *_ = np.linalg.lstsq(A, fit.iloc[:, 0].values, rcond=None)
+    drift = float(fit.iloc[:, 0].mean())
+    cur = pd.concat([x1, x2], axis=1).dropna().iloc[-1]
+    pred = float(b[0] + b[1] * cur.iloc[0] + b[2] * cur.iloc[1])
+    signal = pred - drift
+    trend = {"asof": pd.Timestamp(cur.name).strftime("%Y-%m"), "plate_usd_6m_pct": round(float(np.expm1(cur.iloc[0]) * 100), 1),
+             "fx_6m_pct": round(float(np.expm1(cur.iloc[1]) * 100), 1), "pred_6m_pct": round(float(np.expm1(pred) * 100), 1),
+             "drift_6m_pct": round(float(np.expm1(drift) * 100), 1), "signal_pct": round(float(signal * 100), 1),
+             "direction": "상승 우세" if signal > 0.01 else ("하락 우세" if signal < -0.01 else "추세 중립"),
+             "n_fit": int(len(fit))}
+    return {"items": items, "trend": trend}
+
+
 SECTIONS = {
     "status": build_status, "report": build_report, "switch": build_switch, "meatbox": build_meatbox,
     "samgyup": build_samgyup, "usda_fx": build_usda_fx, "import_stock": build_import_stock,
     "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas, "margin": build_margin, "quota": build_quota,
+    "cost_signal": build_cost_signal,
 }
 
 

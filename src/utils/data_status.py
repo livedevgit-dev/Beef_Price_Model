@@ -180,6 +180,12 @@ def collect_status() -> pd.DataFrame:
     add("환율(AUD/KRW)", "ECOS", "일", _macro_stalest(["kr_fx_aud"]), 7)
     add("호주 생우가(EYCI·Heavy Steer)", "MLA", "일", _macro_stalest(["au_eyci", "au_heavy_steer"]), 7)
     add("미국 경유(FRED)", "FRED", "주", _macro_stalest(["us_diesel"]), 14)
+    # 선물(거래일) — Yahoo, 키 불필요 (2026-11-23 추가)
+    add("미국 선물(생우·비육우·옥수수)", "YAHOO", "일",
+        _macro_stalest(["us_live_cattle_fut", "us_feeder_cattle_fut", "us_corn_fut"]), 7)
+    # 미국 소매 쇠고기 가격(BLS 월, 익월 중순 발표) → 최대 ~50일
+    add("미국 소매 쇠고기(스테이크·다짐육)", "FRED", "월",
+        _macro_stalest(["us_beef_steak_price", "us_ground_beef_price"]), 50)
     # IMF 소고기 국제가(익월 초)·미국 PPI(익월 중순) → 다음 발표 직전 최대 ~45일
     add("수입원가(호주 소고기·미국 비육우·해상운임)", "FRED", "월",
         _macro_stalest(["au_beef_price", "us_fed_steer", "us_ppi_ocean_freight"]), 50)

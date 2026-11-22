@@ -382,6 +382,22 @@ function renderSamgyup(panel) {
   if (!S) { panel.innerHTML = emptyPanel("예측 데이터가 없습니다."); return; }
   panel.innerHTML = `<div class="grid">
     ${card({ title: "삼겹양지(미국산) 월평균 시세와 전망", sub: "실적: 미트박스+도매상 통합 월평균 · 전망: 계절+추세 모델(음영은 예측 범위)", id: "sgChart" })}
+    ${D.cost_signal ? `<div class="card"><h2>원가 대비 괴리 · 6개월 추세 신호</h2>
+      <p class="sub">괴리 = 미트박스 도매가 ÷ (USDA 부위 원가 × 환율) 의 2025년 이후 평균 대비 % (양수 = 원가보다 비싸게 거래 중, 반감기 약 5개월로 되돌아오는 경향) ·
+      3개월 변화는 최근 3개월 로그 변화 · 월 단위 가격 예측은 불가하므로 참고 지표로만 사용</p>
+      <div class="kpis">
+        <div class="kpi"><div class="label">6개월 추세 신호 (${esc(D.cost_signal.trend.asof)})</div>
+          <div class="value">${esc(D.cost_signal.trend.direction)}</div>
+          <div class="note">원가(USD 플레이트) 6개월 ${pct(D.cost_signal.trend.plate_usd_6m_pct)} · 환율 6개월 ${pct(D.cost_signal.trend.fx_6m_pct)} →
+          수입육 6개월 변화 추정 ${pct(D.cost_signal.trend.pred_6m_pct)} (장기 평균 ${pct(D.cost_signal.trend.drift_6m_pct)} 대비 ${pct(D.cost_signal.trend.signal_pct)}) ·
+          2012~2026 표본외 방향 적중 약 72%</div></div>
+      </div>
+      <div class="table-wrap free"><table><tr><th>품목(미국산)</th><th class="num">원가 대비 괴리</th><th class="num">가격 3개월</th><th class="num">원가 3개월</th><th>USDA 원가 기준</th><th>기준월</th></tr>
+      ${D.cost_signal.items.map((r) => `<tr><td>${esc(r.part)}</td>
+        <td class="num ${r.gap_pct > 5 ? "up" : r.gap_pct < -5 ? "down" : ""}">${pct(r.gap_pct)}</td>
+        <td class="num">${pct(r.price_3m_pct)}</td><td class="num">${pct(r.cost_3m_pct)}</td>
+        <td class="muted">${esc(r.cost_src)}${r.direct ? "" : " (대리)"}</td><td class="muted">${esc(r.asof)}</td></tr>`).join("")}
+      </table></div></div>` : ""}
     ${card({ title: "가격 영향 요인", sub: "릿지 회귀 표준화 계수 · 파랑(+)은 가격과 같은 방향, 빨강(−)은 반대 방향으로 움직임", id: "sgImp", chartClass: "chart tall" })}
     ${D.quota ? `<div class="card"><h2>호주산 저율관세 쿼터 소진 이력</h2>
       <p class="sub">쿼터 소진 후 연말까지 호주산 관세 24%, 매년 1월 1일 새 쿼터 시작 · 2026년 쿼터 내 5.3%, 2027년 2.6% · 전망 모델에는 미반영</p>

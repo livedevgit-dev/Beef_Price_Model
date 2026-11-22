@@ -197,6 +197,7 @@ MONTHLY_COLLECTORS = [
     ("KMTA 월별 수입량", _collector("crawl_imp_volume_monthly.py")),
     ("KMTA 월별 재고", _collector("crawl_imp_stock_monthly.py")),
     ("식약처 수입 검역 실적", _collector("crawl_imp_food_safety.py")),
+    ("관세청 국가별·HSK10 쇠고기 수입실적 (data.go.kr 키 없으면 skip)", _collector("collect_kr_customs_beef.py")),
 ]
 
 # 거시경제 지표 (Macro) — 키 없으면 각 수집기가 자동 skip
@@ -213,6 +214,7 @@ MACRO_COLLECTORS = [
 MACRO_PROCESSORS = [
     ("거시지표 전처리 (raw → daily ffill → macro_dashboard_ready)", _util("preprocess_macro.py")),
     ("FAS 공급경보 전처리 (중국행 급감/한국행 과잉 → 다이버전 경보)", _util("preprocess_fas_signal.py")),
+    ("관세청 수입실적 전처리 (국가×부위군 월별 / 호주산 ASG 소진율)", _util("preprocess_kr_customs_beef.py")),
 ]
 
 # 삼겹양지 분석·예측·시그널 (수집·전처리 이후 실행)

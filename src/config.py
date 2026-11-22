@@ -64,6 +64,14 @@ FAS_SIGNAL_CSV = DATA_DASHBOARD / "fas_supply_signal.csv"   # 월별 중국/한�
 # 미국 Cattle on Feed (USDA NASS QuickStats) — 사육두수, 미국 공급 4~6개월 선행지표
 US_CATTLE_ON_FEED_CSV = DATA_RAW / "us_cattle_on_feed.csv"
 
+# 관세청 국가별×HSK10 쇠고기 수입실적 (공공데이터포털 15100475, 월별 통관 중량·금액) + 호주산 KAFTA ASG 소진율 (2026-11-23)
+KR_CUSTOMS_BEEF_CSV = DATA_RAW / "kr_customs_beef_import.csv"
+KR_CUSTOMS_BEEF_MONTHLY_CSV = DATA_PROCESSED / "kr_customs_beef_monthly.csv"
+AU_SAFEGUARD_USAGE_CSV = DATA_PROCESSED / "au_safeguard_usage.csv"
+# USDA FAS GATS 미국→한국 쇠고기 수출(HS10, 월별 kg·USD, 선적 기준 FOB) (2026-11-23)
+US_EXPORT_GATS_CSV = DATA_RAW / "us_export_korea_gats.csv"
+US_EXPORT_KOREA_MONTHLY_CSV = DATA_PROCESSED / "us_export_korea_monthly.csv"
+
 # Chromedriver (collectors에서 사용)
 CHROMEDRIVER_PATH = SRC_DIR / "chromedriver.exe"
 
