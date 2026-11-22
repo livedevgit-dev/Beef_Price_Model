@@ -41,6 +41,11 @@ GIT_PIPELINE_PATHS = [
 ]
 
 
+# 이번 실행에서 실패한 단계 (label, critical). 비치명 실패만 있으면 수집된 데이터는 그대로 커밋한다
+# (2026-11-23: 기상청 504 하나로 당일 전체 산출물이 미커밋 상태로 남는 일 방지)
+_FAILED_STEPS: list[tuple[str, bool]] = []
+
+
 def _run_step(label, script_path, critical=True):
     """단일 스크립트를 서브프로세스로 실행하고 결과를 반환한다."""
     print(f"\n{'-'*60}")
@@ -59,6 +64,7 @@ def _run_step(label, script_path, critical=True):
     except Exception as e:
         elapsed = time.time() - start
         print(f"  [FAIL] 오류 발생 ({elapsed:.1f}초): {e}")
+        _FAILED_STEPS.append((label, critical))
         if critical:
             print("  >> 치명적 단계이므로 파이프라인을 중단합니다.")
         return False
@@ -899,20 +905,25 @@ def main():
     if gap_warns and not args.no_gap_check:
         print(f"  GAP 주의       |  {gap_warns}건 (리포트 참고)")
     print(f"{'=' * 60}")
+    critical_failed = any(c for _, c in _FAILED_STEPS)
     if fail == 0:
         print("모든 수집·전처리 단계가 정상적으로 완료되었습니다.")
+    else:
+        print(f"[!] {fail}개 단계에서 오류가 발생했습니다. 위 로그를 확인하세요.")
+        if not critical_failed:
+            print("    (비치명 단계만 실패 — 나머지 산출물은 커밋합니다)")
+    if fail == 0 or not critical_failed:
         want_push = args.push or os.environ.get("PIPELINE_GIT_PUSH", "").strip().lower() in (
             "1",
             "true",
             "yes",
         )
+        label = mode_label if fail == 0 else f"{mode_label} partial"
         _try_git_commit_and_push(
-            mode_label,
+            label,
             do_commit=not args.no_commit and mode_label != "gap-check",
             do_push=want_push,
         )
-    else:
-        print(f"[!] {fail}개 단계에서 오류가 발생했습니다. 위 로그를 확인하세요.")
     raise SystemExit(0 if fail == 0 else 1)
 
 

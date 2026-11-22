@@ -108,7 +108,12 @@ def _fetch_day(api_key: str, tm: date) -> list[dict]:
             r = requests.get(BASE_URL, params=params, timeout=REQUEST_TIMEOUT, verify=VERIFY_SSL)
         except requests.RequestException as e:
             last_err = type(e).__name__
-            time.sleep(2)
+            time.sleep(2 + 3 * attempt)
+            continue
+        if 500 <= r.status_code < 600:
+            # 허브 게이트웨이 장애(504 등) — 일시적이므로 간격을 두고 재시도 (2026-11-20~23 반복 관측)
+            last_err = f"HTTP {r.status_code}"
+            time.sleep(2 + 3 * attempt)
             continue
         if r.status_code != 200:
             raise FetchError(f"HTTP {r.status_code}")
@@ -264,6 +269,7 @@ def collect_macro_kma_increment() -> int:
     bucket: dict[str, dict[str, list[float]]] = {}
     done = 0
     errors: list[str] = []
+    transient_only = True          # 실패가 전부 서버 장애(5xx)·네트워크 예외이고 최근 재수집 창 안인가
     empty_days: list[str] = []
     consecutive = 0
     for i, day in enumerate(all_days, 1):
@@ -272,6 +278,11 @@ def collect_macro_kma_increment() -> int:
             consecutive = 0
         except FetchError as e:
             errors.append(f"{day} {e}")
+            msg = str(e)
+            # _fetch_day 는 재시도 초과 시 "연결 실패(HTTP 504)" / "연결 실패(ConnectTimeout)" 형태로 올림
+            is_server = "HTTP 5" in msg or "Error" in msg or "Timeout" in msg
+            if not (is_server and day >= start):
+                transient_only = False
             consecutive += 1
             if consecutive >= MAX_CONSECUTIVE_ERRORS:
                 print(f"   └ [중단] 연속 {consecutive}회 오류 — 이번 실행 수집을 멈춥니다 ({e})")
@@ -300,6 +311,11 @@ def collect_macro_kma_increment() -> int:
         print(f"   └ 자료 없음(정상 응답) {len(empty_days)}일: {empty_days[:10]}")
     print(f"[완료] KMA 수집 완료 — raw 누적 {done}건 ({save_path})")
     if errors:
+        if transient_only:
+            # 최근 창 안의 서버 장애만 — 다음 실행의 재수집(REFETCH_DAYS)·누락일 재시도로 자가 치유되므로 실패로 보지 않는다.
+            # 창 밖(= 이전 실행에서도 못 받은 누락일)까지 계속 실패하면 그때 exit 1 로 알린다.
+            print(f"[경고] {len(errors)}일 서버 장애로 미수집 — 다음 실행 때 자동 재시도: {errors[:5]}")
+            return 0
         print(f"[오류] {len(errors)}일 수집 실패 — 다음 실행 때 누락일로 재시도: {errors[:5]}")
         return 1
     return 0
