@@ -240,6 +240,44 @@ def build_margin():
     return {"items": items}
 
 
+def build_customs():
+    """관세청 통관 단가·물량(국가×부위군, preprocess_kr_customs_beef.py 산출) + 호주산 ASG 소진율."""
+    from config import KR_CUSTOMS_BEEF_MONTHLY_CSV, AU_SAFEGUARD_USAGE_CSV
+    m = pd.read_csv(KR_CUSTOMS_BEEF_MONTHLY_CSV, parse_dates=["date"])
+    m = m[m["date"] >= "2010-01-01"]
+    labels = {"frozen_boneless": "냉동 뼈없음(삼겹양지·차돌·목심 등)", "frozen_rib": "냉동 갈비(LA갈비·찜갈비)",
+              "frozen_bone_in_other": "냉동 뼈있음 기타", "chilled_boneless": "냉장 뼈없음", "chilled_rib": "냉장 갈비",
+              "frozen_all": "냉동 전체", "chilled_all": "냉장 전체", "all": "전체"}
+    groups = [g for g in labels if g in set(m["group"])]
+    uv, vol = {}, {}
+    for g in groups:
+        uv[g], vol[g] = {}, {}
+        for c in ("US", "AU", "ALL"):
+            s = m[(m["group"] == g) & (m["country"] == c)].set_index("date").sort_index()
+            if s.empty:
+                continue
+            uv[g][c] = _xy(s["unit_value_usd_kg"].where(s["imp_kg"] > 0), 2, keep_gaps=True)
+            vol[g][c] = _xy(s["imp_kg"] / 1000, 0, keep_gaps=True)
+    sg = pd.read_csv(AU_SAFEGUARD_USAGE_CSV, parse_dates=["date"])
+    cur_year = int(sg["year"].max())
+    cur = sg[sg["year"] == cur_year].sort_values("date")
+    cur_rows = [{"month": d.strftime("%Y-%m"), "month_kt": round(r.month_kg / 1e6, 1), "cum_kt": round(r.cum_kg / 1e6, 1),
+                 "usage_pct": None if pd.isna(r.usage_pct) else round(float(r.usage_pct), 1),
+                 "projected": "" if pd.isna(r.projected_trigger_month) else str(r.projected_trigger_month)}
+                for d, r in zip(cur["date"], cur.itertuples())]
+    yr = []
+    for y, g in sg.groupby("year"):
+        g = g.sort_values("date")
+        hit = g[g["usage_pct"] >= 100]
+        yr.append({"year": int(y), "quota_kt": None if pd.isna(g["quota_kg"].iloc[-1]) else round(g["quota_kg"].iloc[-1] / 1e6, 1),
+                   "total_kt": round(g["cum_kg"].iloc[-1] / 1e6, 1),
+                   "final_pct": None if pd.isna(g["usage_pct"].iloc[-1]) else round(float(g["usage_pct"].iloc[-1]), 1),
+                   "hit_month": hit["date"].iloc[0].strftime("%Y-%m") if len(hit) else "", "status": str(g["quota_status"].iloc[-1])})
+    yr = [r for r in yr if r["year"] >= 2014]
+    return {"groups": [[g, labels[g]] for g in groups], "unit_value": uv, "volume_kt": vol,
+            "safeguard": {"year": cur_year, "rows": cur_rows, "by_year": yr}}
+
+
 def build_cost_signal():
     """원가 대비 괴리(미트박스 미국산 품목 vs USDA 부위 원가×환율) + 6개월 추세 신호.
     근거: analysis/panel_and_longrun_note.md (2026-11-09) — 월 단위 예측은 불가, 마진 괴리는 반감기 ~5개월로 되돌아오고
@@ -291,7 +329,7 @@ SECTIONS = {
     "status": build_status, "report": build_report, "switch": build_switch, "meatbox": build_meatbox,
     "samgyup": build_samgyup, "usda_fx": build_usda_fx, "import_stock": build_import_stock,
     "hanwoo": build_hanwoo, "macro": build_macro, "fas": build_fas, "margin": build_margin, "quota": build_quota,
-    "cost_signal": build_cost_signal,
+    "cost_signal": build_cost_signal, "customs": build_customs,
 }
 
 

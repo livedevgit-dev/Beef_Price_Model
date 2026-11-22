@@ -440,7 +440,32 @@ function renderSupply(panel) {
              controls: `<label>부위 <select id="impPart">${options(I.import_parts.map((p) => [p, p === "계" ? "전체(계)" : p]), "계")}</select></label>`, id: "impChart" })}
     ${card({ title: "월별 수입육 재고", sub: "KMTA 조사재고량 · 톤 · 협회 게시가 보통 2개월가량 늦음 · 2023-04는 원천 오류로 제외, 2023-04~05에 조사 기준 변경으로 수준 단절",
              controls: `<label>부위 <select id="stkPart">${options(I.stock_parts, "합계")}</select></label>`, id: "stkChart" })}
+    ${D.customs ? card({ title: "통관 단가 (관세청, CIF USD/kg)", sub: "관세청 국가별×HSK10 수입실적 · 월별 금액÷중량 · 미국/호주 · 2010~ · 전월분은 매월 15일경 게시",
+             controls: `<label>부위군 <select id="csGroup">${options(D.customs.groups, "frozen_boneless")}</select></label>
+                        <label>표시 <select id="csKind">${options([["uv", "단가(USD/kg)"], ["vol", "통관량(톤)"]], "uv")}</select></label>`, id: "csChart" }) : ""}
+    ${D.customs ? `<div class="card"><h2>호주산 저율관세 쿼터(ASG) 소진율 — ${esc(String(D.customs.safeguard.year))}년</h2>
+      <p class="sub">관세청 통관 누적(0201+0202) ÷ 연간 발동 물량 · 관세청 월별 통계는 공표 소진율보다 1~1.5개월 늦게 100%에 도달하므로 선행 판단은 FTA포털 주간 소진율 병행 · 도달 예상월은 연초부터의 월평균 속도로 외삽</p>
+      <div class="table-wrap free"><table><tr><th>월</th><th class="num">월 통관(천톤)</th><th class="num">누적(천톤)</th><th class="num">소진율</th><th>도달 예상</th></tr>
+      ${D.customs.safeguard.rows.map((r) => `<tr><td>${esc(r.month)}</td><td class="num">${fmt(r.month_kt, 1)}</td><td class="num">${fmt(r.cum_kt, 1)}</td>
+        <td class="num ${r.usage_pct >= 100 ? "up" : ""}">${r.usage_pct === null ? "–" : fmt(r.usage_pct, 1) + "%"}</td><td class="muted">${esc(r.projected)}</td></tr>`).join("")}
+      </table></div>
+      <details><summary>연도별 (2014~)</summary><div class="table-wrap"><table><tr><th>연도</th><th class="num">발동 물량(천톤)</th><th class="num">연간 통관(천톤)</th><th class="num">연말 소진율</th><th>100% 도달월(통관 기준)</th><th>물량 근거</th></tr>
+      ${D.customs.safeguard.by_year.map((r) => `<tr><td>${r.year}</td><td class="num">${fmt(r.quota_kt, 1)}</td><td class="num">${fmt(r.total_kt, 1)}</td>
+        <td class="num">${r.final_pct === null ? "–" : fmt(r.final_pct, 1) + "%"}</td><td>${esc(r.hit_month || "미도달")}</td><td class="muted">${esc(r.status)}</td></tr>`).join("")}
+      </table></div></details></div>` : ""}
   </div>`;
+  if (D.customs) {
+    const drawCs = () => {
+      const g = $("#csGroup", panel).value, kind = $("#csKind", panel).value;
+      const src = kind === "uv" ? D.customs.unit_value[g] : D.customs.volume_kt[g];
+      const traces = ["US", "AU"].filter((c) => src && src[c]).map((c) => line(src[c], c === "US" ? "미국" : "호주", c === "US" ? 0 : 1));
+      plot($("#csChart", panel), traces, timeLayout(kind === "uv" ? "USD/kg" : "톤"));
+      traceTable($("#csChart-table", panel), traces, 24);
+    };
+    $("#csGroup", panel).addEventListener("change", drawCs);
+    $("#csKind", panel).addEventListener("change", drawCs);
+    drawCs();
+  }
   const drawImp = () => {
     const s = I.imports[$("#impPart", panel).value] || {};
     const traces = ["미국", "호주"].filter((c) => s[c]).map((c) => line(s[c], c, c === "미국" ? 0 : 1));
