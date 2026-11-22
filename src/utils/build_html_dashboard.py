@@ -188,13 +188,23 @@ def build_hanwoo():
 def build_macro():
     r = pd.read_csv(MACRO_RAW_CSV, parse_dates=["date"])
     r["value"] = pd.to_numeric(r["value"], errors="coerce")
+    # 원천은 1990/2005년부터 있으나(장기 백필) 차트는 다른 탭과 같은 2019~ 창만 그린다
+    r = r[r["date"] >= "2019-01-01"]
+    try:
+        from utils.indicator_registry import labels as _reg_labels, groups as _reg_groups
+        lab, grp = _reg_labels(), _reg_groups()
+    except Exception:
+        lab, grp = {}, {}
     out = []
     for iid, g in r.groupby("indicator_id"):
         s = g.groupby("date")["value"].mean().resample("MS").mean()
         meta = g.iloc[-1]
-        out.append({"id": iid, "name": str(meta["indicator_name"]), "unit": str(meta["unit"]),
+        name = str(meta["indicator_name"])
+        if iid in lab and lab[iid]:
+            name = f"{lab[iid]} — {name}"
+        out.append({"id": iid, "name": name, "unit": str(meta["unit"]), "group": grp.get(iid, ""),
                     "country": str(meta["country"]), **_xy(s, 3, keep_gaps=True)})
-    out.sort(key=lambda m: (m["country"] != "KR", m["name"]))
+    out.sort(key=lambda m: (m["country"] != "KR", m["group"], m["name"]))
     return out
 
 

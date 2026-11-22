@@ -61,11 +61,11 @@ STATIONS = {108: "서울", 159: "부산", 143: "대구", 156: "광주", 133: "�
 
 # 응답 컬럼 인덱스(0-based) → indicator
 COL = {"TA_AVG": 10, "TA_MAX": 11, "TA_MIN": 13, "RN_DAY": 38}
-INDICATORS = [
-    {"indicator_id": "kr_temp_avg", "col": "TA_AVG", "name": "평균기온(전국대표)", "unit": "°C"},
-    {"indicator_id": "kr_temp_max", "col": "TA_MAX", "name": "최고기온(전국대표)", "unit": "°C"},
-    {"indicator_id": "kr_precip", "col": "RN_DAY", "name": "일강수량(전국대표)", "unit": "mm"},
-]
+# 지표 정의는 config/indicators.csv(레지스트리) 한 곳에서 관리 — 2026-11-23 이관.
+# 지표 추가/수정은 CSV 행 편집으로 하고, 이 파일은 수집 로직만 담당한다.
+from utils.indicator_registry import indicators_for  # noqa: E402
+
+INDICATORS = indicators_for("KMA")
 MISSING = {"-9", "-9.0", "-99", "-99.0", "", "-"}
 REFETCH_DAYS = 7            # 매 실행 재수집하는 최근 일수
 MAX_CONSECUTIVE_ERRORS = 5  # 연속 오류 시 조기 중단 (인증 만료·장애 시 서버 부하 방지)

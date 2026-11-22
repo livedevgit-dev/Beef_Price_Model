@@ -65,20 +65,11 @@ SOURCE = "MLA"
 
 DUPLICATE_KEYS = ["date", "country", "indicator_id"]
 
-MLA_INDICATORS = [
-    {
-        "indicator_id": "au_eyci",
-        "mla_id": 0,
-        "indicator_name": "MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",
-        "unit": "AU c/kg cwt",
-    },
-    {
-        "indicator_id": "au_heavy_steer",
-        "mla_id": 4,
-        "indicator_name": "MLA National Heavy Steer Indicator (수출용 비육 거세우)",
-        "unit": "AU c/kg lwt",
-    },
-]
+# 지표 정의는 config/indicators.csv(레지스트리) 한 곳에서 관리 — 2026-11-23 이관.
+# 지표 추가/수정은 CSV 행 편집으로 하고, 이 파일은 수집 로직만 담당한다.
+from utils.indicator_registry import indicators_for  # noqa: E402
+
+MLA_INDICATORS = indicators_for("MLA")
 
 
 # --------------------------------------------------------------------------

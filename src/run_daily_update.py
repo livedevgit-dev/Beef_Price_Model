@@ -205,6 +205,7 @@ MACRO_COLLECTORS = [
     ("ECOS 국내 거시지표 (기준금리·CPI·PPI·심리지수, 키 없으면 skip)", _collector("collect_macro_ecos.py")),
     ("KMA 기후 지표 (기온·강수, 키 없으면 skip)", _collector("collect_macro_kma.py")),
     ("MLA 호주 생우가 (EYCI·Heavy Steer, 호주산 원가 축, 키 불필요)", _collector("collect_mla_cattle.py")),
+    ("Yahoo 선물 (생우·비육우·옥수수 근월물, 선행 시장가, 키 불필요)", _collector("collect_yahoo_futures.py")),
     ("FAS 미국 소고기 수출 (중국·한국, 덤핑 조기경보, 키 없으면 skip)", _collector("collect_fas_export_sales.py")),
     ("NASS Cattle on Feed (미국 사육두수, 공급 선행, 키 없으면 skip)", _collector("collect_cattle_on_feed.py")),
 ]
@@ -220,6 +221,8 @@ ANALYSIS_PROCESSORS = [
     ("삼겹양지 통합 시계열 (미트박스 + 도매상)", _util("build_samgyup_series.py")),
     ("삼겹양지 피처·예측·변수영향력", _util("build_samgyup_model.py")),
     ("품목 전환(상대가치) 시그널", _util("build_switch_signal.py")),
+    # 레지스트리(config/indicators.csv) 전 지표 × 수입육 가격 지평 1·3·6개월 선행 상관 — 새 지표 유용성 자동 점검(정보성)
+    ("지표 유용성 스크리닝 (indicators.csv 전 지표)", SRC_DIR / "analysis" / "indicator_screen.py"),
 ]
 
 USDA_PROCESSORS = [

@@ -84,73 +84,11 @@ SOURCE = "FRED"
 DUPLICATE_KEYS = ["date", "country", "indicator_id"]
 
 # Tier-1 미국 지표 정의 (series ID 는 위 파일 정의서에서 공식 검증)
-FRED_INDICATORS = [
-    {
-        "indicator_id": "us_corn",
-        "series_id": "PMAIZMTUSDM",
-        "indicator_name": "Global Price of Corn (사료비 proxy)",
-        "unit": "USD/metric ton",
-        "freq": "M",
-    },
-    {
-        "indicator_id": "us_wti",
-        "series_id": "DCOILWTICO",
-        "indicator_name": "WTI Crude Oil (Cushing, OK)",
-        "unit": "USD/barrel",
-        "freq": "D",
-    },
-    {
-        "indicator_id": "us_food_ppi",
-        "series_id": "WPU02",
-        "indicator_name": "PPI: Processed Foods and Feeds",
-        "unit": "Index 1982=100",
-        "freq": "M",
-    },
-    {
-        "indicator_id": "us_soybean",
-        "series_id": "PSOYBUSDM",
-        "indicator_name": "Global Price of Soybeans (사료비)",
-        "unit": "USD/metric ton",
-        "freq": "M",
-    },
-    {
-        "indicator_id": "us_soybean_meal",
-        "series_id": "PSMEAUSDM",
-        "indicator_name": "Global Price of Soybean Meal (대두박, 사료 직접 투입재)",
-        "unit": "USD/metric ton",
-        "freq": "M",
-    },
-    # ── 원가·물류비 (2026-10 추가) ────────────────────────────────────────
-    {
-        "indicator_id": "au_beef_price",
-        "series_id": "PBEEFUSDM",
-        "indicator_name": "IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국)",
-        "unit": "US cents/lb",
-        "freq": "M",
-        "country": "AU",
-    },
-    {
-        "indicator_id": "us_fed_steer",
-        "series_id": "WPU013101",
-        "indicator_name": "PPI: Slaughter Steers and Heifers (미국 비육우 생체가)",
-        "unit": "Index 1982=100",
-        "freq": "M",
-    },
-    {
-        "indicator_id": "us_diesel",
-        "series_id": "GASDESW",
-        "indicator_name": "US Diesel Sales Price (EIA, 주별)",
-        "unit": "USD/gallon",
-        "freq": "W",
-    },
-    {
-        "indicator_id": "us_ppi_ocean_freight",
-        "series_id": "PCU483111483111",
-        "indicator_name": "PPI: Deep Sea Freight Transportation (해상 화물운임)",
-        "unit": "Index Jun 1988=100",
-        "freq": "M",
-    },
-]
+# 지표 정의는 config/indicators.csv(레지스트리) 한 곳에서 관리 — 2026-11-23 이관.
+# 지표 추가/수정은 CSV 행 편집으로 하고, 이 파일은 수집 로직만 담당한다.
+from utils.indicator_registry import indicators_for  # noqa: E402
+
+FRED_INDICATORS = indicators_for("FRED")
 
 
 # --------------------------------------------------------------------------

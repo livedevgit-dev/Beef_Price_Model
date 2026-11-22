@@ -1,0 +1,43 @@
+indicator_id,source,code1,code2,cycle,indicator_name,unit,freq,country,group,publish_lag_m,label_ko,active,note
+kr_base_rate,ECOS,722Y001,0101000,M,한국은행 기준금리,%,M,KR,kr_macro,1,기준금리,1,
+kr_cpi_food,ECOS,901Y009,A,M,소비자물가지수 — 식료품 및 비주류음료,Index 2020=100,M,KR,kr_price,1,CPI 식료품,1,
+kr_ppi_food,ECOS,404Y014,301AA,M,생산자물가지수 — 음식료품,Index 2020=100,M,KR,kr_price,1,PPI 음식료품,1,
+kr_cpi_total,ECOS,901Y009,0,M,소비자물가지수 — 총지수,Index 2020=100,M,KR,kr_price,1,CPI 총지수,1,
+kr_ccsi,ECOS,511Y002,FME,M,소비자심리지수(CCSI),p (장기평균=100),M,KR,kr_demand,0,소비자심리,1,당월 말 발표
+kr_esi,ECOS,513Y001,E1000,M,"경제심리지수(ESI, 원계열)",p,M,KR,kr_demand,0,경제심리,1,
+kr_retail_hypermarket,ECOS,901Y098,I74C/I74C,M,소매판매액지수 — 대형마트,Index 2020=100,M,KR,kr_demand,2,대형마트 판매,1,
+kr_retail_cvs,ECOS,901Y098,I74J/I74C,M,소매판매액지수 — 편의점,Index 2020=100,M,KR,kr_demand,2,편의점 판매,1,
+kr_retail_dept,ECOS,901Y098,I74B/I74C,M,소매판매액지수 — 백화점,Index 2020=100,M,KR,kr_demand,2,백화점 판매,1,
+kr_service_food,ECOS,901Y038,I51ADB/3,M,서비스업생산지수 — 음식점·주점업,Index 2020=100,M,KR,kr_demand,2,음식점 생산,1,
+kr_cpi_beef_imp,ECOS,901Y009,A01202,M,소비자물가지수 — 수입 쇠고기,Index 2020=100,M,KR,kr_price,1,CPI 수입 쇠고기,1,1995~ 백필
+kr_cpi_beef_dom,ECOS,901Y009,A01201,M,소비자물가지수 — 국산 쇠고기,Index 2020=100,M,KR,kr_price,1,CPI 국산 쇠고기,1,1990~ 백필
+kr_cpi_pork,ECOS,901Y009,A01203,M,소비자물가지수 — 돼지고기,Index 2020=100,M,KR,kr_price,1,CPI 돼지고기,1,대체수요
+kr_impi_beef_krw,ECOS,401Y017,10121201AA/W,M,수입물가지수 — 쇠고기(원화기준),Index 2020=100,M,KR,kr_cost,1,수입물가 쇠고기(원화),1,1990~ 백필
+kr_impi_beef_lc,ECOS,401Y017,10121201AA/C,M,수입물가지수 — 쇠고기(계약통화기준),Index 2020=100,M,KR,kr_cost,1,수입물가 쇠고기(계약통화),1,
+kr_fx_aud,ECOS,731Y001,0000017,D,원/호주달러 환율(매매기준율),원/AUD,D,KR,fx,0,환율 AUD/KRW,1,2005~ 백필
+kr_cpi_diesel,ECOS,901Y009,G02102,M,소비자물가지수 — 경유,Index 2020=100,M,KR,kr_logistics,1,경유 물가,1,
+kr_ppi_road_freight,ECOS,404Y014,501122AA,M,생산자물가지수 — 도로화물운송서비스,Index 2020=100,M,KR,kr_logistics,1,도로화물 PPI,1,
+kr_ppi_cold_storage,ECOS,404Y016,50143102AA,M,생산자물가지수 — 냉장·냉동창고운영,Index 2020=100,M,KR,kr_logistics,1,냉동창고 PPI,1,
+kr_ppi_ocean_freight,ECOS,404Y016,50121201AA,M,생산자물가지수 — 외항화물,Index 2020=100,M,KR,kr_logistics,1,외항화물 PPI,1,
+kr_cpi_dineout,ECOS,901Y009,K011,M,소비자물가지수 — 외식(음식 서비스),Index 2020=100,M,KR,kr_demand,1,외식 물가,1,
+kr_cpi_dineout_beef,ECOS,901Y009,K01110,M,소비자물가지수 — 쇠고기(외식),Index 2020=100,M,KR,kr_demand,1,쇠고기 외식 물가,1,
+kr_retail_food,ECOS,901Y100,G31/T3,M,소매판매액지수 — 음식료품(계절조정),Index 2020=100,M,KR,kr_demand,2,음식료품 소매판매,1,
+us_corn,FRED,PMAIZMTUSDM,,M,Global Price of Corn (사료비 proxy),USD/metric ton,M,US,us_feed,1,옥수수,1,IMF 월간
+us_wti,FRED,DCOILWTICO,,D,"WTI Crude Oil (Cushing, OK)",USD/barrel,D,US,energy,0,WTI 유가,1,
+us_food_ppi,FRED,WPU02,,M,PPI: Processed Foods and Feeds,Index 1982=100,M,US,us_price,1,미국 식품 PPI,1,
+us_soybean,FRED,PSOYBUSDM,,M,Global Price of Soybeans (사료비),USD/metric ton,M,US,us_feed,1,대두,1,
+us_soybean_meal,FRED,PSMEAUSDM,,M,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",USD/metric ton,M,US,us_feed,1,대두박,1,
+au_beef_price,FRED,PBEEFUSDM,,M,IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국),US cents/lb,M,AU,au_cost,1,IMF 쇠고기 국제가,1,
+us_fed_steer,FRED,WPU013101,,M,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),Index 1982=100,M,US,us_cost,1,미국 비육우 PPI,1,
+us_diesel,FRED,GASDESW,,W,"US Diesel Sales Price (EIA, 주별)",USD/gallon,W,US,energy,0,미국 경유,1,
+us_ppi_ocean_freight,FRED,PCU483111483111,,M,PPI: Deep Sea Freight Transportation (해상 화물운임),Index Jun 1988=100,M,US,us_logistics,1,미국 해상운임 PPI,1,
+us_beef_steak_price,FRED,APU0000FC3101,,M,"Average Price: All Uncooked Beef Steaks (미국 도시 평균)",USD/lb,M,US,us_price,1,미국 스테이크 소매가,1,2026-11-23 추가 — 미국 내 소매 수요 압력 (쇠고기 단독 CPI 는 FRED 미제공)
+us_ground_beef_price,FRED,APU0000703112,,M,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",USD/lb,M,US,us_price,1,미국 다짐육 소매가,1,2026-11-23 추가
+kr_temp_avg,KMA,TA_AVG,,D,평균기온(전국대표),°C,D,KR,weather,0,평균기온,1,
+kr_temp_max,KMA,TA_MAX,,D,최고기온(전국대표),°C,D,KR,weather,0,최고기온,1,
+kr_precip,KMA,RN_DAY,,D,일강수량(전국대표),mm,D,KR,weather,0,강수량,1,
+au_eyci,MLA,0,,D,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",AU c/kg cwt,D,AU,au_cost,0,호주 EYCI,1,
+au_heavy_steer,MLA,4,,D,MLA National Heavy Steer Indicator (수출용 비육 거세우),AU c/kg lwt,D,AU,au_cost,0,호주 Heavy Steer,1,
+us_live_cattle_fut,YAHOO,LE=F,,D,CME Live Cattle Futures (근월물 연속),US cents/lb,D,US,us_market,0,생우 선물,1,2026-11-23 추가 — 선행 시장가
+us_feeder_cattle_fut,YAHOO,GF=F,,D,CME Feeder Cattle Futures (근월물 연속),US cents/lb,D,US,us_market,0,비육우 선물,1,2026-11-23 추가
+us_corn_fut,YAHOO,ZC=F,,D,CBOT Corn Futures (근월물 연속),US cents/bushel,D,US,us_feed,0,옥수수 선물,1,2026-11-23 추가 — 사료비 선행
