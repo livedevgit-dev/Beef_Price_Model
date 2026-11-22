@@ -1,0 +1,1870 @@
+﻿indicator_id,group,label,target,horizon_m,lead_m,publish_lag_m,n,r,r_half1,r_half2,stable,useful
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,0,1,44,0.003,0.03,-0.08,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,1,1,44,0.182,0.14,0.31,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,2,1,43,-0.044,-0.13,0.14,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,3,1,42,0.077,0.12,-0.29,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,4,1,41,0.166,0.06,0.49,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,5,1,40,0.017,-0.15,0.38,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),1,6,1,40,0.212,0.24,-0.16,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,0,1,42,0.108,-0.03,0.3,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,1,1,42,0.168,0.06,0.29,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,2,1,41,0.213,0.07,0.32,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,3,1,40,0.201,0.01,0.38,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,4,1,40,0.291,0.11,0.46,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,5,1,39,0.314,0.08,0.51,False,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),3,6,1,38,0.409,0.3,0.39,True,False
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,0,1,34,0.543,0.56,0.64,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,1,1,34,0.561,0.52,0.7,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,2,1,33,0.536,0.42,0.75,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,3,1,32,0.473,0.39,0.74,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,4,1,31,0.498,0.4,0.76,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,5,1,30,0.448,0.42,0.66,True,True
+kr_base_rate,kr_macro,기준금리,삼겹양지(월),6,6,1,30,0.421,0.43,0.43,True,True
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,0,1,92,-0.036,-0.05,-0.03,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,1,1,91,0.162,0.22,-0.01,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,2,1,90,0.019,-0.0,0.12,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,3,1,89,-0.111,-0.13,-0.09,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,4,1,88,0.027,0.06,-0.13,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,5,1,87,0.137,0.15,0.12,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,1,6,1,86,-0.089,-0.07,-0.21,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,0,1,90,0.196,0.24,-0.06,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,1,1,89,0.135,0.18,-0.11,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,2,1,88,0.026,0.06,-0.21,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,3,1,87,0.006,0.04,-0.22,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,4,1,86,0.014,0.03,-0.1,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,5,1,85,0.025,0.05,-0.1,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,3,6,1,84,-0.03,-0.02,-0.09,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,0,1,87,0.275,0.34,-0.27,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,1,1,86,0.22,0.26,-0.2,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,2,1,85,0.131,0.18,-0.27,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,3,1,84,0.065,0.09,-0.19,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,4,1,83,0.021,0.06,-0.24,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,5,1,82,-0.021,0.0,-0.2,False,False
+kr_base_rate,kr_macro,기준금리,수입 쇠고기 CPI,6,6,1,81,-0.073,-0.05,-0.22,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,0,1,58,0.291,0.31,0.26,True,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,1,1,58,-0.009,0.05,-0.11,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,2,1,58,-0.23,-0.31,-0.06,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,3,1,58,-0.179,-0.13,-0.28,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,4,1,58,0.088,0.04,0.18,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,5,1,58,0.146,0.17,0.08,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),1,6,1,58,0.092,0.09,0.1,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,0,1,55,0.261,0.33,0.15,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,1,1,55,-0.013,0.0,-0.03,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,2,1,55,-0.262,-0.29,-0.21,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,3,1,55,-0.234,-0.18,-0.34,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,4,1,55,0.087,0.17,-0.03,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,5,1,55,0.312,0.37,0.21,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),3,6,1,55,0.314,0.27,0.39,True,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,0,1,45,0.118,0.35,-0.3,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,1,1,45,-0.028,0.26,-0.41,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,2,1,45,0.102,0.38,-0.28,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,3,1,45,0.194,0.42,-0.24,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,4,1,45,0.325,0.52,0.05,False,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,5,1,45,0.312,0.35,0.28,True,False
+kr_cpi_food,kr_price,CPI 식료품,삼겹양지(월),6,6,1,45,0.323,0.4,0.21,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,0,1,381,0.068,-0.02,0.19,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,1,1,381,-0.122,-0.1,-0.15,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,2,1,381,-0.245,-0.25,-0.24,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,3,1,381,0.002,0.02,-0.02,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,4,1,381,0.261,0.22,0.32,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,5,1,381,0.113,0.19,0.02,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,1,6,1,381,-0.088,-0.04,-0.15,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,0,1,379,0.07,0.03,0.15,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,1,1,379,-0.146,-0.16,-0.12,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,2,1,379,-0.203,-0.2,-0.2,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,3,1,379,0.007,0.04,-0.03,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,4,1,379,0.212,0.24,0.18,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,5,1,379,0.183,0.26,0.09,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,3,6,1,379,0.005,0.07,-0.08,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,0,1,376,0.136,0.17,0.13,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,1,1,376,0.057,0.12,0.01,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,2,1,376,-0.0,0.08,-0.09,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,3,1,376,0.073,0.18,-0.04,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,4,1,376,0.117,0.22,0.0,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,5,1,376,0.025,0.16,-0.14,False,False
+kr_cpi_food,kr_price,CPI 식료품,수입 쇠고기 CPI,6,6,1,376,-0.024,0.11,-0.19,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,0,1,44,-0.03,-0.0,-0.07,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,1,1,44,-0.069,0.02,-0.23,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,2,1,43,-0.11,-0.09,-0.16,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,3,1,42,-0.015,-0.06,0.09,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,4,1,41,-0.016,0.01,-0.16,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,5,1,40,0.052,0.05,-0.05,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),1,6,1,40,0.072,0.0,0.13,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,0,1,42,-0.299,-0.13,-0.55,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,1,1,42,-0.258,-0.19,-0.44,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,2,1,41,-0.139,-0.15,-0.26,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,3,1,40,-0.06,-0.14,-0.14,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,4,1,40,0.049,-0.01,-0.12,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,5,1,39,0.151,0.04,0.02,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),3,6,1,38,0.224,0.13,0.11,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,0,1,34,-0.221,0.22,-0.67,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,1,1,34,-0.161,0.2,-0.71,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,2,1,33,-0.073,0.18,-0.59,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,3,1,32,0.013,0.22,-0.56,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,4,1,31,0.097,0.22,-0.4,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,5,1,30,0.209,0.29,-0.22,False,False
+kr_ppi_food,kr_price,PPI 음식료품,삼겹양지(월),6,6,1,30,0.276,0.29,0.13,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,0,1,92,-0.074,-0.01,-0.25,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,1,1,91,-0.145,-0.22,-0.08,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,2,1,90,0.024,0.05,-0.05,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,3,1,89,-0.044,-0.09,0.03,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,4,1,88,-0.103,-0.19,0.04,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,5,1,87,-0.005,-0.06,0.08,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,1,6,1,86,-0.001,-0.03,0.07,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,0,1,90,-0.158,-0.12,-0.53,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,1,1,89,-0.149,-0.14,-0.41,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,2,1,88,-0.122,-0.14,-0.27,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,3,1,87,-0.116,-0.18,-0.11,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,4,1,86,-0.104,-0.22,0.16,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,5,1,85,-0.081,-0.21,0.23,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,3,6,1,84,-0.033,-0.14,0.27,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,0,1,87,-0.103,-0.07,-0.71,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,1,1,86,-0.136,-0.14,-0.53,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,2,1,85,-0.146,-0.18,-0.37,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,3,1,84,-0.149,-0.21,-0.15,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,4,1,83,-0.13,-0.2,-0.06,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,5,1,82,-0.103,-0.19,0.1,False,False
+kr_ppi_food,kr_price,PPI 음식료품,수입 쇠고기 CPI,6,6,1,81,-0.076,-0.15,0.09,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,0,1,58,0.228,0.26,0.15,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,1,1,58,0.007,0.07,-0.11,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,2,1,58,-0.15,-0.18,-0.11,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,3,1,58,-0.14,-0.08,-0.3,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,4,1,58,0.035,-0.03,0.12,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,5,1,58,-0.002,0.01,-0.06,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),1,6,1,58,0.094,0.05,0.17,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,0,1,55,0.383,0.39,0.37,True,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,1,1,55,0.122,0.21,-0.01,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,2,1,55,-0.156,-0.08,-0.3,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,3,1,55,-0.235,-0.14,-0.43,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,4,1,55,-0.033,0.01,-0.12,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,5,1,55,0.181,0.2,0.15,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),3,6,1,55,0.316,0.27,0.39,True,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,0,1,45,0.406,0.47,0.33,True,True
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,1,1,45,0.284,0.46,0.07,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,2,1,45,0.313,0.59,-0.02,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,3,1,45,0.271,0.54,-0.14,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,4,1,45,0.394,0.66,0.0,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,5,1,45,0.461,0.66,0.11,False,False
+kr_cpi_total,kr_price,CPI 총지수,삼겹양지(월),6,6,1,45,0.477,0.66,0.15,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,0,1,381,0.059,-0.04,0.25,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,1,1,381,-0.159,-0.14,-0.18,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,2,1,381,-0.185,-0.11,-0.29,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,3,1,381,-0.011,0.04,-0.07,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,4,1,381,0.169,0.16,0.21,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,5,1,381,0.11,0.17,0.04,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,1,6,1,381,-0.074,-0.06,-0.08,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,0,1,379,0.021,-0.05,0.21,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,1,1,379,-0.144,-0.13,-0.12,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,2,1,379,-0.174,-0.1,-0.27,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,3,1,379,-0.031,0.06,-0.16,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,4,1,379,0.115,0.18,0.05,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,5,1,379,0.11,0.16,0.08,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,3,6,1,379,-0.002,0.02,0.01,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,0,1,376,0.028,-0.01,0.19,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,1,1,376,-0.033,-0.02,0.03,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,2,1,376,-0.058,-0.01,-0.06,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,3,1,376,-0.025,0.04,-0.06,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,4,1,376,0.002,0.09,-0.06,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,5,1,376,-0.012,0.09,-0.11,False,False
+kr_cpi_total,kr_price,CPI 총지수,수입 쇠고기 CPI,6,6,1,376,-0.02,0.08,-0.1,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,0,0,44,-0.18,-0.05,-0.39,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,1,0,44,0.102,0.24,-0.03,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,2,0,44,-0.055,-0.0,-0.13,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,3,0,43,-0.073,-0.17,-0.01,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,4,0,42,0.258,0.18,0.49,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,5,0,41,0.163,0.19,0.21,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),1,6,0,40,-0.005,0.09,-0.1,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,0,0,43,-0.225,0.24,-0.65,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,1,0,42,-0.13,0.2,-0.43,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,2,0,42,0.076,0.36,-0.08,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,3,0,41,0.223,0.28,0.27,True,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,4,0,40,0.438,0.5,0.53,True,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,5,0,40,0.299,0.22,0.52,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),3,6,0,39,0.056,-0.13,0.42,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,0,0,35,-0.246,0.38,-0.67,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,1,0,34,-0.142,0.61,-0.57,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,2,0,34,-0.066,0.55,-0.33,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,3,0,33,0.103,0.35,0.06,False,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,4,0,32,0.29,0.51,0.27,True,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,5,0,31,0.248,0.29,0.43,True,False
+kr_ccsi,kr_demand,소비자심리,삼겹양지(월),6,6,0,30,0.159,0.05,0.48,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,0,0,93,0.004,0.08,-0.13,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,1,0,92,-0.032,0.1,-0.27,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,2,0,91,0.042,0.1,-0.05,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,3,0,90,-0.009,0.03,-0.08,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,4,0,89,0.095,0.0,0.29,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,5,0,88,0.057,-0.03,0.25,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,1,6,0,87,0.123,0.16,0.06,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,0,0,91,0.021,0.18,-0.32,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,1,0,90,0.012,0.2,-0.44,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,2,0,89,0.048,0.18,-0.25,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,3,0,88,0.088,0.1,0.1,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,4,0,87,0.161,0.07,0.44,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,5,0,86,0.251,0.12,0.64,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,3,6,0,85,0.394,0.32,0.66,True,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,0,0,88,-0.007,0.17,-0.45,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,1,0,87,0.059,0.22,-0.34,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,2,0,86,0.157,0.26,-0.07,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,3,0,85,0.281,0.34,0.23,False,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,4,0,84,0.393,0.4,0.51,True,False
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,5,0,83,0.453,0.43,0.67,True,True
+kr_ccsi,kr_demand,소비자심리,수입 쇠고기 CPI,6,6,0,82,0.516,0.48,0.76,True,True
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,0,0,44,-0.095,0.12,-0.37,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,1,0,44,0.188,0.25,0.19,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,2,0,44,-0.116,-0.16,-0.11,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,3,0,43,-0.212,-0.34,-0.15,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,4,0,42,0.185,0.06,0.43,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,5,0,41,0.077,0.03,0.21,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),1,6,0,40,-0.055,0.04,-0.13,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,0,0,43,0.023,0.37,-0.41,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,1,0,42,-0.089,0.15,-0.25,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,2,0,42,-0.071,0.01,-0.03,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,3,0,41,-0.101,-0.2,0.29,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,4,0,40,0.2,0.08,0.56,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,5,0,40,0.112,-0.17,0.64,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),3,6,0,39,0.055,-0.25,0.57,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,0,0,35,0.008,0.34,-0.12,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,1,0,34,0.033,0.52,-0.26,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,2,0,34,0.021,0.29,-0.0,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,3,0,33,0.041,0.09,0.35,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,4,0,32,0.22,0.21,0.55,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,5,0,31,0.166,0.05,0.64,False,False
+kr_esi,kr_demand,경제심리,삼겹양지(월),6,6,0,30,0.049,-0.14,0.58,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,0,0,93,0.076,0.16,-0.12,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,1,0,92,-0.016,0.04,-0.16,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,2,0,91,0.021,0.02,0.03,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,3,0,90,-0.054,-0.03,-0.12,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,4,0,89,0.035,-0.02,0.19,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,5,0,88,0.046,-0.03,0.26,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,1,6,0,87,0.115,0.2,-0.12,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,0,0,91,0.123,0.2,-0.19,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,1,0,90,0.048,0.14,-0.42,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,2,0,89,0.011,0.06,-0.25,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,3,0,88,-0.004,-0.02,0.07,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,4,0,87,0.056,0.0,0.33,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,5,0,86,0.172,0.13,0.47,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,3,6,0,85,0.323,0.31,0.5,True,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,0,0,88,0.098,0.16,-0.29,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,1,0,87,0.11,0.17,-0.24,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,2,0,86,0.144,0.19,-0.12,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,3,0,85,0.207,0.21,0.2,False,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,4,0,84,0.279,0.27,0.41,True,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,5,0,83,0.346,0.31,0.59,True,False
+kr_esi,kr_demand,경제심리,수입 쇠고기 CPI,6,6,0,82,0.423,0.39,0.67,True,True
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,0,2,43,0.17,0.33,-0.05,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,1,2,42,-0.022,-0.08,0.06,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,2,2,41,-0.041,-0.06,-0.02,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,3,2,40,-0.058,-0.2,0.08,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,4,2,39,0.141,0.31,0.01,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,5,2,39,0.015,0.18,-0.16,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),1,6,2,39,-0.263,-0.55,0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,0,2,41,0.113,0.25,-0.15,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,1,2,40,-0.092,-0.23,-0.07,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,2,2,39,0.203,0.25,0.09,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,3,2,39,-0.072,-0.18,-0.04,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,4,2,38,0.0,0.02,-0.12,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,5,2,37,-0.067,0.03,-0.26,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),3,6,2,37,-0.008,-0.11,-0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,0,2,33,0.141,0.5,-0.2,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,1,2,32,0.114,-0.01,0.04,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,2,2,31,-0.01,0.23,-0.26,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,3,2,30,0.143,0.18,0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,4,2,29,-0.002,0.04,-0.19,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,5,2,29,-0.052,0.2,-0.34,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,삼겹양지(월),6,6,2,29,0.021,0.18,-0.34,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,0,2,90,0.142,0.02,0.31,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,1,2,89,-0.168,-0.27,-0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,2,2,88,0.101,0.19,-0.04,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,3,2,87,-0.066,-0.05,-0.08,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,4,2,86,-0.072,-0.07,-0.08,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,5,2,85,0.137,0.08,0.23,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,1,6,2,84,-0.103,-0.1,-0.11,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,0,2,88,0.053,-0.09,0.26,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,1,2,87,-0.085,-0.21,0.07,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,2,2,86,-0.06,-0.1,-0.02,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,3,2,85,-0.118,-0.09,-0.18,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,4,2,84,-0.043,-0.05,-0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,5,2,83,-0.039,-0.16,0.15,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,3,6,2,82,-0.027,-0.05,0.01,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,0,2,85,-0.071,-0.2,0.17,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,1,2,84,-0.127,-0.27,0.17,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,2,2,83,-0.143,-0.21,-0.03,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,3,2,82,-0.117,-0.13,-0.11,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,4,2,81,-0.057,-0.05,-0.1,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,5,2,80,-0.005,-0.04,0.08,False,False
+kr_retail_hypermarket,kr_demand,대형마트 판매,수입 쇠고기 CPI,6,6,2,79,-0.021,-0.01,-0.07,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,0,2,43,-0.031,-0.21,0.53,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,1,2,42,0.204,0.22,0.17,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,2,2,41,0.15,0.13,0.24,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,3,2,40,0.002,0.0,0.03,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,4,2,39,-0.0,-0.04,0.02,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,5,2,39,0.039,0.12,-0.1,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),1,6,2,39,-0.333,-0.5,-0.18,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,0,2,41,-0.092,-0.38,0.59,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,1,2,40,0.247,0.15,0.55,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,2,2,39,0.361,0.32,0.42,True,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,3,2,39,0.236,0.23,0.26,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,4,2,38,-0.063,-0.16,0.06,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,5,2,37,-0.215,-0.3,-0.17,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),3,6,2,37,-0.371,-0.43,-0.29,True,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,0,2,33,0.096,-0.38,0.78,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,1,2,32,0.138,-0.35,0.78,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,2,2,31,0.176,-0.22,0.6,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,3,2,30,0.214,-0.17,0.63,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,4,2,29,0.164,-0.18,0.59,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,5,2,29,0.026,-0.33,0.4,False,False
+kr_retail_cvs,kr_demand,편의점 판매,삼겹양지(월),6,6,2,29,-0.133,-0.43,0.14,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,0,2,90,0.098,0.06,0.14,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,1,2,89,-0.109,-0.19,-0.0,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,2,2,88,0.084,0.23,-0.17,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,3,2,87,-0.01,-0.15,0.23,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,4,2,86,-0.065,-0.07,-0.08,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,5,2,85,0.205,0.17,0.25,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,1,6,2,84,-0.058,0.01,-0.19,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,0,2,88,0.205,0.19,0.18,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,1,2,87,0.086,0.04,0.12,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,2,2,86,0.021,-0.01,0.01,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,3,2,85,0.039,-0.07,0.17,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,4,2,84,0.083,0.02,0.18,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,5,2,83,0.121,0.09,0.15,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,3,6,2,82,0.005,0.11,-0.25,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,0,2,85,0.314,0.28,0.32,True,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,1,2,84,0.256,0.2,0.34,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,2,2,83,0.225,0.18,0.26,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,3,2,82,0.17,0.09,0.33,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,4,2,81,0.101,0.06,0.12,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,5,2,80,0.08,0.1,-0.04,False,False
+kr_retail_cvs,kr_demand,편의점 판매,수입 쇠고기 CPI,6,6,2,79,0.017,0.12,-0.38,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,0,2,43,-0.041,-0.13,0.25,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,1,2,42,0.0,-0.02,0.09,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,2,2,41,-0.246,-0.37,0.06,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,3,2,40,0.151,0.32,-0.1,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,4,2,39,-0.026,0.03,0.01,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,5,2,39,-0.221,-0.33,0.01,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),1,6,2,39,-0.013,-0.03,0.08,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,0,2,41,0.047,-0.13,0.65,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,1,2,40,-0.202,-0.4,0.5,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,2,2,39,-0.078,-0.13,0.34,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,3,2,39,-0.146,-0.14,0.09,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,4,2,38,-0.028,0.09,0.01,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,5,2,37,-0.158,-0.25,0.16,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),3,6,2,37,0.069,-0.09,0.48,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,0,2,33,0.249,0.13,0.73,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,1,2,32,0.171,0.12,0.7,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,2,2,31,0.168,0.03,0.72,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,3,2,30,0.124,0.02,0.61,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,4,2,29,0.085,0.03,0.47,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,5,2,29,-0.042,-0.14,0.35,False,False
+kr_retail_dept,kr_demand,백화점 판매,삼겹양지(월),6,6,2,29,0.065,-0.03,0.4,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,0,2,90,0.173,0.16,0.22,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,1,2,89,-0.081,-0.07,-0.11,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,2,2,88,0.104,0.07,0.22,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,3,2,87,0.032,0.03,0.04,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,4,2,86,-0.196,-0.16,-0.32,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,5,2,85,0.121,0.08,0.24,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,1,6,2,84,0.244,0.36,-0.09,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,0,2,88,0.186,0.24,0.0,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,1,2,87,0.099,0.11,0.05,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,2,2,86,0.065,0.03,0.18,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,3,2,85,-0.019,-0.03,0.01,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,4,2,84,0.02,0.05,-0.12,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,5,2,83,0.208,0.25,0.05,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,3,6,2,82,0.308,0.37,0.08,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,0,2,85,0.261,0.32,-0.01,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,1,2,84,0.254,0.31,-0.03,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,2,2,83,0.298,0.33,0.11,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,3,2,82,0.281,0.31,0.08,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,4,2,81,0.225,0.25,0.09,False,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,5,2,80,0.282,0.28,0.27,True,False
+kr_retail_dept,kr_demand,백화점 판매,수입 쇠고기 CPI,6,6,2,79,0.324,0.34,0.2,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,0,2,43,0.075,-0.05,0.27,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,1,2,42,-0.042,0.03,-0.17,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,2,2,41,-0.096,-0.09,-0.12,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,3,2,40,0.052,0.06,0.08,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,4,2,39,-0.142,-0.31,0.2,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,5,2,39,-0.256,-0.32,-0.1,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),1,6,2,39,0.05,0.06,-0.15,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,0,2,41,-0.092,-0.13,-0.01,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,1,2,40,-0.101,0.01,-0.08,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,2,2,39,-0.185,-0.4,0.08,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,3,2,39,-0.262,-0.49,0.24,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,4,2,38,-0.312,-0.56,0.22,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,5,2,37,-0.133,-0.3,0.02,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),3,6,2,37,0.209,0.23,-0.11,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,0,2,33,0.01,0.05,0.12,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,1,2,32,-0.068,0.03,0.06,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,2,2,31,-0.056,0.23,-0.12,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,3,2,30,0.151,0.13,0.28,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,4,2,29,0.078,0.01,0.23,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,5,2,29,0.15,0.09,0.3,False,False
+kr_service_food,kr_demand,음식점 생산,삼겹양지(월),6,6,2,29,0.217,0.18,0.26,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,0,2,90,0.047,0.07,-0.02,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,1,2,89,0.107,0.14,0.05,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,2,2,88,-0.035,-0.05,-0.0,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,3,2,87,-0.082,-0.12,0.13,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,4,2,86,-0.026,-0.03,-0.05,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,5,2,85,0.117,0.12,0.2,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,1,6,2,84,0.159,0.23,-0.25,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,0,2,88,0.168,0.2,0.02,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,1,2,87,0.101,0.11,0.11,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,2,2,86,-0.011,-0.03,0.12,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,3,2,85,-0.048,-0.08,0.24,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,4,2,84,0.035,0.03,0.06,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,5,2,83,0.196,0.23,0.04,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,3,6,2,82,0.166,0.21,-0.16,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,0,2,85,0.261,0.29,0.08,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,1,2,84,0.26,0.28,0.14,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,2,2,83,0.224,0.23,0.18,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,3,2,82,0.148,0.14,0.31,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,4,2,81,0.073,0.07,0.15,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,5,2,80,0.058,0.05,0.15,False,False
+kr_service_food,kr_demand,음식점 생산,수입 쇠고기 CPI,6,6,2,79,0.016,0.02,-0.13,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,0,1,58,-0.094,-0.11,-0.1,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,1,1,58,0.014,0.0,0.0,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,2,1,58,0.059,0.0,0.14,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,3,1,58,0.06,0.07,0.0,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,4,1,58,-0.298,-0.46,-0.14,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,5,1,58,-0.003,-0.22,0.28,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),1,6,1,58,0.018,0.05,-0.04,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,0,1,55,0.026,-0.0,0.04,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,1,1,55,0.085,0.18,-0.02,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,2,1,55,-0.129,-0.28,-0.06,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,3,1,55,-0.133,-0.4,0.09,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,4,1,55,-0.256,-0.65,0.14,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,5,1,55,-0.071,-0.48,0.3,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),3,6,1,55,-0.076,-0.33,0.16,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,0,1,45,0.06,-0.21,0.26,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,1,1,45,0.008,-0.23,0.17,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,2,1,45,-0.014,-0.28,0.18,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,3,1,45,-0.021,-0.43,0.25,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,4,1,45,-0.098,-0.54,0.17,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,5,1,45,-0.1,-0.59,0.14,False,False
+kr_cpi_beef_imp,kr_price,CPI 수입 쇠고기,삼겹양지(월),6,6,1,45,-0.096,-0.31,0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,0,1,58,0.06,0.07,0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,1,1,58,-0.093,-0.24,0.08,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,2,1,58,-0.2,-0.27,-0.13,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,3,1,58,0.004,-0.06,0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,4,1,58,0.246,0.3,0.24,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,5,1,58,-0.139,0.07,-0.36,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),1,6,1,58,-0.102,-0.1,-0.14,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,0,1,55,-0.18,-0.28,-0.09,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,1,1,55,-0.214,-0.4,-0.08,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,2,1,55,-0.142,-0.26,-0.08,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,3,1,55,-0.078,-0.15,-0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,4,1,55,0.075,0.15,0.02,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,5,1,55,-0.0,0.03,-0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),3,6,1,55,-0.075,-0.17,-0.02,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,0,1,45,-0.223,-0.37,-0.13,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,1,1,45,-0.247,-0.49,-0.11,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,2,1,45,-0.239,-0.46,-0.14,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,3,1,45,-0.127,-0.31,-0.01,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,4,1,45,-0.11,-0.46,0.09,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,5,1,45,-0.175,-0.57,-0.01,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,삼겹양지(월),6,6,1,45,-0.17,-0.5,-0.02,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,0,1,381,0.14,0.09,0.25,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,1,1,381,-0.013,0.03,-0.08,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,2,1,381,-0.021,-0.03,0.01,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,3,1,381,0.087,0.08,0.11,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,4,1,381,0.035,-0.01,0.13,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,5,1,381,-0.074,-0.01,-0.17,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,1,6,1,381,-0.106,-0.09,-0.12,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,0,1,379,0.248,0.23,0.34,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,1,1,379,0.135,0.13,0.18,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,2,1,379,0.061,0.05,0.12,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,3,1,379,0.047,0.04,0.09,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,4,1,379,0.0,-0.01,0.05,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,5,1,379,-0.065,-0.05,-0.08,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,3,6,1,379,-0.1,-0.08,-0.12,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,0,1,376,0.281,0.29,0.32,True,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,1,1,376,0.229,0.24,0.28,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,2,1,376,0.17,0.16,0.25,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,3,1,376,0.113,0.1,0.2,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,4,1,376,0.027,0.02,0.1,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,5,1,376,-0.047,-0.04,-0.03,False,False
+kr_cpi_beef_dom,kr_price,CPI 국산 쇠고기,수입 쇠고기 CPI,6,6,1,376,-0.049,-0.03,-0.05,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,0,1,58,0.028,0.01,0.04,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,1,1,58,-0.052,-0.09,-0.0,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,2,1,58,-0.065,-0.04,-0.13,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,3,1,58,0.081,0.14,-0.05,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,4,1,58,0.152,0.11,0.2,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,5,1,58,-0.114,-0.1,-0.17,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),1,6,1,58,-0.151,-0.13,-0.21,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,0,1,55,-0.126,-0.22,0.0,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,1,1,55,-0.062,-0.07,-0.06,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,2,1,55,0.004,0.06,-0.1,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,3,1,55,-0.077,-0.05,-0.13,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,4,1,55,-0.068,-0.05,-0.1,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,5,1,55,-0.066,-0.04,-0.12,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),3,6,1,55,0.11,0.21,-0.09,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,0,1,45,-0.148,-0.22,-0.09,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,1,1,45,-0.16,-0.18,-0.17,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,2,1,45,-0.074,0.03,-0.24,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,3,1,45,0.059,0.21,-0.13,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,4,1,45,0.107,0.24,-0.08,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,5,1,45,0.178,0.34,-0.06,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,삼겹양지(월),6,6,1,45,0.251,0.48,-0.07,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,0,1,381,0.126,0.06,0.19,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,1,1,381,0.079,0.11,0.06,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,2,1,381,-0.004,0.02,-0.02,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,3,1,381,-0.011,0.04,-0.05,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,4,1,381,0.115,0.15,0.1,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,5,1,381,0.091,0.13,0.07,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,1,6,1,381,0.095,0.08,0.11,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,0,1,379,0.138,0.07,0.21,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,1,1,379,0.159,0.14,0.19,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,2,1,379,0.101,0.13,0.08,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,3,1,379,0.097,0.17,0.03,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,4,1,379,0.161,0.22,0.11,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,5,1,379,0.216,0.26,0.19,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,3,6,1,379,0.232,0.24,0.24,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,0,1,376,0.084,0.04,0.14,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,1,1,376,0.149,0.13,0.19,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,2,1,376,0.233,0.25,0.24,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,3,1,376,0.329,0.38,0.31,True,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,4,1,376,0.355,0.42,0.31,True,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,5,1,376,0.265,0.33,0.21,False,False
+kr_cpi_pork,kr_price,CPI 돼지고기,수입 쇠고기 CPI,6,6,1,376,0.157,0.22,0.11,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,0,1,58,-0.041,-0.25,0.29,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,1,1,58,-0.247,-0.5,0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,2,1,58,-0.23,-0.31,-0.15,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,3,1,58,0.002,-0.0,-0.06,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,4,1,58,0.213,0.3,-0.03,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,5,1,58,-0.105,-0.13,-0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),1,6,1,58,-0.03,-0.1,0.06,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,0,1,55,-0.107,-0.52,0.4,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,1,1,55,-0.304,-0.71,0.28,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,2,1,55,-0.302,-0.53,0.03,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,3,1,55,-0.213,-0.26,-0.21,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,4,1,55,-0.09,-0.09,-0.15,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,5,1,55,-0.097,-0.2,0.02,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),3,6,1,55,-0.042,-0.18,0.16,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,0,1,45,-0.063,-0.5,0.43,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,1,1,45,-0.105,-0.6,0.47,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,2,1,45,-0.154,-0.52,0.3,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,3,1,45,-0.206,-0.48,0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,4,1,45,-0.232,-0.51,0.04,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,5,1,45,-0.205,-0.47,0.03,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),삼겹양지(월),6,6,1,45,-0.212,-0.42,-0.01,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,0,1,381,0.176,0.1,0.29,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,1,1,381,0.072,0.04,0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,2,1,381,0.119,0.15,0.08,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,3,1,381,0.094,0.12,0.06,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,4,1,381,-0.046,-0.12,0.06,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,5,1,381,-0.062,-0.02,-0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,1,6,1,381,-0.079,-0.07,-0.09,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,0,1,379,0.312,0.25,0.41,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,1,1,379,0.309,0.26,0.39,True,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,2,1,379,0.242,0.21,0.29,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,3,1,379,0.13,0.12,0.14,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,4,1,379,-0.008,-0.02,0.01,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,5,1,379,-0.101,-0.09,-0.12,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,3,6,1,379,-0.105,-0.12,-0.09,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,0,1,376,0.435,0.39,0.51,True,True
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,1,1,376,0.405,0.35,0.48,True,True
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,2,1,376,0.341,0.3,0.4,True,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,3,1,376,0.258,0.21,0.33,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,4,1,376,0.14,0.08,0.22,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,5,1,376,0.041,-0.0,0.1,False,False
+kr_impi_beef_krw,kr_cost,수입물가 쇠고기(원화),수입 쇠고기 CPI,6,6,1,376,-0.007,-0.03,0.03,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,0,1,58,0.089,0.02,0.21,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,1,1,58,-0.05,-0.24,0.19,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,2,1,58,-0.212,-0.39,0.01,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,3,1,58,-0.078,-0.24,0.23,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,4,1,58,-0.035,-0.1,0.04,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,5,1,58,-0.072,-0.19,0.15,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),1,6,1,58,-0.104,-0.16,-0.01,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,0,1,55,0.023,-0.15,0.24,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,1,1,55,-0.114,-0.42,0.35,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,2,1,55,-0.254,-0.6,0.37,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,3,1,55,-0.298,-0.65,0.32,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,4,1,55,-0.268,-0.57,0.29,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,5,1,55,-0.23,-0.5,0.29,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),3,6,1,55,-0.185,-0.39,0.19,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,0,1,45,-0.116,-0.39,0.24,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,1,1,45,-0.123,-0.52,0.42,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,2,1,45,-0.186,-0.6,0.44,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,3,1,45,-0.218,-0.63,0.52,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,4,1,45,-0.288,-0.72,0.49,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,5,1,45,-0.304,-0.8,0.47,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),삼겹양지(월),6,6,1,45,-0.351,-0.81,0.4,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,0,1,381,0.168,0.1,0.28,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,1,1,381,0.124,0.13,0.11,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,2,1,381,0.141,0.18,0.08,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,3,1,381,0.113,0.1,0.13,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,4,1,381,-0.017,-0.1,0.11,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,5,1,381,-0.023,-0.02,-0.02,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,1,6,1,381,-0.083,-0.06,-0.12,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,0,1,379,0.286,0.24,0.38,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,1,1,379,0.329,0.31,0.37,True,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,2,1,379,0.287,0.26,0.33,True,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,3,1,379,0.191,0.15,0.26,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,4,1,379,0.053,-0.01,0.16,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,5,1,379,-0.031,-0.05,0.0,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,3,6,1,379,-0.028,-0.01,-0.06,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,0,1,376,0.404,0.36,0.5,True,True
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,1,1,376,0.408,0.36,0.49,True,True
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,2,1,376,0.375,0.34,0.45,True,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,3,1,376,0.328,0.28,0.42,True,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,4,1,376,0.254,0.2,0.35,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,5,1,376,0.182,0.14,0.25,False,False
+kr_impi_beef_lc,kr_cost,수입물가 쇠고기(계약통화),수입 쇠고기 CPI,6,6,1,376,0.143,0.12,0.18,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,0,0,59,0.07,-0.12,0.27,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,1,0,59,0.127,-0.08,0.34,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,2,0,59,-0.087,-0.34,0.2,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,3,0,59,-0.009,-0.1,0.1,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,4,0,59,0.039,0.0,0.05,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,5,0,59,0.243,0.29,0.13,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),1,6,0,59,0.237,0.41,-0.11,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,0,0,56,0.251,-0.09,0.49,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,1,0,56,0.171,-0.32,0.5,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,2,0,56,0.041,-0.52,0.43,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,3,0,56,0.029,-0.27,0.34,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,4,0,56,0.138,0.1,0.19,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,5,0,56,0.212,0.33,0.08,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),3,6,0,56,0.169,0.3,0.01,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,0,0,46,0.305,0.18,0.46,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,1,0,46,0.376,0.16,0.63,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,2,0,46,0.335,0.0,0.7,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,3,0,46,0.305,0.05,0.67,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,4,0,46,0.265,0.16,0.51,False,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,5,0,46,0.219,0.27,0.32,True,False
+kr_fx_aud,fx,환율 AUD/KRW,삼겹양지(월),6,6,0,46,0.214,0.35,0.23,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,0,0,261,-0.019,-0.08,0.08,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,1,0,260,-0.101,-0.21,0.08,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,2,0,259,-0.041,-0.06,-0.02,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,3,0,258,0.096,0.16,-0.02,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,4,0,257,-0.053,-0.02,-0.11,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,5,0,256,-0.029,0.01,-0.1,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,1,6,0,255,0.049,0.1,-0.04,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,0,0,259,-0.04,-0.18,0.18,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,1,0,258,-0.063,-0.2,0.16,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,2,0,257,-0.044,-0.11,0.06,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,3,0,256,0.003,0.03,-0.06,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,4,0,255,0.001,0.09,-0.17,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,5,0,254,0.005,0.09,-0.16,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,3,6,0,253,0.045,0.1,-0.06,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,0,0,256,-0.065,-0.24,0.21,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,1,0,255,-0.077,-0.21,0.14,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,2,0,254,-0.051,-0.13,0.06,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,3,0,253,-0.003,-0.02,0.02,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,4,0,252,0.007,0.02,-0.03,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,5,0,251,0.033,0.07,-0.05,False,False
+kr_fx_aud,fx,환율 AUD/KRW,수입 쇠고기 CPI,6,6,0,250,0.075,0.13,-0.04,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,0,1,44,0.035,-0.16,0.34,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,1,1,44,-0.098,-0.27,0.12,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,2,1,43,0.1,0.22,-0.03,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,3,1,42,-0.207,-0.23,-0.12,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,4,1,41,-0.247,-0.17,-0.4,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,5,1,40,-0.148,-0.16,-0.12,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),1,6,1,40,0.145,0.04,0.42,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,0,1,42,-0.007,-0.23,0.51,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,1,1,42,-0.046,-0.18,0.38,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,2,1,41,-0.162,-0.15,0.06,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,3,1,40,-0.44,-0.47,-0.25,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,4,1,40,-0.483,-0.5,-0.32,True,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,5,1,39,-0.354,-0.49,-0.04,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),3,6,1,38,-0.017,-0.18,0.41,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,0,1,34,-0.05,-0.39,0.66,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,1,1,34,-0.151,-0.52,0.56,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,2,1,33,-0.215,-0.49,0.37,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,3,1,32,-0.333,-0.55,0.1,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,4,1,31,-0.32,-0.38,-0.06,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,5,1,30,-0.138,-0.08,-0.16,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,삼겹양지(월),6,6,1,30,0.033,0.07,0.01,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,0,1,92,0.198,0.11,0.29,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,1,1,91,0.027,-0.03,0.09,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,2,1,90,-0.005,0.11,-0.15,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,3,1,89,-0.053,0.01,-0.14,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,4,1,88,0.015,-0.03,0.07,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,5,1,87,0.007,-0.01,0.02,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,1,6,1,86,0.127,0.25,-0.06,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,0,1,90,0.306,0.29,0.32,True,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,1,1,89,0.169,0.14,0.2,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,2,1,88,0.052,0.07,-0.01,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,3,1,87,-0.013,0.02,-0.1,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,4,1,86,0.014,0.07,-0.11,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,5,1,85,0.016,0.1,-0.17,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,3,6,1,84,0.018,0.16,-0.3,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,0,1,87,0.388,0.37,0.4,True,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,1,1,86,0.31,0.32,0.26,True,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,2,1,85,0.24,0.27,0.14,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,3,1,84,0.154,0.22,-0.04,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,4,1,83,0.096,0.14,-0.07,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,5,1,82,0.066,0.13,-0.16,False,False
+kr_cpi_diesel,kr_logistics,경유 물가,수입 쇠고기 CPI,6,6,1,81,0.046,0.11,-0.23,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,0,1,44,-0.217,-0.41,0.1,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,1,1,44,0.032,-0.11,0.33,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,2,1,43,0.187,0.21,0.15,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,3,1,42,0.025,0.0,0.05,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,4,1,41,0.237,0.25,0.16,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,5,1,40,-0.052,-0.08,-0.03,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),1,6,1,40,0.139,0.22,-0.15,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,0,1,42,-0.08,-0.37,0.52,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,1,1,42,0.003,-0.25,0.54,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,2,1,41,0.225,0.11,0.45,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,3,1,40,0.224,0.19,0.28,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,4,1,40,0.275,0.32,0.14,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,5,1,39,0.167,0.2,0.02,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),3,6,1,38,0.175,0.24,-0.01,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,0,1,34,0.242,0.08,0.79,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,1,1,34,0.309,0.17,0.76,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,2,1,33,0.305,0.21,0.66,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,3,1,32,0.222,0.13,0.51,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,4,1,31,0.259,0.23,0.4,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,5,1,30,0.235,0.24,0.2,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,삼겹양지(월),6,6,1,30,0.256,0.31,0.05,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,0,1,92,-0.084,-0.13,-0.06,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,1,1,91,-0.11,-0.29,0.12,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,2,1,90,0.114,0.08,0.16,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,3,1,89,0.022,-0.01,0.06,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,4,1,88,-0.105,0.11,-0.42,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,5,1,87,-0.214,-0.19,-0.27,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,1,6,1,86,0.09,0.14,0.03,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,0,1,90,-0.097,-0.18,-0.05,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,1,1,89,-0.087,-0.19,-0.01,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,2,1,88,-0.022,-0.06,-0.06,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,3,1,87,-0.069,0.03,-0.29,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,4,1,86,-0.12,-0.01,-0.35,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,5,1,85,-0.177,-0.1,-0.34,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,3,6,1,84,-0.119,-0.1,-0.19,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,0,1,87,-0.016,-0.08,-0.06,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,1,1,86,-0.07,-0.13,-0.13,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,2,1,85,-0.1,-0.1,-0.3,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,3,1,84,-0.133,-0.12,-0.36,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,4,1,83,-0.176,-0.11,-0.47,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,5,1,82,-0.197,-0.17,-0.43,False,False
+kr_ppi_road_freight,kr_logistics,도로화물 PPI,수입 쇠고기 CPI,6,6,1,81,-0.171,-0.16,-0.33,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,0,1,44,0.019,0.04,-0.03,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,1,1,44,0.213,0.29,0.04,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,2,1,43,-0.171,-0.15,-0.22,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,3,1,42,0.086,0.21,-0.11,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,4,1,41,0.003,-0.02,0.07,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,5,1,40,-0.158,-0.19,-0.12,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),1,6,1,40,0.235,0.31,0.22,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,0,1,42,0.267,0.4,0.02,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,1,1,42,0.177,0.32,-0.09,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,2,1,41,0.028,0.22,-0.2,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,3,1,40,-0.059,0.11,-0.19,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,4,1,40,0.056,0.22,-0.06,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,5,1,39,0.098,0.17,0.21,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),3,6,1,38,0.155,0.01,0.5,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,0,1,34,0.344,0.65,-0.01,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,1,1,34,0.331,0.73,-0.14,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,2,1,33,0.295,0.75,-0.08,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,3,1,32,0.19,0.56,-0.19,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,4,1,31,0.163,0.47,-0.12,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,5,1,30,-0.003,0.12,-0.13,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,삼겹양지(월),6,6,1,30,0.081,0.25,-0.09,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,0,1,92,-0.038,-0.06,0.0,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,1,1,91,0.054,0.1,-0.0,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,2,1,90,-0.005,0.13,-0.21,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,3,1,89,-0.085,-0.05,-0.14,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,4,1,88,0.043,0.14,-0.1,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,5,1,87,0.157,0.23,0.05,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,1,6,1,86,0.017,0.14,-0.19,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,0,1,90,-0.028,-0.03,0.03,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,1,1,89,-0.028,0.08,-0.19,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,2,1,88,-0.019,0.16,-0.34,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,3,1,87,0.014,0.21,-0.32,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,4,1,86,0.094,0.3,-0.34,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,5,1,85,0.218,0.38,-0.1,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,3,6,1,84,0.27,0.39,0.04,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,0,1,87,-0.033,0.02,-0.07,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,1,1,86,-0.007,0.11,-0.29,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,2,1,85,0.045,0.22,-0.43,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,3,1,84,0.117,0.31,-0.47,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,4,1,83,0.228,0.43,-0.35,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,5,1,82,0.374,0.55,-0.11,False,False
+kr_ppi_cold_storage,kr_logistics,냉동창고 PPI,수입 쇠고기 CPI,6,6,1,81,0.497,0.62,0.19,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,0,1,44,-0.124,-0.33,0.25,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,1,1,44,-0.155,-0.22,-0.04,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,2,1,43,0.103,0.1,0.18,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,3,1,42,-0.061,-0.11,0.11,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,4,1,41,0.246,0.46,-0.13,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,5,1,40,-0.235,-0.26,-0.08,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),1,6,1,40,0.053,0.03,0.24,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,0,1,42,-0.102,-0.33,0.56,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,1,1,42,-0.148,-0.34,0.38,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,2,1,41,-0.115,-0.16,0.23,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,3,1,40,-0.134,-0.15,0.1,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,4,1,40,-0.133,-0.11,0.03,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,5,1,39,-0.256,-0.36,0.09,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),3,6,1,38,-0.168,-0.25,0.29,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,0,1,34,0.067,-0.24,0.73,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,1,1,34,0.034,-0.23,0.6,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,2,1,33,0.004,-0.2,0.52,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,3,1,32,-0.05,-0.22,0.4,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,4,1,31,-0.075,-0.17,0.29,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,5,1,30,-0.207,-0.3,0.13,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,삼겹양지(월),6,6,1,30,-0.227,-0.33,0.21,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,0,1,92,0.242,0.23,0.25,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,1,1,91,0.177,0.32,0.05,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,2,1,90,0.095,0.35,-0.14,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,3,1,89,0.028,0.19,-0.13,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,4,1,88,0.084,0.26,-0.09,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,5,1,87,0.102,0.27,-0.06,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,1,6,1,86,0.192,0.17,0.24,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,0,1,90,0.31,0.48,0.11,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,1,1,89,0.31,0.55,0.03,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,2,1,88,0.233,0.55,-0.15,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,3,1,87,0.159,0.51,-0.28,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,4,1,86,0.179,0.49,-0.21,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,5,1,85,0.207,0.45,-0.1,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,3,6,1,84,0.258,0.44,0.06,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,0,1,87,0.4,0.59,0.06,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,1,1,86,0.374,0.64,-0.1,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,2,1,85,0.356,0.66,-0.16,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,3,1,84,0.357,0.68,-0.22,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,4,1,83,0.373,0.69,-0.15,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,5,1,82,0.375,0.67,-0.1,False,False
+kr_ppi_ocean_freight,kr_logistics,외항화물 PPI,수입 쇠고기 CPI,6,6,1,81,0.364,0.62,-0.01,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,0,1,44,-0.059,0.01,-0.35,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,1,1,44,0.145,0.19,-0.03,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,2,1,43,-0.159,-0.12,-0.32,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,3,1,42,0.001,0.03,-0.13,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,4,1,41,-0.005,-0.03,-0.02,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,5,1,40,0.01,0.06,-0.26,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),1,6,1,40,0.108,0.08,0.08,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,0,1,42,0.15,0.25,-0.32,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,1,1,42,0.078,0.17,-0.32,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,2,1,41,-0.042,-0.02,-0.35,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,3,1,40,0.009,0.02,-0.3,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,4,1,40,0.1,0.11,-0.19,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,5,1,39,0.14,0.09,-0.16,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),3,6,1,38,0.194,0.12,0.0,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,0,1,34,0.339,0.63,-0.44,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,1,1,34,0.336,0.7,-0.57,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,2,1,33,0.268,0.63,-0.62,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,3,1,32,0.249,0.53,-0.7,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,4,1,31,0.224,0.47,-0.66,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,5,1,30,0.212,0.37,-0.63,False,False
+kr_cpi_dineout,kr_demand,외식 물가,삼겹양지(월),6,6,1,30,0.287,0.39,-0.35,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,0,1,92,-0.035,0.09,-0.29,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,1,1,91,-0.027,0.01,-0.11,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,2,1,90,-0.119,-0.1,-0.16,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,3,1,89,-0.055,0.02,-0.22,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,4,1,88,-0.099,-0.07,-0.17,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,5,1,87,-0.133,-0.18,-0.04,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,1,6,1,86,-0.018,-0.13,0.24,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,0,1,90,-0.01,0.11,-0.39,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,1,1,89,-0.081,0.01,-0.39,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,2,1,88,-0.122,-0.05,-0.38,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,3,1,87,-0.144,-0.08,-0.35,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,4,1,86,-0.154,-0.14,-0.2,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,5,1,85,-0.139,-0.19,0.04,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,3,6,1,84,-0.115,-0.24,0.29,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,0,1,87,0.07,0.2,-0.58,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,1,1,86,-0.033,0.07,-0.6,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,2,1,85,-0.104,-0.02,-0.56,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,3,1,84,-0.147,-0.1,-0.41,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,4,1,83,-0.172,-0.16,-0.23,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,5,1,82,-0.183,-0.23,0.04,False,False
+kr_cpi_dineout,kr_demand,외식 물가,수입 쇠고기 CPI,6,6,1,81,-0.187,-0.27,0.22,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,0,1,44,0.147,0.13,0.19,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,1,1,44,0.296,0.29,0.36,True,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,2,1,43,-0.075,-0.09,-0.1,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,3,1,42,0.028,-0.04,0.1,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,4,1,41,-0.041,-0.12,0.06,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,5,1,40,-0.031,0.06,-0.4,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),1,6,1,40,-0.017,-0.0,-0.19,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,0,1,42,0.315,0.15,0.49,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,1,1,42,0.43,0.27,0.59,True,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,2,1,41,0.092,-0.21,0.39,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,3,1,40,0.042,-0.15,0.13,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,4,1,40,-0.062,-0.18,-0.19,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,5,1,39,0.119,0.15,-0.38,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),3,6,1,38,0.189,0.27,-0.45,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,0,1,34,0.395,0.15,0.66,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,1,1,34,0.504,0.35,0.64,True,True
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,2,1,33,0.403,0.43,0.32,True,True
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,3,1,32,0.4,0.43,0.26,True,True
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,4,1,31,0.349,0.45,0.01,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,5,1,30,0.306,0.43,-0.22,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,삼겹양지(월),6,6,1,30,0.303,0.45,-0.47,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,0,1,92,0.159,0.23,0.0,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,1,1,91,0.082,0.16,-0.15,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,2,1,90,0.013,0.13,-0.29,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,3,1,89,0.088,0.12,-0.01,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,4,1,88,-0.035,-0.05,-0.08,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,5,1,87,-0.04,-0.01,-0.21,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,1,6,1,86,-0.094,-0.1,-0.12,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,0,1,90,0.383,0.53,-0.07,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,1,1,89,0.231,0.35,-0.26,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,2,1,88,0.123,0.21,-0.35,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,3,1,87,0.068,0.12,-0.33,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,4,1,86,-0.013,0.03,-0.35,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,5,1,85,-0.063,-0.03,-0.4,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,3,6,1,84,-0.126,-0.12,-0.36,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,0,1,87,0.517,0.65,-0.04,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,1,1,86,0.385,0.51,-0.28,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,2,1,85,0.262,0.37,-0.51,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,3,1,84,0.137,0.22,-0.57,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,4,1,83,0.014,0.06,-0.6,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,5,1,82,-0.075,-0.07,-0.53,False,False
+kr_cpi_dineout_beef,kr_demand,쇠고기 외식 물가,수입 쇠고기 CPI,6,6,1,81,-0.135,-0.16,-0.43,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,0,2,43,0.117,0.15,0.07,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,1,2,42,-0.058,-0.08,0.01,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,2,2,41,0.039,0.09,-0.08,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,3,2,40,0.066,0.03,0.21,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,4,2,39,0.089,0.11,0.1,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,5,2,39,0.029,0.17,-0.21,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),1,6,2,39,-0.265,-0.36,0.01,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,0,2,41,-0.072,-0.07,-0.08,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,1,2,40,-0.184,-0.27,0.04,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,2,2,39,0.041,-0.09,0.21,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,3,2,39,0.061,0.01,0.22,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,4,2,38,0.016,-0.04,0.12,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,5,2,37,0.055,0.16,-0.05,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),3,6,2,37,0.019,0.11,-0.03,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,0,2,33,0.071,0.05,0.14,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,1,2,32,-0.102,-0.38,0.29,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,2,2,31,-0.045,-0.23,0.21,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,3,2,30,0.13,-0.08,0.36,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,4,2,29,-0.015,-0.24,0.24,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,5,2,29,-0.164,-0.26,0.05,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,삼겹양지(월),6,6,2,29,-0.082,-0.17,0.05,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,0,2,90,0.141,0.12,0.19,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,1,2,89,-0.153,-0.29,0.09,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,2,2,88,0.049,0.13,-0.1,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,3,2,87,0.08,0.12,0.01,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,4,2,86,-0.014,-0.03,0.01,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,5,2,85,0.036,0.0,0.1,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,1,6,2,84,-0.083,-0.09,-0.07,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,0,2,88,0.102,0.02,0.26,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,1,2,87,0.008,-0.09,0.18,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,2,2,86,0.067,0.03,0.12,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,3,2,85,0.1,0.12,0.05,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,4,2,84,0.099,0.1,0.08,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,5,2,83,0.005,-0.08,0.2,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,3,6,2,82,-0.081,-0.1,-0.04,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,0,2,85,0.117,0.05,0.26,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,1,2,84,0.07,-0.04,0.38,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,2,2,83,0.078,0.0,0.27,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,3,2,82,0.123,0.07,0.27,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,4,2,81,0.099,0.09,0.09,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,5,2,80,0.031,0.01,0.08,False,False
+kr_retail_food,kr_demand,음식료품 소매판매,수입 쇠고기 CPI,6,6,2,79,-0.011,0.02,-0.17,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,0,1,43,-0.198,-0.26,-0.11,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,1,1,43,-0.304,-0.39,-0.13,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,2,1,42,-0.083,-0.05,-0.12,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,3,1,41,0.361,0.54,-0.12,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,4,1,40,0.116,0.21,-0.05,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,5,1,39,-0.403,-0.38,-0.4,True,False
+us_corn,us_feed,옥수수,삼겹양지(월),1,6,1,39,-0.262,-0.28,-0.16,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,0,1,41,-0.362,-0.54,0.12,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,1,1,41,-0.346,-0.4,-0.11,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,2,1,40,-0.184,-0.05,-0.24,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,3,1,39,-0.045,0.4,-0.41,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,4,1,39,-0.182,0.17,-0.43,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,5,1,38,-0.445,-0.41,-0.35,True,False
+us_corn,us_feed,옥수수,삼겹양지(월),3,6,1,37,-0.554,-0.62,-0.28,True,False
+us_corn,us_feed,옥수수,삼겹양지(월),6,0,1,33,-0.279,-0.61,0.24,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),6,1,1,33,-0.37,-0.69,0.15,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),6,2,1,32,-0.44,-0.49,-0.24,False,False
+us_corn,us_feed,옥수수,삼겹양지(월),6,3,1,31,-0.525,-0.52,-0.37,True,True
+us_corn,us_feed,옥수수,삼겹양지(월),6,4,1,30,-0.602,-0.64,-0.52,True,True
+us_corn,us_feed,옥수수,삼겹양지(월),6,5,1,29,-0.564,-0.34,-0.68,True,True
+us_corn,us_feed,옥수수,삼겹양지(월),6,6,1,29,-0.491,-0.28,-0.56,True,True
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,0,1,91,-0.002,-0.15,0.18,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,1,1,90,-0.058,-0.18,0.08,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,2,1,89,0.022,0.07,-0.09,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,3,1,88,0.015,0.02,-0.01,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,4,1,87,-0.101,0.04,-0.35,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,5,1,86,0.008,0.15,-0.25,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,1,6,1,85,0.039,0.13,-0.13,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,0,1,89,0.011,-0.17,0.28,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,1,1,88,-0.01,-0.16,0.22,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,2,1,87,-0.031,-0.06,-0.08,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,3,1,86,-0.042,0.06,-0.37,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,4,1,85,-0.047,0.16,-0.6,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,5,1,84,0.014,0.24,-0.6,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,3,6,1,83,0.141,0.32,-0.32,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,0,1,86,0.059,-0.06,0.21,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,1,1,85,0.0,-0.07,-0.03,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,2,1,84,-0.002,0.01,-0.23,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,3,1,83,0.026,0.09,-0.36,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,4,1,82,0.057,0.19,-0.49,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,5,1,81,0.111,0.27,-0.52,False,False
+us_corn,us_feed,옥수수,수입 쇠고기 CPI,6,6,1,80,0.209,0.38,-0.38,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,0,0,45,-0.013,-0.18,0.16,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,1,0,45,0.149,0.18,0.18,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,2,0,45,0.088,-0.07,0.3,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,3,0,44,-0.019,-0.26,0.29,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,4,0,43,0.015,0.11,-0.08,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,5,0,42,-0.275,-0.35,-0.21,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),1,6,0,41,-0.23,-0.17,-0.32,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,0,0,44,0.17,0.18,0.3,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,1,0,43,0.227,0.1,0.46,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,2,0,43,0.231,0.07,0.51,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,3,0,42,0.074,-0.14,0.35,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,4,0,41,-0.144,-0.21,0.01,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,5,0,41,-0.408,-0.54,-0.27,True,False
+us_wti,energy,WTI 유가,삼겹양지(월),3,6,0,40,-0.412,-0.48,-0.32,True,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,0,0,36,0.318,0.1,0.61,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,1,0,35,0.329,0.35,0.58,True,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,2,0,35,0.216,0.1,0.51,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,3,0,34,0.101,-0.12,0.4,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,4,0,33,-0.046,-0.18,0.18,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,5,0,32,-0.191,-0.23,-0.13,False,False
+us_wti,energy,WTI 유가,삼겹양지(월),6,6,0,31,-0.209,-0.14,-0.27,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,0,0,93,0.186,0.24,0.07,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,1,0,92,0.188,0.26,0.03,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,2,0,91,-0.023,-0.06,0.05,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,3,0,90,-0.031,-0.06,0.04,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,4,0,89,-0.016,0.07,-0.24,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,5,0,88,-0.003,-0.03,0.06,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,1,6,0,87,0.037,-0.02,0.17,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,0,0,91,0.235,0.35,-0.07,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,1,0,90,0.225,0.31,-0.03,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,2,0,89,0.111,0.15,-0.01,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,3,0,88,0.012,0.02,-0.04,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,4,0,87,-0.013,-0.01,-0.04,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,5,0,86,0.055,0.06,0.02,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,3,6,0,85,0.143,0.18,0.01,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,0,0,88,0.34,0.4,0.06,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,1,0,87,0.293,0.37,-0.03,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,2,0,86,0.233,0.31,-0.12,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,3,0,85,0.232,0.29,-0.08,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,4,0,84,0.245,0.31,-0.11,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,5,0,83,0.237,0.27,0.05,False,False
+us_wti,energy,WTI 유가,수입 쇠고기 CPI,6,6,0,82,0.258,0.28,0.11,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,0,1,44,0.232,0.23,0.25,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,1,1,44,-0.067,-0.06,-0.08,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,2,1,43,-0.173,-0.19,-0.14,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,3,1,42,-0.167,-0.18,-0.14,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,4,1,41,-0.278,-0.22,-0.38,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,5,1,40,-0.002,0.06,-0.09,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),1,6,1,40,-0.243,-0.42,0.17,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,0,1,42,0.065,0.1,0.07,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,1,1,42,-0.181,-0.26,-0.04,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,2,1,41,-0.354,-0.32,-0.31,True,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,3,1,40,-0.586,-0.72,-0.41,True,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,4,1,40,-0.541,-0.63,-0.41,True,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,5,1,39,-0.413,-0.57,-0.21,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),3,6,1,38,-0.203,-0.39,0.05,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,0,1,34,-0.317,-0.02,-0.5,False,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,1,1,34,-0.459,-0.38,-0.49,True,True
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,2,1,33,-0.605,-0.64,-0.55,True,True
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,3,1,32,-0.561,-0.62,-0.5,True,True
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,4,1,31,-0.468,-0.49,-0.43,True,True
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,5,1,30,-0.316,-0.32,-0.32,True,False
+us_food_ppi,us_price,미국 식품 PPI,삼겹양지(월),6,6,1,30,-0.112,-0.16,-0.03,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,0,1,92,0.211,0.25,0.11,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,1,1,91,0.013,0.1,-0.32,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,2,1,90,0.114,0.14,0.04,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,3,1,89,0.093,0.07,0.19,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,4,1,88,0.161,0.23,-0.04,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,5,1,87,0.037,-0.03,0.25,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,1,6,1,86,-0.052,-0.06,-0.05,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,0,1,90,0.167,0.26,-0.29,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,1,1,89,0.214,0.3,-0.18,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,2,1,88,0.302,0.35,0.06,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,3,1,87,0.282,0.29,0.23,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,4,1,86,0.25,0.26,0.22,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,5,1,85,0.182,0.16,0.26,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,3,6,1,84,0.176,0.18,0.15,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,0,1,87,0.311,0.39,-0.31,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,1,1,86,0.312,0.39,-0.26,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,2,1,85,0.35,0.41,-0.06,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,3,1,84,0.401,0.44,0.18,False,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,4,1,83,0.406,0.43,0.33,True,True
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,5,1,82,0.353,0.35,0.46,True,False
+us_food_ppi,us_price,미국 식품 PPI,수입 쇠고기 CPI,6,6,1,81,0.268,0.26,0.35,True,False
+us_soybean,us_feed,대두,삼겹양지(월),1,0,1,43,0.068,0.1,0.04,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,1,1,43,0.062,0.28,-0.22,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,2,1,42,-0.0,0.03,-0.01,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,3,1,41,0.124,0.11,0.25,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,4,1,40,-0.412,-0.6,0.12,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,5,1,39,0.013,0.18,-0.23,False,False
+us_soybean,us_feed,대두,삼겹양지(월),1,6,1,39,-0.045,-0.05,0.05,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,0,1,41,0.116,0.31,0.03,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,1,1,41,0.136,0.35,0.04,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,2,1,40,-0.087,-0.1,0.12,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,3,1,39,-0.103,-0.04,0.22,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,4,1,39,-0.336,-0.5,0.18,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,5,1,38,-0.214,-0.4,0.23,False,False
+us_soybean,us_feed,대두,삼겹양지(월),3,6,1,37,-0.18,-0.45,0.47,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,0,1,33,-0.08,-0.15,0.45,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,1,1,33,-0.095,-0.18,0.34,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,2,1,32,-0.152,0.05,0.25,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,3,1,31,-0.055,0.08,0.48,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,4,1,30,-0.131,0.12,0.11,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,5,1,29,-0.02,0.35,0.24,False,False
+us_soybean,us_feed,대두,삼겹양지(월),6,6,1,29,0.181,0.18,0.65,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,0,1,91,-0.149,-0.16,-0.16,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,1,1,90,0.015,-0.06,0.1,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,2,1,89,-0.045,-0.09,-0.02,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,3,1,88,-0.065,-0.04,-0.12,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,4,1,87,-0.086,-0.04,-0.17,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,5,1,86,0.07,0.13,-0.03,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,1,6,1,85,-0.054,-0.15,0.04,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,0,1,89,-0.093,-0.12,-0.15,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,1,1,88,-0.098,-0.14,-0.08,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,2,1,87,-0.12,-0.14,-0.18,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,3,1,86,-0.096,-0.08,-0.24,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,4,1,85,-0.086,-0.06,-0.27,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,5,1,84,0.02,0.05,-0.12,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,3,6,1,83,0.111,0.08,0.14,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,0,1,86,-0.061,-0.1,-0.17,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,1,1,85,-0.101,-0.15,-0.21,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,2,1,84,-0.095,-0.12,-0.23,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,3,1,83,-0.065,-0.09,-0.23,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,4,1,82,0.002,0.01,-0.2,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,5,1,81,0.108,0.09,0.02,False,False
+us_soybean,us_feed,대두,수입 쇠고기 CPI,6,6,1,80,0.229,0.22,0.27,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,0,1,43,0.04,0.01,0.09,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,1,1,43,-0.065,0.28,-0.47,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,2,1,42,-0.056,-0.15,0.05,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,3,1,41,-0.151,-0.29,0.03,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,4,1,40,-0.172,-0.34,0.05,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,5,1,39,0.3,0.5,0.11,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),1,6,1,39,0.26,0.4,0.14,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,0,1,41,0.239,0.31,0.24,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,1,1,41,-0.045,0.04,-0.14,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,2,1,40,-0.315,-0.38,-0.24,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,3,1,39,-0.28,-0.39,-0.09,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,4,1,39,0.041,-0.03,0.25,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,5,1,38,0.406,0.34,0.48,True,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),3,6,1,37,0.427,0.33,0.48,True,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,0,1,33,0.189,-0.12,0.56,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,1,1,33,0.033,-0.22,0.34,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,2,1,32,0.021,-0.14,0.3,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,3,1,31,0.045,-0.29,0.39,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,4,1,30,0.164,0.17,0.29,False,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,5,1,29,0.374,0.48,0.33,True,False
+us_soybean_meal,us_feed,대두박,삼겹양지(월),6,6,1,29,0.379,0.27,0.45,True,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,0,1,91,-0.133,-0.28,-0.02,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,1,1,90,-0.004,-0.17,0.12,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,2,1,89,-0.022,-0.02,-0.05,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,3,1,88,-0.011,-0.12,0.08,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,4,1,87,-0.174,-0.12,-0.25,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,5,1,86,-0.126,-0.08,-0.21,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,1,6,1,85,-0.011,-0.19,0.13,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,0,1,89,-0.101,-0.24,0.04,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,1,1,88,-0.096,-0.28,0.13,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,2,1,87,-0.127,-0.24,-0.03,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,3,1,86,-0.166,-0.22,-0.17,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,4,1,85,-0.244,-0.24,-0.36,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,5,1,84,-0.214,-0.24,-0.26,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,3,6,1,83,-0.098,-0.22,0.04,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,0,1,86,-0.086,-0.18,-0.06,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,1,1,85,-0.156,-0.28,-0.09,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,2,1,84,-0.213,-0.33,-0.13,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,3,1,83,-0.25,-0.35,-0.22,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,4,1,82,-0.255,-0.31,-0.32,True,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,5,1,81,-0.195,-0.24,-0.29,False,False
+us_soybean_meal,us_feed,대두박,수입 쇠고기 CPI,6,6,1,80,-0.075,-0.13,-0.05,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,0,1,43,-0.001,-0.08,0.24,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,1,1,43,-0.146,-0.22,0.08,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,2,1,42,-0.144,-0.2,0.1,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,3,1,41,0.037,0.02,0.17,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,4,1,40,0.034,0.08,0.11,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,5,1,39,0.086,0.14,0.19,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),1,6,1,39,-0.031,-0.03,0.26,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,0,1,41,-0.015,-0.06,0.07,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,1,1,41,-0.205,-0.28,0.15,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,2,1,40,-0.185,-0.24,0.18,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,3,1,39,-0.133,-0.1,0.16,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,4,1,39,-0.117,-0.05,0.28,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,5,1,38,-0.156,-0.21,0.59,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),3,6,1,37,-0.202,-0.27,0.67,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,0,1,33,-0.027,-0.01,-0.04,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,1,1,33,-0.042,-0.01,0.15,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,2,1,32,-0.084,-0.09,0.37,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,3,1,31,-0.173,-0.22,0.52,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,4,1,30,-0.267,-0.36,0.54,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,5,1,29,-0.302,-0.43,0.67,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,삼겹양지(월),6,6,1,29,-0.357,-0.52,0.71,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,0,1,91,0.16,0.21,0.08,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,1,1,90,0.123,0.18,0.03,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,2,1,89,0.087,0.09,0.08,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,3,1,88,0.064,0.14,-0.08,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,4,1,87,0.066,0.11,-0.01,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,5,1,86,0.074,0.09,0.04,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,1,6,1,85,0.093,0.15,-0.01,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,0,1,89,0.264,0.35,0.12,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,1,1,88,0.272,0.39,0.06,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,2,1,87,0.237,0.33,0.07,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,3,1,86,0.191,0.29,0.01,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,4,1,85,0.177,0.27,0.02,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,5,1,84,0.202,0.31,-0.01,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,3,6,1,83,0.271,0.36,0.09,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,0,1,86,0.437,0.58,0.11,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,1,1,85,0.451,0.61,0.11,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,2,1,84,0.452,0.63,0.03,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,3,1,83,0.47,0.65,0.11,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,4,1,82,0.478,0.64,0.14,False,False
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,5,1,81,0.467,0.58,0.28,True,True
+au_beef_price,au_cost,IMF 쇠고기 국제가,수입 쇠고기 CPI,6,6,1,80,0.42,0.5,0.29,True,True
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,0,1,44,0.008,-0.05,0.13,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,1,1,44,0.061,0.11,-0.02,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,2,1,43,0.118,0.24,-0.02,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,3,1,42,-0.079,-0.02,-0.13,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,4,1,41,-0.154,-0.2,-0.03,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,5,1,40,-0.174,-0.13,-0.21,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),1,6,1,40,0.124,0.3,-0.08,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,0,1,42,0.149,0.29,-0.03,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,1,1,42,0.189,0.38,-0.01,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,2,1,41,0.083,0.3,-0.07,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,3,1,40,-0.052,0.2,-0.19,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,4,1,40,-0.17,-0.0,-0.22,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,5,1,39,-0.185,-0.01,-0.16,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),3,6,1,38,0.005,0.06,0.11,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,0,1,34,0.129,0.69,-0.49,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,1,1,34,0.079,0.72,-0.56,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,2,1,33,-0.006,0.67,-0.5,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,3,1,32,-0.083,0.33,-0.45,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,4,1,31,-0.119,0.21,-0.31,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,5,1,30,-0.151,-0.05,-0.22,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,삼겹양지(월),6,6,1,30,0.022,0.08,0.03,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,0,1,92,-0.082,-0.01,-0.17,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,1,1,91,-0.128,0.07,-0.38,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,2,1,90,0.004,-0.02,0.05,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,3,1,89,-0.075,-0.04,-0.12,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,4,1,88,0.16,0.1,0.27,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,5,1,87,0.103,0.14,0.06,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,1,6,1,86,0.087,0.07,0.11,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,0,1,90,-0.114,0.06,-0.39,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,1,1,89,-0.15,0.03,-0.44,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,2,1,88,-0.061,0.02,-0.18,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,3,1,87,0.04,0.08,0.03,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,4,1,86,0.181,0.15,0.3,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,5,1,85,0.275,0.28,0.32,True,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,3,6,1,84,0.34,0.35,0.37,True,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,0,1,87,-0.053,0.21,-0.6,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,1,1,86,-0.063,0.17,-0.59,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,2,1,85,0.039,0.2,-0.28,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,3,1,84,0.139,0.23,-0.01,False,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,4,1,83,0.255,0.3,0.27,True,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,5,1,82,0.332,0.33,0.47,True,False
+us_fed_steer,us_cost,미국 비육우 PPI,수입 쇠고기 CPI,6,6,1,81,0.39,0.37,0.61,True,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,0,0,45,-0.061,-0.25,0.08,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,1,0,45,0.004,-0.16,0.18,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,2,0,45,-0.071,-0.4,0.2,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,3,0,44,0.056,0.1,0.11,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,4,0,43,-0.002,0.09,-0.07,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,5,0,42,-0.172,-0.17,-0.17,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),1,6,0,41,-0.288,-0.36,-0.23,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,0,0,44,-0.056,-0.35,0.33,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,1,0,43,-0.019,-0.28,0.39,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,2,0,43,-0.001,-0.18,0.38,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,3,0,42,-0.004,0.01,0.22,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,4,0,41,-0.206,-0.24,-0.04,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,5,0,41,-0.346,-0.4,-0.2,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),3,6,0,40,-0.411,-0.56,-0.17,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,0,0,36,0.022,-0.37,0.57,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,1,0,35,-0.004,-0.31,0.51,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,2,0,35,-0.031,-0.35,0.45,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,3,0,34,-0.093,-0.38,0.3,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,4,0,33,-0.183,-0.39,0.14,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,5,0,32,-0.23,-0.33,-0.13,False,False
+us_diesel,energy,미국 경유,삼겹양지(월),6,6,0,31,-0.139,0.01,-0.2,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,0,0,93,0.051,0.2,-0.08,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,1,0,92,0.195,0.15,0.23,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,2,0,91,0.118,0.12,0.11,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,3,0,90,0.012,0.03,-0.02,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,4,0,89,-0.056,0.03,-0.15,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,5,0,88,0.033,0.03,0.03,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,1,6,0,87,0.004,-0.09,0.09,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,0,0,91,0.198,0.37,-0.02,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,1,0,90,0.231,0.33,0.1,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,2,0,89,0.166,0.21,0.09,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,3,0,88,0.09,0.13,0.02,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,4,0,87,0.023,0.06,-0.05,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,5,0,86,0.049,0.07,0.01,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,3,6,0,85,0.077,0.12,-0.02,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,0,0,88,0.384,0.5,0.12,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,1,0,87,0.312,0.4,0.1,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,2,0,86,0.255,0.34,0.04,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,3,0,85,0.226,0.29,0.04,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,4,0,84,0.194,0.26,-0.01,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,5,0,83,0.163,0.19,0.04,False,False
+us_diesel,energy,미국 경유,수입 쇠고기 CPI,6,6,0,82,0.154,0.18,0.02,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,0,1,44,0.078,0.06,0.16,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,1,1,44,-0.129,-0.28,0.1,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,2,1,43,-0.01,0.08,-0.1,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,3,1,42,-0.182,-0.25,-0.09,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,4,1,41,0.101,0.14,0.09,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,5,1,40,-0.12,-0.14,-0.1,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),1,6,1,40,-0.092,-0.3,0.27,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,0,1,42,-0.07,-0.29,0.37,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,1,1,42,-0.156,-0.29,0.12,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,2,1,41,-0.204,-0.2,-0.05,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,3,1,40,-0.247,-0.27,-0.12,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,4,1,40,-0.197,-0.34,0.02,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,5,1,39,-0.085,-0.33,0.19,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),3,6,1,38,0.119,-0.12,0.43,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,0,1,34,0.193,0.01,0.6,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,1,1,34,0.104,-0.05,0.44,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,2,1,33,0.01,-0.22,0.35,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,3,1,32,-0.051,-0.25,0.26,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,4,1,31,-0.024,-0.09,0.16,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,5,1,30,-0.024,-0.04,0.03,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,삼겹양지(월),6,6,1,30,0.039,0.03,0.02,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,0,1,92,0.023,0.2,-0.13,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,1,1,91,0.125,-0.04,0.26,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,2,1,90,-0.11,-0.05,-0.18,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,3,1,89,-0.084,-0.11,-0.07,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,4,1,88,0.144,0.19,0.1,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,5,1,87,-0.063,0.03,-0.17,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,1,6,1,86,0.182,0.22,0.16,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,0,1,90,0.179,0.22,0.13,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,1,1,89,0.075,0.06,0.07,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,2,1,88,-0.053,-0.02,-0.14,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,3,1,87,-0.065,-0.02,-0.18,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,4,1,86,0.036,0.14,-0.15,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,5,1,85,0.091,0.19,-0.09,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,3,6,1,84,0.158,0.24,0.04,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,0,1,87,0.234,0.27,0.14,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,1,1,86,0.196,0.22,0.11,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,2,1,85,0.123,0.16,-0.04,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,3,1,84,0.103,0.16,-0.11,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,4,1,83,0.098,0.18,-0.19,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,5,1,82,0.056,0.14,-0.25,False,False
+us_ppi_ocean_freight,us_logistics,미국 해상운임 PPI,수입 쇠고기 CPI,6,6,1,81,0.062,0.11,-0.14,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,0,1,42,0.146,0.16,0.2,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,1,1,42,-0.104,-0.33,0.18,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,2,1,41,-0.016,-0.07,0.14,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,3,1,40,-0.073,-0.04,-0.07,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,4,1,39,0.042,0.1,0.05,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,5,1,38,-0.177,-0.39,0.21,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),1,6,1,38,0.004,-0.13,0.28,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,0,1,40,0.111,0.23,0.25,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,1,1,40,0.061,-0.04,0.44,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,2,1,39,0.036,0.11,0.38,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,3,1,38,-0.07,0.02,0.2,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,4,1,38,-0.111,-0.1,0.2,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,5,1,37,-0.04,-0.16,0.41,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),3,6,1,36,0.125,-0.06,0.62,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,0,1,32,-0.068,0.52,-0.27,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,1,1,32,0.01,0.27,0.15,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,2,1,31,0.009,0.26,0.32,True,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,3,1,30,0.001,0.06,0.46,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,4,1,29,0.088,-0.11,0.67,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,5,1,28,0.189,0.04,0.71,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,삼겹양지(월),6,6,1,29,0.289,0.22,0.76,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,0,1,90,0.104,0.23,-0.16,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,1,1,89,0.13,0.1,0.22,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,2,1,88,0.126,0.19,0.0,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,3,1,87,0.258,0.32,0.15,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,4,1,86,0.146,0.15,0.16,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,5,1,85,0.053,0.0,0.18,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,1,6,1,84,0.118,0.15,0.05,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,0,1,88,0.185,0.29,-0.12,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,1,1,87,0.314,0.39,0.13,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,2,1,86,0.377,0.42,0.28,True,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,3,1,85,0.405,0.41,0.45,True,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,4,1,84,0.355,0.33,0.47,True,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,5,1,83,0.326,0.3,0.44,True,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,3,6,1,82,0.315,0.34,0.22,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,0,1,85,0.242,0.33,-0.04,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,1,1,84,0.386,0.45,0.19,False,False
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,2,1,83,0.528,0.58,0.38,True,True
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,3,1,82,0.642,0.67,0.57,True,True
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,4,1,81,0.629,0.63,0.66,True,True
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,5,1,80,0.547,0.54,0.61,True,True
+us_beef_steak_price,us_price,미국 스테이크 소매가,수입 쇠고기 CPI,6,6,1,80,0.455,0.46,0.44,True,True
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,0,1,42,-0.224,-0.11,-0.4,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,1,1,42,0.004,-0.11,0.23,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,2,1,41,0.019,-0.02,0.18,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,3,1,40,0.101,0.04,0.34,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,4,1,39,-0.299,-0.41,-0.08,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,5,1,38,0.405,0.42,0.6,True,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),1,6,1,38,-0.146,-0.23,0.17,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,0,1,40,-0.219,0.03,-0.35,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,1,1,40,-0.198,-0.13,0.04,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,2,1,39,-0.164,-0.3,0.34,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,3,1,38,-0.017,-0.16,0.66,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,4,1,38,-0.021,-0.2,0.68,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,5,1,37,0.065,0.06,0.57,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),3,6,1,36,-0.137,-0.36,0.41,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,0,1,32,-0.282,0.03,-0.37,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,1,1,32,-0.242,-0.14,-0.06,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,2,1,31,-0.254,-0.34,0.26,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,3,1,30,-0.107,-0.35,0.58,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,4,1,29,-0.057,-0.59,0.77,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,5,1,28,-0.0,-0.4,0.85,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,삼겹양지(월),6,6,1,29,0.025,-0.4,0.79,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,0,1,90,0.1,0.18,-0.05,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,1,1,89,0.005,0.13,-0.23,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,2,1,88,0.225,0.23,0.24,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,3,1,87,0.232,0.25,0.22,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,4,1,86,-0.037,-0.11,0.1,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,5,1,85,-0.029,-0.13,0.18,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,1,6,1,84,0.047,0.02,0.12,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,0,1,88,0.245,0.33,0.05,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,1,1,87,0.315,0.41,0.09,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,2,1,86,0.355,0.39,0.27,True,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,3,1,85,0.295,0.25,0.43,True,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,4,1,84,0.158,0.04,0.5,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,5,1,83,0.11,-0.01,0.45,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,3,6,1,82,0.112,0.04,0.31,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,0,1,85,0.333,0.4,0.2,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,1,1,84,0.389,0.43,0.32,True,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,2,1,83,0.466,0.47,0.55,True,True
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,3,1,82,0.457,0.42,0.64,True,True
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,4,1,81,0.342,0.28,0.6,True,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,5,1,80,0.208,0.13,0.51,False,False
+us_ground_beef_price,us_price,미국 다짐육 소매가,수입 쇠고기 CPI,6,6,1,80,0.082,0.02,0.33,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,0,0,45,0.05,0.11,-0.06,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,1,0,45,-0.015,0.04,-0.12,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,2,0,45,-0.139,-0.24,0.04,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,3,0,44,-0.17,-0.26,0.01,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,4,0,43,-0.144,-0.21,-0.03,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,5,0,42,-0.129,-0.28,0.13,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),1,6,0,41,0.016,-0.14,0.24,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,0,0,44,0.058,0.17,-0.13,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,1,0,43,-0.078,-0.03,-0.13,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,2,0,43,-0.241,-0.34,-0.08,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,3,0,42,-0.257,-0.41,-0.01,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,4,0,41,-0.229,-0.47,0.08,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,5,0,41,-0.14,-0.42,0.16,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),3,6,0,40,-0.056,-0.4,0.24,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,0,0,36,-0.034,0.23,-0.3,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,1,0,35,-0.145,0.12,-0.35,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,2,0,35,-0.235,-0.18,-0.26,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,3,0,34,-0.249,-0.12,-0.35,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,4,0,33,-0.231,-0.26,-0.17,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,5,0,32,-0.117,-0.09,-0.14,False,False
+kr_temp_avg,weather,평균기온,삼겹양지(월),6,6,0,31,0.007,-0.11,0.19,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,0,0,93,-0.299,-0.11,-0.5,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,1,0,92,-0.162,-0.05,-0.28,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,2,0,91,-0.093,-0.02,-0.17,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,3,0,90,0.129,0.17,0.09,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,4,0,89,0.123,0.14,0.1,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,5,0,88,0.18,0.03,0.35,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,1,6,0,87,0.177,-0.02,0.39,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,0,0,91,-0.336,-0.13,-0.64,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,1,0,90,-0.25,-0.03,-0.58,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,2,0,89,-0.097,0.05,-0.3,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,3,0,88,0.09,0.13,0.04,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,4,0,87,0.206,0.13,0.31,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,5,0,86,0.279,0.12,0.53,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,3,6,0,85,0.281,0.04,0.66,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,0,0,88,-0.287,-0.07,-0.73,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,1,0,87,-0.212,-0.03,-0.58,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,2,0,86,-0.08,0.06,-0.37,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,3,0,85,0.073,0.1,0.03,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,4,0,84,0.194,0.12,0.38,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,5,0,83,0.271,0.07,0.71,False,False
+kr_temp_avg,weather,평균기온,수입 쇠고기 CPI,6,6,0,82,0.284,0.03,0.85,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,0,0,45,0.129,0.19,0.01,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,1,0,45,-0.058,-0.0,-0.17,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,2,0,45,-0.309,-0.44,-0.09,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,3,0,44,-0.149,-0.22,-0.02,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,4,0,43,0.017,0.03,0.02,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,5,0,42,-0.069,-0.2,0.16,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),1,6,0,41,0.048,-0.1,0.23,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,0,0,44,0.125,0.24,-0.07,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,1,0,43,-0.105,-0.06,-0.16,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,2,0,43,-0.328,-0.45,-0.15,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,3,0,42,-0.271,-0.41,-0.06,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,4,0,41,-0.14,-0.32,0.1,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,5,0,41,-0.031,-0.26,0.21,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),3,6,0,40,-0.052,-0.42,0.26,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,0,0,36,-0.022,0.25,-0.28,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,1,0,35,-0.135,0.16,-0.36,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,2,0,35,-0.221,-0.14,-0.27,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,3,0,34,-0.229,-0.09,-0.33,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,4,0,33,-0.236,-0.22,-0.21,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,5,0,32,-0.115,-0.06,-0.19,False,False
+kr_temp_max,weather,최고기온,삼겹양지(월),6,6,0,31,0.004,-0.11,0.17,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,0,0,93,-0.311,-0.14,-0.48,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,1,0,92,-0.148,-0.15,-0.15,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,2,0,91,-0.066,-0.01,-0.12,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,3,0,90,0.188,0.23,0.15,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,4,0,89,0.063,0.1,0.03,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,5,0,88,0.07,-0.04,0.18,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,1,6,0,87,0.067,-0.09,0.21,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,0,0,91,-0.351,-0.16,-0.62,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,1,0,90,-0.243,-0.05,-0.53,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,2,0,89,-0.074,0.04,-0.23,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,3,0,88,0.112,0.15,0.07,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,4,0,87,0.162,0.12,0.22,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,5,0,86,0.192,0.07,0.39,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,3,6,0,85,0.221,0.01,0.54,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,0,0,88,-0.285,-0.06,-0.73,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,1,0,87,-0.229,-0.03,-0.61,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,2,0,86,-0.101,0.06,-0.42,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,3,0,85,0.065,0.11,-0.01,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,4,0,84,0.183,0.13,0.33,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,5,0,83,0.256,0.07,0.67,False,False
+kr_temp_max,weather,최고기온,수입 쇠고기 CPI,6,6,0,82,0.283,0.04,0.83,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,0,0,45,-0.165,-0.36,0.04,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,1,0,45,-0.006,0.08,-0.11,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,2,0,45,0.033,0.1,-0.06,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,3,0,44,-0.142,-0.21,-0.04,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,4,0,43,0.054,0.05,0.07,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,5,0,42,-0.386,-0.65,0.11,False,False
+kr_precip,weather,강수량,삼겹양지(월),1,6,0,41,0.336,0.52,-0.05,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,0,0,44,-0.105,-0.16,-0.11,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,1,0,43,-0.081,-0.03,-0.12,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,2,0,43,-0.141,-0.2,-0.11,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,3,0,42,-0.276,-0.47,-0.08,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,4,0,41,-0.087,-0.26,0.07,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,5,0,41,-0.135,-0.41,0.13,False,False
+kr_precip,weather,강수량,삼겹양지(월),3,6,0,40,0.125,0.02,0.19,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,0,0,36,-0.161,-0.02,-0.28,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,1,0,35,-0.186,0.14,-0.4,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,2,0,35,-0.207,-0.08,-0.29,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,3,0,34,-0.212,-0.07,-0.33,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,4,0,33,-0.115,-0.03,-0.17,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,5,0,32,-0.068,-0.01,-0.15,False,False
+kr_precip,weather,강수량,삼겹양지(월),6,6,0,31,0.128,0.21,-0.01,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,0,0,93,-0.167,-0.12,-0.23,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,1,0,92,-0.198,-0.18,-0.23,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,2,0,91,-0.009,0.04,-0.07,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,3,0,90,0.02,0.03,0.0,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,4,0,89,0.048,0.03,0.07,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,5,0,88,-0.078,-0.14,0.01,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,1,6,0,87,0.178,0.08,0.32,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,0,0,91,-0.29,-0.15,-0.53,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,1,0,90,-0.295,-0.14,-0.57,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,2,0,89,-0.159,-0.08,-0.3,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,3,0,88,-0.042,-0.02,-0.08,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,4,0,87,0.064,-0.01,0.17,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,5,0,86,0.104,-0.05,0.38,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,3,6,0,85,0.249,0.01,0.67,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,0,0,88,-0.372,-0.24,-0.69,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,1,0,87,-0.353,-0.26,-0.59,True,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,2,0,86,-0.222,-0.16,-0.4,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,3,0,85,-0.054,-0.07,-0.04,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,4,0,84,0.052,-0.04,0.28,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,5,0,83,0.125,-0.07,0.6,False,False
+kr_precip,weather,강수량,수입 쇠고기 CPI,6,6,0,82,0.229,-0.01,0.84,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,0,0,45,-0.2,-0.31,0.06,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,1,0,45,-0.061,-0.2,0.34,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,2,0,45,0.019,0.05,-0.04,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,3,0,44,0.06,0.15,-0.2,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,4,0,43,0.158,0.26,-0.09,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,5,0,42,0.044,0.04,0.14,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),1,6,0,41,0.08,0.09,0.06,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,0,0,44,-0.335,-0.41,0.05,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,1,0,43,-0.3,-0.39,0.17,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,2,0,43,-0.157,-0.17,0.08,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,3,0,42,-0.026,0.06,-0.09,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,4,0,41,0.088,0.24,-0.12,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,5,0,41,-0.001,0.06,0.08,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),3,6,0,40,-0.134,-0.2,0.3,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,0,0,36,-0.418,-0.39,-0.39,True,True
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,1,0,35,-0.32,-0.33,-0.18,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,2,0,35,-0.196,-0.21,0.0,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,3,0,34,-0.137,-0.07,-0.16,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,4,0,33,-0.115,-0.11,0.1,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,5,0,32,-0.161,-0.27,0.33,False,False
+au_eyci,au_cost,호주 EYCI,삼겹양지(월),6,6,0,31,-0.199,-0.42,0.58,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,0,0,93,-0.057,-0.1,-0.04,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,1,0,92,0.027,0.07,-0.01,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,2,0,91,0.116,0.1,0.12,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,3,0,90,0.024,0.09,-0.03,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,4,0,89,0.082,0.22,-0.02,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,5,0,88,0.079,0.1,0.06,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,1,6,0,87,0.03,0.13,-0.06,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,0,0,91,0.075,-0.0,0.11,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,1,0,90,0.064,0.1,0.02,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,2,0,89,0.121,0.19,0.06,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,3,0,88,0.143,0.29,0.04,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,4,0,87,0.136,0.34,-0.03,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,5,0,86,0.131,0.29,0.02,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,3,6,0,85,0.142,0.24,0.08,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,0,0,88,0.192,0.23,0.16,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,1,0,87,0.202,0.26,0.15,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,2,0,86,0.222,0.33,0.14,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,3,0,85,0.219,0.36,0.11,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,4,0,84,0.192,0.38,0.03,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,5,0,83,0.17,0.33,0.04,False,False
+au_eyci,au_cost,호주 EYCI,수입 쇠고기 CPI,6,6,0,82,0.139,0.3,0.01,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,0,0,45,-0.131,-0.21,0.11,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,1,0,45,0.121,0.05,0.3,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,2,0,45,-0.089,-0.14,0.04,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,3,0,44,-0.087,-0.03,-0.22,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,4,0,43,0.212,0.37,-0.15,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,5,0,42,0.131,0.09,0.31,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),1,6,0,41,0.011,-0.01,0.11,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,0,0,44,-0.266,-0.33,0.06,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,1,0,43,-0.267,-0.36,0.17,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,2,0,43,-0.209,-0.26,0.07,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,3,0,42,-0.091,-0.05,-0.08,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,4,0,41,0.043,0.15,-0.03,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,5,0,41,0.014,0.02,0.25,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),3,6,0,40,-0.105,-0.28,0.57,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,0,0,36,-0.344,-0.32,-0.32,True,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,1,0,35,-0.3,-0.31,-0.2,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,2,0,35,-0.208,-0.32,0.1,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,3,0,34,-0.169,-0.23,0.09,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,4,0,33,-0.166,-0.29,0.31,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,5,0,32,-0.24,-0.46,0.55,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,삼겹양지(월),6,6,0,31,-0.269,-0.54,0.7,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,0,0,93,0.079,0.05,0.1,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,1,0,92,0.023,0.1,-0.05,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,2,0,91,0.136,0.03,0.22,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,3,0,90,0.047,0.2,-0.09,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,4,0,89,0.08,0.2,-0.03,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,5,0,88,0.081,0.04,0.11,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,1,6,0,87,-0.036,-0.05,-0.04,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,0,0,91,0.134,0.06,0.19,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,1,0,90,0.144,0.26,0.06,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,2,0,89,0.194,0.34,0.11,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,3,0,88,0.191,0.43,0.04,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,4,0,87,0.161,0.37,0.02,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,5,0,86,0.111,0.19,0.06,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,3,6,0,85,0.076,0.09,0.07,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,0,0,88,0.23,0.31,0.22,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,1,0,87,0.245,0.37,0.2,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,2,0,86,0.263,0.44,0.19,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,3,0,85,0.252,0.49,0.12,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,4,0,84,0.225,0.5,0.06,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,5,0,83,0.176,0.37,0.07,False,False
+au_heavy_steer,au_cost,호주 Heavy Steer,수입 쇠고기 CPI,6,6,0,82,0.111,0.26,0.02,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,0,0,59,0.201,0.28,0.03,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,1,0,59,0.041,0.06,0.0,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,2,0,59,0.113,0.13,0.08,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,3,0,59,0.023,0.05,-0.01,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,4,0,59,0.043,0.13,-0.11,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,5,0,59,-0.11,-0.09,-0.19,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),1,6,0,59,-0.146,-0.17,-0.15,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,0,0,56,0.256,0.44,-0.06,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,1,0,56,0.282,0.36,0.15,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,2,0,56,0.264,0.35,0.12,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,3,0,56,0.088,0.17,-0.08,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,4,0,56,0.011,0.17,-0.31,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,5,0,56,-0.145,-0.04,-0.38,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),3,6,0,56,-0.092,0.01,-0.3,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,0,0,46,0.191,0.54,-0.39,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,1,0,46,0.259,0.53,-0.23,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,2,0,46,0.251,0.53,-0.25,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,3,0,46,0.209,0.47,-0.29,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,4,0,46,0.124,0.35,-0.33,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,5,0,46,0.014,0.1,-0.16,False,False
+us_live_cattle_fut,us_market,생우 선물,삼겹양지(월),6,6,0,46,-0.056,-0.03,-0.09,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,0,0,261,0.173,0.28,0.06,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,1,0,260,0.061,0.12,-0.01,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,2,0,259,-0.074,-0.02,-0.15,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,3,0,258,-0.091,-0.15,-0.03,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,4,0,257,-0.065,-0.06,-0.08,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,5,0,256,0.097,0.19,-0.0,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,1,6,0,255,0.091,0.15,0.04,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,0,0,259,0.27,0.43,0.1,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,1,0,258,0.126,0.26,-0.03,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,2,0,257,-0.044,0.02,-0.13,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,3,0,256,-0.106,-0.09,-0.14,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,4,0,255,-0.045,0.0,-0.11,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,5,0,254,0.068,0.14,-0.02,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,3,6,0,253,0.112,0.13,0.1,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,0,0,256,0.214,0.34,0.1,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,1,0,255,0.182,0.36,0.02,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,2,0,254,0.132,0.33,-0.06,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,3,0,253,0.101,0.25,-0.04,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,4,0,252,0.058,0.15,-0.03,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,5,0,251,0.059,0.08,0.04,False,False
+us_live_cattle_fut,us_market,생우 선물,수입 쇠고기 CPI,6,6,0,250,0.078,0.02,0.13,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,0,0,59,0.181,0.33,0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,1,0,59,0.125,0.22,-0.01,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,2,0,59,0.034,0.02,0.03,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,3,0,59,0.042,0.09,-0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,4,0,59,-0.017,0.07,-0.16,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,5,0,59,-0.125,-0.1,-0.22,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),1,6,0,59,-0.116,-0.2,-0.03,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,0,0,56,0.11,0.28,-0.09,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,1,0,56,0.282,0.39,0.17,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,2,0,56,0.27,0.4,0.13,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,3,0,56,0.085,0.27,-0.11,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,4,0,56,-0.039,0.17,-0.29,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,5,0,56,-0.124,0.02,-0.33,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),3,6,0,56,0.077,0.26,-0.16,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,0,0,46,0.007,0.55,-0.54,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,1,0,46,0.186,0.61,-0.27,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,2,0,46,0.207,0.58,-0.19,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,3,0,46,0.28,0.71,-0.18,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,4,0,46,0.296,0.68,-0.17,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,5,0,46,0.263,0.47,0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,삼겹양지(월),6,6,0,46,0.259,0.39,0.15,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,0,0,261,0.022,0.01,0.04,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,1,0,260,-0.0,0.01,-0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,2,0,259,0.052,0.15,-0.08,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,3,0,258,0.015,-0.01,0.05,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,4,0,257,0.08,0.09,0.07,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,5,0,256,0.146,0.14,0.16,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,1,6,0,255,0.081,0.12,0.04,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,0,0,259,-0.016,-0.02,-0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,1,0,258,0.03,0.06,-0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,2,0,257,0.081,0.14,-0.0,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,3,0,256,0.125,0.15,0.09,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,4,0,255,0.19,0.22,0.16,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,5,0,254,0.226,0.25,0.21,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,3,6,0,253,0.21,0.24,0.19,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,0,0,256,0.0,0.01,-0.02,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,1,0,255,0.069,0.1,0.03,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,2,0,254,0.16,0.22,0.08,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,3,0,253,0.243,0.32,0.16,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,4,0,252,0.304,0.4,0.2,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,5,0,251,0.318,0.44,0.21,False,False
+us_feeder_cattle_fut,us_market,비육우 선물,수입 쇠고기 CPI,6,6,0,250,0.275,0.37,0.19,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,0,0,59,0.059,0.0,0.16,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,1,0,59,-0.033,0.04,-0.11,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,2,0,59,-0.269,-0.34,-0.21,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,3,0,59,-0.048,0.04,-0.18,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,4,0,59,0.137,0.35,-0.29,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,5,0,59,0.094,0.18,-0.03,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),1,6,0,59,-0.262,-0.16,-0.43,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,0,0,56,-0.045,-0.21,0.14,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,1,0,56,-0.227,-0.32,-0.13,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,2,0,56,-0.292,-0.26,-0.34,True,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,3,0,56,-0.231,-0.11,-0.39,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,4,0,56,-0.14,0.1,-0.44,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,5,0,56,-0.184,-0.01,-0.43,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),3,6,0,56,-0.389,-0.37,-0.43,True,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,0,0,46,-0.105,-0.43,0.25,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,1,0,46,-0.283,-0.59,0.07,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,2,0,46,-0.388,-0.65,-0.03,False,False
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,3,0,46,-0.465,-0.59,-0.3,True,True
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,4,0,46,-0.52,-0.6,-0.41,True,True
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,5,0,46,-0.516,-0.57,-0.45,True,True
+us_corn_fut,us_feed,옥수수 선물,삼겹양지(월),6,6,0,46,-0.506,-0.51,-0.51,True,True
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,0,0,261,0.045,0.03,0.07,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,1,0,260,-0.047,-0.09,0.05,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,2,0,259,-0.105,-0.1,-0.11,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,3,0,258,0.003,0.02,-0.02,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,4,0,257,0.038,0.07,-0.02,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,5,0,256,-0.053,-0.06,-0.05,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,1,6,0,255,-0.039,-0.05,-0.02,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,0,0,259,-0.023,-0.05,0.05,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,1,0,258,-0.073,-0.11,0.01,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,2,0,257,-0.087,-0.09,-0.08,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,3,0,256,-0.06,-0.04,-0.1,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,4,0,255,-0.032,-0.0,-0.08,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,5,0,254,-0.03,-0.02,-0.05,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,3,6,0,253,0.001,-0.01,0.03,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,0,0,256,0.041,0.01,0.11,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,1,0,255,-0.03,-0.06,0.03,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,2,0,254,-0.084,-0.1,-0.06,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,3,0,253,-0.071,-0.08,-0.04,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,4,0,252,-0.025,-0.04,0.01,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,5,0,251,0.009,-0.01,0.06,False,False
+us_corn_fut,us_feed,옥수수 선물,수입 쇠고기 CPI,6,6,0,250,0.049,0.01,0.13,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,0,1,57,0.045,0.11,-0.1,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,1,1,57,0.089,0.18,-0.08,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,2,1,57,0.116,0.22,-0.09,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,3,1,57,-0.01,-0.1,0.15,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,4,1,57,0.095,0.07,0.14,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,5,1,57,0.153,0.21,0.07,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),1,6,1,57,-0.128,-0.07,-0.21,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,0,1,54,-0.009,0.04,-0.11,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,1,1,54,0.095,0.21,-0.09,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,2,1,54,0.147,0.23,0.03,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,3,1,54,0.104,0.09,0.11,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,4,1,54,0.078,0.07,0.08,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,5,1,54,-0.03,-0.06,0.01,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),3,6,1,54,-0.159,-0.17,-0.15,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,0,1,44,-0.091,-0.14,-0.03,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,1,1,44,-0.034,-0.07,0.01,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,2,1,44,-0.01,-0.06,0.05,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,3,1,44,0.069,0.04,0.08,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,4,1,44,0.043,0.03,0.03,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,5,1,44,-0.053,-0.15,0.03,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,삼겹양지(월),6,6,1,44,-0.148,-0.24,-0.07,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,0,1,259,0.154,0.17,0.14,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,1,1,258,0.241,0.27,0.22,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,2,1,257,0.092,0.14,0.03,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,3,1,256,-0.065,-0.03,-0.12,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,4,1,255,-0.129,-0.11,-0.16,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,5,1,254,-0.142,-0.16,-0.12,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,1,6,1,253,-0.145,-0.06,-0.29,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,0,1,257,0.314,0.3,0.37,True,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,1,1,256,0.303,0.34,0.27,True,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,2,1,255,0.141,0.2,0.06,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,3,1,254,-0.062,-0.01,-0.13,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,4,1,253,-0.225,-0.18,-0.3,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,5,1,252,-0.29,-0.23,-0.39,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,3,6,1,251,-0.29,-0.21,-0.42,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,0,1,254,0.296,0.23,0.4,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,1,1,253,0.234,0.23,0.27,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,2,1,252,0.097,0.15,0.06,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,3,1,251,-0.07,0.02,-0.15,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,4,1,250,-0.23,-0.14,-0.32,False,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,5,1,249,-0.354,-0.29,-0.42,True,False
+us_beef_cold_storage,us_supply,미국 냉동 쇠고기 재고,수입 쇠고기 CPI,6,6,1,248,-0.416,-0.38,-0.45,True,True
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,0,0,59,0.009,-0.02,0.06,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,1,0,59,0.025,-0.01,0.09,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,2,0,59,-0.261,-0.19,-0.37,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,3,0,59,-0.195,-0.42,0.14,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,4,0,59,0.128,0.22,0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,5,0,59,0.117,0.22,-0.02,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),1,6,0,59,0.134,0.14,0.16,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,0,0,56,-0.037,-0.16,0.15,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,1,0,56,-0.219,-0.4,0.06,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,2,0,56,-0.432,-0.55,-0.24,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,3,0,56,-0.286,-0.39,-0.12,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,4,0,56,-0.007,0.04,-0.06,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,5,0,56,0.261,0.32,0.22,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),3,6,0,56,0.25,0.29,0.25,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,0,0,46,-0.182,-0.51,0.22,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,1,0,46,-0.262,-0.44,-0.02,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,2,0,46,-0.245,-0.48,0.08,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,3,0,46,-0.16,-0.45,0.23,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,4,0,46,-0.117,-0.23,0.03,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,5,0,46,0.003,-0.1,0.16,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,삼겹양지(월),6,6,0,46,0.048,0.06,0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,0,0,261,-0.063,-0.17,0.07,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,1,0,260,-0.053,-0.07,-0.03,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,2,0,259,-0.155,-0.23,-0.07,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,3,0,258,0.033,0.03,0.03,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,4,0,257,0.241,0.38,0.08,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,5,0,256,0.068,0.14,-0.03,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,1,6,0,255,-0.03,-0.07,0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,0,0,259,-0.269,-0.46,0.02,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,1,0,258,-0.255,-0.41,-0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,2,0,257,-0.131,-0.21,-0.02,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,3,0,256,0.106,0.15,0.04,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,4,0,255,0.284,0.41,0.09,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,5,0,254,0.246,0.36,0.08,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,3,6,0,253,0.143,0.18,0.09,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,0,0,256,-0.262,-0.46,0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,1,0,255,-0.197,-0.35,0.01,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,2,0,254,-0.122,-0.25,0.05,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,3,0,253,0.063,0.03,0.1,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,4,0,252,0.237,0.31,0.13,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,5,0,251,0.274,0.41,0.07,False,False
+us_cattle_slaughter_wk,us_supply,미국 주간 소 도축두수,수입 쇠고기 CPI,6,6,0,250,0.246,0.38,0.05,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,0,0,59,-0.016,-0.11,0.11,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,1,0,59,0.039,-0.01,0.11,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,2,0,59,-0.259,-0.21,-0.33,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,3,0,59,-0.169,-0.38,0.12,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,4,0,59,0.129,0.25,-0.02,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,5,0,59,0.19,0.25,0.11,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),1,6,0,59,0.188,0.25,0.15,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,0,0,56,-0.028,-0.27,0.21,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,1,0,56,-0.187,-0.43,0.1,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,2,0,56,-0.382,-0.52,-0.19,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,3,0,56,-0.185,-0.25,-0.09,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,4,0,56,0.113,0.24,-0.02,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,5,0,56,0.383,0.5,0.26,True,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),3,6,0,56,0.292,0.35,0.25,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,0,0,46,-0.13,-0.48,0.28,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,1,0,46,-0.143,-0.3,0.08,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,2,0,46,-0.081,-0.33,0.2,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,3,0,46,0.008,-0.26,0.28,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,4,0,46,-0.006,-0.09,0.09,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,5,0,46,0.088,0.03,0.16,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,삼겹양지(월),6,6,0,46,0.065,0.15,-0.05,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,0,0,261,-0.014,-0.1,0.1,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,1,0,260,-0.009,-0.02,0.0,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,2,0,259,-0.123,-0.2,-0.04,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,3,0,258,0.058,0.06,0.06,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,4,0,257,0.231,0.37,0.08,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,5,0,256,0.028,0.1,-0.07,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,1,6,0,255,-0.02,-0.03,-0.01,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,0,0,259,-0.178,-0.38,0.11,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,1,0,258,-0.131,-0.28,0.09,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,2,0,257,-0.027,-0.1,0.08,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,3,0,256,0.154,0.21,0.09,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,4,0,255,0.279,0.43,0.08,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,5,0,254,0.217,0.37,0.0,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,3,6,0,253,0.122,0.22,-0.02,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,0,0,256,-0.189,-0.42,0.14,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,1,0,255,-0.098,-0.27,0.15,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,2,0,254,-0.009,-0.13,0.16,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,3,0,253,0.164,0.17,0.16,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,4,0,252,0.286,0.41,0.11,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,5,0,251,0.249,0.43,-0.01,False,False
+us_beef_production_wk,us_supply,미국 주간 쇠고기 생산량,수입 쇠고기 CPI,6,6,0,250,0.166,0.34,-0.08,False,False

@@ -41,3 +41,6 @@ au_heavy_steer,MLA,4,,D,MLA National Heavy Steer Indicator (수출용 비육 거
 us_live_cattle_fut,YAHOO,LE=F,,D,CME Live Cattle Futures (근월물 연속),US cents/lb,D,US,us_market,0,생우 선물,1,2026-11-23 추가 — 선행 시장가
 us_feeder_cattle_fut,YAHOO,GF=F,,D,CME Feeder Cattle Futures (근월물 연속),US cents/lb,D,US,us_market,0,비육우 선물,1,2026-11-23 추가
 us_corn_fut,YAHOO,ZC=F,,D,CBOT Corn Futures (근월물 연속),US cents/bushel,D,US,us_feed,0,옥수수 선물,1,2026-11-23 추가 — 사료비 선행
+us_beef_cold_storage,NASS,BEEF/STOCKS,"BEEF, COLD STORAGE, FROZEN - STOCKS, MEASURED IN LB",M,USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말 전체),t,M,US,us_supply,1,미국 냉동 쇠고기 재고,1,2026-11-23 추가 — collect_nass_supply.py (수집기 내부 질의 정의)
+us_cattle_slaughter_wk,NASS,CATTLE/SLAUGHTERED/WEEKLY,"CATTLE, GE 500 LBS, SLAUGHTER, COMMERCIAL, FI - SLAUGHTERED, MEASURED IN HEAD",W,USDA NASS 주간 연방검사(FI) 소 도축두수 (500lb 이상·송아지 제외),head,W,US,us_supply,0,미국 주간 소 도축두수,1,2026-11-23 추가
+us_beef_production_wk,NASS,BEEF/PRODUCTION/WEEKLY,"BEEF, SLAUGHTER, COMMERCIAL, FI - PRODUCTION, MEASURED IN LB",W,USDA NASS 주간 연방검사(FI) 쇠고기 생산량,t,W,US,us_supply,0,미국 주간 쇠고기 생산량,1,2026-11-23 추가

@@ -207,6 +207,7 @@ MACRO_COLLECTORS = [
     ("KMA 기후 지표 (기온·강수, 키 없으면 skip)", _collector("collect_macro_kma.py")),
     ("MLA 호주 생우가 (EYCI·Heavy Steer, 호주산 원가 축, 키 불필요)", _collector("collect_mla_cattle.py")),
     ("Yahoo 선물 (생우·비육우·옥수수 근월물, 선행 시장가, 키 불필요)", _collector("collect_yahoo_futures.py")),
+    ("NASS 미국 공급 (냉동 쇠고기 재고·주간 FI 도축두수·생산량, 키 없으면 skip)", _collector("collect_nass_supply.py")),
     ("FAS 미국 소고기 수출 (중국·한국, 덤핑 조기경보, 키 없으면 skip)", _collector("collect_fas_export_sales.py")),
     ("NASS Cattle on Feed (미국 사육두수, 공급 선행, 키 없으면 skip)", _collector("collect_cattle_on_feed.py")),
 ]

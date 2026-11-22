@@ -183,6 +183,9 @@ def collect_status() -> pd.DataFrame:
     # 선물(거래일) — Yahoo, 키 불필요 (2026-11-23 추가)
     add("미국 선물(생우·비육우·옥수수)", "YAHOO", "일",
         _macro_stalest(["us_live_cattle_fut", "us_feeder_cattle_fut", "us_corn_fut"]), 7)
+    # NASS 공급: 냉동 재고(월, ~23일 지연)·주간 도축·생산(목요일 발표, ~12일 지연) (2026-11-23 추가)
+    add("미국 냉동 쇠고기 재고(NASS)", "USDA NASS", "월", _macro_stalest(["us_beef_cold_storage"]), 55)
+    add("미국 주간 도축·생산(NASS)", "USDA NASS", "주", _macro_stalest(["us_cattle_slaughter_wk", "us_beef_production_wk"]), 21)
     # 미국 소매 쇠고기 가격(BLS 월, 익월 중순 발표) → 최대 ~50일
     add("미국 소매 쇠고기(스테이크·다짐육)", "FRED", "월",
         _macro_stalest(["us_beef_steak_price", "us_ground_beef_price"]), 50)
