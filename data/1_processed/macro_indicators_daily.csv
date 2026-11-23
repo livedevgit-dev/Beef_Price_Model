@@ -2883,6 +2883,7 @@
 2026-11-21,AU,au_beef_price,IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국),300.6136,US cents/lb,M,FRED,300.6136,-2.9994,-4.3357
 2026-11-22,AU,au_beef_price,IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국),300.6136,US cents/lb,M,FRED,300.6136,-2.9994,-4.3357
 2026-11-23,AU,au_beef_price,IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국),300.6136,US cents/lb,M,FRED,300.6136,-2.9994,-4.3357
+2026-11-24,AU,au_beef_price,IMF Global Price of Beef (호주·NZ 냉동 정육 CIF 미국),300.6136,US cents/lb,M,FRED,300.6136,-2.9994,-4.3357
 2019-01-02,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",472.7273,AU c/kg cwt,D,MLA,,,
 2019-01-03,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",472.7273,AU c/kg cwt,D,MLA,,,
 2019-01-04,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",472.7273,AU c/kg cwt,D,MLA,,,
@@ -5711,7 +5712,8 @@
 2026-11-20,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1041.4922,AU c/kg cwt,D,MLA,1036.0138,14.7796,5.9272
 2026-11-21,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1041.4922,AU c/kg cwt,D,MLA,1037.3783,14.7796,5.0451
 2026-11-22,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1041.4922,AU c/kg cwt,D,MLA,1038.7429,14.7796,4.0913
-2026-11-23,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1041.4922,AU c/kg cwt,D,MLA,1040.1074,14.7796,4.0913
+2026-11-23,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1045.369,AU c/kg cwt,D,MLA,1040.2366,15.2069,4.4787
+2026-11-24,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1045.369,AU c/kg cwt,D,MLA,1041.7304,15.2634,4.4787
 2019-01-02,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),280.5917,AU c/kg lwt,D,MLA,,,
 2019-01-03,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),280.5917,AU c/kg lwt,D,MLA,,,
 2019-01-04,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),280.233,AU c/kg lwt,D,MLA,,,
@@ -8555,7 +8557,8 @@
 2026-11-20,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),484.2002,AU c/kg lwt,D,MLA,485.1003,4.4315,1.9709
 2026-11-21,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),484.2002,AU c/kg lwt,D,MLA,485.3737,4.4315,1.6923
 2026-11-22,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),484.2002,AU c/kg lwt,D,MLA,485.6197,4.4315,1.7227
-2026-11-23,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),484.2002,AU c/kg lwt,D,MLA,485.8658,4.4315,1.5482
+2026-11-23,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),483.9497,AU c/kg lwt,D,MLA,485.8574,4.3775,1.4957
+2026-11-24,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),483.9497,AU c/kg lwt,D,MLA,486.0952,4.4381,1.4957
 2019-01-01,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS,,,
 2019-01-02,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS,,,
 2019-01-03,KR,kr_base_rate,한국은행 기준금리,1.75,연%,M,ECOS,,,
@@ -11440,6 +11443,7 @@
 2026-11-21,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2026-11-22,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2026-11-23,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
+2026-11-24,KR,kr_base_rate,한국은행 기준금리,3.0,연%,M,ECOS,3.0,20.0,0.0
 2019-01-01,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-02,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
 2019-01-03,KR,kr_ccsi,소비자심리지수(CCSI),98.3,p (장기평균=100),M,ECOS,,,
@@ -14301,29 +14305,30 @@
 2026-10-29,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.44,-3.8321,-1.1257
 2026-10-30,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
 2026-10-31,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-01,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-02,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-03,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-04,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-05,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-06,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-07,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-08,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-09,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-10,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-11,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-12,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-13,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-14,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-15,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-16,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-17,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-18,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-19,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-20,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-21,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-22,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
-2026-11-23,KR,kr_ccsi,소비자심리지수(CCSI),105.4,p (장기평균=100),M,ECOS,105.4,-3.8321,-1.1257
+2026-11-01,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,105.3233,-8.1923,-2.1822
+2026-11-02,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,105.2467,-8.1923,-2.1822
+2026-11-03,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,105.17,-8.1923,-2.1822
+2026-11-04,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,105.0933,-8.1923,-2.1822
+2026-11-05,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,105.0167,-8.1923,-2.1822
+2026-11-06,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.94,-8.1923,-2.1822
+2026-11-07,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.8633,-8.1923,-2.1822
+2026-11-08,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.7867,-8.1923,-2.1822
+2026-11-09,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.71,-8.1923,-2.1822
+2026-11-10,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.6333,-8.1923,-2.1822
+2026-11-11,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.5567,-8.1923,-2.1822
+2026-11-12,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.48,-8.1923,-2.1822
+2026-11-13,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.4033,-8.1923,-2.1822
+2026-11-14,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.3267,-8.1923,-2.1822
+2026-11-15,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.25,-8.1923,-2.1822
+2026-11-16,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.1733,-8.1923,-2.1822
+2026-11-17,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.0967,-8.1923,-2.1822
+2026-11-18,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,104.02,-8.1923,-2.1822
+2026-11-19,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.9433,-8.1923,-2.1822
+2026-11-20,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.8667,-8.1923,-2.1822
+2026-11-21,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.79,-8.1923,-2.1822
+2026-11-22,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.7133,-8.1923,-2.1822
+2026-11-23,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.6367,-8.1923,-2.1822
+2026-11-24,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS,103.56,-8.1923,-2.1822
 2019-01-01,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,91.0007,2.177,0.2209
 2019-01-02,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,91.0074,2.177,0.2209
 2019-01-03,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,91.195,2020=100,M,ECOS,91.0141,2.177,0.2209
@@ -17208,6 +17213,7 @@
 2026-11-21,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS,119.86,9.1224,4.4896
 2026-11-22,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS,119.86,9.1224,4.4896
 2026-11-23,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS,119.86,9.1224,4.4896
+2026-11-24,KR,kr_cpi_beef_dom,소비자물가지수 — 국산 쇠고기,119.86,2020=100,M,ECOS,119.86,9.1224,4.4896
 2019-01-01,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,97.0751,3.3528,-0.3667
 2019-01-02,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,97.0633,3.3528,-0.3667
 2019-01-03,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,96.731,2020=100,M,ECOS,97.0514,3.3528,-0.3667
@@ -20092,6 +20098,7 @@
 2026-11-21,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS,148.27,7.1547,2.1425
 2026-11-22,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS,148.27,7.1547,2.1425
 2026-11-23,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS,148.27,7.1547,2.1425
+2026-11-24,KR,kr_cpi_beef_imp,소비자물가지수 — 수입 쇠고기,148.27,2020=100,M,ECOS,148.27,7.1547,2.1425
 2019-01-01,KR,kr_cpi_diesel,소비자물가지수 — 경유,104.995,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_diesel,소비자물가지수 — 경유,104.995,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_diesel,소비자물가지수 — 경유,104.995,2020=100,M,ECOS,,,
@@ -22976,6 +22983,7 @@
 2026-11-21,KR,kr_cpi_diesel,소비자물가지수 — 경유,153.19,2020=100,M,ECOS,153.19,19.6516,-0.0457
 2026-11-22,KR,kr_cpi_diesel,소비자물가지수 — 경유,153.19,2020=100,M,ECOS,153.19,19.6516,-0.0457
 2026-11-23,KR,kr_cpi_diesel,소비자물가지수 — 경유,153.19,2020=100,M,ECOS,153.19,19.6516,-0.0457
+2026-11-24,KR,kr_cpi_diesel,소비자물가지수 — 경유,153.19,2020=100,M,ECOS,153.19,19.6516,-0.0457
 2019-01-01,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),98.891,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),98.891,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),98.891,2020=100,M,ECOS,,,
@@ -25860,6 +25868,7 @@
 2026-11-21,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),129.15,2020=100,M,ECOS,129.15,2.9166,0.4355
 2026-11-22,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),129.15,2020=100,M,ECOS,129.15,2.9166,0.4355
 2026-11-23,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),129.15,2020=100,M,ECOS,129.15,2.9166,0.4355
+2026-11-24,KR,kr_cpi_dineout,소비자물가지수 — 외식(음식 서비스),129.15,2020=100,M,ECOS,129.15,2.9166,0.4355
 2019-01-01,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),96.662,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),96.662,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),96.662,2020=100,M,ECOS,,,
@@ -28744,6 +28753,7 @@
 2026-11-21,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),124.27,2020=100,M,ECOS,124.27,3.0859,0.8521
 2026-11-22,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),124.27,2020=100,M,ECOS,124.27,3.0859,0.8521
 2026-11-23,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),124.27,2020=100,M,ECOS,124.27,3.0859,0.8521
+2026-11-24,KR,kr_cpi_dineout_beef,소비자물가지수 — 쇠고기(외식),124.27,2020=100,M,ECOS,124.27,3.0859,0.8521
 2019-01-01,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,95.8402,2.6413,-0.0553
 2019-01-02,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,95.8385,2.6413,-0.0553
 2019-01-03,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,95.789,2020=100,M,ECOS,95.8367,2.6413,-0.0553
@@ -31628,6 +31638,7 @@
 2026-11-21,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.49,2020=100,M,ECOS,129.49,0.4733,-0.4612
 2026-11-22,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.49,2020=100,M,ECOS,129.49,0.4733,-0.4612
 2026-11-23,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.49,2020=100,M,ECOS,129.49,0.4733,-0.4612
+2026-11-24,KR,kr_cpi_food,소비자물가지수 — 식료품 및 비주류음료,129.49,2020=100,M,ECOS,129.49,0.4733,-0.4612
 2019-01-01,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,87.425,-6.7032,-3.8053
 2019-01-02,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,87.3139,-6.7032,-3.8053
 2019-01-03,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,84.205,2020=100,M,ECOS,87.2029,-6.7032,-3.8053
@@ -34512,6 +34523,7 @@
 2026-11-21,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.43,2020=100,M,ECOS,138.43,1.8017,-0.3527
 2026-11-22,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.43,2020=100,M,ECOS,138.43,1.8017,-0.3527
 2026-11-23,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.43,2020=100,M,ECOS,138.43,1.8017,-0.3527
+2026-11-24,KR,kr_cpi_pork,소비자물가지수 — 돼지고기,138.43,2020=100,M,ECOS,138.43,1.8017,-0.3527
 2019-01-01,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,98.9845,0.793,-0.1051
 2019-01-02,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,98.9811,0.793,-0.1051
 2019-01-03,KR,kr_cpi_total,소비자물가지수 — 총지수,98.884,2020=100,M,ECOS,98.9776,0.793,-0.1051
@@ -37396,6 +37408,7 @@
 2026-11-21,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS,120.73,2.8189,0.2491
 2026-11-22,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS,120.73,2.8189,0.2491
 2026-11-23,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS,120.73,2.8189,0.2491
+2026-11-24,KR,kr_cpi_total,소비자물가지수 — 총지수,120.73,2020=100,M,ECOS,120.73,2.8189,0.2491
 2019-01-01,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-02,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
 2019-01-03,KR,kr_esi,"경제심리지수(ESI, 원계열)",92.6,p,M,ECOS,,,
@@ -40280,6 +40293,7 @@
 2026-11-21,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS,100.8,6.3291,0.9009
 2026-11-22,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS,100.8,6.3291,0.9009
 2026-11-23,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS,100.8,6.3291,0.9009
+2026-11-24,KR,kr_esi,"경제심리지수(ESI, 원계열)",100.8,p,M,ECOS,100.8,6.3291,0.9009
 2019-01-01,KR,kr_fx_aud,원/호주달러 환율(매매기준율),787.81,원,D,ECOS,804.2307,-5.6696,-4.0216
 2019-01-02,KR,kr_fx_aud,원/호주달러 환율(매매기준율),787.98,원,D,ECOS,803.0233,-5.7756,-4.0009
 2019-01-03,KR,kr_fx_aud,원/호주달러 환율(매매기준율),768.47,원,D,ECOS,801.331,-7.7733,-6.7617
@@ -43150,7 +43164,8 @@
 2026-11-20,KR,kr_fx_aud,원/호주달러 환율(매매기준율),885.12,원,D,ECOS,923.9203,-6.8059,-4.8197
 2026-11-21,KR,kr_fx_aud,원/호주달러 환율(매매기준율),885.12,원,D,ECOS,922.3967,-6.386,-4.9209
 2026-11-22,KR,kr_fx_aud,원/호주달러 환율(매매기준율),885.12,원,D,ECOS,920.9117,-6.386,-4.9107
-2026-11-23,KR,kr_fx_aud,원/호주달러 환율(매매기준율),885.12,원,D,ECOS,919.4267,-6.386,-4.792
+2026-11-23,KR,kr_fx_aud,원/호주달러 환율(매매기준율),886.56,원,D,ECOS,919.4747,-6.2337,-4.6371
+2026-11-24,KR,kr_fx_aud,원/호주달러 환율(매매기준율),886.56,원,D,ECOS,918.0377,-6.8182,-4.6371
 2019-01-01,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),96.96,2020=100,M,ECOS,97.0373,14.5152,-0.0824
 2019-01-02,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),96.96,2020=100,M,ECOS,97.0347,14.5152,-0.0824
 2019-01-03,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),96.96,2020=100,M,ECOS,97.032,14.5152,-0.0824
@@ -46035,6 +46050,7 @@
 2026-11-21,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),151.55,2020=100,M,ECOS,151.55,-1.3667,-0.8829
 2026-11-22,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),151.55,2020=100,M,ECOS,151.55,-1.3667,-0.8829
 2026-11-23,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),151.55,2020=100,M,ECOS,151.55,-1.3667,-0.8829
+2026-11-24,KR,kr_impi_beef_krw,수입물가지수 — 쇠고기(원화기준),151.55,2020=100,M,ECOS,151.55,-1.3667,-0.8829
 2019-01-01,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),101.98,2020=100,M,ECOS,101.98,8.8716,0.0
 2019-01-02,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),101.98,2020=100,M,ECOS,101.98,8.8716,0.0
 2019-01-03,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),101.98,2020=100,M,ECOS,101.98,8.8716,0.0
@@ -48919,6 +48935,7 @@
 2026-11-21,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),133.7,2020=100,M,ECOS,133.7,4.9533,0.6853
 2026-11-22,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),133.7,2020=100,M,ECOS,133.7,4.9533,0.6853
 2026-11-23,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),133.7,2020=100,M,ECOS,133.7,4.9533,0.6853
+2026-11-24,KR,kr_impi_beef_lc,수입물가지수 — 쇠고기(계약통화기준),133.7,2020=100,M,ECOS,133.7,4.9533,0.6853
 2019-01-01,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,102.69,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,102.69,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,102.69,2020=100,M,ECOS,,,
@@ -51803,6 +51820,7 @@
 2026-11-21,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,133.46,2020=100,M,ECOS,133.46,2.4016,0.0
 2026-11-22,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,133.46,2020=100,M,ECOS,133.46,2.4016,0.0
 2026-11-23,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,133.46,2020=100,M,ECOS,133.46,2.4016,0.0
+2026-11-24,KR,kr_ppi_cold_storage,생산자물가지수 — 냉장·냉동창고운영,133.46,2020=100,M,ECOS,133.46,2.4016,0.0
 2019-01-01,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_food,생산자물가지수 — 음식료품,98.7,2020=100,M,ECOS,,,
@@ -54687,6 +54705,7 @@
 2026-11-21,KR,kr_ppi_food,생산자물가지수 — 음식료품,128.1,2020=100,M,ECOS,128.1,2.0798,0.0703
 2026-11-22,KR,kr_ppi_food,생산자물가지수 — 음식료품,128.1,2020=100,M,ECOS,128.1,2.0798,0.0703
 2026-11-23,KR,kr_ppi_food,생산자물가지수 — 음식료품,128.1,2020=100,M,ECOS,128.1,2.0798,0.0703
+2026-11-24,KR,kr_ppi_food,생산자물가지수 — 음식료품,128.1,2020=100,M,ECOS,128.1,2.0798,0.0703
 2019-01-01,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,113.54,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,113.54,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,113.54,2020=100,M,ECOS,,,
@@ -57571,6 +57590,7 @@
 2026-11-21,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,135.43,2020=100,M,ECOS,135.43,53.2187,1.0823
 2026-11-22,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,135.43,2020=100,M,ECOS,135.43,53.2187,1.0823
 2026-11-23,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,135.43,2020=100,M,ECOS,135.43,53.2187,1.0823
+2026-11-24,KR,kr_ppi_ocean_freight,생산자물가지수 — 외항화물,135.43,2020=100,M,ECOS,135.43,53.2187,1.0823
 2019-01-01,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,98.47,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,98.47,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,98.47,2020=100,M,ECOS,,,
@@ -60455,6 +60475,7 @@
 2026-11-21,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,119.41,2020=100,M,ECOS,119.41,6.0385,0.235
 2026-11-22,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,119.41,2020=100,M,ECOS,119.41,6.0385,0.235
 2026-11-23,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,119.41,2020=100,M,ECOS,119.41,6.0385,0.235
+2026-11-24,KR,kr_ppi_road_freight,생산자물가지수 — 도로화물운송서비스,119.41,2020=100,M,ECOS,119.41,6.0385,0.235
 2019-01-01,KR,kr_precip,일강수량(전국대표),0.02,mm,D,KMA,,,
 2019-01-02,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
 2019-01-03,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,,,
@@ -63338,6 +63359,7 @@
 2026-11-20,KR,kr_precip,일강수량(전국대표),0.94,mm,D,KMA,4.06,,
 2026-11-21,KR,kr_precip,일강수량(전국대표),0.2,mm,D,KMA,4.0667,,
 2026-11-22,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA,3.9953,,
+2026-11-23,KR,kr_precip,일강수량(전국대표),9.94,mm,D,KMA,3.1913,,
 2019-01-01,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_cvs,소매판매액지수 — 편의점,98.6,2020=100,M,ECOS,,,
@@ -66222,6 +66244,7 @@
 2026-11-21,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS,102.3,0.9872,0.9872
 2026-11-22,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS,102.3,0.9872,0.9872
 2026-11-23,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS,102.3,0.9872,0.9872
+2026-11-24,KR,kr_retail_cvs,소매판매액지수 — 편의점,102.3,2020=100,M,ECOS,102.3,0.9872,0.9872
 2019-01-01,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_dept,소매판매액지수 — 백화점,112.4,2020=100,M,ECOS,,,
@@ -69106,6 +69129,7 @@
 2026-11-21,KR,kr_retail_dept,소매판매액지수 — 백화점,136.3,2020=100,M,ECOS,136.3,1.9447,2.0974
 2026-11-22,KR,kr_retail_dept,소매판매액지수 — 백화점,136.3,2020=100,M,ECOS,136.3,1.9447,2.0974
 2026-11-23,KR,kr_retail_dept,소매판매액지수 — 백화점,136.3,2020=100,M,ECOS,136.3,1.9447,2.0974
+2026-11-24,KR,kr_retail_dept,소매판매액지수 — 백화점,136.3,2020=100,M,ECOS,136.3,1.9447,2.0974
 2019-01-01,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),105.0,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),105.0,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),105.0,2020=100,M,ECOS,,,
@@ -71990,6 +72014,7 @@
 2026-11-21,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),99.9,2020=100,M,ECOS,99.9,9.6597,6.6169
 2026-11-22,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),99.9,2020=100,M,ECOS,99.9,9.6597,6.6169
 2026-11-23,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),99.9,2020=100,M,ECOS,99.9,9.6597,6.6169
+2026-11-24,KR,kr_retail_food,소매판매액지수 — 음식료품(계절조정),99.9,2020=100,M,ECOS,99.9,9.6597,6.6169
 2019-01-01,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,101.1,2020=100,M,ECOS,,,
@@ -74874,6 +74899,7 @@
 2026-11-21,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS,85.5,-3.9326,6.2112
 2026-11-22,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS,85.5,-3.9326,6.2112
 2026-11-23,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS,85.5,-3.9326,6.2112
+2026-11-24,KR,kr_retail_hypermarket,소매판매액지수 — 대형마트,85.5,2020=100,M,ECOS,85.5,-3.9326,6.2112
 2019-01-01,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-02,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
 2019-01-03,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,120.8,2020=100,M,ECOS,,,
@@ -77758,6 +77784,7 @@
 2026-11-21,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.8,2020=100,M,ECOS,114.8,0.262,2.5916
 2026-11-22,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.8,2020=100,M,ECOS,114.8,0.262,2.5916
 2026-11-23,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.8,2020=100,M,ECOS,114.8,0.262,2.5916
+2026-11-24,KR,kr_service_food,서비스업생산지수 — 음식점·주점업,114.8,2020=100,M,ECOS,114.8,0.262,2.5916
 2019-01-01,KR,kr_temp_avg,평균기온(전국대표),-1.46,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_avg,평균기온(전국대표),-1.52,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_avg,평균기온(전국대표),-0.54,°C,D,KMA,,,
@@ -80641,6 +80668,7 @@
 2026-11-20,KR,kr_temp_avg,평균기온(전국대표),1.74,°C,D,KMA,11.4533,,
 2026-11-21,KR,kr_temp_avg,평균기온(전국대표),1.76,°C,D,KMA,11.124,,
 2026-11-22,KR,kr_temp_avg,평균기온(전국대표),2.52,°C,D,KMA,10.6927,,
+2026-11-23,KR,kr_temp_avg,평균기온(전국대표),7.14,°C,D,KMA,10.3833,,
 2019-01-01,KR,kr_temp_max,최고기온(전국대표),2.28,°C,D,KMA,,,
 2019-01-02,KR,kr_temp_max,최고기온(전국대표),3.58,°C,D,KMA,,,
 2019-01-03,KR,kr_temp_max,최고기온(전국대표),5.7,°C,D,KMA,,,
@@ -83524,6 +83552,7 @@
 2026-11-20,KR,kr_temp_max,최고기온(전국대표),5.56,°C,D,KMA,16.142,,
 2026-11-21,KR,kr_temp_max,최고기온(전국대표),6.28,°C,D,KMA,15.7553,,
 2026-11-22,KR,kr_temp_max,최고기온(전국대표),8.52,°C,D,KMA,15.2987,,
+2026-11-23,KR,kr_temp_max,최고기온(전국대표),12.88,°C,D,KMA,15.1333,,
 2019-01-01,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",231429.177,t,M,NASS,225031.8621,1.6881,2.9438
 2019-01-02,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",231429.177,t,M,NASS,225252.4591,1.6881,2.9438
 2019-01-03,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",231429.177,t,M,NASS,225473.0562,1.6881,2.9438
@@ -86408,6 +86437,7 @@
 2026-11-21,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",181439.67,t,M,NASS,181439.67,-0.7331,-1.247
 2026-11-22,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",181439.67,t,M,NASS,181439.67,-0.7331,-1.247
 2026-11-23,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",181439.67,t,M,NASS,181439.67,-0.7331,-1.247
+2026-11-24,US,us_beef_cold_storage,"USDA NASS Cold Storage — 미국 냉동 쇠고기 재고 (월말, 전체)",181439.67,t,M,NASS,181439.67,-0.7331,-1.247
 2019-01-01,US,us_beef_production_wk,USDA NASS 주간 연방검사(FI) 쇠고기 생산량,165107.623,t,W,NASS,234768.8269,-12.7517,-31.5403
 2019-01-02,US,us_beef_production_wk,USDA NASS 주간 연방검사(FI) 쇠고기 생산량,165107.623,t,W,NASS,232233.2456,-12.7517,-31.5403
 2019-01-03,US,us_beef_production_wk,USDA NASS 주간 연방검사(FI) 쇠고기 생산량,165107.623,t,W,NASS,229697.6642,-12.7517,-31.5403
@@ -92167,6 +92197,7 @@
 2026-11-21,US,us_beef_steak_price,Average Price: All Uncooked Beef Steaks (미국 도시 평균),12.845,USD/lb,M,FRED,12.845,3.4905,1.2214
 2026-11-22,US,us_beef_steak_price,Average Price: All Uncooked Beef Steaks (미국 도시 평균),12.845,USD/lb,M,FRED,12.845,3.4905,1.2214
 2026-11-23,US,us_beef_steak_price,Average Price: All Uncooked Beef Steaks (미국 도시 평균),12.845,USD/lb,M,FRED,12.845,3.4905,1.2214
+2026-11-24,US,us_beef_steak_price,Average Price: All Uncooked Beef Steaks (미국 도시 평균),12.845,USD/lb,M,FRED,12.845,3.4905,1.2214
 2019-01-01,US,us_cattle_slaughter_wk,"USDA NASS 주간 연방검사(FI) 소 도축두수 (500lb 이상, 송아지 제외)",441600.0,head,W,NASS,628570.0,-11.2897,-31.1184
 2019-01-02,US,us_cattle_slaughter_wk,"USDA NASS 주간 연방검사(FI) 소 도축두수 (500lb 이상, 송아지 제외)",441600.0,head,W,NASS,621920.0,-11.2897,-31.1184
 2019-01-03,US,us_cattle_slaughter_wk,"USDA NASS 주간 연방검사(FI) 소 도축두수 (500lb 이상, 송아지 제외)",441600.0,head,W,NASS,615270.0,-11.2897,-31.1184
@@ -97926,6 +97957,7 @@
 2026-11-21,US,us_corn,Global Price of Corn (사료비 proxy),236.9161,USD/metric ton,M,FRED,236.9161,20.7856,7.0548
 2026-11-22,US,us_corn,Global Price of Corn (사료비 proxy),236.9161,USD/metric ton,M,FRED,236.9161,20.7856,7.0548
 2026-11-23,US,us_corn,Global Price of Corn (사료비 proxy),236.9161,USD/metric ton,M,FRED,236.9161,20.7856,7.0548
+2026-11-24,US,us_corn,Global Price of Corn (사료비 proxy),236.9161,USD/metric ton,M,FRED,236.9161,20.7856,7.0548
 2019-01-01,US,us_corn_fut,CBOT Corn Futures (근월물 연속),375.75,US cents/bushel,D,YAHOO,375.8667,6.3694,2.5239
 2019-01-02,US,us_corn_fut,CBOT Corn Futures (근월물 연속),379.75,US cents/bushel,D,YAHOO,376.05,7.5779,2.2896
 2019-01-03,US,us_corn_fut,CBOT Corn Futures (근월물 연속),383.0,US cents/bushel,D,YAHOO,376.3417,9.1168,2.338
@@ -100805,11 +100837,12 @@
 2026-11-16,US,us_corn_fut,CBOT Corn Futures (근월물 연속),446.75,US cents/bushel,D,YAHOO,449.3667,2.7602,-5.7986
 2026-11-17,US,us_corn_fut,CBOT Corn Futures (근월물 연속),435.5,US cents/bushel,D,YAHOO,448.3167,-0.2862,-8.1708
 2026-11-18,US,us_corn_fut,CBOT Corn Futures (근월물 연속),439.0,US cents/bushel,D,YAHOO,447.55,2.1524,-5.9957
-2026-11-19,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO,447.0667,5.2169,-2.868
-2026-11-20,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO,446.675,5.4642,-3.1301
-2026-11-21,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO,446.4333,5.4642,-2.5516
-2026-11-22,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO,446.1917,5.4642,-1.5899
-2026-11-23,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO,445.95,5.8997,-1.5899
+2026-11-19,US,us_corn_fut,CBOT Corn Futures (근월물 연속),434.5,US cents/bushel,D,YAHOO,446.5917,1.8757,-5.9524
+2026-11-20,US,us_corn_fut,CBOT Corn Futures (근월물 연속),434.5,US cents/bushel,D,YAHOO,445.725,2.1152,-6.2062
+2026-11-21,US,us_corn_fut,CBOT Corn Futures (근월물 연속),434.5,US cents/bushel,D,YAHOO,445.0083,2.1152,-5.646
+2026-11-22,US,us_corn_fut,CBOT Corn Futures (근월물 연속),449.0,US cents/bushel,D,YAHOO,444.775,5.5229,-1.5351
+2026-11-23,US,us_corn_fut,CBOT Corn Futures (근월물 연속),449.0,US cents/bushel,D,YAHOO,444.5417,5.9587,-1.5351
+2026-11-24,US,us_corn_fut,CBOT Corn Futures (근월물 연속),449.0,US cents/bushel,D,YAHOO,444.3417,6.0213,-1.5351
 2019-01-07,US,us_diesel,"US Diesel Sales Price (EIA, 주별)",3.013,USD/gallon,W,FRED,,,
 2019-01-08,US,us_diesel,"US Diesel Sales Price (EIA, 주별)",3.013,USD/gallon,W,FRED,,,
 2019-01-09,US,us_diesel,"US Diesel Sales Price (EIA, 주별)",3.013,USD/gallon,W,FRED,,,
@@ -106572,6 +106605,7 @@
 2026-11-21,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),343.478,Index 1982=100,M,FRED,343.478,-5.8637,0.6957
 2026-11-22,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),343.478,Index 1982=100,M,FRED,343.478,-5.8637,0.6957
 2026-11-23,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),343.478,Index 1982=100,M,FRED,343.478,-5.8637,0.6957
+2026-11-24,US,us_fed_steer,PPI: Slaughter Steers and Heifers (미국 비육우 생체가),343.478,Index 1982=100,M,FRED,343.478,-5.8637,0.6957
 2019-01-01,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),147.95,US cents/lb,D,YAHOO,146.9558,-1.0533,1.8764
 2019-01-02,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),146.525,US cents/lb,D,YAHOO,147.0267,-1.9079,1.4014
 2019-01-03,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),144.9,US cents/lb,D,YAHOO,147.0433,-2.768,0.3463
@@ -109454,8 +109488,9 @@
 2026-11-19,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO,337.8042,-1.5338,-3.0283
 2026-11-20,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO,337.4483,6.7468,-3.565
 2026-11-21,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO,337.0183,6.7468,-3.0844
-2026-11-22,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO,336.5883,6.7468,-3.7034
-2026-11-23,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO,336.1583,9.9844,-3.7034
+2026-11-22,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),334.25,US cents/lb,D,YAHOO,336.5492,6.3728,-4.0408
+2026-11-23,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),334.25,US cents/lb,D,YAHOO,336.08,9.5991,-4.0408
+2026-11-24,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),334.25,US cents/lb,D,YAHOO,335.5583,8.8496,-4.0408
 2019-01-01,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-02,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
 2019-01-03,US,us_food_ppi,PPI: Processed Foods and Feeds,206.2,Index 1982=100,M,FRED,,,
@@ -112340,6 +112375,7 @@
 2026-11-21,US,us_food_ppi,PPI: Processed Foods and Feeds,277.635,Index 1982=100,M,FRED,277.635,0.8753,0.1504
 2026-11-22,US,us_food_ppi,PPI: Processed Foods and Feeds,277.635,Index 1982=100,M,FRED,277.635,0.8753,0.1504
 2026-11-23,US,us_food_ppi,PPI: Processed Foods and Feeds,277.635,Index 1982=100,M,FRED,277.635,0.8753,0.1504
+2026-11-24,US,us_food_ppi,PPI: Processed Foods and Feeds,277.635,Index 1982=100,M,FRED,277.635,0.8753,0.1504
 2019-01-01,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",3.801,USD/lb,M,FRED,,,
 2019-01-02,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",3.801,USD/lb,M,FRED,,,
 2019-01-03,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",3.801,USD/lb,M,FRED,,,
@@ -115224,6 +115260,7 @@
 2026-11-21,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",6.755,USD/lb,M,FRED,6.755,7.4174,-0.5448
 2026-11-22,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",6.755,USD/lb,M,FRED,6.755,7.4174,-0.5448
 2026-11-23,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",6.755,USD/lb,M,FRED,6.755,7.4174,-0.5448
+2026-11-24,US,us_ground_beef_price,"Average Price: Ground Beef, 100% Beef (미국 도시 평균)",6.755,USD/lb,M,FRED,6.755,7.4174,-0.5448
 2019-01-01,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),123.525,US cents/lb,D,YAHOO,120.44,0.1419,5.6446
 2019-01-02,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),123.225,US cents/lb,D,YAHOO,120.6217,0.2237,5.4332
 2019-01-03,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),121.925,US cents/lb,D,YAHOO,120.76,-0.2658,3.5237
@@ -118103,11 +118140,12 @@
 2026-11-16,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),218.775,US cents/lb,D,YAHOO,222.67,-1.1298,-3.8563
 2026-11-17,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),219.775,US cents/lb,D,YAHOO,222.4125,-0.1136,-3.4168
 2026-11-18,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),222.85,US cents/lb,D,YAHOO,222.1925,3.0282,-2.044
-2026-11-19,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO,222.1017,6.0426,-0.7627
-2026-11-20,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO,222.0333,6.1786,-1.1826
-2026-11-21,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO,221.9608,6.1786,-0.8923
-2026-11-22,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO,221.8883,6.1786,-0.9462
-2026-11-23,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO,221.8158,9.8938,-0.9462
+2026-11-19,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),223.0,US cents/lb,D,YAHOO,221.945,3.8538,-2.8111
+2026-11-20,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),223.0,US cents/lb,D,YAHOO,221.72,3.9869,-3.2223
+2026-11-21,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),223.0,US cents/lb,D,YAHOO,221.4908,3.9869,-2.938
+2026-11-22,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),228.775,US cents/lb,D,YAHOO,221.4542,6.6799,-0.4785
+2026-11-23,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),228.775,US cents/lb,D,YAHOO,221.4175,10.4126,-0.4785
+2026-11-24,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),228.775,US cents/lb,D,YAHOO,221.3775,10.5193,-0.4785
 2019-01-01,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),307.2,Index Jun 1988=100,M,FRED,,,
 2019-01-02,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),307.2,Index Jun 1988=100,M,FRED,,,
 2019-01-03,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),307.2,Index Jun 1988=100,M,FRED,,,
@@ -120992,6 +121030,7 @@
 2026-11-21,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),572.968,Index Jun 1988=100,M,FRED,572.968,36.1953,-0.0823
 2026-11-22,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),572.968,Index Jun 1988=100,M,FRED,572.968,36.1953,-0.0823
 2026-11-23,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),572.968,Index Jun 1988=100,M,FRED,572.968,36.1953,-0.0823
+2026-11-24,US,us_ppi_ocean_freight,PPI: Deep Sea Freight Transportation (해상 화물운임),572.968,Index Jun 1988=100,M,FRED,572.968,36.1953,-0.0823
 2019-01-01,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean,Global Price of Soybeans (사료비),333.7771,USD/metric ton,M,FRED,,,
@@ -123876,6 +123915,7 @@
 2026-11-21,US,us_soybean,Global Price of Soybeans (사료비),481.7223,USD/metric ton,M,FRED,481.7223,30.6988,7.2773
 2026-11-22,US,us_soybean,Global Price of Soybeans (사료비),481.7223,USD/metric ton,M,FRED,481.7223,30.6988,7.2773
 2026-11-23,US,us_soybean,Global Price of Soybeans (사료비),481.7223,USD/metric ton,M,FRED,481.7223,30.6988,7.2773
+2026-11-24,US,us_soybean,Global Price of Soybeans (사료비),481.7223,USD/metric ton,M,FRED,481.7223,30.6988,7.2773
 2019-01-01,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-02,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
 2019-01-03,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",344.7295,USD/metric ton,M,FRED,,,
@@ -126760,6 +126800,7 @@
 2026-11-21,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",488.2657,USD/metric ton,M,FRED,488.2657,49.8962,32.8016
 2026-11-22,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",488.2657,USD/metric ton,M,FRED,488.2657,49.8962,32.8016
 2026-11-23,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",488.2657,USD/metric ton,M,FRED,488.2657,49.8962,32.8016
+2026-11-24,US,us_soybean_meal,"Global Price of Soybean Meal (대두박, 사료 직접 투입재)",488.2657,USD/metric ton,M,FRED,488.2657,49.8962,32.8016
 2019-01-02,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.31,USD/barrel,D,FRED,,,
 2019-01-03,US,us_wti,"WTI Crude Oil (Cushing, OK)",46.92,USD/barrel,D,FRED,,,
 2019-01-04,US,us_wti,"WTI Crude Oil (Cushing, OK)",47.76,USD/barrel,D,FRED,,,

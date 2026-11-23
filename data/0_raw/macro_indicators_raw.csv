@@ -44015,6 +44015,7 @@
 2026-10-31,KR,kr_temp_max,최고기온(전국대표),20.34,°C,D,KMA
 2026-10-31,US,us_beef_production_wk,USDA NASS 주간 연방검사(FI) 쇠고기 생산량,223076.728,t,W,NASS
 2026-10-31,US,us_cattle_slaughter_wk,"USDA NASS 주간 연방검사(FI) 소 도축두수 (500lb 이상, 송아지 제외)",546600.0,head,W,NASS
+2026-11-01,KR,kr_ccsi,소비자심리지수(CCSI),103.1,p (장기평균=100),M,ECOS
 2026-11-01,KR,kr_precip,일강수량(전국대표),14.98,mm,D,KMA
 2026-11-01,KR,kr_temp_avg,평균기온(전국대표),10.24,°C,D,KMA
 2026-11-01,KR,kr_temp_max,최고기온(전국대표),12.58,°C,D,KMA
@@ -44169,9 +44170,9 @@
 2026-11-19,KR,kr_precip,일강수량(전국대표),2.02,mm,D,KMA
 2026-11-19,KR,kr_temp_avg,평균기온(전국대표),3.74,°C,D,KMA
 2026-11-19,KR,kr_temp_max,최고기온(전국대표),7.24,°C,D,KMA
-2026-11-19,US,us_corn_fut,CBOT Corn Futures (근월물 연속),448.75,US cents/bushel,D,YAHOO
+2026-11-19,US,us_corn_fut,CBOT Corn Futures (근월물 연속),434.5,US cents/bushel,D,YAHOO
 2026-11-19,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),335.425,US cents/lb,D,YAHOO
-2026-11-19,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),227.7,US cents/lb,D,YAHOO
+2026-11-19,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),223.0,US cents/lb,D,YAHOO
 2026-11-20,KR,kr_fx_aud,원/호주달러 환율(매매기준율),885.12,원,D,ECOS
 2026-11-20,KR,kr_precip,일강수량(전국대표),0.94,mm,D,KMA
 2026-11-20,KR,kr_temp_avg,평균기온(전국대표),1.74,°C,D,KMA
@@ -44182,3 +44183,12 @@
 2026-11-22,KR,kr_precip,일강수량(전국대표),0.0,mm,D,KMA
 2026-11-22,KR,kr_temp_avg,평균기온(전국대표),2.52,°C,D,KMA
 2026-11-22,KR,kr_temp_max,최고기온(전국대표),8.52,°C,D,KMA
+2026-11-22,US,us_corn_fut,CBOT Corn Futures (근월물 연속),449.0,US cents/bushel,D,YAHOO
+2026-11-22,US,us_feeder_cattle_fut,CME Feeder Cattle Futures (근월물 연속),334.25,US cents/lb,D,YAHOO
+2026-11-22,US,us_live_cattle_fut,CME Live Cattle Futures (근월물 연속),228.775,US cents/lb,D,YAHOO
+2026-11-23,AU,au_eyci,"MLA Eastern Young Cattle Indicator (EYCI, 호주 소 가격 대표)",1045.369,AU c/kg cwt,D,MLA
+2026-11-23,AU,au_heavy_steer,MLA National Heavy Steer Indicator (수출용 비육 거세우),483.9497,AU c/kg lwt,D,MLA
+2026-11-23,KR,kr_fx_aud,원/호주달러 환율(매매기준율),886.56,원,D,ECOS
+2026-11-23,KR,kr_precip,일강수량(전국대표),9.94,mm,D,KMA
+2026-11-23,KR,kr_temp_avg,평균기온(전국대표),7.14,°C,D,KMA
+2026-11-23,KR,kr_temp_max,최고기온(전국대표),12.88,°C,D,KMA
