@@ -258,6 +258,20 @@ def build_customs():
                 continue
             uv[g][c] = _xy(s["unit_value_usd_kg"].where(s["imp_kg"] > 0), 2, keep_gaps=True)
             vol[g][c] = _xy(s["imp_kg"] / 1000, 0, keep_gaps=True)
+    # 미국 측 FOB 단가(GATS, 선적 기준 — 관세청 CIF 보다 약 1개월 선행)를 같은 부위군에 겹쳐 그린다
+    try:
+        from config import US_EXPORT_KOREA_MONTHLY_CSV
+        gx = pd.read_csv(US_EXPORT_KOREA_MONTHLY_CSV, parse_dates=["date"])
+        gx = gx[gx["date"] >= "2010-01-01"]
+        gmap = {"frozen_boneless": "frozen_boneless", "frozen_rib": "frozen_bone_in", "frozen_bone_in_other": "frozen_bone_in",
+                "chilled_boneless": "chilled_boneless", "chilled_rib": "chilled_bone_in", "all": "all_beef"}
+        for g, gg in gmap.items():
+            s = gx[gx["group"] == gg].set_index("date").sort_index()
+            if g in uv and not s.empty:
+                uv[g]["US_FOB"] = _xy(s["unit_value_usd_kg"].where(s["qty_kg"] > 0), 2, keep_gaps=True)
+                vol[g]["US_FOB"] = _xy(s["qty_kg"] / 1000, 0, keep_gaps=True)
+    except Exception as e:
+        print(f"  [customs] GATS 겹치기 생략: {e}")
     sg = pd.read_csv(AU_SAFEGUARD_USAGE_CSV, parse_dates=["date"])
     cur_year = int(sg["year"].max())
     cur = sg[sg["year"] == cur_year].sort_values("date")

@@ -208,6 +208,7 @@ MACRO_COLLECTORS = [
     ("MLA 호주 생우가 (EYCI·Heavy Steer, 호주산 원가 축, 키 불필요)", _collector("collect_mla_cattle.py")),
     ("Yahoo 선물 (생우·비육우·옥수수 근월물, 선행 시장가, 키 불필요)", _collector("collect_yahoo_futures.py")),
     ("NASS 미국 공급 (냉동 쇠고기 재고·주간 FI 도축두수·생산량, 키 없으면 skip)", _collector("collect_nass_supply.py")),
+    ("FAS GATS 미국→한국 소고기 월간 수출 (HS10 물량·단가, 키 없으면 skip)", _collector("collect_us_export_gats.py")),
     ("FAS 미국 소고기 수출 (중국·한국, 덤핑 조기경보, 키 없으면 skip)", _collector("collect_fas_export_sales.py")),
     ("NASS Cattle on Feed (미국 사육두수, 공급 선행, 키 없으면 skip)", _collector("collect_cattle_on_feed.py")),
 ]
@@ -216,6 +217,7 @@ MACRO_PROCESSORS = [
     ("거시지표 전처리 (raw → daily ffill → macro_dashboard_ready)", _util("preprocess_macro.py")),
     ("FAS 공급경보 전처리 (중국행 급감/한국행 과잉 → 다이버전 경보)", _util("preprocess_fas_signal.py")),
     ("관세청 수입실적 전처리 (국가×부위군 월별 / 호주산 ASG 소진율)", _util("preprocess_kr_customs_beef.py")),
+    ("GATS 월별 집계 (냉장/냉동 × 정육/골부 물량·단가·yoy)", _util("preprocess_us_export_gats.py")),
 ]
 
 # 삼겹양지 분석·예측·시그널 (수집·전처리 이후 실행)

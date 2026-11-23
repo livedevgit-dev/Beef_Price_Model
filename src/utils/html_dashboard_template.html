@@ -458,7 +458,9 @@ function renderSupply(panel) {
     const drawCs = () => {
       const g = $("#csGroup", panel).value, kind = $("#csKind", panel).value;
       const src = kind === "uv" ? D.customs.unit_value[g] : D.customs.volume_kt[g];
-      const traces = ["US", "AU"].filter((c) => src && src[c]).map((c) => line(src[c], c === "US" ? "미국" : "호주", c === "US" ? 0 : 1));
+      const names = { US: "미국 (관세청 CIF)", AU: "호주 (관세청 CIF)", US_FOB: "미국 선적 FOB (GATS)" };
+      const traces = ["US", "AU", "US_FOB"].filter((c) => src && src[c])
+        .map((c, i) => line(src[c], names[c], c === "US" ? 0 : c === "AU" ? 1 : 2, c === "US_FOB" ? { line: { dash: "dot" } } : {}));
       plot($("#csChart", panel), traces, timeLayout(kind === "uv" ? "USD/kg" : "톤"));
       traceTable($("#csChart-table", panel), traces, 24);
     };
