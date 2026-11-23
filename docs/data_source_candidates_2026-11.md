@@ -3,6 +3,22 @@
 미국(·호주) 수입 쇠고기 관련, 아직 수집하지 않는 공개 소스를 실제 호출로 확인한 결과. 사내 프록시 때문에 Python 에서는 `verify=False`(기존 수집기와 동일 패턴)가 필요하다.
 "기존 키"는 `.env` 의 EKAPE_API_KEY(data.go.kr 공용), FAS_API_KEY, NASS_API_KEY 를 뜻한다.
 
+## 구현 상태 (2026-11-23)
+
+| 소스 | 상태 | 수집기 / 산출물 |
+|---|---|---|
+| 관세청 품목별 국가별 수출입실적 | **완료** (1995~) | `collect_kr_customs_beef.py` → `kr_customs_beef_import.csv`, 전처리 `kr_customs_beef_monthly.csv`·`au_safeguard_usage.csv` |
+| FAS GATS 미국→한국 수출 | **완료** (1995~) | `collect_us_export_gats.py` → `us_export_korea_gats.csv`, 전처리 `us_export_korea_monthly.csv` |
+| CME 선물 (Yahoo) | **완료** (2005~) | `collect_yahoo_futures.py` → macro raw (us_live_cattle_fut·us_feeder_cattle_fut·us_corn_fut) |
+| NASS 냉동 재고·주간 도축·생산 | **완료** (2005~) | `collect_nass_supply.py` → macro raw (us_beef_cold_storage·us_cattle_slaughter_wk·us_beef_production_wk) |
+| FRED 미국 소매 쇠고기 | **완료** | 레지스트리 행 추가 (us_beef_steak_price·us_ground_beef_price) — 쇠고기 단독 CPI 는 FRED 에 없음 |
+| AMS LM_XB455/XB463 추가 리포트 | 미착수 | 기존 2453 수집기 패턴 복제 |
+| 식약처 I2780 냉동전환 | 미착수 | 무료 키 발급 필요 |
+| 컨테이너 운임(Drewry/FBX/BDI) | 미착수 | 무료 경로 미확인 |
+| KOSIS 가축동향·배합사료 | 미착수 | KOSIS 키 발급 필요 |
+
+지표 정의는 `config/indicators.csv` 레지스트리에서 관리한다(지표 추가 = CSV 한 줄). 유용성은 `--full` 끝의 `analysis/indicator_screen.py` 가 자동 점검한다.
+
 ## 우선순위 (가치 대비 노력)
 
 | 순위 | 소스 | 새로 얻는 것 | 이력 | 지연 | 키 | 난이도 |

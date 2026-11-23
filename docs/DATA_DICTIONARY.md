@@ -114,7 +114,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ## 부록: 자동생성 컬럼 스키마
 
-> 마지막 갱신: 2026-11-23 08:27
+> 마지막 갱신: 2026-11-23 09:14
 > `python src/utils/extract_data_schema.py` 또는 `python src/run_daily_update.py` 파이프라인에서 자동 갱신
 
 ### 폴더: `0_raw/`
@@ -221,8 +221,26 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | market_name | float64 | nan | nan |
 | price | float64 | nan | nan |
 
+#### `kr_customs_beef_import.csv`
+- **총 행(Row) 수**: 약 7454행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 1995-01-01 | 1995-01-01 |
+| country | object | US | AU |
+| country_kor | object | 미국 | 호주 |
+| hs10 | int64 | 201300000 | 202200000 |
+| hs_desc | object | 뼈 없는 것 | 기타의 것으로서 뼈채로 절단한 것 |
+| chilled | bool | True | False |
+| bone_in | bool | False | True |
+| rib | bool | False | False |
+| imp_kg | int64 | 651 | 7268612 |
+| imp_usd | int64 | 13679 | 15251299 |
+| unit_value_usd_kg | float64 | 21.0123 | 2.0982 |
+| source | object | KCS | KCS |
+
 #### `macro_indicators_raw.csv`
-- **총 행(Row) 수**: 약 24975행
+- **총 행(Row) 수**: 약 44183행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -284,6 +302,21 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | unit | object | HEAD | HEAD |
 | reference_period | object | FIRST OF JAN | JAN |
 | domaincat | object | CAPACITY: (1,000 OR MORE HEAD) | CAPACITY: (1,000 OR MORE HEAD) |
+
+#### `us_export_korea_gats.csv`
+- **총 행(Row) 수**: 약 2568행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 1995-01-01 | 1995-01-01 |
+| hs10 | int64 | 201100090 | 201206000 |
+| hs_desc | float64 | nan | nan |
+| chilled | bool | True | True |
+| bone_in | bool | True | True |
+| qty_kg | float64 | 503659.0 | 16303.0 |
+| value_usd | float64 | 1755200.0 | 104635.0 |
+| unit_value_usd_kg | float64 | 3.4849 | 6.4181 |
+| source | object | FAS_GATS | FAS_GATS |
 
 #### `usda_beef_history.csv`
 - **총 행(Row) 수**: 약 173548행
@@ -351,6 +384,20 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 
 ### 폴더: `1_processed/`
 
+#### `au_safeguard_usage.csv`
+- **총 행(Row) 수**: 약 382행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 1995-01-01 | 1995-02-01 |
+| year | int64 | 1995 | 1995 |
+| month_kg | int64 | 7655692 | 2684783 |
+| cum_kg | int64 | 7655692 | 10340475 |
+| quota_kg | float64 | nan | nan |
+| usage_pct | float64 | nan | nan |
+| projected_trigger_month | float64 | nan | nan |
+| quota_status | object | none | none |
+
 #### `han_auction_daily.csv`
 - **총 행(Row) 수**: 약 374990행
 
@@ -369,8 +416,21 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | price_won_per_kg | int64 | 20902 | 21341 |
 | head_count | int64 | 18 | 28 |
 
+#### `kr_customs_beef_monthly.csv`
+- **총 행(Row) 수**: 약 16023행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 1995-01-01 | 1995-01-01 |
+| country | object | ALL | ALL |
+| group | object | all | chilled_all |
+| imp_kg | int64 | 16152036 | 651 |
+| imp_usd | int64 | 48300361 | 13679 |
+| unit_value_usd_kg | float64 | 2.9904 | 21.0123 |
+| yoy_kg_pct | float64 | nan | nan |
+
 #### `macro_indicators_daily.csv`
-- **총 행(Row) 수**: 약 106588행
+- **총 행(Row) 수**: 약 129642행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -529,6 +589,18 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | source | object | dealer | dealer |
 | n_obs | int64 | 4 | 6 |
 
+#### `us_export_korea_monthly.csv`
+- **총 행(Row) 수**: 약 1680행
+
+| 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
+|---|---|---|---|
+| date | object | 1995-01-01 | 1995-01-01 |
+| group | object | all_beef | frozen_boneless |
+| qty_kg | float64 | 6161861.0 | 5243155.0 |
+| value_usd | float64 | 20250458.0 | 16091728.0 |
+| unit_value_usd_kg | float64 | 3.2864 | 3.0691 |
+| yoy_qty_pct | float64 | nan | nan |
+
 #### `usda_plate_usd_kg.csv`
 - **총 행(Row) 수**: 약 5558행
 
@@ -569,7 +641,7 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | is_filled | bool | False | True |
 
 #### `data_status.csv`
-- **총 행(Row) 수**: 약 24행
+- **총 행(Row) 수**: 약 28행
 
 | 컬럼명 | 데이터 타입 | 샘플 데이터 1 | 샘플 데이터 2 |
 |---|---|---|---|
@@ -658,10 +730,18 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | kr_service_food | float64 | 120.8 | 120.8 |
 | kr_temp_avg | float64 | -1.46 | -1.52 |
 | kr_temp_max | float64 | 2.28 | 3.58 |
+| us_beef_cold_storage | float64 | 231429.177 | 231429.177 |
+| us_beef_production_wk | float64 | 165107.623 | 165107.623 |
+| us_beef_steak_price | float64 | 7.598 | 7.598 |
+| us_cattle_slaughter_wk | float64 | 441600.0 | 441600.0 |
 | us_corn | float64 | 166.8462 | 166.8462 |
+| us_corn_fut | float64 | 375.75 | 379.75 |
 | us_diesel | float64 | nan | nan |
 | us_fed_steer | float64 | 188.2 | 188.2 |
+| us_feeder_cattle_fut | float64 | 147.95 | 146.525 |
 | us_food_ppi | float64 | 206.2 | 206.2 |
+| us_ground_beef_price | float64 | 3.801 | 3.801 |
+| us_live_cattle_fut | float64 | 123.525 | 123.225 |
 | us_ppi_ocean_freight | float64 | 307.2 | 307.2 |
 | us_soybean | float64 | 333.7771 | 333.7771 |
 | us_soybean_meal | float64 | 344.7295 | 344.7295 |
@@ -695,10 +775,18 @@ Yahoo Finance / 한국은행   → exchange_rate_data.xlsx
 | kr_service_food_yoy_pct | float64 | nan | nan |
 | kr_temp_avg_yoy_pct | float64 | nan | nan |
 | kr_temp_max_yoy_pct | float64 | nan | nan |
+| us_beef_cold_storage_yoy_pct | float64 | 1.6881 | 1.6881 |
+| us_beef_production_wk_yoy_pct | float64 | -12.7517 | -12.7517 |
+| us_beef_steak_price_yoy_pct | float64 | nan | nan |
+| us_cattle_slaughter_wk_yoy_pct | float64 | -11.2897 | -11.2897 |
 | us_corn_yoy_pct | float64 | nan | nan |
+| us_corn_fut_yoy_pct | float64 | 6.3694 | 7.5779 |
 | us_diesel_yoy_pct | float64 | nan | nan |
 | us_fed_steer_yoy_pct | float64 | nan | nan |
+| us_feeder_cattle_fut_yoy_pct | float64 | -1.0533 | -1.9079 |
 | us_food_ppi_yoy_pct | float64 | nan | nan |
+| us_ground_beef_price_yoy_pct | float64 | nan | nan |
+| us_live_cattle_fut_yoy_pct | float64 | 0.1419 | 0.2237 |
 | us_ppi_ocean_freight_yoy_pct | float64 | nan | nan |
 | us_soybean_yoy_pct | float64 | nan | nan |
 | us_soybean_meal_yoy_pct | float64 | nan | nan |
